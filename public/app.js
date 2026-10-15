@@ -98,7 +98,7 @@
   // ---------- Ana sayfa ----------
   const slides = [
     { eyebrow: "Kişisel çalışma planı", h: "Sınava <em>kendi eksiklerinden</em> başla.", p: "Kısa bir seviye tespitiyle hangi alanda ne kadar hazır olduğunu gör. Planın çözdüğün her soruyla yeniden hesaplanır." },
-    { eyebrow: "Dil eğitimi", h: "İngilizceyi <em>yaşına ve hedefine göre</em> öğren.", p: "Minikler için şarkılı hikâyelerden YDS ve IELTS'e kadar her seviyede aynı ölçme ve takip sistemi." },
+    { eyebrow: "Dil eğitimi", h: "İngilizceyi <em>yaşına ve hedefine göre</em> öğren.", p: "Çocuklar için hikâyelerden YDS ve IELTS'e kadar her seviyede aynı ölçme ve takip sistemi." },
   ];
   let slideIdx = 0, slideTimer = null, filter = "all";
 
@@ -184,7 +184,7 @@
           <span class="eyebrow">Hakkımızda</span>
           <h2 style="font-size:clamp(26px,3vw,36px);margin:0">Bir sınav için kurduk, her programa taşıyoruz.</h2>
           <p class="muted">Academia'nın çalışma motoru ilk olarak Hukuk Mesleklerine Giriş Sınavı için geliştirildi. Aynı motor bugün TUS'ta, YDS'de ve dil programlarında seviye tespitinden günlük plana kadar her adımı yönetiyor.</p>
-          <p class="muted">Robotik, okuma ve yaratıcı yazarlık programlarımız da aynı ölçme anlayışıyla çalışır: önce nerede olduğunu ölçeriz, sonra planı ona göre kurarız.</p>
+          <p class="muted">ASK Robotik programımız da aynı ölçme anlayışıyla çalışır: önce nerede olduğunu ölçeriz, sonra planı ona göre kurarız.</p>
         </div>
         <div class="principles">
           <div><h3>Uydurma puan göstermeyiz</h3><p>Ustalık tahmini her zaman belirsizlik aralığıyla gösterilir. Veri yoksa “veri yok” yazar.</p></div>
@@ -257,13 +257,8 @@
       <div class="prose">
         ${p.body.map((b) => `<p>${esc(b)}</p>`).join("")}
         ${p.status ? `<p class="note">${esc(p.status)}</p>` : ""}
-        ${p.structure ? `<h2>${p.slug === "robotik" ? "Modüller" : p.slug === "yarismalar" ? "Kategoriler" : "Sınav yapısı"}</h2>
+        ${p.structure ? `<h2>${p.slug === "robotik" ? "Modüller" : "Sınav yapısı"}</h2>
           <div class="table-wrap"><table><tbody>${rows(p.structure)}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}` : ""}
-        ${p.levels ? `<h2>Seviyeler</h2><div class="table-wrap"><table><thead><tr><th>Level</th><th>Yaş</th><th>Sınıf</th><th>Odak</th></tr></thead><tbody>${rows(p.levels)}</tbody></table></div>` : ""}
-        ${p.matrixExample ? `<h2>Kazanım ve değer eşleştirmesi</h2><p class="muted">Her kitap bir MEB kazanımına, bir dil hedefine ve bir değere bağlanır. Örnek satır:</p>
-          <div class="table-wrap"><table><thead><tr><th>Kitap</th><th>MEB kodu</th><th>Dil hedefi</th><th>Değer</th><th>Kazanım çıktısı</th></tr></thead>
-          <tbody><tr>${["kitap", "kod", "hedef", "deger", "cikti"].map((k) => `<td>${esc(p.matrixExample[k])}</td>`).join("")}</tr></tbody></table></div>` : ""}
-        ${p.classics ? `<h2>Sınıflara göre eserler</h2><div class="table-wrap"><table><tbody>${rows(p.classics)}</tbody></table></div>` : ""}
       </div>
       <aside class="aside">
         ${cta}

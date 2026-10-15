@@ -4,12 +4,26 @@
 window.ACADEMIA = {};
 
 ACADEMIA.groups = [
+  { id: "dijital", label: "Robotik ve Kodlama" },
   { id: "sinav", label: "Sınava Hazırlık" },
   { id: "ingilizce", label: "Genel İngilizce" },
-  { id: "dijital", label: "Dijital Programlar" },
 ];
 
 ACADEMIA.programs = [
+  {
+    slug: "robotik", group: "dijital", title: "ASK Robotik",
+    fact: "8 modül · 241 ders",
+    summary: "Blokla kodlamadan Arduino'ya, sensörlerden yapay zekâ mühendisliğine kadar sanal laboratuvarda robotik eğitimi.",
+    body: [
+      "Öğrenci devreleri ve kodu tarayıcıdaki simülatörde kurar ve çalıştırır. Robi adlı yapay zekâ öğretmen takıldığı yerde ipucu verir.",
+      "Okullar için öğretmen paneli, sınıf ve ödev takibi bulunur.",
+    ],
+    structure: [
+      ["Blokla Kodlama", "10 ders"], ["Sahne Atölyesi (Scratch)", "16 ders"], ["Arduino", "35 ders"], ["Sensörler", "40 ders"],
+      ["Robotik", "40 ders"], ["Yapay Zekâ Mühendisliği", "40 ders"], ["Mikro Kart", "30 ders"], ["Oyun Atölyesi", "30 ders"],
+    ],
+    link: { href: "https://web-production-06ee9.up.railway.app", label: "ASK Robotik'i aç" },
+  },
   {
     slug: "tus", group: "sinav", title: "TUS Hazırlık",
     fact: "Temel + Klinik · 2 × 100 soru",
@@ -89,74 +103,10 @@ ACADEMIA.programs = [
     body: ["Her hafta bir hikâye etrafında kelime, dinleme ve kısa konuşma görevleri yapılır. Veli, çocuğun hangi kelimeleri öğrendiğini haftalık özetten görür."],
   },
   {
-    slug: "minikler", group: "ingilizce", title: "Minikler İçin (3–6 Yaş)",
-    fact: "Okul öncesi · dinle ve tekrar et",
-    summary: "Şarkılar, masallar ve oyunlarla İngilizceyle güvenli ve eğlenceli bir ilk tanışma.",
-    body: ["Kısa, sesli ve görsel etkinliklerle ilerler. Ekran süresi kısa tutulur; etkinliklerin çoğu veliyle birlikte yapılacak şekilde tasarlanır."],
-  },
-  {
     slug: "ozel-ders", group: "ingilizce", title: "Özel Ders",
     fact: "Birebir · esnek takvim",
     summary: "Programı, içeriği ve hızı tamamen senin hedefine göre belirlenen birebir eğitim.",
     body: ["Seviye tespitinden çıkan eksik listesi eğitmeninle paylaşılır. Dersler bu listeye göre planlanır, ders aralarındaki çalışmalar platformdan takip edilir."],
-  },
-  {
-    slug: "robotik", group: "dijital", title: "ASK Robotik",
-    fact: "8 modül · 241 ders",
-    summary: "Blokla kodlamadan Arduino'ya, sensörlerden yapay zekâ mühendisliğine kadar sanal laboratuvarda robotik eğitimi.",
-    body: [
-      "Öğrenci devreleri ve kodu tarayıcıdaki simülatörde kurar ve çalıştırır. Robi adlı yapay zekâ öğretmen takıldığı yerde ipucu verir.",
-      "Okullar için öğretmen paneli, sınıf ve ödev takibi bulunur.",
-    ],
-    structure: [
-      ["Blokla Kodlama", "10 ders"], ["Sahne Atölyesi (Scratch)", "16 ders"], ["Arduino", "35 ders"], ["Sensörler", "40 ders"],
-      ["Robotik", "40 ders"], ["Yapay Zekâ Mühendisliği", "40 ders"], ["Mikro Kart", "30 ders"], ["Oyun Atölyesi", "30 ders"],
-    ],
-    link: { href: "https://web-production-06ee9.up.railway.app", label: "ASK Robotik'i aç" },
-  },
-  {
-    slug: "konusan-kitaplar", group: "dijital", title: "Konuşan Kitaplar",
-    fact: "Level 1–10 · 4–14 yaş",
-    summary: "Seslendirilmiş, animasyonlu İngilizce kitaplar ve kitapla yapay zekâ destekli konuşma pratiği.",
-    body: [
-      "Her kitap bir MEB kazanımına ve bir değer hedefine bağlıdır. Çocuk kitabı dinler, okur, kısa bir quiz çözer, sonra kitabın karakteriyle İngilizce konuşur.",
-      "Öğretmen panelinde kimin hangi kitabı okuduğu, konuşma süresi ve kelime çeşitliliği görünür.",
-    ],
-    levels: [
-      ["1", "4–5", "Okul öncesi", "Gör, duy, tekrar et"], ["2", "5–6", "Okul öncesi", "Kelime dağarcığı"],
-      ["3", "6–7", "1. sınıf", "Akademik dile giriş"], ["4", "7–8", "2. sınıf", "Cümle ve basit diyalog"],
-      ["5", "8–9", "3. sınıf", "Bağlamsal okuma, konuşma pratiği başlar"], ["6", "9–10", "4. sınıf", "Akıcı okuma, geçmiş ve gelecek zaman"],
-      ["7", "10–11", "5. sınıf", "Betimleme ve karşılaştırma"], ["8", "11–12", "6. sınıf", "Eleştirel düşünme"],
-      ["9", "12–13", "7. sınıf", "Akademik okuma ve tartışma"], ["10", "13–14", "8. sınıf", "LGS hazırlığı, B2 hedefi"],
-    ],
-    matrixExample: { kitap: "Good Morning, Neighbour!", kod: "E.K1.G1", hedef: "Selamlaşma ifadelerini anlama", deger: "Nezaket: Komşusunu güler yüzle selamlama", cikti: "Selamlaşır ve kendini tanıtır" },
-  },
-  {
-    slug: "klasikler", group: "dijital", title: "Dünya Klasikleri",
-    fact: "1–8. sınıf · 40+ eser",
-    summary: "Kamu malı dünya klasiklerinin sınıf seviyesine göre uyarlanmış, seslendirilmiş ve animasyonlu baskıları.",
-    body: ["Her eser bir değer üzerine kurulur: Pinokyo'da dürüstlük, Ağustos Böceği ile Karınca'da çalışkanlık gibi. Okuma sonrası sorular hem anlamayı hem de bu değeri tartışmayı hedefler."],
-    classics: [
-      ["1. sınıf", "Bremen Mızıkacıları, Aslan ile Fare, Kırmızı Başlıklı Kız, Çirkin Ördek Yavrusu, Ağustos Böceği ile Karınca"],
-      ["2. sınıf", "Pinokyo, Kurşun Asker, Altın Yumurtlayan Tavuk, Şehir Faresi ile Tarla Faresi, Parmak Çocuk"],
-      ["3. sınıf", "Heidi, Alice Harikalar Diyarında, Oz Büyücüsü, Peter Pan, Kara İnci"],
-      ["4. sınıf", "Pollyanna, Mutlu Prens, Demiryolu Çocukları, Gulliver'in Gezileri, Gizli Bahçe"],
-      ["5. sınıf", "80 Günde Devriâlem, Gümüş Patenler, Alice Harikalar Diyarında, Demiryolu Çocukları, Pollyanna"],
-      ["6. sınıf", "Mercan Adası, Prens ile Dilenci, Beyaz Diş, Küçük Kadınlar, Sherlock Holmes'tan Seçmeler"],
-      ["7. sınıf", "Robinson Crusoe, Oliver Twist, Dünyanın Merkezine Yolculuk, Define Adası, Gulliver'in Gezileri"],
-      ["8. sınıf", "Sefiller, İki Şehrin Hikâyesi, Don Kişot, Moby Dick, Frankenstein"],
-    ],
-  },
-  {
-    slug: "yarismalar", group: "dijital", title: "Yetenek Yarışmaları",
-    fact: "Hikâye · Şiir · Kısa film",
-    summary: "Okul öncesinden liseye, Türkçe, İngilizce ve Almanca eserlerle katılınan yaratıcı yazarlık ve kısa film yarışmaları.",
-    body: [
-      "Eserler kâğıt üzerinde hazırlanıp yüklenebilir ya da doğrudan platformda yazılabilir. Her eser özgünlük kontrolünden geçer ve jüri, kademeye göre hazırlanmış bir ölçütle değerlendirir.",
-      "Her katılımcıya puanının yanında, gelişim önerileri içeren bir jüri karnesi verilir.",
-    ],
-    structure: [["Hikâye", "Okul öncesi – 12. sınıf"], ["Şiir", "1. – 12. sınıf"], ["Kısa film", "5. – 12. sınıf"]],
-    status: "Yarışma takvimi duyurulacak.",
   },
 ];
 

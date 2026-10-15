@@ -18,7 +18,7 @@ Sonra `http://localhost:8765` adresine gidin. Doğrudan dosya olarak açınca fo
 - `public/index.html`: başlık, menü, alt bilgi
 - `public/app.js`: ana sayfa, program sayfaları, öğrenme alanı (hash yönlendirme: `#p-<slug>`, `#ogren-tus`)
 - `public/engine.js`: HMGS motoru (Beta ustalık, soru seçici, en büyük kalan kotası, plan sıralaması, tekrar takvimi, Wilson aralığı)
-- `public/data.js`: 14 program ve TUS/YDS demo soru bankaları (özgün sorular, gerçek ÖSYM sorusu yok)
+- `public/data.js`: 10 program ve TUS/YDS demo soru bankaları (özgün sorular, gerçek ÖSYM sorusu yok)
 - `public/img/`: Openverse'ten CC lisanslı fotoğraflar, künyeleri `credits.json` içinde
 
 ## Bilinçli kararlar
