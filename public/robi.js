@@ -96,10 +96,10 @@ window.ROBI = (() => {
     const p = ob.p, s = ob.step;
     const you = kid() ? "Çocuğunuz" : "Sen";
     if (s === "hello") return `<div class="ob-hero">${svg("happy", 120)}<h1>Merhaba, ben Robi!</h1>
-      <p class="ob-lead">Robotikten tıpta uzmanlığa, İngilizceden hukuka kadar Academia'daki yolculuğunda rehberin olacağım. Seni biraz tanıyıp sana özel bir plan çıkaralım.</p>
+      <p class="ob-lead">Robotikten tıpta uzmanlığa, İngilizceden hukuka kadar Macademia'daki yolculuğunda rehberin olacağım. Seni biraz tanıyıp sana özel bir plan çıkaralım.</p>
       <button class="btn btn-primary" data-ob="next">Başlayalım</button></div>`;
-    if (s === "who") return q("Academia'yı kim için kullanacaksın?", "", `<div class="ob-grid">${[["kendim", "🙋", "Kendim için"], ["cocugum", "👨‍👧", "Çocuğum için"], ["okulum", "🏫", "Okulum / kurumum için"]].map(([v, e, l]) => card(`data-ob="who" data-v="${v}"`, `<span class="ob-emoji">${e}</span><b>${l}</b>`, p.who === v)).join("")}</div>`);
-    if (s === "school") return q("Okullar ve kurumlar için Academia", "Sınıf yönetimi, ödev atama, beceri raporları ve hazır ders planları. Robotik derslerinde donanım gerekmez; her öğrenci tarayıcıda kendi laboratuvarında çalışır.",
+    if (s === "who") return q("Macademia'yı kim için kullanacaksın?", "", `<div class="ob-grid">${[["kendim", "🙋", "Kendim için"], ["cocugum", "👨‍👧", "Çocuğum için"], ["okulum", "🏫", "Okulum / kurumum için"]].map(([v, e, l]) => card(`data-ob="who" data-v="${v}"`, `<span class="ob-emoji">${e}</span><b>${l}</b>`, p.who === v)).join("")}</div>`);
+    if (s === "school") return q("Okullar ve kurumlar için Macademia", "Sınıf yönetimi, ödev atama, beceri raporları ve hazır ders planları. Robotik derslerinde donanım gerekmez; her öğrenci tarayıcıda kendi laboratuvarında çalışır.",
       `<div class="ob-actions"><a class="btn btn-primary" href="#kurumsal" data-ob="done-skip">Kurum tekliflerini incele</a><button class="btn btn-outline" data-ob="next">Öğrenci gibi dene</button></div>`);
     if (s === "age") return q(kid() ? "Çocuğunuz kaç yaşında?" : "Kaç yaşındasın?", "Yaşa uygun programları seçmek için soruyoruz; başka bir amaçla kullanılmaz.",
       `<form class="ob-age" data-ob-form="age"><input id="ob-age" type="number" inputmode="numeric" min="4" max="99" value="${p.age ?? ""}" aria-label="Yaş" required><button class="btn btn-primary" type="submit">Devam</button></form><p class="ob-err" id="ob-err" hidden>4 ile 99 arasında bir yaş gir.</p>`);
@@ -196,7 +196,7 @@ window.ROBI = (() => {
   // ---------- Sohbet paneli ----------
   const GREETING = "Merhaba, ben Robi! Bu sayfayla ilgili ne merak ediyorsun? Birlikte bakalım.";
   const chat = { open: false, busy: false, msgs: [], remaining: null };
-  let pageContext = () => ({ page: "Academia", context: "" });
+  let pageContext = () => ({ page: "Macademia", context: "" });
 
   const dock = document.createElement("div");
   dock.className = "robi-dock";
@@ -217,7 +217,7 @@ window.ROBI = (() => {
     }
     const mood = chat.busy ? "think" : chat.error ? "oops" : "happy";
     dock.innerHTML = `<div class="robi-panel" role="dialog" aria-label="Robi">
-      <header>${svg(mood, 36)}<div><b>Robi</b><small>${chat.busy ? "Düşünüyor…" : "Academia rehberin"}</small></div><button class="robi-x" data-robi="close" aria-label="Kapat">×</button></header>
+      <header>${svg(mood, 36)}<div><b>Robi</b><small>${chat.busy ? "Düşünüyor…" : "Macademia rehberin"}</small></div><button class="robi-x" data-robi="close" aria-label="Kapat">×</button></header>
       <div class="robi-log" id="robi-log" aria-live="polite">
         <div class="robi-msg bot">${esc(GREETING)}</div>
         ${chat.msgs.map((m) => `<div class="robi-msg ${m.role === "user" ? "me" : "bot"}">${fmt(m.content)}</div>`).join("")}

@@ -15,6 +15,8 @@
   --bg-soft: #f3f6fb;
   --surface: #ffffff;
   --star: #ffb400;
+  --navy-ink: #012245;
+  --shell: #7a4426; --shell-dark: #5a2f19; --kernel: #f6e3bf; --kernel-dark: #e8c98e; --leaf: #3f7d3a; --leaf-dark: #2b5c28;
   --good: #1e8a5a;
   --good-soft: #e6f5ee;
   --warn: #b7700c;
@@ -31,7 +33,7 @@
   :root:not([data-theme="light"]) {
     --brand: #ff6a3d; --brand-strong: #ff865f; --brand-soft: #3a1c13;
     --navy: #06162b; --navy-2: #0d2847; --on-navy: #f2f5f9; --on-navy-muted: #9fb0c6;
-    --ink: #e8edf4; --muted: #9ba8b9; --line: #24384f;
+    --ink: #e8edf4; --muted: #9ba8b9; --line: #24384f; --navy-ink: #f2f5f9;
     --bg: #0b1828; --bg-soft: #0f2034; --surface: #13263d;
     --good: #4cc48f; --good-soft: #12321f; --warn: #e3a648; --warn-soft: #33260f; --bad: #f07468; --bad-soft: #3a1a18;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
@@ -41,7 +43,7 @@
 :root[data-theme="dark"] {
   --brand: #ff6a3d; --brand-strong: #ff865f; --brand-soft: #3a1c13;
   --navy: #06162b; --navy-2: #0d2847; --on-navy: #f2f5f9; --on-navy-muted: #9fb0c6;
-  --ink: #e8edf4; --muted: #9ba8b9; --line: #24384f;
+  --ink: #e8edf4; --muted: #9ba8b9; --line: #24384f; --navy-ink: #f2f5f9;
   --bg: #0b1828; --bg-soft: #0f2034; --surface: #13263d;
   --good: #4cc48f; --good-soft: #12321f; --warn: #e3a648; --warn-soft: #33260f; --bad: #f07468; --bad-soft: #3a1a18;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
@@ -84,11 +86,17 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--surface); box-shadow: 0 1px 0 var(--line); }
 .site-header .wrap { display: flex; align-items: center; gap: 24px; min-height: 76px; position: relative; }
 .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex: none; }
-.logo-badge { width: 118px; height: 118px; border-radius: 50%; background: var(--surface); border: 1px dashed var(--line); display: grid; place-items: center; margin-top: 30px; margin-bottom: -30px; box-shadow: var(--shadow); position: relative; z-index: 2; }
-.logo-mark { background: var(--navy); color: #fff; padding: 6px 10px 5px; text-align: center; line-height: 1; }
-.logo-mark b { display: block; font-size: 19px; font-weight: 800; letter-spacing: .02em; }
-.logo-mark b i { font-style: normal; color: var(--brand); }
-.logo-mark small { display: block; font-size: 9px; letter-spacing: .32em; margin-top: 4px; font-weight: 500; color: #cfd9e6; }
+.logo-word { font-size: 26px; font-weight: 800; letter-spacing: -.01em; line-height: 1; color: var(--navy-ink); }
+.logo-word .m, .foot-brand .m { color: var(--brand); }
+.nut-shell { fill: var(--shell); }
+.nut-shell-dark { fill: var(--shell-dark); }
+.nut-kernel { fill: var(--kernel); }
+.nut-kernel-dark { fill: var(--kernel-dark); }
+.nut-leaf { fill: var(--leaf); }
+.nut-leaf-rib { fill: none; stroke: var(--leaf-dark); stroke-width: 1.6; stroke-linecap: round; }
+.nut-crack { fill: none; stroke: var(--shell-dark); stroke-width: 2; stroke-linejoin: round; }
+.foot-brand { display: flex; align-items: center; gap: 10px; font-size: 20px !important; font-weight: 800; }
+.foot-brand .nut { background: #ffffff; border-radius: 50%; padding: 2px; }
 .main-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .main-nav > a, .nav-drop > button { background: none; border: 0; padding: 10px 14px; font-weight: 500; font-size: 15px; text-decoration: none; cursor: pointer; border-radius: var(--radius); color: var(--ink); display: inline-flex; align-items: center; gap: 6px; }
 .main-nav > a:hover, .nav-drop > button:hover, .main-nav > a.active { color: var(--brand); }
@@ -314,9 +322,9 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
   .main-nav.open { display: flex; }
   .mega { position: static; transform: none; grid-template-columns: 1fr; box-shadow: none; border: 0; padding: 4px 14px 10px; gap: 12px; }
   .nav-cta { margin: 10px 0 0; }
-  .logo-badge { width: 74px; height: 74px; margin: 0; }
-  .logo-mark b { font-size: 13px; } .logo-mark small { font-size: 7px; }
-  .site-header .wrap { min-height: 88px; }
+  .logo-word { font-size: 22px; }
+  .logo .nut { width: 40px; height: 40px; }
+  .site-header .wrap { min-height: 68px; }
   .hero .wrap, .band .wrap, .about, .contact, .prog-hero, .prog-grid, .grid-2 { grid-template-columns: 1fr; }
   .today-card { position: static; width: auto; margin-top: 12px; }
   .steps { grid-template-columns: repeat(2, 1fr); }

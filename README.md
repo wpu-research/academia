@@ -1,4 +1,4 @@
-# Academia
+# Macademia
 
 Seviye tespiti, alan ustalığı, kişisel çalışma planı ve deneme ile çalışan eğitim platformu demosu.
 Çalışma motoru HMGS projesinden (`~/Desktop/Urunler/HMGS/portal/src/lib/engine`, `plan`) tarayıcıya aktarıldı.

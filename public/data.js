@@ -1,4 +1,4 @@
-// Academia içerik verisi: programlar ve demo soru bankaları.
+// Macademia içerik verisi: programlar ve demo soru bankaları.
 // Soru bankaları özgün yazılmıştır; gerçek ÖSYM sorusu içermez.
 
 window.ACADEMIA = {};
@@ -50,7 +50,7 @@ ACADEMIA.programs = [
     fact: "Hukuk Mesleklerine Giriş Sınavı",
     summary: "Öğrenme motorumuzun ilk uygulandığı program: kaynak maddeye dayanan sorular, hata defteri ve kaynak gösteren çalışma koçu.",
     body: [
-      "Academia'nın kişisel çalışma motoru ilk olarak HMGS için geliştirildi. Her soru dayandığı kanun maddesiyle birlikte gelir; yanlış cevaptan sonra nedenini işaretlersin ve bu bilgi programına geri döner.",
+      "Macademia'nın kişisel çalışma motoru ilk olarak HMGS için geliştirildi. Her soru dayandığı kanun maddesiyle birlikte gelir; yanlış cevaptan sonra nedenini işaretlersin ve bu bilgi programına geri döner.",
       "Yapay zekâ ile hazırlanan soru taslakları, yayına girmeden önce bir hukukçu tarafından incelenir.",
     ],
     status: "Tam portal kapalı beta aşamasında. Buradaki seviye tespiti aynı motoru örnek sorularla gösterir.",

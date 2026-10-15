@@ -194,7 +194,7 @@
         <div class="prose">
           <span class="eyebrow">Hakkımızda</span>
           <h2 style="font-size:clamp(26px,3vw,36px);margin:0">Bir sınav için kurduk, her programa taşıyoruz.</h2>
-          <p class="muted">Academia'nın çalışma motoru ilk olarak Hukuk Mesleklerine Giriş Sınavı için geliştirildi. Aynı motor bugün TUS'ta, YDS'de ve dil programlarında seviye tespitinden günlük plana kadar her adımı yönetiyor.</p>
+          <p class="muted">Macademia'nın çalışma motoru ilk olarak Hukuk Mesleklerine Giriş Sınavı için geliştirildi. Aynı motor bugün TUS'ta, YDS'de ve dil programlarında seviye tespitinden günlük plana kadar her adımı yönetiyor.</p>
           <p class="muted">ASK Robotik programımız da aynı ölçme anlayışıyla çalışır: önce nerede olduğunu ölçeriz, sonra planı ona göre kurarız.</p>
         </div>
         <div class="principles">

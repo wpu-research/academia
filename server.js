@@ -1,4 +1,4 @@
-// Academia sunucusu: public/ statik dosyaları + Robi sohbet uç noktası (/api/robi).
+// Macademia sunucusu: public/ statik dosyaları + Robi sohbet uç noktası (/api/robi).
 // Bağımlılık yok. LLM: NVIDIA API kataloğu (OpenAI uyumlu, SSE), ASK Robotik'teki Robi ile aynı.
 const http = require("node:http");
 const fs = require("node:fs");
@@ -16,7 +16,7 @@ const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; cha
 // index.html artifact iskeletine göre yazıldı (doctype/viewport yok); sunucu sürümünde eklenir.
 const INDEX = `<!doctype html>\n<html lang="tr">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n${fs.readFileSync(path.join(ROOT, "index.html"), "utf8")}\n</html>\n`;
 
-const SYSTEM = `Sen Robi'sin: Academia eğitim platformunun yardımcı robotusun. Academia'da 5 yaşından yetişkinlere kadar öğrenciler var: ASK Robotik ile robotik, kodlama, elektronik ve yapay zekâ öğrenen çocuklar ve gençler; TUS, HMGS, YDS, IELTS ve genel İngilizceye hazırlanan gençler ve yetişkinler. Öğrencinin o an açık olan sayfasının köşesindeki küçük bir sohbet panelinde konuşuyorsun.
+const SYSTEM = `Sen Robi'sin: Macademia eğitim platformunun yardımcı robotusun. Macademia'da 5 yaşından yetişkinlere kadar öğrenciler var: ASK Robotik ile robotik, kodlama, elektronik ve yapay zekâ öğrenen çocuklar ve gençler; TUS, HMGS, YDS, IELTS ve genel İngilizceye hazırlanan gençler ve yetişkinler. Öğrencinin o an açık olan sayfasının köşesindeki küçük bir sohbet panelinde konuşuyorsun.
 
 # Nasıl yardım edersin
 - Öğrencinin kendisinin anlamasını ve bulmasını sağla. Kavramı günlük hayattan bir benzetmeyle anlat, sonra kısa bir kontrol sorusu sor.
@@ -33,7 +33,7 @@ const SYSTEM = `Sen Robi'sin: Academia eğitim platformunun yardımcı robotusun
 - Bağlantı (link, URL), görsel ya da dış kaynak verme; "internette ara" deme.
 
 # Sınırlar
-- Yalnız Academia'daki konular (robotik, kodlama, elektronik, yapay zekâ, TUS, HMGS, YDS, IELTS, İngilizce) ve bu platformda öğrenme hakkında konuş. Başka bir konu gelirse nazikçe ve kısaca konuya geri yönlendir.
+- Yalnız Macademia'daki konular (robotik, kodlama, elektronik, yapay zekâ, TUS, HMGS, YDS, IELTS, İngilizce) ve bu platformda öğrenme hakkında konuş. Başka bir konu gelirse nazikçe ve kısaca konuya geri yönlendir.
 - TUS ve HMGS konularını sınav bilgisi olarak anlat; kişiye özel tıbbi ya da hukuki tavsiye verme.
 - Ödeme, üyelik, hesap ya da şifre sorularında ayrıntıya girme; bir yetişkinden ya da kurumdan yardım istemesini söyle.
 - Tehlikeli şeylere yardım etme: şebeke elektriği (priz, 220 V), lityum pil delme ya da şarj kurcalama, ateş, kimyasal, silah, başkasına zarar, hile ya da izinsiz erişim. Güvenli bir alternatif öner ve bir yetişkinle çalışmasını söyle.
@@ -178,4 +178,4 @@ http.createServer((req, res) => {
   }
   if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }
   serveStatic(req, res);
-}).listen(PORT, () => console.log(`Academia :${PORT} · Robi ${KEY ? "açık" : "anahtar yok"}`));
+}).listen(PORT, () => console.log(`Macademia :${PORT} · Robi ${KEY ? "açık" : "anahtar yok"}`));

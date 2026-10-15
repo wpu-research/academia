@@ -1,4 +1,4 @@
-# Academia — Claude kuralları
+# Macademia — Claude kuralları
 
 - Statik site, `public/` altında. Derleme yok; kütüphane eklemeden önce sor.
 - Tasarım dili dilkurakademi.com'dan alındı: Poppins, turuncu `#ff4f1e`, lacivert `#012245`. Renkler `styles.css` başındaki tokenlarda; açık ve koyu tema birlikte güncellenir.
