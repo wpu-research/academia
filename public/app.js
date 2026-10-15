@@ -67,7 +67,7 @@
 
   function masteryRows(d, { limit } = {}) {
     const areas = Object.keys(d.sh).map((a) => ({ a, s: E.stats(d.mastery[a]), n: d.attemptsByAlan[a] || 0 }));
-    areas.sort((x, y) => (x.n ? 0 : 1) - (y.n ? 0 : 1) || x.s.mean - y.s.mean || (x.a < y.a ? -1 : 1));
+    if (!d.exam.levels) areas.sort((x, y) => (x.n ? 0 : 1) - (y.n ? 0 : 1) || x.s.mean - y.s.mean || (x.a < y.a ? -1 : 1));
     return areas.slice(0, limit ?? areas.length).map(({ a, s, n }) => {
       const note = d.exam.areaNote?.[a];
       const share = `Sınavda %${pct(d.sh[a])}`;
@@ -82,6 +82,17 @@
         <div class="val"><b>%${pct(s.mean)}</b> ±${pct(s.sd)}</div></div>`;
     }).join("");
   }
+
+  // CEFR: %60 ve üzeri ustalığa ulaşılan en yüksek kesintisiz seviye.
+  function estimatedLevel(d) {
+    let est = null;
+    for (const lv of Object.keys(d.sh)) {
+      if (!d.attemptsByAlan[lv] || E.stats(d.mastery[lv]).mean < E.WEAK_MEAN) break;
+      est = lv;
+    }
+    return est;
+  }
+  const levelChip = (d) => d.exam.levels ? `<span class="chip chip-brand">Tahmini seviye: ${estimatedLevel(d) || "A1 altı"}</span>` : "";
 
   function nextAction(d, data) {
     if (!data.diagDone) return { title: "Seviye tespitiyle başla", text: `Sınavdaki alan oranlarına göre seçilmiş ${DIAG_SIZE} soru. Sonunda hangi alanda ne kadar hazır olduğunu görürsün.`, btn: "Seviye tespitine başla", tab: "tani" };
@@ -114,7 +125,7 @@
           <h1>${s.h}</h1>
           <p>${s.p}</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#ogren">Seviyeni Ölç</a>
+            <a class="btn btn-primary" href="#basla">Seviyeni Ölç</a>
             <a class="btn btn-outline" href="#egitimler">Programları İncele</a>
           </div>
           <div class="hero-dots" role="group" aria-label="Slaytlar">
@@ -154,7 +165,7 @@
         <div class="cards">
           ${A.programs.filter((p) => filter === "all" || p.group === filter).map(card).join("")}
           ${filter === "all" ? `
-          <a class="card card-cta" href="#ogren"><div><span class="eyebrow">Ücretsiz</span><h3>Seviyeni 15 dakikada ölç</h3></div><p>TUS veya YDS için örnek seviye tespitini çöz, alan alan durumunu ve 14 günlük planını gör.</p><span class="go">Seviye tespitine başla →</span></a>
+          <a class="card card-cta" href="#ogren"><div><span class="eyebrow">Ücretsiz</span><h3>Seviyeni 15 dakikada ölç</h3></div><p>TUS, HMGS, YDS, IELTS ya da İngilizce için seviye tespitini çöz, alan alan durumunu ve 14 günlük planını gör.</p><span class="go">Seviye tespitine başla →</span></a>
           <a class="card card-cta" href="#kurumsal"><div><span class="eyebrow">Kurumlar</span><h3>Okullar ve kurumlar için</h3></div><p>Sınıf yönetimi, ödev takvimi ve öğrenci ilerleme raporları.</p><span class="go">Kurumsal eğitimler →</span></a>` : ""}
         </div>
       </div>
@@ -257,13 +268,38 @@
       <div class="prose">
         ${p.body.map((b) => `<p>${esc(b)}</p>`).join("")}
         ${p.status ? `<p class="note">${esc(p.status)}</p>` : ""}
-        ${p.structure ? `<h2>${p.slug === "robotik" ? "Modüller" : "Sınav yapısı"}</h2>
+        ${p.structure ? `<h2>Sınav yapısı</h2>
           <div class="table-wrap"><table><tbody>${rows(p.structure)}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}` : ""}
+        ${p.modules ? `<h2>Modüller</h2><div class="table-wrap"><table><tbody>${p.modules.map((m, i) => `<tr><td class="num">${i + 1}</td><td><a href="#m-${m.slug}">${esc(m.title)}</a><br><small class="muted">${esc(m.desc)}</small></td><td>${esc(m.age)}</td><td class="num">${m.lessons}</td></tr>`).join("")}</tbody></table></div>` : ""}
       </div>
       <aside class="aside">
         ${cta}
         ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="#p-${o.slug}">${esc(o.title)}</a>`).join("")}</div>` : ""}
       </aside>
+    </div></div>`;
+  }
+
+  function renderModule(slug) {
+    const p = bySlug.robotik, mods = p.modules, m = mods.find((x) => x.slug === slug);
+    $app.innerHTML = `
+    <div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / <a href="#p-robotik">ASK Robotik</a> / ${esc(m.title)}</nav>
+      <div class="prog-hero">
+        <div>
+          <span class="eyebrow">ASK Robotik · Modül ${mods.indexOf(m) + 1} / ${mods.length}</span>
+          <h1>${esc(m.title)}</h1>
+          <p class="lead">${esc(m.desc)}</p>
+          <div class="hero-actions"><span class="chip chip-brand">${m.lessons} ders</span><span class="chip chip-line">${esc(m.age)}</span></div>
+        </div>
+        <div class="card-img"><img src="img/robotik.jpg" alt="" width="800" height="500"></div>
+      </div>
+    </div>
+    <div class="section soft" style="padding-block:0"><div class="wrap prog-grid">
+      <div class="prose">
+        ${m.topics ? `<h2>Neler öğrenilir</h2><ul>${m.topics.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+        <h2>Tüm modüller</h2>
+        <div class="table-wrap"><table><tbody>${mods.map((x, i) => `<tr><td class="num">${i + 1}</td><td>${x.slug === m.slug ? `<b>${esc(x.title)}</b>` : `<a href="#m-${x.slug}">${esc(x.title)}</a>`}</td><td class="num">${x.lessons} ders</td></tr>`).join("")}</tbody></table></div>
+      </div>
+      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler ASK Robotik'in sanal laboratuvarında açılır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div></aside>
     </div></div>`;
   }
 
@@ -307,7 +343,7 @@
       <div class="tile"><b>${data.diagDone ? "Tamam" : `${Math.min(diagCount, DIAG_SIZE)}/${DIAG_SIZE}`}</b><span>Seviye tespiti</span></div>
     </div>
     <div class="panel-box">
-      <header><h3>Alan ustalığı</h3><div class="legend"><span><i style="background:var(--bad)"></i>Zayıf (%60 altı)</span><span><i style="background:var(--warn)"></i>Gelişiyor</span><span><i style="background:var(--good)"></i>İyi (%75 üstü)</span></div></header>
+      <header><h3>${d.exam.levels ? "Seviye ustalığı" : "Alan ustalığı"} ${levelChip(d)}</h3><div class="legend"><span><i style="background:var(--bad)"></i>Zayıf (%60 altı)</span><span><i style="background:var(--warn)"></i>Gelişiyor</span><span><i style="background:var(--good)"></i>İyi (%75 üstü)</span></div></header>
       ${masteryRows(d)}
       <details class="how"><summary>Bu oranlar nasıl hesaplanıyor?</summary><ul>
         <li>Her alan %50 belirsiz bir tahminle başlar. Doğru cevap tahmini yukarı, yanlış cevap aşağı çeker.</li>
@@ -361,6 +397,7 @@
     return `<div class="grid-2">
       <div class="panel-box"><h3>${data.diagDone ? "Seviye tespitini yeniden yap" : "Seviye tespiti"}</h3>
         <p class="muted">${DIAG_SIZE} soru, alanlara sınavdaki paylarına göre dağıtılır. Her sorudan sonra doğru cevabı ve açıklamasını görürsün.</p>
+        ${d.exam.blueprintNote ? `<p class="note">${esc(d.exam.blueprintNote)}</p>` : ""}
         <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Sınavdaki pay</th><th class="num">Soru</th></tr></thead><tbody>
           ${Object.keys(d.sh).map((a) => `<tr><td>${esc(a)}</td><td class="num">%${pct(d.sh[a])}</td><td class="num">${quota[a] || 0}</td></tr>`).join("")}
         </tbody></table></div>
@@ -377,7 +414,7 @@
       rows[at.alan] = rows[at.alan] || [0, 0];
       rows[at.alan][1]++; if (at.correct) rows[at.alan][0]++;
     }
-    return `<div class="panel-box"><span class="eyebrow">Seviye tespiti tamamlandı</span><h3>Alan sonuçların</h3>
+    return `<div class="panel-box"><span class="eyebrow">Seviye tespiti tamamlandı</span><h3>Alan sonuçların ${levelChip(d)}</h3>
       <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Doğru</th><th class="num">Soru</th></tr></thead><tbody>
       ${Object.entries(rows).map(([a, [k, n]]) => `<tr><td>${esc(a)}</td><td class="num">${k}</td><td class="num">${n}</td></tr>`).join("")}</tbody></table></div>
       ${masteryRows(d)}
@@ -588,7 +625,12 @@
   // ---------- Menü ----------
   const mega = document.getElementById("mega"), dropBtn = document.getElementById("drop-btn");
   const nav = document.getElementById("main-nav"), toggle = document.getElementById("menu-toggle");
-  mega.innerHTML = A.groups.map((g) => `<div><h4>${g.label}</h4>${A.programs.filter((p) => p.group === g.id).map((p) => `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("")}</div>`).join("");
+  mega.innerHTML = A.groups.map((g) => {
+    const links = g.id === "dijital"
+      ? `<a href="#p-robotik">ASK Robotik: genel bakış</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
+      : A.programs.filter((p) => p.group === g.id).map((p) => `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("");
+    return `<div><h4>${g.label}</h4>${links}</div>`;
+  }).join("");
   const setMega = (open) => { mega.hidden = !open; dropBtn.setAttribute("aria-expanded", open); };
   dropBtn.addEventListener("click", (e) => { e.stopPropagation(); setMega(mega.hidden); });
   const drop = dropBtn.parentElement;
@@ -604,7 +646,9 @@
   function route() {
     const h = location.hash.replace(/^#/, "");
     if (h.startsWith("p-") && bySlug[h.slice(2)]) return { view: "program", slug: h.slice(2) };
+    if (h.startsWith("m-") && bySlug.robotik.modules.some((m) => m.slug === h.slice(2))) return { view: "module", slug: h.slice(2) };
     if (h === "ogren" || h.startsWith("ogren-")) return { view: "app", exam: h.slice(6) };
+    if (h === "basla") return { view: "basla" };
     return { view: "home", section: SECTIONS.includes(h) ? h : null };
   }
   function render() {
@@ -616,6 +660,8 @@
       if (r.exam && A.exams[r.exam] && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
       renderApp();
     } else if (r.view === "program") renderProgram(bySlug[r.slug]);
+    else if (r.view === "module") renderModule(r.slug);
+    else if (r.view === "basla") ROBI.renderOnboarding($app);
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "home" && r.section) document.getElementById(r.section)?.scrollIntoView({ behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     else if (current !== key) window.scrollTo({ top: 0 });
@@ -623,7 +669,41 @@
     document.querySelectorAll(".main-nav > a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + (r.section || (r.view === "home" ? "ana" : ""))));
   }
   window.addEventListener("hashchange", render);
+  if (ROBI.needsOnboarding() && (location.hash === "" || location.hash === "#ana")) history.replaceState(null, "", "#basla");
   render();
+
+  window.ACADEMIA_APP = {
+    begin(exam, budget) {
+      if (store.data[exam].sample) store.data[exam] = emptyData();
+      store.data[exam].budget = budget || BUDGET_DEFAULT;
+      store.exam = exam; session = null;
+      store.tab = store.data[exam].diagDone ? "panel" : "tani";
+      save();
+      if (location.hash === "#ogren-" + exam) render(); else location.hash = "ogren-" + exam;
+    },
+  };
+
+  // Robi'nin gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
+  ROBI.setContext(() => {
+    const r = route();
+    if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
+    if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `ASK Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }
+    if (r.view === "app") {
+      const ex = A.exams[store.exam];
+      const tabName = (TABS.find((t) => t[0] === store.tab) || [])[1];
+      let context = `Öğrenme alanı, sınav: ${ex.name}. Açık sekme: ${tabName}. Alanlar: ${Object.keys(ex.blueprint).join(", ")}.`;
+      const q = session && !session.finished && session.q;
+      if (q) {
+        const it = q.item;
+        context += ` Öğrencinin ekranındaki soru (${it.alan}): ${it.q} Şıklar: ${it.o.map((o, i) => `${LETTERS[i]}) ${o}`).join(" ")}.`;
+        context += q.done && session.kind !== "deneme" ? ` Öğrenci cevapladı (${q.correct ? "doğru" : "yanlış"}). Doğru cevap ${LETTERS[it.a]}. Açıklama: ${it.e}` : " Öğrenci henüz cevaplamadı: doğru cevabı söyleme, düşünmesini sağla.";
+        const open = !(q.done && session.kind !== "deneme");
+        return { page: "Soru çözme ekranı", context, question: true, hide: open ? [it.o[it.a], LETTERS[it.a]] : null };
+      }
+      return { page: "Öğrenme alanı", context };
+    }
+    return { page: "Ana sayfa", context: `Programlar: ${A.programs.map((p) => p.title).join(", ")}.` };
+  });
 
   // ---------- Fotoğraf kaynakları ----------
   const LIC = { by: "CC BY", "by-sa": "CC BY-SA", cc0: "CC0", pdm: "Kamu malı" };

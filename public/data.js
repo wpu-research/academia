@@ -4,7 +4,7 @@
 window.ACADEMIA = {};
 
 ACADEMIA.groups = [
-  { id: "dijital", label: "Robotik ve Kodlama" },
+  { id: "dijital", label: "Robotik" },
   { id: "sinav", label: "Sınava Hazırlık" },
   { id: "ingilizce", label: "Genel İngilizce" },
 ];
@@ -18,9 +18,15 @@ ACADEMIA.programs = [
       "Öğrenci devreleri ve kodu tarayıcıdaki simülatörde kurar ve çalıştırır. Robi adlı yapay zekâ öğretmen takıldığı yerde ipucu verir.",
       "Okullar için öğretmen paneli, sınıf ve ödev takibi bulunur.",
     ],
-    structure: [
-      ["Blokla Kodlama", "10 ders"], ["Sahne Atölyesi (Scratch)", "16 ders"], ["Arduino", "35 ders"], ["Sensörler", "40 ders"],
-      ["Robotik", "40 ders"], ["Yapay Zekâ Mühendisliği", "40 ders"], ["Mikro Kart", "30 ders"], ["Oyun Atölyesi", "30 ders"],
+    modules: [
+      { slug: "blokla-kodlama", title: "Blokla Kodlamaya İlk Adım", lessons: 10, age: "5+ yaş", desc: "Okuma gerektirmeyen bloklarla komut, tekrar ve olay kavramları; küçük hikâye sahneleri kurulur." },
+      { slug: "scratch", title: "Scratch ile Kendi Oyununu Yap", lessons: 16, age: "8+ yaş", desc: "Scratch ile tanışma, animasyon, müzik ve etkileşim, hikâye anlatımı ve ardından ilk oyunlar." },
+      { slug: "arduino", title: "Arduino Temelleri", lessons: 35, age: "12+ yaş", desc: "Girdi ve mantık, analog dünya, PWM, renk ve ses, motorlar, zamanlama ve ekranlar; hepsi sanal devre tahtasında." },
+      { slug: "sensorler", title: "Sensörler ve Projeler", lessons: 40, age: "12+ yaş", desc: "Mesafe, engel, ortam, ışık, ses, gaz ve hareket sensörleriyle haftalık projeler; simülasyondan gerçek devreye geçiş." },
+      { slug: "robotik-modul", title: "Robotik", lessons: 40, age: "13+ yaş", desc: "Hareket, engelden kaçma, çizgi izleme, enkoder ve odometri, PID, IMU ve denge, robot kol ve bitirme robotu." },
+      { slug: "yapay-zeka", title: "Yapay Zekâ Mühendisliği", lessons: 40, age: "13+ yaş", desc: "Dil modelleri, prompt yazımı, değerlendirme, embedding ve RAG, araçlar ve ajanlar, kod yazan yapay zekâ ve sorumlu kullanım." },
+      { slug: "mikro-kart", title: "Mikro Kart", lessons: 30, age: "8+ yaş", desc: "Tek kartlık mikrodenetleyici: düğmeler ve olaylar, sensörler, müzik, radyo ile iletişim ve projeler." },
+      { slug: "oyun-atolyesi", title: "Oyun Atölyesi", lessons: 30, age: "8+ yaş", desc: "Çarpışma ve skor, harita, düşman zekâsı, platform fiziği ve baştan sona tam oyun projeleri." },
     ],
     link: { href: "https://web-production-06ee9.up.railway.app", label: "ASK Robotik'i aç" },
   },
@@ -40,14 +46,14 @@ ACADEMIA.programs = [
     structureNote: "Temel Tıp Bilimleri testi, alan başına yaklaşık soru sayısı. Demo bu testi kullanır.",
   },
   {
-    slug: "hmgs", group: "sinav", title: "HMGS Hazırlık",
+    slug: "hmgs", group: "sinav", title: "HMGS Hazırlık", engine: "hmgs",
     fact: "Hukuk Mesleklerine Giriş Sınavı",
     summary: "Öğrenme motorumuzun ilk uygulandığı program: kaynak maddeye dayanan sorular, hata defteri ve kaynak gösteren çalışma koçu.",
     body: [
       "Academia'nın kişisel çalışma motoru ilk olarak HMGS için geliştirildi. Her soru dayandığı kanun maddesiyle birlikte gelir; yanlış cevaptan sonra nedenini işaretlersin ve bu bilgi programına geri döner.",
       "Yapay zekâ ile hazırlanan soru taslakları, yayına girmeden önce bir hukukçu tarafından incelenir.",
     ],
-    status: "Portal kapalı beta aşamasında. Bu demoda motorun aynısını TUS ve YDS üzerinde deneyebilirsin.",
+    status: "Tam portal kapalı beta aşamasında. Buradaki seviye tespiti aynı motoru örnek sorularla gösterir.",
   },
   {
     slug: "yds", group: "sinav", title: "YDS Hazırlık",
@@ -65,7 +71,7 @@ ACADEMIA.programs = [
     structureNote: "Soru tipine göre soru sayısı.",
   },
   {
-    slug: "ielts", group: "sinav", title: "IELTS Hazırlık",
+    slug: "ielts", group: "sinav", title: "IELTS Hazırlık", engine: "ielts",
     fact: "4 modül · 0–9 band",
     summary: "Listening, Reading, Writing ve Speaking modüllerinde hedef band skoruna göre kurulan, deneme ağırlıklı program.",
     body: [
@@ -75,7 +81,7 @@ ACADEMIA.programs = [
     structure: [["Listening", "4 bölüm, 40 soru"], ["Reading", "3 metin, 40 soru"], ["Writing", "2 görev"], ["Speaking", "3 bölümlü görüşme"]],
   },
   {
-    slug: "toefl", group: "sinav", title: "TOEFL Hazırlık",
+    slug: "toefl", group: "sinav", title: "TOEFL Hazırlık", engine: "ingilizce",
     fact: "Bilgisayar tabanlı · 4 beceri",
     summary: "Amerika ve Kanada başta olmak üzere üniversite başvuruları için bilgisayar tabanlı TOEFL iBT'ye hazırlık.",
     body: [
@@ -83,7 +89,7 @@ ACADEMIA.programs = [
     ],
   },
   {
-    slug: "hazirlik-atlama", group: "sinav", title: "Hazırlık Atlama",
+    slug: "hazirlik-atlama", group: "sinav", title: "Hazırlık Atlama", engine: "ingilizce",
     fact: "Proficiency sınavlarına hazırlık",
     summary: "Üniversitenin İngilizce yeterlik sınavını geçip hazırlık sınıfını atlamak isteyenler için yoğun program.",
     body: [
@@ -91,19 +97,19 @@ ACADEMIA.programs = [
     ],
   },
   {
-    slug: "gencler", group: "ingilizce", title: "Gençler İçin (11–17 Yaş)",
+    slug: "gencler", group: "ingilizce", title: "Gençler İçin (11–17 Yaş)", engine: "ingilizce",
     fact: "Okul + LGS/YKS desteği",
     summary: "Okul derslerini destekleyen, sınav altyapısını güçlendiren ve konuşma özgüveni kazandıran İngilizce programı.",
     body: ["Okuldaki ünitelere paralel ilerler. Haftalık konuşma pratiği ve okuma görevleriyle sınav altyapısı birlikte kurulur."],
   },
   {
-    slug: "cocuklar", group: "ingilizce", title: "Çocuklar İçin (7–11 Yaş)",
+    slug: "cocuklar", group: "ingilizce", title: "Çocuklar İçin (7–11 Yaş)", engine: "ingilizce",
     fact: "Oyun ve hikâye temelli",
     summary: "İngilizceyi kural ezberleyerek değil; hikâyeler, şarkılar ve oyunlarla, yaşayarak öğrenme.",
     body: ["Her hafta bir hikâye etrafında kelime, dinleme ve kısa konuşma görevleri yapılır. Veli, çocuğun hangi kelimeleri öğrendiğini haftalık özetten görür."],
   },
   {
-    slug: "ozel-ders", group: "ingilizce", title: "Özel Ders",
+    slug: "ozel-ders", group: "ingilizce", title: "Özel Ders", engine: "ingilizce",
     fact: "Birebir · esnek takvim",
     summary: "Programı, içeriği ve hızı tamamen senin hedefine göre belirlenen birebir eğitim.",
     body: ["Seviye tespitinden çıkan eksik listesi eğitmeninle paylaşılır. Dersler bu listeye göre planlanır, ders aralarındaki çalışmalar platformdan takip edilir."],
@@ -147,6 +153,40 @@ ACADEMIA.exams = {
     ],
   },
 
+  hmgs: {
+    name: "HMGS · Hukuk Mesleklerine Giriş",
+    short: "HMGS",
+    blueprint: { "Anayasa Hukuku": 30, "İdare Hukuku": 28, "Medeni Hukuk": 41, "Borçlar Hukuku": 36, "Ticaret Hukuku": 33, "Medeni Usul ve İcra-İflas": 49, "Ceza ve Ceza Muhakemesi": 44, "Diğer alanlar": 79 },
+    blueprintNote: "Ağırlıklar, HMGS projesinde etiketlenen 340 gerçek sınav sorusunun alan dağılımından alındı.",
+    areaNote: { "Anayasa Hukuku": "Anayasa yargısı dahil", "İdare Hukuku": "İdari yargılama dahil", "Diğer alanlar": "İş, vergi, avukatlık, milletlerarası hukuk, hukuk felsefesi ve tarihi" },
+    items: [
+      { id: "h-an1", alan: "Anayasa Hukuku", q: "Anayasa Mahkemesine doğrudan iptal davası açma hakkı, iptali istenen kanunun Resmî Gazete'de yayımlanmasından başlayarak kaç gün sonra düşer?", o: ["30 gün", "45 gün", "60 gün", "90 gün", "1 yıl"], a: 2, e: "Anayasa m.151: doğrudan iptal davası açma hakkı, kanunun Resmî Gazete'de yayımlanmasından başlayarak 60 gün sonra düşer." },
+      { id: "h-an2", alan: "Anayasa Hukuku", q: "Türkiye Büyük Millet Meclisi seçimleri kaç yılda bir yapılır?", o: ["3 yıl", "4 yıl", "5 yıl", "6 yıl", "7 yıl"], a: 2, e: "Anayasa m.77: TBMM ve Cumhurbaşkanı seçimleri beş yılda bir aynı günde yapılır." },
+      { id: "h-an3", alan: "Anayasa Hukuku", q: "Aşağıdakilerden hangisi Cumhurbaşkanlığı kararnamesiyle düzenlenebilir?", o: ["Kişi hak ve ödevleri", "Temel haklar", "Siyasi haklar ve ödevler", "Sosyal ve ekonomik haklar ve ödevler", "Hiçbiri"], a: 3, e: "Anayasa m.104/17: ikinci kısmın birinci ve ikinci bölümündeki temel haklar, kişi hakları ve ödevleri ile dördüncü bölümdeki siyasi haklar CBK ile düzenlenemez. Üçüncü bölümdeki sosyal ve ekonomik haklar bu yasağın dışındadır." },
+      { id: "h-id1", alan: "İdare Hukuku", q: "Özel kanunlarında ayrı süre gösterilmeyen hâllerde idare mahkemelerinde dava açma süresi kaç gündür?", o: ["15 gün", "30 gün", "45 gün", "60 gün", "90 gün"], a: 3, e: "İYUK m.7: dava açma süresi Danıştayda ve idare mahkemelerinde 60, vergi mahkemelerinde 30 gündür." },
+      { id: "h-id2", alan: "İdare Hukuku", q: "İdari yargı yetkisi, idari eylem ve işlemlerin hangi yönden denetimini kapsamaz?", o: ["Yetki", "Şekil", "Sebep", "Maksat", "Yerindelik"], a: 4, e: "İYUK m.2/2: idari yargı yetkisi, idari eylem ve işlemlerin hukuka uygunluğunun denetimiyle sınırlıdır; yerindelik denetimi yapılamaz." },
+      { id: "h-id3", alan: "İdare Hukuku", q: "Bir idari eylem nedeniyle kişisel hakları doğrudan zarar gören kişinin zararının giderilmesi için açacağı dava hangisidir?", o: ["İptal davası", "Tam yargı davası", "Tespit davası", "İtirazın iptali davası", "Menfi tespit davası"], a: 1, e: "İYUK m.2/1-b: idari eylem ve işlemlerden kişisel hakları doğrudan muhtel olanlar tarafından açılan dava tam yargı davasıdır." },
+      { id: "h-me1", alan: "Medeni Hukuk", q: "Türk Medeni Kanunu'na göre ergin kılınma için mahkemeye başvurabilecek küçüğün en az kaç yaşını doldurmuş olması gerekir?", o: ["12", "14", "15", "16", "17"], a: 2, e: "TMK m.12: on beş yaşını dolduran küçük, kendi isteği ve velisinin rızasıyla mahkeme kararıyla ergin kılınabilir." },
+      { id: "h-me2", alan: "Medeni Hukuk", q: "Eşler arasında kanuni (yasal) mal rejimi hangisidir?", o: ["Mal ayrılığı", "Paylaşmalı mal ayrılığı", "Edinilmiş mallara katılma", "Mal ortaklığı", "Mal birliği"], a: 2, e: "TMK m.202: eşler arasında edinilmiş mallara katılma rejiminin geçerli olması asıldır." },
+      { id: "h-me3", alan: "Medeni Hukuk", q: "Erginlik yaşı kaçtır?", o: ["15", "16", "17", "18", "21"], a: 3, e: "TMK m.11: erginlik on sekiz yaşın doldurulmasıyla başlar. Evlenme de kişiyi ergin kılar." },
+      { id: "h-bo1", alan: "Borçlar Hukuku", q: "Kanunda aksine bir hüküm bulunmadıkça her alacak kaç yıllık zamanaşımına tabidir?", o: ["2 yıl", "5 yıl", "10 yıl", "15 yıl", "20 yıl"], a: 2, e: "TBK m.146: kanunda aksine hüküm yoksa her alacak on yıllık zamanaşımına tabidir." },
+      { id: "h-bo2", alan: "Borçlar Hukuku", q: "Haksız fiilden doğan tazminat istemi, zarar görenin zararı ve tazminat yükümlüsünü öğrendiği tarihten başlayarak kaç yılda zamanaşımına uğrar?", o: ["1 yıl", "2 yıl", "3 yıl", "5 yıl", "10 yıl"], a: 1, e: "TBK m.72: öğrenmeden itibaren iki yıl, her hâlde fiilin işlendiği tarihten itibaren on yıl." },
+      { id: "h-bo3", alan: "Borçlar Hukuku", q: "Aşırı yararlanma (gabin) nedeniyle sözleşmeyle bağlı olmadığını bildirme hakkı hangi süreler içinde kullanılmalıdır?", o: ["Öğrenmeden itibaren 6 ay, her hâlde 2 yıl", "Öğrenmeden itibaren 1 yıl, her hâlde sözleşmeden itibaren 5 yıl", "Öğrenmeden itibaren 2 yıl, her hâlde 10 yıl", "Sözleşmeden itibaren 1 yıl", "Süre sınırı yoktur"], a: 1, e: "TBK m.28: zor durumda kalma, düşüncesizlik veya deneyimsizliğin öğrenildiği ya da etkisinin ortadan kalktığı tarihten başlayarak bir yıl, her hâlde sözleşmenin kurulmasından başlayarak beş yıl." },
+      { id: "h-ti1", alan: "Ticaret Hukuku", q: "Bir anonim şirket en az kaç kurucu ile kurulabilir?", o: ["1", "2", "3", "5", "7"], a: 0, e: "TTK m.338: anonim şirketin kurucusu bir veya daha fazla kişi olabilir." },
+      { id: "h-ti2", alan: "Ticaret Hukuku", q: "Limited şirketin ortak sayısı en fazla kaç olabilir?", o: ["25", "40", "50", "75", "Sınır yoktur"], a: 2, e: "TTK m.574: limited şirket ortaklarının sayısı elliyi aşamaz." },
+      { id: "h-ti3", alan: "Ticaret Hukuku", q: "Aşağıdakilerden hangisi bononun kanunda sayılan zorunlu unsurlarından biri değildir?", o: ["Senet metninde “bono” veya “emre muharrer senet” kaydı", "Kayıtsız şartsız belirli bir bedeli ödeme vaadi", "Lehtarın adı", "Düzenleyenin imzası", "Faiz şartı"], a: 4, e: "TTK m.776 bononun zorunlu unsurlarını sayar. Faiz şartı bunlardan biri değildir." },
+      { id: "h-us1", alan: "Medeni Usul ve İcra-İflas", q: "HMK'ya göre genel yetkili mahkeme hangisidir?", o: ["Davacının yerleşim yeri mahkemesi", "Sözleşmenin yapıldığı yer mahkemesi", "Davalının dava tarihindeki yerleşim yeri mahkemesi", "Taşınmazın bulunduğu yer mahkemesi", "Davacının seçeceği herhangi bir mahkeme"], a: 2, e: "HMK m.6: genel yetkili mahkeme, davalı gerçek veya tüzel kişinin davanın açıldığı tarihteki yerleşim yeri mahkemesidir." },
+      { id: "h-us2", alan: "Medeni Usul ve İcra-İflas", q: "HMK'ya göre istinaf yoluna başvuru süresi, ilamın tebliğinden itibaren ne kadardır?", o: ["1 hafta", "2 hafta", "15 gün", "1 ay", "2 ay"], a: 1, e: "HMK m.345: istinaf yoluna başvuru süresi iki haftadır ve ilamın usulen taraflardan her birine tebliğiyle başlar." },
+      { id: "h-us3", alan: "Medeni Usul ve İcra-İflas", q: "Genel haciz yoluyla ilamsız takipte borçlu, ödeme emrine kaç gün içinde itiraz edebilir?", o: ["3 gün", "5 gün", "7 gün", "10 gün", "15 gün"], a: 2, e: "İİK m.62: itirazı olan borçlu, itirazını ödeme emrinin tebliği tarihinden itibaren yedi gün içinde icra dairesine bildirir." },
+      { id: "h-ce1", alan: "Ceza ve Ceza Muhakemesi", q: "TCK'ya göre fiili işlediği sırada kaç yaşını doldurmamış olan çocukların ceza sorumluluğu yoktur?", o: ["10", "12", "13", "15", "18"], a: 1, e: "TCK m.31/1: fiili işlediği sırada on iki yaşını doldurmamış çocukların ceza sorumluluğu yoktur; çocuklara özgü güvenlik tedbirleri uygulanabilir." },
+      { id: "h-ce2", alan: "Ceza ve Ceza Muhakemesi", q: "CMK'ya göre bireysel suçlarda gözaltı süresi, yakalama yerine en yakın hâkime gönderilmek için zorunlu süre hariç en çok ne kadardır?", o: ["12 saat", "24 saat", "48 saat", "4 gün", "7 gün"], a: 1, e: "CMK m.91/1: gözaltı süresi, yakalama yerine en yakın hâkim veya mahkemeye gönderilmesi için zorunlu süre hariç, yakalama anından itibaren yirmi dört saati geçemez." },
+      { id: "h-ce3", alan: "Ceza ve Ceza Muhakemesi", q: "Aşağıdakilerden hangisi TCK'da düzenlenen hukuka uygunluk sebeplerindendir?", o: ["Haksız tahrik", "Meşru savunma", "Yaş küçüklüğü", "Akıl hastalığı", "Geçici nedenler"], a: 1, e: "TCK m.25'teki meşru savunma hukuka uygunluk sebebidir. Haksız tahrik cezada indirim sebebi; yaş küçüklüğü ve akıl hastalığı kusurluluğu etkileyen hâllerdir." },
+      { id: "h-di1", alan: "Diğer alanlar", q: "İş Kanunu'na göre hizmet süresi bir yıldan beş yıla kadar (beş yıl dahil) olan işçiye verilecek yıllık ücretli izin süresi en az kaç gündür?", o: ["10", "14", "18", "20", "26"], a: 1, e: "İş Kanunu m.53: bir yıldan beş yıla kadar (beş yıl dahil) hizmeti olanlara en az on dört gün yıllık ücretli izin verilir." },
+      { id: "h-di2", alan: "Diğer alanlar", q: "Avukatlık Kanunu'na göre avukatlık stajının süresi ne kadardır?", o: ["6 ay", "1 yıl", "18 ay", "2 yıl", "3 yıl"], a: 1, e: "Avukatlık Kanunu m.15: staj süresi bir yıldır; ilk altı ayı mahkemelerde, kalanı avukat yanında yapılır." },
+      { id: "h-di3", alan: "Diğer alanlar", q: "Vergi Usul Kanunu'na göre vergi alacağı, doğduğu takvim yılını izleyen yıldan başlayarak kaç yıl içinde tarh edilip tebliğ edilmezse zamanaşımına uğrar?", o: ["3 yıl", "5 yıl", "7 yıl", "10 yıl", "15 yıl"], a: 1, e: "VUK m.114: vergi alacağı, doğduğu takvim yılını takip eden yılın başından başlayarak beş yıl içinde tarh ve ilgiliye tebliğ edilmezse zamanaşımına uğrar." },
+    ],
+  },
+
   yds: {
     name: "YDS · İngilizce",
     short: "YDS",
@@ -176,6 +216,57 @@ ACADEMIA.exams = {
       { id: "y-a3", alan: "Anlam bütünlüğü", q: "Verilen cümleye anlamca en yakın olanı seçin.\n\nIt was not until the 19th century that the link between hygiene and infection was widely accepted.", o: ["The link between hygiene and infection only became widely accepted in the 19th century.", "In the 19th century, people rejected the link between hygiene and infection.", "Hygiene was first practised in the 19th century.", "Before the 19th century, the link between hygiene and infection was widely accepted.", "Infections largely disappeared in the 19th century thanks to hygiene."], a: 0, e: "“It was not until … that …” yapısı “ancak … -de/-da” anlamı verir: bağlantı ancak 19. yüzyılda genel kabul gördü." },
     ],
   },
+  ielts: {
+    name: "IELTS · Academic",
+    short: "IELTS",
+    blueprint: { "Listening": 1, "Reading": 1, "Writing": 1 },
+    blueprintNote: "Speaking canlı görüşmeyle değerlendirilir, bu demoda yok. Listening sorularında ses kaydı yerine yazılı döküm verilir.",
+    areaNote: { "Listening": "Demoda ses kaydı yerine yazılı döküm" },
+    items: [
+      { id: "i-l1", alan: "Listening", q: "Kayıtta şunu duyuyorsunuz:\n“The museum is open every day except Monday, from half past nine until five. On Thursdays, we stay open until eight.”\n\nMüze perşembe günleri saat kaçta kapanır?", o: ["5 pm", "8 pm", "9.30 am", "Perşembe kapalıdır", "8 am"], a: 1, e: "Genel kapanış saati beşte olsa da perşembe günleri müze sekize kadar açık." },
+      { id: "i-l2", alan: "Listening", q: "Kayıtta şunu duyuyorsunuz:\n“My surname is Whitfield. That's W-H-I-T-F-I-E-L-D.”\n\nFormda soyadı nasıl yazılmalı?", o: ["Whitfeild", "Whitfield", "Witfield", "Whitefield", "Whitfeld"], a: 1, e: "Harf harf söylenen yazım W-H-I-T-F-I-E-L-D'dir. Listening'de yanlış yazılan cevap puan almaz." },
+      { id: "i-l3", alan: "Listening", q: "Kayıtta şunu duyuyorsunuz:\n“The talk was supposed to start at two, but the speaker's train has been delayed, so we'll begin forty-five minutes later.”\n\nKonuşma saat kaçta başlayacak?", o: ["2.00", "2.15", "2.45", "3.45", "1.15"], a: 2, e: "Saat ikiye 45 dakika eklenir: 2.45." },
+      { id: "i-l4", alan: "Listening", q: "Kayıtta şunu duyuyorsunuz:\n“I was going to book the Tuesday tour, but it's full, so I've gone for Wednesday instead. Thursday would be too late for me.”\n\nKonuşmacı hangi günü ayırttı?", o: ["Tuesday", "Wednesday", "Thursday"], a: 1, e: "Salı ilk tercihti ama dolu; perşembe çok geç. Ayırtılan gün çarşamba. Listening'de ilk duyulan cevap çoğu zaman çeldiricidir." },
+      { id: "i-r1", alan: "Reading", q: "The town's first public library opened in 1897. It was funded by a local merchant who had made his fortune in the textile trade. At first the library lent books only to adults, but a children's section was added in 1912.\n\nStatement: The library was paid for by the town council.", o: ["TRUE", "FALSE", "NOT GIVEN"], a: 1, e: "Metin kütüphaneyi yerel bir tüccarın finanse ettiğini söylüyor; bu, ifadeyle çelişir." },
+      { id: "i-r2", alan: "Reading", q: "The town's first public library opened in 1897. It was funded by a local merchant who had made his fortune in the textile trade. At first the library lent books only to adults, but a children's section was added in 1912.\n\nStatement: The merchant's textile business later failed.", o: ["TRUE", "FALSE", "NOT GIVEN"], a: 2, e: "Metin tüccarın işinin sonradan ne olduğu hakkında bilgi vermiyor." },
+      { id: "i-r3", alan: "Reading", q: "The town's first public library opened in 1897. It was funded by a local merchant who had made his fortune in the textile trade. At first the library lent books only to adults, but a children's section was added in 1912.\n\nStatement: Children could borrow books when the library first opened.", o: ["TRUE", "FALSE", "NOT GIVEN"], a: 1, e: "Başlangıçta kitaplar yalnız yetişkinlere veriliyordu; çocuk bölümü 1912'de eklendi." },
+      { id: "i-r4", alan: "Reading", q: "Many coastal cities are now investing in “sponge” infrastructure: parks, wetlands and permeable pavements that absorb heavy rainfall instead of channelling it into drains. Supporters say this reduces flooding and cools the city in summer, although critics point out that the approach needs large amounts of land.\n\nParagraf için en uygun başlık hangisidir?", o: ["The high cost of traditional drains", "Using natural surfaces to manage rainwater", "Why coastal cities are shrinking", "A record summer heatwave", "The history of urban parks"], a: 1, e: "Paragrafın ana fikri, yağmur suyunu emen doğal yüzeylerle taşkının yönetilmesidir." },
+      { id: "i-w1", alan: "Writing", q: "Academic Writing Task 1'de bir ulaşım grafiği için hangisi en uygun genel değerlendirme (overview) cümlesidir?", o: ["Overall, car use rose steadily over the period, while cycling declined.", "I think cars are better than bicycles.", "In 1990, 23% of people drove, 12% cycled and 8% walked.", "This graph is about transport.", "Cars will probably become even more popular in the future."], a: 0, e: "Overview ana eğilimleri özetler. C ayrıntıdır, B kişisel görüş, E tahmindir; ikisi de Task 1'de istenmez." },
+      { id: "i-w2", alan: "Writing", q: "“Some people believe university education should be free. To what extent do you agree?” sorusuna hangi tez cümlesi doğrudan cevap verir?", o: ["This essay will discuss university education.", "I strongly agree that tuition should be free, because it widens access and benefits society as a whole.", "Universities have existed for many centuries.", "There are many advantages and disadvantages.", "Education is very important for everyone."], a: 1, e: "“To what extent” sorusu net bir görüş ister. Yalnız B görüşü ve gerekçesini açıkça söylüyor." },
+      { id: "i-w3", alan: "Writing", q: "Boşluğa en uygun bağlacı seçin:\n“Public transport reduces traffic. ----, it is often cheaper than driving.”", o: ["Moreover", "However", "Therefore", "Instead", "Otherwise"], a: 0, e: "İkinci cümle aynı yönde ek bir avantaj veriyor: Moreover." },
+      { id: "i-w4", alan: "Writing", q: "Writing Task 2'de yazılması beklenen en az kelime sayısı kaçtır?", o: ["150", "200", "250", "300", "350"], a: 2, e: "Task 1 için en az 150, Task 2 için en az 250 kelime yazılması beklenir." },
+    ],
+  },
+
+  ingilizce: {
+    name: "İngilizce Seviye Tespiti · A1–C1",
+    short: "İngilizce",
+    levels: true,
+    blueprint: { "A1": 1, "A2": 1, "B1": 1, "B2": 1, "C1": 1 },
+    blueprintNote: "Seviyeler Avrupa Ortak Dil Referans Çerçevesi'ne (CEFR) göredir. Tahmini seviye, %60 ve üzeri ustalığa ulaştığın en yüksek kesintisiz seviyedir.",
+    items: [
+      { id: "e-a1-1", alan: "A1", q: "My sister ---- a teacher.", o: ["am", "is", "are", "be", "been"], a: 1, e: "Tekil üçüncü şahısla “to be” fiilinin şimdiki zamanı “is” olur." },
+      { id: "e-a1-2", alan: "A1", q: "There ---- two apples on the table.", o: ["is", "are", "am", "be", "has"], a: 1, e: "Çoğul isimle “there are” kullanılır." },
+      { id: "e-a1-3", alan: "A1", q: "I get up ---- seven o'clock.", o: ["in", "on", "at", "to", "by"], a: 2, e: "Saatlerden önce “at” kullanılır." },
+      { id: "e-a1-4", alan: "A1", q: "---- you like coffee?", o: ["Does", "Do", "Are", "Is", "Have"], a: 1, e: "“You” ile geniş zaman sorusu “Do” ile kurulur." },
+      { id: "e-a2-1", alan: "A2", q: "We ---- to Antalya last summer.", o: ["go", "went", "have gone", "going", "goes"], a: 1, e: "“Last summer” geçmişte bitmiş bir zamandır; past simple: went." },
+      { id: "e-a2-2", alan: "A2", q: "This box is ---- than that one.", o: ["heavy", "heavier", "heaviest", "more heavy", "the heaviest"], a: 1, e: "Kısa sıfatlarda karşılaştırma “-er + than” ile yapılır; y harfi i'ye döner: heavier." },
+      { id: "e-a2-3", alan: "A2", q: "I ---- my grandmother tomorrow. I've already bought the train ticket.", o: ["visit", "visited", "am visiting", "have visited", "was visiting"], a: 2, e: "Kesinleşmiş gelecek planları için present continuous kullanılır." },
+      { id: "e-a2-4", alan: "A2", q: "You ---- wear a seatbelt in the car. It's the law.", o: ["must", "can", "might", "would", "could"], a: 0, e: "Kural veya zorunluluk “must” ile anlatılır." },
+      { id: "e-b1-1", alan: "B1", q: "If I ---- more time, I would learn to play the guitar.", o: ["have", "had", "will have", "would have", "having"], a: 1, e: "Şimdiki zamana dair gerçek dışı koşul (second conditional): If + past simple, would + fiil." },
+      { id: "e-b1-2", alan: "B1", q: "I have lived in this city ---- 2015.", o: ["for", "since", "during", "from", "ago"], a: 1, e: "Başlangıç noktası (yıl) “since” ile; süre (ör. ten years) “for” ile verilir." },
+      { id: "e-b1-3", alan: "B1", q: "The bridge ---- in 1890.", o: ["built", "was built", "has built", "is building", "builds"], a: 1, e: "Köprü işi yapan değil, yapılan şeydir; geçmiş zaman edilgen: was built." },
+      { id: "e-b1-4", alan: "B1", q: "She asked me where I ----.", o: ["live", "lived", "am living", "will live", "living"], a: 1, e: "Dolaylı anlatımda “asked” geçmiş zamanda olduğu için zaman bir geri kayar: lived." },
+      { id: "e-b2-1", alan: "B2", q: "By next June, she ---- her degree.", o: ["will finish", "will have finished", "finishes", "has finished", "finished"], a: 1, e: "“By + gelecekteki zaman” o ana kadar tamamlanmış olacak eylemi anlatır: future perfect." },
+      { id: "e-b2-2", alan: "B2", q: "I'd rather you ---- smoke in here.", o: ["don't", "didn't", "won't", "not", "haven't"], a: 1, e: "“Would rather + başka bir özne” yapısında şimdiki zaman için past simple kullanılır." },
+      { id: "e-b2-3", alan: "B2", q: "Hardly ---- the meeting started when the fire alarm went off.", o: ["had", "has", "did", "was", "have"], a: 0, e: "“Hardly … when” yapısında devrik past perfect kullanılır: Hardly had the meeting started…" },
+      { id: "e-b2-4", alan: "B2", q: "The company decided to ---- the launch until the software was fully tested.", o: ["put off", "put up", "put on", "take off", "bring up"], a: 0, e: "“Put off” ertelemek demektir." },
+      { id: "e-c1-1", alan: "C1", q: "Not only ---- the deadline, but he also went over budget.", o: ["he missed", "did he miss", "he did miss", "missed he", "has missed he"], a: 1, e: "Cümle başındaki “Not only” devrik yapı ister: did he miss." },
+      { id: "e-c1-2", alan: "C1", q: "Had I known about the traffic, I ---- earlier.", o: ["would leave", "would have left", "left", "had left", "will leave"], a: 1, e: "“Had I known” devrik third conditional'dır; ana cümle would have + V3 alır." },
+      { id: "e-c1-3", alan: "C1", q: "Her argument was so ---- that even her critics were persuaded.", o: ["compelling", "tentative", "redundant", "ambiguous", "trivial"], a: 0, e: "Eleştirmenleri bile ikna eden bir argüman “compelling” (ikna edici) olur." },
+      { id: "e-c1-4", alan: "C1", q: "The proposal, ---- merits are widely recognised, has yet to be approved.", o: ["which", "whose", "whom", "that", "what"], a: 1, e: "Teklifin “değerleri” sahiplik bildirir: whose merits." },
+    ],
+  },
 };
 
 // Örnek öğrenci verisi (demo): [soru id, doğru mu, güven 1-3]
@@ -184,6 +275,17 @@ ACADEMIA.sample = {
     ["t-an1",1,3],["t-an2",1,2],["t-fz1",1,3],["t-fz2",0,2],["t-fz3",1,2],["t-bk1",0,3],["t-bk2",1,1],["t-bk3",0,2],
     ["t-mb1",1,3],["t-mb2",1,2],["t-mb3",0,1],["t-pt1",1,2],["t-pt2",1,3],["t-pt3",0,2],["t-fk1",0,3],["t-fk2",0,2],
     ["t-an3",1,2],["t-mb4",1,2],
+  ],
+  hmgs: [
+    ["h-an1",1,2],["h-id1",1,3],["h-me1",0,2],["h-bo1",1,3],["h-ti1",0,2],["h-us1",1,2],["h-ce1",1,3],["h-di1",0,1],["h-us2",0,3],["h-ce2",1,2],
+    ["h-bo2",0,2],["h-me2",1,2],["h-ti2",0,1],["h-us3",1,2],
+  ],
+  ielts: [
+    ["i-l1",1,2],["i-r1",1,3],["i-w1",0,2],["i-l2",1,3],["i-r2",0,3],["i-w2",1,2],["i-l3",1,2],["i-r3",1,2],["i-w3",1,3],["i-r4",0,2],
+  ],
+  ingilizce: [
+    ["e-a1-1",1,3],["e-a1-2",1,3],["e-a2-1",1,3],["e-a2-2",1,2],["e-b1-1",1,2],["e-b1-2",0,2],["e-b2-1",0,2],["e-b2-2",0,1],["e-c1-1",0,1],["e-c1-2",0,2],
+    ["e-b1-3",1,2],["e-a2-3",1,2],
   ],
   yds: [
     ["y-k1",1,2],["y-g1",1,3],["y-g2",0,3],["y-c1",1,2],["y-c2",1,2],["y-s1",0,2],["y-s2",1,1],["y-t1",1,2],

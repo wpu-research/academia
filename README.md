@@ -5,20 +5,23 @@ Seviye tespiti, alan ustalığı, kişisel çalışma planı ve deneme ile çal�
 
 ## Çalıştırma
 
-Derleme adımı yok. `public/` klasörünü bir statik sunucuyla açın:
+Derleme adımı ve bağımlılık yok (Node 22):
 
 ```
-cd public && python3 -m http.server 8765
+NVIDIA_API_KEY=... node server.js   # http://localhost:8080
 ```
 
-Sonra `http://localhost:8765` adresine gidin. Doğrudan dosya olarak açınca fotoğraf kaynakları listesi yüklenmez.
+`server.js` `public/` klasörünü sunar ve Robi için `/api/robi` uç noktasını çalıştırır. Anahtar yoksa site çalışır, Robi "çevrim dışı" der.
+Ortam değişkenleri: `NVIDIA_API_KEY` (Robi), isteğe bağlı `NVIDIA_MODEL`, `PORT`.
 
 ## Dosyalar
 
+- `server.js`: statik sunum + Robi (NVIDIA, akışlı). Hız sınırı IP başına dakikada 8, günde 60. Cevaplanmamış soruda doğru şıkkı içeren yanıtı göstermez.
+- `public/robi.js`: Robi maskotu, sohbet paneli ve tanışma akışı (`#basla`), ASK Robotik'ten uyarlandı
 - `public/index.html`: başlık, menü, alt bilgi
 - `public/app.js`: ana sayfa, program sayfaları, öğrenme alanı (hash yönlendirme: `#p-<slug>`, `#ogren-tus`)
 - `public/engine.js`: HMGS motoru (Beta ustalık, soru seçici, en büyük kalan kotası, plan sıralaması, tekrar takvimi, Wilson aralığı)
-- `public/data.js`: 10 program ve TUS/YDS demo soru bankaları (özgün sorular, gerçek ÖSYM sorusu yok)
+- `public/data.js`: 10 program, 8 ASK Robotik modülü ve TUS/HMGS/YDS/IELTS/İngilizce demo soru bankaları (özgün sorular, gerçek ÖSYM sorusu yok)
 - `public/img/`: Openverse'ten CC lisanslı fotoğraflar, künyeleri `credits.json` içinde
 
 ## Bilinçli kararlar
