@@ -664,11 +664,16 @@
     else if (r.view === "basla") ROBI.renderOnboarding($app);
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "home" && r.section) document.getElementById(r.section)?.scrollIntoView({ behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
-    else if (current !== key) window.scrollTo({ top: 0 });
+    else if (current !== key || r.view === "home") window.scrollTo({ top: 0, behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     current = key;
     document.querySelectorAll(".main-nav > a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + (r.section || (r.view === "home" ? "ana" : ""))));
   }
   window.addEventListener("hashchange", render);
+  // Adres zaten #ana iken hashchange tetiklenmez; linki yine de çalıştır.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href="#ana"]');
+    if (a && (location.hash === "#ana" || location.hash === "")) { e.preventDefault(); render(); }
+  });
   if (ROBI.needsOnboarding() && (location.hash === "" || location.hash === "#ana")) history.replaceState(null, "", "#basla");
   render();
 
