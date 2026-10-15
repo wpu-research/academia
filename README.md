@@ -1,101 +1,35 @@
-# Academia — Adaptif Öğrenme Platformu
+# Academia
 
-Yapay zeka destekli, kişiselleştirilmiş eğitim platformu. Öğrencilerin seviyelerini belirleyip, eksiklerini tespit ederek uyarlanabilir ders programları sunuyor.
+Seviye tespiti, alan ustalığı, kişisel çalışma planı ve deneme ile çalışan eğitim platformu demosu.
+Çalışma motoru HMGS projesinden (`~/Desktop/Urunler/HMGS/portal/src/lib/engine`, `plan`) tarayıcıya aktarıldı.
 
-## Platform Özellikleri
+## Çalıştırma
 
-### 🧠 HMGS-AI — Uyarlanabilir Öğrenme Motoru
-- Başlangıç yeterlilik testi ile tam seviye analizi
-- Otomatik eksik konu tespiti
-- AI tarafından oluşturulan özel ders programı
-- Önceki sınavları analiz edip hata paternleri bulma
-- Dinamik zorluk ayarı
-- AI tarafından oluşturulan deneme sınavları
-
-### 📚 Kurs Kategorileri
-
-1. **ASK Robotik** — 8 modülde 241 ders; sanal robotik simülasyonları
-2. **Edubook Kids** — Konuşan kitaplar (Level 1-10, CEFR standardları)
-3. **Din Kültürü & Ahlak Bilgisi** — Animasyonlu İslami değerler
-4. **Dünya Klasikleri** — Animasyonlu klasik eserler
-5. **Digital Literacy** — 21. yüzyıl becerileri
-6. **TUS Hazırlığı** — Tıp Ulusal Sınavı
-7. **İngilizce A1-A2** — Sıfırdan İngilizce
-8. **IELTS Hazırlığı** — Uluslararası İngilizce sınavı
-9. **YDS Hazırlığı** — Üniversite sınavı
-10. **Daha Fazlası** — Ek kurslar (kurumsal, etkinlik, vb.)
-
-## Teknoloji
-
-- **Frontend**: HTML5, CSS3, JavaScript
-- **AI Engine**: HMGS adaptif algoritması
-- **Database**: Öğrenci profilleri, ilerleme, sınavlar
-- **Video**: Konuşan kitaplar, animasyonlu içerik
-
-## Hızlı Başlangıç
-
-```bash
-# Demo'yu açın
-open public/index.html
-
-# Veya tarayıcıda
-http://localhost:8000
-```
-
-## Proje Yapısı
+Derleme adımı yok. `public/` klasörünü bir statik sunucuyla açın:
 
 ```
-academia/
-├── public/
-│   ├── index.html          # Ana sayfa
-│   ├── assets/
-│   │   ├── css/            # Stil dosyaları
-│   │   ├── js/             # JavaScript
-│   │   └── images/         # Resimler
-│   └── konusan-kitaplar/   # Edubook Kids
-├── src/
-│   ├── api/                # Backend API
-│   ├── components/         # React components (gelecek)
-│   └── utils/              # Yardımcı fonksiyonlar
-├── docs/
-│   ├── architecture.md     # Sistem mimarisi
-│   ├── kurulum.md          # Kurulum rehberi
-│   └── api.md              # API dokümantasyonu
-├── README.md               # Bu dosya
-├── package.json            # Bağımlılıklar
-└── .claude/                # Claude Code konfigürasyonu
-    └── CLAUDE.md           # Proje kuralları
+cd public && python3 -m http.server 8765
 ```
 
-## Gelecek Özellikleri
+Sonra `http://localhost:8765` adresine gidin. Doğrudan dosya olarak açınca fotoğraf kaynakları listesi yüklenmez.
 
-- [ ] Canlı sınıf modülü
-- [ ] Mentorluş sistemi
-- [ ] Sosyal öğrenme (grup çalışması)
-- [ ] Sertifika sistemi
-- [ ] Mobil uygulama
-- [ ] Kurumsal dashboard
-- [ ] YetenekFest entegrasyonu (Hikaye, Şiir, Kısa-Film yarışmaları)
+## Dosyalar
 
-## Katkıda Bulunma
+- `public/index.html`: başlık, menü, alt bilgi
+- `public/app.js`: ana sayfa, program sayfaları, öğrenme alanı (hash yönlendirme: `#p-<slug>`, `#ogren-tus`)
+- `public/engine.js`: HMGS motoru (Beta ustalık, soru seçici, en büyük kalan kotası, plan sıralaması, tekrar takvimi, Wilson aralığı)
+- `public/data.js`: 14 program ve TUS/YDS demo soru bankaları (özgün sorular, gerçek ÖSYM sorusu yok)
+- `public/img/`: Openverse'ten CC lisanslı fotoğraflar, künyeleri `credits.json` içinde
 
-Katkılar hoş geldiniz! Lütfen:
-1. Bir fork oluşturun
-2. Feature branch'i açın (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin
-4. Branch'i push edin
-5. Pull Request açın
+## Bilinçli kararlar
 
-## Lisans
+- Edubook Kids ve YetenekFest belgeleri yalnız fikir kaynağıdır; onların marka adları ve kitap adları kullanılmaz.
+- Denemeler "çıkacak soruları tahmin etmez". Sınavın alan dağılımına göre hazırlanır (HMGS'deki kararla aynı).
+- Ustalık her zaman belirsizlik aralığıyla gösterilir; sahte puan ve değerlendirme sayısı yok.
 
-MIT License - Detaylar için LICENSE dosyasına bakın
+## Sıradaki işler
 
-## İletişim
-
-- Email: research@wpu.edu.tr
-- Proje Müdürü: Murat Arslan
-- Repository: https://github.com/wpu-research/academia
-
----
-
-**Academia** — Kişiselleştirilmiş eğitim, herkesin erişimine açık. 📚
+- Gerçek kullanıcı hesabı ve sunucu tarafı veri (şu an ilerleme yalnız tarayıcıda)
+- TUS Klinik Bilimler ve İngilizce seviye tespiti bankaları
+- ASK Robotik ile ortak giriş (ayrı alt alan adı önerilir)
+- Fotoğrafların kurumun kendi fotoğraflarıyla değiştirilmesi

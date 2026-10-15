@@ -1,21 +1,71 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academia - Adaptif Öğrenme Platformu</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <div id="app"></div>
+<meta charset="utf-8">
+<title>Academia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Academia: seviyeni ölçen, eksiklerini bulan ve sana özel çalışma planı çıkaran eğitim platformu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
 
-    <!-- Loading State -->
-    <div class="loading" style="display: none;">
-        <div class="spinner"></div>
-        <p>Yükleniyor...</p>
+<div class="topbar">
+  <div class="wrap">
+    <span class="topbar-text">Her programda ücretsiz seviye tespiti ve kişisel çalışma planı</span>
+    <nav class="topbar-links" aria-label="Kısa bağlantılar">
+      <a href="#iletisim">Size Ulaşalım</a>
+      <a href="#ogren">Öğrenci Girişi</a>
+    </nav>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#ana" aria-label="Academia ana sayfa">
+      <span class="logo-badge"><span class="logo-mark"><b>ACADEM<i>I</i>A</b><small>AKADEMİ</small></span></span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Menüyü aç" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Ana menü">
+      <a href="#ana">Anasayfa</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <div class="nav-drop">
+        <button type="button" id="drop-btn" aria-expanded="false" aria-controls="mega">Eğitimler <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="mega" id="mega" hidden></div>
+      </div>
+      <a href="#kurumsal">Kurumsal Eğitimler</a>
+      <a href="#iletisim">İletişim</a>
+      <a class="btn btn-primary btn-small nav-cta" href="#ogren">Ücretsiz Seviye Tespit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>Academia</h4>
+        <p>Seviyeni ölçen, eksiklerini bulan ve her gün sana göre yeniden kurulan çalışma planı. Tıptan robotiğe, tek platformda.</p>
+      </div>
+      <div>
+        <h4>Sınava Hazırlık</h4>
+        <a href="#p-tus">TUS</a><a href="#p-hmgs">HMGS</a><a href="#p-yds">YDS</a><a href="#p-ielts">IELTS</a><a href="#p-toefl">TOEFL</a>
+      </div>
+      <div>
+        <h4>Programlar</h4>
+        <a href="#p-gencler">Genel İngilizce</a><a href="#p-robotik">ASK Robotik</a><a href="#p-konusan-kitaplar">Konuşan Kitaplar</a><a href="#p-klasikler">Dünya Klasikleri</a><a href="#p-yarismalar">Yetenek Yarışmaları</a>
+      </div>
+      <div>
+        <h4>Destek</h4>
+        <a href="#hakkimizda">Hakkımızda</a><a href="#kurumsal">Kurumlar İçin</a><a href="#iletisim">İletişim</a><a href="#ogren">Seviye Tespiti</a>
+      </div>
     </div>
+    <div class="bottom">
+      <span>© 2026 Academia. Bu sayfa bir tasarım ve ürün demosudur.</span>
+      <details class="credits" id="credits"><summary>Fotoğraf kaynakları</summary><ul id="credit-list"></ul></details>
+    </div>
+  </div>
+</footer>
 
-    <!-- Scripts -->
-    <script src="assets/js/app.js"></script>
-</body>
-</html>
+<script src="data.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
