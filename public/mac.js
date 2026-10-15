@@ -1,21 +1,31 @@
-// Robi: rehber robot (ASK Robotik'ten). Tanışma akışı (#basla) ve sağ alttaki sohbet paneli.
-window.ROBI = (() => {
+// Mac: rehber robot (ASK Robotik'ten). Tanışma akışı (#basla) ve sağ alttaki sohbet paneli.
+window.MAC = (() => {
   const PROFILE_KEY = "academia:profile:v1";
   const SKIP_KEY = "academia:onboarding-skipped";
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const get = (k) => { try { return JSON.parse(localStorage.getItem(k)); } catch (_) { return null; } };
   const set = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} };
 
+  // Mac: makademya cevizi karakteri. Kabuk gövde, kabuğun açıklığından görünen iç yüz, başında yaprak.
   function svg(mood = "idle", size = 56) {
-    const eye = mood === "happy" ? "M-6 1 q6 -6 12 0" : mood === "oops" ? "M-5 -3 l10 6 M5 -3 l-10 6" : null;
-    const eyes = [24, 40].map((x) => `<g transform="translate(${x} 33)">${eye ? `<path d="${eye}" class="robi-eye-line"/>` : `<rect x="-3.5" y="${mood === "think" ? -6 : -4.5}" width="7" height="9" rx="3.5" class="robi-eye"/>`}</g>`).join("");
-    return `<svg class="robi robi-${mood}" width="${size}" height="${size}" viewBox="0 0 64 64" aria-hidden="true">
-      <line x1="32" y1="6" x2="32" y2="14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-      <circle class="robi-light" cx="32" cy="6" r="4.5"/>
-      <rect x="8" y="14" width="48" height="38" rx="14" class="robi-head"/>
-      <rect x="14" y="22" width="36" height="22" rx="9" class="robi-face"/>${eyes}
-      <rect x="2" y="27" width="6" height="12" rx="3" class="robi-ear"/><rect x="56" y="27" width="6" height="12" rx="3" class="robi-ear"/>
-      <rect x="22" y="54" width="20" height="6" rx="3" class="robi-neck"/></svg>`;
+    const eyes = mood === "happy"
+      ? `<path d="M23 40 q3 -4 6 0 M35 40 q3 -4 6 0" class="mac-line"/>`
+      : mood === "oops"
+        ? `<path d="M23 36 l6 6 M29 36 l-6 6 M35 36 l6 6 M41 36 l-6 6" class="mac-line"/>`
+        : `<rect x="23.5" y="${mood === "think" ? 33 : 35}" width="5" height="7" rx="2.5" class="mac-eye"/><rect x="35.5" y="${mood === "think" ? 33 : 35}" width="5" height="7" rx="2.5" class="mac-eye"/>`;
+    const mouth = mood === "oops" ? `<path d="M28 50 q4 -3 8 0" class="mac-line"/>`
+      : mood === "think" ? `<circle cx="32" cy="48.5" r="2" class="mac-eye"/>`
+      : `<path d="M27.5 46.5 q4.5 4.5 9 0" class="mac-line"/>`;
+    return `<svg class="mac mac-${mood}" width="${size}" height="${size}" viewBox="0 0 64 64" aria-hidden="true">
+      <g class="mac-leaves"><path d="M32 15 C34 5, 44 1, 52 4 C48 11, 40 16, 32 15 Z" class="mac-leaf"/><path d="M32 15 Q42 9 50 5" class="mac-rib"/>
+      <path d="M31 15 C27 7, 19 5, 13 8 C17 14, 24 17, 31 15 Z" class="mac-leaf mac-leaf-2"/><path d="M31 15 Q22 11 15 8.5" class="mac-rib"/></g>
+      <rect x="30.5" y="13" width="3" height="5" rx="1.5" class="mac-stem"/>
+      <circle cx="32" cy="40" r="23" class="mac-shell"/>
+      <circle cx="20" cy="28" r="4" fill="#ffffff" opacity=".2"/>
+      <path d="M14.5 40 C14 31, 22 26.5, 32 26.5 C42 26.5, 50 31, 49.5 40 C49.5 50, 42 56, 32 56 C22 56, 14.5 50, 14.5 40 Z" class="mac-face"/>
+      <path d="M15 37 l3 -3 l3 2.5 l3 -4 l3 2 l3 -3.5 l3 3 l3 -3.5 l3 2.5 l3 -3 l3 3.5 l3 -1.5 l2 3" class="mac-crack"/>
+      <circle cx="21" cy="46" r="2.6" class="mac-cheek"/><circle cx="43" cy="46" r="2.6" class="mac-cheek"/>
+      ${eyes}${mouth}</svg>`;
   }
 
   // ---------- Profil ve öneri ----------
@@ -95,7 +105,7 @@ window.ROBI = (() => {
   function stepHtml() {
     const p = ob.p, s = ob.step;
     const you = kid() ? "Çocuğunuz" : "Sen";
-    if (s === "hello") return `<div class="ob-hero">${svg("happy", 120)}<h1>Merhaba, ben Robi!</h1>
+    if (s === "hello") return `<div class="ob-hero">${svg("happy", 120)}<h1>Merhaba, ben Mac!</h1>
       <p class="ob-lead">Robotikten tıpta uzmanlığa, İngilizceden hukuka kadar Macademia'daki yolculuğunda rehberin olacağım. Seni biraz tanıyıp sana özel bir plan çıkaralım.</p>
       <button class="btn btn-primary" data-ob="next">Başlayalım</button></div>`;
     if (s === "who") return q("Macademia'yı kim için kullanacaksın?", "", `<div class="ob-grid">${[["kendim", "🙋", "Kendim için"], ["cocugum", "👨‍👧", "Çocuğum için"], ["okulum", "🏫", "Okulum / kurumum için"]].map(([v, e, l]) => card(`data-ob="who" data-v="${v}"`, `<span class="ob-emoji">${e}</span><b>${l}</b>`, p.who === v)).join("")}</div>`);
@@ -194,12 +204,12 @@ window.ROBI = (() => {
   const needsOnboarding = () => !get(PROFILE_KEY) && !get(SKIP_KEY);
 
   // ---------- Sohbet paneli ----------
-  const GREETING = "Merhaba, ben Robi! Bu sayfayla ilgili ne merak ediyorsun? Birlikte bakalım.";
+  const GREETING = "Merhaba, ben Mac! Bu sayfayla ilgili ne merak ediyorsun? Birlikte bakalım.";
   const chat = { open: false, busy: false, msgs: [], remaining: null };
   let pageContext = () => ({ page: "Macademia", context: "" });
 
   const dock = document.createElement("div");
-  dock.className = "robi-dock";
+  dock.className = "mac-dock";
   document.body.appendChild(dock);
 
   function chips() {
@@ -212,21 +222,21 @@ window.ROBI = (() => {
     if (location.hash === "#basla") { dock.hidden = true; return; }
     dock.hidden = false;
     if (!chat.open) {
-      dock.innerHTML = `<button class="robi-fab" data-robi="open" aria-label="Robi'ye sor">${svg("idle", 44)}</button>`;
+      dock.innerHTML = `<button class="mac-fab" data-mac="open" aria-label="Mac'e sor">${svg("idle", 44)}</button>`;
       return;
     }
     const mood = chat.busy ? "think" : chat.error ? "oops" : "happy";
-    dock.innerHTML = `<div class="robi-panel" role="dialog" aria-label="Robi">
-      <header>${svg(mood, 36)}<div><b>Robi</b><small>${chat.busy ? "Düşünüyor…" : "Macademia rehberin"}</small></div><button class="robi-x" data-robi="close" aria-label="Kapat">×</button></header>
-      <div class="robi-log" id="robi-log" aria-live="polite">
-        <div class="robi-msg bot">${esc(GREETING)}</div>
-        ${chat.msgs.map((m) => `<div class="robi-msg ${m.role === "user" ? "me" : "bot"}">${fmt(m.content)}</div>`).join("")}
+    dock.innerHTML = `<div class="mac-panel" role="dialog" aria-label="Mac">
+      <header>${svg(mood, 36)}<div><b>Mac</b><small>${chat.busy ? "Düşünüyor…" : "Macademia rehberin"}</small></div><button class="mac-x" data-mac="close" aria-label="Kapat">×</button></header>
+      <div class="mac-log" id="mac-log" aria-live="polite">
+        <div class="mac-msg bot">${esc(GREETING)}</div>
+        ${chat.msgs.map((m) => `<div class="mac-msg ${m.role === "user" ? "me" : "bot"}">${fmt(m.content)}</div>`).join("")}
       </div>
-      ${chat.busy ? "" : `<div class="robi-chips">${chips().map((c) => `<button type="button" class="chip chip-line" data-robi="chip" data-t="${esc(c)}">${esc(c)}</button>`).join("")}</div>`}
-      <form class="robi-form" data-robi-form><input id="robi-input" maxlength="600" placeholder="Robi'ye sor…" autocomplete="off" ${chat.busy ? "disabled" : ""}><button class="btn btn-primary btn-small" ${chat.busy ? "disabled" : ""}>Gönder</button></form>
-      <small class="robi-left">Robi yapay zekâdır ve yanılabilir. Sınav bilgisini soru açıklamalarından doğrula.${chat.remaining !== null ? ` Bugün kalan mesaj: ${chat.remaining}.` : ""}</small>
+      ${chat.busy ? "" : `<div class="mac-chips">${chips().map((c) => `<button type="button" class="chip chip-line" data-mac="chip" data-t="${esc(c)}">${esc(c)}</button>`).join("")}</div>`}
+      <form class="mac-form" data-mac-form><input id="mac-input" maxlength="600" placeholder="Mac'e sor…" autocomplete="off" ${chat.busy ? "disabled" : ""}><button class="btn btn-primary btn-small" ${chat.busy ? "disabled" : ""}>Gönder</button></form>
+      <small class="mac-left">Mac yapay zekâdır ve yanılabilir. Sınav bilgisini soru açıklamalarından doğrula.${chat.remaining !== null ? ` Bugün kalan mesaj: ${chat.remaining}.` : ""}</small>
     </div>`;
-    const log = dock.querySelector("#robi-log"); log.scrollTop = log.scrollHeight;
+    const log = dock.querySelector("#mac-log"); log.scrollTop = log.scrollHeight;
   }
   const fmt = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\n/g, "<br>");
 
@@ -241,11 +251,11 @@ window.ROBI = (() => {
     const ctx = pageContext();
     const prof = get(PROFILE_KEY);
     try {
-      const res = await fetch("/api/robi", {
+      const res = await fetch("/api/mac", {
         method: "POST", headers: { "content-type": "application/json" },
         body: JSON.stringify({ page: ctx.page, context: ctx.context, hide: ctx.hide || null, age: prof?.age ?? null, messages: chat.msgs.slice(0, -1).slice(-12) }),
       });
-      const left = res.headers.get("x-robi-remaining"); if (left !== null) chat.remaining = +left;
+      const left = res.headers.get("x-mac-remaining"); if (left !== null) chat.remaining = +left;
       if (!res.body) throw new Error("no body");
       const reader = res.body.getReader(), dec = new TextDecoder();
       for (;;) {
@@ -254,26 +264,26 @@ window.ROBI = (() => {
         const chunk = dec.decode(value, { stream: true });
         const cut = chunk.lastIndexOf("\u001e");
         if (cut >= 0) { reply.content = chunk.slice(cut + 1); chat.error = true; } else reply.content += chunk;
-        const el = dock.querySelector("#robi-log .robi-msg:last-child"); if (el) el.innerHTML = fmt(reply.content);
+        const el = dock.querySelector("#mac-log .mac-msg:last-child"); if (el) el.innerHTML = fmt(reply.content);
       }
       if (!reply.content.trim()) { reply.content = "Şu an cevap veremedim. Sorunu biraz farklı sorar mısın?"; chat.error = true; }
     } catch (_) {
-      reply.content = "Robi'ye şu an ulaşılamıyor. Bu önizlemede Robi çalışmaz; canlı sitede tekrar dene.";
+      reply.content = "Mac'e şu an ulaşılamıyor. Bu önizlemede Mac çalışmaz; canlı sitede tekrar dene.";
       chat.error = true;
     }
     chat.busy = false;
     drawDock();
-    dock.querySelector("#robi-input")?.focus();
+    dock.querySelector("#mac-input")?.focus();
   }
 
   dock.addEventListener("click", (e) => {
-    const el = e.target.closest("[data-robi]"); if (!el) return;
-    const a = el.dataset.robi;
-    if (a === "open") { chat.open = true; drawDock(); dock.querySelector("#robi-input")?.focus(); }
+    const el = e.target.closest("[data-mac]"); if (!el) return;
+    const a = el.dataset.mac;
+    if (a === "open") { chat.open = true; drawDock(); dock.querySelector("#mac-input")?.focus(); }
     if (a === "close") { chat.open = false; drawDock(); }
     if (a === "chip") send(el.dataset.t);
   });
-  dock.addEventListener("submit", (e) => { e.preventDefault(); const i = dock.querySelector("#robi-input"); send(i.value); });
+  dock.addEventListener("submit", (e) => { e.preventDefault(); const i = dock.querySelector("#mac-input"); send(i.value); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && chat.open) { chat.open = false; drawDock(); } });
   window.addEventListener("hashchange", drawDock);
   drawDock();

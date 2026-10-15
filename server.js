@@ -1,5 +1,5 @@
-// Macademia sunucusu: public/ statik dosyaları + Robi sohbet uç noktası (/api/robi).
-// Bağımlılık yok. LLM: NVIDIA API kataloğu (OpenAI uyumlu, SSE), ASK Robotik'teki Robi ile aynı.
+// Macademia sunucusu: public/ statik dosyaları + Mac sohbet uç noktası (/api/mac).
+// Bağımlılık yok. LLM: NVIDIA API kataloğu (OpenAI uyumlu, SSE), ASK Robotik'teki Robi ile aynı altyapı.
 const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -16,7 +16,7 @@ const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; cha
 // index.html artifact iskeletine göre yazıldı (doctype/viewport yok); sunucu sürümünde eklenir.
 const INDEX = `<!doctype html>\n<html lang="tr">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n${fs.readFileSync(path.join(ROOT, "index.html"), "utf8")}\n</html>\n`;
 
-const SYSTEM = `Sen Robi'sin: Macademia eğitim platformunun yardımcı robotusun. Macademia'da 5 yaşından yetişkinlere kadar öğrenciler var: ASK Robotik ile robotik, kodlama, elektronik ve yapay zekâ öğrenen çocuklar ve gençler; TUS, HMGS, YDS, IELTS ve genel İngilizceye hazırlanan gençler ve yetişkinler. Öğrencinin o an açık olan sayfasının köşesindeki küçük bir sohbet panelinde konuşuyorsun.
+const SYSTEM = `Sen Mac'sin: Macademia eğitim platformunun yardımcı robotusun. Macademia'da 5 yaşından yetişkinlere kadar öğrenciler var: ASK Robotik ile robotik, kodlama, elektronik ve yapay zekâ öğrenen çocuklar ve gençler; TUS, HMGS, YDS, IELTS ve genel İngilizceye hazırlanan gençler ve yetişkinler. Öğrencinin o an açık olan sayfasının köşesindeki küçük bir sohbet panelinde konuşuyorsun.
 
 # Nasıl yardım edersin
 - Öğrencinin kendisinin anlamasını ve bulmasını sağla. Kavramı günlük hayattan bir benzetmeyle anlat, sonra kısa bir kontrol sorusu sor.
@@ -71,10 +71,10 @@ function readBody(req, max = 16_000) {
 
 const clip = (s, n) => String(s ?? "").slice(0, n);
 
-async function robi(req, res) {
+async function macChat(req, res) {
   const ip = String(req.headers["x-forwarded-for"] || req.socket.remoteAddress || "?").split(",")[0].trim();
   const fail = (status, msg, left) => {
-    res.writeHead(status, { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", ...(left !== undefined ? { "x-robi-remaining": String(left) } : {}) });
+    res.writeHead(status, { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", ...(left !== undefined ? { "x-mac-remaining": String(left) } : {}) });
     res.end(RS + msg);
   };
   let body;
@@ -83,7 +83,7 @@ async function robi(req, res) {
     .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim())
     .slice(-12).map((m) => ({ role: m.role, content: clip(m.content, 600) }));
   if (!messages.length || messages[messages.length - 1].role !== "user") return fail(400, "Bir soru yazar mısın?");
-  if (!KEY) return fail(503, "Robi şu an çevrim dışı. Biraz sonra tekrar dene.");
+  if (!KEY) return fail(503, "Mac şu an çevrim dışı. Biraz sonra tekrar dene.");
   const lim = limit(ip);
   if (!lim.ok) return fail(429, lim.why, lim.left);
 
@@ -99,15 +99,15 @@ async function robi(req, res) {
       signal: AbortSignal.timeout(45_000),
     });
   } catch (e) {
-    console.error("robi upstream", e.message);
-    return fail(502, "Robi'ye şu an ulaşılamıyor. Biraz sonra tekrar dene.", lim.left);
+    console.error("mac upstream", e.message);
+    return fail(502, "Mac'e şu an ulaşılamıyor. Biraz sonra tekrar dene.", lim.left);
   }
   if (!upstream.ok || !upstream.body) {
-    console.error("robi upstream status", upstream.status, (await upstream.text().catch(() => "")).slice(0, 200));
-    return fail(502, "Robi'ye şu an ulaşılamıyor. Biraz sonra tekrar dene.", lim.left);
+    console.error("mac upstream status", upstream.status, (await upstream.text().catch(() => "")).slice(0, 200));
+    return fail(502, "Mac'e şu an ulaşılamıyor. Biraz sonra tekrar dene.", lim.left);
   }
 
-  res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-robi-remaining": String(lim.left), "x-accel-buffering": "no" });
+  res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-mac-remaining": String(lim.left), "x-accel-buffering": "no" });
   // Cevaplanmamış soruda yanıt önce toplanır; doğru şık geçiyorsa öğrenciye gönderilmez.
   const guard = answerGuard(body.hide);
   let held = "";
@@ -132,7 +132,7 @@ async function robi(req, res) {
       }
     }
   } catch (e) {
-    console.error("robi stream", e.message);
+    console.error("mac stream", e.message);
     res.write(RS + "Cevabım yarıda kesildi. Tekrar sorar mısın?");
   }
   if (guard && wrote) res.write(guard(held) ? RS + LEAK_REPLY : held);
@@ -172,10 +172,10 @@ function serveStatic(req, res) {
 }
 
 http.createServer((req, res) => {
-  if (req.url === "/api/robi" && req.method === "POST") {
-    robi(req, res).catch((e) => { console.error("robi", e); if (!res.headersSent) { res.writeHead(500); } res.end(); });
+  if (req.url === "/api/mac" && req.method === "POST") {
+    macChat(req, res).catch((e) => { console.error("mac", e); if (!res.headersSent) { res.writeHead(500); } res.end(); });
     return;
   }
   if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }
   serveStatic(req, res);
-}).listen(PORT, () => console.log(`Macademia :${PORT} · Robi ${KEY ? "açık" : "anahtar yok"}`));
+}).listen(PORT, () => console.log(`Macademia :${PORT} · Mac ${KEY ? "açık" : "anahtar yok"}`));

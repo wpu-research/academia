@@ -11,13 +11,13 @@ Derleme adımı ve bağımlılık yok (Node 22):
 NVIDIA_API_KEY=... node server.js   # http://localhost:8080
 ```
 
-`server.js` `public/` klasörünü sunar ve Robi için `/api/robi` uç noktasını çalıştırır. Anahtar yoksa site çalışır, Robi "çevrim dışı" der.
-Ortam değişkenleri: `NVIDIA_API_KEY` (Robi), isteğe bağlı `NVIDIA_MODEL`, `PORT`.
+`server.js` `public/` klasörünü sunar ve Mac için `/api/mac` uç noktasını çalıştırır. Anahtar yoksa site çalışır, Mac "çevrim dışı" der.
+Ortam değişkenleri: `NVIDIA_API_KEY` (Mac), isteğe bağlı `NVIDIA_MODEL`, `PORT`.
 
 ## Dosyalar
 
-- `server.js`: statik sunum + Robi (NVIDIA, akışlı). Hız sınırı IP başına dakikada 8, günde 60. Cevaplanmamış soruda doğru şıkkı içeren yanıtı göstermez.
-- `public/robi.js`: Robi maskotu, sohbet paneli ve tanışma akışı (`#basla`), ASK Robotik'ten uyarlandı
+- `server.js`: statik sunum + Mac (NVIDIA, akışlı). Hız sınırı IP başına dakikada 8, günde 60. Cevaplanmamış soruda doğru şıkkı içeren yanıtı göstermez.
+- `public/mac.js`: Mac maskotu, sohbet paneli ve tanışma akışı (`#basla`), ASK Robotik'ten uyarlandı
 - `public/index.html`: başlık, menü, alt bilgi
 - `public/app.js`: ana sayfa, program sayfaları, öğrenme alanı (hash yönlendirme: `#p-<slug>`, `#ogren-tus`)
 - `public/engine.js`: HMGS motoru (Beta ustalık, soru seçici, en büyük kalan kotası, plan sıralaması, tekrar takvimi, Wilson aralığı)

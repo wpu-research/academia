@@ -661,7 +661,7 @@
       renderApp();
     } else if (r.view === "program") renderProgram(bySlug[r.slug]);
     else if (r.view === "module") renderModule(r.slug);
-    else if (r.view === "basla") ROBI.renderOnboarding($app);
+    else if (r.view === "basla") MAC.renderOnboarding($app);
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "home" && r.section) document.getElementById(r.section)?.scrollIntoView({ behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     else if (current !== key || r.view === "home") window.scrollTo({ top: 0, behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
@@ -674,7 +674,7 @@
     const a = e.target.closest('a[href="#ana"]');
     if (a && (location.hash === "#ana" || location.hash === "")) { e.preventDefault(); render(); }
   });
-  if (ROBI.needsOnboarding() && (location.hash === "" || location.hash === "#ana")) history.replaceState(null, "", "#basla");
+  if (MAC.needsOnboarding() && (location.hash === "" || location.hash === "#ana")) history.replaceState(null, "", "#basla");
   render();
 
   window.ACADEMIA_APP = {
@@ -688,8 +688,8 @@
     },
   };
 
-  // Robi'nin gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
-  ROBI.setContext(() => {
+  // Mac'in gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
+  MAC.setContext(() => {
     const r = route();
     if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
     if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `ASK Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }
