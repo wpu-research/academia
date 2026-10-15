@@ -11,11 +11,11 @@ ACADEMIA.groups = [
 
 ACADEMIA.programs = [
   {
-    slug: "robotik", group: "dijital", title: "ASK Robotik",
+    slug: "robotik", group: "dijital", title: "Robotik",
     fact: "8 modül · 241 ders",
     summary: "Blokla kodlamadan Arduino'ya, sensörlerden yapay zekâ mühendisliğine kadar sanal laboratuvarda robotik eğitimi.",
     body: [
-      "Öğrenci devreleri ve kodu tarayıcıdaki simülatörde kurar ve çalıştırır. Robi adlı yapay zekâ öğretmen takıldığı yerde ipucu verir.",
+      "Öğrenci devreleri ve kodu tarayıcıdaki simülatörde kurar ve çalıştırır. Yapay zekâ öğretmen, öğrencinin takıldığı yerde ipucu verir.",
       "Okullar için öğretmen paneli, sınıf ve ödev takibi bulunur.",
     ],
     modules: [
@@ -28,7 +28,7 @@ ACADEMIA.programs = [
       { slug: "mikro-kart", title: "Mikro Kart", lessons: 30, age: "8+ yaş", desc: "Tek kartlık mikrodenetleyici: düğmeler ve olaylar, sensörler, müzik, radyo ile iletişim ve projeler." },
       { slug: "oyun-atolyesi", title: "Oyun Atölyesi", lessons: 30, age: "8+ yaş", desc: "Çarpışma ve skor, harita, düşman zekâsı, platform fiziği ve baştan sona tam oyun projeleri." },
     ],
-    link: { href: "https://web-production-06ee9.up.railway.app", label: "ASK Robotik'i aç" },
+    link: { href: "https://web-production-06ee9.up.railway.app", label: "Robotik laboratuvarını aç" },
   },
   {
     slug: "tus", group: "sinav", title: "TUS Hazırlık",
@@ -53,7 +53,6 @@ ACADEMIA.programs = [
       "Macademia'nın kişisel çalışma motoru ilk olarak HMGS için geliştirildi. Her soru dayandığı kanun maddesiyle birlikte gelir; yanlış cevaptan sonra nedenini işaretlersin ve bu bilgi programına geri döner.",
       "Yapay zekâ ile hazırlanan soru taslakları, yayına girmeden önce bir hukukçu tarafından incelenir.",
     ],
-    status: "Tam portal kapalı beta aşamasında. Buradaki seviye tespiti aynı motoru örnek sorularla gösterir.",
   },
   {
     slug: "yds", group: "sinav", title: "YDS Hazırlık",
@@ -71,7 +70,7 @@ ACADEMIA.programs = [
     structureNote: "Soru tipine göre soru sayısı.",
   },
   {
-    slug: "ielts", group: "sinav", title: "IELTS Hazırlık", engine: "ielts",
+    slug: "ielts", group: "sinav", title: "IELTS Hazırlık", engine: "ielts", active: false,
     fact: "4 modül · 0–9 band",
     summary: "Listening, Reading, Writing ve Speaking modüllerinde hedef band skoruna göre kurulan, deneme ağırlıklı program.",
     body: [
@@ -81,7 +80,7 @@ ACADEMIA.programs = [
     structure: [["Listening", "4 bölüm, 40 soru"], ["Reading", "3 metin, 40 soru"], ["Writing", "2 görev"], ["Speaking", "3 bölümlü görüşme"]],
   },
   {
-    slug: "toefl", group: "sinav", title: "TOEFL Hazırlık", engine: "ingilizce",
+    slug: "toefl", group: "sinav", title: "TOEFL Hazırlık", engine: "ingilizce", active: false,
     fact: "Bilgisayar tabanlı · 4 beceri",
     summary: "Amerika ve Kanada başta olmak üzere üniversite başvuruları için bilgisayar tabanlı TOEFL iBT'ye hazırlık.",
     body: [
@@ -89,7 +88,7 @@ ACADEMIA.programs = [
     ],
   },
   {
-    slug: "hazirlik-atlama", group: "sinav", title: "Hazırlık Atlama", engine: "ingilizce",
+    slug: "hazirlik-atlama", group: "sinav", title: "Hazırlık Atlama", engine: "ingilizce", active: false,
     fact: "Proficiency sınavlarına hazırlık",
     summary: "Üniversitenin İngilizce yeterlik sınavını geçip hazırlık sınıfını atlamak isteyenler için yoğun program.",
     body: [
@@ -97,19 +96,19 @@ ACADEMIA.programs = [
     ],
   },
   {
-    slug: "gencler", group: "ingilizce", title: "Gençler İçin (11–17 Yaş)", engine: "ingilizce",
+    slug: "gencler", group: "ingilizce", title: "Gençler İçin (11–17 Yaş)", engine: "ingilizce", active: false,
     fact: "Okul + LGS/YKS desteği",
     summary: "Okul derslerini destekleyen, sınav altyapısını güçlendiren ve konuşma özgüveni kazandıran İngilizce programı.",
     body: ["Okuldaki ünitelere paralel ilerler. Haftalık konuşma pratiği ve okuma görevleriyle sınav altyapısı birlikte kurulur."],
   },
   {
-    slug: "cocuklar", group: "ingilizce", title: "Çocuklar İçin (7–11 Yaş)", engine: "ingilizce",
+    slug: "cocuklar", group: "ingilizce", title: "Çocuklar İçin (7–11 Yaş)", engine: "ingilizce", active: false,
     fact: "Oyun ve hikâye temelli",
     summary: "İngilizceyi kural ezberleyerek değil; hikâyeler, şarkılar ve oyunlarla, yaşayarak öğrenme.",
     body: ["Her hafta bir hikâye etrafında kelime, dinleme ve kısa konuşma görevleri yapılır. Veli, çocuğun hangi kelimeleri öğrendiğini haftalık özetten görür."],
   },
   {
-    slug: "ozel-ders", group: "ingilizce", title: "Özel Ders", engine: "ingilizce",
+    slug: "ozel-ders", group: "ingilizce", title: "Özel Ders", engine: "ingilizce", active: false,
     fact: "Birebir · esnek takvim",
     summary: "Programı, içeriği ve hızı tamamen senin hedefine göre belirlenen birebir eğitim.",
     body: ["Seviye tespitinden çıkan eksik listesi eğitmeninle paylaşılır. Dersler bu listeye göre planlanır, ders aralarındaki çalışmalar platformdan takip edilir."],
@@ -217,6 +216,7 @@ ACADEMIA.exams = {
     ],
   },
   ielts: {
+    active: false,
     name: "IELTS · Academic",
     short: "IELTS",
     blueprint: { "Listening": 1, "Reading": 1, "Writing": 1 },
@@ -239,6 +239,7 @@ ACADEMIA.exams = {
   },
 
   ingilizce: {
+    active: false,
     name: "İngilizce Seviye Tespiti · A1–C1",
     short: "İngilizce",
     levels: true,
@@ -268,6 +269,11 @@ ACADEMIA.exams = {
     ],
   },
 };
+
+// Pasif programlar ve sınavlar sitede gösterilmez; geri açmak için "active: false" satırını sil.
+ACADEMIA.programs = ACADEMIA.programs.filter((p) => p.active !== false);
+ACADEMIA.groups = ACADEMIA.groups.filter((g) => ACADEMIA.programs.some((p) => p.group === g.id));
+for (const [k, e] of Object.entries(ACADEMIA.exams)) if (e.active === false) delete ACADEMIA.exams[k];
 
 // Örnek öğrenci verisi (demo): [soru id, doğru mu, güven 1-3]
 ACADEMIA.sample = {

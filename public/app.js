@@ -27,6 +27,7 @@
 
   let store = { exam: "tus", tab: "panel", data: {} };
   try { const raw = localStorage.getItem(KEY); if (raw) store = { ...store, ...JSON.parse(raw) }; } catch (_) {}
+  if (!A.exams[store.exam]) store.exam = "tus";
   for (const id of Object.keys(A.exams)) if (!store.data[id]) store.data[id] = sampleData(id);
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (_) {} };
 
@@ -109,7 +110,7 @@
   // ---------- Ana sayfa ----------
   const slides = [
     { eyebrow: "Kişisel çalışma planı", h: "Sınava <em>kendi eksiklerinden</em> başla.", p: "Kısa bir seviye tespitiyle hangi alanda ne kadar hazır olduğunu gör. Planın çözdüğün her soruyla yeniden hesaplanır." },
-    { eyebrow: "Dil eğitimi", h: "İngilizceyi <em>yaşına ve hedefine göre</em> öğren.", p: "Çocuklar için hikâyelerden YDS ve IELTS'e kadar her seviyede aynı ölçme ve takip sistemi." },
+    { eyebrow: "Robotik", h: "Kodlamadan robota, <em>tarayıcıda</em> öğren.", p: "Blokla kodlamadan Arduino'ya ve yapay zekâya: 8 modül, 241 ders, donanım gerekmeden sanal laboratuvarda." },
   ];
   let slideIdx = 0, slideTimer = null, filter = "all";
 
@@ -146,7 +147,7 @@
     <section class="section">
       <div class="wrap">
         <div class="section-head"><div><span class="eyebrow">Nasıl çalışır</span><h2>Her programda aynı dört adım</h2></div>
-          <p>Çalışma motoru ilk olarak HMGS için geliştirildi. Bugün TUS'tan dil programlarına kadar her sınavda aynı mantıkla çalışıyor.</p></div>
+          <p>Çalışma motoru ilk olarak HMGS için geliştirildi. Bugün TUS, HMGS ve YDS'de aynı mantıkla çalışıyor.</p></div>
         <div class="steps">
           <div class="step"><h3>Seviye tespiti</h3><p>Sınavdaki alan oranlarına göre seçilmiş kısa bir testle başlarsın.</p></div>
           <div class="step"><h3>Alan ustalığı</h3><p>Her cevap o alandaki ustalık tahminini günceller. Emin olup yanlış yaptığın konular daha ağır sayılır.</p></div>
@@ -158,15 +159,12 @@
 
     <section class="section soft" id="egitimler">
       <div class="wrap">
-        <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>En çok tercih edilen programlar</h2></div>
+        <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
           <div class="filters" role="group" aria-label="Program filtresi">
             ${[["all", "Tümü"], ...A.groups.map((g) => [g.id, g.label])].map(([id, l]) => `<button type="button" data-act="filter" data-f="${id}" aria-pressed="${filter === id}">${l}</button>`).join("")}
           </div></div>
         <div class="cards">
           ${A.programs.filter((p) => filter === "all" || p.group === filter).map(card).join("")}
-          ${filter === "all" ? `
-          <a class="card card-cta" href="#ogren"><div><span class="eyebrow">Ücretsiz</span><h3>Seviyeni 15 dakikada ölç</h3></div><p>TUS, HMGS, YDS, IELTS ya da İngilizce için seviye tespitini çöz, alan alan durumunu ve 14 günlük planını gör.</p><span class="go">Seviye tespitine başla →</span></a>
-          <a class="card card-cta" href="#kurumsal"><div><span class="eyebrow">Kurumlar</span><h3>Okullar ve kurumlar için</h3></div><p>Sınıf yönetimi, ödev takvimi ve öğrenci ilerleme raporları.</p><span class="go">Kurumsal eğitimler →</span></a>` : ""}
         </div>
       </div>
     </section>
@@ -180,8 +178,8 @@
           <div class="hero-actions"><a class="btn btn-primary" href="#iletisim">Teklif isteyin</a></div>
         </div>
         <ul class="feature-list">
-          <li><span>Sınıf, şube ve öğrenci yönetimi</span><span class="chip chip-ready">ASK Robotik'te hazır</span></li>
-          <li><span>Ödev atama ve yıllık ödev takvimi</span><span class="chip chip-ready">ASK Robotik'te hazır</span></li>
+          <li><span>Sınıf, şube ve öğrenci yönetimi</span><span class="chip chip-ready">Robotik'te hazır</span></li>
+          <li><span>Ödev atama ve yıllık ödev takvimi</span><span class="chip chip-ready">Robotik'te hazır</span></li>
           <li><span>Alan bazında ustalık ve hata raporu</span><span class="chip chip-soon">Geliştiriliyor</span></li>
           <li><span>Konuşma pratiği raporu (süre, kelime çeşitliliği)</span><span class="chip chip-soon">Geliştiriliyor</span></li>
           <li><span>Kampüs karşılaştırması ve Excel çıktısı</span><span class="chip chip-line">Planlandı</span></li>
@@ -194,8 +192,8 @@
         <div class="prose">
           <span class="eyebrow">Hakkımızda</span>
           <h2 style="font-size:clamp(26px,3vw,36px);margin:0">Bir sınav için kurduk, her programa taşıyoruz.</h2>
-          <p class="muted">Macademia'nın çalışma motoru ilk olarak Hukuk Mesleklerine Giriş Sınavı için geliştirildi. Aynı motor bugün TUS'ta, YDS'de ve dil programlarında seviye tespitinden günlük plana kadar her adımı yönetiyor.</p>
-          <p class="muted">ASK Robotik programımız da aynı ölçme anlayışıyla çalışır: önce nerede olduğunu ölçeriz, sonra planı ona göre kurarız.</p>
+          <p class="muted">Macademia'nın çalışma motoru ilk olarak Hukuk Mesleklerine Giriş Sınavı için geliştirildi. Aynı motor bugün TUS'ta ve YDS'de de seviye tespitinden günlük plana kadar her adımı yönetiyor.</p>
+          <p class="muted">Robotik programımız da aynı ölçme anlayışıyla çalışır: önce nerede olduğunu ölçeriz, sonra planı ona göre kurarız.</p>
         </div>
         <div class="principles">
           <div><h3>Uydurma puan göstermeyiz</h3><p>Ustalık tahmini her zaman belirsizlik aralığıyla gösterilir. Veri yoksa “veri yok” yazar.</p></div>
@@ -249,7 +247,7 @@
     const others = A.programs.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
     if (p.engine) cta = `<div class="box accent"><h3>Seviyeni ölç</h3><p class="note">${DIAG_SIZE} soruluk seviye tespitiyle alan alan durumunu gör. Ardından 14 günlük planın hazır.</p><a class="btn btn-primary" href="#ogren-${p.engine}">Seviye tespitine başla</a></div>`;
-    else if (p.link) cta = `<div class="box accent"><h3>Programı dene</h3><p class="note">ASK Robotik kendi sanal laboratuvarında çalışır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div>`;
+    else if (p.link) cta = `<div class="box accent"><h3>Programı dene</h3><p class="note">Robotik dersleri kendi sanal laboratuvarında çalışır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div>`;
     else cta = `<div class="box accent"><h3>Ücretsiz seviye tespiti</h3><p class="note">Bilgilerini bırak, programa uygun seviye tespiti için seninle iletişime geçelim.</p><a class="btn btn-primary" href="#iletisim">Bilgi bırak</a></div>`;
 
     $app.innerHTML = `
@@ -282,10 +280,10 @@
   function renderModule(slug) {
     const p = bySlug.robotik, mods = p.modules, m = mods.find((x) => x.slug === slug);
     $app.innerHTML = `
-    <div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / <a href="#p-robotik">ASK Robotik</a> / ${esc(m.title)}</nav>
+    <div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / <a href="#p-robotik">Robotik</a> / ${esc(m.title)}</nav>
       <div class="prog-hero">
         <div>
-          <span class="eyebrow">ASK Robotik · Modül ${mods.indexOf(m) + 1} / ${mods.length}</span>
+          <span class="eyebrow">Robotik · Modül ${mods.indexOf(m) + 1} / ${mods.length}</span>
           <h1>${esc(m.title)}</h1>
           <p class="lead">${esc(m.desc)}</p>
           <div class="hero-actions"><span class="chip chip-brand">${m.lessons} ders</span><span class="chip chip-line">${esc(m.age)}</span></div>
@@ -299,7 +297,7 @@
         <h2>Tüm modüller</h2>
         <div class="table-wrap"><table><tbody>${mods.map((x, i) => `<tr><td class="num">${i + 1}</td><td>${x.slug === m.slug ? `<b>${esc(x.title)}</b>` : `<a href="#m-${x.slug}">${esc(x.title)}</a>`}</td><td class="num">${x.lessons} ders</td></tr>`).join("")}</tbody></table></div>
       </div>
-      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler ASK Robotik'in sanal laboratuvarında açılır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div></aside>
+      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler Robotik'in sanal laboratuvarında açılır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div></aside>
     </div></div>`;
   }
 
@@ -627,7 +625,7 @@
   const nav = document.getElementById("main-nav"), toggle = document.getElementById("menu-toggle");
   mega.innerHTML = A.groups.map((g) => {
     const links = g.id === "dijital"
-      ? `<a href="#p-robotik">ASK Robotik: genel bakış</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
+      ? `<a href="#p-robotik">Genel bakış</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
       : A.programs.filter((p) => p.group === g.id).map((p) => `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("");
     return `<div><h4>${g.label}</h4>${links}</div>`;
   }).join("");
@@ -692,7 +690,7 @@
   MAC.setContext(() => {
     const r = route();
     if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
-    if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `ASK Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }
+    if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }
     if (r.view === "app") {
       const ex = A.exams[store.exam];
       const tabName = (TABS.find((t) => t[0] === store.tab) || [])[1];

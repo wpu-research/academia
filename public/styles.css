@@ -104,7 +104,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .main-nav > a:hover, .nav-drop > button:hover, .main-nav > a.active { color: var(--brand); }
 .nav-drop { position: relative; }
 .nav-drop svg { width: 12px; height: 12px; }
-.mega { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: var(--radius); padding: 22px; display: grid; grid-template-columns: repeat(3, 210px); gap: 24px; }
+.mega { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: var(--radius); padding: 22px; display: grid; grid-auto-flow: column; grid-auto-columns: 230px; gap: 24px; }
 .mega h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); margin-bottom: 8px; }
 .mega a { display: block; padding: 5px 0; text-decoration: none; font-size: 14px; }
 .mega a:hover { color: var(--brand); }
@@ -320,13 +320,12 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 /* ---------- Duyarlı ---------- */
 @media (max-width: 1100px) {
   .cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .mega { grid-template-columns: repeat(3, 180px); }
 }
 @media (max-width: 960px) {
   .menu-toggle { display: block; }
   .main-nav { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); flex-direction: column; align-items: stretch; padding: 12px var(--gutter-r) 20px var(--gutter-l); box-shadow: var(--shadow); gap: 0; }
   .main-nav.open { display: flex; }
-  .mega { position: static; transform: none; grid-template-columns: 1fr; box-shadow: none; border: 0; padding: 4px 14px 10px; gap: 12px; }
+  .mega { position: static; transform: none; grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 1fr; box-shadow: none; border: 0; padding: 4px 14px 10px; gap: 12px; }
   .nav-cta { margin: 10px 0 0; }
   .logo-word { font-size: 22px; }
   .logo .nut { width: 40px; height: 40px; }

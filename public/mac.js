@@ -32,7 +32,7 @@ window.MAC = (() => {
   const ROBOTICS = ["kodlama", "oyun", "elektronik", "robotik", "yz"];
   const INTERESTS = [
     ["kodlama", "⌨️", "Kodlama"], ["oyun", "🎮", "Oyun yapmak"], ["elektronik", "💡", "Elektronik"], ["robotik", "🤖", "Robotik"], ["yz", "🧠", "Yapay zekâ"],
-    ["ingilizce", "🇬🇧", "İngilizce"], ["ielts", "🌍", "IELTS / TOEFL"], ["yds", "🎓", "YDS"], ["tus", "🩺", "TUS", 18], ["hmgs", "⚖️", "HMGS", 18],
+    ["yds", "🎓", "YDS"], ["tus", "🩺", "TUS", 18], ["hmgs", "⚖️", "HMGS", 18],
   ];
   function band(age) {
     if (age <= 7) return "Minikler"; if (age <= 9) return "Kâşifler"; if (age <= 11) return "Yapıcılar";
@@ -69,7 +69,7 @@ window.MAC = (() => {
       if (ROBOTICS.includes(k)) {
         if (robotDone) continue; robotDone = true;
         const [slug, why] = robotModule(p);
-        recs.push({ kind: "module", slug, title: `ASK Robotik · ${MOD[slug]}`, why, href: `#m-${slug}` });
+        recs.push({ kind: "module", slug, title: `Robotik · ${MOD[slug]}`, why, href: `#m-${slug}` });
       } else if (EXAM[k]) {
         const [exam, title, why] = EXAM[k];
         recs.push({ kind: "exam", exam, title, why, href: `#ogren-${exam}` });
@@ -106,7 +106,7 @@ window.MAC = (() => {
     const p = ob.p, s = ob.step;
     const you = kid() ? "Çocuğunuz" : "Sen";
     if (s === "hello") return `<div class="ob-hero">${svg("happy", 120)}<h1>Merhaba, ben Mac!</h1>
-      <p class="ob-lead">Robotikten tıpta uzmanlığa, İngilizceden hukuka kadar Macademia'daki yolculuğunda rehberin olacağım. Seni biraz tanıyıp sana özel bir plan çıkaralım.</p>
+      <p class="ob-lead">Robotikten tıpta uzmanlığa, YDS'den hukuka kadar Macademia'daki yolculuğunda rehberin olacağım. Seni biraz tanıyıp sana özel bir plan çıkaralım.</p>
       <button class="btn btn-primary" data-ob="next">Başlayalım</button></div>`;
     if (s === "who") return q("Macademia'yı kim için kullanacaksın?", "", `<div class="ob-grid">${[["kendim", "🙋", "Kendim için"], ["cocugum", "👨‍👧", "Çocuğum için"], ["okulum", "🏫", "Okulum / kurumum için"]].map(([v, e, l]) => card(`data-ob="who" data-v="${v}"`, `<span class="ob-emoji">${e}</span><b>${l}</b>`, p.who === v)).join("")}</div>`);
     if (s === "school") return q("Okullar ve kurumlar için Macademia", "Sınıf yönetimi, ödev atama, beceri raporları ve hazır ders planları. Robotik derslerinde donanım gerekmez; her öğrenci tarayıcıda kendi laboratuvarında çalışır.",
