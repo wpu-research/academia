@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia - Adaptif Öğrenme Platformu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            color: #003d7a;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-bottom: 3px solid #0066cc;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #003d7a;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #0066cc;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.7rem 1.5rem;
+            color: #333;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f0f0f0;
+            color: #0066cc;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #00a8e8 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #ff5a1f;
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2.2rem;
+            color: #003d7a;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Course Card */
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border-top: 4px solid transparent;
+        }
+
+        .course-card:nth-child(1) {
+            border-top-color: #f5576c;
+        }
+
+        .course-card:nth-child(2) {
+            border-top-color: #4facfe;
+        }
+
+        .course-card:nth-child(3) {
+            border-top-color: #43e97b;
+        }
+
+        .course-card:nth-child(4) {
+            border-top-color: #fa709a;
+        }
+
+        .course-card:nth-child(5) {
+            border-top-color: #30cfd0;
+        }
+
+        .course-card:nth-child(6) {
+            border-top-color: #667eea;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .course-card:nth-child(1) .course-image {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .course-card:nth-child(2) .course-image {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .course-card:nth-child(3) .course-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
+        .course-card:nth-child(4) .course-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .course-card:nth-child(5) .course-image {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .course-card:nth-child(6) .course-image {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .course-content {
+            padding: 1.8rem;
+        }
+
+        .course-title {
+            font-size: 1.35rem;
+            color: #003d7a;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+
+        .course-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+        }
+
+        .rating-text {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .course-description {
+            font-size: 0.92rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .course-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #0066cc;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .ai-badge {
+            background: #fff3cd;
+            color: #ff6b35;
+        }
+
+        /* Features Section */
+        .features {
+            background: white;
+            border-radius: 10px;
+            padding: 3.5rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: #003d7a;
+            margin-bottom: 0.7rem;
+            font-weight: bold;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background: #003d7a;
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            nav {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2.5rem;
+            border-radius: 10px;
+            max-width: 650px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .modal h2 {
+            color: #003d7a;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+        }
+
+        .modal p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .modal-features {
+            background: #f9f9f9;
+            padding: 1.3rem;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            border-left: 4px solid #0066cc;
+        }
+
+        .modal-features strong {
+            color: #003d7a;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-features ul {
+            list-style-position: inside;
+            color: #666;
+        }
+
+        .modal-features li {
+            margin-bottom: 0.7rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">📚 Academia</div>
+            <nav>
+                <a href="#anasayfa">Anasayfa</a>
+                <a href="#hakkimizda">Hakkımızda</a>
+
+                <div class="dropdown">
+                    <a href="#egitimler">Eğitimler ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="#robotik">ASK Robotik</a>
+                        <a href="#hmgs">HMGS-AI</a>
+                        <a href="#tus">TUS Hazırlığı</a>
+                        <a href="#dil">Dil Kursları</a>
+                    </div>
+                </div>
+
+                <a href="#kurumsal">Kurumsal Eğitimler</a>
+
+                <div class="dropdown">
+                    <a href="#cozum">Çözüm Ortaklığı ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="#partner">Partner Olmak</a>
+                        <a href="#kurumlar">Kurumlar İçin</a>
+                    </div>
+                </div>
+
+                <a href="#iletisim">İletişim</a>
+                <a href="#giris" style="background: #0066cc; color: white; padding: 0.5rem 1rem; border-radius: 5px;">Ücretsize Seviye Tespit</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="anasayfa">
+        <h1>Kişisel Öğrenme Yolculuğunuza Başlayın</h1>
+        <p>Yapay zeka destekli adaptif öğrenme sistemi ile uygun seviyeyi belirle, boşluklarını doldur ve hedefine ulaş.</p>
+        <a href="#kurslar" class="cta-button">Kursları Keşfet</a>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Courses Section -->
+        <section id="kurslar">
+            <h2 class="section-title">Tüm Eğitim Programları</h2>
+            <p class="section-subtitle">Öğrencilerden profesyonellere kadar herkes için hazırlanmış kurslar</p>
+
+            <div class="courses-grid">
+                <!-- ASK Robotik -->
+                <div class="course-card" onclick="openModal('ask-modal')">
+                    <div class="course-image">🤖</div>
+                    <div class="course-content">
+                        <h3 class="course-title">ASK Robotik</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Sanal robotik öğrenme ortamında 241 dersten oluşan 8 modülü takip ederek pratik beceriler geliştir.</p>
+                        <span class="course-badge">8 Modül</span>
+                    </div>
+                </div>
+
+                <!-- HMGS-AI -->
+                <div class="course-card" onclick="openModal('hmgs-modal')">
+                    <div class="course-image">🧠</div>
+                    <div class="course-content">
+                        <h3 class="course-title">HMGS-AI Uyarlanabilir</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Seviyeni belirle, eksiklerini tespit et ve AI tarafından oluşturulan özel ders programı al.</p>
+                        <span class="course-badge ai-badge">AI Destekli</span>
+                    </div>
+                </div>
+
+                <!-- TUS Hazırlığı -->
+                <div class="course-card" onclick="openModal('tus-modal')">
+                    <div class="course-image">🏥</div>
+                    <div class="course-content">
+                        <h3 class="course-title">TUS Hazırlığı</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Tıp Ulusal Sınavı'na hazırlık konularında detaylı anlatımlar ve uyarlanabilir sınavlar.</p>
+                        <span class="course-badge">Sağlık</span>
+                    </div>
+                </div>
+
+                <!-- Edubook Kids - Konuşan Kitaplar -->
+                <div class="course-card" onclick="openModal('edubook-modal')">
+                    <div class="course-image">📚</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Edubook Kids - Konuşan Kitaplar</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">4-14 yaş arası animasyonlu, sesli kitaplarla öğrenme. CEFR Level 1-10 standartlarına uygun.</p>
+                        <span class="course-badge">Level 1-10</span>
+                    </div>
+                </div>
+
+                <!-- Din Kültürü ve Ahlak Bilgisi -->
+                <div class="course-card" onclick="openModal('dinkulturu-modal')">
+                    <div class="course-image">🕌</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Din Kültürü ve Ahlak Bilgisi</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Animasyonlu kitaplarla İslami değerler ve etik eğitimi. MEB müfredatına uyumlu.</p>
+                        <span class="course-badge">Animasyonlu</span>
+                    </div>
+                </div>
+
+                <!-- Dünya Klasikleri -->
+                <div class="course-card" onclick="openModal('klasikler-modal')">
+                    <div class="course-image">📖</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Dünya Klasikleri</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Animasyonlu uyarlamalarla dünya edebiyatı klasikleri. Grimm, Ezop, Perrault ve daha fazlası.</p>
+                        <span class="course-badge">İlham</span>
+                    </div>
+                </div>
+
+                <!-- English A1-A2 -->
+                <div class="course-card" onclick="openModal('english1-modal')">
+                    <div class="course-image">🇬🇧</div>
+                    <div class="course-content">
+                        <h3 class="course-title">İngilizce Başlayanlar</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Sıfırdan başlayanlar için interaktif ders modülleri, oyunlar ve konuşma pratikleri.</p>
+                        <span class="course-badge">A1-A2</span>
+                    </div>
+                </div>
+
+                <!-- Digital Literacy -->
+                <div class="course-card" onclick="openModal('digital-modal')">
+                    <div class="course-image">💻</div>
+                    <div class="course-content">
+                        <h3 class="course-title">Digital Literacy</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">21. yüzyıl becerilerine ait temel dijital yetkinlikler. Güvenli internet, kodlama temelleri.</p>
+                        <span class="course-badge">21. Yüzyıl</span>
+                    </div>
+                </div>
+
+                <!-- IELTS Hazırlığı -->
+                <div class="course-card" onclick="openModal('ielts-modal')">
+                    <div class="course-image">📝</div>
+                    <div class="course-content">
+                        <h3 class="course-title">IELTS Hazırlığı</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Dünyanın en geçerli İngilizce sınavı için stratejik hazırlık ve derinlemesine çalışma.</p>
+                        <span class="course-badge">Uluslararası</span>
+                    </div>
+                </div>
+
+                <!-- YDS Hazırlığı -->
+                <div class="course-card" onclick="openModal('yds-modal')">
+                    <div class="course-image">🎓</div>
+                    <div class="course-content">
+                        <h3 class="course-title">YDS Hazırlığı</h3>
+                        <div class="course-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5 puan</span>
+                        </div>
+                        <p class="course-description">Üniversite sınavına hazırlık; akademik okuma, dinleme ve yapı bilgisinde uzmanlaşma.</p>
+                        <span class="course-badge">Akademik</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="hakkimizda" class="features">
+            <h2 class="section-title">Neden Academia?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Seviye Belirleme</h3>
+                    <p>Başlangıç testleri ile kesin seviyenizi belirleyin ve uygun kursları seçin.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Kişi Özel Program</h3>
+                    <p>AI, öğrenme hızınıza ve stilinize göre ders programınızı otomatik ayarlar.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📈</div>
+                    <h3>İlerleme Takibi</h3>
+                    <p>Günlük ilerleme raporları, eksik konular ve önerilen çalışma planları.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🧪</div>
+                    <h3>AI Oluşturulan Sınavlar</h3>
+                    <p>Önceki deneme sınavlarınız temelinde tahmin eden yapay zeka sınavları.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>Anlık Destek</h3>
+                    <p>Sorun yaşadığınızda anında yardım alın, kavramlara yeniden dönün.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Sertifikasyon</h3>
+                    <p>Kursları tamamladığınızda resmi sertifika alın ve başarılarınızı paylaşın.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <div id="ask-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ask-modal')">&times;</span>
+            <h2>🤖 ASK Robotik</h2>
+            <p><strong>Sanal Robotik Öğrenme Platformu</strong></p>
+            <p>ASK Robotik, öğrencilerin sanal ortamda robotik kavramlarını öğrenmesi ve uygulaması için tasarlanmıştır. 8 modülde 241 dersten oluşan kapsamlı bir program ile sistem mimarisinden pratik uygulamalara kadar her şeyi öğrenin.</p>
+            <div class="modal-features">
+                <strong>📚 Program İçeriği:</strong>
+                <ul>
+                    <li>Sanal robotik simülasyonları ve deneyler</li>
+                    <li>Step-by-step tutorial videolar ve anlatımlar</li>
+                    <li>Uygulama görevleri ve kapstone projeleri</li>
+                    <li>Canlı sınıf ve mentoring seçeneği</li>
+                    <li>Sertifika ve başarı rozetleri</li>
+                    <li>Peer learning ve proje işbirliği</li>
+                </ul>
+            </div>
+            <p style="margin-top: 1.5rem;"><strong>Süre:</strong> Kendi hızınızda (ortalama 6-12 ay) | <strong>Seviye:</strong> Başlangıç - İleri</p>
+        </div>
+    </div>
+
+    <div id="hmgs-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('hmgs-modal')">&times;</span>
+            <h2>🧠 HMGS-AI Uyarlanabilir Öğrenme</h2>
+            <p><strong>Yapay Zeka Destekli Kişi Özel Eğitim Sistemi</strong></p>
+            <p>Bütün dersler için geçerli olan HMGS-AI platformu, seviyenizi belirleyip boşluklarınızı tespit ederek tamamen kişiselleştirilmiş ders programı oluşturur. Her öğrenci için unique bir öğrenme deneyimi.</p>
+            <div class="modal-features">
+                <strong>🎯 Sistem Nasıl Çalışır:</strong>
+                <ul>
+                    <li>✓ Başlangıç yeterlilik testi: Tam seviye analizi (A1-C2)</li>
+                    <li>✓ Eksik konular: Otomatik tespit ve ön plandına alma</li>
+                    <li>✓ Özel Ders Programı: AI tarafından günlük ve haftalık planlama</li>
+                    <li>✓ Önceki Sınavları Analiz: Hata paternleri ve tahmin edilen konular</li>
+                    <li>✓ AI Oluşturulan Sınavlar: Sizin için benzersiz şekilde oluşturulan sorular</li>
+                    <li>✓ Dinamik Zorluk Ayarı: Performansa göre otomatik zorluk değişimi</li>
+                    <li>✓ Gerçek Zamanlı Geri Bildirim: Her sorunun ardından detaylı açıklamalar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="tus-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('tus-modal')">&times;</span>
+            <h2>🏥 TUS Hazırlığı</h2>
+            <p><strong>Tıp Ulusal Sınavı Kapsamlı Hazırlık Programı</strong></p>
+            <p>Tıp öğrencileri için TUS sınavına yönelik kapsamlı hazırlık programı. Temel bilimlerden klinik bilimlere kadar tüm konuların detaylı anlatımları, soru çözüm teknikleri ve uyarlanabilir sınav sistemleri.</p>
+            <div class="modal-features">
+                <strong>📖 Kapsamlı Ders Modülleri:</strong>
+                <ul>
+                    <li>Temel Bilimler (Anatomi, Fizyoloji, Biyokimya, vb.)</li>
+                    <li>Klinik Bilimler (İç Hastalıkları, Cerrah, Pediatri, vb.)</li>
+                    <li>Soru çözüm teknikleri ve stratejiler</li>
+                    <li>Orijinal sınav formatında deneme sınavları</li>
+                    <li>Zayıf konular için odaklanmış çalışma modülleri</li>
+                    <li>Canlı sınav simülasyonları ve zaman yönetimi egzersizleri</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="english1-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('english1-modal')">&times;</span>
+            <h2>🇬🇧 İngilizce Başlayanlar (A1-A2)</h2>
+            <p><strong>Sıfırdan Başlayan İngilizce Kuru</strong></p>
+            <p>Sıfırdan başlayanlar için eğlenceli ve interaktif İngilizce öğrenme platformu. Günlük yaşam İngilizcesi, temel gramer ve konuşma pratikleri ile hızlı ilerleme.</p>
+            <div class="modal-features">
+                <strong>🎓 Program Modülleri:</strong>
+                <ul>
+                    <li>Alfabe, sesler ve telaffuz</li>
+                    <li>Günlük konuşma cümleleri ve diyaloglar</li>
+                    <li>Temel gramer (present simple, be verb, imperatives)</li>
+                    <li>Eğlenceli oyunlar ve interaktif aktiviteler</li>
+                    <li>Konuşma ve dinleme pratikleri</li>
+                    <li>Yazma alıştırmaları ve diyalog oluşturma</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="ielts-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('ielts-modal')">&times;</span>
+            <h2>📝 IELTS Hazırlık</h2>
+            <p><strong>Dünyanın En Geçerli İngilizce Sınavı</strong></p>
+            <p>IELTS (International English Language Testing System) sınavına kapsamlı hazırlık. Her bir beceri alanında derinlemesine çalışma, sınav stratejileri ve öğretmen desteği.</p>
+            <div class="modal-features">
+                <strong>📚 Dört Beceri Alanı:</strong>
+                <ul>
+                    <li><strong>Reading:</strong> Akademik ve General metinleri okuma ve anlama</li>
+                    <li><strong>Writing:</strong> Mektup ve essay yazma teknikleri</li>
+                    <li><strong>Listening:</strong> Dersleri ve konuşmaları anlama</li>
+                    <li><strong>Speaking:</strong> Sözlü görüşmeye hazırlık ve akıcı konuşma</li>
+                    <li>Gerçek sınav formatında uygulamalar</li>
+                    <li>Tanı ve geri bildirim raporları</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="yds-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('yds-modal')">&times;</span>
+            <h2>🎓 YDS Hazırlığı</h2>
+            <p><strong>Yüksek Öğretim Kurumları Sınavı Hazırlık</strong></p>
+            <p>ÖSYM'nin yüksek öğretim kurumları sınavı (YDS) için akademik ve stratejik hazırlık. ÖSYM formatına uygun deneme sınavları ve hedefli çalışma programları.</p>
+            <div class="modal-features">
+                <strong>📋 Sınav Konuları:</strong>
+                <ul>
+                    <li>Akademik okuma anlama (80 soru)</li>
+                    <li>Yapı ve ifade hataları (20 soru)</li>
+                    <li>Dinleme (bazı üniversitelerde ek)</li>
+                    <li>Tür çeviri ve yazılı anlatım</li>
+                    <li>ÖSYM tarzı simülasyon sınavları</li>
+                    <li>Zaman yönetimi ve strateji dersleri</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edubook Kids Modal -->
+    <div id="edubook-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('edubook-modal')">&times;</span>
+            <h2>📚 Edubook Kids — Konuşan Kitaplar</h2>
+            <p><strong>Animasyonlu ve Sesli Öğrenme Kitapları (4-14 Yaş)</strong></p>
+            <p>Çocuklar için animasyonlu, sesli kitaplarla eğlenceli İngilizce öğrenme. CEFR standartlarına uygun Level 1-10 programı ile her yaş grubuna özel içerik.</p>
+            <div class="modal-features">
+                <strong>🎬 Özellikler:</strong>
+                <ul>
+                    <li>Tamamen seslendirilmiş İngilizce kitaplar</li>
+                    <li>Renkli animasyonlar ve interaktif sahneler</li>
+                    <li>Level 1 (4-5 yaş) ile Level 10 (13-14 yaş) arası dereceli içerik</li>
+                    <li>MEB müfredatı ile uyumlu kazanımlar</li>
+                    <li>Her kitap sonrası anlamayı kontrol eden sorular</li>
+                    <li>Ebeveyn panosunda ilerleme takibi</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Din Kültürü Modal -->
+    <div id="dinkulturu-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('dinkulturu-modal')">&times;</span>
+            <h2>🕌 Din Kültürü ve Ahlak Bilgisi</h2>
+            <p><strong>Animasyonlu İslami Değerler ve Etik Eğitimi</strong></p>
+            <p>Edubook Kids platformunda animasyonlu kitaplarla İslami değerler, peygamber hikayeleri ve ahlaki bilgiler. Öğrenciler için merak ve ilham uyandıran içerik.</p>
+            <div class="modal-features">
+                <strong>📖 Konular:</strong>
+                <ul>
+                    <li>Yıldızların Hikayesi — Evrendeki hassasiyetler ve derinlik</li>
+                    <li>Komşumla Güzelim — Sosyal sorumluluk ve paylaşım</li>
+                    <li>Asr-ı Saadetten — İslami tarih ve önemli şahsiyetler</li>
+                    <li>Zaman Hazinedir — Zaman yönetimi ve sorumluluk</li>
+                    <li>Şehrin Gizli Hazineleri — Dostluk ve girişimcilik</li>
+                    <li>Bayram Sevinci — Gelenekler ve birliktelik</li>
+                    <li>Huzura Açılan Kapı — Barış ve merhamet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dünya Klasikleri Modal -->
+    <div id="klasikler-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('klasikler-modal')">&times;</span>
+            <h2>📖 Dünya Klasikleri</h2>
+            <p><strong>Animasyonlu Uyarlamalarla Klasik Edebiyat</strong></p>
+            <p>Dünyanın en ünlü çocuk ve klasik hikayeleri animasyonlu uyarlamalarla. Grimm Kardeşler, Esop, Perrault ve daha birçok yazarın eserlerini keşfet.</p>
+            <div class="modal-features">
+                <strong>🎭 İçeriğimiz:</strong>
+                <ul>
+                    <li>Bremen Müzisyenleri — Grimm Kardeşler</li>
+                    <li>Aslan ile Fare — Esop Masalları</li>
+                    <li>Kırmızı Başlıklı Kız — Perrault/Grimm</li>
+                    <li>Cinderella — Glaslı Terlik Çıktı</li>
+                    <li>Pinocchio — Carlo Collodi</li>
+                    <li>Parmak Çocuk — Grimm Kardeşler</li>
+                    <li>Don Quixote — Cervantes</li>
+                    <li>Les Misérables — Victor Hugo</li>
+                    <li>Moby Dick — Herman Melville</li>
+                    <li>Oliver Twist — Charles Dickens</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Digital Literacy Modal -->
+    <div id="digital-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('digital-modal')">&times;</span>
+            <h2>💻 Digital Literacy — 21. Yüzyıl Becerileri</h2>
+            <p><strong>Dijital Yetkinlik ve Güvenlik Eğitimi</strong></p>
+            <p>Modern dünyada gerekli dijital beceriler. İnternette güvenli hareket etme, temel kodlama, dijital saygı ve cyber güvenlik.</p>
+            <div class="modal-features">
+                <strong>🔍 Kurs Modülleri:</strong>
+                <ul>
+                    <li>İnternette Güvenlik — Kişisel bilgi koruması</li>
+                    <li>Siber Zorbalıkla Başa Çıkma — Güvenli sosyal medya</li>
+                    <li>Bilgi Kaynağı Değerlendirme — Güvenilir kaynakları seçme</li>
+                    <li>Temel Kodlama — Python ve Scratch temelleri</li>
+                    <li>Dijital Vatandaşlık — Çevrimiçi sorumluluklar</li>
+                    <li>Yapay Zeka Temelleri — AI nedir ve nasıl çalışır</li>
+                    <li>Proje Tabanlı Öğrenme — Gerçek dünyadaki uygulamalar</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="iletisim">
+        <p><strong>© 2026 Academia — Adaptif Öğrenme Platformu</strong></p>
+        <p>Yapay zeka ile kişiselleştirilmiş eğitim, herkesin erişimine açık.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">Sorular ve destek için: support@academia.com</p>
+    </footer>
+
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
