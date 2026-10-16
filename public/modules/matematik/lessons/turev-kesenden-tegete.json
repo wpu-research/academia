@@ -1,0 +1,128 @@
+{
+ "id": "turev-kesenden-tegete",
+ "title": "Türev: kesenden teğete",
+ "level": "AYT · Üniversiteye hazırlık",
+ "alan": "İleri",
+ "minutes": 10,
+ "summary": "Kesen doğruyu teğete yaklaştırarak türevin bir limit olduğunu gör.",
+ "sims": [
+  "turev-teget"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "f(x) = x² eğrisinde **P(1, 1)** noktası ve x = 1 + h'deki ikinci bir nokta var. İkisinden geçen doğruya **kesen** denir. h'yi küçülttükçe kesenin eğimine bak.",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x2",
+    "mode": "secant",
+    "a": 1,
+    "h": 2
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "h'yi **0,05**'ten küçük yap.",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x2",
+    "mode": "secant",
+    "a": 1,
+    "h": 2
+   },
+   "goal": "h < 0,05",
+   "check": {
+    "key": "h",
+    "lt": 0.05
+   },
+   "hint": "Kaydırıcıyı en sola doğru çek.",
+   "why": "h küçüldükçe ikinci nokta P'ye yaklaşır, kesen doğru P'deki teğete dönüşür."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "h sıfıra yaklaşırken kesenin eğimi kaça yaklaşır?",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x2",
+    "mode": "secant",
+    "a": 1,
+    "h": 0.5
+   },
+   "options": [
+    "2",
+    "1",
+    "0",
+    "Sonsuza"
+   ],
+   "answer": 0,
+   "why": "Kesenin eğimi ((1 + h)² − 1) / h = 2 + h. h → 0 iken bu 2'ye yaklaşır."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu limit neyin tanımıdır?",
+   "options": [
+    "f'nin x = 1'deki türevi",
+    "f(1) değeri",
+    "Eğrinin altındaki alan",
+    "f'nin x = 1'deki limiti"
+   ],
+   "answer": 0,
+   "why": "f'(a) = lim (h → 0) [f(a + h) − f(a)] / h. Türev, teğetin eğimidir."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Şimdi teğet doğruyu eğri üzerinde gezdir. Teğetin **yatay** olduğu noktayı bul.",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x2",
+    "mode": "tangent",
+    "a": 1.5
+   },
+   "goal": "Teğet yatay",
+   "check": {
+    "key": "a",
+    "eq": 0,
+    "tol": 0.001
+   },
+   "hint": "Teğet yatayken eğimi 0'dır. f'(x) = 2x hangi x'te 0 olur?",
+   "why": "f'(x) = 2x ve 2x = 0 ise x = 0. Parabolün tepe noktasında teğet yataydır."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "f(x) = x² için **f'(3)** kaçtır?",
+   "options": [
+    "6",
+    "9",
+    "3",
+    "2"
+   ],
+   "answer": 0,
+   "why": "f'(x) = 2x, f'(3) = 6."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "f(x) = x³ − 3x eğrisinde teğetin yatay olduğu x değerleri hangileridir?",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x3m3x",
+    "mode": "tangent",
+    "a": 0.5
+   },
+   "options": [
+    "x = −1 ve x = 1",
+    "Yalnız x = 0",
+    "x = −3 ve x = 3",
+    "x = −√3 ve x = √3"
+   ],
+   "answer": 0,
+   "why": "f'(x) = 3x² − 3 = 0 ise x² = 1, yani x = ±1. Kaydırıcıyla bu noktalarda teğetin yataylaştığını görebilirsin."
+  }
+ ]
+}

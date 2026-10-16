@@ -1,0 +1,60 @@
+{
+ "id": "matematik",
+ "title": "Matematik",
+ "version": "0.1.0",
+ "kind": "internal",
+ "levels": [
+  "İlkokul",
+  "Ortaokul",
+  "Lise",
+  "İleri"
+ ],
+ "exam": "matematik",
+ "lessons": [
+  {
+   "id": "kesirler-sayi-dogrusu",
+   "title": "Kesirler sayı doğrusunda",
+   "level": "İlkokul 4 · Ortaokul 5",
+   "alan": "İlkokul",
+   "minutes": 8,
+   "summary": "Kesir çubuğunu boyayarak ve sayı doğrusuna yerleştirerek kesirleri karşılaştır.",
+   "sims": [
+    "kesir-cubugu",
+    "sayi-dogrusu"
+   ]
+  },
+  {
+   "id": "olasilik-zar",
+   "title": "Olasılık: zarı yüzlerce kez at",
+   "level": "Ortaokul 8 · LGS",
+   "alan": "Ortaokul",
+   "minutes": 8,
+   "summary": "Zar atma simülasyonuyla deneysel olasılığın teorik olasılığa nasıl yaklaştığını gör.",
+   "sims": [
+    "olasilik-sim"
+   ]
+  },
+  {
+   "id": "dogrunun-egimi",
+   "title": "Doğrunun eğimi",
+   "level": "Lise 9–10 · TYT",
+   "alan": "Lise",
+   "minutes": 9,
+   "summary": "Kaydırıcılarla y = mx + n doğrusunu oynatarak eğimi ve kesişim noktasını keşfet.",
+   "sims": [
+    "koordinat-duzlemi"
+   ]
+  },
+  {
+   "id": "turev-kesenden-tegete",
+   "title": "Türev: kesenden teğete",
+   "level": "AYT · Üniversiteye hazırlık",
+   "alan": "İleri",
+   "minutes": 10,
+   "summary": "Kesen doğruyu teğete yaklaştırarak türevin bir limit olduğunu gör.",
+   "sims": [
+    "turev-teget"
+   ]
+  }
+ ]
+}

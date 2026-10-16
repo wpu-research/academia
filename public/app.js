@@ -12,6 +12,7 @@
   const ACTIVE = A.programs.filter((p) => p.active !== false);
   const PASSIVE = A.programs.filter((p) => p.active === false);
   const bySlug = Object.fromEntries(ACTIVE.map((p) => [p.slug, p]));
+  const MODULES = ["matematik", "kodlama"];
   const examOn = (id) => !!A.exams[id] && A.exams[id].active !== false;
   const groupLabel = Object.fromEntries(A.groups.map((g) => [g.id, g.label]));
 
@@ -39,6 +40,7 @@
     const exam = A.exams[examId];
     const sh = E.shares(exam.blueprint);
     const mastery = {}, attemptsByAlan = {}, cards = {};
+    const bank = new Set(exam.items.map((i) => i.id));
     for (const a of Object.keys(sh)) mastery[a] = { ...E.PRIOR };
     const answered = new Set();
     let correct = 0;
@@ -47,6 +49,7 @@
       attemptsByAlan[at.alan] = (attemptsByAlan[at.alan] || 0) + 1;
       answered.add(at.id);
       if (at.correct) correct++;
+      if (!bank.has(at.id)) continue;
       const prev = cards[at.id];
       const interval = E.nextInterval(prev && prev.interval, at.correct);
       cards[at.id] = { interval, due: at.t + interval * E.DAY };
@@ -186,6 +189,16 @@
       </div>
     </section>
 
+    <section class="section" id="danismanlar">
+      <div class="wrap">
+        <div class="section-head"><div><span class="eyebrow">Ekibimiz</span><h2>Danışmanlarımız</h2></div>
+          <p>Her programın içeriğini alanında uzman bir danışman yönlendirir.</p></div>
+        <div class="advisors">${A.advisors.map((p) => `<figure class="advisor">
+          <img src="img/team/${p.photo}.jpg" alt="${esc(p.name)}" width="320" height="320" loading="lazy">
+          <figcaption><b>${p.title === "Dr." ? "Dr. " : ""}${esc(p.name)}${p.title === "PhD" ? ", PhD" : ""}</b><span class="chip chip-brand">${esc(p.field)}</span></figcaption></figure>`).join("")}</div>
+      </div>
+    </section>
+
     <section class="band" id="kurumsal">
       <div class="wrap">
         <div>
@@ -287,6 +300,8 @@
           <div class="table-wrap"><table><tbody>${rows(p.structure)}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}` : ""}
         ${p.levelsTable ? `<h2>Seviyeler</h2><div class="table-wrap"><table><thead><tr><th>Seviye</th><th>Kimler için</th><th>Konular</th></tr></thead><tbody>${rows(p.levelsTable)}</tbody></table></div>` : ""}
         ${p.game ? `<h2>Nasıl oynanır</h2><ul>${p.game.map((g) => `<li>${esc(g)}</li>`).join("")}</ul>` : ""}
+        ${MODULES.includes(p.slug) ? `<h2>Dersler</h2><div class="lesson-list" id="lesson-list"><p class="muted">Dersler yükleniyor…</p></div>
+          <h2>Müfredat</h2><div class="cur" id="curriculum"><p class="muted">Müfredat yükleniyor…</p></div>` : ""}
         ${p.modules ? `<h2>Modüller</h2><div class="table-wrap"><table><tbody>${p.modules.map((m, i) => `<tr><td class="num">${i + 1}</td><td><a href="#m-${m.slug}">${esc(m.title)}</a><br><small class="muted">${esc(m.desc)}</small></td><td>${esc(m.age)}</td><td class="num">${m.lessons}</td></tr>`).join("")}</tbody></table></div>` : ""}
       </div>
       <aside class="aside">
@@ -672,6 +687,7 @@
   function route() {
     const h = location.hash.replace(/^#/, "");
     if (h.startsWith("p-") && bySlug[h.slice(2)]) return { view: "program", slug: h.slice(2) };
+    if (h.startsWith("ders-") && h.includes(".")) { const [mod, id] = h.slice(5).split("."); if (MODULES.includes(mod)) return { view: "lesson", mod, id }; }
     if (h.startsWith("m-") && bySlug.robotik.modules.some((m) => m.slug === h.slice(2))) return { view: "module", slug: h.slice(2) };
     if (h === "ogren" || h.startsWith("ogren-")) return { view: "app", exam: h.slice(6) };
     if (h === "basla") return { view: "basla" };
@@ -680,7 +696,7 @@
   function render() {
     const r = route();
     setMega(false); nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false");
-    const key = r.view + (r.slug || "");
+    const key = r.view + (r.slug || "") + (r.id || "");
     if (r.view === "app") {
       if (r.exam && examOn(r.exam) && r.exam !== store.exam) { store.exam = r.exam; session = null; save(); }
       if (r.exam && examOn(r.exam) && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
@@ -688,7 +704,9 @@
     } else if (r.view === "program") renderProgram(bySlug[r.slug]);
     else if (r.view === "module") renderModule(r.slug);
     else if (r.view === "basla") MAC.renderOnboarding($app);
+    else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
+    if (r.view === "program" && MODULES.includes(r.slug)) { fillLessons(r.slug); fillCurriculum(r.slug); }
     if (r.view === "home" && r.section) document.getElementById(r.section)?.scrollIntoView({ behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     else if (current !== key || r.view === "home") window.scrollTo({ top: 0, behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     current = key;
@@ -703,6 +721,78 @@
   if (MAC.needsOnboarding() && (location.hash === "" || location.hash === "#ana")) history.replaceState(null, "", "#basla");
   render();
 
+  // ---------- Dersler (modüller) ----------
+  function lessonDone(mod, id) { return store.lessons?.[mod]?.[id]; }
+  function fillLessons(mod) {
+    LESSONS.manifest(mod).then((man) => {
+      const host = document.getElementById("lesson-list"); if (!host) return;
+      host.innerHTML = man.lessons.map((l, i) => {
+        const done = lessonDone(mod, l.id);
+        return `<a class="lesson-card${done ? " done" : ""}" href="#ders-${mod}.${l.id}">
+          <span class="lc-num num">${done ? "✓" : i + 1}</span>
+          <span class="lc-body"><b>${esc(l.title)}</b><small>${esc(l.level)} · ${l.minutes} dk${done ? ` · ${done.points} puan` : ""}</small><span>${esc(l.summary)}</span></span></a>`;
+      }).join("");
+    }).catch(() => {});
+  }
+  // ---------- Müfredat ----------
+  const SIM_LABEL = { "sayi-dogrusu": "Sayı doğrusu", "onluk-bloklar": "Onluk bloklar", "kesir-cubugu": "Kesir çubuğu", "alan-modeli": "Alan modeli", "denklem-terazisi": "Denklem terazisi",
+    "koordinat-duzlemi": "Koordinat düzlemi", "fonksiyon-grafigi": "Fonksiyon grafiği", "geometri-tahtasi": "Geometri tahtası", "aci-olcer": "Açı ölçer", "donusum": "Dönüşüm",
+    "kati-cisim": "Katı cisim", "olcme": "Ölçme", "saat": "Saat", "para": "Para", "oruntu": "Örüntü", "veri-grafigi": "Veri grafiği", "olasilik-sim": "Olasılık deneyi",
+    "oran-karistirma": "Oran karıştırma", "birim-cember": "Birim çember", "limit-yaklasim": "Limit yaklaşımı", "turev-teget": "Teğet ve türev", "integral-alan": "İntegral alanı",
+    "dizi-gorsel": "Dizi görseli", "kume-venn": "Venn şeması", "mantik-tablosu": "Doğruluk tablosu", "karmasik-duzlem": "Karmaşık düzlem",
+    "kod-izleyici": "Kod izleyici", "cikti-tahmin": "Çıktı tahmini", "parsons": "Satır dizme", "bosluk-doldur": "Boşluk doldurma", "hata-bul": "Hata bulma", "kod-yaz": "Kod yazma", "gorsel-veri-yapisi": "Veri yapısı görseli" };
+  const READY = new Set(["sayi-dogrusu", "kesir-cubugu", "olasilik-sim", "koordinat-duzlemi", "turev-teget", "kod-izleyici", "cikti-tahmin", "parsons", "bosluk-doldur", "hata-bul", "gorsel-veri-yapisi"]);
+  const simChip = (k) => k ? `<span class="chip ${READY.has(k) ? "chip-ready" : "chip-line"}" title="${READY.has(k) ? "Hazır" : "Planlandı"}">${READY.has(k) ? "● " : "○ "}${esc(SIM_LABEL[k] || k)}</span>` : "";
+  const dersLink = (mod, id) => id ? `<a class="chip chip-brand" href="#ders-${mod}.${id}">Derse git →</a>` : "";
+  const codeList = (k) => k.kod ? k.kod : (k.kazanim || []).filter((x) => /^[A-Z]+\.?\d/.test(x)).join(", ");
+
+  function fillCurriculum(mod) {
+    fetch(`modules/${mod}/curriculum.json`).then((r) => r.json()).then((c) => {
+      const host = document.getElementById("curriculum"); if (!host) return;
+      const legend = `<p class="cur-legend"><span class="chip chip-ready">● Hazır simülasyon</span><span class="chip chip-line">○ Planlandı</span><span class="chip chip-brand">Derse git →</span> hazır ders</p>`;
+      if (mod === "matematik") {
+        const count = (g) => g.temalar.reduce((n, t) => n + t.konular.length, 0);
+        const total = c.asamalar.reduce((n, st) => n + st.siniflar.reduce((m, g) => m + count(g), 0), 0);
+        host.innerHTML = `<p class="muted">İlkokuldan üniversiteye hazırlığa <b>${total} konu</b>. Konular MEB öğretim programlarından (Türkiye Yüzyılı Maarif Modeli ve 2018 programı), sınav dağılımları son yılların TYT ve AYT sınavlarından alındı.</p>${legend}
+          ${c.asamalar.map((st) => `<details class="cur-stage" ${st.ad === "İlkokul" ? "open" : ""}><summary><b>${esc(st.ad)}</b><span>${st.siniflar.length} sınıf · ${st.siniflar.reduce((m, g) => m + count(g), 0)} konu</span></summary>
+            ${st.siniflar.map((g) => `<details class="cur-grade"><summary><b>${g.sinif}. sınıf</b><span>${esc(/TYMM|Maarif/i.test(g.program) ? "Maarif Modeli" : "2018 programı")} · ${count(g)} konu</span></summary>
+              ${g.temalar.map((t) => `<div class="cur-theme"><h4>${esc(t.baslik)}</h4><ul>${t.konular.map((k) => `<li><span class="cur-t">${esc(k.baslik)}${codeList(k) ? `<small>${esc(codeList(k))}</small>` : ""}</span><span class="cur-chips">${k.lgs ? '<span class="chip chip-line">LGS</span>' : ""}${(k.yks || []).map((y) => `<span class="chip chip-line">${y}</span>`).join("")}${simChip(k.sim)}${dersLink(mod, k.ders)}</span></li>`).join("")}</ul></div>`).join("")}
+            </details>`).join("")}</details>`).join("")}
+          ${c.yks ? `<details class="cur-stage"><summary><b>Üniversiteye hazırlık (YKS)</b><span>TYT ${c.yks.TYT.length} · AYT ${c.yks.AYT.length} konu</span></summary>
+            <p class="note">${esc(c.yks.aciklama || "")}</p>
+            ${["TYT", "AYT"].map((part) => `<h4 class="cur-h">${part} Matematik</h4><div class="table-wrap"><table><thead><tr><th>Konu</th><th class="num">Soru (2023–2025)</th><th>Görselleştirme</th></tr></thead><tbody>
+              ${c.yks[part].map((k) => `<tr><td>${esc(k.konu)}${k.ders ? ` ${dersLink(mod, k.ders)}` : ""}</td><td class="num">${esc(k.soru_araligi || "–")}</td><td>${simChip(k.sim)}</td></tr>`).join("")}</tbody></table></div>`).join("")}
+          </details>` : ""}
+          <details class="cur-src"><summary>Kaynaklar ve program durumu</summary><ul>${Object.entries(c.program_durumu).filter(([k]) => k !== "not").map(([k, v]) => `<li>${/^\d+$/.test(k) ? `${k}. sınıf` : esc(k)}: ${esc(v)}</li>`).join("")}</ul><ul>${c.kaynaklar.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join("")}</ul></details>`;
+      } else {
+        const n = c.seviyeler.reduce((a, l) => a + l.uniteler.reduce((b, u) => b + u.konular.length, 0), 0);
+        host.innerHTML = `<p class="muted">Python: ilk programdan algoritma ve problem çözmeye <b>${n} konu</b>, 6 seviye. Her konunun örnek kodu çalıştırılarak doğrulandı.</p>${legend}
+          ${c.seviyeler.map((lv) => `<details class="cur-stage" ${lv.seviye === 1 ? "open" : ""}><summary><b>Seviye ${lv.seviye} · ${esc(lv.ad)}</b><span>${esc(lv.yas || "")} · ${lv.uniteler.reduce((b, u) => b + u.konular.length, 0)} konu</span></summary>
+            ${lv.uniteler.map((u) => `<div class="cur-theme"><h4>${esc(u.baslik)}</h4><ul>${u.konular.map((k) => `<li><span class="cur-t">${esc(k.baslik)}<small>${esc(k.hedef || "")}</small>
+              ${k.ornek ? `<details class="cur-ex"><summary>Örnek</summary><pre class="q-code"><code>${esc(k.ornek)}</code></pre>${k.cikti !== undefined ? `<pre class="cur-out">${esc(k.cikti) || "(çıktı yok)"}</pre>` : ""}</details>` : ""}</span>
+              <span class="cur-chips">${simChip(k.etkilesim)}${dersLink(mod, k.ders)}</span></li>`).join("")}</ul></div>`).join("")}</details>`).join("")}
+          <details class="cur-src"><summary>Kaynaklar</summary><ul>${(c.kaynaklar || []).map((u) => `<li><a href="${esc(typeof u === "string" ? u : u.url)}" target="_blank" rel="noopener">${esc(typeof u === "string" ? u : (u.ad || u.url))}</a></li>`).join("")}</ul></details>`;
+      }
+    }).catch(() => { const h = document.getElementById("curriculum"); if (h) h.innerHTML = `<p class="muted">Müfredat yüklenemedi.</p>`; });
+  }
+
+  const lessonHooks = {
+    onAttempt(les, step, correct) {
+      const mod = route().mod, ex = A.exams[mod] ? mod : null;
+      if (!ex) return;
+      if (store.data[ex].sample) store.data[ex] = emptyData();
+      store.data[ex].attempts.push({ id: `ders:${les.id}:${step.id}`, alan: les.alan, correct, conf: 2, skipped: false, mode: "ders", t: Date.now() + Math.random() });
+      save();
+    },
+    onFinish(les, res) {
+      const mod = route().mod;
+      store.lessons = store.lessons || {}; store.lessons[mod] = store.lessons[mod] || {};
+      const prev = store.lessons[mod][les.id];
+      store.lessons[mod][les.id] = { points: Math.max(res.points, prev?.points || 0), correct: res.correct, total: res.total, at: Date.now() };
+      save();
+    },
+  };
+
   window.ACADEMIA_APP = {
     begin(exam, budget) {
       if (store.data[exam].sample) store.data[exam] = emptyData();
@@ -716,6 +806,7 @@
 
   // Mac'in gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
   MAC.setContext(() => {
+    const lc = LESSONS.context(); if (lc) return lc;
     const r = route();
     if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
     if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }

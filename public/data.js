@@ -10,6 +10,14 @@ ACADEMIA.groups = [
   { id: "ingilizce", label: "Genel İngilizce" },
 ];
 
+ACADEMIA.advisors = [
+  { photo: "murat", name: "Murat Arslan", title: "PhD", field: "Robotik ve Kodlama" },
+  { photo: "asli", name: "Aslı Bildir", title: "", field: "Hukuk" },
+  { photo: "ebru", name: "Ebru Çakır", title: "", field: "Matematik" },
+  { photo: "ali", name: "Ali Şahin", title: "Dr.", field: "Tıp (TUS)" },
+  { photo: "aida", name: "Aida Ariennejad", title: "PhD", field: "İngilizce" },
+];
+
 ACADEMIA.programs = [
   {
     slug: "robotik", group: "dijital", title: "Robotik",

@@ -1,0 +1,136 @@
+{
+ "id": "dogrunun-egimi",
+ "title": "Doğrunun eğimi",
+ "level": "Lise 9–10 · TYT",
+ "alan": "Lise",
+ "minutes": 9,
+ "summary": "Kaydırıcılarla y = mx + n doğrusunu oynatarak eğimi ve kesişim noktasını keşfet.",
+ "sims": [
+  "koordinat-duzlemi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "**y = mx + n** doğrusunda **m** eğimdir, **n** doğrunun y eksenini kestiği noktadır. Kaydırıcılarla oynayıp doğrunun nasıl değiştiğine bak.",
+   "sim": {
+    "kind": "koordinat-duzlemi",
+    "m": 1,
+    "n": 0
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Doğruyu **(0, 1)** ve **(2, 5)** noktalarından geçir.",
+   "sim": {
+    "kind": "koordinat-duzlemi",
+    "m": 0,
+    "n": 0,
+    "points": [
+     [
+      0,
+      1
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "goal": "Doğru iki noktadan da geçiyor",
+   "check": {
+    "all": [
+     {
+      "key": "m",
+      "eq": 2,
+      "tol": 0.001
+     },
+     {
+      "key": "n",
+      "eq": 1,
+      "tol": 0.001
+     }
+    ]
+   },
+   "hint": "(0, 1) noktası n'yi verir. Sonra x 2 artarken y kaç artıyor?",
+   "why": "n = 1 çünkü doğru y eksenini 1'de kesiyor. Eğim = (5 − 1) / (2 − 0) = 2."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Eğimi **0** olan bir doğru nasıl görünür?",
+   "options": [
+    "x eksenine paralel (yatay)",
+    "y eksenine paralel (dikey)",
+    "Orijinden geçer",
+    "x ekseniyle 45° açı yapar"
+   ],
+   "answer": 0,
+   "why": "m = 0 iken y = n olur; x ne olursa olsun y değişmez, doğru yataydır."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "**(1, 2)** ve **(3, 8)** noktalarından geçen doğrunun eğimi kaçtır?",
+   "options": [
+    "3",
+    "2",
+    "6",
+    "1/3"
+   ],
+   "answer": 0,
+   "why": "Eğim = (8 − 2) / (3 − 1) = 6 / 2 = 3."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Doğruyu **(0, 3)** ve **(3, 0)** noktalarından geçir.",
+   "sim": {
+    "kind": "koordinat-duzlemi",
+    "m": 1,
+    "n": 0,
+    "points": [
+     [
+      0,
+      3
+     ],
+     [
+      3,
+      0
+     ]
+    ]
+   },
+   "goal": "Doğru iki noktadan da geçiyor",
+   "check": {
+    "all": [
+     {
+      "key": "m",
+      "eq": -1,
+      "tol": 0.001
+     },
+     {
+      "key": "n",
+      "eq": 3,
+      "tol": 0.001
+     }
+    ]
+   },
+   "hint": "x arttıkça y azalıyor: eğim negatif olmalı.",
+   "why": "Eğim = (0 − 3) / (3 − 0) = −1 ve n = 3, yani y = −x + 3."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "**y = −2x + 4** doğrusu x eksenini hangi noktada keser?",
+   "options": [
+    "(2, 0)",
+    "(4, 0)",
+    "(−2, 0)",
+    "(0, 4)"
+   ],
+   "answer": 0,
+   "why": "x ekseninde y = 0'dır: 0 = −2x + 4, x = 2."
+  }
+ ]
+}

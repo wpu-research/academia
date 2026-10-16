@@ -1,0 +1,198 @@
+{
+ "id": "kesirler-sayi-dogrusu",
+ "title": "Kesirler sayı doğrusunda",
+ "level": "İlkokul 4 · Ortaokul 5",
+ "alan": "İlkokul",
+ "minutes": 8,
+ "summary": "Kesir çubuğunu boyayarak ve sayı doğrusuna yerleştirerek kesirleri karşılaştır.",
+ "sims": [
+  "kesir-cubugu",
+  "sayi-dogrusu"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "İki çubuk da aynı bütünü gösteriyor. Hangi boyalı parça daha büyük?",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 2,
+      "shaded": 1,
+      "label": "1/2"
+     },
+     {
+      "n": 4,
+      "shaded": 1,
+      "label": "1/4"
+     }
+    ]
+   },
+   "options": [
+    "1/2",
+    "1/4",
+    "Eşitler"
+   ],
+   "answer": 0,
+   "why": "Bir bütünü 2 parçaya bölünce her parça, 4 parçaya bölünce oluşan parçadan büyük olur."
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Çubuğun **3/4**'ünü boya. Parçalara dokunarak boyayabilirsin.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 4,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "goal": "4 parçadan 3'ü boyalı",
+   "check": {
+    "key": "shaded0",
+    "eq": 3
+   },
+   "hint": "Payda 4: çubuk 4 eşit parça. Pay 3: bunlardan 3'ünü boya.",
+   "why": "3/4, bütünün 4 eşit parçasından 3'ü demektir."
+  },
+  {
+   "id": "s3",
+   "type": "sim",
+   "prompt": "Üstteki çubukta 1/2 boyalı. Alttaki çubukta **aynı uzunlukta** bir alan boya.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 2,
+      "shaded": 1,
+      "label": "1/2"
+     },
+     {
+      "n": 4,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "goal": "Alttaki çubuk üsttekiyle aynı uzunlukta boyalı",
+   "check": {
+    "key": "shaded1",
+    "eq": 2
+   },
+   "hint": "Alttaki çubukta her parça 1/4. Kaç tane 1/4, bir 1/2 eder?",
+   "why": "2/4 ile 1/2 aynı uzunluktadır; bunlara denk kesirler denir."
+  },
+  {
+   "id": "s4",
+   "type": "info",
+   "prompt": "Kesirler sayı doğrusunda da bir noktaya karşılık gelir. 0 ile 1 arası 4 eşit parçaya bölününce her çentik **1/4** ilerler.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 0,
+    "max": 1,
+    "den": 4,
+    "value": 0.25,
+    "fixed": true
+   }
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Noktayı sürükleyerek **3/4**'e yerleştir.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 0,
+    "max": 1,
+    "den": 4,
+    "value": 0
+   },
+   "goal": "Nokta 3/4'te",
+   "check": {
+    "key": "value",
+    "eq": 0.75,
+    "tol": 0.001
+   },
+   "hint": "0'dan başlayıp 1/4'lük üç adım ilerle.",
+   "why": "0 ile 1 arası 4 parçaya bölündüğü için 3/4, üçüncü çentiktir."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "Kesirler 1'den büyük de olabilir. Noktayı **4/3**'e yerleştir.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 0,
+    "max": 2,
+    "den": 3,
+    "value": 0
+   },
+   "goal": "Nokta 4/3'te",
+   "check": {
+    "key": "value",
+    "eq": 1.3333333,
+    "tol": 0.001
+   },
+   "hint": "Her birim 3 parçaya bölünmüş. 1'den sonra bir parça daha ilerle.",
+   "why": "4/3 = 1 + 1/3. Yani 1'i geçip bir üçte bir daha ilerlersin."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Kaydırıcıyla paydayı büyüt ve bir parçanın boyuna bak. Payda büyüdükçe birim kesir (1/n) ne olur?",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 3,
+      "shaded": 1
+     }
+    ],
+    "slider": {
+     "min": 2,
+     "max": 12,
+     "label": "Payda"
+    }
+   },
+   "options": [
+    "Büyür",
+    "Küçülür",
+    "Değişmez"
+   ],
+   "answer": 1,
+   "why": "Bütün daha çok parçaya bölündükçe her parça küçülür: 1/12, 1/3'ten küçüktür."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "Hangisi daha büyük?",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 0,
+    "max": 1,
+    "den": 15,
+    "marks": [
+     [
+      0.6666667,
+      "2/3"
+     ],
+     [
+      0.6,
+      "3/5"
+     ]
+    ],
+    "fixed": true
+   },
+   "options": [
+    "2/3",
+    "3/5",
+    "Eşitler"
+   ],
+   "answer": 0,
+   "why": "Ortak payda 15: 2/3 = 10/15 ve 3/5 = 9/15. Sayı doğrusunda 2/3 daha sağdadır."
+  }
+ ]
+}

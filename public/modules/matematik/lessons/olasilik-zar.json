@@ -1,0 +1,97 @@
+{
+ "id": "olasilik-zar",
+ "title": "Olasılık: zarı yüzlerce kez at",
+ "level": "Ortaokul 8 · LGS",
+ "alan": "Ortaokul",
+ "minutes": 8,
+ "summary": "Zar atma simülasyonuyla deneysel olasılığın teorik olasılığa nasıl yaklaştığını gör.",
+ "sims": [
+  "olasilik-sim"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Hilesiz bir zar atılıyor. **6** gelme olasılığı kaçtır?",
+   "options": [
+    "1/6",
+    "1/2",
+    "1/3",
+    "6"
+   ],
+   "answer": 0,
+   "why": "Zarın 6 eşit olası yüzü var ve bunlardan yalnız biri 6. Olasılık 1/6."
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Zarı at ve çubukların kesikli **1/6** çizgisine nasıl yaklaştığını izle. En az **300** atış yap.",
+   "sim": {
+    "kind": "olasilik-sim",
+    "dice": 1
+   },
+   "goal": "En az 300 atış",
+   "check": {
+    "key": "total",
+    "gte": 300
+   },
+   "hint": "“100 kez at” düğmesine birkaç kez bas.",
+   "why": "Atış sayısı arttıkça her yüzün göreli sıklığı 1/6'ya yaklaşır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Atış sayısı çok arttıkça her yüzün göreli sıklığı neye yaklaşır?",
+   "options": [
+    "1/6",
+    "0",
+    "1",
+    "Bir değere yaklaşmaz"
+   ],
+   "answer": 0,
+   "why": "Buna büyük sayılar yasası denir: deneysel olasılık, deneme sayısı arttıkça teorik olasılığa yaklaşır."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Şimdi **iki zar** atıyoruz ve üst yüzlerin toplamına bakıyoruz. En az **500** atış yap.",
+   "sim": {
+    "kind": "olasilik-sim",
+    "dice": 2
+   },
+   "goal": "En az 500 atış",
+   "check": {
+    "key": "total",
+    "gte": 500
+   },
+   "hint": "“100 kez at” düğmesine beş kez bas.",
+   "why": "Toplamlar eşit olası değildir; ortadaki toplamlar daha çok yolla elde edilir."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "İki zar atıldığında hangi toplam en sık gelir?",
+   "options": [
+    "7",
+    "12",
+    "2",
+    "6"
+   ],
+   "answer": 0,
+   "why": "7 toplamı 6 farklı yolla gelir: 1+6, 2+5, 3+4, 4+3, 5+2, 6+1. Hiçbir toplam bundan çok yolla elde edilemez."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "İki zarın toplamının **7** olma olasılığı kaçtır?",
+   "options": [
+    "6/36 = 1/6",
+    "1/12",
+    "7/36",
+    "1/11"
+   ],
+   "answer": 0,
+   "why": "Toplam 36 eşit olası sonuç var, bunların 6'sı 7 eder: 6/36 = 1/6."
+  }
+ ]
+}

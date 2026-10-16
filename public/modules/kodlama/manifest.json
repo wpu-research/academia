@@ -1,0 +1,42 @@
+{
+ "id": "kodlama",
+ "title": "Kodlama",
+ "version": "0.1.0",
+ "kind": "internal",
+ "levels": [
+  "Başlangıç",
+  "Temel",
+  "Orta",
+  "Orta-İleri",
+  "İleri",
+  "Algoritma ve Problem Çözme"
+ ],
+ "exam": "kodlama",
+ "lessons": [
+  {
+   "id": "donguyle-tekrar",
+   "title": "Döngüyle tekrar",
+   "level": "Seviye 1 · Başlangıç",
+   "alan": "Temel",
+   "minutes": 9,
+   "summary": "for döngüsünü adım adım çalıştır, çıktısını tahmin et, satırları sıraya diz.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
+   "id": "listeler",
+   "title": "Listeler",
+   "level": "Seviye 2 · Temel",
+   "alan": "Orta",
+   "minutes": 9,
+   "summary": "Listeleri kutular halinde gör: indeks, ekleme, sıralama ve liste üreteçleri.",
+   "sims": [
+    "gorsel-veri-yapisi",
+    "kod-izleyici",
+    "parsons"
+   ]
+  }
+ ]
+}

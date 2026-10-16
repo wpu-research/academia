@@ -1,0 +1,146 @@
+{
+ "id": "listeler",
+ "title": "Listeler",
+ "level": "Seviye 2 · Temel",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "Listeleri kutular halinde gör: indeks, ekleme, sıralama ve liste üreteçleri.",
+ "sims": [
+  "gorsel-veri-yapisi",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Liste, sıralı değerlerin tutulduğu bir kutu dizisidir. Her kutunun bir **indeksi** vardır; sayma 0'dan başlar, sondan saymak için eksi indeks kullanılır.",
+   "sim": {
+    "kind": "liste-gorsel",
+    "name": "meyveler",
+    "items": [
+     "\"elma\"",
+     "\"armut\"",
+     "\"kiraz\""
+    ]
+   }
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu satır ne yazdırır?",
+   "code": "meyveler = [\"elma\", \"armut\", \"kiraz\"]\nprint(meyveler[1])",
+   "options": [
+    "armut",
+    "elma",
+    "kiraz",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "İndeks 0'dan başlar: meyveler[0] elma, meyveler[1] armut."
+  },
+  {
+   "id": "s3",
+   "type": "trace",
+   "prompt": "Programı adım adım çalıştır ve listenin nasıl değiştiğini izle.",
+   "code": "sayilar = [3, 1, 2]\nsayilar.append(5)\nsayilar.sort()\nprint(sayilar)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "sayilar": "[3, 1, 2]"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayilar": "[3, 1, 2, 5]"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayilar": "[1, 2, 3, 5]"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "sayilar": "[1, 2, 3, 5]"
+     },
+     "out": "[1, 2, 3, 5]\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "append sona ekler, sort küçükten büyüğe sıralar: [1, 2, 3, 5]."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu satır ne yazdırır?",
+   "code": "meyveler = [\"elma\", \"armut\", \"kiraz\"]\nprint(meyveler[-1])",
+   "options": [
+    "kiraz",
+    "elma",
+    "armut",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "-1 son elemandır."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Listenin sonuna \"muz\" eklemek için boşluğa ne gelmeli?",
+   "code": "meyveler.___(\"muz\")",
+   "options": [
+    "append",
+    "add",
+    "push",
+    "extend_one"
+   ],
+   "answer": 0,
+   "why": "Python listelerinde sona eleman ekleyen metot append'dir."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kareler = [x * x for x in range(4)]\nprint(kareler)",
+   "options": [
+    "[0, 1, 4, 9]",
+    "[1, 4, 9, 16]",
+    "[0, 1, 2, 3]",
+    "[0, 2, 4, 6]"
+   ],
+   "answer": 0,
+   "why": "x sırayla 0, 1, 2, 3 olur; kareleri 0, 1, 4, 9."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Listedeki en büyük sayıyı bulan programı kur. Satırlara doğru sırayla dokun.",
+   "lines": [
+    "sayilar = [4, 9, 2, 7]",
+    "enbuyuk = sayilar[0]",
+    "for s in sayilar:",
+    "    if s > enbuyuk:",
+    "        enbuyuk = s",
+    "print(enbuyuk)"
+   ],
+   "why": "İlk elemanı en büyük kabul edip her elemanla karşılaştırırız; daha büyüğünü görünce güncelleriz. Sonuç 9."
+  }
+ ]
+}

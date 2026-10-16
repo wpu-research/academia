@@ -1,0 +1,161 @@
+{
+ "id": "donguyle-tekrar",
+ "title": "Döngüyle tekrar",
+ "level": "Seviye 1 · Başlangıç",
+ "alan": "Temel",
+ "minutes": 9,
+ "summary": "for döngüsünü adım adım çalıştır, çıktısını tahmin et, satırları sıraya diz.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "İki program da aynı işi yapıyor. Bir şeyi **100 kez** tekrarlamak için hangisi daha uygun?",
+   "code": "# 1. yol\nprint(\"adım\")\nprint(\"adım\")\nprint(\"adım\")\n\n# 2. yol\nfor i in range(3):\n    print(\"adım\")",
+   "options": [
+    "2. yol: for döngüsü",
+    "1. yol: alt alta satırlar"
+   ],
+   "answer": 0,
+   "why": "Döngüde sayıyı 3'ten 100'e çevirmek yeter; alt alta yazmak 100 satır demek."
+  },
+  {
+   "id": "s2",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. i'nin ve çıktının nasıl değiştiğine bak.",
+   "code": "for i in range(3):\n    print(i * 2)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "i": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 0,
+     "vars": {
+      "i": "0"
+     },
+     "out": "0\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "i": "1"
+     },
+     "out": "0\n"
+    },
+    {
+     "line": 0,
+     "vars": {
+      "i": "1"
+     },
+     "out": "0\n2\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "i": "2"
+     },
+     "out": "0\n2\n"
+    },
+    {
+     "line": 0,
+     "vars": {
+      "i": "2"
+     },
+     "out": "0\n2\n4\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "i": "2"
+     },
+     "out": "0\n2\n4\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "range(3) i'ye sırayla 0, 1, 2 değerlerini verir; her turda i * 2 yazdırılır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "for i in range(1, 4):\n    print(i)",
+   "options": [
+    "1 2 3",
+    "0 1 2 3",
+    "1 2 3 4",
+    "0 1 2"
+   ],
+   "answer": 0,
+   "why": "range(1, 4) 1'den başlar, 4'e kadar gider ama 4'ü almaz."
+  },
+  {
+   "id": "s4",
+   "type": "parsons",
+   "prompt": "1'den 5'e kadar sayıların toplamını yazdıran programı kur. Satırlara doğru sırayla dokun.",
+   "lines": [
+    "toplam = 0",
+    "for i in range(1, 6):",
+    "    toplam = toplam + i",
+    "print(toplam)"
+   ],
+   "why": "Önce toplam sıfırlanır, döngü her sayıyı ekler, sonuç döngüden sonra yazdırılır: 15."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "\"Merhaba\" yazısını **4 kez** yazdırmak için boşluğa ne gelmeli?",
+   "code": "for i in range(___):\n    print(\"Merhaba\")",
+   "options": [
+    "4",
+    "3",
+    "5",
+    "i"
+   ],
+   "answer": 0,
+   "why": "range(4) 0, 1, 2, 3 değerlerini verir; bu dört tur demektir."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program çalışmıyor. Hata hangi satırda?",
+   "code": "for i in range(3):\nprint(\"tekrar\")",
+   "options": [
+    "1. satır",
+    "2. satır"
+   ],
+   "answer": 1,
+   "why": "Döngünün içindeki satır içeri girintili olmalı. Python burada IndentationError verir."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program hangi deseni çizer?",
+   "code": "for i in range(3):\n    print(\"*\" * (i + 1))",
+   "options": [
+    "*\n**\n***",
+    "***\n**\n*",
+    "*\n*\n*",
+    "**\n**\n**"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "i sırayla 0, 1, 2 olur; \"*\" * (i + 1) bir, iki ve üç yıldız üretir."
+  }
+ ]
+}

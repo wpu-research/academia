@@ -18,6 +18,8 @@ Ortam değişkenleri: `NVIDIA_API_KEY` (Mac), isteğe bağlı `NVIDIA_MODEL`, `P
 
 - `server.js`: statik sunum + Mac (NVIDIA, akışlı). Hız sınırı IP başına dakikada 8, günde 60. Cevaplanmamış soruda doğru şıkkı içeren yanıtı göstermez.
 - `public/mac.js`: Mac maskotu, sohbet paneli ve tanışma akışı (`#basla`), ASK Robotik'ten uyarlandı
+- `public/lessons.js`: ders oynatıcısı ve simülasyonlar (kesir çubuğu, sayı doğrusu, zar deneyi, koordinat düzlemi, kesen/teğet, kod izleyici, satır dizme, liste görseli)
+- `public/modules/<modül>/`: her program bağımsız bir modül. `manifest.json` (dersler), `lessons/<id>.json` (adımlar ve bildirimsel cevap kontrolü), `curriculum.json` (müfredat). Ders içeriği kod değil veridir; aynı dersler ileride API ile kurumlara verilebilir.
 - `public/index.html`: başlık, menü, alt bilgi
 - `public/app.js`: ana sayfa, program sayfaları, öğrenme alanı (hash yönlendirme: `#p-<slug>`, `#ogren-tus`)
 - `public/engine.js`: HMGS motoru (Beta ustalık, soru seçici, en büyük kalan kotası, plan sıralaması, tekrar takvimi, Wilson aralığı)
@@ -30,7 +32,15 @@ Ortam değişkenleri: `NVIDIA_API_KEY` (Mac), isteğe bağlı `NVIDIA_MODEL`, `P
 - Denemeler "çıkacak soruları tahmin etmez". Sınavın alan dağılımına göre hazırlanır (HMGS'deki kararla aynı).
 - Ustalık her zaman belirsizlik aralığıyla gösterilir; sahte puan ve değerlendirme sayısı yok.
 
+## Müfredat kaynakları
+
+- Matematik 1–12: MEB Türkiye Yüzyılı Maarif Modeli ve 2018 programı (2026–27 durumuna göre), TYT/AYT konu dağılımı 2023–2025 sınavlarından. `curriculum.json` içinde `kaynaklar`.
+- Python: docs.python.org öğreticisi, CS50P ve tipik bir ilk yıl bilgisayar bilimi dersi. 142 örneğin çıktısı çalıştırılarak doğrulandı.
+
 ## Sıradaki işler
+
+- Modül API'si: kurum anahtarı, modül lisansı, sunucu tarafında cevap kontrolü, öğrenci ilerleme veritabanı, gömülebilir oynatıcı; HMGS ve Robotik dış modül olarak
+- Planlanan simülasyonlar (onluk bloklar, geometri tahtası, birim çember, integral alanı…) ve yeni dersler
 
 - Gerçek kullanıcı hesabı ve sunucu tarafı veri (şu an ilerleme yalnız tarayıcıda)
 - TUS Klinik Bilimler ve İngilizce seviye tespiti bankaları
