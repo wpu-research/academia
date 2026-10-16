@@ -13,6 +13,7 @@
   const PASSIVE = A.programs.filter((p) => p.active === false);
   const bySlug = Object.fromEntries(ACTIVE.filter((p) => !p.soon).map((p) => [p.slug, p]));
   const MODULES = ["matematik", "kodlama", "muzik"];
+  const METHOD_PROGS = ["hmgs", "tus", "yds", "matematik"];
   const examOn = (id) => !!A.exams[id] && A.exams[id].active !== false;
   const groupLabel = Object.fromEntries(A.groups.map((g) => [g.id, g.label]));
 
@@ -165,7 +166,7 @@
     <section class="section">
       <div class="wrap">
         <div class="section-head"><div><span class="eyebrow">Nasıl çalışır</span><h2>Her programda aynı dört adım</h2></div>
-          <p>Çalışma motoru ilk olarak HMGS için geliştirildi. Bugün TUS, HMGS ve YDS'de aynı mantıkla çalışıyor.</p></div>
+          <p>Çalışma motoru ilk olarak HMGS için geliştirildi. Bugün TUS, HMGS ve YDS'de aynı mantıkla çalışıyor. <a href="#yontem">Yöntemimizin ayrıntıları →</a></p></div>
         <div class="steps">
           <div class="step"><h3>Seviye tespiti</h3><p>Sınavdaki alan oranlarına göre seçilmiş kısa bir testle başlarsın.</p></div>
           <div class="step"><h3>Alan ustalığı</h3><p>Her cevap o alandaki ustalık tahminini günceller. Emin olup yanlış yaptığın konular daha ağır sayılır.</p></div>
@@ -311,6 +312,7 @@
       </div>
       <aside class="aside">
         ${cta}
+        ${METHOD_PROGS.includes(p.slug) ? `<div class="box"><h3>Soru Zekâsı</h3><p class="note">Bu programda konular en küçük birimine ayrılır, geçmiş sorular ölçülür ve planın her gün sınav ağırlığı ile senin zayıflığına göre yeniden kurulur.</p><a href="#yontem">Yöntemimizi incele →</a></div>` : ""}
         ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="#p-${o.slug}">${esc(o.title)}</a>`).join("")}</div>` : ""}
       </aside>
     </div></div>`;
@@ -347,6 +349,159 @@
       <section class="studio-box"><h2>DJ mikseri</h2><div id="st-dj"></div></section></div>`;
     LESSONS.sims["ritim-makinesi"](document.getElementById("st-rm"), { bpm: 120, pattern: { kick: [0, 4, 8, 12], clap: [4, 12], hat: [2, 6, 10, 14] } }, () => {});
     LESSONS.sims["dj-mikser"](document.getElementById("st-dj"), {}, () => {});
+  }
+
+  // ---------- Yöntem: Soru Zekâsı ----------
+  const ANSWER_SPREAD = [["A", 64], ["B", 61], ["C", 72], ["D", 77], ["E", 66]]; // 340 HMGS sorusu, doğru şık sayıları
+  function renderMethod() {
+    const maxN = Math.max(...ANSWER_SPREAD.map(([, n]) => n));
+    const layers = [
+      ["Konu", "Konuları en küçük birimine ayırırız"],
+      ["Soru", "Geçmiş soruları ölçeriz"],
+      ["Öğrenci", "Her cevabı birime ve tuzağa bağlarız"],
+      ["Üretim", "Yeni soruyu altı kontrolden geçiririz"],
+      ["Öncelik", "Neye önce çalışılacağını sınarız"],
+    ];
+    $app.innerHTML = `
+    <div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / Yöntemimiz</nav>
+      <div class="prog-hero method-hero">
+        <div>
+          <span class="eyebrow">Yöntemimiz · Soru Zekâsı</span>
+          <h1>Sınavı ölçer, öğrenciyi izler, planı her gün yeniden kurarız.</h1>
+          <p class="lead">Soru Zekâsı, sınav programlarımızın arkasındaki sistemdir. Konuyu en küçük parçasına ayırır, geçmiş soruların o parçaları nasıl sorduğunu ölçer, öğrencinin her cevabını aynı parçalara bağlar. Plan bu üç ölçümden çıkar.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#basla">Seviyeni Ölç</a><a class="btn btn-outline" href="#yontem" data-to="vaat">Ne vaat etmiyoruz</a></div>
+        </div>
+        <ol class="layer-stack" aria-label="Soru Zekâsı'nın beş katmanı">
+          ${layers.map(([k, t], i) => `<li><a href="#yontem" data-to="katman-${i + 1}"><span class="ln">${i + 1}</span><span><b>${k}</b><small>${t}</small></span></a></li>`).join("")}
+          <li class="loop" aria-hidden="true">Her cevap ölçüme geri döner</li>
+        </ol>
+      </div>
+    </div>
+
+    <section class="section soft">
+      <div class="wrap">
+        <div class="section-head"><div><span class="eyebrow">Öğrencinin yolu</span><h2>Beş adımlık döngü</h2></div>
+          <p>Döngü bir kez dönüp bitmez. Her deneme ve her tekrar, bir sonraki günün planını değiştirir.</p></div>
+        <div class="steps steps-5">
+          <div class="step"><h3>Seviye tespiti</h3><p>Sınavdaki ağırlıklara göre seçilmiş kısa bir testle başlarsın.</p></div>
+          <div class="step"><h3>Zayıf noktalar</h3><p>Hangi konuda, hangi soru kalıbında ve hangi tuzakta zorlandığın ortaya çıkar.</p></div>
+          <div class="step"><h3>Kişisel plan</h3><p>Sınavda çok sorulan ve senin zayıf olduğun yerler öne alınır.</p></div>
+          <div class="step"><h3>Çözüm ve tekrar</h3><p>Yanlışların ve unutmaya başladığın konular zamanı gelince geri gelir.</p></div>
+          <div class="step"><h3>Yeniden ölçüm</h3><p>Kişisel denemeler ilerlemeni ölçer, plan yeniden hesaplanır.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap method">
+        <article class="layer" id="katman-1">
+          <div class="layer-head"><span class="ln">1</span><div><span class="eyebrow">Konu</span><h2>Konuları en küçük birimine ayırırız</h2></div></div>
+          <div class="layer-body prose">
+            <p>“Medeni Hukuk” ya da “Fonksiyonlar” bir öğrenciye ne çalışacağını söylemez. Bu yüzden her sınavı, soruların gerçekten dayandığı en küçük birime kadar böleriz. Sorular, öğrencinin cevapları ve çalışma planı hep bu birimlere bağlanır.</p>
+            <div class="table-wrap"><table>
+              <thead><tr><th>Program</th><th>En küçük birim</th><th>İçeriği onaylayan</th><th>Durum</th></tr></thead>
+              <tbody>
+                <tr><td><b>HMGS</b></td><td>Kanun maddesi, fıkra ve bent; yürürlük tarihleriyle</td><td>Hukukçu</td><td><span class="chip chip-soon">İlk analiz tamam</span></td></tr>
+                <tr><td><b>TUS</b></td><td>Tıbbi konu ve dayandığı güncel kılavuz</td><td>Hekim</td><td><span class="chip chip-line">Planlandı</span></td></tr>
+                <tr><td><b>YDS</b></td><td>Dilbilgisi yapısı ve soru tipi (okuma, boşluk doldurma, çeviri…)</td><td>İngilizce uzmanı</td><td><span class="chip chip-line">Planlandı</span></td></tr>
+                <tr><td><b>Matematik TYT/AYT</b></td><td>MEB kazanımı</td><td>Matematik öğretmeni</td><td><span class="chip chip-line">Planlandı</span></td></tr>
+              </tbody></table></div>
+          </div>
+        </article>
+
+        <article class="layer" id="katman-2">
+          <div class="layer-head"><span class="ln">2</span><div><span class="eyebrow">Soru</span><h2>Geçmiş soruları ölçeriz</h2></div></div>
+          <div class="layer-body prose">
+            <p>Bu katmanda yapay zekâ tahmini değil, sayım vardır. Geçmiş sınavlardaki her soru, dayandığı birimle ve aşağıdaki özellikleriyle etiketlenir. Bu etiketler yalnız iç analiz içindir; geçmiş sınav sorularını yayımlamayız.</p>
+            <div class="trio">
+              <div><h3>Soru ağırlıkları</h3><p>Hangi alan, konu ve maddeden kaç soru geldiği; bu payın oturumdan oturuma nasıl değiştiği.</p></div>
+              <div><h3>Kalıp ve cümle yapısı</h3><p>Olumsuz kök (“…değildir”, “…yanlıştır”), I-II-III öncüllü sorular, vaka soruları, şıkların uzunluk dengesi.</p></div>
+              <div><h3>Soru yazarının düşünme biçimi</h3><p>Yazarın bir birimi soruya nasıl çevirdiği: birimin hangi öğesini sorduğu, hangi kalıbı seçtiği, yanlış şıkları nereden ürettiği.</p></div>
+            </div>
+            <div class="flow" aria-label="Soru yazarının adımları">
+              <span>Birim</span><i aria-hidden="true">→</i><span>Sorulan öğe<small>süre, sayı, istisna, tanım…</small></span><i aria-hidden="true">→</i><span>Kalıp</span><i aria-hidden="true">→</i><span>Çeldirici<small>yanlış şıkların kaynağı</small></span>
+            </div>
+            <div class="box findings">
+              <div class="findings-head"><h3>HMGS'de ilk analizden bulgular</h3><span class="chip chip-soon">İlk analiz · uzman onayı sürüyor</span></div>
+              <ul>
+                <li>Doğru cevap şıklara eşit dağılıyor. “Çoğu soruda cevap B” gibi bir kalıp yok; bu yüzden şık konumuna dayalı taktik öğretmeyiz.</li>
+                <li>Soruyu belirleyen, sorulan öğe. Örneğin bir listeden eleman çıkaran sorular hep “…değildir” kalıbında geliyor.</li>
+                <li>Yanlış şıklar çoğunlukla aynı maddeden ya da yakın maddelerden geliyor. Sayı sorularında yanlış seçenekler kanundaki başka sayılardan seçiliyor.</li>
+                <li>Aynı madde nadiren tekrar soruluyor, aynı madde öbeği ise sık geliyor. Bu bilgiyi çalışma sırasını kurmak için kullanırız, tek soru tahmini için değil.</li>
+              </ul>
+              <figure class="spread">
+                <figcaption>Geçmiş 340 HMGS sorusunda doğru şıkkın dağılımı</figcaption>
+                <div class="spread-bars" role="img" aria-label="${ANSWER_SPREAD.map(([l, n]) => `${l} ${n}`).join(", ")}">
+                  ${ANSWER_SPREAD.map(([l, n]) => `<div><span class="v">${n}</span><span class="bar" style="height:${(n / maxN) * 100}%"></span><span class="l">${l}</span></div>`).join("")}
+                </div>
+                <p class="note">Farklar şans eseri beklenen aralıkta kalıyor (ki-kare testi, %5 düzeyinde anlamlı değil).</p>
+              </figure>
+            </div>
+          </div>
+        </article>
+
+        <article class="layer" id="katman-3">
+          <div class="layer-head"><span class="ln">3</span><div><span class="eyebrow">Öğrenci</span><h2>Her cevabı birime ve tuzağa bağlarız</h2></div></div>
+          <div class="layer-body prose">
+            <p>Bir öğrenciye “Ticaret Hukuku'nda %60'tasın” demek eksik bilgidir. Aynı öğrenci süre sorularında hep yanılıyor, olumsuz köklü soruları ise yanlış okuyor olabilir. Bu yüzden ustalığı üç eksende izleriz.</p>
+            <div class="trio">
+              <div><h3>Konu ve birim</h3><p>Hangi madde, kazanım ya da konuda ne kadar hazır olduğun.</p></div>
+              <div><h3>Soru kalıbı</h3><p>Olumsuz kökte, öncüllü sorularda ya da vaka sorularında nasıl performans gösterdiğin.</p></div>
+              <div><h3>Tuzak türü</h3><p>Hangi yanlış şık türüne düştüğün: komşu maddedeki sayı, ters çevrilmiş kural, eklenmiş şart…</p></div>
+            </div>
+            <p>Ustalık tek bir sayı olarak değil, belirsizlik aralığıyla gösterilir. Az soru çözdüğün bir konuda aralık geniştir; veri yoksa “veri yok” yazar. Emin olduğunu söyleyip yanlış yaptığın sorular daha ağır sayılır, çünkü bunlar yanlış öğrenilmiş bilgiye işaret eder.</p>
+            <div class="formula" aria-label="Çalışma planındaki ağırlığın hesabı">
+              <span class="lhs"><b>Plandaki ağırlık</b><span class="op">=</span></span>
+              <span class="term"><b>Sınavdaki ağırlık</b><small>o birim sınavda ne kadar soruluyor</small></span>
+              <span class="op">×</span>
+              <span class="term"><b>Senin zayıflığın</b><small>o birimde ne kadar eksiğin var</small></span>
+            </div>
+            <p>Plan her gün yeniden kurulur. Günlük soru sayını sen belirlersin. Yanlış yaptığın ya da unutmaya başladığın sorular aralıklı tekrarla geri gelir: doğru cevapladıkça aralık uzar, yanılınca kısalır.</p>
+          </div>
+        </article>
+
+        <article class="layer" id="katman-4">
+          <div class="layer-head"><span class="ln">4</span><div><span class="eyebrow">Üretim</span><h2>Yeni soruyu altı kontrolden geçiririz</h2></div></div>
+          <div class="layer-body prose">
+            <p>Yeni sorular, ikinci katmandaki ölçümlerden çıkan kurallarla yazılır: bir birim, sorulacak bir öğe, bir kalıp ve yanlış şıkların nasıl kurulacağı. Yapay zekâ yalnız taslak yazar. Taslak sırayla şu kontrollerden geçmeden öğrenciye ulaşmaz:</p>
+            <ol class="checks">
+              <li><span><b>Dayanak kontrolü.</b> Doğru cevabın dayandığı madde ya da kaynak, metninden alıntıyla gösterilir.</span></li>
+              <li><span><b>Bağımsız çözüm.</b> Cevabı görmeyen ayrı bir model soruyu çözer. Farklı şıkka varırsa soru geri döner.</span></li>
+              <li><span><b>Kalıp uyumu.</b> Soru, seçilen kalıba ve sınavın dil yapısına uyuyor mu?</span></li>
+              <li><span><b>İpucu sızıntısı.</b> Doğru şık uzunluğundan, kelime seçiminden ya da konumundan belli oluyor mu? Doğru cevaplar şıklara eşit dağıtılır.</span></li>
+              <li><span><b>Benzerlik eşiği.</b> Gerçek sınav sorularına fazla benzeyen taslak elenir. Kopya ya da az değiştirilmiş soru yayımlamayız.</span></li>
+              <li><span><b>Uzman onayı.</b> Son karar alanında uzman bir kişinindir. Onaylanmayan soru yayına girmez.</span></li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="layer" id="katman-5">
+          <div class="layer-head"><span class="ln">5</span><div><span class="eyebrow">Öncelik</span><h2>Neye önce çalışılacağını sınarız</h2></div></div>
+          <div class="layer-body prose">
+            <p>Soru ağırlıkları ve yazar modeli birleşince her birim için bir öncelik puanı çıkar. Bu puanı kullanmadan önce geçmişte sınarız: yalnız eski oturumlara bakarak hesaplanan liste, bir sonraki gerçek sınavın sorularını ne kadar kapsıyordu?</p>
+            <p>Listeyi iki basit yöntemle karşılaştırırız: yalnız alan ağırlıklarına bakmak ve geçen sınavda sorulanları tekrar etmek. Liste ikisini de geçmezse yayına girmez. Geçerse “bu listedeki birimler, geçmiş sınavlarda soruların şu kadarını kapsadı” biçiminde, yani <b>kapsama oranı</b> olarak sunulur.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="vaat">
+      <div class="wrap">
+        <div>
+          <span class="eyebrow">Dürüstlük</span>
+          <h2>Ne vaat etmiyoruz</h2>
+          <p>Bir sistemin neyi yapamadığını söylemesi, yapabildiklerine güvenmenin ön şartıdır.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#basla">Seviyeni Ölç</a></div>
+        </div>
+        <ul class="feature-list promise-list">
+          <li><span><b>Çıkacak soruyu tahmin etmeyiz.</b> Öncelik listesi bir çalışma sırasıdır, soru listesi değildir.</span></li>
+          <li><span><b>Şık kalıplarına dayanmayız.</b> Geçmiş sorularda doğru cevap şıklara eşit dağılıyor; “B'yi işaretle” türü taktik yoktur.</span></li>
+          <li><span><b>Gerçek sınav sorusu yayımlamayız.</b> Geçmiş sorular yalnız iç analizde kullanılır.</span></li>
+          <li><span><b>Uydurma puan göstermeyiz.</b> Ustalık belirsizlik aralığıyla gösterilir; veri yoksa “veri yok” yazar.</span></li>
+          <li><span><b>Uzman onayı olmadan soru yayımlamayız.</b> Yapay zekâ taslak yazar, karar uzmanındır.</span></li>
+        </ul>
+      </div>
+    </section>`;
   }
 
   // ---------- Öğrenme alanı ----------
@@ -574,6 +729,8 @@
 
   // ---------- Etkileşimler ----------
   $app.addEventListener("click", (ev) => {
+    const jump = ev.target.closest("a[data-to]");
+    if (jump) { ev.preventDefault(); document.getElementById(jump.dataset.to)?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }); return; }
     const el = ev.target.closest("[data-act]");
     if (!el || el.disabled) return;
     const act = el.dataset.act;
@@ -708,6 +865,7 @@
     if (h === "ogren" || h.startsWith("ogren-")) return { view: "app", exam: h.slice(6) };
     if (h === "basla") return { view: "basla" };
     if (h === "studyo") return { view: "studyo" };
+    if (h === "yontem") return { view: "yontem" };
     return { view: "home", section: SECTIONS.includes(h) ? h : null };
   }
   function render() {
@@ -722,13 +880,14 @@
     else if (r.view === "module") renderModule(r.slug);
     else if (r.view === "basla") MAC.renderOnboarding($app);
     else if (r.view === "studyo") renderStudio();
+    else if (r.view === "yontem") renderMethod();
     else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "program" && MODULES.includes(r.slug)) { fillLessons(r.slug); fillCurriculum(r.slug); }
     if (r.view === "home" && r.section) document.getElementById(r.section)?.scrollIntoView({ behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     else if (current !== key || r.view === "home") window.scrollTo({ top: 0, behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     current = key;
-    document.querySelectorAll(".main-nav > a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + (r.section || (r.view === "home" ? "ana" : ""))));
+    document.querySelectorAll(".main-nav > a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + (r.section || (r.view === "home" ? "ana" : r.view === "yontem" ? "yontem" : ""))));
   }
   window.addEventListener("hashchange", render);
   // Adres zaten #ana iken hashchange tetiklenmez; linki yine de çalıştır.
