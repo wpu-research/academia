@@ -81,7 +81,7 @@
   }
 
   function card(p) {
-    return `<a class="card" href="#p-${p.slug}">
+    return `<a class="card" href="${esc(progHref(p))}">
       <div class="card-img"><img src="${p.image || `img/${p.slug}.jpg`}" alt="" loading="lazy" width="800" height="500"></div>
       <div class="card-body">
         <h3>${esc(p.title)}</h3>
@@ -309,7 +309,12 @@
       </div>`;
   }
 
+
+  // Kendi sitesi olan program (Robotik): bağlantılar doğrudan oraya gider. Eski #p-robotik adresiyle gelen
+  // ziyaretçi de yönlendirilir; replace sayesinde geri tuşu yönlendirme döngüsüne düşmez.
+  const progHref = (p) => (p.direct ? p.link.href : `#p-${p.slug}`);
   function renderProgram(p) {
+    if (p.direct) { location.replace(p.link.href); return; }
     const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^\d+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
     const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
@@ -352,7 +357,7 @@
         ${p.facts ? `<div class="box"><h3>Başvuru bilgisi</h3><ul class="facts">${p.facts.map((f) => `<li>${esc(f.text)} <a href="${esc(f.src)}" target="_blank" rel="noopener">${esc(f.label)}</a></li>`).join("")}</ul><p class="note">Şartlar değişebilir; başvurmadan önce konsolosluktan kontrol et.</p></div>` : ""}
         ${p.voiceCredit ? `<p class="note">${esc(p.voiceCredit)}</p>` : ""}
         ${METHOD_PROGS.includes(p.slug) ? `<div class="box"><h3>Soru Zekâsı</h3><p class="note">Bu programda konular en küçük birimine ayrılır, geçmiş sorular ölçülür ve planın her gün sınav ağırlığı ile senin zayıflığına göre yeniden kurulur.</p><a href="#yontem">Yöntemimizi incele →</a></div>` : ""}
-        ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="#p-${o.slug}">${esc(o.title)}</a>`).join("")}</div>` : ""}
+        ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="${esc(progHref(o))}">${esc(o.title)}</a>`).join("")}</div>` : ""}
       </aside>
     </div></div>`;
   }
@@ -360,7 +365,7 @@
   function renderModule(slug) {
     const p = bySlug.robotik, mods = p.modules, m = mods.find((x) => x.slug === slug);
     $app.innerHTML = `
-    <div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / <a href="#p-robotik">Robotik</a> / ${esc(m.title)}</nav>
+    <div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / <a href="${esc(p.link.href)}">Robotik</a> / ${esc(m.title)}</nav>
       <div class="prog-hero">
         <div>
           <span class="eyebrow">Robotik · Modül ${mods.indexOf(m) + 1} / ${mods.length}</span>
@@ -377,7 +382,7 @@
         <h2>Tüm modüller</h2>
         <div class="table-wrap"><table><tbody>${mods.map((x, i) => `<tr><td class="num">${i + 1}</td><td>${x.slug === m.slug ? `<b>${esc(x.title)}</b>` : `<a href="#m-${x.slug}">${esc(x.title)}</a>`}</td><td class="num">${x.lessons} ders</td></tr>`).join("")}</tbody></table></div>
       </div>
-      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler Robotik'in sanal laboratuvarında açılır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div></aside>
+      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler Robotik platformunda (robotik.macademia.online) açılır.</p><a class="btn btn-primary" href="${esc(p.link.href)}">${esc(p.link.label)}</a></div></aside>
     </div></div>`;
   }
 
@@ -1297,10 +1302,10 @@
   const nav = document.getElementById("main-nav"), toggle = document.getElementById("menu-toggle");
   mega.innerHTML = A.groups.map((g) => {
     const links = g.id === "deneyim"
-      ? A.programs.filter((p) => p.group === g.id).map((p) => p.soon ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("")
+      ? A.programs.filter((p) => p.group === g.id).map((p) => p.soon ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="${esc(progHref(p))}">${esc(p.title)}</a>`).join("")
       : g.id === "dijital"
-      ? `<a href="#p-robotik">Genel bakış</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
-      : A.programs.filter((p) => p.group === g.id).map((p) => p.active === false ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("");
+      ? `<a href="${esc(bySlug.robotik.link.href)}">Robotik platformu</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
+      : A.programs.filter((p) => p.group === g.id).map((p) => p.active === false ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="${esc(progHref(p))}">${esc(p.title)}</a>`).join("");
     return `<div><h4>${g.label}</h4>${links}</div>`;
   }).join("");
   const setMega = (open) => { mega.hidden = !open; dropBtn.setAttribute("aria-expanded", open); };
@@ -1325,6 +1330,7 @@
     if (h === "basla") return { view: "basla" };
     if (h === "studyo") return { view: "studyo" };
     if (h === "yontem") return { view: "yontem" };
+    if (h === "kaynaklar") return { view: "kaynaklar" };
     return { view: "home", section: SECTIONS.includes(h) ? h : null };
   }
   function render() {
@@ -1341,6 +1347,7 @@
     else if (r.view === "basla") MAC.renderOnboarding($app);
     else if (r.view === "studyo") renderStudio();
     else if (r.view === "yontem") renderMethod();
+    else if (r.view === "kaynaklar") renderCredits();
     else if (r.view === "anlatim") { $app.innerHTML = `<div class="wrap"><div id="la-root"></div></div>`; LESSONS.openAnlatim(document.getElementById("la-root"), r.mod, r.id, anlatimHooks); }
     else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
@@ -1490,12 +1497,18 @@
     return { page: "Ana sayfa", context: `Programlar: ${ACTIVE.filter((p) => !p.soon).map((p) => p.title).join(", ")}. Yakında: ${PASSIVE.map((p) => p.title).join(", ")}.` };
   });
 
-  // ---------- Fotoğraf kaynakları ----------
+  // ---------- Görsel kaynakları (#kaynaklar) ----------
+  // CC BY ve CC BY-SA lisanslı fotoğraflar kaynak gösterilmesini şart koşar; liste img/credits.json'dan gelir.
   const LIC = { by: "CC BY", "by-sa": "CC BY-SA", cc0: "CC0", pdm: "Kamu malı" };
-  fetch("img/credits.json").then((r) => r.json()).then((list) => {
-    document.getElementById("credit-list").innerHTML = list.map((c) =>
-      `<li><a href="${esc(c.foreign_landing_url)}" target="_blank" rel="noopener">${esc(c.title || "Adsız")}</a>, ${esc(c.creator || "bilinmiyor")} · <a href="${esc(c.license_url)}" target="_blank" rel="noopener">${LIC[c.license] || esc(c.license)} ${c.license === "cc0" || c.license === "pdm" ? "" : esc(c.license_version || "")}</a></li>`).join("");
-  }).catch(() => {});
+  function renderCredits() {
+    $app.innerHTML = `<div class="wrap prose credits-page"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / Görsel kaynakları</nav>
+      <h1>Görsel kaynakları</h1><p class="muted">Sitede kullanılan fotoğraflar ve lisansları.</p><ul id="credit-list"><li class="muted">Yükleniyor…</li></ul></div>`;
+    fetch("img/credits.json").then((r) => r.json()).then((list) => {
+      const el = document.getElementById("credit-list"); if (!el) return;
+      el.innerHTML = list.map((c) =>
+        `<li><a href="${esc(c.foreign_landing_url)}" target="_blank" rel="noopener">${esc(c.title || "Adsız")}</a>, ${esc(c.creator || "bilinmiyor")} · <a href="${esc(c.license_url)}" target="_blank" rel="noopener">${LIC[c.license] || esc(c.license)} ${c.license === "cc0" || c.license === "pdm" ? "" : esc(c.license_version || "")}</a></li>`).join("");
+    }).catch(() => { const el = document.getElementById("credit-list"); if (el) el.innerHTML = `<li>Liste yüklenemedi.</li>`; });
+  }
   // İlk çizim en sonda: sayfa kancaları (ders, konu anlatımı) tanımlandıktan sonra.
   render();
 })();

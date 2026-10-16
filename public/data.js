@@ -39,7 +39,9 @@ ACADEMIA.programs = [
       { slug: "mikro-kart", title: "Mikro Kart", lessons: 30, age: "8+ yaş", desc: "Tek kartlık mikrodenetleyici: düğmeler ve olaylar, sensörler, müzik, radyo ile iletişim ve projeler." },
       { slug: "oyun-atolyesi", title: "Oyun Atölyesi", lessons: 30, age: "8+ yaş", desc: "Çarpışma ve skor, harita, düşman zekâsı, platform fiziği ve baştan sona tam oyun projeleri." },
     ],
-    link: { href: "https://web-production-06ee9.up.railway.app", label: "Robotik laboratuvarını aç" },
+    link: { href: "https://robotik.macademia.online", label: "Robotik laboratuvarını aç" },
+    // Robotik'in kendi sitesi var: kart ve menü bağlantıları doğrudan oraya gider; modül sayfaları (#m-…) Macademia'da.
+    direct: true,
   },
   {
     slug: "kodlama", group: "oyunlu", title: "Kodlama", engine: "kodlama",
@@ -194,7 +196,7 @@ ACADEMIA.programs = [
   {
     slug: "aile-almanca", group: "aile", title: "Aile Birleşimi · Almanca", engine: "almanca", image: "img/aile-almanca.svg",
     fact: "Ücretsiz · A1 · 14 konu · 200 soru · 317 kelime",
-    voiceCredit: "Seslendirme: ElevenLabs.",
+    voiceCredit: "Seslendirme: Piper, açık kaynak ses (Thorsten).",
     summary: "Almanya'ya aile birleşimi başvurusu için istenen A1 düzeyi Almanca sınavına (ör. Goethe-Zertifikat A1: Start Deutsch 1) hazırlık.",
     body: [
       "Dinleme, okuma, yazma ve konuşma bölümlerinin her birinde kısa bir ölçüm yapılır; plan günlük hayat konularıyla (kendini tanıtma, aile, adres, randevu, form doldurma) kurulur. Dinleme metinleri sesli okunur.",
@@ -232,7 +234,7 @@ ACADEMIA.programs = [
     structure: [["1. bölüm", "Görevli ve diğer adayla günlük konularda konuşma"], ["2. bölüm", "Kısa bir kaydı dinleyip üzerine konuşma"], ["B1'de ek bölüm", "Diğer adayla birlikte bir etkinlik planlama"]],
     structureNote: "Süre: A1 yaklaşık 16–18, A2 20, B1 22 dakika.",
     anlatim: true,
-    voiceCredit: "Seslendirme: ElevenLabs.",
+    voiceCredit: "Seslendirme: Piper, açık kaynak ses (Cori).",
     // Seviye kutusu: hazır olan seviyelerin öğrenme alanına bağlantı.
     levels: [
       { exam: "lifeskills", ad: "A1", aciklama: "İlk başvuru" },
@@ -405,7 +407,7 @@ ACADEMIA.exams = {
     name: "Almanca A1 · Aile Birleşimi",
     short: "Almanca A1",
     blueprint: { "Hören": 1, "Lesen": 1, "Schreiben": 1, "Sprechen": 1 },
-    blueprintNote: "Dört bölüm eşit ağırlıktadır. Hören metinleri sesli okunur (seslendirme: ElevenLabs). Schreiben ve Sprechen soru bankasında çoktan seçmeli sorularla, Konuşma ve Yazma sekmelerinde mikrofonla konuşarak ve form ile kısa mesaj yazarak çalışılır.",
+    blueprintNote: "Dört bölüm eşit ağırlıktadır. Hören metinleri sesli okunur. Schreiben ve Sprechen soru bankasında çoktan seçmeli sorularla, Konuşma ve Yazma sekmelerinde mikrofonla konuşarak ve form ile kısa mesaj yazarak çalışılır.",
     areaNote: { "Hören": "Dinleme", "Lesen": "Okuma", "Schreiben": "Yazma: form ve kısa mesaj", "Sprechen": "Konuşma" },
     items: [
       { id: "a-h1", alan: "Hören", q: "Anna bugün saat kaçta geliyor?", say: { lang: "de-DE", text: "Hallo, hier ist Anna. Ich komme heute nicht um drei, sondern um halb fünf. Bis dann!" }, o: ["4.30", "5.30", "3.00", "4.00"], a: 0, e: "“Halb fünf” beşe yarım var, yani 4.30 demektir. Almancada “halb” bir sonraki saatin yarısıdır; 5.30 en sık yapılan hatadır." },
@@ -615,7 +617,7 @@ ACADEMIA.exams = {
     name: "İngilizce A1 · Aile vizesi ilk başvuru (Life Skills)",
     short: "Life Skills A1",
     blueprint: { "Dinleme": 1, "Konuşma": 1 },
-    blueprintNote: "Sınav yalnız dinleme ve konuşmadan oluşur. Dinleme metinleri sesli okunur (seslendirme: ElevenLabs). Konuşma soru bankasında çoktan seçmeli sorularla, Konuşma sekmesinde mikrofonla çalışılır; gerçek sınavda görevli ve bir başka adayla yüz yüze konuşursun.",
+    blueprintNote: "Sınav yalnız dinleme ve konuşmadan oluşur. Dinleme metinleri sesli okunur. Konuşma soru bankasında çoktan seçmeli sorularla, Konuşma sekmesinde mikrofonla çalışılır; gerçek sınavda görevli ve bir başka adayla yüz yüze konuşursun.",
     items: [
       { id: "ls-d1", alan: "Dinleme", q: "Toplantı hangi gün?", say: { lang: "en-GB", text: "Hi, it's Tom. The meeting is on Thursday now, not Tuesday. See you then." }, o: ["Thursday", "Tuesday", "Friday", "Today"], a: 0, e: "Toplantı salıdan (Tuesday) perşembeye (Thursday) alındı. İki kelimenin sesi yakındır; sona dikkat et." },
       { id: "ls-d2", alan: "Dinleme", q: "Doktor randevusu saat kaçta?", say: { lang: "en-GB", text: "Hello. The doctor can see you today at quarter past eleven." }, o: ["11.25", "11.15", "11.45", "10.45"], a: 1, e: "“Quarter past eleven” on biri çeyrek geçe, yani 11.15'tir. “Quarter to twelve” olsaydı 11.45 olurdu." },
