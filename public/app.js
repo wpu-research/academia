@@ -181,16 +181,20 @@
         <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
           <p>Her programda seviye tespiti, kişisel plan ve ilerleme takibi. Kodlama ve Matematik'te her seviye oyunlu.</p></div>
         <div class="cards cards-3">${ACTIVE.filter((p) => !p.featured).map(card).join("")}</div>
-        <div class="soon-head"><h3>Yeni Deneyimler</h3><p class="muted">Kamerayla hareket, mikrofonla konuşma, tarayıcıda müzik ve deney.</p></div>
+        <details class="soon-fold">
+        <summary class="soon-head"><h3>Yeni Deneyimler</h3><p class="muted">Kamerayla hareket, mikrofonla konuşma, tarayıcıda müzik ve deney.</p></summary>
         <div class="cards cards-3">${ACTIVE.filter((p) => p.featured).map((p) => p.soon
           ? `<div class="card card-soon" aria-disabled="true"><div class="card-img"><img src="${p.image}" alt="" loading="lazy" width="800" height="500"></div><div class="card-body"><h3>${esc(p.title)}</h3><div class="card-meta"><span>${esc(p.fact)}</span></div><p>${esc(p.summary)}</p><span class="chip chip-soon soon">Yakında</span></div></div>`
           : card(p)).join("")}</div>
-        <div class="soon-head"><h3>Yakında</h3><p class="muted">Bu programlar hazırlanıyor.</p></div>
+        </details>
+        <details class="soon-fold">
+        <summary class="soon-head"><h3>Yakında</h3><p class="muted">Bu programlar hazırlanıyor.</p></summary>
         <div class="cards cards-passive">
           ${PASSIVE.map(passiveCard).join("")}
           <div class="card card-cta is-passive" aria-disabled="true"><div><span class="eyebrow">Ücretsiz</span><h3>Seviyeni 15 dakikada ölç</h3></div><p>Seviye tespitini çöz, alan alan durumunu ve 14 günlük planını gör.</p><span class="chip chip-line soon">Yakında</span></div>
           <div class="card card-cta is-passive" aria-disabled="true"><div><span class="eyebrow">Kurumlar</span><h3>Okullar ve kurumlar için</h3></div><p>Sınıf yönetimi, ödev takvimi ve öğrenci ilerleme raporları.</p><span class="chip chip-line soon">Yakında</span></div>
         </div>
+        </details>
       </div>
     </section>
 
@@ -422,7 +426,7 @@
               <span>Birim</span><i aria-hidden="true">→</i><span>Sorulan öğe<small>süre, sayı, istisna, tanım…</small></span><i aria-hidden="true">→</i><span>Kalıp</span><i aria-hidden="true">→</i><span>Çeldirici<small>yanlış şıkların kaynağı</small></span>
             </div>
             <div class="box findings">
-              <div class="findings-head"><h3>HMGS'de ilk analizden bulgular</h3><span class="chip chip-soon">İlk analiz · uzman onayı sürüyor</span></div>
+              <div class="findings-head"><h3>HMGS'de ilk analizden bulgular</h3><span class="chip chip-ready">İlk analiz · örneklem hukukçu onaylı</span></div>
               <ul>
                 <li>Doğru cevap şıklara eşit dağılıyor. “Çoğu soruda cevap B” gibi bir kalıp yok; bu yüzden şık konumuna dayalı taktik öğretmeyiz.</li>
                 <li>Soruyu belirleyen, sorulan öğe. Örneğin bir listeden eleman çıkaran sorular hep “…değildir” kalıbında geliyor.</li>

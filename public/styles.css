@@ -439,6 +439,14 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 .cards-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .soon-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin: 56px 0 18px; }
 .soon-head h3 { font-size: 20px; }
+.soon-fold { border-top: 1px solid var(--line); margin-top: 40px; }
+.soon-fold > summary.soon-head { margin: 0; padding: 18px 0; cursor: pointer; list-style: none; align-items: center; }
+.soon-fold > summary.soon-head::-webkit-details-marker { display: none; }
+.soon-fold > summary.soon-head::after { content: ""; width: 9px; height: 9px; margin-left: auto; border-right: 2px solid var(--brand); border-bottom: 2px solid var(--brand); transform: rotate(45deg); transition: transform .2s; }
+.soon-fold[open] > summary.soon-head::after { transform: rotate(-135deg); }
+.soon-fold > summary.soon-head:hover h3 { color: var(--brand); }
+.soon-fold > summary.soon-head:focus-visible { outline: 2px solid var(--brand); outline-offset: 4px; border-radius: 6px; }
+.soon-fold[open] { padding-bottom: 8px; }
 .is-passive { opacity: .5; filter: grayscale(.85); pointer-events: none; user-select: none; }
 .card-cta.is-passive { justify-content: flex-start; }
 .soon { align-self: flex-start; margin-top: auto; }
