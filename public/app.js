@@ -138,6 +138,9 @@
   ];
   let slideIdx = 0, slideTimer = null;
 
+  // Unvan: Dr. ve Av. adın önünde, PhD ve MSc arkasında yazılır.
+  const advisorName = (p) => (["Dr.", "Av."].includes(p.title) ? `${p.title} ${p.name}` : p.title ? `${p.name}, ${p.title}` : p.name);
+
   function renderHome() {
     const d = derive("tus", sampleData("tus"));
     const act = nextAction({ ...d, dueNow: 0 }, { diagDone: true });
@@ -209,7 +212,7 @@
           <p>Her programın içeriğini alanında uzman bir danışman yönlendirir.</p></div>
         <div class="advisors">${A.advisors.map((p) => `<figure class="advisor">
           <img src="img/team/${p.photo}.jpg" alt="${esc(p.name)}" width="320" height="320" loading="lazy">
-          <figcaption><b>${p.title === "Dr." ? "Dr. " : ""}${esc(p.name)}${p.title === "PhD" ? ", PhD" : ""}</b><span class="chip chip-brand">${esc(p.field)}</span></figcaption></figure>`).join("")}</div>
+          <figcaption><b>${esc(advisorName(p))}</b><span class="chip chip-brand">${esc(p.field)}</span></figcaption></figure>`).join("")}</div>
       </div>
     </section>
 

@@ -14,8 +14,8 @@ ACADEMIA.groups = [
 
 ACADEMIA.advisors = [
   { photo: "murat", name: "Murat Arslan", title: "PhD", field: "Robotik ve Kodlama" },
-  { photo: "asli", name: "Aslı Bildir", title: "", field: "Hukuk" },
-  { photo: "ebru", name: "Ebru Çakır", title: "", field: "Matematik" },
+  { photo: "asli", name: "Aslı Bildir", title: "Av.", field: "Hukuk" },
+  { photo: "ebru", name: "Ebru Çakır", title: "MSc", field: "Matematik" },
   { photo: "ali", name: "Ali Şahin", title: "Dr.", field: "Tıp (TUS)" },
   { photo: "aida", name: "Aida Ariennejad", title: "PhD", field: "İngilizce" },
 ];
