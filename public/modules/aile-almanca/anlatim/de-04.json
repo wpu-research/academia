@@ -1,0 +1,134 @@
+{
+ "id": "de-04",
+ "baslik": "Sayılar, Fiyatlar ve Telefon Numaraları",
+ "sinif": "Temeller",
+ "sure": 14,
+ "ozet": "0'dan 100'e kadar sayıları, Almancadaki ters okunuşu ve fiyatların nasıl söylendiğini öğreneceğiz.",
+ "kazanim": [
+  "Zahlen",
+  "Hören: fiyat ve numara"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "0–12",
+   "govde": "null, eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn, elf, zwölf"
+  },
+  {
+   "tur": "kural",
+   "baslik": "13–19 ve onluklar",
+   "govde": "13–19: sayı + **-zehn**: dreizehn, vierzehn, fünfzehn, **sechzehn**, **siebzehn**, achtzehn, neunzehn.\n\nOnluklar **-zig** ile biter: zwanzig, **dreißig**, vierzig, fünfzig, **sechzig**, **siebzig**, achtzig, neunzig. 100: (ein)hundert.\n\nKalın yazılanlar düzensizdir: dreißig “-zig” değil “-ßig” alır; sechzehn/sechzig ve siebzehn/siebzig'de harf düşer."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ters okunuş: önce birler, sonra onlar",
+   "govde": "21'den sonra Almanca sayılar **birler + und + onlar** diye söylenir:\n\n- 21 = **einundzwanzig** (bir ve yirmi)\n- 47 = **siebenundvierzig** (yedi ve kırk)\n- 98 = **achtundneunzig**\n\nDinlerken önce duyduğun rakamı ikinci basamağa yaz: “siebenund…” duyunca _7 yaz, “…vierzig” gelince başına 4 ekle."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle ve yaz",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "dreizehn – dreißig",
+     "tr": "13 – 30"
+    },
+    {
+     "metin": "sechzehn – sechzig",
+     "tr": "16 – 60"
+    },
+    {
+     "metin": "einundzwanzig",
+     "tr": "21"
+    },
+    {
+     "metin": "siebenundvierzig",
+     "tr": "47"
+    },
+    {
+     "metin": "achtundneunzig",
+     "tr": "98"
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Fiyatlar ve telefon",
+   "govde": "Fiyatta önce euro, sonra sent söylenir: **2,50 €** = zwei Euro fünfzig. **0,99 €** = neunundneunzig Cent.\n\nTelefon numaraları genellikle rakam rakam ya da ikişer söylenir. Telefonda “zwei” ile “drei” karışmasın diye **zwo** de denir."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Alışverişte",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Was kostet das?",
+     "tr": "Bu ne kadar?"
+    },
+    {
+     "metin": "Das kostet drei Euro fünfzig.",
+     "tr": "Bu üç euro elli sent."
+    },
+    {
+     "metin": "Meine Telefonnummer ist null eins sieben sechs …",
+     "tr": "Telefon numaram 0176 …"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kayıtta “Das macht vierundsechzig Euro” duyuyorsun. Kaç euro?",
+   "cozum": [
+    "“vier” = 4, birler basamağı.",
+    "“sechzig” = 60, onlar basamağı.",
+    "60 + 4."
+   ],
+   "sonuc": "**64 €**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Ters okunuşu unutup “vierundsechzig”i **46** yazmak. Almancada ilk duyduğun sayı birler basamağıdır: vier**und**sechzig = **64**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“fünfunddreißig” kaçtır?",
+   "options": [
+    "50",
+    "53",
+    "35",
+    "15"
+   ],
+   "answer": 2,
+   "why": "Önce birler (fünf = 5), sonra onlar (dreißig = 30): 35.",
+   "hint": "İlk duyduğun sayı hangi basamak?"
+  },
+  {
+   "prompt": "“sechzehn” kaçtır?",
+   "options": [
+    "26",
+    "60",
+    "6",
+    "16"
+   ],
+   "answer": 3,
+   "why": "-zehn 13–19 arasını yapar: sechzehn = 16. 60 “sechzig”dir.",
+   "hint": "-zehn mi -zig mi?"
+  },
+  {
+   "prompt": "4,20 € nasıl söylenir?",
+   "options": [
+    "vier Euro zwanzig",
+    "zwanzig Euro vier",
+    "vierzig Euro zwei",
+    "vier zwanzig Cent"
+   ],
+   "answer": 0,
+   "why": "Önce euro, sonra sent: vier Euro zwanzig.",
+   "hint": "Önce euro mu, sent mi?"
+  }
+ ]
+}

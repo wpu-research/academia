@@ -1,0 +1,143 @@
+{
+ "id": "de-03",
+ "baslik": "Kendini Tanıtma",
+ "sinif": "Temeller",
+ "sure": 12,
+ "ozet": "Adını, nereden geldiğini, nerede oturduğunu ve hangi dilleri konuştuğunu söylemeyi; resmî “Sie” ile samimi “du” farkını öğreneceğiz.",
+ "kazanim": [
+  "Sprechen Teil 1",
+  "sein / heißen / kommen / wohnen"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sprechen bölümünün ilk görevi",
+   "govde": "Konuşma sınavının ilk kısmında kendini kısaca tanıtırsın: ad, yaş, ülke, oturduğun yer, konuştuğun diller, meslek ve hobi. Bu cümleler ezberlenebilir; sınavdan önce kendi cümlelerini hazırla."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Kendini tanıt",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Mein Name ist Ayşe Kaya.",
+     "tr": "Adım Ayşe Kaya."
+    },
+    {
+     "metin": "Ich heiße Ayşe.",
+     "tr": "Adım Ayşe."
+    },
+    {
+     "metin": "Ich bin dreißig Jahre alt.",
+     "tr": "Otuz yaşındayım."
+    },
+    {
+     "metin": "Ich komme aus der Türkei.",
+     "tr": "Türkiye'den geliyorum."
+    },
+    {
+     "metin": "Ich wohne in Izmir.",
+     "tr": "İzmir'de oturuyorum."
+    },
+    {
+     "metin": "Ich spreche Türkisch und ein bisschen Deutsch.",
+     "tr": "Türkçe ve biraz Almanca konuşuyorum."
+    },
+    {
+     "metin": "Ich bin Krankenschwester von Beruf.",
+     "tr": "Mesleğim hemşirelik."
+    },
+    {
+     "metin": "Mein Hobby ist Kochen.",
+     "tr": "Hobim yemek yapmak."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sie ve du",
+   "govde": "- **Sie** (büyük S): resmî “siz”. Sınav görevlisine, memura, doktora **Sie** dersin: *Wie heißen Sie?*\n- **du**: samimi “sen”. Arkadaşa, aileye, çocuğa: *Wie heißt du?*\n\nSınavda emin değilsen **Sie** kullan."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Soru ve cevap",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Wie heißen Sie?",
+     "tr": "Adınız ne?"
+    },
+    {
+     "metin": "Woher kommen Sie?",
+     "tr": "Nerelisiniz?"
+    },
+    {
+     "metin": "Wo wohnen Sie?",
+     "tr": "Nerede oturuyorsunuz?"
+    },
+    {
+     "metin": "Welche Sprachen sprechen Sie?",
+     "tr": "Hangi dilleri konuşuyorsunuz?"
+    },
+    {
+     "metin": "Wie geht es Ihnen? – Gut, danke. Und Ihnen?",
+     "tr": "Nasılsınız? – İyiyim, teşekkürler. Ya siz?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “Woher kommen Sie und wo wohnen Sie?” diye soruyor. Ankara'dan geliyorsun ve Konya'da oturuyorsun.",
+   "cozum": [
+    "“Woher” nereden demek: aus + ülke/şehir.",
+    "“Wo” nerede demek: in + şehir."
+   ],
+   "sonuc": "**Ich komme aus Ankara und ich wohne in Konya.**"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yaşı Türkçeden çevirip **“Ich habe 30 Jahre”** demek. Almancada yaş *sein* fiiliyle söylenir: **Ich bin 30 Jahre alt.**\n\nBir başka hata **“aus Türkei”** demek. Türkiye adı artikelle kullanılır: **aus der Türkei, in der Türkei.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Görevli “Wie alt sind Sie?” diye soruyor. Doğru cevap hangisi?",
+   "options": [
+    "Ich heiße 25.",
+    "Ich komme 25.",
+    "Ich habe 25 Jahre.",
+    "Ich bin 25 Jahre alt."
+   ],
+   "answer": 3,
+   "why": "Yaş “ich bin … Jahre alt” ile söylenir.",
+   "hint": "Yaşta hangi fiil kullanılır?"
+  },
+  {
+   "prompt": "Sınav görevlisine adını nasıl sorarsın?",
+   "options": [
+    "Wie heißen Sie?",
+    "Wie heiße ich?",
+    "Wie heißt du?",
+    "Wer bist du?"
+   ],
+   "answer": 0,
+   "why": "Görevliye resmî “Sie” ile hitap edilir.",
+   "hint": "Resmî hitap hangisiydi?"
+  },
+  {
+   "prompt": "“Türkiye'den geliyorum.”",
+   "options": [
+    "Ich wohne aus der Türkei.",
+    "Ich komme aus der Türkei.",
+    "Ich komme in Türkei.",
+    "Ich komme aus Türkei."
+   ],
+   "answer": 1,
+   "why": "Nereden: aus. Türkiye artikelle: der Türkei.",
+   "hint": "Türkiye adının artikeli var."
+  }
+ ]
+}

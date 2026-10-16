@@ -1,0 +1,115 @@
+{
+ "id": "de-06",
+ "baslik": "Artikeller: der, die, das",
+ "sinif": "Temeller",
+ "sure": 14,
+ "ozet": "Almanca isimlerin üç cinsiyetini, belirsiz artikeli (ein, eine) ve olumsuz “kein”i öğreneceğiz.",
+ "kazanim": [
+  "Artikel",
+  "ein / kein",
+  "Plural"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Her ismin bir artikeli var",
+   "govde": "Almancada her isim üç gruptan birine girer: **der** (eril), **die** (dişil), **das** (nötr). Çoğulda hepsi **die** olur.\n\nArtikel çoğu zaman anlamdan tahmin edilemez: *der Tisch* (masa), *die Lampe* (lamba), *das Bett* (yatak). Bu yüzden her yeni kelimeyi artikeliyle birlikte öğren."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İpuçları",
+   "govde": "- **-ung, -heit, -keit, -ion** ile bitenler **die**: die Wohnung, die Information\n- **-chen** ile bitenler **das**: das Mädchen\n- Günler, aylar, mevsimler **der**: der Montag, der Mai\n- Aile: der Vater, die Mutter, **das** Kind"
+  },
+  {
+   "tur": "kural",
+   "baslik": "ein, eine, kein",
+   "govde": "Belirsiz artikel (bir): **ein** (der ve das için), **eine** (die için).\n\n- der Tisch → **ein** Tisch\n- die Lampe → **eine** Lampe\n- das Bett → **ein** Bett\n\nOlumsuz (hiç … yok): **kein / keine**. *Ich habe **kein** Auto. Ich habe **keine** Kinder.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "der Mann, die Frau, das Kind",
+     "tr": "adam/koca, kadın/karı, çocuk"
+    },
+    {
+     "metin": "die Wohnung, das Zimmer, die Küche",
+     "tr": "daire, oda, mutfak"
+    },
+    {
+     "metin": "Das ist ein Tisch.",
+     "tr": "Bu bir masa."
+    },
+    {
+     "metin": "Das ist eine Lampe.",
+     "tr": "Bu bir lamba."
+    },
+    {
+     "metin": "Ich habe keine Kinder.",
+     "tr": "Çocuğum yok."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çoğul",
+   "govde": "Çoğul ekleri değişkendir; kelimeyle birlikte öğrenilir: der Tisch – die Tisch**e**, das Kind – die Kind**er**, die Frau – die Frau**en**, das Auto – die Auto**s**, der Apfel – die **Ä**pfel."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“Wohnung” kelimesinin artikeli nedir? “Bir dairem var” nasıl denir?",
+   "cozum": [
+    "-ung ile biten kelimeler die alır: die Wohnung.",
+    "die için belirsiz artikel eine'dir."
+   ],
+   "sonuc": "**die Wohnung** → *Ich habe **eine** Wohnung.*"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Türkçede cinsiyet olmadığı için artikeli atlamak: “Ich habe Wohnung.” Tekil sayılabilen isimlerin önünde artikel gerekir: **Ich habe eine Wohnung.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Zeitung” (gazete) kelimesinin artikeli hangisi?",
+   "options": [
+    "die",
+    "ein",
+    "der",
+    "das"
+   ],
+   "answer": 0,
+   "why": "-ung ile bitenler die alır.",
+   "hint": "Sonuna bak: -ung."
+  },
+  {
+   "prompt": "Boşluğu doldur: “Das ist ---- Kind.” (das Kind)",
+   "options": [
+    "eine",
+    "ein",
+    "einen",
+    "die"
+   ],
+   "answer": 1,
+   "why": "das için belirsiz artikel ein'dir.",
+   "hint": "der/das → ein, die → eine."
+  },
+  {
+   "prompt": "“Arabam yok.”",
+   "options": [
+    "Ich habe keine Autos nicht.",
+    "Ich habe nicht Auto.",
+    "Ich habe kein Auto.",
+    "Ich nicht habe Auto."
+   ],
+   "answer": 2,
+   "why": "İsmi olumsuzlarken kein/keine kullanılır.",
+   "hint": "İsim olumsuzlanırken nicht değil …"
+  }
+ ]
+}

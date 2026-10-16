@@ -1,0 +1,105 @@
+{
+ "id": "de-13",
+ "baslik": "Dinleme Stratejileri",
+ "sinif": "Sınav Stratejileri",
+ "sure": 12,
+ "ozet": "Hören bölümünde soruyu önceden okumayı, hangi bilgiyi arayacağını tahmin etmeyi ve sık kullanılan tuzakları tanımayı öğreneceğiz.",
+ "kazanim": [
+  "Hören",
+  "Tuzaklar"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Dinlemeden önce",
+   "govde": "1) **Soruyu ve şıkları oku.** Ne arıyorsun: saat mi, gün mü, fiyat mı, yer mi?\n2) Aradığın bilginin Almancasını aklından geçir: saat → *Uhr, halb, Viertel*; gün → *Montag … Sonntag*.\n3) Dinlerken her kelimeyi anlamaya çalışma; yalnız aradığın bilgiyi yakala."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sık tuzaklar",
+   "govde": "- **nicht …, sondern …**: doğru bilgi *sondern*'den sonra gelir.\n- **Düzeltme:** *“Um drei – nein, Moment, um vier.”* Son söylenen geçerlidir.\n- **Değişen plan:** *“Eigentlich am Montag, aber jetzt am Mittwoch.”* (Aslında pazartesi, ama artık çarşamba.)\n- **Benzer sayılar:** *dreizehn* (13) – *dreißig* (30), *sechzehn* (16) – *sechzig* (60)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Tuzağı yakala",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Wir treffen uns nicht um drei, sondern um vier.",
+     "tr": "Saat üçte değil, dörtte buluşuyoruz."
+    },
+    {
+     "metin": "Der Kurs ist am Montag. Nein, Entschuldigung, am Dienstag.",
+     "tr": "Kurs pazartesi. Hayır, pardon, salı."
+    },
+    {
+     "metin": "Eigentlich kostet das zwanzig Euro, heute aber nur fünfzehn.",
+     "tr": "Aslında yirmi euro, ama bugün yalnızca on beş."
+    },
+    {
+     "metin": "Ihr Termin ist am dreizehnten, nicht am dreißigsten.",
+     "tr": "Randevunuz ayın on üçünde, otuzunda değil."
+    }
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Kaç kez dinlersin?",
+   "govde": "Bazı bölümlerde metni iki kez, bazılarında bir kez duyarsın; sınav yönergesi bunu söyler. İki kez çalınan metinde ilk dinleyişte cevabı işaretle, ikincide kontrol et."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Mesaj: “Hallo Ayşe, hier ist Mehmet. Wir wollten am Freitag kommen, aber das geht leider nicht. Wir kommen am Samstag.” Mehmet hangi gün geliyor?",
+   "cozum": [
+    "“am Freitag … geht leider nicht”: cuma olmuyor.",
+    "“Wir kommen am Samstag”: son söylenen plan cumartesi."
+   ],
+   "sonuc": "**Cumartesi (Samstag).** Önce söylenen gün çeldiricidir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İlk duyduğun bilgiyi hemen işaretleyip dinlemeyi bırakmak. A1 dinleme metinlerinde bilgi sıklıkla değiştirilir; mesaj bitene kadar dinle."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Nicht um fünf, sondern um sechs.” Saat kaç?",
+   "options": [
+    "5",
+    "6",
+    "11",
+    "5.30"
+   ],
+   "answer": 1,
+   "why": "Doğru bilgi sondern'den sonra gelir: altı.",
+   "hint": "sondern'den sonra ne geliyor?"
+  },
+  {
+   "prompt": "Dinlemeden önce ilk yapman gereken nedir?",
+   "options": [
+    "Sözlüğe bakmak",
+    "Gözlerini kapatmak",
+    "Soruyu ve şıkları okumak",
+    "Her kelimeyi yazmak"
+   ],
+   "answer": 2,
+   "why": "Ne arayacağını bilirsen o bilgiyi yakalaman kolaylaşır.",
+   "hint": "Ne arayacağını nereden bilirsin?"
+  },
+  {
+   "prompt": "“dreißig” kaçtır?",
+   "options": [
+    "3",
+    "33",
+    "13",
+    "30"
+   ],
+   "answer": 3,
+   "why": "dreißig = 30; 13 dreizehn'dir.",
+   "hint": "-ßig onluklar gibi."
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+{
+ "id": "de-07",
+ "baslik": "Aile ve İyelik",
+ "sinif": "Aile ve Günlük Hayat",
+ "sure": 12,
+ "ozet": "Aile bireylerini, medeni durumu ve “benim, senin, sizin” anlamındaki iyelik sözcüklerini öğreneceğiz.",
+ "kazanim": [
+  "Familie",
+  "mein / dein / Ihr",
+  "Familienstand"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Aile",
+   "govde": "**der Vater** (baba), **die Mutter** (anne), **die Eltern** (anne baba), **der Bruder** (erkek kardeş), **die Schwester** (kız kardeş), **die Geschwister** (kardeşler), **der Sohn** (oğul), **die Tochter** (kız evlat), **das Kind / die Kinder** (çocuk/lar), **der Mann** (koca), **die Frau** (karı), **die Großeltern** (büyükanne ve büyükbaba)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Medeni durum (Familienstand)",
+   "govde": "**ledig** (bekâr), **verheiratet** (evli), **geschieden** (boşanmış), **verwitwet** (dul).\n\n*Ich bin verheiratet. Mein Mann wohnt in Deutschland.*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "İyelik: mein, dein, Ihr",
+   "govde": "Artikel gibi çekimlenir: der/das → **mein**, die ve çoğul → **meine**.\n\n- **mein** Mann, **mein** Kind\n- **meine** Frau, **meine** Kinder\n\nAynı mantıkla: **dein / deine** (senin), **Ihr / Ihre** (sizin, resmî). *Wie ist **Ihr** Name? Wo wohnt **Ihre** Familie?*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Ich bin verheiratet und habe zwei Kinder.",
+     "tr": "Evliyim ve iki çocuğum var."
+    },
+    {
+     "metin": "Mein Mann arbeitet in München.",
+     "tr": "Kocam Münih'te çalışıyor."
+    },
+    {
+     "metin": "Meine Tochter ist sechs Jahre alt.",
+     "tr": "Kızım altı yaşında."
+    },
+    {
+     "metin": "Meine Eltern wohnen in der Türkei.",
+     "tr": "Annemle babam Türkiye'de oturuyor."
+    },
+    {
+     "metin": "Wie heißt Ihre Frau?",
+     "tr": "Eşinizin adı ne?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“Kızım ve oğlum Almanya'da.” (die Tochter, der Sohn, in Deutschland sein)",
+   "cozum": [
+    "die Tochter → meine Tochter.",
+    "der Sohn → mein Sohn.",
+    "İki kişi: sein çoğul → sind."
+   ],
+   "sonuc": "***Meine Tochter und mein Sohn sind in Deutschland.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**Frau** ve **Mann** kelimelerinin iki anlamını karıştırmak: *die Frau* hem “kadın” hem “karı/eş”, *der Mann* hem “adam” hem “koca/eş” demektir. “Mein Mann” = **kocam**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Formda “Familienstand: ledig” ne anlama gelir?",
+   "options": [
+    "Boşanmış",
+    "Dul",
+    "Evli",
+    "Bekâr"
+   ],
+   "answer": 3,
+   "why": "ledig = bekâr.",
+   "hint": "verheiratet evli demekti."
+  },
+  {
+   "prompt": "Boşluğu doldur: “---- Kinder gehen in die Schule.”",
+   "options": [
+    "Meine",
+    "Meinen",
+    "Meiner",
+    "Mein"
+   ],
+   "answer": 0,
+   "why": "Çoğulda meine kullanılır.",
+   "hint": "Kinder çoğul."
+  },
+  {
+   "prompt": "“die Eltern” kimlerdir?",
+   "options": [
+    "Kardeşler",
+    "Anne ve baba",
+    "Büyükanne ve büyükbaba",
+    "Çocuklar"
+   ],
+   "answer": 1,
+   "why": "Eltern = anne baba. Kardeşler Geschwister, büyükler Großeltern.",
+   "hint": "Großeltern'de “groß” var."
+  }
+ ]
+}

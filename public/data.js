@@ -199,7 +199,25 @@ ACADEMIA.programs = [
       "Dinleme, okuma, yazma ve konuşma bölümlerinin her birinde kısa bir ölçüm yapılır; plan günlük hayat konularıyla (kendini tanıtma, aile, adres, randevu, form doldurma) kurulur. Dinleme metinleri sesli okunur.",
       "Başvuru şartları değişebilir; güncel şartı başvuru öncesinde ilgili konsolosluktan kontrol et.",
     ],
-    structure: [["Hören", "Dinleme"], ["Lesen", "Okuma"], ["Schreiben", "Form ve kısa mesaj"], ["Sprechen", "Grup içinde konuşma"]],
+    structure: [["Hören", "Dinleme · yaklaşık 20 dk"], ["Lesen", "Okuma · yaklaşık 25 dk"], ["Schreiben", "Form ve kısa mesaj · yaklaşık 20 dk"], ["Sprechen", "Grup içinde konuşma · yaklaşık 15 dk"]],
+    anlatim: true,
+    // Yol haritası: 8 hafta. Sınava daha az kaldıysa haftalar sırayla birleştirilir.
+    roadmap: [
+      { baslik: "Sınavı tanı, sesleri öğren", dersler: ["de-01", "de-02", "de-03"], hedef: "Seviye tespitini çöz. Kendini tanıtan 5 cümleni sesli tekrar et." },
+      { baslik: "Sayılar ve cümle düzeni", dersler: ["de-04", "de-05"], hedef: "Her gün 10 soru çöz. 0–100 arası sayıları dinleyip yaz." },
+      { baslik: "Artikeller ve aile", dersler: ["de-06", "de-07"], hedef: "Aile üyelerini artikeliyle söyle; ailen hakkında 5 cümle kur." },
+      { baslik: "Saat, randevu, istekler", dersler: ["de-08", "de-09"], hedef: "Saatleri (halb, Viertel) hatasız oku. Telefonla randevu diyaloğunu tekrar et." },
+      { baslik: "Rica etmek ve şehirde", dersler: ["de-10", "de-11"], hedef: "Rica cümleleri kur, yol tarifi diyaloglarını dinle." },
+      { baslik: "Yazma", dersler: ["de-12"], hedef: "Bir form doldur ve üç noktalı iki kısa mesaj yaz." },
+      { baslik: "Sınav stratejileri", dersler: ["de-13", "de-14"], hedef: "Bir kişisel deneme çöz, hata defterini gözden geçir." },
+      { baslik: "Genel tekrar", dersler: [], hedef: "Hata defterindeki soruları tekrarla, iki tam deneme çöz." },
+    ],
+    facts: [
+      { text: "Aile birleşimi için kabul edilen A1 belgeleri: Goethe-Institut ve telc'in Start Deutsch 1 sınavı ile ÖSD Zertifikat A1.", src: "https://china.diplo.de/resource/blob/1302118/1bc5734bca924067aebf07a4ae3c3081/pdf-info-natvisum-deutschkenntnisse-ehegattennachzug-data.pdf", label: "Auswärtiges Amt, Merkblatt (Nisan 2024)" },
+      { text: "Sertifika genellikle sınav tarihinden itibaren bir yıl geçerli kabul edilir.", src: "https://china.diplo.de/resource/blob/1302118/1bc5734bca924067aebf07a4ae3c3081/pdf-info-natvisum-deutschkenntnisse-ehegattennachzug-data.pdf", label: "Auswärtiges Amt, Merkblatt (Nisan 2024)" },
+      { text: "Sınav yerleri haftalar önceden dolabilir; kayıt tarihini erkenden öğren.", src: "https://havanna.diplo.de/cu-de/service/05-visaeinreise/2097582-2097582", label: "Auswärtiges Amt, Start Deutsch 1" },
+      { text: "Sınav bölümleri: Lesen 25, Hören 20, Schreiben 20 dakika; Sprechen yaklaşık 15 dakika ve grup hâlinde.", src: "https://www.goethe.de/ins/ar/de/m/sta/bue/prf/gzsd1/inf.html", label: "Goethe-Institut" },
+    ],
   },
   {
     slug: "aile-ingilizce", group: "aile", title: "Aile Birleşimi · İngilizce", engine: "lifeskills", image: "img/aile-ingilizce.svg",

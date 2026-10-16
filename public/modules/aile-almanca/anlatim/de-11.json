@@ -1,0 +1,139 @@
+{
+ "id": "de-11",
+ "baslik": "Şehirde: Alışveriş, Yol, Ulaşım",
+ "sinif": "Aile ve Günlük Hayat",
+ "sure": 12,
+ "ozet": "Fiyat sormayı, yol tarifi almayı ve anonslarda geçen temel kelimeleri öğreneceğiz.",
+ "kazanim": [
+  "Einkaufen",
+  "Wegbeschreibung",
+  "Durchsagen"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "ses",
+   "baslik": "Alışveriş",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Was kostet ein Kilo Tomaten?",
+     "tr": "Bir kilo domates ne kadar?"
+    },
+    {
+     "metin": "Ich nehme zwei Kilo, bitte.",
+     "tr": "İki kilo alayım, lütfen."
+    },
+    {
+     "metin": "Haben Sie auch Brot?",
+     "tr": "Ekmeğiniz de var mı?"
+    },
+    {
+     "metin": "Das macht zusammen sieben Euro zwanzig.",
+     "tr": "Hepsi yedi euro yirmi sent ediyor."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yol tarifi",
+   "govde": "**Entschuldigung, wo ist …?** (Affedersiniz, … nerede?)\n\n**geradeaus** (düz), **links** (sol), **rechts** (sağ), **die erste Straße links** (soldan ilk sokak), **gegenüber** (karşısında), **neben** (yanında), **in der Nähe** (yakında)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Yol sormak",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Entschuldigung, wo ist der Bahnhof?",
+     "tr": "Affedersiniz, istasyon nerede?"
+    },
+    {
+     "metin": "Gehen Sie geradeaus und dann links.",
+     "tr": "Düz gidin, sonra sola dönün."
+    },
+    {
+     "metin": "Die Apotheke ist neben der Bank.",
+     "tr": "Eczane bankanın yanında."
+    },
+    {
+     "metin": "Ist das weit? – Nein, nur fünf Minuten.",
+     "tr": "Uzak mı? – Hayır, yalnızca beş dakika."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Anonslarda sık geçenler",
+   "govde": "**der Zug** (tren), **der Bus** (otobüs), **das Gleis** (peron), **die Abfahrt** (kalkış), **die Ankunft** (varış), **die Verspätung** (rötar), **fällt aus** (iptal), **Achtung!** (Dikkat!), **heute** (bugün), **leider** (maalesef)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Anons",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Achtung, bitte! Der Zug nach Frankfurt hat zehn Minuten Verspätung.",
+     "tr": "Dikkat! Frankfurt treni on dakika rötarlı."
+    },
+    {
+     "metin": "Der Bus Linie fünf fällt heute aus.",
+     "tr": "5 numaralı otobüs bugün iptal."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Anons: “Der Zug nach Köln fährt heute nicht von Gleis drei, sondern von Gleis acht.” Hangi perona gidersin?",
+   "cozum": [
+    "“nicht von Gleis drei” = 3. perondan değil.",
+    "“sondern von Gleis acht” = 8. perondan."
+   ],
+   "sonuc": "**8. peron.** “nicht …, sondern …” yapısında doğru bilgi **sondern**'den sonra gelir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Anonsta ilk duyduğun sayıyı işaretlemek. Dinleme metinleri çoğu zaman bir bilgiyi değiştirir: “**nicht** um drei, **sondern** um fünf”. **sondern**'den sonrasını bekle."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Gehen Sie rechts.” ne demek?",
+   "options": [
+    "Düz gidin",
+    "Geri dönün",
+    "Sola gidin",
+    "Sağa gidin"
+   ],
+   "answer": 3,
+   "why": "rechts = sağ, links = sol.",
+   "hint": "links sol demekti."
+  },
+  {
+   "prompt": "“Der Zug hat Verspätung.”",
+   "options": [
+    "Tren rötarlı",
+    "Tren erken geldi",
+    "Tren dolu",
+    "Tren iptal"
+   ],
+   "answer": 0,
+   "why": "Verspätung = rötar, gecikme.",
+   "hint": "“spät” geç demek."
+  },
+  {
+   "prompt": "“Die Post ist gegenüber dem Bahnhof.” Postane nerede?",
+   "options": [
+    "İstasyonun içinde",
+    "İstasyonun karşısında",
+    "İstasyondan uzakta",
+    "İstasyonun yanında"
+   ],
+   "answer": 1,
+   "why": "gegenüber = karşısında. neben = yanında.",
+   "hint": "neben yanında demekti."
+  }
+ ]
+}

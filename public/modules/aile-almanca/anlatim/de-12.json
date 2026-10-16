@@ -1,0 +1,113 @@
+{
+ "id": "de-12",
+ "baslik": "Form Doldurma ve Kısa Mesaj",
+ "sinif": "Yazma",
+ "sure": 16,
+ "ozet": "Schreiben bölümünün iki görevini çalışacağız: form alanlarını tanımak ve üç noktalı kısa bir mesaj yazmak.",
+ "kazanim": [
+  "Schreiben Teil 1",
+  "Schreiben Teil 2",
+  "Anrede ve Gruß"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Formdaki alanlar",
+   "govde": "- **Vorname**: ad · **Nachname / Familienname**: soyadı\n- **Geburtsdatum**: doğum tarihi (gün.ay.yıl, ör. 15.03.1990) · **Geburtsort**: doğum yeri\n- **Staatsangehörigkeit**: uyruk (ör. türkisch)\n- **Straße, Hausnummer**: sokak ve kapı no · **PLZ**: posta kodu · **Wohnort**: oturduğun şehir\n- **Familienstand**: medeni durum · **Unterschrift**: imza"
+  },
+  {
+   "tur": "metin",
+   "baslik": "Birinci görev: form",
+   "govde": "Kısa bir metin okursun (ör. bir arkadaşının bilgileri) ve formdaki boşlukları bu bilgilerle doldurursun. Tam cümle gerekmez; tek kelime ya da sayı yeter. Yazım hatalarına dikkat et."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İkinci görev: kısa mesaj",
+   "govde": "Yaklaşık **30 kelimelik** bir mesaj yazarsın. Görevde **üç nokta** verilir; üçünü de mutlaka yaz.\n\n- Resmî açılış: **Sehr geehrte Frau Becker,** / **Sehr geehrter Herr Wolf,**\n- Samimi açılış: **Liebe Anna,** / **Lieber Tom,**\n- Resmî kapanış: **Mit freundlichen Grüßen**\n- Samimi kapanış: **Viele Grüße** / **Liebe Grüße**\n\nAçılıştaki virgülden sonra metin **küçük harfle** başlar (isimler ve resmî “Sie” hariç)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görev: Kurs öğretmenin Frau Becker'e yaz. Yarın derse gelemiyorsun (1), çünkü doktora gitmek zorundasın (2). Ödevleri soruyorsun (3).",
+   "cozum": [
+    "Resmî açılış: Sehr geehrte Frau Becker,",
+    "1: ich kann morgen leider nicht zum Kurs kommen.",
+    "2: Ich muss zum Arzt gehen.",
+    "3: Welche Hausaufgaben haben wir?",
+    "Resmî kapanış ve ad."
+   ],
+   "sonuc": "*Sehr geehrte Frau Becker,*\n*ich kann morgen leider nicht zum Kurs kommen. Ich muss zum Arzt gehen. Welche Hausaufgaben haben wir? Können Sie mir bitte schreiben?*\n*Mit freundlichen Grüßen*\n*Ayşe Kaya*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Sehr geehrte Frau Becker,",
+     "tr": "Sayın Bayan Becker,"
+    },
+    {
+     "metin": "ich kann morgen leider nicht kommen.",
+     "tr": "yarın maalesef gelemiyorum."
+    },
+    {
+     "metin": "Mit freundlichen Grüßen",
+     "tr": "Saygılarımla"
+    },
+    {
+     "metin": "Liebe Anna, vielen Dank für deine Einladung!",
+     "tr": "Sevgili Anna, davetin için çok teşekkürler!"
+    },
+    {
+     "metin": "Viele Grüße",
+     "tr": "Sevgiler"
+    }
+   ]
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Üç noktadan birini unutmak. Mesaj kısa olsa da her nokta ayrı puanlanır. Yazmadan önce noktaları 1-2-3 diye işaretle ve her biri için bir cümle yaz."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Formda “Staatsangehörigkeit” alanına ne yazarsın?",
+   "options": [
+    "Mesleğini",
+    "Doğum yerini",
+    "Uyruğunu",
+    "Adresini"
+   ],
+   "answer": 2,
+   "why": "Staatsangehörigkeit = uyruk (vatandaşlık).",
+   "hint": "“Staat” devlet demek."
+  },
+  {
+   "prompt": "Arkadaşın Tom'a yazdığın mesaj nasıl başlar?",
+   "options": [
+    "Liebe Tom,",
+    "Mit freundlichen Grüßen Tom,",
+    "Sehr geehrter Tom,",
+    "Lieber Tom,"
+   ],
+   "answer": 3,
+   "why": "Samimi açılış; Tom erkek olduğu için Lieber.",
+   "hint": "Erkek için Lieber, kadın için Liebe."
+  },
+  {
+   "prompt": "Kısa mesaj görevinde en önemli şey nedir?",
+   "options": [
+    "Verilen üç noktanın hepsini yazmak",
+    "En az 100 kelime",
+    "Sadece selam yazmak",
+    "Uzun ve süslü cümleler"
+   ],
+   "answer": 0,
+   "why": "Her nokta ayrı puanlanır; üçünü de yaz.",
+   "hint": "Görevde kaç nokta vardı?"
+  }
+ ]
+}

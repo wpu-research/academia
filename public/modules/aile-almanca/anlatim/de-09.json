@@ -1,0 +1,111 @@
+{
+ "id": "de-09",
+ "baslik": "Akkusativ ve “möchten”",
+ "sinif": "Aile ve Günlük Hayat",
+ "sure": 12,
+ "ozet": "Nesne alan cümlelerde yalnız “der” artikelinin değiştiğini (den, einen, keinen) ve kibar istek bildiren “möchten”i öğreneceğiz.",
+ "kazanim": [
+  "Akkusativ",
+  "möchten",
+  "es gibt"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Akkusativ nedir?",
+   "govde": "*haben, möchten, kaufen, brauchen, es gibt* gibi fiiller bir nesne alır: **Ne?** sorusunun cevabı. Bu nesne Akkusativ hâlindedir.\n\nİyi haber: Akkusativ'de yalnız **der** grubu değişir. **die**, **das** ve çoğul aynı kalır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Değişen tek grup: der",
+   "govde": "- der → **den**: *Ich sehe **den** Mann.*\n- ein → **einen**: *Ich habe **einen** Bruder.*\n- kein → **keinen**: *Ich habe **keinen** Bruder.*\n\nAynı kalanlar: *Ich habe **eine** Schwester. Ich habe **ein** Kind. Ich habe **keine** Kinder.*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "möchten: kibar istek",
+   "govde": "ich **möchte**, du **möchtest**, er/sie/es **möchte**, wir **möchten**, ihr **möchtet**, sie/Sie **möchten**\n\n*Ich möchte einen Kaffee, bitte.* (Bir kahve istiyorum, lütfen.)\n\n**Es gibt** + Akkusativ: “… var”. *Hier gibt es einen Supermarkt.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Ich habe einen Sohn und eine Tochter.",
+     "tr": "Bir oğlum ve bir kızım var."
+    },
+    {
+     "metin": "Ich möchte einen Termin.",
+     "tr": "Bir randevu istiyorum."
+    },
+    {
+     "metin": "Ich brauche einen Arzt.",
+     "tr": "Bir doktora ihtiyacım var."
+    },
+    {
+     "metin": "Wir haben keinen Garten.",
+     "tr": "Bahçemiz yok."
+    },
+    {
+     "metin": "Gibt es hier eine Apotheke?",
+     "tr": "Burada eczane var mı?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“der Kuchen” (pasta). “Bir pasta istiyorum.” nasıl denir?",
+   "cozum": [
+    "Kuchen der grubunda.",
+    "möchten nesne alır; nesne Akkusativ.",
+    "ein → einen."
+   ],
+   "sonuc": "***Ich möchte einen Kuchen.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Akkusativ'i die/das'a da uygulamak: “Ich habe einen Schwester.” Schwester **die** grubundadır, değişmez: **Ich habe eine Schwester.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“der Bruder”. Boşluğu doldur: “Ich habe ---- Bruder.”",
+   "options": [
+    "eine",
+    "einen",
+    "einer",
+    "ein"
+   ],
+   "answer": 1,
+   "why": "der grubu Akkusativ'de einen olur.",
+   "hint": "Hangi grup değişiyordu?"
+  },
+  {
+   "prompt": "“das Auto”. Boşluğu doldur: “Wir haben ---- Auto.”",
+   "options": [
+    "den",
+    "einen",
+    "ein",
+    "eine"
+   ],
+   "answer": 2,
+   "why": "das grubu değişmez: ein Auto.",
+   "hint": "das değişir mi?"
+  },
+  {
+   "prompt": "“Bir çay istiyorum, lütfen.” (der Tee)",
+   "options": [
+    "Ich möchte ein Tee, bitte.",
+    "Ich möchten einen Tee, bitte.",
+    "Ich möchte Tee einen, bitte.",
+    "Ich möchte einen Tee, bitte."
+   ],
+   "answer": 3,
+   "why": "ich möchte + einen (der → einen).",
+   "hint": "möchten'in ich çekimi ve der → ?"
+  }
+ ]
+}

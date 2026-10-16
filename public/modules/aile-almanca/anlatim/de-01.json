@@ -1,0 +1,89 @@
+{
+ "id": "de-01",
+ "baslik": "Sınavı Tanıyalım: Start Deutsch 1",
+ "sinif": "Başlangıç",
+ "sure": 8,
+ "ozet": "Aile birleşimi için istenen A1 sınavının dört bölümünü ve her bölümde senden ne beklendiğini öğreneceğiz.",
+ "kazanim": [
+  "Sınav yapısı",
+  "Çalışma planı"
+ ],
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "A1 ne demek?",
+   "govde": "A1, Avrupa Ortak Dil Referans Çerçevesi'nin (CEFR) ilk seviyesidir. Bu seviyede kendini tanıtır, basit sorular sorar ve cevaplar, günlük hayattaki kısa yazıları (levha, ilan, kısa mesaj) anlarsın.\n\nAile birleşimi başvurusunda genellikle bu seviyeyi gösteren bir belge istenir. Almanya Dışişleri Bakanlığı'nın (Auswärtiges Amt) yayımladığı bilgiye göre kabul edilen belgeler: Goethe-Institut ve telc'in **Start Deutsch 1** sınavı ve **ÖSD Zertifikat A1**.\n\nSertifika genellikle **sınav tarihinden itibaren bir yıl** geçerli sayılır. Sınav tarihleri haftalar önceden dolabilir; kayıt tarihini erken öğren. Güncel şartı başvuru öncesinde konsolosluktan kontrol et."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dört bölüm",
+   "govde": "- **Hören (dinleme), yaklaşık 20 dakika:** kısa günlük konuşmalar, anonslar ve telefon mesajları.\n- **Lesen (okuma), yaklaşık 25 dakika:** kısa mektuplar, ilanlar, levhalar.\n- **Schreiben (yazma), yaklaşık 20 dakika:** bir form doldurma ve yaklaşık 30 kelimelik kısa bir mesaj.\n- **Sprechen (konuşma), yaklaşık 15 dakika:** küçük bir grup içinde kendini tanıtma, soru sorma ve rica etme."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sınavdan önce",
+   "govde": "- Sertifika genellikle **bir yıl** geçerli; başvurunu bu süre içinde yap.\n- Sınav yerleri erken dolabilir; kayıt tarihini önceden öğren.\n- Hangi sınavın kabul edildiğini başvuracağın konsolosluktan teyit et."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Bu programda nasıl çalışacağız?",
+   "govde": "Her konu anlatımında önce kuralı görür, sonra örnek cümleleri dinlersin (▶ düğmesi). Sonunda üç soruluk kısa bir kontrol var.\n\nAnlatımı bitirince **Soru çözerek pekiştir** düğmesiyle sınav tipindeki sorulara geç. Çalışma motoru hangi bölümde zayıf olduğunu takip eder ve planını buna göre kurar."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız kelime ezberleyip konuşma ve dinlemeyi sona bırakmak. Sınavın yarısı (Hören ve Sprechen) kulak ve ağızla ilgili. Her gün birkaç cümleyi sesli dinleyip tekrar etmek, uzun kelime listelerinden daha çok işe yarar."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Start Deutsch 1 sınavında kaç bölüm vardır?",
+   "options": [
+    "4",
+    "5",
+    "2",
+    "3"
+   ],
+   "answer": 0,
+   "why": "Hören, Lesen, Schreiben ve Sprechen: dört bölüm.",
+   "hint": "Dinleme, okuma, yazma ve …"
+  },
+  {
+   "prompt": "“Schreiben” bölümünde ne yaparsın?",
+   "options": [
+    "Grup içinde konuşursun",
+    "Form doldurur ve kısa mesaj yazarsın",
+    "Anons dinlersin",
+    "Gazete makalesi okursun"
+   ],
+   "answer": 1,
+   "why": "Schreiben yazma bölümüdür: bir form ve kısa bir mesaj.",
+   "hint": "“Schreiben” yazmak demek."
+  },
+  {
+   "prompt": "Sertifika genellikle ne kadar süre geçerli sayılır?",
+   "options": [
+    "Süresiz",
+    "Altı ay",
+    "Bir yıl",
+    "Beş yıl"
+   ],
+   "answer": 2,
+   "why": "Almanya'nın resmî bilgilendirme notuna göre sertifika genellikle sınav tarihinden itibaren bir yıl kabul edilir.",
+   "hint": "Başvuruyu sınavdan sonra çok bekletme."
+  },
+  {
+   "prompt": "Hangi sınavın kabul edildiğini nereden öğrenmelisin?",
+   "options": [
+    "Sınav kitabından",
+    "Arkadaşından",
+    "Sosyal medyadan",
+    "Başvuru yapacağın konsolosluktan"
+   ],
+   "answer": 3,
+   "why": "Şartları belirleyen, başvuruyu alan makamdır.",
+   "hint": "Başvuruyu kim alıyor?"
+  }
+ ],
+ "pratik": "almanca"
+}

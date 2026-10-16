@@ -1,0 +1,105 @@
+{
+ "id": "de-14",
+ "baslik": "Okuma Stratejileri",
+ "sinif": "Sınav Stratejileri",
+ "sure": 12,
+ "ozet": "Lesen bölümünde metin türünü tanımayı, levha ve ilanlarda anahtar kelimeleri bulmayı ve richtig/falsch sorularını çözmeyi öğreneceğiz.",
+ "kazanim": [
+  "Lesen",
+  "Richtig / Falsch"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Okuma bölümünde ne var?",
+   "govde": "Kısa e-postalar ve mektuplar, internet sayfaları ya da ilanlar ve levhalar okursun. Bazı sorularda bir ifadenin doğru (**richtig**) ya da yanlış (**falsch**) olduğunu, bazılarında iki ilandan hangisinin bir duruma uyduğunu seçersin."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Önce soruyu oku",
+   "govde": "Metnin tamamını anlamak zorunda değilsin. Önce soruyu oku, sonra metinde **soruyla ilgili yeri** ara: saat, gün, fiyat, yer, kişi adı. O cümleyi dikkatle oku."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Levha ve ilanlarda sık geçenler",
+   "govde": "**geöffnet** (açık), **geschlossen** (kapalı), **Öffnungszeiten** (çalışma saatleri), **täglich** (her gün), **außer** (hariç), **nur** (sadece), **ab** (-den itibaren), **bis** (-e kadar), **kostenlos / gratis** (ücretsiz), **Eingang / Ausgang** (giriş / çıkış), **Anmeldung** (kayıt), **verboten** (yasak)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle ve tanı",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Täglich geöffnet, außer Sonntag.",
+     "tr": "Pazar hariç her gün açık."
+    },
+    {
+     "metin": "Eintritt kostenlos.",
+     "tr": "Giriş ücretsiz."
+    },
+    {
+     "metin": "Rauchen verboten.",
+     "tr": "Sigara içmek yasak."
+    },
+    {
+     "metin": "Anmeldung bis zum 15. Mai.",
+     "tr": "Kayıt 15 Mayıs'a kadar."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Levha: “Bürgerbüro – Öffnungszeiten: Mo–Fr 8–12 Uhr, Do auch 14–18 Uhr.” İfade: Bürgerbüro perşembe öğleden sonra açıktır.",
+   "cozum": [
+    "Mo–Fr 8–12: hafta içi yalnız sabah.",
+    "“Do auch 14–18 Uhr”: perşembe ayrıca 14–18 arası."
+   ],
+   "sonuc": "**Richtig.** “auch” (ayrıca) kelimesi perşembeye ek saat veriyor."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Metinde soruyla aynı kelimeyi görünce cevabın o olduğunu sanmak. *“Der Kurs ist **nicht** am Montag”* cümlesinde “Montag” geçse de kurs pazartesi değildir. **nicht, kein, nur, außer** gibi küçük kelimeler anlamı değiştirir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“geschlossen” ne demek?",
+   "options": [
+    "Kapalı",
+    "Ücretsiz",
+    "Yasak",
+    "Açık"
+   ],
+   "answer": 0,
+   "why": "geschlossen = kapalı; geöffnet = açık.",
+   "hint": "geöffnet açık demekti."
+  },
+  {
+   "prompt": "“Täglich außer Montag” levhası olan müze salı günü açık mı?",
+   "options": [
+    "Bilinmez",
+    "Evet",
+    "Hayır",
+    "Yalnız sabah"
+   ],
+   "answer": 1,
+   "why": "Pazartesi hariç her gün açık; salı açık.",
+   "hint": "außer = hariç."
+  },
+  {
+   "prompt": "“Eintritt kostenlos” ne demek?",
+   "options": [
+    "Giriş pahalı",
+    "Giriş yasak",
+    "Giriş ücretsiz",
+    "Çıkış burada"
+   ],
+   "answer": 2,
+   "why": "kostenlos = ücretsiz.",
+   "hint": "“kosten” fiyatı olmak, “-los” -sız."
+  }
+ ]
+}

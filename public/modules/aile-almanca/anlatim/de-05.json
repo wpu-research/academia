@@ -1,0 +1,116 @@
+{
+ "id": "de-05",
+ "baslik": "Fiil Çekimi ve Cümle Düzeni",
+ "sinif": "Temeller",
+ "sure": 16,
+ "ozet": "Şimdiki zamanda fiil çekimini, sein ve haben'i ve Almancanın en önemli kuralını (fiil ikinci sırada) öğreneceğiz.",
+ "kazanim": [
+  "Präsens",
+  "sein / haben",
+  "W-Fragen"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Düzenli fiiller: wohnen",
+   "govde": "Fiilin kökü (wohn-) + kişi eki:\n\n- ich wohn**e**\n- du wohn**st**\n- er / sie / es wohn**t**\n- wir wohn**en**\n- ihr wohn**t**\n- sie / Sie wohn**en**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "sein ve haben",
+   "govde": "**sein** (olmak): ich **bin**, du **bist**, er/sie/es **ist**, wir **sind**, ihr **seid**, sie/Sie **sind**\n\n**haben** (sahip olmak): ich **habe**, du **hast**, er/sie/es **hat**, wir **haben**, ihr **habt**, sie/Sie **haben**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Fiil ikinci sırada",
+   "govde": "Düz cümlede çekimli fiil her zaman **ikinci** sıradadır. Cümleye başka bir şeyle başlarsan özne fiilin arkasına geçer:\n\n- *Ich **arbeite** heute.*\n- *Heute **arbeite** ich.*\n\n**Soru kelimeli soru (W-Frage):** soru kelimesi + fiil + özne: *Wo **wohnen** Sie?*\n\n**Evet/hayır sorusu:** fiil başa gelir: ***Wohnen** Sie in Berlin?*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Mein Mann arbeitet in Köln.",
+     "tr": "Kocam Köln'de çalışıyor."
+    },
+    {
+     "metin": "Heute habe ich Zeit.",
+     "tr": "Bugün vaktim var."
+    },
+    {
+     "metin": "Wo wohnt deine Schwester?",
+     "tr": "Kız kardeşin nerede oturuyor?"
+    },
+    {
+     "metin": "Haben Sie Kinder?",
+     "tr": "Çocuğunuz var mı?"
+    },
+    {
+     "metin": "Wir sind verheiratet.",
+     "tr": "Biz evliyiz."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Soru kelimeleri",
+   "govde": "**wer** (kim), **was** (ne), **wo** (nerede), **woher** (nereden), **wohin** (nereye), **wann** (ne zaman), **wie** (nasıl), **wie viel** (ne kadar), **warum** (neden)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“Am Wochenende / ich / meine Eltern / besuche” kelimelerinden cümle kur.",
+   "cozum": [
+    "Cümle “Am Wochenende” ile başlıyor; bu birinci sıra.",
+    "Çekimli fiil (besuche) ikinci sıraya gelir.",
+    "Özne (ich) fiilden sonra gelir."
+   ],
+   "sonuc": "***Am Wochenende besuche ich meine Eltern.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Türkçedeki gibi fiili sona koymak: “Ich in Berlin wohne.” Düz cümlede çekimli fiil ikinci sırada olmalı: **Ich wohne in Berlin.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Boşluğu doldur: “Er ---- in Hamburg.” (wohnen)",
+   "options": [
+    "wohnst",
+    "wohnt",
+    "wohnen",
+    "wohne"
+   ],
+   "answer": 1,
+   "why": "er/sie/es ile -t eki: wohnt.",
+   "hint": "er için ek -t."
+  },
+  {
+   "prompt": "Hangi cümle doğru?",
+   "options": [
+    "Komme morgen ich.",
+    "Morgen ich komme.",
+    "Morgen komme ich.",
+    "Morgen ich kommen."
+   ],
+   "answer": 2,
+   "why": "“Morgen” birinci sırada; fiil ikinci sırada, özne sonra gelir.",
+   "hint": "Fiil kaçıncı sırada olmalı?"
+  },
+  {
+   "prompt": "Boşluğu doldur: “Wir ---- zwei Kinder.” (haben)",
+   "options": [
+    "habe",
+    "hat",
+    "habt",
+    "haben"
+   ],
+   "answer": 3,
+   "why": "wir ile haben: wir haben.",
+   "hint": "wir için çekim mastarla aynı."
+  }
+ ]
+}

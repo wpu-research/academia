@@ -14,6 +14,8 @@
   const PASSIVE = A.programs.filter((p) => p.active === false);
   const bySlug = Object.fromEntries(ACTIVE.filter((p) => !p.soon).map((p) => [p.slug, p]));
   const MODULES = ["matematik", "kodlama", "muzik"];
+  // Ders modülü olmadan yalnız konu anlatımı olan programlar (modules/<slug>/anlatim/).
+  const ANLATIM_ONLY = A.programs.filter((p) => p.anlatim).map((p) => p.slug);
   const METHOD_PROGS = ["hmgs", "tus", "yds", "matematik"];
   const examOn = (id) => !!A.exams[id] && A.exams[id].active !== false;
   const groupLabel = Object.fromEntries(A.groups.map((g) => [g.id, g.label]));
@@ -283,6 +285,29 @@
   }
 
   // ---------- Program sayfası ----------
+  // Yol haritası: sınav tarihi girilirse haftalar kalan süreye sırayla sığdırılır. Ders adları fillAnlatimList'te dolar.
+  function roadmapView(p) {
+    const W = p.roadmap, date = store.roadmap?.[p.slug];
+    const left = date ? Math.ceil((new Date(`${date}T00:00`).getTime() - startOfDay(Date.now())) / (7 * E.DAY)) : null;
+    const n = left === null || left > W.length ? W.length : Math.max(1, left);
+    const groups = Array.from({ length: n }, (_, i) => W.slice(Math.floor((i * W.length) / n), Math.floor(((i + 1) * W.length) / n)));
+    const msg = left === null ? "Sınav tarihini girersen plan kalan haftalara göre sıkıştırılır."
+      : left <= 0 ? "Girdiğin sınav tarihi geçmiş görünüyor. Yeni tarihi gir."
+      : left < W.length ? `Sınava ${left} hafta var: ${W.length} haftalık plan ${n} haftaya sığdırıldı.`
+      : `Sınava ${left} hafta var. Plan ${W.length} hafta; kalan sürede tekrar yap ya da daha yavaş ilerle.`;
+    return `<h2>Yol haritası</h2>
+      <div class="roadmap">
+        <label class="rm-date">Sınav tarihim <input type="date" id="rm-date" data-slug="${esc(p.slug)}" value="${esc(date || "")}"></label>
+        <p class="muted">${esc(msg)}</p>
+        <ol class="rm-weeks">${groups.map((g, i) => {
+          const ids = g.flatMap((w) => w.dersler);
+          return `<li><b>${i + 1}. hafta · ${esc(g.map((w) => w.baslik).join(" + "))}</b>
+            ${ids.length ? `<span class="rm-lessons">${ids.map((id) => `<a href="#anlatim-${p.slug}.${id}" data-lesson="${id}" class="${store.anlatim?.[id]?.kontrol ? "done" : ""}">${id}</a>`).join("")}</span>` : ""}
+            <small>${esc(g.map((w) => w.hedef).join(" "))}</small></li>`;
+        }).join("")}</ol>
+      </div>`;
+  }
+
   function renderProgram(p) {
     const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^\d+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
     const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
@@ -308,17 +333,20 @@
       <div class="prose">
         ${p.body.map((b) => `<p>${esc(b)}</p>`).join("")}
         ${p.status ? `<p class="note">${esc(p.status)}</p>` : ""}
+        ${p.roadmap ? roadmapView(p) : ""}
         ${p.structure ? `<h2>Sınav yapısı</h2>
           <div class="table-wrap"><table><tbody>${rows(p.structure)}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}` : ""}
         ${p.levelsTable ? `<h2>Seviyeler</h2><div class="table-wrap"><table><thead><tr><th>Seviye</th><th>Kimler için</th><th>Konular</th></tr></thead><tbody>${rows(p.levelsTable)}</tbody></table></div>` : ""}
         ${p.game ? `<h2>Nasıl oynanır</h2><ul>${p.game.map((g) => `<li>${esc(g)}</li>`).join("")}</ul>` : ""}
         ${MODULES.includes(p.slug) ? `<h2>Dersler</h2><div class="lesson-list" id="lesson-list"><p class="muted">Dersler yükleniyor…</p></div>
           <h2>Müfredat</h2><div class="cur" id="curriculum"><p class="muted">Müfredat yükleniyor…</p></div>` : ""}
+        ${p.anlatim ? `<h2>Konu anlatımları</h2><div class="cur" id="anlatim-list"><p class="muted">Konular yükleniyor…</p></div>` : ""}
         ${p.modules ? `<h2>Modüller</h2><div class="table-wrap"><table><tbody>${p.modules.map((m, i) => `<tr><td class="num">${i + 1}</td><td><a href="#m-${m.slug}">${esc(m.title)}</a><br><small class="muted">${esc(m.desc)}</small></td><td>${esc(m.age)}</td><td class="num">${m.lessons}</td></tr>`).join("")}</tbody></table></div>` : ""}
       </div>
       <aside class="aside">
         ${programCountdown(p)}
         ${cta}
+        ${p.facts ? `<div class="box"><h3>Başvuru bilgisi</h3><ul class="facts">${p.facts.map((f) => `<li>${esc(f.text)} <a href="${esc(f.src)}" target="_blank" rel="noopener">${esc(f.label)}</a></li>`).join("")}</ul><p class="note">Şartlar değişebilir; başvurmadan önce konsolosluktan kontrol et.</p></div>` : ""}
         ${METHOD_PROGS.includes(p.slug) ? `<div class="box"><h3>Soru Zekâsı</h3><p class="note">Bu programda konular en küçük birimine ayrılır, geçmiş sorular ölçülür ve planın her gün sınav ağırlığı ile senin zayıflığına göre yeniden kurulur.</p><a href="#yontem">Yöntemimizi incele →</a></div>` : ""}
         ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="#p-${o.slug}">${esc(o.title)}</a>`).join("")}</div>` : ""}
       </aside>
@@ -674,20 +702,10 @@
       <div class="game-streak"><b class="num">${g.streak}</b><span>doğru seri</span></div></div>`;
   }
 
-  // Dinleme soruları: metin tarayıcının sesiyle okunur; ses yoksa döküm açık gelir.
-  const canSpeak = "speechSynthesis" in window;
-  function speak({ lang, text }) {
-    if (!canSpeak) return;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = lang; u.rate = 0.9;
-    const v = speechSynthesis.getVoices().find((x) => x.lang.replace("_", "-").startsWith(lang));
-    if (v) u.voice = v;
-    speechSynthesis.speak(u);
-  }
+  // Dinleme soruları: metin Mac'in sesiyle (voice.js) okunur; tarayıcıda ses yoksa döküm açık gelir.
   function sayBox(s) {
-    return `<div class="say">${canSpeak ? `<button type="button" class="btn btn-outline" data-act="say">▶ Dinle</button>` : ""}
-      <details ${canSpeak ? "" : "open"}><summary>Metni göster</summary><p lang="${esc(s.lang)}">${esc(s.text)}</p></details></div>`;
+    return `<div class="say"><button type="button" class="btn btn-outline" data-act="say">▶ Dinle</button>
+      <details ${VOICE.browserOk ? "" : "open"}><summary>Metni göster</summary><p lang="${esc(s.lang)}">${esc(s.text)}</p></details></div>`;
   }
 
   function questionView(q, { mode, progress, showReason }) {
@@ -1167,7 +1185,7 @@
 
     if (!session) return;
     const q = session.q;
-    if (act === "say") { if (q.item.say) speak(q.item.say); return; }
+    if (act === "say") { if (q.item.say) VOICE.say(q.item.say.lang, q.item.say.text); return; }
     if (act === "conf") { q.conf = +el.dataset.v; renderApp(); return; }
     if (act === "choose") { q.chosen = +el.dataset.i; renderApp(); return; }
 
@@ -1222,6 +1240,14 @@
   }
 
   $app.addEventListener("change", (ev) => {
+    if (ev.target.id === "rm-date") {
+      const slug = ev.target.dataset.slug;
+      store.roadmap = store.roadmap || {};
+      if (ev.target.value) store.roadmap[slug] = ev.target.value; else delete store.roadmap[slug];
+      save(); renderProgram(bySlug[slug]); fillAnlatimList(slug);
+      document.getElementById("rm-date")?.focus();
+      return;
+    }
     if (ev.target.id === "budget") {
       const v = Math.round(+ev.target.value);
       if (v >= 5 && v <= 200) { store.data[store.exam].budget = v; save(); }
@@ -1266,7 +1292,7 @@
   function route() {
     const h = location.hash.replace(/^#/, "");
     if (h.startsWith("p-") && bySlug[h.slice(2)]) return { view: "program", slug: h.slice(2) };
-    if (h.startsWith("anlatim-") && h.includes(".")) { const [mod, id] = h.slice(8).split("."); if (MODULES.includes(mod)) return { view: "anlatim", mod, id }; }
+    if (h.startsWith("anlatim-") && h.includes(".")) { const [mod, id] = h.slice(8).split("."); if (MODULES.includes(mod) || ANLATIM_ONLY.includes(mod)) return { view: "anlatim", mod, id }; }
     if (h.startsWith("ders-") && h.includes(".")) { const [mod, id] = h.slice(5).split("."); if (MODULES.includes(mod)) return { view: "lesson", mod, id }; }
     if (h.startsWith("m-") && bySlug.robotik.modules.some((m) => m.slug === h.slice(2))) return { view: "module", slug: h.slice(2) };
     if (h === "ogren" || h.startsWith("ogren-")) return { view: "app", exam: h.slice(6) };
@@ -1293,6 +1319,7 @@
     else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "program" && MODULES.includes(r.slug)) { fillLessons(r.slug); fillCurriculum(r.slug); }
+    if (r.view === "program" && ANLATIM_ONLY.includes(r.slug)) fillAnlatimList(r.slug);
     if (r.view === "home" && r.section) document.getElementById(r.section)?.scrollIntoView({ behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     else if (current !== key || r.view === "home") window.scrollTo({ top: 0, behavior: current === "home" && !reduceMotion ? "smooth" : "auto" });
     current = key;
@@ -1319,6 +1346,23 @@
       }).join("");
     }).catch(() => {});
   }
+  // Konu anlatımı listesi: index.json'daki konular ünitelerine ("sinif") göre gruplanır.
+  function fillAnlatimList(mod) {
+    LESSONS.anlatimIndex(mod).then((idx) => {
+      const titles = Object.fromEntries(idx.konular.map((k, i) => [k.id, `${i + 1}. ${k.baslik}`]));
+      document.querySelectorAll(".rm-lessons a[data-lesson]").forEach((a) => { if (titles[a.dataset.lesson]) a.textContent = (a.classList.contains("done") ? "✓ " : "") + titles[a.dataset.lesson]; });
+      const host = document.getElementById("anlatim-list"); if (!host) return;
+      const units = [];
+      for (const k of idx.konular) { let u = units.find((x) => x.ad === k.sinif); if (!u) units.push(u = { ad: k.sinif, konular: [] }); u.konular.push(k); }
+      let n = 0;
+      host.innerHTML = `${idx.aciklama ? `<p class="muted">${esc(idx.aciklama)}</p>` : ""}
+        ${units.map((u) => `<div class="cur-theme"><h4>${esc(u.ad)}</h4><ul>${u.konular.map((k) => {
+          const done = store.anlatim?.[k.id]?.kontrol;
+          return `<li><span class="cur-t"><a href="#anlatim-${mod}.${k.id}">${++n}. ${esc(k.baslik)}</a>${k.ozet ? `<small>${esc(k.ozet)}</small>` : ""}</span><span class="cur-chips">${done ? `<span class="chip chip-ready">✓ Tamamlandı</span>` : `<a class="chip chip-ready" href="#anlatim-${mod}.${k.id}">Konu anlatımı →</a>`}</span></li>`;
+        }).join("")}</ul></div>`).join("")}`;
+    }).catch(() => { const h = document.getElementById("anlatim-list"); if (h) h.innerHTML = `<p class="muted">Konular yüklenemedi.</p>`; });
+  }
+
   // ---------- Müfredat ----------
   const SIM_LABEL = { "sayi-dogrusu": "Sayı doğrusu", "onluk-bloklar": "Onluk bloklar", "kesir-cubugu": "Kesir çubuğu", "alan-modeli": "Alan modeli", "denklem-terazisi": "Denklem terazisi",
     "koordinat-duzlemi": "Koordinat düzlemi", "fonksiyon-grafigi": "Fonksiyon grafiği", "geometri-tahtasi": "Geometri tahtası", "aci-olcer": "Açı ölçer", "donusum": "Dönüşüm",

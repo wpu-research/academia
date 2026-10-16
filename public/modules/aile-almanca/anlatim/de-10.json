@@ -1,0 +1,111 @@
+{
+ "id": "de-10",
+ "baslik": "Modal Fiiller: können, müssen",
+ "sinif": "Aile ve Günlük Hayat",
+ "sure": 12,
+ "ozet": "Yapabilmek ve zorunda olmak fiillerini ve bu fiillerle asıl fiilin cümle sonuna gittiğini öğreneceğiz.",
+ "kazanim": [
+  "können / müssen",
+  "Satzklammer",
+  "Sprechen Teil 3: rica"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Çekim",
+   "govde": "**können** (-ebilmek): ich **kann**, du **kannst**, er/sie/es **kann**, wir **können**, ihr **könnt**, sie/Sie **können**\n\n**müssen** (-mek zorunda): ich **muss**, du **musst**, er/sie/es **muss**, wir **müssen**, ihr **müsst**, sie/Sie **müssen**\n\nDikkat: ich ve er/sie/es biçimi aynıdır ve ek almaz."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Asıl fiil sona gider",
+   "govde": "Modal fiil ikinci sırada çekimlenir, asıl fiil mastar hâliyle **en sona** gider:\n\n- *Ich **kann** heute nicht **kommen**.*\n- *Ich **muss** zum Arzt **gehen**.*\n- ***Können** Sie bitte langsam **sprechen**?*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Rica etmek (Sprechen Teil 3)",
+   "govde": "Konuşma sınavının son kısmında bir kart görürsün ve diğer adaydan bir şey rica edersin; o da cevap verir.\n\n- Rica: ***Können Sie** mir bitte … geben?* / ***Kannst du** bitte das Fenster öffnen?*\n- Cevap: *Ja, gern. / Ja, natürlich. / Hier, bitte.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Können Sie mir bitte helfen?",
+     "tr": "Bana yardım edebilir misiniz lütfen?"
+    },
+    {
+     "metin": "Kannst du bitte das Fenster öffnen? – Ja, gern.",
+     "tr": "Pencereyi açar mısın lütfen? – Tabii, memnuniyetle."
+    },
+    {
+     "metin": "Können Sie das bitte wiederholen?",
+     "tr": "Bunu tekrar edebilir misiniz lütfen?"
+    },
+    {
+     "metin": "Ich muss morgen arbeiten.",
+     "tr": "Yarın çalışmak zorundayım."
+    },
+    {
+     "metin": "Ich kann leider nicht kommen.",
+     "tr": "Maalesef gelemiyorum."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“Yarın doktora gitmek zorundayım.” (morgen, zum Arzt gehen)",
+   "cozum": [
+    "Modal fiil müssen: ich muss.",
+    "Asıl fiil gehen sona gider.",
+    "Zaman ve yer ortada kalır."
+   ],
+   "sonuc": "***Ich muss morgen zum Arzt gehen.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Asıl fiili de çekimlemek: “Ich kann gut kocht.” Modal fiilden sonra asıl fiil mastar kalır ve sona gider: **Ich kann gut kochen.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Boşluğu doldur: “Du ---- heute arbeiten.” (müssen)",
+   "options": [
+    "musst",
+    "müssen",
+    "müsst",
+    "muss"
+   ],
+   "answer": 0,
+   "why": "du ile müssen: du musst.",
+   "hint": "du için ek -st."
+  },
+  {
+   "prompt": "Hangi cümle doğru?",
+   "options": [
+    "Ich kann nicht kommen heute.",
+    "Ich kann heute nicht kommen.",
+    "Ich heute kann nicht kommen.",
+    "Ich kommen kann heute nicht."
+   ],
+   "answer": 1,
+   "why": "Modal fiil ikinci sırada, asıl fiil (kommen) en sonda.",
+   "hint": "Asıl fiil nereye gider?"
+  },
+  {
+   "prompt": "Diğer adaydan kibarca kalem istiyorsun.",
+   "options": [
+    "Sie haben Kugelschreiber.",
+    "Gib Kugelschreiber!",
+    "Können Sie mir bitte einen Kugelschreiber geben?",
+    "Ich Kugelschreiber."
+   ],
+   "answer": 2,
+   "why": "Kibar rica: Können Sie mir bitte … geben?",
+   "hint": "Können Sie … bitte …?"
+  }
+ ]
+}

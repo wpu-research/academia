@@ -15,7 +15,7 @@ let claude = null;
 if (CLAUDE_KEY) { const Anthropic = require("@anthropic-ai/sdk"); claude = new Anthropic({ apiKey: CLAUDE_KEY, maxRetries: 1, timeout: 45_000 }); }
 const RS = "\u001e"; // istemci: bundan sonrası önceki metnin yerine geçer
 
-const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".jpg": "image/jpeg", ".png": "image/png", ".svg": "image/svg+xml", ".ico": "image/x-icon" };
+const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".jpg": "image/jpeg", ".png": "image/png", ".svg": "image/svg+xml", ".ico": "image/x-icon", ".mp3": "audio/mpeg" };
 
 // index.html artifact iskeletine göre yazıldı (doctype/viewport yok); sunucu sürümünde eklenir.
 const INDEX = `<!doctype html>\n<html lang="tr">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n${fs.readFileSync(path.join(ROOT, "index.html"), "utf8")}\n</html>\n`;
@@ -202,7 +202,7 @@ function serveStatic(req, res) {
   fs.stat(file, (err, st) => {
     if (err || !st.isFile()) { res.writeHead(404, { "content-type": "text/plain; charset=utf-8" }); return res.end("Bulunamadı"); }
     const ext = path.extname(file).toLowerCase();
-    res.writeHead(200, { "content-type": MIME[ext] || "application/octet-stream", "content-length": st.size, "cache-control": url.startsWith("/img/") ? "public, max-age=604800" : "no-cache" });
+    res.writeHead(200, { "content-type": MIME[ext] || "application/octet-stream", "content-length": st.size, "cache-control": url.startsWith("/img/") || (url.startsWith("/audio/") && ext === ".mp3") ? "public, max-age=604800" : "no-cache" });
     fs.createReadStream(file).pipe(res);
   });
 }

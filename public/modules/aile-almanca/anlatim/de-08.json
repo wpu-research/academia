@@ -1,0 +1,128 @@
+{
+ "id": "de-08",
+ "baslik": "Saat, Günler ve Randevu",
+ "sinif": "Aile ve Günlük Hayat",
+ "sure": 14,
+ "ozet": "Saati sormayı ve söylemeyi, “halb” tuzağını, haftanın günlerini ve randevu almayı öğreneceğiz.",
+ "kazanim": [
+  "Uhrzeit",
+  "am / um / im",
+  "Termin"
+ ],
+ "pratik": "almanca",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Saat söylemek",
+   "govde": "**Wie spät ist es?** / **Wie viel Uhr ist es?** (Saat kaç?)\n\n- 3.00 = **drei Uhr**\n- 3.15 = **Viertel nach drei** (üçü çeyrek geçe)\n- 3.30 = **halb vier** (dörde yarım var!)\n- 3.45 = **Viertel vor vier** (dörde çeyrek var)\n- 3.10 = **zehn nach drei**, 3.50 = **zehn vor vier**\n\nResmî saatte (anons, tren) 24 saat kullanılır: 15.30 = **fünfzehn Uhr dreißig**."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Es ist halb vier.",
+     "tr": "Saat üç buçuk (3.30)."
+    },
+    {
+     "metin": "Es ist Viertel nach acht.",
+     "tr": "Saat sekizi çeyrek geçiyor (8.15)."
+    },
+    {
+     "metin": "Es ist Viertel vor zwölf.",
+     "tr": "Saat on ikiye çeyrek var (11.45)."
+    },
+    {
+     "metin": "Der Zug kommt um vierzehn Uhr zwanzig.",
+     "tr": "Tren 14.20'de geliyor."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Günler ve edatlar",
+   "govde": "Montag (pazartesi), Dienstag (salı), Mittwoch (çarşamba), Donnerstag (perşembe), Freitag (cuma), Samstag (cumartesi), Sonntag (pazar).\n\n- Gün ve günün bölümü: **am** Montag, **am** Wochenende, **am** Abend\n- Saat: **um** zehn Uhr\n- Ay ve mevsim: **im** Mai, **im** Sommer"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Randevu almak",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Ich möchte einen Termin machen.",
+     "tr": "Randevu almak istiyorum."
+    },
+    {
+     "metin": "Haben Sie am Dienstag Zeit?",
+     "tr": "Salı günü vaktiniz var mı?"
+    },
+    {
+     "metin": "Geht es um zehn Uhr?",
+     "tr": "Saat onda olur mu?"
+    },
+    {
+     "metin": "Ja, das passt.",
+     "tr": "Evet, uygun."
+    },
+    {
+     "metin": "Leider nicht. Am Donnerstag geht es.",
+     "tr": "Maalesef olmaz. Perşembe olur."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Telefon mesajı: “Ihr Termin ist am Mittwoch um halb elf.” Randevu ne zaman?",
+   "cozum": [
+    "Mittwoch = çarşamba.",
+    "halb elf = on bire yarım var = 10.30."
+   ],
+   "sonuc": "**Çarşamba, 10.30.**"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**halb vier**'i 4.30 sanmak. Almancada “halb” bir sonraki saate göre söylenir: halb vier = **3.30**. Dinleme bölümünde en çok puan kaybettiren tuzaklardan biridir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“halb neun” saat kaçtır?",
+   "options": [
+    "8.00",
+    "9.30",
+    "8.30",
+    "9.00"
+   ],
+   "answer": 2,
+   "why": "halb neun = dokuza yarım var = 8.30.",
+   "hint": "“halb” bir sonraki saate göre söylenir."
+  },
+  {
+   "prompt": "Boşluğu doldur: “Ich komme ---- Freitag.”",
+   "options": [
+    "in",
+    "um",
+    "im",
+    "am"
+   ],
+   "answer": 3,
+   "why": "Günlerden önce “am” kullanılır.",
+   "hint": "Saat um, ay im, gün …"
+  },
+  {
+   "prompt": "“Viertel vor sieben” saat kaçtır?",
+   "options": [
+    "6.45",
+    "7.45",
+    "6.15",
+    "7.15"
+   ],
+   "answer": 0,
+   "why": "“vor” önce demek: yediye çeyrek var = 6.45.",
+   "hint": "“vor” = önce, “nach” = sonra."
+  }
+ ]
+}

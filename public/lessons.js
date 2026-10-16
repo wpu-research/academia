@@ -1029,6 +1029,8 @@ window.LESSONS = (() => {
       const sims = [];
       const sec = (b, i) => {
         if (b.tur === "kural") return `<div class="la-rule">${b.baslik ? `<h3>${esc(b.baslik)}</h3>` : ""}${mdBlock(b.govde)}</div>`;
+        if (b.tur === "ses") return `<div class="la-say">${b.baslik ? `<h3>${esc(b.baslik)}</h3>` : ""}${b.aciklama ? mdBlock(b.aciklama) : ""}
+          <ul>${b.satirlar.map((s, j) => `<li><button type="button" class="la-play" data-say="${i}.${j}" aria-label="Dinle">▶</button><span><span class="la-say-t" lang="${esc(b.lang)}">${md(s.metin)}</span>${s.tr ? `<small>${md(s.tr)}</small>` : ""}</span></li>`).join("")}</ul></div>`;
         if (b.tur === "hata") return `<div class="la-warn"><h3>${esc(b.baslik || "Sık yapılan hata")}</h3>${mdBlock(b.govde)}</div>`;
         if (b.tur === "ornek") return `<div class="la-ex"><h3>${esc(b.baslik || "Çözümlü örnek")}</h3>${mdBlock(b.soru)}
           <details><summary>Çözümü göster</summary><ol class="la-steps">${(b.cozum || []).map((s) => `<li>${md(s)}</li>`).join("")}</ol>${b.sonuc ? `<p class="la-ans">${md(b.sonuc)}</p>` : ""}</details></div>`;
@@ -1044,13 +1046,14 @@ window.LESSONS = (() => {
       const quiz = (d.kontrol || []).map((q, j) => `<div class="la-q" data-q="${j}"><p>${md(q.prompt)}</p>
         <div class="opts">${q.options.map((o, i) => `<button type="button" class="opt" data-qo="${i}"><span class="letter">${"ABCDE"[i]}</span><span>${md(o)}</span></button>`).join("")}</div><p class="la-why" hidden></p></div>`).join("");
       root.innerHTML = `<article class="la">
-        <nav class="la-crumb"><a href="#p-${mod}">Matematik</a> / <span>${esc(d.sinif)}</span></nav>
+        <nav class="la-crumb"><a href="#p-${mod}">${esc(idx.program || "Matematik")}</a> / <span>${esc(d.sinif)}</span></nav>
         <header class="la-head"><span class="eyebrow">Konu anlatımı${d.sure ? ` · ${d.sure} dk` : ""}</span><h1>${esc(d.baslik)}</h1>${d.ozet ? `<p class="lead">${md(d.ozet)}</p>` : ""}
           ${(d.kazanim || []).length ? `<p class="la-kaz">${d.kazanim.map((x) => `<span class="chip chip-line">${esc(x)}</span>`).join("")}</p>` : ""}</header>
         ${d.bolumler.map(sec).join("")}
         ${quiz ? `<section class="la-quiz"><h2>Kendini dene</h2>${quiz}</section>` : ""}
         <footer class="la-foot">
           ${d.ders ? `<a class="btn btn-primary" href="#ders-${mod}.${d.ders}">Oyunla pekiştir →</a>` : ""}
+          ${d.pratik ? `<a class="btn btn-primary" href="#ogren-${d.pratik}">Soru çözerek pekiştir →</a>` : ""}
           <div class="la-nav">${prev ? `<a href="#anlatim-${mod}.${prev.id}">← ${esc(prev.baslik)}</a>` : "<span></span>"}${next ? `<a href="#anlatim-${mod}.${next.id}">${esc(next.baslik)} →</a>` : ""}</div>
         </footer></article>`;
       curAnlatim = { d, mod };
@@ -1064,6 +1067,10 @@ window.LESSONS = (() => {
         el.addEventListener("simchange", upd);
         upd();
       }
+      root.querySelectorAll("[data-say]").forEach((btn) => btn.addEventListener("click", () => {
+        const [bi, si] = btn.dataset.say.split(".").map(Number), b = d.bolumler[bi];
+        VOICE.say(b.lang, b.satirlar[si].metin);
+      }));
       root.querySelectorAll(".la-q").forEach((qe) => {
         const q = d.kontrol[+qe.dataset.q], why = qe.querySelector(".la-why");
         qe.querySelectorAll("[data-qo]").forEach((b) => b.addEventListener("click", () => {
@@ -1076,7 +1083,7 @@ window.LESSONS = (() => {
       window.MAC?.refresh();
     }).catch(() => { root.innerHTML = `<div class="la"><p>Bu konunun anlatımı henüz hazır değil.</p><a class="btn btn-outline" href="#p-${mod}">Programa dön</a></div>`; });
   }
-  const anlatimContext = () => curAnlatim ? { page: `Konu anlatımı: ${curAnlatim.d.baslik}`, context: `${curAnlatim.d.sinif}. ${curAnlatim.d.ozet || ""} ${curAnlatim.d.bolumler.filter((b) => b.govde).map((b) => b.govde).join(" ").slice(0, 1500)}` } : null;
+  const anlatimContext = () => curAnlatim ? { page: `Konu anlatımı: ${curAnlatim.d.baslik}`, context: `${curAnlatim.d.sinif}. ${curAnlatim.d.ozet || ""} ${curAnlatim.d.bolumler.map((b) => b.govde || (b.satirlar || []).map((s) => `${s.metin} (${s.tr || ""})`).join(" ") || "").join(" ").slice(0, 1500)}` } : null;
   window.addEventListener("hashchange", () => { if (!location.hash.startsWith("#anlatim-")) curAnlatim = null; });
 
   return { manifest, lesson, open, context, registerSim, sims: SIMS, anlatimIndex, openAnlatim, anlatimContext };

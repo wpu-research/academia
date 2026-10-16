@@ -1,0 +1,148 @@
+{
+ "id": "de-02",
+ "baslik": "Alfabe ve Telaffuz",
+ "sinif": "Başlangıç",
+ "sure": 12,
+ "ozet": "Almancanın Türkçeden farklı okunan harflerini ve adını harf harf söylemeyi (buchstabieren) öğreneceğiz.",
+ "kazanim": [
+  "Telaffuz",
+  "Buchstabieren"
+ ],
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Almanca çoğunlukla yazıldığı gibi okunur",
+   "govde": "Türkçe konuşan biri için iyi haber: Almancada çoğu kelime yazıldığı gibi okunur. Yalnız bazı harf ve harf grupları farklıdır. Bunları bir kez öğrenince yeni kelimeleri de doğru okursun."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Farklı okunanlar",
+   "govde": "- **ei** “ay” okunur: mein (mayn), drei (dray)\n- **ie** uzun “i” okunur: Liebe, vier\n- **eu / äu** “oy” okunur: neu, Häuser\n- **sch** “ş” okunur: Schule\n- **sp / st** kelime başında “şp / şt”: Sport, Straße\n- **z** “ts” okunur: Zug, zwei\n- **w** “v” okunur: Wasser, wohnen\n- **v** çoğunlukla “f” okunur: Vater, vier\n- **j** “y” okunur: ja, Juli\n- **ß** “s” okunur: Straße"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle ve tekrar et",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "drei",
+     "tr": "üç"
+    },
+    {
+     "metin": "vier",
+     "tr": "dört"
+    },
+    {
+     "metin": "neu",
+     "tr": "yeni"
+    },
+    {
+     "metin": "Schule",
+     "tr": "okul"
+    },
+    {
+     "metin": "Straße",
+     "tr": "cadde, sokak"
+    },
+    {
+     "metin": "Zug",
+     "tr": "tren"
+    },
+    {
+     "metin": "Wasser",
+     "tr": "su"
+    },
+    {
+     "metin": "Vater",
+     "tr": "baba"
+    },
+    {
+     "metin": "ja",
+     "tr": "evet"
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Harflerin adları",
+   "govde": "Sınavda adını ve şehrini harf harf söylemen istenebilir: **“Wie schreibt man das?”** (Bu nasıl yazılır?)\n\nTürkçeden farklı olanlar: **E** “e”, **I** “i”, **J** “yot”, **V** “fau”, **W** “ve”, **Y** “üpsilon”, **Z** “tset”, **H** “ha”, **C** “tse”, **Q** “ku”.\n\n**Ö** ve **Ü** Almancada da var. Türkçeye özgü harfler (ç, ş, ğ, ı) için pasaportunda adın nasıl yazıldıysa onu harf harf söyle: pasaportta **CAKIR** yazıyorsa “C – A – K – I – R” dersin."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Harf harf söylemek",
+   "lang": "de-DE",
+   "satirlar": [
+    {
+     "metin": "Wie heißen Sie?",
+     "tr": "Adınız ne?"
+    },
+    {
+     "metin": "Ich heiße Kaya. K – A – Y – A.",
+     "tr": "Adım Kaya. K-A-Y-A."
+    },
+    {
+     "metin": "Wie schreibt man das?",
+     "tr": "Bu nasıl yazılır?"
+    },
+    {
+     "metin": "Mit W oder mit V?",
+     "tr": "W ile mi V ile mi?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“Zwei” ve “vier” kelimelerini Türkçe harflerle yaklaşık nasıl okursun?",
+   "cozum": [
+    "z “ts” okunur, ei “ay” okunur: tsvay.",
+    "v “f” okunur, ie uzun “i” okunur: fiir."
+   ],
+   "sonuc": "**zwei** ≈ “tsvay”, **vier** ≈ “fiir”."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**W** harfini Türkçedeki gibi okumak. Almancada W “v” sesidir: **Wasser** “vasser” okunur. **V** ise çoğunlukla “f”dir: **Vater** “fater”."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“mein” nasıl okunur?",
+   "options": [
+    "mayn",
+    "meyn",
+    "min",
+    "mein"
+   ],
+   "answer": 0,
+   "why": "“ei” Almancada “ay” okunur.",
+   "hint": "ei = ?"
+  },
+  {
+   "prompt": "“Zug” kelimesinin ilk sesi hangisidir?",
+   "options": [
+    "s",
+    "ts",
+    "ç",
+    "z"
+   ],
+   "answer": 1,
+   "why": "Almanca z “ts” okunur.",
+   "hint": "Türkçedeki z sesi değil."
+  },
+  {
+   "prompt": "Harf olarak “W” nasıl söylenir?",
+   "options": [
+    "vav",
+    "fau",
+    "ve",
+    "dabılyu"
+   ],
+   "answer": 2,
+   "why": "W harfinin Almanca adı “ve”dir. “Fau” V harfinin adıdır.",
+   "hint": "V'nin adı fau, ya W'nin?"
+  }
+ ],
+ "pratik": "almanca"
+}

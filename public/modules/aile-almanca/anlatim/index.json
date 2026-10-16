@@ -1,0 +1,90 @@
+{
+ "program": "Aile Birleşimi · Almanca",
+ "aciklama": "A1 sınavının dört bölümüne göre sıralanmış konular. Her anlatımda örnek cümleleri dinleyebilir, sonunda kısa bir kontrolle kendini deneyebilirsin.",
+ "konular": [
+  {
+   "id": "de-01",
+   "baslik": "Sınavı Tanıyalım: Start Deutsch 1",
+   "sinif": "Başlangıç",
+   "ozet": "Aile birleşimi için istenen A1 sınavının dört bölümünü ve her bölümde senden ne beklendiğini öğreneceğiz."
+  },
+  {
+   "id": "de-02",
+   "baslik": "Alfabe ve Telaffuz",
+   "sinif": "Başlangıç",
+   "ozet": "Almancanın Türkçeden farklı okunan harflerini ve adını harf harf söylemeyi (buchstabieren) öğreneceğiz."
+  },
+  {
+   "id": "de-03",
+   "baslik": "Kendini Tanıtma",
+   "sinif": "Temeller",
+   "ozet": "Adını, nereden geldiğini, nerede oturduğunu ve hangi dilleri konuştuğunu söylemeyi; resmî “Sie” ile samimi “du” farkını öğreneceğiz."
+  },
+  {
+   "id": "de-04",
+   "baslik": "Sayılar, Fiyatlar ve Telefon Numaraları",
+   "sinif": "Temeller",
+   "ozet": "0'dan 100'e kadar sayıları, Almancadaki ters okunuşu ve fiyatların nasıl söylendiğini öğreneceğiz."
+  },
+  {
+   "id": "de-05",
+   "baslik": "Fiil Çekimi ve Cümle Düzeni",
+   "sinif": "Temeller",
+   "ozet": "Şimdiki zamanda fiil çekimini, sein ve haben'i ve Almancanın en önemli kuralını (fiil ikinci sırada) öğreneceğiz."
+  },
+  {
+   "id": "de-06",
+   "baslik": "Artikeller: der, die, das",
+   "sinif": "Temeller",
+   "ozet": "Almanca isimlerin üç cinsiyetini, belirsiz artikeli (ein, eine) ve olumsuz “kein”i öğreneceğiz."
+  },
+  {
+   "id": "de-07",
+   "baslik": "Aile ve İyelik",
+   "sinif": "Aile ve Günlük Hayat",
+   "ozet": "Aile bireylerini, medeni durumu ve “benim, senin, sizin” anlamındaki iyelik sözcüklerini öğreneceğiz."
+  },
+  {
+   "id": "de-08",
+   "baslik": "Saat, Günler ve Randevu",
+   "sinif": "Aile ve Günlük Hayat",
+   "ozet": "Saati sormayı ve söylemeyi, “halb” tuzağını, haftanın günlerini ve randevu almayı öğreneceğiz."
+  },
+  {
+   "id": "de-09",
+   "baslik": "Akkusativ ve “möchten”",
+   "sinif": "Aile ve Günlük Hayat",
+   "ozet": "Nesne alan cümlelerde yalnız “der” artikelinin değiştiğini (den, einen, keinen) ve kibar istek bildiren “möchten”i öğreneceğiz."
+  },
+  {
+   "id": "de-10",
+   "baslik": "Modal Fiiller: können, müssen",
+   "sinif": "Aile ve Günlük Hayat",
+   "ozet": "Yapabilmek ve zorunda olmak fiillerini ve bu fiillerle asıl fiilin cümle sonuna gittiğini öğreneceğiz."
+  },
+  {
+   "id": "de-11",
+   "baslik": "Şehirde: Alışveriş, Yol, Ulaşım",
+   "sinif": "Aile ve Günlük Hayat",
+   "ozet": "Fiyat sormayı, yol tarifi almayı ve anonslarda geçen temel kelimeleri öğreneceğiz."
+  },
+  {
+   "id": "de-12",
+   "baslik": "Form Doldurma ve Kısa Mesaj",
+   "sinif": "Yazma",
+   "ozet": "Schreiben bölümünün iki görevini çalışacağız: form alanlarını tanımak ve üç noktalı kısa bir mesaj yazmak."
+  },
+  {
+   "id": "de-13",
+   "baslik": "Dinleme Stratejileri",
+   "sinif": "Sınav Stratejileri",
+   "ozet": "Hören bölümünde soruyu önceden okumayı, hangi bilgiyi arayacağını tahmin etmeyi ve sık kullanılan tuzakları tanımayı öğreneceğiz."
+  },
+  {
+   "id": "de-14",
+   "baslik": "Okuma Stratejileri",
+   "sinif": "Sınav Stratejileri",
+   "ozet": "Lesen bölümünde metin türünü tanımayı, levha ve ilanlarda anahtar kelimeleri bulmayı ve richtig/falsch sorularını çözmeyi öğreneceğiz."
+  }
+ ]
+}
