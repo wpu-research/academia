@@ -36,8 +36,15 @@ function collect() {
   const out = new Map();
   const add = (lang, text) => { const t = norm(text); if (lang && t && (!ONLY || lang === ONLY)) out.set(`${lang}|${t}`, { lang, text: t }); };
   const sandbox = {}; sandbox.window = sandbox; // tarayıcıdaki gibi: window.X = global X
-  vm.runInNewContext(fs.readFileSync(path.join(ROOT, "data.js"), "utf8"), sandbox);
+  vm.createContext(sandbox);
+  for (const f of ["data.js", "data-practice.js"]) if (fs.existsSync(path.join(ROOT, f))) vm.runInContext(fs.readFileSync(path.join(ROOT, f), "utf8"), sandbox);
   for (const ex of Object.values(sandbox.ACADEMIA.exams)) for (const it of ex.items) if (it.say) add(it.say.lang, it.say.text);
+  // Konuşma pratiği: soru, tekrar cümlesi ve örnek cevap dinlenebilir (şimdilik yalnız Almanca içerik var).
+  for (const p of Object.values(sandbox.ACADEMIA.practice || {})) for (const s of p.konusma || []) for (const g of s.gorevler) {
+    if (g.soru) add(g.soru.lang, g.soru.text);
+    if (g.tekrar) add("de-DE", g.tekrar);
+    if (g.ornek) add("de-DE", g.ornek);
+  }
   const mods = path.join(ROOT, "modules");
   for (const m of fs.readdirSync(mods)) {
     const dir = path.join(mods, m, "anlatim");
@@ -111,6 +118,22 @@ if (!KEY) {
   if (todo.length) console.log("ELEVENLABS_API_KEY tanımlı değil: dosya üretilmedi. Eksikler tarayıcı sesiyle çalınır.");
   process.exit(0);
 }
+
+// Kota raporu: user_read izni olan anahtarların kalan karakteri okunur, en çok kalandan başlanır.
+async function remaining(key) {
+  try {
+    const r = await fetch(`${BASE}/v1/user/subscription`, { headers: { "xi-api-key": key }, signal: AbortSignal.timeout(10_000) });
+    if (!r.ok) return null;
+    const s = await r.json();
+    return typeof s.character_limit === "number" ? s.character_limit - s.character_count : null;
+  } catch (_) { return null; }
+}
+const quota = await Promise.all(KEYS.map(remaining));
+KEYS.forEach((k, i) => console.log(`  anahtar ${i + 1} (${k.slice(0, 7)}…): ${quota[i] === null ? "kalan okunamadı (user_read izni yok)" : `${quota[i]} karakter kalan`}`));
+const order = KEYS.map((k, i) => ({ k, q: quota[i] })).sort((x, y) => (y.q ?? -1) - (x.q ?? -1));
+KEYS.splice(0, KEYS.length, ...order.map((x) => x.k));
+const known = quota.filter((q) => q !== null);
+if (known.length === KEYS.length && known.reduce((a, b) => a + b, 0) < chars) console.log(`  uyarı: eksik ${chars} karakter, anahtarlarda toplam ${known.reduce((a, b) => a + b, 0)} kalan`);
 
 let done = 0, failed = 0;
 const queue = todo.slice();

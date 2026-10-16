@@ -389,7 +389,7 @@ ACADEMIA.exams = {
     name: "Almanca A1 · Aile Birleşimi",
     short: "Almanca A1",
     blueprint: { "Hören": 1, "Lesen": 1, "Schreiben": 1, "Sprechen": 1 },
-    blueprintNote: "Dört bölüm eşit ağırlıktadır. Hören metinleri sesli okunur (seslendirme: ElevenLabs). Schreiben ve Sprechen burada çoktan seçmeli sorularla çalışılır; gerçek sınavda form doldurur, kısa mesaj yazar ve grup içinde konuşursun.",
+    blueprintNote: "Dört bölüm eşit ağırlıktadır. Hören metinleri sesli okunur (seslendirme: ElevenLabs). Schreiben ve Sprechen soru bankasında çoktan seçmeli sorularla, Konuşma ve Yazma sekmelerinde mikrofonla konuşarak ve form ile kısa mesaj yazarak çalışılır.",
     areaNote: { "Hören": "Dinleme", "Lesen": "Okuma", "Schreiben": "Yazma: form ve kısa mesaj", "Sprechen": "Konuşma" },
     items: [
       { id: "a-h1", alan: "Hören", q: "Anna bugün saat kaçta geliyor?", say: { lang: "de-DE", text: "Hallo, hier ist Anna. Ich komme heute nicht um drei, sondern um halb fünf. Bis dann!" }, o: ["4.30", "5.30", "3.00", "4.00"], a: 0, e: "“Halb fünf” beşe yarım var, yani 4.30 demektir. Almancada “halb” bir sonraki saatin yarısıdır; 5.30 en sık yapılan hatadır." },

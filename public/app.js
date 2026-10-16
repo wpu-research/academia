@@ -545,11 +545,27 @@
   let resetArmed = false;
 
   const TABS = [["panel", "Panel"], ["tani", "Seviye tespiti"], ["coz", "Soru çöz"], ["plan", "Çalışma planı"], ["deneme", "Kişisel deneme"], ["hata", "Hata defteri"], ["rapor", "Haftalık rapor"]];
+  // Konuşma ve yazma pratiği yalnız içeriği olan sınavlarda (data-practice.js).
+  const PRACTICE_TABS = [["konus", "Konuşma"], ["yaz", "Yazma"]];
+  const tabsFor = (examId) => (A.practice?.[examId] ? [...TABS.slice(0, 3), ...PRACTICE_TABS, ...TABS.slice(3)] : TABS);
+  const practiceHooks = (examId) => ({
+    done: (id) => !!store.data[examId].pratik?.[id],
+    onResult(alan, id, ok) {
+      if (store.data[examId].sample) store.data[examId] = emptyData();
+      const dt = store.data[examId];
+      dt.attempts.push({ id, alan, correct: ok, conf: 2, skipped: false, mode: alan === "Sprechen" ? "konusma" : "yazma", t: Date.now() + Math.random() });
+      dt.pratik = dt.pratik || {};
+      if (ok) dt.pratik[id.replace(/^(konus|yaz):/, "")] = Date.now();
+      save();
+    },
+  });
 
   function renderApp() {
+    if (PRACTICE_TABS.some(([id]) => id === store.tab) && !A.practice?.[store.exam]) store.tab = "panel";
     const examId = store.exam, data = store.data[examId], d = derive(examId, data);
     let body = "";
-    if (store.tab === "panel") body = viewPanel(d, data);
+    if (store.tab === "konus" || store.tab === "yaz") body = `<div id="pr-root" class="pr"></div>`;
+    else if (store.tab === "panel") body = viewPanel(d, data);
     else if (store.tab === "tani") body = viewTani(d, data);
     else if (store.tab === "coz") body = viewCoz(d, data);
     else if (store.tab === "plan") body = viewPlan(d, data);
@@ -561,13 +577,14 @@
       <div><span class="eyebrow">Öğrenme alanı</span><h1>${esc(d.exam.name)}</h1></div>
       <p>Bu alan HMGS için geliştirdiğimiz çalışma motorunun aynısıyla çalışır. İlerlemen yalnız bu tarayıcıda saklanır.</p>
       <div class="seg" role="group" aria-label="Sınav seç">${Object.entries(A.exams).sort((x, y) => examOn(y[0]) - examOn(x[0])).map(([id, x]) => examOn(id) ? `<button type="button" data-act="exam" data-id="${id}" aria-pressed="${id === examId}">${x.short}</button>` : `<button type="button" class="is-off" disabled title="Yakında">${x.short}</button>`).join("")}</div>
-      <div class="tabs" role="tablist">${TABS.map(([id, l]) => `<button type="button" role="tab" data-act="tab" data-id="${id}" aria-selected="${store.tab === id}">${l}</button>`).join("")}</div>
+      <div class="tabs" role="tablist">${tabsFor(examId).map(([id, l]) => `<button type="button" role="tab" data-act="tab" data-id="${id}" aria-selected="${store.tab === id}">${l}</button>`).join("")}</div>
     </div></div>
     <div class="wrap app-body">
       ${data.sample ? `<div class="sample-bar"><span>Örnek öğrenci verisi gösteriliyor. Rakamlar demo amaçlıdır.</span><button class="btn btn-small" data-act="own">Kendi verimle başla</button></div>` : ""}
       ${body}
     </div>`;
     afterAppRender(examId, data, d);
+    if (store.tab === "konus" || store.tab === "yaz") PRACTICE.mount(document.getElementById("pr-root"), A.practice[examId], store.tab === "konus" ? "konusma" : "yazma", practiceHooks(examId));
   }
 
   function viewPanel(d, data) {
@@ -1444,7 +1461,7 @@
 
   // Mac'in gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
   MAC.setContext(() => {
-    const lc = LESSONS.context() || LESSONS.anlatimContext(); if (lc) return lc;
+    const lc = LESSONS.context() || LESSONS.anlatimContext() || (route().view === "app" && (store.tab === "konus" || store.tab === "yaz") ? PRACTICE.context() : null); if (lc) return lc;
     const r = route();
     if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
     if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }

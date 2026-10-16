@@ -316,5 +316,7 @@ window.MAC = (() => {
   window.addEventListener("hashchange", hideTip);
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") hideTip(); });
 
-  return { svg, renderOnboarding, needsOnboarding, setContext: (fn) => { pageContext = fn; }, refresh: drawDock, tip, hideTip, tipsAvailable: () => !tipsOff() && tipsShown() < TIPS_MAX };
+  // Başka bir modül Mac'e soru gönderir (ör. yazma pratiğinde "Mac'e kontrol ettir").
+  const ask = (text) => { dock.querySelector(".mac-tip")?.remove(); chat.open = true; drawDock(); send(text); };
+  return { svg, renderOnboarding, needsOnboarding, ask, setContext: (fn) => { pageContext = fn; }, refresh: drawDock, tip, hideTip, tipsAvailable: () => !tipsOff() && tipsShown() < TIPS_MAX };
 })();
