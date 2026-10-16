@@ -14,6 +14,7 @@ import crypto from "node:crypto";
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../public");
 const OUT = path.join(ROOT, "audio");
 const KEY = process.env.ELEVENLABS_API_KEY?.trim();
+const BASE = process.env.ELEVENLABS_BASE_URL?.trim() || "https://api.elevenlabs.io"; // testte sahte sunucu
 const VOICE = process.env.TTS_VOICE?.trim() || "21m00Tcm4TlvDq8ikWAM";
 const MODEL = process.env.ELEVENLABS_MODEL?.trim() || "eleven_multilingual_v2";
 const SPEED = Number(process.env.TTS_SPEED) || 0.9; // öğrenenler için biraz yavaş
@@ -51,7 +52,7 @@ const fileFor = ({ lang, text }) => {
 async function synth({ text }) {
   const body = { text, model_id: MODEL, voice_settings: { speed: SPEED } };
   for (let attempt = 1; ; attempt++) {
-    const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(VOICE)}?output_format=mp3_44100_64`, {
+    const res = await fetch(`${BASE}/v1/text-to-speech/${encodeURIComponent(VOICE)}?output_format=mp3_44100_64`, {
       method: "POST",
       headers: { "content-type": "application/json", "xi-api-key": KEY, accept: "audio/mpeg" },
       body: JSON.stringify(body),

@@ -956,7 +956,7 @@
     return `<div class="grid-2">
       <div class="panel-box"><h3>Kişisel deneme</h3>
         <p class="muted">Sorular sınavdaki alan paylarına göre dağıtılır. Cevaplar ve açıklamalar sonda gösterilir; sonunda alan alan rapor ve zayıf alanların çıkar.</p>
-        ${full.fmt ? `<p class="note">Gerçek sınav: ${esc(full.fmt.label)} (<a href="${esc(full.fmt.src)}" target="_blank" rel="noopener">ÖSYM kılavuzu</a>). Deneme aynı soru başına süreyle çalışır; süre bitince deneme kendiliğinden biter.</p>` : `<p class="note">Bu programda resmî sınav süresi olmadığı için deneme süresizdir.</p>`}
+        ${full.fmt ? `<p class="note">Gerçek sınav: ${esc(full.fmt.label)} (<a href="${esc(full.fmt.src)}" target="_blank" rel="noopener">${esc(full.fmt.srcLabel || "ÖSYM kılavuzu")}</a>). Deneme aynı soru başına süreyle çalışır; süre bitince deneme kendiliğinden biter.</p>` : `<p class="note">Bu programda resmî sınav süresi olmadığı için deneme süresizdir.</p>`}
         <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Sınavdaki pay</th><th class="num">Kısa</th><th class="num">Tam</th></tr></thead><tbody>
           ${Object.keys(d.sh).map((a) => `<tr><td>${esc(a)}</td><td class="num">%${pct(d.sh[a])}</td><td class="num">${short.quota[a] || 0}</td><td class="num">${full.quota[a] || 0}</td></tr>`).join("")}
           <tr><td><b>Toplam</b></td><td></td><td class="num"><b>${short.total}</b></td><td class="num"><b>${full.total}</b></td></tr></tbody></table></div>
