@@ -1,11 +1,14 @@
-// Dil cümlelerini Mac'in sesiyle (ElevenLabs) önceden MP3'e çevirir: public/audio/<dil>/<özet>.mp3 + public/audio/manifest.json.
+// Dil cümlelerini ElevenLabs ile önceden MP3'e çevirir: public/audio/<dil>/<özet>.mp3 + public/audio/manifest.json.
 // Kaynaklar: data.js'teki soruların `say` alanları ve modules/*/anlatim/*.json içindeki "ses" bölümleri.
 // Var olan dosya yeniden üretilmez; metni değişen cümle yeni dosya alır, artık kullanılmayanlar --prune ile silinir.
 //
 // Kullanım:
 //   node tools/tts_build.mjs                 # anahtar yoksa yalnız sayım (kaç cümle, kaç karakter eksik)
-//   ELEVENLABS_API_KEY=... node tools/tts_build.mjs [--lang de-DE] [--prune]
-// Ses ayarları ask-robotic/lib/tts/providers.ts ile aynı: TTS_VOICE (varsayılan Mac'in sesi), ELEVENLABS_MODEL.
+//   ELEVENLABS_API_KEY=anahtar1,anahtar2 node tools/tts_build.mjs [--lang de-DE] [--prune]
+// Birden çok anahtar virgülle verilebilir: birinin kotası dolunca sıradakine geçilir.
+// Ücretsiz ElevenLabs planı yalnız varsayılan sesleri API'den kullandırır (kütüphane sesleri 402 döner) ve
+// ElevenLabs'in anılmasını ister; sayfalarda "Seslendirme: ElevenLabs" notu bu yüzden var.
+// Ses seçimi: TTS_VOICE_DE, TTS_VOICE_EN (dile göre) ya da TTS_VOICE (hepsi için); model ELEVENLABS_MODEL.
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -13,9 +16,13 @@ import crypto from "node:crypto";
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), "../public");
 const OUT = path.join(ROOT, "audio");
-const KEY = process.env.ELEVENLABS_API_KEY?.trim();
+const KEYS = (process.env.ELEVENLABS_API_KEY || "").split(",").map((k) => k.trim()).filter(Boolean);
+let keyIdx = 0;
+const KEY = KEYS[0];
 const BASE = process.env.ELEVENLABS_BASE_URL?.trim() || "https://api.elevenlabs.io"; // testte sahte sunucu
-const VOICE = process.env.TTS_VOICE?.trim() || "21m00Tcm4TlvDq8ikWAM";
+// Ücretsiz planda kullanılabilen varsayılan sesler: Almanca için Sarah, İngilizce (Birleşik Krallık) için Alice.
+const DEFAULT_VOICE = { de: "EXAVITQu4vr4xnSDxMaL", en: "Xb7hH8MSUJpSbSDYk0k2" };
+const voiceFor = (lang) => { const l = lang.slice(0, 2); return process.env[`TTS_VOICE_${l.toUpperCase()}`]?.trim() || process.env.TTS_VOICE?.trim() || DEFAULT_VOICE[l] || DEFAULT_VOICE.en; };
 const MODEL = process.env.ELEVENLABS_MODEL?.trim() || "eleven_multilingual_v2";
 const SPEED = Number(process.env.TTS_SPEED) || 0.9; // öğrenenler için biraz yavaş
 const arg = (k) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null; };
@@ -45,16 +52,17 @@ function collect() {
 }
 
 const fileFor = ({ lang, text }) => {
-  const h = crypto.createHash("sha256").update(`${VOICE}|${MODEL}|${SPEED}|${lang}|${text}`).digest("hex").slice(0, 16);
+  const h = crypto.createHash("sha256").update(`${voiceFor(lang)}|${MODEL}|${SPEED}|${lang}|${text}`).digest("hex").slice(0, 16);
   return `audio/${lang.slice(0, 2)}/${h}.mp3`;
 };
 
-async function synth({ text }) {
+async function synth({ lang, text }) {
   const body = { text, model_id: MODEL, voice_settings: { speed: SPEED } };
   for (let attempt = 1; ; attempt++) {
-    const res = await fetch(`${BASE}/v1/text-to-speech/${encodeURIComponent(VOICE)}?output_format=mp3_44100_64`, {
+    const used = keyIdx;
+    const res = await fetch(`${BASE}/v1/text-to-speech/${encodeURIComponent(voiceFor(lang))}?output_format=mp3_44100_64`, {
       method: "POST",
-      headers: { "content-type": "application/json", "xi-api-key": KEY, accept: "audio/mpeg" },
+      headers: { "content-type": "application/json", "xi-api-key": KEYS[used], accept: "audio/mpeg" },
       body: JSON.stringify(body),
       signal: AbortSignal.timeout(30_000),
     });
@@ -64,7 +72,14 @@ async function synth({ text }) {
       return buf;
     }
     const msg = (await res.text().catch(() => "")).slice(0, 300);
-    if (res.status === 401 || res.status === 403) throw new Error(`yetki hatası (${res.status}): ${msg}`);
+    // Kota doldu: sıradaki anahtarla aynı cümleyi yeniden dene.
+    // Eşzamanlı işçilerden biri anahtarı zaten değiştirdiyse yalnız yeniden dene.
+    if (/quota_exceeded/.test(msg) && (used < keyIdx || used + 1 < KEYS.length)) {
+      if (used === keyIdx) { keyIdx++; console.log(`  kota doldu, ${keyIdx + 1}. anahtara geçildi`); }
+      attempt = 0; continue;
+    }
+    // Yetki ya da plan hatası her cümlede tekrarlanır: ilkinde dur.
+    if (res.status === 401 || res.status === 402 || res.status === 403) throw Object.assign(new Error(`ElevenLabs ${res.status}: ${msg}`), { fatal: true });
     if ((res.status === 429 || res.status >= 500) && attempt < 5) { await new Promise((r) => setTimeout(r, 2000 * attempt)); continue; }
     throw new Error(`ElevenLabs ${res.status}: ${msg}`);
   }
@@ -83,7 +98,8 @@ for (const [k, v] of all) {
 if (ONLY) for (const [k, rel] of Object.entries(old)) if (!k.startsWith(`${ONLY}|`) && fs.existsSync(path.join(ROOT, rel))) manifest[k] = rel;
 
 const chars = todo.reduce((n, x) => n + x.v.text.length, 0);
-console.log(`${all.size} cümle · hazır ${all.size - todo.length} · eksik ${todo.length} (${chars} karakter) · ses ${VOICE} · model ${MODEL}`);
+const langs = [...new Set([...all.values()].map((v) => v.lang))];
+console.log(`${all.size} cümle · hazır ${all.size - todo.length} · eksik ${todo.length} (${chars} karakter) · ses ${langs.map((l) => `${l}=${voiceFor(l)}`).join(", ")} · model ${MODEL} · ${KEYS.length} anahtar`);
 const writeManifest = () => {
   const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => (a < b ? -1 : 1)));
   fs.mkdirSync(OUT, { recursive: true });
@@ -110,7 +126,7 @@ async function worker() {
     } catch (e) {
       failed++;
       console.error(`  hata: "${x.v.text.slice(0, 50)}" → ${e.message}`);
-      if (/yetki/.test(e.message)) { queue.length = 0; }
+      if (e.fatal) { queue.length = 0; }
     }
   }
 }

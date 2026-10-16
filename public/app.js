@@ -347,6 +347,7 @@
         ${programCountdown(p)}
         ${cta}
         ${p.facts ? `<div class="box"><h3>Başvuru bilgisi</h3><ul class="facts">${p.facts.map((f) => `<li>${esc(f.text)} <a href="${esc(f.src)}" target="_blank" rel="noopener">${esc(f.label)}</a></li>`).join("")}</ul><p class="note">Şartlar değişebilir; başvurmadan önce konsolosluktan kontrol et.</p></div>` : ""}
+        ${p.voiceCredit ? `<p class="note">${esc(p.voiceCredit)}</p>` : ""}
         ${METHOD_PROGS.includes(p.slug) ? `<div class="box"><h3>Soru Zekâsı</h3><p class="note">Bu programda konular en küçük birimine ayrılır, geçmiş sorular ölçülür ve planın her gün sınav ağırlığı ile senin zayıflığına göre yeniden kurulur.</p><a href="#yontem">Yöntemimizi incele →</a></div>` : ""}
         ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="#p-${o.slug}">${esc(o.title)}</a>`).join("")}</div>` : ""}
       </aside>
@@ -702,7 +703,7 @@
       <div class="game-streak"><b class="num">${g.streak}</b><span>doğru seri</span></div></div>`;
   }
 
-  // Dinleme soruları: metin Mac'in sesiyle (voice.js) okunur; tarayıcıda ses yoksa döküm açık gelir.
+  // Dinleme soruları: metin voice.js ile seslendirilir; tarayıcıda ses yoksa döküm açık gelir.
   function sayBox(s) {
     return `<div class="say"><button type="button" class="btn btn-outline" data-act="say">▶ Dinle</button>
       <details ${VOICE.browserOk ? "" : "open"}><summary>Metni göster</summary><p lang="${esc(s.lang)}">${esc(s.text)}</p></details></div>`;

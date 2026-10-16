@@ -1,4 +1,4 @@
-// Dil derslerinde ve dinleme sorularında cümleleri seslendirir. Önce Mac'in sesiyle önceden üretilmiş dosya
+// Dil derslerinde ve dinleme sorularında cümleleri seslendirir. Önce önceden üretilmiş dosya
 // (ElevenLabs, public/audio/, tools/tts_build.mjs), yoksa tarayıcının konuşma sentezi.
 // Dosya anahtarı: "<dil>|<metin>"; metin norm() ile sadeleştirilir, üretim betiği de aynısını kullanır.
 window.VOICE = (() => {

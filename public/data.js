@@ -193,7 +193,8 @@ ACADEMIA.programs = [
   },
   {
     slug: "aile-almanca", group: "aile", title: "Aile Birleşimi · Almanca", engine: "almanca", image: "img/aile-almanca.svg",
-    fact: "A1 · 14 konu · 200 soru",
+    fact: "Ücretsiz · A1 · 14 konu · 200 soru",
+    voiceCredit: "Seslendirme: ElevenLabs.",
     summary: "Almanya'ya aile birleşimi başvurusu için istenen A1 düzeyi Almanca sınavına (ör. Goethe-Zertifikat A1: Start Deutsch 1) hazırlık.",
     body: [
       "Dinleme, okuma, yazma ve konuşma bölümlerinin her birinde kısa bir ölçüm yapılır; plan günlük hayat konularıyla (kendini tanıtma, aile, adres, randevu, form doldurma) kurulur. Dinleme metinleri sesli okunur.",
@@ -221,7 +222,7 @@ ACADEMIA.programs = [
   },
   {
     slug: "aile-ingilizce", group: "aile", title: "Aile Birleşimi · İngilizce", engine: "lifeskills", image: "img/aile-ingilizce.svg",
-    fact: "A1 · konuşma ve dinleme",
+    fact: "Ücretsiz · A1 · konuşma ve dinleme",
     summary: "Birleşik Krallık aile vizesi için istenen İngilizce konuşma ve dinleme sınavına (ör. IELTS Life Skills A1) hazırlık.",
     body: [
       "Sınav yüz yüze, konuşma ve dinleme üzerinedir. Dinleme metinleri sesli okunur; konuşma bölümünde görevlinin soracağı türden sorulara verilecek doğru cevabı seçerek kalıpları çalışırsın.",
@@ -388,7 +389,7 @@ ACADEMIA.exams = {
     name: "Almanca A1 · Aile Birleşimi",
     short: "Almanca A1",
     blueprint: { "Hören": 1, "Lesen": 1, "Schreiben": 1, "Sprechen": 1 },
-    blueprintNote: "Dört bölüm eşit ağırlıktadır. Hören metinleri Mac'in sesiyle okunur. Schreiben ve Sprechen burada çoktan seçmeli sorularla çalışılır; gerçek sınavda form doldurur, kısa mesaj yazar ve grup içinde konuşursun.",
+    blueprintNote: "Dört bölüm eşit ağırlıktadır. Hören metinleri sesli okunur (seslendirme: ElevenLabs). Schreiben ve Sprechen burada çoktan seçmeli sorularla çalışılır; gerçek sınavda form doldurur, kısa mesaj yazar ve grup içinde konuşursun.",
     areaNote: { "Hören": "Dinleme", "Lesen": "Okuma", "Schreiben": "Yazma: form ve kısa mesaj", "Sprechen": "Konuşma" },
     items: [
       { id: "a-h1", alan: "Hören", q: "Anna bugün saat kaçta geliyor?", say: { lang: "de-DE", text: "Hallo, hier ist Anna. Ich komme heute nicht um drei, sondern um halb fünf. Bis dann!" }, o: ["4.30", "5.30", "3.00", "4.00"], a: 0, e: "“Halb fünf” beşe yarım var, yani 4.30 demektir. Almancada “halb” bir sonraki saatin yarısıdır; 5.30 en sık yapılan hatadır." },

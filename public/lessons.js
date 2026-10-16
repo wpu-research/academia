@@ -1052,6 +1052,7 @@ window.LESSONS = (() => {
         ${d.bolumler.map(sec).join("")}
         ${quiz ? `<section class="la-quiz"><h2>Kendini dene</h2>${quiz}</section>` : ""}
         <footer class="la-foot">
+          ${d.bolumler.some((b) => b.tur === "ses") && idx.sesKredi ? `<p class="note">${esc(idx.sesKredi)}</p>` : ""}
           ${d.ders ? `<a class="btn btn-primary" href="#ders-${mod}.${d.ders}">Oyunla pekiştir →</a>` : ""}
           ${d.pratik ? `<a class="btn btn-primary" href="#ogren-${d.pratik}">Soru çözerek pekiştir →</a>` : ""}
           <div class="la-nav">${prev ? `<a href="#anlatim-${mod}.${prev.id}">← ${esc(prev.baslik)}</a>` : "<span></span>"}${next ? `<a href="#anlatim-${mod}.${next.id}">${esc(next.baslik)} →</a>` : ""}</div>
