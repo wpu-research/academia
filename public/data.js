@@ -9,6 +9,7 @@ ACADEMIA.groups = [
   { id: "deneyim", label: "Yeni Deneyimler" },
   { id: "sinav", label: "Sınava Hazırlık" },
   { id: "ingilizce", label: "Genel İngilizce" },
+  { id: "aile", label: "Aile Birleşimi" },
 ];
 
 ACADEMIA.advisors = [
@@ -189,6 +190,26 @@ ACADEMIA.programs = [
     fact: "Birebir · esnek takvim",
     summary: "Programı, içeriği ve hızı tamamen senin hedefine göre belirlenen birebir eğitim.",
     body: ["Seviye tespitinden çıkan eksik listesi eğitmeninle paylaşılır. Dersler bu listeye göre planlanır, ders aralarındaki çalışmalar platformdan takip edilir."],
+  },
+  {
+    slug: "aile-almanca", group: "aile", title: "Aile Birleşimi · Almanca", engine: "almanca", active: false, image: "img/aile-almanca.svg",
+    fact: "A1 · 4 beceri",
+    summary: "Almanya'ya aile birleşimi başvurusu için istenen A1 düzeyi Almanca sınavına (ör. Goethe-Zertifikat A1: Start Deutsch 1) hazırlık.",
+    body: [
+      "Dinleme, okuma, yazma ve konuşma bölümlerinin her birinde kısa bir ölçüm yapılır; plan günlük hayat konularıyla (kendini tanıtma, aile, adres, randevu, form doldurma) kurulur.",
+      "Başvuru şartları değişebilir; güncel şartı başvuru öncesinde ilgili konsolosluktan kontrol et.",
+    ],
+    structure: [["Hören", "Dinleme"], ["Lesen", "Okuma"], ["Schreiben", "Form ve kısa mesaj"], ["Sprechen", "Grup içinde konuşma"]],
+  },
+  {
+    slug: "aile-ingilizce", group: "aile", title: "Aile Birleşimi · İngilizce", engine: "ingilizce", active: false, image: "img/aile-ingilizce.svg",
+    fact: "A1 · konuşma ve dinleme",
+    summary: "Birleşik Krallık aile vizesi için istenen İngilizce konuşma ve dinleme sınavına (ör. IELTS Life Skills A1) hazırlık.",
+    body: [
+      "Sınav yüz yüze, konuşma ve dinleme üzerinedir. Çalışma günlük konuşmalar, kısa dinleme metinleri ve birebir konuşma pratiğiyle ilerler.",
+      "Başvuru şartları değişebilir; güncel şartı başvuru öncesinde resmî kaynaktan kontrol et.",
+    ],
+    structure: [["Konuşma", "Sınav görevlisiyle ve bir adayla"], ["Dinleme", "Kısa günlük metinler"]],
   },
 ];
 

@@ -67,7 +67,7 @@
   // ---------- Ortak parçalar ----------
   function passiveCard(p) {
     return `<div class="card is-passive" aria-disabled="true">
-      <div class="card-img"><img src="img/${p.slug}.jpg" alt="" loading="lazy" width="800" height="500"></div>
+      <div class="card-img"><img src="${p.image || `img/${p.slug}.jpg`}" alt="" loading="lazy" width="800" height="500"></div>
       <div class="card-body"><h3>${esc(p.title)}</h3><div class="card-meta"><span>${esc(p.fact)}</span></div><p>${esc(p.summary)}</p><span class="chip chip-line soon">Yakında</span></div></div>`;
   }
 
