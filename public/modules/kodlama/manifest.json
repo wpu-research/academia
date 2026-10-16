@@ -14,6 +14,66 @@
  "exam": "kodlama",
  "lessons": [
   {
+   "id": "ilk-program",
+   "title": "İlk program",
+   "level": "Seviye 1 · Başlangıç",
+   "alan": "Temel",
+   "minutes": 8,
+   "summary": "print ile ekrana yaz, Python'u hesap makinesi gibi kullan, bölme türlerini tanı.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
+   "id": "degiskenler",
+   "title": "Değişkenler ve veri türleri",
+   "level": "Seviye 1 · Başlangıç",
+   "alan": "Temel",
+   "minutes": 9,
+   "summary": "Değişkenlere değer ver, güncelle; int, float ve str türlerini ve tür dönüşümünü öğren.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
+   "id": "girdi-cikti",
+   "title": "Girdi ve çıktı",
+   "level": "Seviye 1 · Başlangıç",
+   "alan": "Temel",
+   "minutes": 8,
+   "summary": "input ile kullanıcıdan bilgi al, f-string ile biçimlendir, print'in sep ve end seçeneklerini kullan.",
+   "sims": [
+    "kod-izleyici"
+   ]
+  },
+  {
+   "id": "kosullar",
+   "title": "Karar verme: if, elif, else",
+   "level": "Seviye 1 · Başlangıç",
+   "alan": "Temel",
+   "minutes": 9,
+   "summary": "Karşılaştırma, if-elif-else ve and, or, not ile programına karar verdir.",
+   "sims": [
+    "kod-izleyici",
+    "parsons",
+    "hata-bul"
+   ]
+  },
+  {
+   "id": "while-dongusu",
+   "title": "while döngüsü",
+   "level": "Seviye 1 · Başlangıç",
+   "alan": "Temel",
+   "minutes": 8,
+   "summary": "Koşul doğru olduğu sürece tekrar et; break ve continue ile döngüyü yönet.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
    "id": "donguyle-tekrar",
    "title": "Döngüyle tekrar",
    "level": "Seviye 1 · Başlangıç",
@@ -26,14 +86,74 @@
    ]
   },
   {
+   "id": "fonksiyonlar",
+   "title": "Fonksiyonlar",
+   "level": "Seviye 2 · Temel",
+   "alan": "Temel",
+   "minutes": 10,
+   "summary": "def ile fonksiyon yaz, değer döndür, parametre ve varsayılan değer kullan, kapsamı anla.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
    "id": "listeler",
    "title": "Listeler",
    "level": "Seviye 2 · Temel",
-   "alan": "Orta",
+   "alan": "Temel",
    "minutes": 9,
    "summary": "Listeleri kutular halinde gör: indeks, ekleme, sıralama ve liste üreteçleri.",
    "sims": [
     "gorsel-veri-yapisi",
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
+   "id": "metinler",
+   "title": "Metinlerle çalışmak",
+   "level": "Seviye 2 · Temel",
+   "alan": "Temel",
+   "minutes": 9,
+   "summary": "Metinlerde indeks ve dilim, metin metotları, split, join ve arama.",
+   "sims": [
+    "gorsel-veri-yapisi",
+    "kod-izleyici"
+   ]
+  },
+  {
+   "id": "demet-kume",
+   "title": "Demetler ve kümeler",
+   "level": "Seviye 2 · Temel",
+   "alan": "Temel",
+   "minutes": 8,
+   "summary": "Değiştirilemez demetler, açma ile takas ve tekrarsız kümeler.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
+   "id": "sozlukler",
+   "title": "Sözlükler",
+   "level": "Seviye 2 · Temel",
+   "alan": "Temel",
+   "minutes": 9,
+   "summary": "Anahtar-değer çiftleri: oluşturma, get, döngü ve frekans sayma.",
+   "sims": [
+    "kod-izleyici",
+    "parsons"
+   ]
+  },
+  {
+   "id": "hatalar",
+   "title": "Hatalar ve hata yakalama",
+   "level": "Seviye 2 · Temel",
+   "alan": "Temel",
+   "minutes": 9,
+   "summary": "Hata türlerini tanı, try-except-else-finally ile yakala, raise ile hata fırlat.",
+   "sims": [
     "kod-izleyici",
     "parsons"
    ]

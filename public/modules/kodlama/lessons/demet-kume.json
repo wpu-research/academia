@@ -1,0 +1,158 @@
+{
+ "id": "demet-kume",
+ "title": "Demetler ve kümeler",
+ "level": "Seviye 2 · Temel",
+ "alan": "Temel",
+ "minutes": 8,
+ "summary": "Değiştirilemez demetler, açma ile takas ve tekrarsız kümeler.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "nokta = (3, 4)\nx, y = nokta\nprint(x + y)",
+   "options": [
+    "7",
+    "(3, 4)",
+    "34",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Açma (unpacking) demetteki değerleri sırayla değişkenlere dağıtır: x = 3, y = 4."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "t = (1, 2, 3)\nt[0] = 5",
+   "options": [
+    "TypeError hatası verir",
+    "t (5, 2, 3) olur",
+    "t (1, 2, 3, 5) olur",
+    "Hiçbir şey olmaz"
+   ],
+   "answer": 0,
+   "why": "Demetler değiştirilemez (immutable). Eleman atamak TypeError verir."
+  },
+  {
+   "id": "s3",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. İki değişkenin tek satırda nasıl yer değiştirdiğine bak.",
+   "code": "a = 1\nb = 2\na, b = b, a\nprint(a, b)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "a": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "a": "1",
+      "b": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "a": "2",
+      "b": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "a": "2",
+      "b": "1"
+     },
+     "out": "2 1\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Sağ taraf önce (2, 1) demeti olarak hesaplanır, sonra a ve b'ye dağıtılır."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(set([1, 2, 2, 3, 3, 3]))",
+   "options": [
+    "{1, 2, 3}",
+    "{1, 2, 2, 3, 3, 3}",
+    "[1, 2, 3]",
+    "{3}"
+   ],
+   "answer": 0,
+   "why": "Küme her elemandan yalnız bir tane tutar; tekrarlar atılır."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "a = {1, 2, 3}\nb = {2, 3, 4}\nprint(a & b)",
+   "options": [
+    "{2, 3}",
+    "{1, 2, 3, 4}",
+    "{1, 4}",
+    "{1}"
+   ],
+   "answer": 0,
+   "why": "& kesişimi verir: iki kümede de olan elemanlar."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(len(set(\"merhaba\")))",
+   "options": [
+    "6",
+    "7",
+    "5",
+    "4"
+   ],
+   "answer": 0,
+   "why": "merhaba'daki farklı harfler m, e, r, h, a, b: 6 tane. a iki kez geçse de bir sayılır."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Listede kaç farklı isim olduğunu yazdıran programı kur.",
+   "lines": [
+    "isimler = [\"ali\", \"ece\", \"ali\"]",
+    "tekil = set(isimler)",
+    "print(len(tekil))"
+   ],
+   "why": "Liste kümeye çevrilince tekrar eden ali bir kez kalır: 2 farklı isim."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "Hangisi oluşturulduktan sonra değiştirilemez?",
+   "options": [
+    "tuple (demet)",
+    "list (liste)",
+    "set (küme)",
+    "dict (sözlük)"
+   ],
+   "answer": 0,
+   "why": "Demetler değiştirilemez; liste, küme ve sözlük değiştirilebilir."
+  }
+ ]
+}

@@ -741,7 +741,7 @@
     "oran-karistirma": "Oran karıştırma", "birim-cember": "Birim çember", "limit-yaklasim": "Limit yaklaşımı", "turev-teget": "Teğet ve türev", "integral-alan": "İntegral alanı",
     "dizi-gorsel": "Dizi görseli", "kume-venn": "Venn şeması", "mantik-tablosu": "Doğruluk tablosu", "karmasik-duzlem": "Karmaşık düzlem",
     "kod-izleyici": "Kod izleyici", "cikti-tahmin": "Çıktı tahmini", "parsons": "Satır dizme", "bosluk-doldur": "Boşluk doldurma", "hata-bul": "Hata bulma", "kod-yaz": "Kod yazma", "gorsel-veri-yapisi": "Veri yapısı görseli" };
-  const READY = new Set(["sayi-dogrusu", "kesir-cubugu", "olasilik-sim", "koordinat-duzlemi", "turev-teget", "kod-izleyici", "cikti-tahmin", "parsons", "bosluk-doldur", "hata-bul", "gorsel-veri-yapisi"]);
+  const READY = new Set(["sayi-dogrusu", "kesir-cubugu", "olasilik-sim", "koordinat-duzlemi", "turev-teget", "onluk-bloklar", "alan-modeli", "denklem-terazisi", "aci-olcer", "geometri-tahtasi", "veri-grafigi", "fonksiyon-grafigi", "birim-cember", "integral-alan", "kod-izleyici", "cikti-tahmin", "parsons", "bosluk-doldur", "hata-bul", "gorsel-veri-yapisi"]);
   const simChip = (k) => k ? `<span class="chip ${READY.has(k) ? "chip-ready" : "chip-line"}" title="${READY.has(k) ? "Hazır" : "Planlandı"}">${READY.has(k) ? "● " : "○ "}${esc(SIM_LABEL[k] || k)}</span>` : "";
   const dersLink = (mod, id) => id ? `<a class="chip chip-brand" href="#ders-${mod}.${id}">Derse git →</a>` : "";
   const codeList = (k) => k.kod ? k.kod : (k.kazanim || []).filter((x) => /^[A-Z]+\.?\d/.test(x)).join(", ");

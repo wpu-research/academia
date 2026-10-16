@@ -1,0 +1,219 @@
+{
+ "id": "metinler",
+ "title": "Metinlerle çalışmak",
+ "level": "Seviye 2 · Temel",
+ "alan": "Temel",
+ "minutes": 9,
+ "summary": "Metinlerde indeks ve dilim, metin metotları, split, join ve arama.",
+ "sims": [
+  "gorsel-veri-yapisi",
+  "kod-izleyici"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Metin de bir dizidir: her harfin bir indeksi vardır. Sayma 0'dan başlar, sondan saymak için eksi indeks kullanılır.",
+   "sim": {
+    "kind": "liste-gorsel",
+    "name": "kelime",
+    "items": [
+     "\"k\"",
+     "\"e\"",
+     "\"d\"",
+     "\"i\""
+    ]
+   }
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kelime = \"python\"\nprint(kelime[0], kelime[-1])",
+   "options": [
+    "p n",
+    "p o",
+    "y n",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "[0] ilk harf, [-1] son harftir."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kelime = \"python\"\nprint(kelime[1:4])",
+   "options": [
+    "yth",
+    "pyth",
+    "ytho",
+    "yt"
+   ],
+   "answer": 0,
+   "why": "Dilim [1:4], 1. indeksten başlar ve 4. indekse kadar (4 hariç) alır: y, t, h."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"Merhaba\".upper())",
+   "options": [
+    "MERHABA",
+    "merhaba",
+    "Merhaba",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "upper() bütün harfleri büyük harfe çevirir. Metin değişmez; yeni bir metin döner."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "cumle = \"elma armut kiraz\"\nparcalar = cumle.split()\nprint(len(parcalar))",
+   "options": [
+    "3",
+    "16",
+    "1",
+    "2"
+   ],
+   "answer": 0,
+   "why": "split() metni boşluklardan böler ve bir liste döndürür: 3 kelime."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"-\".join([\"a\", \"b\", \"c\"]))",
+   "options": [
+    "a-b-c",
+    "-a-b-c-",
+    "abc",
+    "['a', 'b', 'c']"
+   ],
+   "answer": 0,
+   "why": "join, listedeki metinleri aralarına verilen ayırıcıyı koyarak birleştirir."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"banana\".count(\"a\"))",
+   "options": [
+    "3",
+    "2",
+    "1",
+    "6"
+   ],
+   "answer": 0,
+   "why": "count, aranan parçanın kaç kez geçtiğini sayar: b-a-n-a-n-a."
+  },
+  {
+   "id": "s8",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. ters değişkeninin her harfte nasıl büyüdüğüne bak.",
+   "code": "s = \"kod\"\nters = \"\"\nfor harf in s:\n    ters = harf + ters\nprint(ters)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "s": "'kod'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "s": "'kod'",
+      "ters": "''"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "s": "'kod'",
+      "ters": "''",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'k'",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'k'",
+      "harf": "'o'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'ok'",
+      "harf": "'o'"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'ok'",
+      "harf": "'d'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'dok'",
+      "harf": "'d'"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'dok'",
+      "harf": "'d'"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "s": "'kod'",
+      "ters": "'dok'",
+      "harf": "'d'"
+     },
+     "out": "dok\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Her harf, ters'in başına eklenir: k, ok, dok."
+  }
+ ]
+}

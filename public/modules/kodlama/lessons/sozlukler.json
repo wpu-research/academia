@@ -1,0 +1,149 @@
+{
+ "id": "sozlukler",
+ "title": "Sözlükler",
+ "level": "Seviye 2 · Temel",
+ "alan": "Temel",
+ "minutes": 9,
+ "summary": "Anahtar-değer çiftleri: oluşturma, get, döngü ve frekans sayma.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Sözlük, değerleri **anahtarlarla** saklar: `{\"Ali\": 85}` sözlüğünde anahtar \"Ali\", değer 85'tir. Değere indeksle değil, anahtarla ulaşılır."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "notlar = {\"Ali\": 85, \"Ece\": 92}\nprint(notlar[\"Ece\"])",
+   "options": [
+    "92",
+    "85",
+    "Ece",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Köşeli parantezle anahtarın değerine ulaşılır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "notlar = {\"Ali\": 85}\nprint(notlar.get(\"Can\", 0))",
+   "options": [
+    "0",
+    "None",
+    "85",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "get, anahtar yoksa hata vermek yerine verilen varsayılan değeri döndürür."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "notlar = {\"Ali\": 85}\nprint(notlar[\"Can\"])",
+   "options": [
+    "KeyError hatası verir",
+    "0",
+    "None",
+    "Can"
+   ],
+   "answer": 0,
+   "why": "Olmayan anahtara köşeli parantezle ulaşmak KeyError verir."
+  },
+  {
+   "id": "s5",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Sözlüğe nasıl anahtar eklendiğine ve değerin nasıl güncellendiğine bak.",
+   "code": "stok = {\"elma\": 3}\nstok[\"armut\"] = 5\nstok[\"elma\"] = stok[\"elma\"] + 1\nprint(stok)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "stok": "{'elma': 3}"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "stok": "{'elma': 3, 'armut': 5}"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "stok": "{'elma': 4, 'armut': 5}"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "stok": "{'elma': 4, 'armut': 5}"
+     },
+     "out": "{'elma': 4, 'armut': 5}\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Yeni anahtara değer atamak onu ekler; var olan anahtara atamak değerini günceller."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "fiyat = {\"çay\": 10, \"simit\": 15}\nfor urun, tl in fiyat.items():\n    print(urun, tl)",
+   "options": [
+    "çay 10\nsimit 15",
+    "çay simit\n10 15",
+    "çay\nsimit",
+    "10\n15"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "items() her turda (anahtar, değer) çiftini verir."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "\"kaka\" kelimesindeki harfleri sayan programı kur.",
+   "lines": [
+    "sayac = {}",
+    "for harf in \"kaka\":",
+    "    sayac[harf] = sayac.get(harf, 0) + 1",
+    "print(sayac)"
+   ],
+   "why": "Her harf için o anki sayıyı (yoksa 0) bir artırırız. Sonuç: {'k': 2, 'a': 2}."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(len({\"a\": 1, \"b\": 2, \"a\": 3}))",
+   "options": [
+    "2",
+    "3",
+    "1",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Anahtarlar tekildir; aynı anahtar ikinci kez yazılınca öncekinin üzerine yazılır."
+  }
+ ]
+}

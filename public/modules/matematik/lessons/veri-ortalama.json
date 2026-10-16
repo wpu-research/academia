@@ -1,0 +1,133 @@
+{
+ "id": "veri-ortalama",
+ "title": "Veri: ortalama, ortanca, tepe değer",
+ "level": "Ortaokul 5–7",
+ "alan": "Ortaokul",
+ "minutes": 7,
+ "summary": "Çubukları sürükleyerek verileri değiştir; ortalamanın, ortancanın ve tepe değerin nasıl tepki verdiğini gör.",
+ "sims": [
+  "veri-grafigi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Bir öğrencinin beş günde çözdüğü soru sayıları. Çubukları sürükleyerek değiştirebilirsin; yeşil kesikli çizgi **ortalamayı** gösterir.",
+   "sim": {
+    "kind": "veri-grafigi",
+    "labels": [
+     "Pzt",
+     "Sal",
+     "Çar",
+     "Per",
+     "Cum"
+    ],
+    "values": [
+     3,
+     5,
+     4,
+     6,
+     2
+    ]
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Çubukları değiştirerek ortalamayı **5** yap.",
+   "sim": {
+    "kind": "veri-grafigi",
+    "labels": [
+     "Pzt",
+     "Sal",
+     "Çar",
+     "Per",
+     "Cum"
+    ],
+    "values": [
+     3,
+     5,
+     4,
+     6,
+     2
+    ]
+   },
+   "goal": "Ortalama 5",
+   "check": {
+    "key": "mean",
+    "eq": 5,
+    "tol": 0.001
+   },
+   "hint": "5 günün ortalaması 5 ise toplam 25 olmalı. Şu an toplam 20.",
+   "why": "Ortalama = toplam ÷ veri sayısı. 25 ÷ 5 = 5."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "3, 5, 4, 6, 2 verilerinin ortalaması kaçtır?",
+   "options": [
+    "4",
+    "5",
+    "3",
+    "20"
+   ],
+   "answer": 0,
+   "why": "Toplam 20, veri sayısı 5: 20 ÷ 5 = 4."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Aynı verilerin ortancası kaçtır?",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "3"
+   ],
+   "answer": 0,
+   "why": "Sıralayınca 2, 3, 4, 5, 6 olur; ortadaki değer 4."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Tepe değeri (en sık görülen değer) **7** yap.",
+   "sim": {
+    "kind": "veri-grafigi",
+    "labels": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E"
+    ],
+    "values": [
+     2,
+     4,
+     6,
+     3,
+     5
+    ]
+   },
+   "goal": "Tepe değer 7",
+   "check": {
+    "key": "mode",
+    "eq": 7
+   },
+   "hint": "En az iki çubuğu 7 yap, diğer değerler birbirinden farklı kalsın.",
+   "why": "Tepe değer, veride en çok tekrar eden değerdir."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Verilere çok büyük bir değer eklenirse hangisi daha çok etkilenir?",
+   "options": [
+    "Ortalama",
+    "Ortanca",
+    "İkisi de aynı",
+    "Hiçbiri"
+   ],
+   "answer": 0,
+   "why": "Ortalama tüm değerlerin toplamını kullanır; uç bir değer onu çeker. Ortanca yalnız ortadaki değere bakar."
+  }
+ ]
+}

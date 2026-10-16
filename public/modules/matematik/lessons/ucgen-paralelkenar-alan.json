@@ -1,0 +1,129 @@
+{
+ "id": "ucgen-paralelkenar-alan",
+ "title": "Üçgen ve paralelkenarın alanı",
+ "level": "Ortaokul 6–7",
+ "alan": "Ortaokul",
+ "minutes": 7,
+ "summary": "Geometri tahtasında köşeleri sürükleyerek alanın taban ve yüksekliğe nasıl bağlı olduğunu gör.",
+ "sims": [
+  "geometri-tahtasi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Bu üçgenin tabanı 4, yüksekliği 3 birim. Alanı **taban × yükseklik ÷ 2 = 6** birimkare.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Köşeleri sürükleyerek üçgenin alanını **8 birimkare** yap.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      1,
+      4
+     ]
+    ]
+   },
+   "goal": "Alan 8 birimkare",
+   "check": {
+    "key": "area",
+    "eq": 8
+   },
+   "hint": "Taban × yükseklik 16 olmalı; örneğin taban 4, yükseklik 4.",
+   "why": "Üçgenin alanı taban × yükseklik ÷ 2'dir; 4 × 4 ÷ 2 = 8."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Tabanı 6, yüksekliği 5 olan üçgenin alanı kaçtır?",
+   "options": [
+    "15",
+    "30",
+    "11",
+    "60"
+   ],
+   "answer": 0,
+   "why": "6 × 5 ÷ 2 = 15."
+  },
+  {
+   "id": "s4",
+   "type": "info",
+   "prompt": "Paralelkenarın üst iki köşesini **aynı miktarda** sağa ya da sola kaydır. Taban ve yükseklik aynı kaldıkça alan değişmez.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      2,
+      4
+     ]
+    ]
+   }
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Tabanı 7, yüksekliği 3 olan paralelkenarın alanı kaçtır?",
+   "options": [
+    "21",
+    "10",
+    "42",
+    "24"
+   ],
+   "answer": 0,
+   "why": "Paralelkenarın alanı taban × yüksekliktir: 7 × 3 = 21."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Tabanları ve yükseklikleri aynı olan bir üçgen ile bir paralelkenarın alanları arasında nasıl bir ilişki vardır?",
+   "options": [
+    "Üçgeninki paralelkenarınkinin yarısıdır",
+    "Eşittir",
+    "Üçgeninki iki katıdır",
+    "İlişki yoktur"
+   ],
+   "answer": 0,
+   "why": "Bir paralelkenar, köşegeniyle iki eş üçgene ayrılır. Bu yüzden üçgenin alanı yarısıdır."
+  }
+ ]
+}

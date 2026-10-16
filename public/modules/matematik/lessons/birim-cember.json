@@ -1,0 +1,110 @@
+{
+ "id": "birim-cember",
+ "title": "Trigonometri: birim çember",
+ "level": "Lise 10–11 · TYT-AYT",
+ "alan": "Lise",
+ "minutes": 9,
+ "summary": "Noktayı birim çember üzerinde gezdirerek sinüs ve kosinüsün ne olduğunu gör.",
+ "sims": [
+  "birim-cember"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Yarıçapı 1 olan çembere **birim çember** denir. Üzerindeki noktanın x koordinatı **kosinüs** (kahverengi), y koordinatı **sinüs** (yeşil).",
+   "sim": {
+    "kind": "birim-cember",
+    "deg": 30
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Açıyı **60°** yap.",
+   "sim": {
+    "kind": "birim-cember",
+    "deg": 0
+   },
+   "goal": "Açı 60°",
+   "check": {
+    "key": "deg",
+    "eq": 60
+   },
+   "why": "60°'de nokta (1/2, √3/2) olur: cos 60° = 1/2, sin 60° ≈ 0,866."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "sin 30° kaçtır?",
+   "sim": {
+    "kind": "birim-cember",
+    "deg": 30
+   },
+   "options": [
+    "1/2",
+    "√3/2",
+    "1",
+    "0"
+   ],
+   "answer": 0,
+   "why": "30°'de nokta (√3/2, 1/2) olur; y koordinatı 1/2."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Kosinüsün **0** olduğu bir açı bul (0° ile 180° arasında).",
+   "sim": {
+    "kind": "birim-cember",
+    "deg": 20
+   },
+   "goal": "cos = 0",
+   "check": {
+    "key": "cos",
+    "eq": 0,
+    "tol": 1e-06
+   },
+   "hint": "Kosinüs x koordinatıdır. Nokta y ekseninin üzerindeyken x kaçtır?",
+   "why": "90°'de nokta (0, 1) olur; cos 90° = 0, sin 90° = 1."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Hangi bölgede sinüs pozitif, kosinüs negatiftir?",
+   "options": [
+    "II. bölge (90°–180°)",
+    "I. bölge (0°–90°)",
+    "III. bölge (180°–270°)",
+    "IV. bölge (270°–360°)"
+   ],
+   "answer": 0,
+   "why": "II. bölgede nokta y ekseninin solunda (x < 0) ve x ekseninin üstündedir (y > 0)."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "sin²x + cos²x ifadesinin değeri nedir?",
+   "options": [
+    "1",
+    "0",
+    "2",
+    "x'e göre değişir"
+   ],
+   "answer": 0,
+   "why": "Nokta birim çember üzerinde: x² + y² = 1, yani cos²x + sin²x = 1. Simülasyonda da hep 1 görünür."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "cos 120° kaçtır?",
+   "options": [
+    "−1/2",
+    "1/2",
+    "−√3/2",
+    "√3/2"
+   ],
+   "answer": 0,
+   "why": "120°, 180° − 60°'tır. II. bölgede kosinüs negatif: cos 120° = −cos 60° = −1/2."
+  }
+ ]
+}

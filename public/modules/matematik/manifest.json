@@ -12,6 +12,28 @@
  "exam": "matematik",
  "lessons": [
   {
+   "id": "basamak-degeri",
+   "title": "Basamak değeri ve onluk bloklar",
+   "level": "İlkokul 1–3",
+   "alan": "İlkokul",
+   "minutes": 8,
+   "summary": "Yüzlük, onluk ve birlik bloklarıyla sayı kur, grupla ve toplamada eldeyi gör.",
+   "sims": [
+    "onluk-bloklar"
+   ]
+  },
+  {
+   "id": "carpma-alan-modeli",
+   "title": "Çarpma ve alan modeli",
+   "level": "İlkokul 3–4 · Ortaokul 5",
+   "alan": "İlkokul",
+   "minutes": 8,
+   "summary": "Çarpmayı dikdörtgenin alanı olarak gör; büyük çarpmaları parçalara ayır.",
+   "sims": [
+    "alan-modeli"
+   ]
+  },
+  {
    "id": "kesirler-sayi-dogrusu",
    "title": "Kesirler sayı doğrusunda",
    "level": "İlkokul 4 · Ortaokul 5",
@@ -21,6 +43,51 @@
    "sims": [
     "kesir-cubugu",
     "sayi-dogrusu"
+   ]
+  },
+  {
+   "id": "denklem-terazisi",
+   "title": "Denklemler ve terazi",
+   "level": "Ortaokul 6–7",
+   "alan": "Ortaokul",
+   "minutes": 8,
+   "summary": "Teraziyi dengede tutarak x'i yalnız bırak; denklem çözmenin mantığını gör.",
+   "sims": [
+    "denklem-terazisi"
+   ]
+  },
+  {
+   "id": "acilar-ve-ucgen",
+   "title": "Açılar ve üçgenin iç açıları",
+   "level": "Ortaokul 5–7",
+   "alan": "Ortaokul",
+   "minutes": 8,
+   "summary": "Açı ölçerle açı kur, açı türlerini tanı; köşeleri sürükleyerek üçgenin iç açılarını keşfet.",
+   "sims": [
+    "aci-olcer",
+    "geometri-tahtasi"
+   ]
+  },
+  {
+   "id": "ucgen-paralelkenar-alan",
+   "title": "Üçgen ve paralelkenarın alanı",
+   "level": "Ortaokul 6–7",
+   "alan": "Ortaokul",
+   "minutes": 7,
+   "summary": "Geometri tahtasında köşeleri sürükleyerek alanın taban ve yüksekliğe nasıl bağlı olduğunu gör.",
+   "sims": [
+    "geometri-tahtasi"
+   ]
+  },
+  {
+   "id": "veri-ortalama",
+   "title": "Veri: ortalama, ortanca, tepe değer",
+   "level": "Ortaokul 5–7",
+   "alan": "Ortaokul",
+   "minutes": 7,
+   "summary": "Çubukları sürükleyerek verileri değiştir; ortalamanın, ortancanın ve tepe değerin nasıl tepki verdiğini gör.",
+   "sims": [
+    "veri-grafigi"
    ]
   },
   {
@@ -46,6 +113,28 @@
    ]
   },
   {
+   "id": "fonksiyon-donusumleri",
+   "title": "Fonksiyon dönüşümleri",
+   "level": "Lise 10–11 · TYT-AYT",
+   "alan": "Lise",
+   "minutes": 9,
+   "summary": "a, h, k kaydırıcılarıyla parabolü ve mutlak değer grafiğini kaydır, genişlet, ters çevir.",
+   "sims": [
+    "fonksiyon-grafigi"
+   ]
+  },
+  {
+   "id": "birim-cember",
+   "title": "Trigonometri: birim çember",
+   "level": "Lise 10–11 · TYT-AYT",
+   "alan": "Lise",
+   "minutes": 9,
+   "summary": "Noktayı birim çember üzerinde gezdirerek sinüs ve kosinüsün ne olduğunu gör.",
+   "sims": [
+    "birim-cember"
+   ]
+  },
+  {
    "id": "turev-kesenden-tegete",
    "title": "Türev: kesenden teğete",
    "level": "AYT · Üniversiteye hazırlık",
@@ -54,6 +143,17 @@
    "summary": "Kesen doğruyu teğete yaklaştırarak türevin bir limit olduğunu gör.",
    "sims": [
     "turev-teget"
+   ]
+  },
+  {
+   "id": "integral-alan",
+   "title": "İntegral: alanı dikdörtgenlerle bul",
+   "level": "AYT · Üniversiteye hazırlık",
+   "alan": "İleri",
+   "minutes": 9,
+   "summary": "Eğrinin altını dikdörtgenlerle doldur; dikdörtgen sayısı arttıkça toplamın integrale nasıl yaklaştığını gör.",
+   "sims": [
+    "integral-alan"
    ]
   }
  ]

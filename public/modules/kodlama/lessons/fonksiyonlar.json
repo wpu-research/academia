@@ -1,0 +1,152 @@
+{
+ "id": "fonksiyonlar",
+ "title": "Fonksiyonlar",
+ "level": "Seviye 2 · Temel",
+ "alan": "Temel",
+ "minutes": 10,
+ "summary": "def ile fonksiyon yaz, değer döndür, parametre ve varsayılan değer kullan, kapsamı anla.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "`def` ile bir fonksiyon tanımlanır. Fonksiyon çağrıldığında içindeki kod çalışır; `return` sonucu çağıran yere geri gönderir."
+  },
+  {
+   "id": "s2",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Fonksiyon çağrıldığında a ve b'nin nasıl değer aldığına bak.",
+   "code": "def topla(a, b):\n    return a + b\n\nsonuc = topla(3, 4)\nprint(sonuc)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "topla": "<function topla at 0x755d46ee3e20>"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "a": "3",
+      "b": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "topla": "<function topla at 0x755d46ee3e20>",
+      "sonuc": "7"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "topla": "<function topla at 0x755d46ee3e20>",
+      "sonuc": "7"
+     },
+     "out": "7\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "topla(3, 4) çağrısında a = 3, b = 4 olur; return 7'yi sonuc değişkenine verir."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def selam(ad=\"dünya\"):\n    return \"Merhaba \" + ad\n\nprint(selam())",
+   "options": [
+    "Merhaba dünya",
+    "Merhaba ",
+    "Merhaba ad",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Argüman verilmezse varsayılan değer kullanılır: ad = \"dünya\"."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def kare(x):\n    return x * x\n\nprint(kare(3) + kare(2))",
+   "options": [
+    "13",
+    "25",
+    "10",
+    "9"
+   ],
+   "answer": 0,
+   "why": "kare(3) = 9, kare(2) = 4. Toplamları 13."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def f(a, b=2):\n    return a * b\n\nprint(f(b=5, a=3))",
+   "options": [
+    "15",
+    "6",
+    "10",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Anahtar kelimeli argümanlarda sıra önemli değildir: a = 3, b = 5."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def yaz():\n    print(\"selam\")\n\nsonuc = yaz()\nprint(sonuc)",
+   "options": [
+    "selam\nNone",
+    "selam",
+    "None",
+    "selam\nselam"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "yaz() ekrana selam yazar ama return'ü yoktur; böyle fonksiyonlar None döndürür."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "x = 10\n\ndef degistir():\n    x = 5\n\ndegistir()\nprint(x)",
+   "options": [
+    "10",
+    "5",
+    "None",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Fonksiyonun içindeki x yerel bir değişkendir; dışarıdaki x'i değiştirmez."
+  },
+  {
+   "id": "s8",
+   "type": "parsons",
+   "prompt": "İki sayının ortalamasını döndüren fonksiyonu yazıp 4 ile 8 için sonucu yazdır.",
+   "lines": [
+    "def ortalama(a, b):",
+    "    toplam = a + b",
+    "    return toplam / 2",
+    "print(ortalama(4, 8))"
+   ],
+   "why": "Fonksiyon önce tanımlanır, sonra çağrılır. (4 + 8) / 2 = 6.0; / ondalıklı sonuç verir."
+  }
+ ]
+}

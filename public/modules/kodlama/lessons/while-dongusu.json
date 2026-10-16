@@ -1,0 +1,192 @@
+{
+ "id": "while-dongusu",
+ "title": "while döngüsü",
+ "level": "Seviye 1 · Başlangıç",
+ "alan": "Temel",
+ "minutes": 8,
+ "summary": "Koşul doğru olduğu sürece tekrar et; break ve continue ile döngüyü yönet.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. sayac değişkeninin her turda nasıl arttığına bak.",
+   "code": "sayac = 1\nwhile sayac <= 3:\n    print(sayac)\n    sayac = sayac + 1",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "sayac": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayac": "1"
+     },
+     "out": "1\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "sayac": "2"
+     },
+     "out": "1\n"
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "2"
+     },
+     "out": "1\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayac": "2"
+     },
+     "out": "1\n2\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "sayac": "3"
+     },
+     "out": "1\n2\n"
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "3"
+     },
+     "out": "1\n2\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayac": "3"
+     },
+     "out": "1\n2\n3\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "sayac": "4"
+     },
+     "out": "1\n2\n3\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "sayac": "4"
+     },
+     "out": "1\n2\n3\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Koşul her turun başında kontrol edilir. sayac 4 olunca koşul yanlış olur ve döngü biter."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "n = 10\nwhile n > 0:\n    n = n - 3\nprint(n)",
+   "options": [
+    "-2",
+    "1",
+    "0",
+    "-3"
+   ],
+   "answer": 0,
+   "hint": "Her turda n'yi tek tek yaz.",
+   "why": "n sırayla 7, 4, 1, -2 olur. -2 > 0 yanlış olduğu için döngü durur."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Yukarıdaki ilk programda `sayac = sayac + 1` satırını silersek ne olur?",
+   "options": [
+    "Döngü hiç bitmez",
+    "Döngü hiç çalışmaz",
+    "Hata verir",
+    "Bir kez çalışır"
+   ],
+   "answer": 0,
+   "why": "sayac hep 1 kalır, koşul hep doğru olur: sonsuz döngü."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "i = 0\nwhile True:\n    i = i + 1\n    if i == 4:\n        break\nprint(i)",
+   "options": [
+    "4",
+    "3",
+    "5",
+    "Sonsuza kadar çalışır"
+   ],
+   "answer": 0,
+   "why": "while True kendi kendine bitmez; break döngüden hemen çıkarır. i 4 olunca çıkılır."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "for i in range(5):\n    if i == 2:\n        continue\n    print(i, end=\" \")",
+   "options": [
+    "0 1 3 4",
+    "0 1 2 3 4",
+    "0 1",
+    "2"
+   ],
+   "answer": 0,
+   "why": "continue o turun geri kalanını atlar ve sonraki tura geçer; 2 yazdırılmaz."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program kaç kez \"merhaba\" yazar?",
+   "code": "k = 0\nwhile k < 6:\n    print(\"merhaba\")\n    k = k + 2",
+   "options": [
+    "3",
+    "6",
+    "2",
+    "4"
+   ],
+   "answer": 0,
+   "why": "k sırayla 0, 2, 4 olur; 6 olunca koşul yanlıştır. Üç tur döner."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "1'den başlayıp 100'ü geçene kadar ikiye katlayan ve sonucu yazan programı kur.",
+   "lines": [
+    "sayi = 1",
+    "while sayi < 100:",
+    "    sayi = sayi * 2",
+    "print(sayi)"
+   ],
+   "why": "sayi 1, 2, 4, …, 64, 128 olur. 128 < 100 yanlış olduğu için döngü biter ve 128 yazılır."
+  }
+ ]
+}

@@ -1,0 +1,133 @@
+{
+ "id": "fonksiyon-donusumleri",
+ "title": "Fonksiyon dönüşümleri",
+ "level": "Lise 10–11 · TYT-AYT",
+ "alan": "Lise",
+ "minutes": 9,
+ "summary": "a, h, k kaydırıcılarıyla parabolü ve mutlak değer grafiğini kaydır, genişlet, ters çevir.",
+ "sims": [
+  "fonksiyon-grafigi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Gri kesikli eğri temel fonksiyon **y = x²**. Renkli eğri **f(x) = a(x − h)² + k**. Kaydırıcılarla oynayıp her birinin ne yaptığına bak.",
+   "sim": {
+    "kind": "fonksiyon-grafigi",
+    "g": "kare"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Parabolün tepe noktasını **(2, −1)** noktasına taşı.",
+   "sim": {
+    "kind": "fonksiyon-grafigi",
+    "g": "kare",
+    "target": [
+     2,
+     -1
+    ]
+   },
+   "goal": "Tepe noktası (2, −1)",
+   "check": {
+    "all": [
+     {
+      "key": "h",
+      "eq": 2
+     },
+     {
+      "key": "k",
+      "eq": -1
+     }
+    ]
+   },
+   "hint": "h sağa-sola, k yukarı-aşağı kaydırır.",
+   "why": "f(x) = (x − 2)² − 1 parabolünün tepe noktası (2, −1)'dir."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "f(x) = (x + 3)² grafiği, y = x²'ye göre nasıl kaymıştır?",
+   "options": [
+    "3 birim sola",
+    "3 birim sağa",
+    "3 birim yukarı",
+    "3 birim aşağı"
+   ],
+   "answer": 0,
+   "why": "(x + 3)² = (x − (−3))², yani h = −3: grafik 3 birim sola kayar."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Parabolü **aşağı baktır**.",
+   "sim": {
+    "kind": "fonksiyon-grafigi",
+    "g": "kare",
+    "a": 1
+   },
+   "goal": "Parabol aşağı bakıyor",
+   "check": {
+    "key": "a",
+    "lt": 0
+   },
+   "hint": "a'nın işaretine bak.",
+   "why": "a negatif olunca grafik x eksenine göre yansır ve kollar aşağı döner."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "f(x) = 2x² grafiği, y = x² ile karşılaştırıldığında nasıldır?",
+   "options": [
+    "Daha dar (daha dik)",
+    "Daha geniş",
+    "Sağa kaymış",
+    "Aşağı kaymış"
+   ],
+   "answer": 0,
+   "why": "|a| > 1 olunca her y değeri büyür ve grafik daralır."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "Şimdi **y = |x|** grafiğinin köşesini **(−1, 2)** noktasına taşı.",
+   "sim": {
+    "kind": "fonksiyon-grafigi",
+    "g": "mutlak",
+    "target": [
+     -1,
+     2
+    ]
+   },
+   "goal": "Köşe (−1, 2)",
+   "check": {
+    "all": [
+     {
+      "key": "h",
+      "eq": -1
+     },
+     {
+      "key": "k",
+      "eq": 2
+     }
+    ]
+   },
+   "why": "f(x) = |x + 1| + 2. Aynı dönüşüm kuralları her fonksiyon için geçerlidir."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "f(x) = −(x − 1)² + 4 fonksiyonunun alabileceği en büyük değer kaçtır?",
+   "options": [
+    "4",
+    "1",
+    "−4",
+    "En büyük değeri yoktur"
+   ],
+   "answer": 0,
+   "why": "Parabol aşağı bakar ve tepe noktası (1, 4)'tür; en büyük değer 4."
+  }
+ ]
+}

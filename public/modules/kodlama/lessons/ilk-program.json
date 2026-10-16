@@ -1,0 +1,152 @@
+{
+ "id": "ilk-program",
+ "title": "İlk program",
+ "level": "Seviye 1 · Başlangıç",
+ "alan": "Temel",
+ "minutes": 8,
+ "summary": "print ile ekrana yaz, Python'u hesap makinesi gibi kullan, bölme türlerini tanı.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "`print()` ekrana yazı yazdırır. Tırnak içindeki her şey **metin** olarak aynen yazılır, tırnaksız sayılarla ise hesap yapılır."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"Merhaba\")\nprint(\"Python\")",
+   "options": [
+    "Merhaba\nPython",
+    "Merhaba Python",
+    "MerhabaPython",
+    "print(\"Merhaba\")"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "Her print kendi satırına yazar; iki print iki satır demektir."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(3 + 4 * 2)",
+   "options": [
+    "11",
+    "14",
+    "10",
+    "3 + 4 * 2"
+   ],
+   "answer": 0,
+   "hint": "İşlem önceliğini hatırla.",
+   "why": "Çarpma toplamadan önce yapılır: 4 * 2 = 8, sonra 3 + 8 = 11."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(7 / 2)",
+   "options": [
+    "3.5",
+    "3",
+    "4",
+    "3,5"
+   ],
+   "answer": 0,
+   "why": "/ her zaman ondalıklı sonuç verir. Python'da ondalık ayırıcı noktadır."
+  },
+  {
+   "id": "s5",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. `//` ve `%` işaretlerinin ne verdiğine bak.",
+   "code": "a = 17\nb = 5\nprint(a // b)\nprint(a % b)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "a": "17"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "a": "17",
+      "b": "5"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "a": "17",
+      "b": "5"
+     },
+     "out": "3\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "a": "17",
+      "b": "5"
+     },
+     "out": "3\n2\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "// tam bölümü verir (17 // 5 = 3), % kalanı verir (17 % 5 = 2)."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(10 % 3)",
+   "options": [
+    "1",
+    "3",
+    "0",
+    "3.33"
+   ],
+   "answer": 0,
+   "why": "10'u 3'e bölünce bölüm 3, kalan 1'dir. % kalanı verir."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"2 + 3\")",
+   "options": [
+    "2 + 3",
+    "5",
+    "\"2 + 3\"",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Tırnak içinde olduğu için bu bir metindir; hesaplanmaz, tırnaklar da yazdırılmaz."
+  },
+  {
+   "id": "s8",
+   "type": "parsons",
+   "prompt": "7'nin karesini yazdıran programı kur. Satırlara doğru sırayla dokun.",
+   "lines": [
+    "sayi = 7",
+    "kare = sayi * sayi",
+    "print(\"Karesi:\", kare)"
+   ],
+   "why": "Önce sayı tanımlanır, sonra karesi hesaplanır, en son yazdırılır: Karesi: 49."
+  }
+ ]
+}

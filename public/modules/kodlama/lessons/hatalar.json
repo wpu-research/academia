@@ -1,0 +1,146 @@
+{
+ "id": "hatalar",
+ "title": "Hatalar ve hata yakalama",
+ "level": "Seviye 2 · Temel",
+ "alan": "Temel",
+ "minutes": 9,
+ "summary": "Hata türlerini tanı, try-except-else-finally ile yakala, raise ile hata fırlat.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu satır hangi hatayı verir?",
+   "code": "print(10 / 0)",
+   "options": [
+    "ZeroDivisionError",
+    "ValueError",
+    "TypeError",
+    "Hata vermez, 0 yazar"
+   ],
+   "answer": 0,
+   "why": "Bir sayıyı sıfıra bölmek ZeroDivisionError verir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu satır hangi hatayı verir?",
+   "code": "print(int(\"on\"))",
+   "options": [
+    "ValueError",
+    "TypeError",
+    "SyntaxError",
+    "Hata vermez, 10 yazar"
+   ],
+   "answer": 0,
+   "why": "\"on\" bir sayıya çevrilemez; değer uygun değilse ValueError oluşur."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program hangi hatayı verir?",
+   "code": "liste = [1, 2]\nprint(liste[5])",
+   "options": [
+    "IndexError",
+    "KeyError",
+    "ValueError",
+    "Hata vermez"
+   ],
+   "answer": 0,
+   "why": "Listede 5. indeks yok; sınır dışı indeks IndexError verir."
+  },
+  {
+   "id": "s4",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Hata oluşunca programın except bloğuna nasıl atladığına bak.",
+   "code": "try:\n    x = int(\"abc\")\nexcept ValueError:\n    x = 0\nprint(x)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "x": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "x": "0"
+     },
+     "out": "0\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "int(\"abc\") hata verince try'ın geri kalanı atlanır, except çalışır ve program durmadan devam eder."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "try:\n    print(1)\nexcept:\n    print(2)\nelse:\n    print(3)\nfinally:\n    print(4)",
+   "options": [
+    "1\n3\n4",
+    "1\n2\n3\n4",
+    "1\n4",
+    "2\n4"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "Hata olmadığı için except atlanır, else çalışır. finally her durumda çalışır."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def bol(a, b):\n    if b == 0:\n        raise ValueError(\"sıfıra bölünmez\")\n    return a / b\n\ntry:\n    bol(5, 0)\nexcept ValueError as e:\n    print(e)",
+   "options": [
+    "sıfıra bölünmez",
+    "ValueError",
+    "0",
+    "Hiçbir şey"
+   ],
+   "answer": 0,
+   "why": "raise kendi hatamızı fırlatır; except ... as e ile yakalanan hatanın mesajı yazdırılır."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Geçersiz bir sayıyı yakalayıp uyarı yazan programı kur.",
+   "lines": [
+    "try:",
+    "    sayi = int(\"12a\")",
+    "    print(sayi * 2)",
+    "except ValueError:",
+    "    print(\"geçersiz sayı\")"
+   ],
+   "why": "\"12a\" sayıya çevrilemez; hata except tarafından yakalanır ve ekrana geçersiz sayı yazılır."
+  }
+ ]
+}

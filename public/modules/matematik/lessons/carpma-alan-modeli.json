@@ -1,0 +1,136 @@
+{
+ "id": "carpma-alan-modeli",
+ "title": "Çarpma ve alan modeli",
+ "level": "İlkokul 3–4 · Ortaokul 5",
+ "alan": "İlkokul",
+ "minutes": 8,
+ "summary": "Çarpmayı dikdörtgenin alanı olarak gör; büyük çarpmaları parçalara ayır.",
+ "sims": [
+  "alan-modeli"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Çarpma, bir dikdörtgenin alanı gibi düşünülebilir: **satır sayısı × sütun sayısı = kare sayısı**.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 3,
+    "cols": 4
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Kaydırıcılarla **4 × 6**'lık bir dikdörtgen kur.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 1,
+    "cols": 1
+   },
+   "goal": "4 satır, 6 sütun",
+   "check": {
+    "all": [
+     {
+      "key": "rows",
+      "eq": 4
+     },
+     {
+      "key": "cols",
+      "eq": 6
+     }
+    ]
+   },
+   "why": "4 satırın her birinde 6 kare var: 4 × 6 = 24."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "4 × 6'lık dikdörtgende kaç birimkare vardır?",
+   "options": [
+    "24",
+    "10",
+    "20",
+    "46"
+   ],
+   "answer": 0,
+   "why": "4 tane 6: 6 + 6 + 6 + 6 = 24."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "6 × 4 ile 4 × 6 aynı sonucu verir mi?",
+   "options": [
+    "Evet, ikisi de 24",
+    "Hayır, 6 × 4 daha büyük",
+    "Hayır, 4 × 6 daha büyük"
+   ],
+   "answer": 0,
+   "why": "Dikdörtgeni çevirmek alanını değiştirmez. Buna çarpmanın değişme özelliği denir."
+  },
+  {
+   "id": "s5",
+   "type": "info",
+   "prompt": "Büyük çarpmalarda bir çarpanı parçalara ayırabiliriz. **7 × 12 = 7 × 10 + 7 × 2**. Kahverengi bölüm 7 × 10, yeşil bölüm 7 × 2.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 7,
+    "cols": 12,
+    "split": true,
+    "fixed": true
+   }
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "7 × 12 kaçtır?",
+   "options": [
+    "84",
+    "72",
+    "74",
+    "94"
+   ],
+   "answer": 0,
+   "why": "7 × 10 = 70 ve 7 × 2 = 14. 70 + 14 = 84."
+  },
+  {
+   "id": "s7",
+   "type": "sim",
+   "prompt": "Alan modeliyle **8 × 13**'ü bulmak için dikdörtgeni 8 satır, 13 sütun yap.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 5,
+    "cols": 11,
+    "split": true,
+    "max": 14
+   },
+   "goal": "8 satır, 13 sütun",
+   "check": {
+    "all": [
+     {
+      "key": "rows",
+      "eq": 8
+     },
+     {
+      "key": "cols",
+      "eq": 13
+     }
+    ]
+   },
+   "why": "13 = 10 + 3, yani 8 × 13 = 8 × 10 + 8 × 3."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "8 × 13 kaçtır?",
+   "options": [
+    "104",
+    "96",
+    "114",
+    "81"
+   ],
+   "answer": 0,
+   "why": "8 × 10 = 80 ve 8 × 3 = 24. 80 + 24 = 104."
+  }
+ ]
+}

@@ -1,0 +1,133 @@
+{
+ "id": "acilar-ve-ucgen",
+ "title": "Açılar ve üçgenin iç açıları",
+ "level": "Ortaokul 5–7",
+ "alan": "Ortaokul",
+ "minutes": 8,
+ "summary": "Açı ölçerle açı kur, açı türlerini tanı; köşeleri sürükleyerek üçgenin iç açılarını keşfet.",
+ "sims": [
+  "aci-olcer",
+  "geometri-tahtasi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "sim",
+   "prompt": "Işını sürükleyerek **90°**'lik bir açı yap.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 40
+   },
+   "goal": "Açı 90°",
+   "check": {
+    "key": "angle",
+    "eq": 90
+   },
+   "hint": "Hareketli ışın tam yukarıyı gösterince açı 90° olur.",
+   "why": "90°'lik açıya dik açı denir; iki ışın birbirine diktir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "135°'lik açı hangi türdendir?",
+   "options": [
+    "Geniş açı",
+    "Dar açı",
+    "Dik açı",
+    "Doğru açı"
+   ],
+   "answer": 0,
+   "why": "90° ile 180° arasındaki açılar geniş açıdır."
+  },
+  {
+   "id": "s3",
+   "type": "sim",
+   "prompt": "Şimdi **45°**'lik bir açı yap. Ok tuşlarıyla 1'er derece ilerleyebilirsin.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 120
+   },
+   "goal": "Açı 45°",
+   "check": {
+    "key": "angle",
+    "eq": 45
+   },
+   "why": "45° dik açının yarısıdır ve dar açıdır."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Doğru açı kaç derecedir?",
+   "options": [
+    "180°",
+    "90°",
+    "360°",
+    "100°"
+   ],
+   "answer": 0,
+   "why": "İki ışın zıt yönleri gösterince bir doğru oluşturur: 180°."
+  },
+  {
+   "id": "s5",
+   "type": "info",
+   "prompt": "Üçgenin köşelerini sürükle. Her açı değişiyor ama **iç açıların toplamına** bak.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "angles": true
+   }
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bir üçgenin iç açıları toplamı kaç derecedir?",
+   "options": [
+    "180°",
+    "360°",
+    "90°",
+    "Üçgene göre değişir"
+   ],
+   "answer": 0,
+   "why": "Köşeleri nasıl sürüklersen sürükle toplam 180° kalır."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bir üçgenin iki açısı 50° ve 60° ise üçüncü açı kaç derecedir?",
+   "options": [
+    "70°",
+    "80°",
+    "110°",
+    "90°"
+   ],
+   "answer": 0,
+   "why": "180° − (50° + 60°) = 70°."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "Bir dörtgen, bir köşegenle iki üçgene ayrılır. Dörtgenin iç açıları toplamı kaçtır?",
+   "options": [
+    "360°",
+    "180°",
+    "540°",
+    "270°"
+   ],
+   "answer": 0,
+   "why": "İki üçgen: 2 × 180° = 360°."
+  }
+ ]
+}

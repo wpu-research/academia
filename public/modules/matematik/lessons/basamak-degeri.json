@@ -1,0 +1,146 @@
+{
+ "id": "basamak-degeri",
+ "title": "Basamak değeri ve onluk bloklar",
+ "level": "İlkokul 1–3",
+ "alan": "İlkokul",
+ "minutes": 8,
+ "summary": "Yüzlük, onluk ve birlik bloklarıyla sayı kur, grupla ve toplamada eldeyi gör.",
+ "sims": [
+  "onluk-bloklar"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Her **birlik** küçük bir küp, her **onluk** 10 küplük bir çubuk, her **yüzlük** 10 çubukluk bir kare. Düğmelerle blok ekleyip çıkararak dene.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "h": 1,
+    "t": 2,
+    "o": 3
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Bloklarla **243** sayısını oluştur.",
+   "sim": {
+    "kind": "onluk-bloklar"
+   },
+   "goal": "Ekranda 243 var ve her basamakta 10'dan az blok var",
+   "check": {
+    "all": [
+     {
+      "key": "value",
+      "eq": 243
+     },
+     {
+      "key": "canonical",
+      "eq": 1
+     }
+    ]
+   },
+   "hint": "243 = 2 yüzlük + 4 onluk + 3 birlik.",
+   "why": "Her rakam bulunduğu basamağın kaç tane olduğunu söyler: 2 yüzlük, 4 onluk, 3 birlik."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "243 sayısında **4** rakamının basamak değeri kaçtır?",
+   "options": [
+    "40",
+    "4",
+    "400",
+    "24"
+   ],
+   "answer": 0,
+   "why": "4 onlar basamağında; 4 onluk 40 eder."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Ekranda 1 onluk ve 13 birlik var. Sayıyı **gruplanmış** hâle getir.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 1,
+    "o": 13
+   },
+   "goal": "Birlik sayısı 10'dan az",
+   "check": {
+    "all": [
+     {
+      "key": "value",
+      "eq": 23
+     },
+     {
+      "key": "canonical",
+      "eq": 1
+     }
+    ]
+   },
+   "hint": "“10 birlik → 1 onluk” düğmesini kullan.",
+   "why": "10 birlik 1 onluk eder. 1 onluk + 13 birlik = 2 onluk + 3 birlik = 23."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Bloklarla **305** sayısını oluştur.",
+   "sim": {
+    "kind": "onluk-bloklar"
+   },
+   "goal": "Ekranda 305 var",
+   "check": {
+    "all": [
+     {
+      "key": "value",
+      "eq": 305
+     },
+     {
+      "key": "canonical",
+      "eq": 1
+     }
+    ]
+   },
+   "hint": "Onlar basamağında 0 var: hiç onluk koyma.",
+   "why": "305 = 3 yüzlük + 0 onluk + 5 birlik. Sıfır, o basamakta hiç blok olmadığını gösterir."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "Ekranda **38** var. 25 eklemek için **2 onluk ve 5 birlik** ekle, sonra grupla.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 3,
+    "o": 8
+   },
+   "goal": "Sonuç gruplanmış olarak ekranda",
+   "check": {
+    "all": [
+     {
+      "key": "value",
+      "eq": 63
+     },
+     {
+      "key": "canonical",
+      "eq": 1
+     }
+    ]
+   },
+   "hint": "8 + 5 = 13 birlik olur. 10'unu 1 onluğa çevir.",
+   "why": "8 + 5 = 13 birlik = 1 onluk + 3 birlik. Onluklar 3 + 2 + 1 = 6. Sonuç 63. Toplamadaki “elde” budur."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "52 − 7 işleminde 2 birlikten 7 birlik çıkaramıyoruz. Ne yaparız?",
+   "options": [
+    "1 onluğu 10 birliğe çözeriz",
+    "7'den 2'yi çıkarırız",
+    "Sonuca 0 yazarız",
+    "Onlukları toplarız"
+   ],
+   "answer": 0,
+   "why": "52 = 4 onluk + 12 birlik. 12 − 7 = 5, sonuç 45. Çıkarmadaki “onluk bozma” budur."
+  }
+ ]
+}

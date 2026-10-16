@@ -1,0 +1,137 @@
+{
+ "id": "girdi-cikti",
+ "title": "Girdi ve çıktı",
+ "level": "Seviye 1 · Başlangıç",
+ "alan": "Temel",
+ "minutes": 8,
+ "summary": "input ile kullanıcıdan bilgi al, f-string ile biçimlendir, print'in sep ve end seçeneklerini kullan.",
+ "sims": [
+  "kod-izleyici"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "`input()` kullanıcıdan bilgi alır. Kullanıcı ne yazarsa yazsın sonuç her zaman **metin (str)** olur. Sayı gerekiyorsa `int()` ile çevirmek gerekir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Kullanıcı **Ayşe** yazarsa, sorudan sonra ekrana ne yazılır?",
+   "code": "ad = input(\"Adın? \")\nprint(\"Merhaba\", ad)",
+   "options": [
+    "Merhaba Ayşe",
+    "Merhaba ad",
+    "Ayşe",
+    "MerhabaAyşe"
+   ],
+   "answer": 0,
+   "why": "print'e virgülle verilen değerler arasına bir boşluk konur."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Kullanıcı **4** yazarsa ne yazdırılır?",
+   "code": "sayi = input(\"Sayı? \")\nprint(sayi * 2)",
+   "options": [
+    "44",
+    "8",
+    "4 4",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "hint": "input'un döndürdüğü değerin türünü düşün.",
+   "why": "input metin döndürür: \"4\" * 2 metni iki kez yazar."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Kullanıcı **4** yazarsa ne yazdırılır?",
+   "code": "sayi = int(input(\"Sayı? \"))\nprint(sayi * 2)",
+   "options": [
+    "8",
+    "44",
+    "4",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "int() metni sayıya çevirdiği için 4 * 2 = 8 olur."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "ad = \"Ece\"\nyas = 11\nprint(f\"{ad} {yas} yaşında\")",
+   "options": [
+    "Ece 11 yaşında",
+    "{ad} {yas} yaşında",
+    "ad yas yaşında",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "f-string içinde süslü parantezdeki değişkenlerin değeri yazılır."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "pi = 3.14159\nprint(f\"{pi:.2f}\")",
+   "options": [
+    "3.14",
+    "3.14159",
+    "3.1",
+    "3"
+   ],
+   "answer": 0,
+   "why": ":.2f virgülden sonra 2 basamak gösterir."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"a\", \"b\", \"c\", sep=\"-\")",
+   "options": [
+    "a-b-c",
+    "a b c",
+    "abc",
+    "a-b-c-"
+   ],
+   "answer": 0,
+   "why": "sep, değerlerin arasına konacak ayırıcıyı belirler."
+  },
+  {
+   "id": "s8",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. `end` seçeneğinin satır sonunu nasıl değiştirdiğine bak.",
+   "code": "print(\"Yükleniyor\", end=\"\")\nprint(\"...\", end=\"\")\nprint(\" tamam\")",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": "Yükleniyor"
+    },
+    {
+     "line": 2,
+     "vars": {},
+     "out": "Yükleniyor..."
+    },
+    {
+     "line": -1,
+     "vars": {},
+     "out": "Yükleniyor... tamam\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "end=\"\" ile satır sonu eklenmez; üç print aynı satıra yazar: Yükleniyor... tamam"
+  }
+ ]
+}

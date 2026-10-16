@@ -1,0 +1,111 @@
+{
+ "id": "integral-alan",
+ "title": "İntegral: alanı dikdörtgenlerle bul",
+ "level": "AYT · Üniversiteye hazırlık",
+ "alan": "İleri",
+ "minutes": 9,
+ "summary": "Eğrinin altını dikdörtgenlerle doldur; dikdörtgen sayısı arttıkça toplamın integrale nasıl yaklaştığını gör.",
+ "sims": [
+  "integral-alan"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "y = x² eğrisinin 0 ile 2 arasındaki alanını **dikdörtgenlerle** tahmin ediyoruz. Dikdörtgenlerin yüksekliği sağ uçtaki fonksiyon değeri.",
+   "sim": {
+    "kind": "integral-alan",
+    "b": 2,
+    "n": 4,
+    "mode": "sag"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Dikdörtgen sayısını **en az 50** yap ve farkın nasıl küçüldüğüne bak.",
+   "sim": {
+    "kind": "integral-alan",
+    "b": 2,
+    "n": 4,
+    "mode": "sag"
+   },
+   "goal": "n ≥ 50",
+   "check": {
+    "key": "n",
+    "gte": 50
+   },
+   "why": "Dikdörtgenler inceldikçe eğrinin üstüne taşan parçalar küçülür."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "n sonsuza giderken dikdörtgenlerin toplamı neye yaklaşır?",
+   "options": [
+    "Eğrinin altındaki gerçek alana",
+    "Sıfıra",
+    "Sonsuza",
+    "2'ye"
+   ],
+   "answer": 0,
+   "why": "Bu limit belirli integralin tanımıdır."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "∫₀² x² dx kaçtır?",
+   "options": [
+    "8/3",
+    "4",
+    "2",
+    "8"
+   ],
+   "answer": 0,
+   "why": "x²'nin ters türevi x³/3'tür: 2³/3 − 0 = 8/3 ≈ 2,667."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "n = 4 iken hangi yöntem gerçek alana en yakındır? (Yöntemleri simülasyonda dene.)",
+   "sim": {
+    "kind": "integral-alan",
+    "b": 2,
+    "n": 4,
+    "mode": "sag"
+   },
+   "options": [
+    "Orta nokta",
+    "Sol uç",
+    "Sağ uç"
+   ],
+   "answer": 0,
+   "why": "n = 4 için sol uç 1,75, sağ uç 3,75, orta nokta 2,625 verir. Gerçek değer 2,667."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Sağ uç yöntemi y = x² için neden fazla tahmin verir?",
+   "options": [
+    "Fonksiyon artan olduğu için dikdörtgenler eğrinin üstüne taşar",
+    "Dikdörtgenler çok dar olduğu için",
+    "Sağ uçta fonksiyon sıfır olduğu için",
+    "Fazla tahmin vermez"
+   ],
+   "answer": 0,
+   "why": "Artan fonksiyonda her aralığın en yüksek noktası sağ uçtadır; dikdörtgen eğriyi aşar."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "∫₁³ 2x dx kaçtır?",
+   "options": [
+    "8",
+    "4",
+    "9",
+    "6"
+   ],
+   "answer": 0,
+   "why": "2x'in ters türevi x²'dir: 3² − 1² = 8."
+  }
+ ]
+}

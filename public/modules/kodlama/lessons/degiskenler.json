@@ -1,0 +1,158 @@
+{
+ "id": "degiskenler",
+ "title": "Değişkenler ve veri türleri",
+ "level": "Seviye 1 · Başlangıç",
+ "alan": "Temel",
+ "minutes": 9,
+ "summary": "Değişkenlere değer ver, güncelle; int, float ve str türlerini ve tür dönüşümünü öğren.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. x ve y'nin değerlerini izle.",
+   "code": "x = 5\nx = x + 2\ny = x * 2\nprint(x, y)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "x": "5"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "x": "7"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "x": "7",
+      "y": "14"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "x": "7",
+      "y": "14"
+     },
+     "out": "7 14\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "x önce 5, sonra 5 + 2 = 7 olur. y = 7 * 2 = 14."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "yas = 12\nyas = yas + 1\nprint(yas)",
+   "options": [
+    "13",
+    "12",
+    "1",
+    "yas + 1"
+   ],
+   "answer": 0,
+   "why": "Sağ taraf önce hesaplanır (12 + 1), sonuç yeniden yas'a atanır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(type(3.0))",
+   "options": [
+    "<class 'float'>",
+    "<class 'int'>",
+    "<class 'str'>",
+    "3.0"
+   ],
+   "answer": 0,
+   "why": "Noktalı sayılar float türündedir; 3.0 tam sayı gibi görünse de float'tır."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(\"5\" + \"5\")",
+   "options": [
+    "55",
+    "10",
+    "5 5",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "İkisi de metin. Metinler + ile yan yana eklenir."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(int(\"5\") + 5)",
+   "options": [
+    "10",
+    "55",
+    "5",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "int(\"5\") metni sayıya çevirir; 5 + 5 = 10."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(str(7) * 3)",
+   "options": [
+    "777",
+    "21",
+    "7 7 7",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "str(7) \"7\" metnidir. Metin * 3, metni üç kez tekrar eder."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "print(\"Yaş: \" + 12)",
+   "options": [
+    "TypeError hatası verir",
+    "Yaş: 12",
+    "Yaş: + 12",
+    "12"
+   ],
+   "answer": 0,
+   "why": "Metin ile sayı + ile toplanamaz. str(12) yazmak ya da f-string kullanmak gerekir."
+  },
+  {
+   "id": "s8",
+   "type": "parsons",
+   "prompt": "\"40\" metnini sayıya çevirip 2 ekleyen programı kur.",
+   "lines": [
+    "metin = \"40\"",
+    "sayi = int(metin)",
+    "print(sayi + 2)"
+   ],
+   "why": "Metin önce int ile sayıya çevrilir, sonra 2 eklenir: 42."
+  }
+ ]
+}

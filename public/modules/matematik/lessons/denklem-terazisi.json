@@ -1,0 +1,111 @@
+{
+ "id": "denklem-terazisi",
+ "title": "Denklemler ve terazi",
+ "level": "Ortaokul 6–7",
+ "alan": "Ortaokul",
+ "minutes": 8,
+ "summary": "Teraziyi dengede tutarak x'i yalnız bırak; denklem çözmenin mantığını gör.",
+ "sims": [
+  "denklem-terazisi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Terazi dengede: soldaki **2 kutu ve 3 birim**, sağdaki **11 birimle** aynı ağırlıkta. Her kutunun içinde x var. **Yalnız soldan 1 çıkar** düğmesini dene, sonra geri al.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 2,
+    "b": 3,
+    "c": 11
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Teraziyi bozmadan **x'i yalnız bırak**.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 2,
+    "b": 3,
+    "c": 11
+   },
+   "goal": "Solda yalnız bir x kaldı",
+   "check": {
+    "key": "solved",
+    "eq": 1
+   },
+   "hint": "Önce iki taraftan birimleri çıkar, sonra iki tarafı x sayısına böl.",
+   "why": "İki taraftan 3 çıkarınca 2x = 8, iki tarafı 2'ye bölünce x = 4."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "2x + 3 = 11 denkleminde x kaçtır?",
+   "options": [
+    "4",
+    "7",
+    "5,5",
+    "8"
+   ],
+   "answer": 0,
+   "why": "2x = 11 − 3 = 8, x = 8 ÷ 2 = 4."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bir tarafa yaptığımız işlemi neden diğer tarafa da yaparız?",
+   "options": [
+    "Eşitlik bozulmasın diye",
+    "Sayılar küçülsün diye",
+    "Sebebi yok, kural böyle",
+    "x büyüsün diye"
+   ],
+   "answer": 0,
+   "why": "Denklem bir eşitliktir. İki tarafa aynı işlemi yapınca eşitlik korunur, tıpkı terazinin dengede kalması gibi."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Şimdi **3x + 2 = 14** denklemini çöz.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 3,
+    "b": 2,
+    "c": 14
+   },
+   "goal": "Solda yalnız bir x kaldı",
+   "check": {
+    "key": "solved",
+    "eq": 1
+   },
+   "why": "3x = 12, x = 4."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "5x − 4 = 21 ise x kaçtır?",
+   "options": [
+    "5",
+    "3,4",
+    "25",
+    "4"
+   ],
+   "answer": 0,
+   "why": "İki tarafa 4 ekle: 5x = 25. İki tarafı 5'e böl: x = 5."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "x/3 + 2 = 6 ise x kaçtır?",
+   "options": [
+    "12",
+    "4",
+    "8",
+    "24"
+   ],
+   "answer": 0,
+   "why": "İki taraftan 2 çıkar: x/3 = 4. İki tarafı 3 ile çarp: x = 12."
+  }
+ ]
+}
