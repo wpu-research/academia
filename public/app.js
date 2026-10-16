@@ -388,7 +388,7 @@
         <h2>Tüm modüller</h2>
         <div class="table-wrap"><table><tbody>${mods.map((x, i) => `<tr><td class="num">${i + 1}</td><td>${x.slug === m.slug ? `<b>${esc(x.title)}</b>` : `<a href="#m-${x.slug}">${esc(x.title)}</a>`}</td><td class="num">${x.lessons} ders</td></tr>`).join("")}</tbody></table></div>
       </div>
-      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler Robotik platformunda (robotik.macademia.online) açılır.</p><a class="btn btn-primary" href="${esc(p.link.href)}">${esc(p.link.label)}</a></div></aside>
+      <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler Robotik platformunda (robotix.macademia.com.tr) açılır.</p><a class="btn btn-primary" href="${esc(p.link.href)}">${esc(p.link.label)}</a></div></aside>
     </div></div>`;
   }
 

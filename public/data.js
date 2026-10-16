@@ -39,7 +39,7 @@ ACADEMIA.programs = [
       { slug: "mikro-kart", title: "Mikro Kart", lessons: 30, age: "8+ yaş", desc: "Tek kartlık mikrodenetleyici: düğmeler ve olaylar, sensörler, müzik, radyo ile iletişim ve projeler." },
       { slug: "oyun-atolyesi", title: "Oyun Atölyesi", lessons: 30, age: "8+ yaş", desc: "Çarpışma ve skor, harita, düşman zekâsı, platform fiziği ve baştan sona tam oyun projeleri." },
     ],
-    link: { href: "https://robotik.macademia.online", label: "Robotik laboratuvarını aç" },
+    link: { href: "https://robotix.macademia.com.tr", label: "Robotik laboratuvarını aç" },
     // Robotik'in kendi sitesi var: kart ve menü bağlantıları doğrudan oraya gider; modül sayfaları (#m-…) Macademia'da.
     direct: true,
   },
