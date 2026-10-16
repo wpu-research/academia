@@ -1,0 +1,159 @@
+{
+ "id": "m4-3-6",
+ "baslik": "Sıvı Ölçme",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.3.6.1",
+  "M.4.3.6.2",
+  "M.4.3.6.3",
+  "M.4.3.6.4",
+  "M.4.3.6.5"
+ ],
+ "sure": 12,
+ "ozet": "Mililitrenin kullanıldığı yerleri görecek, litre ile mililitre arasındaki ilişkiyi kurup dönüştürecek, sıvı miktarlarını tahmin edip ölçecek ve problemler çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Litre ve mililitre",
+   "govde": "Sıvıları **litre** (L) ve **mililitre** (mL) ile ölçeriz. Süt, su ve meyve suyu şişelerinde litre; ilaç şurubu, parfüm, göz damlası gibi az miktarlarda mililitre kullanılır.\n\n1 L = 1 000 mL. Bu yüzden **yarım litre** = 500 mL, **çeyrek litre** = 250 mL'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kabı doldur",
+   "aciklama": "Düğmelerle ölçü kaplarından sıvı dök. Kabın yanındaki çizgiler 100 mL aralıklıdır.",
+   "sim": {
+    "kind": "c-sivi",
+    "kapasite": 2000,
+    "hedef": 1750
+   },
+   "gorev": {
+    "metin": "Kaba 1 L 750 mL sıvı koy.",
+    "check": {
+     "key": "ml",
+     "eq": 1750
+    }
+   },
+   "dene": [
+    "1 L + 500 mL + 250 mL deneyebilirsin.",
+    "Fazla döktüysen \"Geri al\" düğmesini kullan."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Litre ve mililitreyi birlikte kullanma",
+   "govde": "Bir miktarı hem litre hem mililitreyle yazabiliriz: 1 L 750 mL = 1 000 mL + 750 mL = 1 750 mL.\n\nMililitreyi litreye çevirirken 1 000'lik grupları ayırırız: 2 500 mL = 2 L 500 mL."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Küçük kaplarla ölç",
+   "aciklama": "Bu kez 1 litrelik kap yok.",
+   "sim": {
+    "kind": "c-sivi",
+    "kapasite": 2000,
+    "kaplar": [
+     500,
+     250,
+     100
+    ],
+    "hedef": 1200
+   },
+   "gorev": {
+    "metin": "Kaba 1 L 200 mL sıvı koy.",
+    "check": {
+     "key": "ml",
+     "eq": 1200
+    }
+   },
+   "dene": [
+    "1 L 200 mL = 1 200 mL.",
+    "İki tane 500 mL 1 litre eder."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Dönüştürme",
+   "soru": "3 L 40 mL'yi mililitreye, 2 500 mL'yi litre ve mililitreye çevirelim.",
+   "cozum": [
+    "3 L = 3 000 mL; 3 000 + 40 = 3 040 mL.",
+    "2 500 mL = 2 000 mL + 500 mL = 2 L 500 mL."
+   ],
+   "sonuc": "3 040 mL ve 2 L 500 mL."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "2 L'lik bir şişedeki ayranla 250 mL'lik 5 bardak dolduruldu. Şişede kaç mL ayran kaldı?",
+   "cozum": [
+    "2 L = 2 000 mL.",
+    "5 bardak: 5 × 250 = 1 250 mL.",
+    "Kalan: 2 000 − 1 250 = 750 mL."
+   ],
+   "sonuc": "Şişede 750 mL ayran kaldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Tahmin",
+   "soru": "Bir su bardağına yaklaşık ne kadar su sığar? Bir kova için hangi birim uygundur?",
+   "cozum": [
+    "Bir su bardağı yaklaşık 200 mL alır; ölçü kabıyla doldurarak kontrol edebiliriz.",
+    "Kova birkaç litre alır; litre ile ölçmek uygundur."
+   ],
+   "sonuc": "Az miktarlar için mL, büyük miktarlar için L kullanılır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "1 L 50 mL'yi 150 mL diye yazmak yanlıştır. 1 L 1 000 mL'dir: 1 L 50 mL = 1 000 + 50 = **1 050 mL**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4 L kaç mililitredir?",
+   "options": [
+    "400 mL",
+    "4 000 mL",
+    "40 mL",
+    "40 000 mL"
+   ],
+   "answer": 1,
+   "why": "1 L = 1 000 mL; 4 × 1 000 = 4 000 mL.",
+   "hint": "1 litre kaç mililitre?"
+  },
+  {
+   "prompt": "2 L 300 mL kaç mililitredir?",
+   "options": [
+    "2 030 mL",
+    "230 mL",
+    "23 000 mL",
+    "2 300 mL"
+   ],
+   "answer": 3,
+   "why": "2 000 + 300 = 2 300 mL.",
+   "hint": "2 L'yi önce mililitreye çevir."
+  },
+  {
+   "prompt": "1 L su ile 250 mL'lik kaç bardak doldurulur?",
+   "options": [
+    "4",
+    "2",
+    "5",
+    "10"
+   ],
+   "answer": 0,
+   "why": "1 000 ÷ 250 = 4 bardak.",
+   "hint": "Çeyrek litre ile 1 litre arasındaki ilişkiyi düşün."
+  },
+  {
+   "prompt": "Bir ilaç şurubunun miktarını ölçmek için en uygun birim hangisidir?",
+   "options": [
+    "L",
+    "kg",
+    "mL",
+    "km"
+   ],
+   "answer": 2,
+   "why": "Az miktardaki sıvılar mililitre ile ölçülür.",
+   "hint": "Sıvı ölçme birimlerinden küçük olanı seç."
+  }
+ ]
+}

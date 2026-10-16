@@ -1,0 +1,163 @@
+{
+ "id": "m3-3-7",
+ "baslik": "Dört İşlem Gerektiren Problem Durumlarını Yapılandırma",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.7"
+ ],
+ "sure": 12,
+ "ozet": "Bu kez problemi biz kuracağız: verilen bir işleme, modele ya da cevaba uygun, soru cümlesi olan, gerçekçi problemler yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "İyi bir problemin parçaları",
+   "govde": "Bir problem üç parçadan oluşur:\n\n- **Durum:** Kim, nerede, ne oluyor? (\"Bir manavda 45 kg elma vardı.\")\n- **Veriler:** İşlemde kullanılacak sayılar. (\"18 kg elma satıldı.\")\n- **Soru:** Ne bulunacak? (\"Kaç kg elma kaldı?\")\n\nSayılar gerçekçi olmalı: bir sınıfta 500 öğrenci ya da bir elmanın 20 kg olması gerçekçi değildir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İşleme uygun soru seçmek",
+   "govde": "Kurduğun problemin cevabı **verilen işlemle** bulunabilmelidir:\n\n- 24 ÷ 3 → \"24 elmayı 3 tabağa eşit dağıtırsak her tabakta kaç elma olur?\"\n- 8 × 5 → \"8 vazonun her birinde 5 gül varsa toplam kaç gül vardır?\"\n- 60 − 25 → \"60 lirası olan Ayşe 25 liralık kitap alırsa kaç lirası kalır?\""
+  },
+  {
+   "tur": "sim",
+   "baslik": "Modelden probleme",
+   "aciklama": "Model 20 nesnenin 4 tabağa paylaştırılmasını gösteriyor. Dağıtmayı tamamla ve bu modele uyan bir problem düşün.",
+   "sim": {
+    "kind": "b-paylastir",
+    "toplam": 20,
+    "grup": 4,
+    "max": 30,
+    "maxGrup": 6
+   },
+   "gorev": {
+    "metin": "Dağıtmayı tamamla.",
+    "check": {
+     "all": [
+      {
+       "key": "toplam",
+       "eq": 20
+      },
+      {
+       "key": "grup",
+       "eq": 4
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Örnek problem: \"20 cevizi 4 sincap eşit paylaşırsa her sincaba kaç ceviz düşer?\"",
+    "Tabak sayısını değiştir; yeni modele uygun problemi nasıl değiştirirsin?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşitlikten probleme",
+   "aciklama": "Terazinin sol kefesinde □ + 15, sağ kefesinde 40 var. Kutudaki sayıyı değiştirerek teraziyi dengele.",
+   "sim": {
+    "kind": "b-terazi",
+    "sol": [
+     null,
+     "+",
+     15
+    ],
+    "sag": [
+     40
+    ],
+    "x": 0,
+    "min": 0,
+    "max": 40
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeleyen sayıyı bul.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Bu eşitliğe uyan bir problem: \"Ali'nin bir miktar bilyesi vardı. 15 bilye daha alınca 40 bilyesi oldu. Başta kaç bilyesi vardı?\""
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "8 × 5 işlemine uygun bir problem kuralım.",
+   "cozum": [
+    "Eşit grupları olan bir durum seç: vazolar ve güller.",
+    "Verileri yerleştir: 8 vazo, her vazoda 5 gül.",
+    "Soru cümlesi ekle: \"Toplam kaç gül vardır?\""
+   ],
+   "sonuc": "\"Bir çiçekçide 8 vazo var, her vazoda 5 gül var. Çiçekçide toplam kaç gül vardır?\" Cevap: 40."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Problemi tamamlama",
+   "soru": "\"Ayşe'nin 60 lirası vardı. …\" Problemi, cevabı 60 − 25 = 35 olacak biçimde tamamlayalım.",
+   "cozum": [
+    "İşlem çıkarma: Ayşe'nin parası azalmalı.",
+    "25 lira harcamasını ekle.",
+    "Kalan parayı soran bir soru yaz."
+   ],
+   "sonuc": "\"Ayşe'nin 60 lirası vardı. 25 liralık bir kitap aldı. Kaç lirası kaldı?\""
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Soru cümlesi olmayan bir metin problem değildir. Cevabı içinde veren (\"…kaç lirası kaldı? 35 lirası kaldı.\") ya da işlemle uyuşmayan bir soru (toplama işlemi için \"kaç tane kaldı?\") da hatalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi 24 ÷ 3 işlemine uygun bir problemdir?",
+   "options": [
+    "24 elmaya 3 elma eklersek kaç elma olur?",
+    "3 tabakta 24'er elma varsa kaç elma vardır?",
+    "24 elmadan 3'ünü yersek kaç elma kalır?",
+    "24 elmayı 3 tabağa eşit dağıtırsak her tabakta kaç elma olur?"
+   ],
+   "answer": 3,
+   "why": "Eşit paylaştırma bölmedir: 24 ÷ 3 = 8.",
+   "hint": "Hangi soru eşit paylaştırma istiyor?"
+  },
+  {
+   "prompt": "\"Sınıfta 14 kız ve 13 erkek öğrenci var.\" Hangi soru eklenirse problem toplama ile çözülür?",
+   "options": [
+    "Kızlar erkeklerden kaç fazladır?",
+    "Sınıfta toplam kaç öğrenci vardır?",
+    "Her sırada 2 öğrenci oturursa kaç sıra gerekir?",
+    "Kaç erkek öğrenci eksiktir?"
+   ],
+   "answer": 1,
+   "why": "Toplam öğrenci sayısı: 14 + 13 = 27.",
+   "hint": "\"Toplam\" hangi işlemi gerektirir?"
+  },
+  {
+   "prompt": "Bir problemde mutlaka bulunması gereken nedir?",
+   "options": [
+    "Soru cümlesi",
+    "Cevap",
+    "Bir resim",
+    "En az 3 sayı"
+   ],
+   "answer": 0,
+   "why": "Soru cümlesi olmadan neyin bulunacağı bilinmez.",
+   "hint": "Problemin çözülmesi için ne bilinmeli?"
+  },
+  {
+   "prompt": "\"Bir manavda 45 kg elma vardı. … Kaç kg elma kaldı?\" Boşluğa hangisi yazılırsa cevap 27 kg olur?",
+   "options": [
+    "18 kg elma geldi.",
+    "72 kg elma satıldı.",
+    "18 kg elma satıldı.",
+    "27 kg elma satıldı."
+   ],
+   "answer": 2,
+   "why": "45 − 18 = 27.",
+   "hint": "45'ten kaç çıkarınca 27 kalır?"
+  }
+ ]
+}

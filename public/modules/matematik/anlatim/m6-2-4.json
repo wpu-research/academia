@@ -1,0 +1,162 @@
+{
+ "id": "m6-2-4",
+ "baslik": "Uzunluk Ölçme",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.1.8"
+ ],
+ "sure": 12,
+ "ders": "olcme-ve-hacim",
+ "ozet": "Cetvelle doğru ölçmeyi hatırlayacak, standart uzunluk birimlerini (km, hm, dam, m, dm, cm, mm) tanıyacak ve birimler arasında dönüşüm yapacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden standart birim?",
+   "govde": "Karış ya da adım herkes için farklıdır. Bu yüzden herkesin aynı sonucu bulması için **standart birimler** kullanırız. Uzunluğun temel birimi **metre (m)**'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Doğru ölçüm",
+   "aciklama": "Cetvelle ölçerken başlangıç noktasına dikkat. Yeşil çubuğu sürükle.",
+   "sim": {
+    "kind": "olcme",
+    "length": 7,
+    "start": 2
+   },
+   "gorev": {
+    "metin": "Çubuğu cetvelin sıfırından başlat.",
+    "check": {
+     "key": "start",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Çubuk 2'den başlayıp 9'da bitiyorsa uzunluğu 9 − 2 = 7 cm'dir.",
+    "Sıfırdan başlatırsan bitiş çizgisi uzunluğu doğrudan gösterir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birimler ve aralarındaki ilişki",
+   "govde": "km → hm → dam → **m** → dm → cm → mm\n\nHer birim, sağındakinin **10 katı**dır.\n\n- 1 km = 1000 m\n- 1 m = 10 dm = 100 cm = 1000 mm\n- 1 cm = 10 mm\n\n**Büyük birimden küçük birime** geçerken her basamakta 10 ile **çarp**; **küçükten büyüğe** geçerken 10'a **böl**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birim merdiveni",
+   "aciklama": "Basamaklara dokunarak ya da düğmelerle birim değiştir. Her basamak aşağı inişte sayı 10 katına çıkar.",
+   "sim": {
+    "kind": "d-birim-donustur",
+    "tur": "uzunluk",
+    "deger": 2.5,
+    "birim": "m"
+   },
+   "gorev": {
+    "metin": "2,5 m'nin kaç santimetre olduğunu bul.",
+    "check": {
+     "key": "idx",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "m'den cm'ye iki basamak iner: × 10 × 10 = × 100.",
+    "Aynı uzunluğu km cinsinden de bul."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Büyük birime geç",
+   "aciklama": "Okul ile ev arası 3400 m.",
+   "sim": {
+    "kind": "d-birim-donustur",
+    "tur": "uzunluk",
+    "deger": 3400,
+    "birim": "m"
+   },
+   "gorev": {
+    "metin": "3400 m'yi kilometreye çevir.",
+    "check": {
+     "key": "idx",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "m'den km'ye üç basamak çıkılır: 1000'e böl."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "3,2 km + 450 m kaç metredir?",
+   "cozum": [
+    "İki uzunluğu aynı birime çevir: 3,2 km = 3,2 × 1000 = 3200 m.",
+    "3200 m + 450 m = 3650 m."
+   ],
+   "sonuc": "3650 m (= 3,65 km)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Koşu pisti",
+   "soru": "Bir koşu pistinin bir turu 400 m'dir. Zeynep pistte 5 tur, sonra parkta 1,5 km koştu. Toplam kaç km koştu?",
+   "cozum": [
+    "Pist: 5 × 400 = 2000 m = 2 km.",
+    "Toplam: 2 km + 1,5 km = 3,5 km."
+   ],
+   "sonuc": "3,5 km koştu."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Küçük birimden büyük birime geçerken çarpmak yanlıştır. 250 cm'yi metreye çevirirken 250 × 100 değil, **250 ÷ 100 = 2,5 m** yapılır. Kontrol: metre santimetreden büyük bir birimdir; aynı uzunluk için daha küçük bir sayı çıkmalı."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4,5 m kaç santimetredir?",
+   "options": [
+    "45",
+    "450",
+    "4500",
+    "0,45"
+   ],
+   "answer": 1,
+   "why": "4,5 × 100 = 450 cm.",
+   "hint": "m'den cm'ye iki basamak iner."
+  },
+  {
+   "prompt": "2 km 30 m kaç metredir?",
+   "options": [
+    "2300",
+    "230",
+    "2030",
+    "20030"
+   ],
+   "answer": 2,
+   "why": "2 km = 2000 m; 2000 + 30 = 2030 m.",
+   "hint": "Önce km'yi metreye çevir."
+  },
+  {
+   "prompt": "75 mm kaç santimetredir?",
+   "options": [
+    "7,5",
+    "750",
+    "0,75",
+    "75"
+   ],
+   "answer": 0,
+   "why": "1 cm = 10 mm; 75 ÷ 10 = 7,5 cm.",
+   "hint": "Küçük birimden büyüğe geçerken böl."
+  },
+  {
+   "prompt": "Hangisi en uzundur?",
+   "options": [
+    "1,2 km",
+    "1150 m",
+    "11 000 dm",
+    "125 dam"
+   ],
+   "answer": 3,
+   "why": "Hepsini metreye çevir: 1200 m, 1150 m, 1100 m, 1250 m.",
+   "hint": "Tümünü aynı birime çevir."
+  }
+ ]
+}

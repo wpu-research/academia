@@ -1,0 +1,192 @@
+{
+ "id": "m4-1-1",
+ "baslik": "Doğal Sayılar",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.1.1.1",
+  "M.4.1.1.2",
+  "M.4.1.1.3",
+  "M.4.1.1.4",
+  "M.4.1.1.5",
+  "M.4.1.1.6"
+ ],
+ "sure": 16,
+ "ozet": "4, 5 ve 6 basamaklı sayıları bölük ve basamaklarına ayırarak okuyup yazacak, en yakın onluğa ve yüzlüğe yuvarlayacak, sayıları sıralayacak ve sayı örüntülerinin kuralını bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Basamak ve bölük",
+   "govde": "Bir sayıyı oluşturan her rakamın bulunduğu yere **basamak** denir. Sağdan sola doğru basamaklar: birler, onlar, yüzler, binler, on binler, yüz binler.\n\nSayıyı daha kolay okumak için basamakları sağdan başlayarak **üçerli gruplara** ayırırız. Bu gruplara **bölük** denir: sağdaki üç basamak **birler bölüğü**, solundaki üç basamak **binler bölüğü**dür. Her bölüğün kendi birler, onlar ve yüzler basamağı vardır.\n\nÖrnek: 352 418 sayısında binler bölüğünde 352, birler bölüğünde 418 vardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölük tablosunda sayı oluştur",
+   "aciklama": "Her sütundaki ▲ ve ▼ düğmeleriyle o basamaktaki rakamı değiştir. Tablonun altında sayının okunuşu ve çözümlemesi kendiliğinden yazılır.",
+   "sim": {
+    "kind": "c-basamak",
+    "basamak": 6,
+    "value": 0
+   },
+   "gorev": {
+    "metin": "Tabloda 45 207 sayısını oluştur.",
+    "check": {
+     "key": "value",
+     "eq": 45207
+    }
+   },
+   "dene": [
+    "Önce bölüklere ayır: binler bölüğünde 45, birler bölüğünde 207 olmalı.",
+    "Boş kalan basamağa 0 yazılır: 207'nin onlar basamağı 0'dır."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Okuma ve yazma kuralı",
+   "govde": "Sayıyı okurken soldan başlarız: önce **binler bölüğündeki** sayıyı okur, ardından \"bin\" deriz; sonra **birler bölüğündeki** sayıyı okuruz. Birler bölüğünün adı okunmaz.\n\nBir rakamın **basamak değeri**, rakam ile bulunduğu basamağın değerinin çarpımıdır. 352 418'de 5'in basamak değeri 5 × 10 000 = 50 000'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Okuma ve çözümleme",
+   "soru": "308 045 sayısını okuyalım ve çözümleyelim.",
+   "cozum": [
+    "Bölüklere ayır: binler bölüğü 308, birler bölüğü 045.",
+    "Binler bölüğü \"üç yüz sekiz\", sonra \"bin\" denir.",
+    "Birler bölüğü 045 \"kırk beş\" diye okunur.",
+    "Çözümleme: 300 000 + 8 000 + 40 + 5."
+   ],
+   "sonuc": "Okunuşu: üç yüz sekiz bin kırk beş."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir basamağı değiştir",
+   "aciklama": "Tabloda 352 418 sayısı var. On binler basamağındaki 5 rakamı turuncu.",
+   "sim": {
+    "kind": "c-basamak",
+    "basamak": 6,
+    "value": 352418,
+    "vurgu": 4
+   },
+   "gorev": {
+    "metin": "Sayıyı 10 000 artır.",
+    "check": {
+     "key": "value",
+     "eq": 362418
+    }
+   },
+   "dene": [
+    "10 000 artırmak için on binler basamağındaki rakamı 1 artırman yeter.",
+    "Diğer rakamlar değişmez: 352 418 + 10 000 = 362 418."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Yuvarlama",
+   "govde": "Bir sayıyı yuvarlarken, ona **en yakın** onluğu ya da yüzlüğü buluruz. En çok dört basamaklı sayılarla çalışacağız.\n\n- En yakın onluğa yuvarlarken **birler** basamağına bakarız.\n- En yakın yüzlüğe yuvarlarken **onlar** basamağına bakarız.\n\nBaktığımız rakam 5 ya da daha büyükse yukarı, 5'ten küçükse aşağı yuvarlarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda yuvarla",
+   "aciklama": "Kaydırıcıyla 3 400 ile 3 500 arasındaki sayıları gez. Yeşil çizgi sayıyı en yakın yüzlüğe bağlar.",
+   "sim": {
+    "kind": "c-yuvarla",
+    "alt": 3400,
+    "ust": 3500,
+    "deger": 3420,
+    "adim": 5
+   },
+   "gorev": {
+    "metin": "En yakın yüzlüğe yuvarlanınca 3 500 olan bir sayı seç.",
+    "check": {
+     "key": "sonuc",
+     "eq": 3500
+    }
+   },
+   "dene": [
+    "Tam ortadaki 3 450'yi dene: iki uca da 50 uzaklıktadır ve kural gereği 3 500'e yuvarlanır.",
+    "3 445 olsaydı onlar basamağı 4 olurdu ve 3 400'e yuvarlanırdı."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sıralama",
+   "govde": "İki doğal sayıdan **basamak sayısı çok olan** daha büyüktür.\n\nBasamak sayıları eşitse **en soldaki basamaktan** başlayarak rakamları karşılaştırırız; ilk farklı rakamı büyük olan sayı büyüktür. Büyüktür için >, küçüktür için < sembolünü kullanırız."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Sıralama",
+   "soru": "45 309, 4 539 ve 45 390 sayılarını küçükten büyüğe sıralayalım.",
+   "cozum": [
+    "4 539 dört basamaklı, diğerleri beş basamaklı: en küçük 4 539.",
+    "45 309 ile 45 390'ı soldan karşılaştır: 4 = 4, 5 = 5, 3 = 3.",
+    "Onlar basamağında 0 < 9, demek ki 45 309 < 45 390."
+   ],
+   "sonuc": "4 539 < 45 309 < 45 390"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Sayı örüntüsü",
+   "soru": "1 250, 1 500, 1 750, 2 000, ... örüntüsünün kuralını bulup sonraki iki sayıyı yazalım.",
+   "cozum": [
+    "Ardışık sayıların farkı: 1 500 − 1 250 = 250, 1 750 − 1 500 = 250.",
+    "Kural: her adımda 250 artıyor.",
+    "2 000 + 250 = 2 250, 2 250 + 250 = 2 500."
+   ],
+   "sonuc": "Kural \"250 artır\"; sonraki sayılar 2 250 ve 2 500."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Sıfırlı sayılar okunurken ya da yazılırken basamak atlanabilir. \"Kırk bin beş\" sayısını 4 005 diye yazmak yanlıştır: binler bölüğünde 40, birler bölüğünde 005 vardır, sayı **40 005**'tir.\n\nBir başka hata **sayı değeri** ile **basamak değerini** karıştırmaktır: 527 384'te 2'nin sayı değeri 2, basamak değeri 20 000'dir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "\"Dört yüz altı bin yetmiş\" sayısı hangisidir?",
+   "options": [
+    "460 070",
+    "406 070",
+    "406 700",
+    "400 670"
+   ],
+   "answer": 1,
+   "why": "Binler bölüğü 406, birler bölüğü 070: 406 070.",
+   "hint": "Önce binler bölüğüne \"dört yüz altı\" yaz, sonra birler bölüğüne \"yetmiş\"."
+  },
+  {
+   "prompt": "527 384 sayısında 2 rakamının basamak değeri kaçtır?",
+   "options": [
+    "2",
+    "2 000",
+    "20 000",
+    "200"
+   ],
+   "answer": 2,
+   "why": "2 on binler basamağındadır: 2 × 10 000 = 20 000.",
+   "hint": "2 rakamı sağdan kaçıncı basamakta?"
+  },
+  {
+   "prompt": "3 465 sayısı en yakın yüzlüğe yuvarlanırsa hangi sayı elde edilir?",
+   "options": [
+    "3 400",
+    "3 460",
+    "3 470",
+    "3 500"
+   ],
+   "answer": 3,
+   "why": "Onlar basamağı 6 ≥ 5 olduğu için yukarı yuvarlanır: 3 500.",
+   "hint": "En yakın yüzlüğe yuvarlarken onlar basamağına bak."
+  },
+  {
+   "prompt": "Hangisi en büyüktür?",
+   "options": [
+    "98 999",
+    "100 001",
+    "99 990",
+    "100 000"
+   ],
+   "answer": 1,
+   "why": "Altı basamaklı sayılar daha büyüktür; 100 001 > 100 000.",
+   "hint": "Önce basamak sayılarını karşılaştır."
+  }
+ ]
+}

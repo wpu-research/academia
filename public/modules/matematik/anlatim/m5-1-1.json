@@ -1,0 +1,143 @@
+{
+ "id": "m5-1-1",
+ "baslik": "Çok Basamaklı Sayıları Okuma ve Yazma",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.1.1",
+  "MAT.5.1.2"
+ ],
+ "sure": 13,
+ "ozet": "Altı basamaklı sayılarda öğrendiğimiz okuma ve yazma kuralını milyonlar ve milyarlar bölüğüne genelleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bölükler büyüyor",
+   "govde": "Basamakları sağdan sola **üçerli** gruplara ayırdığımızı biliyoruz. Her grup bir **bölüktür** ve her bölükte birler, onlar, yüzler basamakları vardır.\n\n- Birler bölüğü\n- Binler bölüğü\n- Milyonlar bölüğü\n- Milyarlar bölüğü\n\nBir bölükten soldakine geçtikçe değer **1 000 kat** büyür: 1 000 bin = 1 milyon, 1 000 milyon = 1 milyar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölük tablosu",
+   "aciklama": "12 basamaklı tabloda ▲ ve ▼ ile rakamları değiştir. Okunuş ve çözümleme altta yazar.",
+   "sim": {
+    "kind": "c-basamak",
+    "basamak": 12,
+    "value": 0
+   },
+   "gorev": {
+    "metin": "\"İki milyar beş yüz milyon kırk bin yedi\" sayısını oluştur.",
+    "check": {
+     "key": "value",
+     "eq": 2500040007
+    }
+   },
+   "dene": [
+    "Milyarlar bölüğüne 2, milyonlar bölüğüne 500, binler bölüğüne 040, birler bölüğüne 007 gelir.",
+    "Okunmayan basamaklar 0'dır ama yine de yazılır."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Okuma ve yazma kuralı",
+   "govde": "**Okurken:** Soldan başlayarak her bölükteki üç basamaklı sayıyı okur, ardından bölüğün adını söyleriz (milyar, milyon, bin). Birler bölüğünün adı söylenmez. Tamamı 0 olan bölük okunmaz.\n\n**Yazarken:** Her bölüğü üç basamakla yazarız; eksik basamakları **0** ile doldururuz. Bölükler arasında küçük bir boşluk bırakırız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir bölüğü değiştir",
+   "aciklama": "Tabloda 12 345 678 var.",
+   "sim": {
+    "kind": "c-basamak",
+    "basamak": 9,
+    "value": 12345678,
+    "vurgu": 6
+   },
+   "gorev": {
+    "metin": "Sayıyı 1 milyon artır.",
+    "check": {
+     "key": "value",
+     "eq": 13345678
+    }
+   },
+   "dene": [
+    "1 milyon artırmak için milyonlar bölüğünün birler basamağını 1 artır.",
+    "Okunuştaki değişime bak: on iki milyon → on üç milyon."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Okuma",
+   "soru": "7 060 300 015 sayısını okuyalım.",
+   "cozum": [
+    "Bölükler: 7 | 060 | 300 | 015.",
+    "Milyarlar: yedi milyar. Milyonlar: altmış milyon.",
+    "Binler: üç yüz bin. Birler: on beş."
+   ],
+   "sonuc": "Yedi milyar altmış milyon üç yüz bin on beş."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Yazma",
+   "soru": "\"On iki milyar dört yüz bin altı\" sayısını rakamla yazalım.",
+   "cozum": [
+    "Milyarlar bölüğü: 12.",
+    "Milyonlar bölüğü okunmamış: 000.",
+    "Binler bölüğü: 400. Birler bölüğü: 006."
+   ],
+   "sonuc": "12 000 400 006."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Okunmayan bölükleri yazmamak en sık hatadır. \"Beş milyon yirmi\" sayısını 5 020 diye yazarsan binler bölüğünü atlamış olursun. Doğrusu **5 000 020**'dir: milyonlar 5, binler 000, birler 020."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "3 405 000 270 sayısının okunuşu hangisidir?",
+   "options": [
+    "Üç milyar dört yüz beş bin iki yüz yetmiş",
+    "Üç milyar dört yüz beş milyon iki yüz yetmiş",
+    "Üç yüz kırk milyon beş bin iki yüz yetmiş",
+    "Üç milyar kırk beş milyon iki yüz yetmiş"
+   ],
+   "answer": 1,
+   "why": "Bölükler 3 | 405 | 000 | 270; binler bölüğü 0 olduğu için okunmaz.",
+   "hint": "Önce sayıyı sağdan üçerli bölüklere ayır."
+  },
+  {
+   "prompt": "\"Sekiz milyar otuz milyon dört\" sayısı hangisidir?",
+   "options": [
+    "8 030 004",
+    "8 300 000 004",
+    "8 030 000 004",
+    "8 003 000 004"
+   ],
+   "answer": 2,
+   "why": "8 | 030 | 000 | 004.",
+   "hint": "Okunmayan binler bölüğüne 000 yaz."
+  },
+  {
+   "prompt": "45 600 789 012 sayısının milyonlar bölüğündeki sayı kaçtır?",
+   "options": [
+    "600",
+    "45",
+    "789",
+    "12"
+   ],
+   "answer": 0,
+   "why": "Bölükler: 45 (milyarlar) | 600 (milyonlar) | 789 (binler) | 012 (birler).",
+   "hint": "Sağdan saymaya başla: birler, binler, milyonlar."
+  },
+  {
+   "prompt": "1 milyar kaç milyondur?",
+   "options": [
+    "10",
+    "100",
+    "1 000 000",
+    "1 000"
+   ],
+   "answer": 3,
+   "why": "Her bölük bir öncekinin 1 000 katıdır: 1 milyar = 1 000 milyon.",
+   "hint": "Milyonlar bölüğünden milyarlara geçince kaç kat büyür?"
+  }
+ ]
+}

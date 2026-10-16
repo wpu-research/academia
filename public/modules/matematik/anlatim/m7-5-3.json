@@ -1,0 +1,181 @@
+{
+ "id": "m7-5-3",
+ "baslik": "Hacim Ölçme Birimleri",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.4.5"
+ ],
+ "sure": 13,
+ "ders": "olcme-ve-hacim",
+ "ozet": "Hacim birimleri arasında neden 1000'lik ilişki olduğunu uzunluk ve alan birimleriyle karşılaştırarak açıklayacak, hacim birimlerini birbirine ve litreye çevireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Birim küp",
+   "govde": "Ayrıtı 1 cm olan küpün hacmi **1 cm³** (santimetreküp), ayrıtı 1 dm olanın **1 dm³**, ayrıtı 1 m olanın **1 m³**'tür.\n\n1 dm = 10 cm olduğundan ayrıtı 1 dm olan küpe 10 · 10 · 10 = **1000** tane 1 cm³'lük küp sığar."
+  },
+  {
+   "tur": "kural",
+   "baslik": "10, 100, 1000",
+   "govde": "- Uzunluk (1 boyut): her basamak **10** kat. 1 m = 10 dm\n- Alan (2 boyut): her basamak **10 · 10 = 100** kat. 1 m² = 100 dm²\n- Hacim (3 boyut): her basamak **10 · 10 · 10 = 1000** kat. 1 m³ = 1000 dm³\n\nm³ → dm³ → cm³ → mm³: küçüğe inerken **1000 ile çarp**, büyüğe çıkarken **1000'e böl**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hacim merdiveni",
+   "aciklama": "Bir su deposunun hacmi 2 m³.",
+   "sim": {
+    "kind": "d-birim-donustur",
+    "tur": "hacim",
+    "deger": 2,
+    "birim": "m³"
+   },
+   "gorev": {
+    "metin": "2 m³'ü dm³ cinsinden yaz.",
+    "check": {
+     "key": "idx",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Bir basamak aşağı: × 1000.",
+    "cm³'e kadar in: 2 000 000 cm³."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Küpler küpü",
+   "aciklama": "Ayrıtı 6 birim olan küpü kur.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 2,
+    "b": 2,
+    "c": 2
+   },
+   "gorev": {
+    "metin": "Ayrıtları 6 birim olan küpü kur.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 6
+      },
+      {
+       "key": "b",
+       "eq": 6
+      },
+      {
+       "key": "c",
+       "eq": 6
+      }
+     ]
+    }
+   },
+   "dene": [
+    "6 · 6 · 6 = 216 birimküp. Ayrıtı 10 olsaydı 1000 birimküp olurdu: 1 dm³ = 1000 cm³ böyle oluşur."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sıvı ölçüleri ile bağlantı",
+   "govde": "**1 dm³ = 1 L** (litre) ve **1 cm³ = 1 mL** (mililitre)'dir.\n\nBu yüzden 1 m³ = 1000 dm³ = **1000 L**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Küçükten büyüğe",
+   "aciklama": "Bir şişe 4500 cm³ su alıyor.",
+   "sim": {
+    "kind": "d-birim-donustur",
+    "tur": "hacim",
+    "deger": 4500,
+    "birim": "cm³"
+   },
+   "gorev": {
+    "metin": "4500 cm³'ü dm³ cinsinden yaz.",
+    "check": {
+     "key": "idx",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "4,5 dm³ = 4,5 L."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "3,2 m³ kaç dm³'tür? 250 000 cm³ kaç litredir?",
+   "cozum": [
+    "m³'ten dm³'e bir basamak: 3,2 · 1000 = 3200 dm³.",
+    "cm³'ten dm³'e bir basamak yukarı: 250 000 ÷ 1000 = 250 dm³.",
+    "1 dm³ = 1 L → 250 L."
+   ],
+   "sonuc": "3200 dm³ ve 250 L."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Su deposu",
+   "soru": "Dikdörtgenler prizması biçimindeki bir deponun iç ölçüleri 2 m, 1,5 m ve 1 m'dir. Boş depo, dakikada 20 L su akıtan bir muslukla kaç dakikada dolar?",
+   "cozum": [
+    "Hacim = 2 · 1,5 · 1 = 3 m³.",
+    "3 m³ = 3000 dm³ = 3000 L.",
+    "3000 ÷ 20 = 150 dakika."
+   ],
+   "sonuc": "150 dakikada (2,5 saatte) dolar."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Hacim birimlerinde 10 ya da 100 ile çarpmak yanlıştır; her basamak **1000**'liktir. 1 m³ = 100 dm³ değil, **1000 dm³**'tür. Ayrıca litre bir hacim birimidir: 1 L = 1 dm³; \"1 L = 1 m³\" değildir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "1 m³ kaç dm³'tür?",
+   "options": [
+    "10",
+    "100",
+    "1000",
+    "10 000"
+   ],
+   "answer": 2,
+   "why": "1 m = 10 dm → 10 · 10 · 10 = 1000.",
+   "hint": "Hacimde her basamak 1000'lik."
+  },
+  {
+   "prompt": "7500 cm³ kaç dm³'tür?",
+   "options": [
+    "7,5",
+    "75",
+    "750",
+    "0,75"
+   ],
+   "answer": 0,
+   "why": "7500 ÷ 1000 = 7,5.",
+   "hint": "Küçükten büyüğe çıkarken böl."
+  },
+  {
+   "prompt": "0,4 m³ kaç litredir?",
+   "options": [
+    "4",
+    "40",
+    "4000",
+    "400"
+   ],
+   "answer": 3,
+   "why": "0,4 m³ = 400 dm³ = 400 L.",
+   "hint": "1 m³ = 1000 L."
+  },
+  {
+   "prompt": "İç ölçüleri 30 cm × 20 cm × 10 cm olan bir kap kaç litre su alır?",
+   "options": [
+    "60",
+    "6",
+    "0,6",
+    "600"
+   ],
+   "answer": 1,
+   "why": "30 · 20 · 10 = 6000 cm³ = 6 dm³ = 6 L.",
+   "hint": "Önce cm³ olarak hacmi bul."
+  }
+ ]
+}

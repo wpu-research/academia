@@ -1,0 +1,97 @@
+{
+ "id": "m10-4-5",
+ "baslik": "Doğrusal, Karesel, Karekök ve Rasyonel Fonksiyonların Ters Fonksiyonları",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.4.5"],
+ "sure": 18,
+ "ozet": "Ters fonksiyon, bir fonksiyonun yaptığını geri alır. Hangi fonksiyonların tersinin olduğunu yatay doğru testiyle görecek, tersin grafiğinin y = x doğrusuna göre yansıma olduğunu izleyecek ve dört referans fonksiyon ailesinin terslerini cebirle bulacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Tersi olan fonksiyon",
+   "govde": "f: A → B fonksiyonu **bire bir** (farklı x'ler farklı görüntülere gider) ve **örten** (B'nin her elemanı bir görüntüdür) ise f'nin tersi vardır: f⁻¹: B → A.\n\nf(a) = b ⇔ f⁻¹(b) = a\n\nTers fonksiyon girdi ile çıktının yerini değiştirir. Bu yüzden f'nin grafiğindeki her (a, b) noktası f⁻¹'in grafiğinde (b, a) olur: iki grafik **y = x doğrusuna göre simetriktir**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Noktayı yansıt",
+   "aciklama": "f(x) = 2x − 3 grafiği ve üzerinde bir nokta. \"Tersini göster\" ile yeşil ters grafik ve yansıyan nokta görünür.",
+   "sim": { "kind": "f-fonk", "f": "dogrusal", "a": 2, "k": -3, "p": 1, "sliders": ["a", "k", "p"], "tools": ["ters"], "parent": false, "name": "f" },
+   "gorev": { "metin": "Tersini göster ve noktayı x = 2'ye getir.", "check": { "all": [{ "key": "inv", "eq": 1 }, { "key": "p", "eq": 2 }] } },
+   "dene": ["f(2) = 1 ise f⁻¹(1) = 2: nokta (2, 1), yansıması (1, 2).", "a = 1 ve k = 0 seç: y = x kendi tersidir, iki grafik çakışır."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tersi bulma yöntemi",
+   "govde": "1. y = f(x) yaz.\n2. Denklemi x'e göre çöz: x = (y'li ifade).\n3. x ile y'nin adını değiştir: f⁻¹(x) = ...\n4. Tanım ve görüntü kümelerinin de yer değiştirdiğini unutma."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: doğrusal",
+   "soru": "f(x) = 2x − 3 fonksiyonunun tersini bulalım.",
+   "cozum": [
+    "y = 2x − 3 → 2x = y + 3 → x = (y + 3)/2.",
+    "f⁻¹(x) = (x + 3)/2.",
+    "Kontrol: f(f⁻¹(x)) = 2 · (x + 3)/2 − 3 = x."
+   ],
+   "sonuc": "f⁻¹(x) = (x + 3)/2."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Parabolün tersi neden yok?",
+   "aciklama": "f(x) = (x − 1)² + 2 ve yatay y = c doğrusu. Yatay doğru grafiği iki noktada kesiyorsa iki farklı x aynı görüntüye gidiyordur.",
+   "sim": { "kind": "f-fonk", "f": "kare", "h": 1, "k": 2, "c": 2, "sliders": ["c"], "tools": ["cizgi", "ters"], "parent": false },
+   "gorev": { "metin": "y = c doğrusunu parabolü iki noktada keseceği yere getir.", "check": { "key": "nsol", "eq": 2 } },
+   "dene": ["\"Tersini göster\"e bas: yansıyan eğri yana yatmış bir parabol, dikey doğru testini geçemez; fonksiyon değil.", "Çözüm: tanım kümesini x ≥ 1 ile sınırla (aşağıdaki örnek)."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: karesel ve karekök",
+   "soru": "f: [1, ∞) → [2, ∞), f(x) = (x − 1)² + 2 fonksiyonunun tersini bulalım.",
+   "cozum": [
+    "Tanım kümesi x ≥ 1 ile sınırlandığından f bire birdir.",
+    "y = (x − 1)² + 2 → (x − 1)² = y − 2 → x − 1 = √(y − 2) (x − 1 ≥ 0 olduğundan pozitif kök).",
+    "f⁻¹(x) = 1 + √(x − 2), tanım kümesi [2, ∞).",
+    "Benzer şekilde g(x) = √(x + 4) için y² = x + 4 → g⁻¹(x) = x² − 4, x ≥ 0."
+   ],
+   "sonuc": "Karesel fonksiyonun tersi bir karekök fonksiyonu, karekökünkü ise sınırlandırılmış bir karesel fonksiyondur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sınırlandırılmış parabol",
+   "aciklama": "Aynı fonksiyon, yalnız x ≥ 1 parçası. Tersini göster.",
+   "sim": { "kind": "f-fonk", "f": "kare", "h": 1, "k": 2, "c": 4, "restrict": true, "sliders": ["c"], "tools": ["cizgi", "ters"], "parent": false },
+   "gorev": { "metin": "Tersini göster: yeşil eğri 1 + √(x − 2) karekök fonksiyonudur.", "check": { "key": "inv", "eq": 1 } },
+   "dene": ["Yatay doğruyu nereye koyarsan koy en çok bir kesişim var.", "Parabol parçası (1, 2) noktasından, tersi (2, 1) noktasından başlıyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: rasyonel",
+   "soru": "f(x) = (2x + 1)/(x − 3) fonksiyonunun tersini bulalım.",
+   "cozum": [
+    "y = (2x + 1)/(x − 3) → y(x − 3) = 2x + 1 → xy − 3y = 2x + 1.",
+    "x'li terimleri topla: xy − 2x = 3y + 1 → x(y − 2) = 3y + 1.",
+    "x = (3y + 1)/(y − 2) → f⁻¹(x) = (3x + 1)/(x − 2)."
+   ],
+   "sonuc": "f⁻¹(x) = (3x + 1)/(x − 2). f'nin asimptotları x = 3, y = 2; tersininkiler yer değiştirir: x = 2, y = 3."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kendi tersi olan fonksiyon",
+   "aciklama": "g(x) = a/(x − r) + k ve tersi.",
+   "sim": { "kind": "f-fonk", "f": "rasyonel", "a": 2, "h": 1, "k": 1, "sliders": ["a", "h", "k"], "tools": ["ters", "asimptot"], "parent": false },
+   "gorev": { "metin": "Tersini göster ve a = 1, r = 0, k = 0 seç: 1/x kendi tersidir, iki grafik çakışır.", "check": { "all": [{ "key": "inv", "eq": 1 }, { "key": "a", "eq": 1 }, { "key": "h", "eq": 0 }, { "key": "k", "eq": 0 }] } },
+   "dene": ["r = k iken de grafik kendi tersidir; nedenini y = x simetrisiyle düşün."]
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "f⁻¹(x) ile 1/f(x)'i karıştırmak. f(x) = 2x − 3 için f⁻¹(x) = (x + 3)/2, ama 1/f(x) = 1/(2x − 3). Buradaki −1 bir üs değil, \"ters işlem\" işaretidir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "f(x) = 3x + 6 fonksiyonunun tersi hangisidir?", "options": ["f⁻¹(x) = 3x − 6", "f⁻¹(x) = (x − 6)/3", "f⁻¹(x) = (x + 6)/3", "f⁻¹(x) = 1/(3x + 6)"], "answer": 1, "why": "y = 3x + 6 → x = (y − 6)/3.", "hint": "y = 3x + 6'yı x'e göre çöz." },
+  { "prompt": "ℝ'de tanımlı f(x) = x² − 1 fonksiyonunun tersi neden yoktur?", "options": ["Tanım kümesi boş", "Sürekli değil", "Bire bir değil: f(−1) = f(1)", "Görüntü kümesi ℝ"], "answer": 2, "why": "İki farklı x aynı görüntüye gidiyor; yatay doğru testi başarısız.", "hint": "f(−1) ve f(1)'i hesapla." },
+  { "prompt": "f(x) = (x + 1)/(x − 2) fonksiyonunun tersi hangisidir?", "options": ["(x − 2)/(x + 1)", "(2x − 1)/(x + 1)", "(x + 1)/(x − 2)", "(2x + 1)/(x − 1)"], "answer": 3, "why": "y(x − 2) = x + 1 → x(y − 1) = 2y + 1 → x = (2y + 1)/(y − 1).", "hint": "İçler dışlar çarpımı yapıp x'leri bir tarafta topla." },
+  { "prompt": "f(3) = 7 ise f⁻¹(7) kaçtır?", "options": ["3", "7", "1/7", "−3"], "answer": 0, "why": "f(a) = b ⇔ f⁻¹(b) = a.", "hint": "Ters fonksiyon girdiyle çıktının yerini değiştirir." }
+ ]
+}

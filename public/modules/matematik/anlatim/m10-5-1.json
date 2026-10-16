@@ -1,0 +1,92 @@
+{
+ "id": "m10-5-1",
+ "baslik": "Sayma Stratejileri",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.5.1"],
+ "sure": 18,
+ "ozet": "Tek tek listelemek yerine akıllıca saymanın yollarını öğreneceğiz: toplama ve çarpma ilkesi, sıralama (permütasyon), seçme (kombinasyon) ve tümleyenden sayma.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Toplama ve çarpma ilkesi",
+   "govde": "- **Toplama ilkesi**: Bir iş ya A yoluyla (m farklı biçimde) ya da B yoluyla (n farklı biçimde) yapılıyor ve iki yolun ortak seçeneği yoksa iş m + n biçimde yapılır.\n- **Çarpma ilkesi**: Bir iş art arda iki adımda yapılıyor, birinci adım m, her birinden sonra ikinci adım n biçimde yapılabiliyorsa iş m · n biçimde yapılır. Adım sayısı artarsa çarpıma devam edilir.\n\nKısaca: \"ya ... ya ...\" → topla; \"... ve sonra ...\" → çarp."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kombin ağacı",
+   "aciklama": "Her dal bir seçim; en alttaki her uç bir kombin. Kaydırıcılarla seçenek sayılarını değiştir.",
+   "sim": { "kind": "f-sayma", "stages": [{ "ad": "Tişört", "n": 3 }, { "ad": "Pantolon", "n": 2 }, { "ad": "Ayakkabı", "n": 2 }] },
+   "gorev": { "metin": "Tam 24 farklı kombin çıkacak şekilde seçenek sayılarını ayarla.", "check": { "key": "total", "eq": 24 } },
+   "dene": ["4 · 3 · 2 = 24, 2 · 3 · 4 = 24, 3 · 4 · 2 = 24... Sıralama sonucu değiştirmez.", "Ağaçtaki uç sayısı ile çarpım hep aynı."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Rakamları birbirinden farklı üç basamaklı kaç doğal sayı yazılabilir?",
+   "cozum": [
+    "Yüzler basamağı: 0 olamaz → 9 seçenek (1–9).",
+    "Onlar basamağı: 0 dahil, yüzlerdekinden farklı → 9 seçenek.",
+    "Birler basamağı: kullanılan iki rakam dışında → 8 seçenek.",
+    "Çarpma ilkesi: 9 · 9 · 8 = 648."
+   ],
+   "sonuc": "648 sayı yazılabilir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Faktöriyel, permütasyon, kombinasyon",
+   "govde": "- n! = n · (n − 1) · ... · 2 · 1, ayrıca 0! = 1.\n- n farklı nesne bir sıraya n! biçimde dizilir.\n- **Permütasyon** (sıra önemli): n nesneden r tanesini sıralı seçme P(n, r) = n! / (n − r)!.\n- **Kombinasyon** (sıra önemsiz): n nesneden r tanesini seçme C(n, r) = n! / (r! · (n − r)!).\n\nHer r'li seçim kendi içinde r! biçimde sıralanabildiğinden P(n, r) = C(n, r) · r!."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıra önemli mi?",
+   "aciklama": "Harfler nesneleri temsil ediyor. Liste kısa olduğunda tüm seçimler aşağıda yazılır.",
+   "sim": { "kind": "f-sayma", "mode": "secim", "n": 4, "r": 2, "sirali": 1 },
+   "gorev": { "metin": "4 kişiden oluşan bir gruptan 2 kişilik ekiplerin (sıra önemsiz) sayısını göster.", "check": { "all": [{ "key": "n", "eq": 4 }, { "key": "r", "eq": 2 }, { "key": "sirali", "eq": 0 }] } },
+   "dene": ["Sıralıda AB ile BA ayrı sayılır (12 tane); sırasızda tek sayılır (6 tane).", "r'yi n'ye eşitle: sıralı sayım n! verir."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "6 kişilik bir sınıf kulübünden (a) bir başkan ve bir başkan yardımcısı, (b) okul meclisine iki temsilci kaç farklı biçimde seçilir?",
+   "cozum": [
+    "(a) Görevler farklı, sıra önemli: P(6, 2) = 6 · 5 = 30.",
+    "(b) İki temsilcinin görevi aynı, sıra önemsiz: C(6, 2) = 30 / 2! = 15."
+   ],
+   "sonuc": "(a) 30, (b) 15."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: tümleyenden sayma",
+   "soru": "Dört basamaklı doğal sayıların kaçında en az bir rakam 0'dır?",
+   "cozum": [
+    "Dört basamaklı sayıların tamamı: 9 · 10 · 10 · 10 = 9000.",
+    "Hiç 0 içermeyenler: her basamak 1–9 → 9⁴ = 6561.",
+    "En az bir 0 içerenler: 9000 − 6561."
+   ],
+   "sonuc": "2439 sayı. \"En az bir\" gördüğünde tümleyeni (hiç olmayanları) saymak çoğu zaman daha kolaydır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "KALEM kelimesinin harfleri ile anlamlı ya da anlamsız 5 harfli kaç farklı kelime yazılır? Bunların kaçında sesli harfler (A, E) yan yanadır?",
+   "cozum": [
+    "5 farklı harf: 5! = 120 dizilim.",
+    "A ile E'yi tek blok say: blok + K + L + M = 4 nesne → 4! = 24.",
+    "Blok kendi içinde AE ya da EA olur: 2! = 2.",
+    "24 · 2 = 48."
+   ],
+   "sonuc": "120 kelime; 48'inde sesli harfler yan yana."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Sıranın önemli olup olmadığını sormadan formül seçmek. \"Başkan ve yardımcı\", \"şifre\", \"sıralama\" sözleri sıralı seçimi; \"grup\", \"ekip\", \"komisyon\", \"el\" sözleri sırasız seçimi işaret eder. Kendine sor: iki seçimin yerini değiştirince yeni bir durum oluşuyor mu?"
+  }
+ ],
+ "kontrol": [
+  { "prompt": "A şehrinden B'ye 3, B'den C'ye 4 farklı yol var. B'ye uğrayarak A'dan C'ye kaç farklı yoldan gidilir?", "options": ["7", "12", "81", "64"], "answer": 1, "why": "Art arda iki adım: 3 · 4 = 12.", "hint": "\"Ve sonra\" durumunda çarp." },
+  { "prompt": "C(7, 3) kaçtır?", "options": ["210", "21", "35", "42"], "answer": 2, "why": "7 · 6 · 5 / 3! = 210 / 6 = 35.", "hint": "Sıralı sayımı r! ile böl." },
+  { "prompt": "5 kişi bir sıraya kaç farklı biçimde dizilir?", "options": ["25", "20", "60", "120"], "answer": 3, "why": "5! = 120.", "hint": "İlk yere 5, sonrakine 4, ... kişi." },
+  { "prompt": "Rakamları farklı iki basamaklı kaç doğal sayı vardır?", "options": ["81", "90", "72", "100"], "answer": 0, "why": "Onlar basamağı 9 (0 hariç), birler 9 (0 dahil, onlardaki hariç): 81.", "hint": "Onlar basamağına 0 gelemez." }
+ ]
+}

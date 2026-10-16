@@ -1,0 +1,79 @@
+{
+ "id": "m9-1-3",
+ "baslik": "Sayı Kümeleri ve İşlem Özellikleri",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.1.3"],
+ "sure": 16,
+ "ozet": "Doğal, tam, rasyonel, irrasyonel ve gerçek sayıların birbirleriyle ilişkisini kuracak, bir sayının hangi kümelere ait olduğunu belirleyecek ve hangi kümenin hangi işleme göre kapalı olduğunu tartışacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kümeler iç içe",
+   "govde": "- **Doğal sayılar** ℕ = {0, 1, 2, 3, …}\n- **Tam sayılar** ℤ = {…, −2, −1, 0, 1, 2, …}\n- **Rasyonel sayılar** ℚ: a, b tam sayı ve b ≠ 0 olmak üzere a/b biçiminde yazılabilen sayılar. Sonlu ya da devirli ondalık açılımlar rasyoneldir.\n- **İrrasyonel sayılar** (ℚ′ ya da I ile gösterilir): a/b biçiminde yazılamayan gerçek sayılar: √2, ³√5, π. Ondalık açılımları sonsuz ve devirsizdir.\n- **Gerçek sayılar** ℝ = ℚ ∪ ℚ′\n\nℕ ⊂ ℤ ⊂ ℚ ⊂ ℝ ve ℚ ∩ ℚ′ = ∅."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayıyı kümesine yerleştir",
+   "aciklama": "Her sayıyı ait olduğu **en küçük** kümeye dokunarak yerleştir. Örneğin 7 hem ℕ hem ℤ hem ℚ hem ℝ'dedir; en küçüğü ℕ.",
+   "sim": { "kind": "e-sayi-kumeleri" },
+   "gorev": { "metin": "Bütün sayıları yerleştir.", "check": { "key": "bitti", "eq": 1 } },
+   "dene": ["√9 bir köklü ifade ama değeri 3; irrasyonel değil.", "0,333… devirli ondalık: 1/3'e eşit."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Devirli ondalığı kesre çevirme",
+   "soru": "0,333… ve 1,2525… sayılarının rasyonel olduğunu gösterelim.",
+   "cozum": [
+    "x = 0,333… ⇒ 10x = 3,333… ⇒ 10x − x = 3 ⇒ x = 3/9 = 1/3.",
+    "y = 1,2525… ⇒ 100y = 125,2525… ⇒ 100y − y = 124 ⇒ y = 124/99."
+   ],
+   "sonuc": "İkisi de a/b biçiminde yazılabildiği için rasyoneldir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İşleme göre kapalılık",
+   "govde": "Bir kümenin iki elemanına bir işlem uygulandığında sonuç yine o kümedeyse küme bu işleme göre **kapalıdır**.\n\n- ℕ toplama ve çarpmaya göre kapalı; çıkarmaya göre değil (2 − 5 = −3 ∉ ℕ).\n- ℤ toplama, çıkarma, çarpmaya göre kapalı; bölmeye göre değil (1 ÷ 2 ∉ ℤ).\n- ℚ ve ℝ dört işleme göre kapalıdır (sıfıra bölme hariç).\n- ℚ′ toplamaya ve çarpmaya göre kapalı değildir: √2 + (−√2) = 0 ve √2 · √2 = 2 rasyoneldir.\n\nBir kümenin kapalı olmadığını göstermek için tek bir karşı örnek yeter."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tam olup doğal olmayan",
+   "aciklama": "A: tam sayılar, B: doğal sayılar. Bazı sayılar şemaya yerleştirildi. Bölgelere dokunarak tara.",
+   "sim": { "kind": "kume-venn", "elements": { "1": ["−2", "−7"], "2": ["0", "5"], "4": [], "8": ["1/2", "√3", "π"] } },
+   "gorev": { "metin": "Tam sayı olup doğal sayı olmayanların bölgesini tara.", "check": { "key": "mask", "eq": 1 } },
+   "dene": ["\"Yalnız B\" bölgesi boş: her doğal sayı aynı zamanda tam sayıdır, yani ℕ ⊂ ℤ. Şemada B'nin tamamı A'nın içinde olmalı."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "√16, √0,09, ³√5 ve 22/7 sayılarından hangisi irrasyoneldir?",
+   "cozum": [
+    "√16 = 4 (doğal sayı).",
+    "√0,09 = √(9/100) = 3/10 (rasyonel).",
+    "22/7 iki tam sayının oranıdır (rasyonel); π'ye yalnız yakındır.",
+    "5 bir tam küp değildir; ³√5 irrasyoneldir."
+   ],
+   "sonuc": "³√5"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam",
+   "soru": "1 ≤ n ≤ 50 olan kaç n doğal sayısı için √n rasyoneldir?",
+   "cozum": [
+    "n tam kare değilse √n irrasyoneldir.",
+    "50'den küçük ya da eşit tam kareler: 1, 4, 9, 16, 25, 36, 49."
+   ],
+   "sonuc": "7 tane."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- \"Kök içeren her sayı irrasyoneldir\" sanmak: √49 = 7.\n- 22/7'yi ya da 3,14'ü π'ye eşit sanmak.\n- \"İki irrasyonelin toplamı irrasyoneldir\" demek: (2 + √3) + (2 − √3) = 4.\n- 0'ı doğal sayı saymamak; Türkiye'de kullanılan tanımda 0 ∈ ℕ."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Hangisi rasyonel sayı değildir?", "options": ["0,151515…", "√(9/16)", "π/2", "−7"], "answer": 2, "why": "π irrasyonel olduğundan π/2 de irrasyoneldir. Diğerleri 15/99, 3/4 ve −7/1.", "hint": "a/b biçiminde yazılamayanı ara." },
+  { "prompt": "Hangi küme çıkarma işlemine göre kapalıdır?", "options": ["ℕ", "ℤ", "Pozitif tam sayılar", "Tek sayılar"], "answer": 1, "why": "İki tam sayının farkı her zaman tam sayıdır. ℕ ve pozitif tam sayılarda 2 − 5; tek sayılarda 5 − 3 = 2 karşı örnektir.", "hint": "Her şık için bir karşı örnek dene." },
+  { "prompt": "√2 ile hangisinin toplamı rasyonel bir sayıdır?", "options": ["√2", "1 + √3", "2√2", "3 − √2"], "answer": 3, "why": "√2 + (3 − √2) = 3.", "hint": "√2'yi yok eden terimi ara." },
+  { "prompt": "−4 sayısı hangi kümelerin elemanıdır?", "options": ["ℤ, ℚ, ℝ", "Yalnız ℤ", "ℕ, ℤ, ℚ, ℝ", "ℚ′ ve ℝ"], "answer": 0, "why": "−4 doğal sayı değildir; tam sayıdır, dolayısıyla rasyonel ve gerçektir.", "hint": "Kümeler iç içe: bir sayı bir kümedeyse onu kapsayan kümelerde de vardır." }
+ ]
+}

@@ -1,0 +1,158 @@
+{
+ "id": "m1-7-1",
+ "baslik": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.4.1"
+ ],
+ "sure": 14,
+ "ozet": "Sorduğumuz bir sorunun cevaplarını çetele ve nesne grafiğiyle gösterecek, en çok ve en az olanı bulup karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Veri nedir?",
+   "govde": "Bir soruya verilen cevapların hepsine **veri** denir. “En sevdiğin meyve hangisi?” diye sorup cevapları toplarsak veri toplamış oluruz.\n\nVeriyi düzenlemenin iki kolay yolu var:\n\n- **Çetele**: Her cevap için bir çizgi çizeriz. Beşinci çizgi öbür dördünü çaprazlama keser, böylece 5'leri kolay sayarız.\n- **Nesne grafiği**: Her cevap için bir resim ya da sembol koyarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Oylamayı kaydet",
+   "aciklama": "Sınıf en sevdiği meyveyi seçti: Elma 5, Muz 3, Çilek 6, Portakal 2 oy aldı. + ve − ile kaydet.",
+   "sim": {
+    "kind": "a-cetele",
+    "kategoriler": [
+     "Elma",
+     "Muz",
+     "Çilek",
+     "Portakal"
+    ],
+    "degerler": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Bütün oyları doğru kaydet.",
+    "check": {
+     "all": [
+      {
+       "key": "c0",
+       "eq": 5
+      },
+      {
+       "key": "c1",
+       "eq": 3
+      },
+      {
+       "key": "c2",
+       "eq": 6
+      },
+      {
+       "key": "c3",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Çetelede 5. çizginin nasıl çizildiğine bak.",
+    "Nesne grafiğinde en uzun sıra hangi meyvenin?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Veriden karar vermek",
+   "govde": "Grafiğe bakarak sorulara cevap veririz:\n\n- **En çok** hangisi? En uzun sıra.\n- **En az** hangisi? En kısa sıra.\n- **Kaç fazla?** İki sayının farkı.\n- **Toplam kaç?** Bütün sayıların toplamı.\n\nSonra karar veririz: “Pikniğe en çok **çilek** götürelim.”"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Evcil hayvanlar",
+   "aciklama": "Bir sınıfta öğrencilere evlerindeki evcil hayvan soruldu. Grafiği incele, istersen değiştir.",
+   "sim": {
+    "kind": "a-cetele",
+    "kategoriler": [
+     "Kedi",
+     "Köpek",
+     "Kuş",
+     "Balık"
+    ],
+    "degerler": [
+     4,
+     7,
+     2,
+     3
+    ],
+    "max": 10
+   },
+   "dene": [
+    "Köpek, kuştan kaç fazla?",
+    "Kediye 3 oy eklersen en çok seçilen değişir mi?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Elma 5, Muz 3, Çilek 6, Portakal 2 oy aldı. En çok ve en az sevilen meyve hangisi?",
+   "cozum": [
+    "En büyük sayı 6: Çilek.",
+    "En küçük sayı 2: Portakal."
+   ],
+   "sonuc": "En çok **çilek**, en az **portakal** sevilmiş."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Aynı oylamada toplam kaç öğrenci oy verdi?",
+   "cozum": [
+    "Bütün oyları topla: 5 + 3 + 6 + 2.",
+    "5 + 3 = 8, 8 + 6 = 14, 14 + 2 = 16."
+   ],
+   "sonuc": "**16** öğrenci oy verdi."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Çetelede çizgileri birer birer saymak yerine 5'li grupları kullan. Bir de: Nesne grafiğinde semboller farklı büyüklükte çizilirse uzun görünen sıra yanıltabilir; sembollerin **sayısına** bak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Çetelede bir grup (4 dik çizgi ve onları kesen 1 çizgi) kaçı gösterir?",
+   "options": [
+    "4",
+    "5",
+    "10",
+    "1"
+   ],
+   "answer": 1,
+   "why": "Dört dik çizgi ve kesen çizgi birlikte 5 eder.",
+   "hint": "Çizgilerin hepsini say."
+  },
+  {
+   "prompt": "Kedi 4, Köpek 7, Kuş 2, Balık 3 kişi seçti. En az seçilen hangisi?",
+   "options": [
+    "Kedi",
+    "Köpek",
+    "Balık",
+    "Kuş"
+   ],
+   "answer": 3,
+   "why": "En küçük sayı 2'dir: Kuş.",
+   "hint": "En kısa sırayı bul."
+  },
+  {
+   "prompt": "Aynı veride köpek seçenler, kuş seçenlerden kaç fazla?",
+   "options": [
+    "5",
+    "9",
+    "2",
+    "7"
+   ],
+   "answer": 0,
+   "why": "7 − 2 = 5.",
+   "hint": "İki sayının farkını bul."
+  }
+ ]
+}

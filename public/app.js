@@ -864,6 +864,7 @@
   function route() {
     const h = location.hash.replace(/^#/, "");
     if (h.startsWith("p-") && bySlug[h.slice(2)]) return { view: "program", slug: h.slice(2) };
+    if (h.startsWith("anlatim-") && h.includes(".")) { const [mod, id] = h.slice(8).split("."); if (MODULES.includes(mod)) return { view: "anlatim", mod, id }; }
     if (h.startsWith("ders-") && h.includes(".")) { const [mod, id] = h.slice(5).split("."); if (MODULES.includes(mod)) return { view: "lesson", mod, id }; }
     if (h.startsWith("m-") && bySlug.robotik.modules.some((m) => m.slug === h.slice(2))) return { view: "module", slug: h.slice(2) };
     if (h === "ogren" || h.startsWith("ogren-")) return { view: "app", exam: h.slice(6) };
@@ -885,6 +886,7 @@
     else if (r.view === "basla") MAC.renderOnboarding($app);
     else if (r.view === "studyo") renderStudio();
     else if (r.view === "yontem") renderMethod();
+    else if (r.view === "anlatim") { $app.innerHTML = `<div class="wrap"><div id="la-root"></div></div>`; LESSONS.openAnlatim(document.getElementById("la-root"), r.mod, r.id, anlatimHooks); }
     else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "program" && MODULES.includes(r.slug)) { fillLessons(r.slug); fillCurriculum(r.slug); }
@@ -900,7 +902,6 @@
     if (a && (location.hash === "#ana" || location.hash === "")) { e.preventDefault(); render(); }
   });
   if (MAC.needsOnboarding() && (location.hash === "" || location.hash === "#ana")) history.replaceState(null, "", "#basla");
-  render();
 
   // ---------- Dersler (modüller) ----------
   function lessonDone(mod, id) { return store.lessons?.[mod]?.[id]; }
@@ -926,19 +927,22 @@
   const READY = new Set(["ritim-makinesi", "dj-mikser", "olcme", "kati-cisim", "oruntu", "donusum", "saat", "para", "oran-karistirma", "kume-venn", "mantik-tablosu", "dizi-gorsel", "limit-yaklasim", "karmasik-duzlem", "sayi-dogrusu", "kesir-cubugu", "olasilik-sim", "koordinat-duzlemi", "turev-teget", "onluk-bloklar", "alan-modeli", "denklem-terazisi", "aci-olcer", "geometri-tahtasi", "veri-grafigi", "fonksiyon-grafigi", "birim-cember", "integral-alan", "kod-izleyici", "cikti-tahmin", "parsons", "bosluk-doldur", "hata-bul", "gorsel-veri-yapisi"]);
   const simChip = (k) => k ? `<span class="chip ${READY.has(k) ? "chip-ready" : "chip-line"}" title="${READY.has(k) ? "Hazır" : "Planlandı"}">${READY.has(k) ? "● " : "○ "}${esc(SIM_LABEL[k] || k)}</span>` : "";
   const dersLink = (mod, id) => id ? `<a class="chip chip-brand" href="#ders-${mod}.${id}">Derse git →</a>` : "";
+  let anlatimSet = new Set();
+  const anlatimLink = (mod, id) => anlatimSet.has(id) ? `<a class="chip chip-ready" href="#anlatim-${mod}.${id}">Konu anlatımı →</a>` : "";
   const codeList = (k) => k.kod ? k.kod : (k.kazanim || []).filter((x) => /^[A-Z]+\.?\d/.test(x)).join(", ");
 
   function fillCurriculum(mod) {
-    fetch(`modules/${mod}/curriculum.json`).then((r) => r.json()).then((c) => {
+    Promise.all([fetch(`modules/${mod}/curriculum.json`).then((r) => r.json()), mod === "matematik" ? LESSONS.anlatimIndex(mod).catch(() => ({ konular: [] })) : { konular: [] }]).then(([c, ai]) => {
+      anlatimSet = new Set(ai.konular.map((k) => k.id));
       const host = document.getElementById("curriculum"); if (!host) return;
-      const legend = `<p class="cur-legend"><span class="chip chip-ready">● Hazır simülasyon</span><span class="chip chip-line">○ Planlandı</span><span class="chip chip-brand">Derse git →</span> hazır ders</p>`;
+      const legend = `<p class="cur-legend"><span class="chip chip-ready">● Hazır simülasyon</span><span class="chip chip-line">○ Planlandı</span>${mod === "matematik" ? `<span class="chip chip-ready">Konu anlatımı →</span> simülasyonlu anlatım` : ""}<span class="chip chip-brand">Derse git →</span> oyunlu ders</p>`;
       if (mod === "matematik") {
         const count = (g) => g.temalar.reduce((n, t) => n + t.konular.length, 0);
         const total = c.asamalar.reduce((n, st) => n + st.siniflar.reduce((m, g) => m + count(g), 0), 0);
         host.innerHTML = `<p class="muted">İlkokuldan üniversiteye hazırlığa <b>${total} konu</b>. Konular MEB öğretim programlarından (Türkiye Yüzyılı Maarif Modeli ve 2018 programı), sınav dağılımları son yılların TYT ve AYT sınavlarından alındı.</p>${legend}
           ${c.asamalar.map((st) => `<details class="cur-stage" ${st.ad === "İlkokul" ? "open" : ""}><summary><b>${esc(st.ad)}</b><span>${st.siniflar.length} sınıf · ${st.siniflar.reduce((m, g) => m + count(g), 0)} konu</span></summary>
             ${st.siniflar.map((g) => `<details class="cur-grade"><summary><b>${g.sinif}. sınıf</b><span>${esc(/TYMM|Maarif/i.test(g.program) ? "Maarif Modeli" : "2018 programı")} · ${count(g)} konu</span></summary>
-              ${g.temalar.map((t) => `<div class="cur-theme"><h4>${esc(t.baslik)}</h4><ul>${t.konular.map((k) => `<li><span class="cur-t">${esc(k.baslik)}${codeList(k) ? `<small>${esc(codeList(k))}</small>` : ""}</span><span class="cur-chips">${k.lgs ? '<span class="chip chip-line">LGS</span>' : ""}${(k.yks || []).map((y) => `<span class="chip chip-line">${y}</span>`).join("")}${simChip(k.sim)}${dersLink(mod, k.ders)}</span></li>`).join("")}</ul></div>`).join("")}
+              ${g.temalar.map((t) => `<div class="cur-theme"><h4>${esc(t.baslik)}</h4><ul>${t.konular.map((k) => `<li><span class="cur-t">${esc(k.baslik)}${codeList(k) ? `<small>${esc(codeList(k))}</small>` : ""}</span><span class="cur-chips">${k.lgs ? '<span class="chip chip-line">LGS</span>' : ""}${(k.yks || []).map((y) => `<span class="chip chip-line">${y}</span>`).join("")}${simChip(k.sim)}${anlatimLink(mod, k.id)}${dersLink(mod, k.ders)}</span></li>`).join("")}</ul></div>`).join("")}
             </details>`).join("")}</details>`).join("")}
           ${c.yks ? `<details class="cur-stage"><summary><b>Üniversiteye hazırlık (YKS)</b><span>TYT ${c.yks.TYT.length} · AYT ${c.yks.AYT.length} konu</span></summary>
             <p class="note">${esc(c.yks.aciklama || "")}</p>
@@ -958,6 +962,10 @@
     }).catch(() => { const h = document.getElementById("curriculum"); if (h) h.innerHTML = `<p class="muted">Müfredat yüklenemedi.</p>`; });
   }
 
+  const anlatimHooks = {
+    onTask: (d) => { store.anlatim = store.anlatim || {}; store.anlatim[d.id] = { ...(store.anlatim[d.id] || {}), gorev: 1 }; save(); },
+    onQuiz: (d) => { store.anlatim = store.anlatim || {}; store.anlatim[d.id] = { ...(store.anlatim[d.id] || {}), kontrol: 1 }; save(); },
+  };
   const lessonHooks = {
     onAttempt(les, step, correct) {
       const mod = route().mod, ex = A.exams[mod] ? mod : null;
@@ -988,7 +996,7 @@
 
   // Mac'in gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
   MAC.setContext(() => {
-    const lc = LESSONS.context(); if (lc) return lc;
+    const lc = LESSONS.context() || LESSONS.anlatimContext(); if (lc) return lc;
     const r = route();
     if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
     if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }
@@ -1015,4 +1023,6 @@
     document.getElementById("credit-list").innerHTML = list.map((c) =>
       `<li><a href="${esc(c.foreign_landing_url)}" target="_blank" rel="noopener">${esc(c.title || "Adsız")}</a>, ${esc(c.creator || "bilinmiyor")} · <a href="${esc(c.license_url)}" target="_blank" rel="noopener">${LIC[c.license] || esc(c.license)} ${c.license === "cc0" || c.license === "pdm" ? "" : esc(c.license_version || "")}</a></li>`).join("");
   }).catch(() => {});
+  // İlk çizim en sonda: sayfa kancaları (ders, konu anlatımı) tanımlandıktan sonra.
+  render();
 })();

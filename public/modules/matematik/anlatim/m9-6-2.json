@@ -1,0 +1,68 @@
+{
+ "id": "m9-6-2",
+ "baslik": "Başkaları Tarafından Oluşturulan Tek Nicel Değişkenli Veri Dağılımlarını İnceleme",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.6.2"],
+ "sure": 15,
+ "ozet": "Haberlerde, reklamlarda ve raporlarda karşılaştığımız grafik ve istatistik yorumlarını eleştirel gözle okuyacağız: eksen ölçeği, örneklem, ortalamanın yanıltıcılığı ve yüzde-sayı farkı.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Okurken sorulacak sorular",
+   "govde": "- **Veri nereden geldi?** Kimlere soruldu, kaç kişiye soruldu? Örneklem, genelleme yapılan topluluğu temsil ediyor mu?\n- **Grafik doğru çizilmiş mi?** Eksen 0'dan başlıyor mu, aralıklar eşit mi?\n- **Hangi ölçü kullanılmış?** Ortalama mı, ortanca mı? Aykırı değerler var mı?\n- **Yüzde mi, sayı mı?** \"%50 artış\" 2'den 3'e çıkmak da olabilir.\n- **Sonuç veriden gerçekten çıkıyor mu?**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eksen nereden başlıyor?",
+   "aciklama": "Bir firmanın üç yıllık satışları (bin adet). Dikey eksenin başladığı değeri değiştir ve çubuk boylarının nasıl değiştiğine bak.",
+   "sim": { "kind": "e-grafik-donustur", "labels": ["2023", "2024", "2025"], "values": [42, 45, 48], "max": 50, "tabanAyar": true, "taban": 40, "tabanMax": 40, "duzenle": false, "turler": ["sutun", "cizgi"] },
+   "gorev": { "metin": "Grafiği yanıltıcı olmaktan çıkar: ekseni 0'dan başlat.", "check": { "key": "taban", "eq": 0 } },
+   "dene": ["Eksen 40'tan başlarken 2025 çubuğu 2023'ün 4 katı görünüyor; gerçek oran yalnız 48 ÷ 42 ≈ 1,14.", "Çizgi grafiğine geçince de aynı etki oluşuyor mu?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yanıltıcı grafik işaretleri",
+   "govde": "- Dikey eksen 0'dan başlamıyorsa küçük farklar büyük görünür (bu bazen kabul edilebilir, ama eksen kesik işaretiyle belirtilmelidir).\n- Eksen aralıkları eşit değilse eğimler yanlış okunur.\n- Yalnız işe gelen zaman aralığını göstermek (seçici veri) eğilimi çarpıtır.\n- Üç boyutlu ya da resimli grafiklerde alan ve hacim farkları algıyı büyütür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ortalama mı, ortanca mı?",
+   "aciklama": "Bir iş yerinde 8 çalışanın aylık kazancı (bin TL). Bir değer diğerlerinden çok uzak.",
+   "sim": { "kind": "e-nokta-grafigi", "values": [18, 19, 20, 20, 21, 22, 23, 60], "min": 10, "max": 60, "kutu": true, "ss": true },
+   "gorev": { "metin": "Aykırı değeri diğerlerine yaklaştırarak ortalamayı 22'nin altına indir.", "check": { "key": "mean", "lt": 22 } },
+   "dene": ["Başta ortalama ≈ 25,4 ama ortanca 20,5: \"ortalama kazanç 25 binin üstünde\" sözü çoğu çalışanı temsil etmiyor.", "Aykırı değeri taşırken ortanca değişiyor mu?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek: reklam iddiası",
+   "soru": "Bir reklamda \"Kullanıcılarımızın %80'i memnun!\" yazıyor; dipnotta ankete 10 kişinin katıldığı belirtilmiş. Ayrıca \"satışlar %50 arttı\" deniyor; satış 2 binden 3 bine çıkmış. Bu iddiaları değerlendirelim.",
+   "cozum": [
+    "%80 = 10 kişiden 8'i. Örneklem çok küçük; kimlerin seçildiği de belli değil. Genelleme güvenilir değil.",
+    "2 binden 3 bine çıkış gerçekten %50'dir; ama küçük bir başlangıç değerinden olduğu için yüzde büyük görünür. Sayının kendisi de verilmeli."
+   ],
+   "sonuc": "İki iddia da sayısal olarak doğru olabilir ama verilen bilgiyle genel bir sonuç çıkarmak yanıltıcıdır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: kutu grafiği yorumu",
+   "soru": "İki sınıfın sınav puanları için kutu grafikleri: A sınıfında ortanca 70, Ç1 = 65, Ç3 = 75; B sınıfında ortanca 72, Ç1 = 50, Ç3 = 88. \"B sınıfı daha başarılı\" yorumu yeterli midir?",
+   "cozum": [
+    "Ortancalar yakın: 70 ve 72.",
+    "Çeyrekler açıklığı A'da 10, B'de 38. B'deki puanlar çok daha dağınık.",
+    "B'de hem çok düşük hem çok yüksek puanlar var; A daha homojen."
+   ],
+   "sonuc": "Yalnız ortancaya bakarak \"daha başarılı\" demek eksik; yayılım çok farklı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Grafiğin eksenine bakmadan çubuk boylarını karşılaştırmak.\n- Küçük ya da taraflı bir örneklemden bütün topluluk hakkında sonuç çıkarmak.\n- Aykırı değer varken ortalamayı \"tipik\" değer saymak.\n- İki değişkenin birlikte artmasını birinin diğerine neden olduğu biçiminde yorumlamak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Dikey ekseni 90'dan başlayan bir sütun grafiği 92 ve 96 değerlerini gösteriyor. 96'nın çubuğu 92'ninkinin kaç katı uzunlukta görünür?", "options": ["Yaklaşık 1,04", "2", "3", "4"], "answer": 2, "why": "Görünen boylar 96 − 90 = 6 ve 92 − 90 = 2; oran 3. Gerçek oran yalnız ≈ 1,04.", "hint": "Çubuklar 90'dan başlıyor." },
+  { "prompt": "Birkaç çok yüksek değer içeren bir maaş verisinde tipik maaşı en iyi hangisi gösterir?", "options": ["Ortalama", "Ortanca", "Açıklık", "En büyük değer"], "answer": 1, "why": "Ortanca uç değerlerden etkilenmez.", "hint": "Aykırı değerlerden etkilenmeyen ölçüyü düşün." },
+  { "prompt": "Bir okulda yalnız basketbol takımındaki öğrencilerin boyları ölçülüp \"okulumuzdaki öğrencilerin boy ortalaması 1,85 m\" denmiştir. Temel sorun nedir?", "options": ["Örneklem okulu temsil etmiyor.", "Ortalama yanlış hesaplanmış.", "Boy nicel bir değişken değil.", "Örneklem çok büyük."], "answer": 0, "why": "Basketbolcular okulun geneline göre uzun olmaya eğilimlidir; örneklem taraflı.", "hint": "Ölçülen öğrenciler kimler?" },
+  { "prompt": "A sınıfında ortalama 70 ve standart sapma 3; B sınıfında ortalama 70 ve standart sapma 12. Hangisi doğrudur?", "options": ["B'de herkes 70 almıştır.", "İki sınıfın dağılımı aynıdır.", "A'nın ortancası kesinlikle 70'tir.", "A'daki puanlar ortalama etrafında daha toplu."], "answer": 3, "why": "Küçük standart sapma, değerlerin ortalamaya yakın olduğunu gösterir.", "hint": "Standart sapma neyi ölçer?" }
+ ]
+}

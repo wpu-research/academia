@@ -1,0 +1,205 @@
+{
+ "id": "m1-6-1",
+ "baslik": "Nesnelerin Biçimsel Özellikleri",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.3.3"
+ ],
+ "sure": 10,
+ "ozet": "Nesneleri yuvarlak ya da köşeli olmalarına, büyüklüklerine ve kenarlarına göre ayıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Biçim ne demek?",
+   "govde": "Bir nesnenin **biçimi** onun dış görünüşüdür. Nesneleri biçimlerine göre ayırırken şunlara bakarız:\n\n- **Yuvarlak mı, köşeli mi?** Top yuvarlaktır, kitap köşelidir.\n- **Kenarları düz mü, eğri mi?**\n- **Büyük mü, küçük mü? Uzun mu, kısa mı? Kalın mı, ince mi?**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yuvarlananlar",
+   "aciklama": "Hangi nesneler masada itilince yuvarlanır? Onlara dokun.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "y",
+    "items": [
+     {
+      "k": "y",
+      "yazi": "Futbol topu"
+     },
+     {
+      "k": "n",
+      "yazi": "Kitap"
+     },
+     {
+      "k": "y",
+      "yazi": "Portakal"
+     },
+     {
+      "k": "n",
+      "yazi": "Zar"
+     },
+     {
+      "k": "n",
+      "yazi": "Ayakkabı kutusu"
+     },
+     {
+      "k": "y",
+      "yazi": "Misket"
+     },
+     {
+      "k": "n",
+      "yazi": "Tuğla"
+     },
+     {
+      "k": "y",
+      "yazi": "Bisiklet tekerleği"
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Yuvarlanabilen bütün nesneleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Yuvarlanan nesnelerin köşesi yoktur.",
+    "Kitabı itersen yuvarlanır mı, kayar mı?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Köşeli ve köşesiz",
+   "govde": "**Köşe**, iki düz kenarın birleştiği sivri yerdir. Üçgenin 3, karenin 4 köşesi vardır.\n\nDairenin hiç köşesi yoktur; kenarı **eğridir**. Köşesi olmayan nesneler yuvarlanabilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşesi olmayan şekiller",
+   "aciklama": "Bu kez şekillere bak.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "k",
+    "items": [
+     {
+      "k": "k",
+      "s": "daire",
+      "c": 0
+     },
+     {
+      "k": "n",
+      "s": "ucgen",
+      "c": 1
+     },
+     {
+      "k": "n",
+      "s": "kare",
+      "c": 2
+     },
+     {
+      "k": "k",
+      "d": "M10,50 A40,26 0 1,0 90,50 A40,26 0 1,0 10,50 Z",
+      "c": 3
+     },
+     {
+      "k": "n",
+      "s": "besgen",
+      "c": 0
+     },
+     {
+      "k": "k",
+      "s": "daire",
+      "b": 0.6,
+      "c": 1
+     },
+     {
+      "k": "n",
+      "s": "dikdortgen",
+      "c": 3
+     },
+     {
+      "k": "n",
+      "s": "yildiz",
+      "c": 2
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Köşesi olmayan bütün şekilleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Kenarı tamamen eğri olan şekilleri ara.",
+    "Büyük ya da küçük olması önemli değil."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir dolapta kutu, top ve kalem var. Hangisinin hiç köşesi yoktur?",
+   "cozum": [
+    "Kutunun köşeleri var.",
+    "Kalemin ucu sivridir.",
+    "Topun hiç köşesi yoktur, her yeri eğridir."
+   ],
+   "sonuc": "**Top**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ayşe oyuncaklarını “yuvarlananlar” ve “yuvarlanmayanlar” diye iki gruba ayırdı. Küp biçimli bir yapboz parçasını hangi gruba koymalı?",
+   "cozum": [
+    "Küpün düz yüzleri ve köşeleri vardır.",
+    "Düz yüzü üstünde durur, yuvarlanmaz."
+   ],
+   "sonuc": "**Yuvarlanmayanlar** grubuna."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Nesneleri ayırırken rengine bakmak biçimine bakmak değildir. Kırmızı bir top ile kırmızı bir kutu aynı renkte ama biçimleri farklıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisinin köşesi yoktur?",
+   "options": [
+    "Silgi kutusu",
+    "Üçgen cetvel",
+    "Saat kadranı gibi daire",
+    "Kitap"
+   ],
+   "answer": 2,
+   "why": "Dairenin kenarı eğridir, köşesi yoktur.",
+   "hint": "Sivri yeri olmayanı bul."
+  },
+  {
+   "prompt": "Hangisi bir biçim özelliğidir?",
+   "options": [
+    "Yuvarlak olmak",
+    "Kırmızı olmak",
+    "Pahalı olmak",
+    "Yeni olmak"
+   ],
+   "answer": 0,
+   "why": "Yuvarlak olmak dış görünüşle, yani biçimle ilgilidir.",
+   "hint": "Biçim, nesnenin dış görünüşüdür."
+  },
+  {
+   "prompt": "Bir karenin kaç köşesi vardır?",
+   "options": [
+    "3",
+    "0",
+    "5",
+    "4"
+   ],
+   "answer": 3,
+   "why": "Karenin 4 kenarı ve 4 köşesi vardır.",
+   "hint": "Köşeleri tek tek say."
+  }
+ ]
+}

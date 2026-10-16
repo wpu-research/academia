@@ -1,0 +1,169 @@
+{
+ "id": "m5-4-2",
+ "baslik": "Açı Ölçme",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.3.1",
+  "MAT.5.3.2",
+  "MAT.5.3.3",
+  "MAT.5.3.4",
+  "MAT.5.3.5",
+  "MAT.5.3.6",
+  "MAT.5.3.7"
+ ],
+ "sure": 13,
+ "ders": "acilar-ve-ucgen",
+ "ozet": "Açıları açıölçerle ölçecek ve çizecek, kesişen iki doğrunun oluşturduğu açılar arasındaki ilişkileri keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Açıölçerle ölçme",
+   "govde": "1. Açıölçerin **merkezini** açının köşesine koy.\n2. **Sıfır çizgisini** açının bir koluna çakıştır.\n3. Öteki kolun kestiği sayıyı, **sıfırdan başlayan ölçekten** oku.\n\nAçıölçerde iki ölçek vardır (içte ve dışta). Sıfır çizgisini sağdaki kola koyduysan sağdan başlayan, soldaki kola koyduysan soldan başlayan ölçeği okursun."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açı çiz",
+   "aciklama": "Turuncu kolu sürükle ya da ok tuşlarıyla döndür.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 40
+   },
+   "gorev": {
+    "metin": "Ölçüsü 75° olan açıyı oluştur.",
+    "check": {
+     "key": "angle",
+     "eq": 75
+    }
+   },
+   "dene": [
+    "75°, 90°'den 15° az.",
+    "Shift ile ok tuşu 10'ar derece ilerletir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açı türleri",
+   "govde": "- **Dar açı:** 0° ile 90° arası\n- **Dik açı:** 90°\n- **Geniş açı:** 90° ile 180° arası\n- **Doğru açı:** 180°"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Geniş açı",
+   "aciklama": "Açıyı bu kez geniş açıya çevir.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 150
+   },
+   "gorev": {
+    "metin": "Ölçüsü 160° olan açıyı oluştur.",
+    "check": {
+     "key": "angle",
+     "eq": 160
+    }
+   },
+   "dene": [
+    "160° doğru açıdan 20° eksik."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Kesişen iki doğrunun açıları",
+   "govde": "İki doğru kesişince kesişme noktasında **dört açı** oluşur.\n\n- Karşılıklı duran açılara **ters açılar** denir; ters açıların ölçüleri **eşittir**.\n- Yan yana duran ve bir kolu ortak olan iki açının toplamı **180°**'dir; çünkü birlikte bir doğru açı oluştururlar.\n\nBu yüzden dört açıdan birini bilmek, öteki üçünü bulmaya yeter."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açıları keşfet",
+   "aciklama": "k doğrusunu döndür ve dört açının nasıl değiştiğini izle.",
+   "sim": {
+    "kind": "c-dogrular",
+    "aci": 60
+   },
+   "gorev": {
+    "metin": "Turuncu açılar 35° olacak biçimde k'yi döndür.",
+    "check": {
+     "key": "aci",
+     "eq": 35
+    }
+   },
+   "dene": [
+    "Turuncu açılar 35° olunca yeşil açılar 180° − 35° = 145° olur.",
+    "Ters açılar her zaman aynı renkte: eşitler."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kesişen iki doğrunun oluşturduğu açılardan biri 70°'dir. Öteki üç açıyı bulalım.",
+   "cozum": [
+    "Ters açısı eşittir: 70°.",
+    "Yanındaki açı: 180° − 70° = 110°.",
+    "Onun ters açısı da 110°."
+   ],
+   "sonuc": "Açılar 70°, 110°, 70° ve 110°."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Ölçek seçimi",
+   "soru": "Açıölçerin sıfır çizgisi açının sağdaki koluna konuldu. Öteki kol iç ölçekte 140'ı, dış ölçekte 40'ı gösteriyor ve açı dar görünüyor. Açının ölçüsü kaçtır?",
+   "cozum": [
+    "Dar açı 90°'den küçüktür; 140° olamaz.",
+    "Sağdaki koldaki sıfırdan başlayan ölçek 40'ı gösteriyor."
+   ],
+   "sonuc": "Açının ölçüsü 40°'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Açıölçerde yanlış ölçeği okumak en sık hatadır: dar bir açıya 140° demek gibi. Okuduğun sayının açının türüyle uyumlu olup olmadığını kontrol et.\n\nKesişen doğrularda yan yana açıları eşit sanmak da hatadır; eşit olanlar **ters** açılardır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kesişen iki doğrunun oluşturduğu açılardan biri 50°'dir. Bu açının yanındaki (komşu) açı kaç derecedir?",
+   "options": [
+    "50°",
+    "130°",
+    "40°",
+    "310°"
+   ],
+   "answer": 1,
+   "why": "Yan yana iki açı 180° eder: 180° − 50° = 130°.",
+   "hint": "İki komşu açı birlikte doğru açı oluşturur."
+  },
+  {
+   "prompt": "Aynı durumda 50°'lik açının ters açısı kaç derecedir?",
+   "options": [
+    "50°",
+    "130°",
+    "90°",
+    "180°"
+   ],
+   "answer": 0,
+   "why": "Ters açılar eşittir.",
+   "hint": "Karşısındaki açıya bak."
+  },
+  {
+   "prompt": "Açıölçerde bir açının kolu dış ölçekte 120'yi, iç ölçekte 60'ı gösteriyor. Açı dar ise ölçüsü kaçtır?",
+   "options": [
+    "120°",
+    "180°",
+    "60°",
+    "90°"
+   ],
+   "answer": 2,
+   "why": "Dar açı 90°'den küçüktür: 60°.",
+   "hint": "Hangi sayı dar açıya uyar?"
+  },
+  {
+   "prompt": "Ölçüsü 90° ile 180° arasında olan açıya ne denir?",
+   "options": [
+    "Dar açı",
+    "Dik açı",
+    "Doğru açı",
+    "Geniş açı"
+   ],
+   "answer": 3,
+   "why": "90° ile 180° arası geniş açıdır.",
+   "hint": "Dik açıdan büyük, doğru açıdan küçük."
+  }
+ ]
+}

@@ -1,0 +1,156 @@
+{
+ "id": "m3-1-2",
+ "baslik": "Sayıları Çözümleme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.2"
+ ],
+ "sure": 12,
+ "ders": "basamak-degeri",
+ "ozet": "Bir sayıyı basamaklarına ayırmayı, her rakamın basamak değerini bulmayı ve aynı sayıyı farklı yollarla çözümlemeyi öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Basamak adı ve basamak değeri",
+   "govde": "486 sayısını düşünelim. 4 **yüzler**, 8 **onlar**, 6 **birler** basamağındadır.\n\nBir rakamın **basamak değeri**, o rakamın bulunduğu yere göre ne kadar ettiğidir:\n\n- 4'ün basamak değeri 400\n- 8'in basamak değeri 80\n- 6'nın basamak değeri 6\n\nSayıyı bu değerlerin toplamı olarak yazmaya **çözümleme** denir: 486 = 400 + 80 + 6."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çözümleme",
+   "govde": "Basamak değeri = rakam × basamağın değeri (1, 10 ya da 100).\n\n486 = 4 yüzlük + 8 onluk + 6 birlik = 400 + 80 + 6\n\nAynı sayı başka biçimde de çözümlenebilir: 486 = 3 yüzlük + 18 onluk + 6 birlik. Sayının değeri değişmez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir onluğu boz",
+   "aciklama": "Bloklar 247 sayısını gösteriyor. \"1 onluk → 10 birlik\" düğmesi bir onluğu 10 birliğe çevirir. Sayının değeri değişiyor mu?",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "h": 2,
+    "t": 4,
+    "o": 7
+   },
+   "gorev": {
+    "metin": "247'yi 2 yüzlük, 3 onluk ve 17 birlikle göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 247
+      },
+      {
+       "key": "o",
+       "eq": 17
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Bozmadan önce ve sonra alttaki sayıya bak: hâlâ 247.",
+    "247 = 200 + 30 + 17 de doğru bir çözümlemedir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıfırlı sayıyı kur",
+   "aciklama": "Boş bir tahtadan başla.",
+   "sim": {
+    "kind": "onluk-bloklar"
+   },
+   "gorev": {
+    "metin": "5 yüzlük ve 9 birlikten oluşan sayıyı kur.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 509
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Onluk eklemene gerek yok; onlar basamağında 0 olacak."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "738 sayısını çözümleyelim.",
+   "cozum": [
+    "7 yüzler basamağında: basamak değeri 700.",
+    "3 onlar basamağında: basamak değeri 30.",
+    "8 birler basamağında: basamak değeri 8."
+   ],
+   "sonuc": "738 = 700 + 30 + 8 = 7 yüzlük + 3 onluk + 8 birlik."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Farklı bir çözümleme",
+   "soru": "9 onluk ve 14 birlik hangi sayıyı gösterir?",
+   "cozum": [
+    "9 onluk = 90.",
+    "14 birlik = 1 onluk + 4 birlik = 14.",
+    "90 + 14 = 104."
+   ],
+   "sonuc": "Sayı **104**'tür: 1 yüzlük, 0 onluk, 4 birlik."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Rakam ile basamak değerini karıştırma. 738'de 3'ün basamak değeri **3 değil 30**'dur. Ayrıca 400 + 6'yı 46 diye yazmak yanlıştır; onlar basamağına 0 gelir: **406**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "527 sayısında 2 rakamının basamak değeri kaçtır?",
+   "options": [
+    "200",
+    "27",
+    "2",
+    "20"
+   ],
+   "answer": 3,
+   "why": "2 onlar basamağındadır: 2 onluk = 20.",
+   "hint": "2 hangi basamakta?"
+  },
+  {
+   "prompt": "400 + 6 hangi sayıdır?",
+   "options": [
+    "406",
+    "4006",
+    "46",
+    "460"
+   ],
+   "answer": 0,
+   "why": "4 yüzlük, 0 onluk, 6 birlik: 406.",
+   "hint": "Onlar basamağında kaç onluk var?"
+  },
+  {
+   "prompt": "Hangisi 352'nin bir çözümlemesi **değildir**?",
+   "options": [
+    "3 yüzlük + 5 onluk + 2 birlik",
+    "2 yüzlük + 15 onluk + 2 birlik",
+    "3 yüzlük + 2 onluk + 5 birlik",
+    "300 + 50 + 2"
+   ],
+   "answer": 2,
+   "why": "3 yüzlük + 2 onluk + 5 birlik = 325'tir, 352 değil.",
+   "hint": "Her seçeneğin değerini hesapla."
+  },
+  {
+   "prompt": "8 yüzlük ve 3 birlik kaçtır?",
+   "options": [
+    "8003",
+    "803",
+    "830",
+    "83"
+   ],
+   "answer": 1,
+   "why": "800 + 3 = 803; onlar basamağı 0.",
+   "hint": "Onluk var mı?"
+  }
+ ]
+}

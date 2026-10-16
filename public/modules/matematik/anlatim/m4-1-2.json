@@ -1,0 +1,159 @@
+{
+ "id": "m4-1-2",
+ "baslik": "Doğal Sayılarla Toplama İşlemi",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.1.2.1",
+  "M.4.1.2.2",
+  "M.4.1.2.3",
+  "M.4.1.2.4"
+ ],
+ "sure": 14,
+ "ozet": "En çok dört basamaklı doğal sayıları alt alta toplamayı, eldeli toplamayı, toplamı tahmin etmeyi ve 100'ün katlarıyla zihinden toplamayı öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Toplama ne demek?",
+   "govde": "Toplama, iki ya da daha fazla çokluğu **bir araya getirmektir**. Toplanan sayılara **toplanan**, sonuca **toplam** denir.\n\nAlt alta toplarken sayıları **basamakları hizalı** yazarız: birler birlerin, onlar onların altına gelir. İşleme **birler basamağından** başlarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bloklarla eldeli toplama",
+   "aciklama": "Tabloda 258 var: 2 yüzlük, 5 onluk, 8 birlik. Buna 167 ekleyeceğiz.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "h": 2,
+    "t": 5,
+    "o": 8
+   },
+   "gorev": {
+    "metin": "1 yüzlük, 6 onluk ve 7 birlik ekle; sonra gruplayarak sonucu düzenli göster (her basamakta en çok 9).",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 425
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "7 birlik ekleyince 15 birlik olur. \"10 birlik → 1 onluk\" düğmesiyle 10 birliği 1 onluğa çevir: işte elde budur.",
+    "Onluklar da 10'u geçerse 10 onluğu 1 yüzlüğe çevir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eldeli toplama",
+   "govde": "Bir basamaktaki toplam **10 ya da daha büyükse**, birler rakamını o basamağa yazarız; onluğu **elde** olarak bir sol basamağa aktarırız. Sol basamağı toplarken eldeyi de ekleriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Adım adım alt alta toplama",
+   "aciklama": "3 478 + 2 865 işlemini adım adım izle. Üstteki küçük rakamlar eldedir.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "+",
+    "a": 3478,
+    "b": 2865
+   },
+   "gorev": {
+    "metin": "İşlemi sonuna kadar izle.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Her adımda hangi basamağın toplandığına bak: renkli sütun.",
+    "Bu işlemde üç kez elde var."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tahmin ve zihinden toplama",
+   "govde": "**Tahmin:** Sayıları en yakın yüzlüğe (ya da onluğa) yuvarlayıp toplarız. 3 478 + 2 865 ≈ 3 500 + 2 900 = 6 400. Gerçek toplam 6 343, tahmine yakın.\n\n**100'ün katlarıyla zihinden toplama:** Yalnız yüzler basamağına ekleme yaparız. 2 450 + 300 = 2 750, çünkü 4 yüz + 3 yüz = 7 yüz."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Zihinden",
+   "soru": "3 640 + 200 ve 4 750 + 400 işlemlerini zihinden yapalım.",
+   "cozum": [
+    "3 640'ta 6 yüz var; 6 + 2 = 8 yüz: 3 840.",
+    "4 750'de 7 yüz var; 7 + 4 = 11 yüz = 1 bin 1 yüz.",
+    "Binler 4 + 1 = 5 olur: 5 150."
+   ],
+   "sonuc": "3 640 + 200 = 3 840 ve 4 750 + 400 = 5 150."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "Okul kütüphanesinde 1 275 hikâye kitabı var. Bilim kitapları, hikâye kitaplarından 348 fazladır. Kütüphanede toplam kaç hikâye ve bilim kitabı vardır?",
+   "cozum": [
+    "Önce bilim kitaplarını bul: 1 275 + 348 = 1 623.",
+    "Toplam: 1 275 + 1 623 = 2 898.",
+    "Tahminle kontrol: 1 300 + 1 600 = 2 900, sonuç buna yakın."
+   ],
+   "sonuc": "Toplam 2 898 kitap vardır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Basamakları hizalamadan yazmak en sık hatadır. 1 254 + 37 işleminde 37'yi sola kaydırıp yazarsan 1 624 gibi yanlış bir sonuç bulursun. Doğrusu 7 birlerin, 3 onların altına gelir: **1 291**.\n\nElde olarak aktarılan 1'i bir sonraki basamakta eklemeyi unutmak da sık görülür."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4 587 + 2 696 işleminin sonucu kaçtır?",
+   "options": [
+    "6 173",
+    "7 283",
+    "7 273",
+    "7 183"
+   ],
+   "answer": 1,
+   "why": "Birler 13 (3 yaz, 1 elde), onlar 18 (8 yaz, 1 elde), yüzler 12 (2 yaz, 1 elde), binler 7: 7 283.",
+   "hint": "Her basamakta eldeyi eklemeyi unutma."
+  },
+  {
+   "prompt": "2 380 + 500 işleminin zihinden sonucu nedir?",
+   "options": [
+    "2 430",
+    "7 380",
+    "2 880",
+    "2 885"
+   ],
+   "answer": 2,
+   "why": "Yalnız yüzler değişir: 3 yüz + 5 yüz = 8 yüz, sonuç 2 880.",
+   "hint": "500 yalnız yüzler basamağını etkiler."
+  },
+  {
+   "prompt": "1 489 + 2 512 toplamını sayıları en yakın yüzlüğe yuvarlayarak tahmin edersek hangisini buluruz?",
+   "options": [
+    "4 000",
+    "3 900",
+    "4 100",
+    "3 000"
+   ],
+   "answer": 0,
+   "why": "1 489 ≈ 1 500 ve 2 512 ≈ 2 500; tahmin 4 000. (Gerçek toplam 4 001.)",
+   "hint": "Her sayıyı önce en yakın yüzlüğe yuvarla."
+  },
+  {
+   "prompt": "Ayşe'nin 1 250 TL'si vardı. Annesi 875 TL daha verdi. Ayşe'nin kaç TL'si oldu?",
+   "options": [
+    "2 025",
+    "2 115",
+    "1 925",
+    "2 125"
+   ],
+   "answer": 3,
+   "why": "1 250 + 875 = 2 125.",
+   "hint": "Alt alta yaz ve birlerden başla."
+  }
+ ]
+}

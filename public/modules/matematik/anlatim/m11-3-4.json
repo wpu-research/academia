@@ -1,0 +1,81 @@
+{
+ "id": "m11-3-4",
+ "baslik": "Üstel Fonksiyonların Ters Fonksiyonları",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.4"],
+ "sure": 16,
+ "ozet": "Üstel fonksiyon bire bir ve örten olduğu için tersi vardır. Bu tersi y = x doğrusuna göre yansıtarak görecek, ona logaritma adını verecek ve üstel ifadeleri logaritmik yazıma çevireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Tersini arıyoruz",
+   "govde": "f: ℝ → (0, ∞), f(x) = aˣ (a > 0, a ≠ 1) bire bir ve örtendir; bu yüzden tersi vardır: f⁻¹: (0, ∞) → ℝ.\n\n2ˣ = 8 denkleminin çözümü 3'tür; ama 2ˣ = 5 denkleminin çözümünü tam sayılarla yazamayız. Bu sayıya bir ad veririz: **log₂ 5** (\"2 tabanında 5'in logaritması\")."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Logaritmanın tanımı",
+   "govde": "a > 0, a ≠ 1 ve x > 0 için\n\n**y = logₐ x ⇔ aʸ = x**\n\nYani logₐ x, \"a'yı kaçıncı kuvvete yükseltirsem x elde ederim?\" sorusunun cevabıdır. f(x) = aˣ ise f⁻¹(x) = logₐ x.\n\nSonuçlar: logₐ 1 = 0, logₐ a = 1, logₐ(aˣ) = x, a^(logₐ x) = x (x > 0).\n\n10 tabanındaki logaritma log x, e ≈ 2,718 tabanındaki ln x ile gösterilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üstel fonksiyonu yansıt",
+   "aciklama": "Kahverengi y = bˣ, yeşil tersi. Noktayı hareket ettir; yansıyan nokta koordinatları yer değiştirmiş olarak görünür.",
+   "sim": { "kind": "f-fonk", "f": "ustel", "b": 2, "p": 1, "sliders": ["b", "p"], "tools": ["ters"], "parent": false },
+   "gorev": { "metin": "Taban 2 iken tersini göster ve noktayı x = 2'ye getir: 2² = 4 ⇔ log₂ 4 = 2.", "check": { "all": [{ "key": "inv", "eq": 1 }, { "key": "p", "eq": 2 }, { "key": "b", "eq": 2 }] } },
+   "dene": ["(0, 1) noktası tersinde (1, 0) olur: logₐ 1 = 0.", "Üstel grafiğin yatay asimptotu y = 0, tersininki düşey x = 0."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Aşağıdakileri logaritmik ya da üstel yazıma çevirip değerlerini bulalım: (a) 3⁴ = 81, (b) log₂(1/8), (c) log₅ 1, (d) log 1000.",
+   "cozum": [
+    "(a) 3⁴ = 81 ⇔ log₃ 81 = 4.",
+    "(b) 2ʸ = 1/8 = 2⁻³ → log₂(1/8) = −3.",
+    "(c) 5⁰ = 1 → log₅ 1 = 0.",
+    "(d) 10³ = 1000 → log 1000 = 3."
+   ],
+   "sonuc": "log₃ 81 = 4, log₂(1/8) = −3, log₅ 1 = 0, log 1000 = 3."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dönüştürülmüş üstel fonksiyonun tersi",
+   "aciklama": "g(x) = 2^(x − r) + k ve tersi. Kırmızı kesikli doğrular asimptotlar.",
+   "sim": { "kind": "f-fonk", "f": "ustel", "b": 2, "h": 0, "k": 0, "sliders": ["h", "k"], "tools": ["ters", "asimptot"], "parent": false, "inverseOn": true },
+   "gorev": { "metin": "Grafiği 1 birim sağa, 3 birim yukarı ötele: g(x) = 2^(x − 1) + 3.", "check": { "all": [{ "key": "h", "eq": 1 }, { "key": "k", "eq": 3 }] } },
+   "dene": ["g'nin yatay asimptotu y = 3; tersinin düşey asimptotu x = 3.", "Tersi g⁻¹(x) = log₂(x − 3) + 1 (aşağıdaki örnek)."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "f(x) = 2^(x − 1) + 3 fonksiyonunun tersini bulalım.",
+   "cozum": [
+    "y = 2^(x − 1) + 3 → 2^(x − 1) = y − 3.",
+    "Tanımdan: x − 1 = log₂(y − 3) → x = log₂(y − 3) + 1.",
+    "f⁻¹(x) = log₂(x − 3) + 1, tanım kümesi (3, ∞)."
+   ],
+   "sonuc": "f⁻¹(x) = log₂(x − 3) + 1."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = 5^(2x − 1) olduğuna göre f⁻¹(x) nedir ve f⁻¹(125) kaçtır?",
+   "cozum": [
+    "y = 5^(2x − 1) → 2x − 1 = log₅ y → x = (log₅ y + 1)/2.",
+    "f⁻¹(x) = (log₅ x + 1)/2.",
+    "f⁻¹(125) = (3 + 1)/2 = 2. (Kontrol: f(2) = 5³ = 125.)"
+   ],
+   "sonuc": "f⁻¹(x) = (log₅ x + 1)/2; f⁻¹(125) = 2."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Logaritmayı negatif sayılar ya da 0 için hesaplamaya çalışmak. aʸ her zaman pozitif olduğundan logₐ x yalnız x > 0 için tanımlıdır; log₂(−4) ya da log 0 diye bir gerçek sayı yoktur. Bir de logₐ x'i \"log çarpı x\" gibi okumak: log bir fonksiyon adıdır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "2ˣ = 32 ifadesinin logaritmik yazımı ve x'in değeri nedir?", "options": ["x = log₂ 32 = 5", "x = log₃₂ 2 = 16", "x = log₂ 32 = 6", "x = log₅ 32 = 2"], "answer": 0, "why": "aʸ = x ⇔ y = logₐ x; 2⁵ = 32.", "hint": "2'yi kaçıncı kuvvete yükseltirsen 32 olur?" },
+  { "prompt": "log₃(1/9) kaçtır?", "options": ["2", "−3", "1/2", "−2"], "answer": 3, "why": "3⁻² = 1/9.", "hint": "1/9'u 3'ün kuvveti olarak yaz." },
+  { "prompt": "f(x) = 3ˣ + 1 fonksiyonunun tersi hangisidir?", "options": ["log₃(x + 1)", "log₃(x − 1)", "log₃ x − 1", "3^(x − 1)"], "answer": 1, "why": "y − 1 = 3ˣ → x = log₃(y − 1).", "hint": "Önce 3ˣ'i yalnız bırak." },
+  { "prompt": "Bir fonksiyon ile tersinin grafikleri hangi doğruya göre simetriktir?", "options": ["x eksenine", "y eksenine", "y = x doğrusuna", "Orijine"], "answer": 2, "why": "(a, b) noktası tersinde (b, a) olur.", "hint": "Koordinatların yer değiştirmesini düşün." }
+ ]
+}

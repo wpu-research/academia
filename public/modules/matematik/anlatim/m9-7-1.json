@@ -1,0 +1,78 @@
+{
+ "id": "m9-7-1",
+ "baslik": "Deneysel Olasılık",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.7.1"],
+ "sure": 15,
+ "ozet": "Bir olayın olasılığını deneyler yaparak tahmin edecek, deneme sayısı arttıkça deneysel olasılığın teorik değere yaklaştığını gözlemleyecek ve deneysel olasılıkla beklenen sayıları hesaplayacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Deneysel olasılık",
+   "govde": "Bir deney n kez tekrarlanır ve A olayı bunların m tanesinde gözlenirse A'nın **deneysel olasılığı** (göreli sıklığı):\n\n**P(A) ≈ m / n**\n\nDeneysel olasılık da 0 ile 1 arasındadır. Teorik olasılığı hesaplamanın zor ya da imkânsız olduğu durumlarda (bir raptiyenin sivri ucu yukarı düşmesi, bir ürünün kusurlu çıkması) olasılığı gözleme dayalı tahmin ederiz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Torbadan çekiliş",
+   "aciklama": "Torbada 3 kırmızı, 5 yeşil, 2 sarı top var. Çekilen top geri konuyor. Çubuklar göreli sıklık, kesikli çizgiler teorik olasılıktır.",
+   "sim": { "kind": "e-torba", "k": 3, "y": 5, "s": 2, "ayarla": true, "cek": true, "max": 10 },
+   "gorev": { "metin": "En az 300 çekiliş yap.", "check": { "key": "cekilis", "gte": 300 } },
+   "dene": ["İlk 10 çekilişte çubuklar çizgilerden çok uzak olabilir. 300 çekilişten sonra nasıl?", "Top sayılarını değiştir: sıklıklar sıfırlanır ve yeni teorik değerlere doğru toplanır."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Büyük sayılar yasası",
+   "govde": "Deneme sayısı arttıkça deneysel olasılık, teorik olasılığa **yaklaşma eğilimindedir**. Bu, az sayıda denemede büyük sapmalar olabileceği, çok sayıda denemede ise sapmaların küçüleceği anlamına gelir.\n\nAma tek tek denemeler birbirini etkilemez: madeni para 5 kez üst üste tura geldiyse 6. atışta tura gelme olasılığı yine 1/2'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki zarın toplamı",
+   "aciklama": "İki zar atılıyor, toplamların göreli sıklıkları çiziliyor. Kesikli çizgiler teorik olasılıklardır.",
+   "sim": { "kind": "olasilik-sim", "dice": 2 },
+   "gorev": { "metin": "Zarları en az 500 kez at.", "check": { "key": "total", "gte": 500 } },
+   "dene": ["Hangi toplam en sık geliyor? Neden 2 ve 12 seyrek?", "Toplamların olasılıkları eşit değil; bu bir sonraki konuda (teorik olasılık) açıklanacak."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir madeni para 50 kez atılıyor ve 18 kez tura geliyor. Tura gelmenin deneysel olasılığı nedir? Teorik değerle karşılaştır.",
+   "cozum": [
+    "Deneysel: 18 / 50 = 0,36.",
+    "Teorik: 1/2 = 0,5.",
+    "Fark büyük görünse de 50 deneme azdır; deneme sayısı arttıkça değerin 0,5'e yaklaşması beklenir."
+   ],
+   "sonuc": "0,36"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Beklenen sayı",
+   "soru": "Bir fabrikada kontrol edilen 400 üründen 6'sı kusurlu çıktı. 2000 ürünlük bir partide yaklaşık kaç kusurlu ürün beklenir?",
+   "cozum": [
+    "Deneysel olasılık: 6 / 400 = 0,015.",
+    "Beklenen sayı: 2000 · 0,015 = 30."
+   ],
+   "sonuc": "Yaklaşık 30 kusurlu ürün."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: serbest atış",
+   "soru": "Bir basketbolcu son 40 serbest atışının 30'unu sayıya çevirmiş. Bu veriye göre sonraki 12 atışında kaç sayı beklenir?",
+   "cozum": [
+    "Deneysel olasılık: 30 / 40 = 3/4.",
+    "12 · 3/4 = 9."
+   ],
+   "sonuc": "Yaklaşık 9 isabet."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Birkaç denemeye bakıp kesin sonuç çıkarmak: 10 atışta 3 tura, paranın hileli olduğunu göstermez.\n- \"Kumarbaz yanılgısı\": üst üste tura geldi diye yazının \"sırası geldiğini\" sanmak.\n- Beklenen sayıyı kesin sonuç sanmak; 30 kusurlu ürün bir tahmindir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir zar 200 kez atılıyor ve 46 kez 6 geliyor. 6 gelmesinin deneysel olasılığı nedir?", "options": ["0,23", "0,46", "1/6", "0,2"], "answer": 0, "why": "46 / 200 = 0,23. 1/6 teorik olasılıktır.", "hint": "Gözlenen sayıyı deneme sayısına böl." },
+  { "prompt": "Bir zarda 6 gelmesinin deneysel olasılığının 1/6'ya en yakın çıkması hangi deneme sayısında beklenir?", "options": ["10 atış", "50 atış", "100 atış", "10 000 atış"], "answer": 3, "why": "Deneme sayısı arttıkça deneysel olasılık teorik değere yaklaşma eğilimindedir.", "hint": "Büyük sayılar yasasını hatırla." },
+  { "prompt": "Hilesiz bir para 5 kez üst üste tura geldi. 6. atışta tura gelme olasılığı nedir?", "options": ["1/32", "1/2", "1/2'den az", "1/64"], "answer": 1, "why": "Atışlar birbirinden bağımsızdır; her atışta 1/2.", "hint": "Para önceki atışları hatırlar mı?" },
+  { "prompt": "Bir siteyi ziyaret eden 300 kişiden 45'i alışveriş yapmış. 1200 ziyaretçide yaklaşık kaç alışveriş beklenir?", "options": ["150", "45", "180", "225"], "answer": 2, "why": "45 / 300 = 0,15; 1200 · 0,15 = 180.", "hint": "Önce deneysel olasılığı bul." }
+ ]
+}

@@ -1,0 +1,190 @@
+{
+ "id": "m3-6-1",
+ "baslik": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.4.1"
+ ],
+ "sure": 14,
+ "ozet": "Bir araştırma sorusu için veri toplayacak, çetele ve sıklık tablosuyla düzenleyecek, nesne ve sütun grafiğiyle gösterecek ve veriye dayanarak karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Araştırma sorusundan veriye",
+   "govde": "Bir konuda karar vermek için önce bir **araştırma sorusu** sorarız: \"Sınıfımızda en çok hangi meyve seviliyor?\"\n\nSonra **veri** toplarız: herkese sorar (anket) ya da gözlem yaparız. Cevaplar meyve adları gibi **kategoriler** olabilir (kategorik veri) ya da \"kaç kardeşin var?\" sorusundaki gibi **sayarak** elde edilen sayılar olabilir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Veriyi düzenlemek ve göstermek",
+   "govde": "- **Çetele:** Her cevap için bir çizgi çizilir; 5. çizgi önceki 4 çizginin üzerinden çapraz çekilir. Böylece 5'erli gruplar kolay sayılır.\n- **Sıklık tablosu:** Her kategorinin kaç kez görüldüğü (sıklığı) sayıyla yazılır.\n- **Nesne grafiği:** Her cevap bir nesne ya da sembolle gösterilir.\n- **Sütun grafiği:** Her kategori, yüksekliği sıklığı gösteren bir sütunla gösterilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Anket sonuçlarını işle",
+   "aciklama": "Sınıfta \"En sevdiğin meyve hangisi?\" diye soruldu. Sonuçlar: Elma 6, Muz 3, Portakal 4, Çilek 7. + ve − düğmeleriyle tabloyu doldur; diğer gösterimlere de geç.",
+   "sim": {
+    "kind": "b-siklik",
+    "kategoriler": [
+     "Elma",
+     "Muz",
+     "Portakal",
+     "Çilek"
+    ],
+    "degerler": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "max": 10,
+    "baslik": "Meyve"
+   },
+   "gorev": {
+    "metin": "Anket sonuçlarını tabloya işle.",
+    "check": {
+     "all": [
+      {
+       "key": "c0",
+       "eq": 6
+      },
+      {
+       "key": "c1",
+       "eq": 3
+      },
+      {
+       "key": "c2",
+       "eq": 4
+      },
+      {
+       "key": "c3",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Çetelede 5'li grubu fark et: Çilek için bir 5'li grup ve 2 çizgi.",
+    "Tablo bitince \"Sütun grafiği\"ne geç: en uzun sütun hangi meyvenin?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Veriyi güncelle ve karar ver",
+   "aciklama": "\"Okula nasıl geliyorsun?\" sorusunun cevapları nesne grafiğinde. Sınıfa 4 yeni öğrenci geldi ve dördü de servisle geliyor.",
+   "sim": {
+    "kind": "b-siklik",
+    "kategoriler": [
+     "Yürüyerek",
+     "Servisle",
+     "Bisikletle",
+     "Arabayla"
+    ],
+    "degerler": [
+     8,
+     5,
+     2,
+     6
+    ],
+    "max": 10,
+    "gorunum": "nesne",
+    "baslik": "Ulaşım"
+   },
+   "gorev": {
+    "metin": "Yeni öğrencileri veriye ekle.",
+    "check": {
+     "all": [
+      {
+       "key": "c1",
+       "eq": 9
+      },
+      {
+       "key": "toplam",
+       "eq": 25
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Servisle gelenler 5 + 4 = 9 olur; toplam 21 + 4 = 25.",
+    "Yeni veriye göre en çok tercih edilen ulaşım yolu değişti mi?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir çetelede 3 tane 5'li grup ve 2 tek çizgi var. Sıklık kaçtır?",
+   "cozum": [
+    "5'li gruplar: 5 + 5 + 5 = 15.",
+    "Tek çizgiler: 2.",
+    "15 + 2 = 17."
+   ],
+   "sonuc": "Sıklık **17**'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Veriye dayalı karar",
+   "soru": "Sınıf gezisi için oylama yapıldı: Müze 9, Hayvanat bahçesi 12, Park 5 oy aldı. Hangi yere gidilmeli? Kaç öğrenci oy kullandı?",
+   "cozum": [
+    "En çok oyu hayvanat bahçesi aldı (12).",
+    "Toplam: 9 + 12 + 5 = 26 öğrenci.",
+    "Hayvanat bahçesi müzeden 12 − 9 = 3 oy fazla aldı."
+   ],
+   "sonuc": "Veriye göre **hayvanat bahçesine** gidilmelidir; 26 öğrenci oy kullandı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Çetelede 5'li grubu 4 ya da 6 diye saymak, toplamı bulurken bir kategoriyi atlamak sık yapılan hatalardır. Karar verirken de yalnız bir kategoriye değil, bütün veriye bakmalısın."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir çetelede 3 tane 5'li grup ve 2 tek çizgi var. Sıklık kaçtır?",
+   "options": [
+    "32",
+    "5",
+    "15",
+    "17"
+   ],
+   "answer": 3,
+   "why": "5 + 5 + 5 + 2 = 17.",
+   "hint": "Her 5'li grup kaç sayılır?"
+  },
+  {
+   "prompt": "Sevilen renkler anketinde Mavi 8, Kırmızı 5, Yeşil 6 kişi tarafından seçildi. Ankete kaç kişi katıldı?",
+   "options": [
+    "8",
+    "20",
+    "19",
+    "13"
+   ],
+   "answer": 2,
+   "why": "8 + 5 + 6 = 19.",
+   "hint": "Bütün sıklıkları topla."
+  },
+  {
+   "prompt": "Aynı ankette en çok seçilen renk ile en az seçilen renk arasındaki fark kaçtır?",
+   "options": [
+    "5",
+    "3",
+    "13",
+    "2"
+   ],
+   "answer": 1,
+   "why": "En çok Mavi (8), en az Kırmızı (5): 8 − 5 = 3.",
+   "hint": "En büyük ve en küçük sıklığı bul."
+  },
+  {
+   "prompt": "Hangisi kategorik veri toplamak için sorulan bir sorudur?",
+   "options": [
+    "En sevdiğin mevsim hangisi?",
+    "Kaç kardeşin var?",
+    "Boyun kaç santimetre?",
+    "Kaç yaşındasın?"
+   ],
+   "answer": 0,
+   "why": "Mevsim adları birer kategoridir; diğer soruların cevapları sayıdır.",
+   "hint": "Hangi sorunun cevabı bir sayı değil?"
+  }
+ ]
+}

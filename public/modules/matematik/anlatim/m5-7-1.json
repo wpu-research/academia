@@ -1,0 +1,178 @@
+{
+ "id": "m5-7-1",
+ "baslik": "Öznel Olasılık",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.6.1",
+  "MAT.5.6.2"
+ ],
+ "sure": 12,
+ "ozet": "Bir olayın olasılığının 0 (imkânsız) ile 1 (kesin) arasında bir yerde olduğunu olasılık çizelgesiyle yorumlayacak, olayları az ya da çok olası diye sınıflayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Olay ve olasılık",
+   "govde": "\"Yarın yağmur yağacak mı?\", \"Torbadan kırmızı top çeker miyim?\" gibi sonucu önceden kesin bilinmeyen durumlara **olay** deriz. Bir olayın gerçekleşme şansına **olasılık** denir.\n\nGünlük hayatta olasılığı çoğu zaman deneyimimize ve bilgimize dayanarak tahmin ederiz: \"Bulutlar çok koyu, yağmur yağması çok olası.\" Bu tür kişisel tahminlere **öznel olasılık** denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Olasılık çizelgesi",
+   "govde": "Olasılığı 0 ile 1 arasındaki bir çizelgede gösteririz:\n\n- **0 · İmkânsız:** Asla gerçekleşmez (zarda 7 gelmesi).\n- **Az olası:** Gerçekleşebilir ama şansı düşük.\n- **1/2 · Eşit olasılıklı:** Gerçekleşme ve gerçekleşmeme şansı eşit (yazı tura atınca yazı gelmesi).\n- **Çok olası:** Büyük ihtimalle gerçekleşir.\n- **1 · Kesin:** Mutlaka gerçekleşir.\n\nBir olayın olasılığı 0'dan küçük ya da 1'den büyük olamaz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Torbayı düzenle",
+   "aciklama": "Kaydırıcılarla torbadaki kırmızı ve yeşil top sayısını değiştir. Turuncu işaret, kırmızı top çekme olasılığının çizelgedeki yerini gösterir. \"Top çek\" ile deneyebilirsin.",
+   "sim": {
+    "kind": "c-torba",
+    "kirmizi": 3,
+    "yesil": 3
+   },
+   "gorev": {
+    "metin": "Kırmızı top çekmeyi kesin yap.",
+    "check": {
+     "all": [
+      {
+       "key": "kirmizi",
+       "gte": 1
+      },
+      {
+       "key": "yesil",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Torbada yalnız kırmızı top kalırsa ne çekersen çek kırmızıdır.",
+    "Kırmızıyı tamamen çıkarırsan olay imkânsız olur."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Az olası mı, çok olası mı?",
+   "aciklama": "Torbada 5 kırmızı ve 5 yeşil top var: kırmızı çekmek eşit olasılıklı.",
+   "sim": {
+    "kind": "c-torba",
+    "kirmizi": 5,
+    "yesil": 5
+   },
+   "gorev": {
+    "metin": "Kırmızı top çekmeyi az olası ama imkânsız olmayan bir olay yap.",
+    "check": {
+     "all": [
+      {
+       "key": "kirmizi",
+       "gte": 1
+      },
+      {
+       "key": "p",
+       "lt": 0.5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kırmızı topların sayısı yeşillerden az olmalı.",
+    "20 kez çekip sonuçlara bak: az olası olay yine de birkaç kez gerçekleşebilir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Zarla deney",
+   "aciklama": "Bir zarı çok kez at. Kesikli çizgiler her yüzün beklenen payını gösterir.",
+   "sim": {
+    "kind": "olasilik-sim",
+    "dice": 1
+   },
+   "gorev": {
+    "metin": "Zarı en az 100 kez at.",
+    "check": {
+     "key": "total",
+     "gte": 100
+    }
+   },
+   "dene": [
+    "Her yüzün gelme olasılığı eşittir.",
+    "Az atışta sütunlar çok farklı olabilir; atış sayısı arttıkça birbirine yaklaşır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Olayları sırala",
+   "soru": "Şu olayları olasılık çizelgesine yerleştirelim: (a) Bir zar atınca 7 gelmesi, (b) Yazı tura atınca tura gelmesi, (c) Bir zar atınca 6'dan küçük bir sayı gelmesi, (d) Bir zar atınca 6 gelmesi.",
+   "cozum": [
+    "(a) Zarda 7 yok: imkânsız.",
+    "(b) Yazı ve tura eşit şanslı: eşit olasılıklı.",
+    "(c) 1, 2, 3, 4, 5 gelebilir; 6 yüzden 5'i: çok olası.",
+    "(d) 6 yüzden yalnız 1'i: az olası."
+   ],
+   "sonuc": "İmkânsız (a), az olası (d), eşit olasılıklı (b), çok olası (c)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Torba",
+   "soru": "Torbada 2 kırmızı ve 8 yeşil top var. Kırmızı top çekmek nasıl bir olaydır?",
+   "cozum": [
+    "10 topun yalnız 2'si kırmızı.",
+    "Kırmızı topların sayısı yarıdan az."
+   ],
+   "sonuc": "Kırmızı top çekmek az olasıdır; yeşil top çekmek çok olasıdır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Az olası\" olayın hiç gerçekleşmeyeceğini sanmak yanlıştır; az olası olaylar da bazen gerçekleşir. İmkânsız yalnızca olasılığı 0 olan olaydır.\n\nBir başka hata: Para üst üste 3 kez yazı geldi diye bir sonraki atışın kesin tura olacağını düşünmek. Her atışta yazı ve tura yine eşit olasılıklıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir zar atıldığında 7 gelmesi nasıl bir olaydır?",
+   "options": [
+    "Kesin",
+    "İmkânsız",
+    "Eşit olasılıklı",
+    "Çok olası"
+   ],
+   "answer": 1,
+   "why": "Zarda 7 yoktur; olasılığı 0'dır.",
+   "hint": "Zarın yüzlerinde hangi sayılar var?"
+  },
+  {
+   "prompt": "Yazı tura atıldığında yazı gelmesi nasıl bir olaydır?",
+   "options": [
+    "Az olası",
+    "Çok olası",
+    "Eşit olasılıklı",
+    "İmkânsız"
+   ],
+   "answer": 2,
+   "why": "Yazı ve tura gelme şansı eşittir: 1/2.",
+   "hint": "Kaç sonuç var ve şansları eşit mi?"
+  },
+  {
+   "prompt": "Torbada 9 kırmızı ve 1 yeşil top var. Kırmızı top çekmek nasıl bir olaydır?",
+   "options": [
+    "Çok olası",
+    "Az olası",
+    "İmkânsız",
+    "Eşit olasılıklı"
+   ],
+   "answer": 0,
+   "why": "10 topun 9'u kırmızı; kırmızı çekmek çok olası (ama kesin değil).",
+   "hint": "Kırmızılar yarıdan fazla mı?"
+  },
+  {
+   "prompt": "Hangisi bir olayın olasılığı olamaz?",
+   "options": [
+    "0",
+    "1/2",
+    "1",
+    "3/2"
+   ],
+   "answer": 3,
+   "why": "Olasılık 0 ile 1 arasındadır; 3/2, 1'den büyüktür.",
+   "hint": "Olasılık çizelgesinin iki ucu nedir?"
+  }
+ ]
+}

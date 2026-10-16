@@ -1,0 +1,205 @@
+{
+ "id": "m2-3-4",
+ "baslik": "Çarpma ve Bölme İşlemleri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.2.4"
+ ],
+ "sure": 16,
+ "ozet": "Çarpmayı tekrarlı toplama, bölmeyi eşit paylaştırma ve tekrarlı çıkarma olarak göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çarpma: tekrarlı toplama",
+   "govde": "Eşit grupları toplarken **çarpma** kullanırız. İşareti **×** dir.\n\n3 tabakta 4'er elma varsa: 4 + 4 + 4 = 12. Bunu kısaca **3 × 4 = 12** diye yazarız: “3 kere 4, 12 eder.”"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıralar ve sütunlar",
+   "aciklama": "Kaydırıcılarla satır ve sütun sayısını değiştir. Her satır bir grup gibidir.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 1,
+    "cols": 1,
+    "max": 6
+   },
+   "gorev": {
+    "metin": "3 sıra, her sırada 4 kare olacak bir dizilim yap.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 3
+      },
+      {
+       "key": "cols",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kareleri 4'er say: 4, 8, 12.",
+    "Dizilimi yan çevirsen (4 sıra, 3'er) toplam değişir mi?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "4'er sek",
+   "aciklama": "Sayı doğrusunda her sekme 4 birim.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 30,
+    "adim": 4,
+    "geri": false
+   },
+   "gorev": {
+    "metin": "3 × 4'ü 4'er sekerek bul: 3 kez sek.",
+    "check": {
+     "all": [
+      {
+       "key": "pos",
+       "eq": 12
+      },
+      {
+       "key": "ileri",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Her sekme bir grup. Kaç grup var?"
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Bölme: eşit paylaştırma",
+   "govde": "Bir çokluğu **eşit gruplara** ayırırken **bölme** kullanırız. İşareti **÷** dir.\n\n12 cevizi 3 tabağa eşit paylaştırırsak her tabağa 4 ceviz düşer: **12 ÷ 3 = 4**.\n\nPaylaştırırken her tura bütün tabaklardan 1'er tane veririz; her tur, 12'den 3 çıkarmak demektir: 12 − 3 − 3 − 3 − 3 = 0."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Cevizleri paylaştır",
+   "aciklama": "12 ceviz 3 tabağa paylaştırılacak.",
+   "sim": {
+    "kind": "a-paylastir",
+    "toplam": 12,
+    "grup": 3,
+    "sabit": true
+   },
+   "gorev": {
+    "metin": "Cevizlerin hepsini eşit dağıt.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "“Her tabağa 1 dağıt” düğmesine her basış, 12'den 3 çıkarır.",
+    "Kaç turda bitti? Her tabakta kaç ceviz var?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sen paylaştır",
+   "aciklama": "Kaydırıcılarla nesne ve tabak sayısını seç, sonra dağıt.",
+   "sim": {
+    "kind": "a-paylastir",
+    "toplam": 10,
+    "grup": 2,
+    "max": 20,
+    "maxGrup": 5
+   },
+   "gorev": {
+    "metin": "15 nesneyi 5 tabağa eşit paylaştır.",
+    "check": {
+     "all": [
+      {
+       "key": "toplam",
+       "eq": 15
+      },
+      {
+       "key": "grup",
+       "eq": 5
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çarpma ve bölme ilişkisi",
+   "govde": "Çarpma ve bölme de **ters işlemlerdir**:\n\n3 × 4 = 12 ise **12 ÷ 3 = 4** ve **12 ÷ 4 = 3**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kutuda 5 kalem var. 4 kutuda kaç kalem vardır?",
+   "cozum": [
+    "Eşit gruplar: 4 kutu, her birinde 5 kalem.",
+    "5 + 5 + 5 + 5 = 20.",
+    "Kısaca: 4 × 5 = 20."
+   ],
+   "sonuc": "**20** kalem vardır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "18 öğrenci 3 eşit takıma ayrılıyor. Her takımda kaç öğrenci olur?",
+   "cozum": [
+    "Eşit paylaştırma: 18 ÷ 3.",
+    "3'er çıkar: 18, 15, 12, 9, 6, 3, 0. Altı kez çıkardık.",
+    "Kontrol: 3 × 6 = 18."
+   ],
+   "sonuc": "Her takımda **6** öğrenci olur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Çarpmada grup sayısıyla gruptaki nesne sayısını toplamak sık bir hatadır: 3 tabakta 4'er elma **3 + 4 = 7** değil, **4 + 4 + 4 = 12**'dir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "5 + 5 + 5 hangi çarpma işlemine eşittir?",
+   "options": [
+    "5 × 5",
+    "3 × 5",
+    "5 × 15",
+    "3 + 5"
+   ],
+   "answer": 1,
+   "why": "3 tane 5: 3 × 5 = 15.",
+   "hint": "Kaç tane 5 toplanıyor?"
+  },
+  {
+   "prompt": "20 bilye 4 çocuğa eşit paylaştırılırsa her çocuğa kaç bilye düşer?",
+   "options": [
+    "4",
+    "16",
+    "24",
+    "5"
+   ],
+   "answer": 3,
+   "why": "20 ÷ 4 = 5, çünkü 4 × 5 = 20.",
+   "hint": "4'er çıkararak kaç tur sürdüğünü say."
+  },
+  {
+   "prompt": "2 × 6 = 12 ise 12 ÷ 2 kaçtır?",
+   "options": [
+    "6",
+    "2",
+    "10",
+    "14"
+   ],
+   "answer": 0,
+   "why": "Çarpma ve bölme ters işlemlerdir: 12 ÷ 2 = 6.",
+   "hint": "İşlem ailesini düşün."
+  }
+ ]
+}

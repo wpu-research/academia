@@ -1,0 +1,78 @@
+{
+ "id": "m9-2-1",
+ "baslik": "Doğrusal Fonksiyonlar ve Nitel Özellikleri",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.2.1"],
+ "sure": 20,
+ "ders": "dogrunun-egimi",
+ "ozet": "f(x) = x referans fonksiyonundan başlayıp g(x) = a · f(x − r) + k dönüşümleriyle bütün doğrusal fonksiyonları elde edecek; artanlık, sıfır, işaret ve eksen kesişimleri gibi nitel özellikleri grafikten okuyacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Referans fonksiyon: f(x) = x",
+   "govde": "f(x) = x her gerçek sayıyı kendisine eşler. Grafiği orijinden geçen, eğimi 1 olan doğrudur.\n\nNitel özellikleri:\n\n- Tanım ve görüntü kümesi ℝ.\n- Artandır: x büyüdükçe f(x) büyür.\n- Tek sıfırı x = 0; x < 0 için negatif, x > 0 için pozitif.\n- Grafik y = x doğrusudur; birinci ve üçüncü bölgelerden geçer."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dönüşümler: g(x) = a · f(x − r) + k",
+   "govde": "f(x) = x için g(x) = a(x − r) + k'dir. Parametrelerin her biri grafiği belirli bir biçimde değiştirir:\n\n- **r:** grafiği yatayda r birim kaydırır (r > 0 sağa). f(x − 3), 3 birim **sağa** kayar.\n- **k:** grafiği dikeyde k birim kaydırır (k > 0 yukarı).\n- **a (a ≠ 0):** eğimi a yapar. |a| > 1 dikleştirir, |a| < 1 yatıklaştırır; a < 0 doğruyu x eksenine göre yansıtır, fonksiyon azalan olur.\n\nAçınca g(x) = ax + (k − ar) olur: **eğim a**, **y eksenini kesim noktası k − ar**. Grafik her zaman (r, k) noktasından geçer."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Parametrelerle oyna",
+   "aciklama": "Kesikli doğru f(x) = x. Yeşil nokta (r, k); doğru her zaman bu noktadan geçer. Sadeleşmiş denklem ve nitel özellikler yanda.",
+   "sim": { "kind": "e-dogru-donusum", "a": 1, "r": 0, "k": 0 },
+   "gorev": { "metin": "g(x) = 2x − 4 fonksiyonunu oluştur.", "check": { "all": [ { "key": "egim", "eq": 2 }, { "key": "kesim", "eq": -4 } ] } },
+   "dene": ["Bu fonksiyonu birden çok (r, k) ikilisiyle elde edebilirsin: r = 2, k = 0 ya da r = 0, k = −4 ya da r = 1, k = −2. Neden?", "a'yı negatif yap: artan fonksiyon azalan olur."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "g(x) = −3(x − 1) + 6 fonksiyonunun nitel özelliklerini inceleyelim.",
+   "cozum": [
+    "Açılım: g(x) = −3x + 3 + 6 = −3x + 9.",
+    "a = −3 < 0: azalan.",
+    "y eksenini kestiği nokta: g(0) = 9 → (0, 9).",
+    "Sıfır: −3x + 9 = 0 ⇒ x = 3 → (3, 0).",
+    "İşaret: x < 3 için g(x) > 0, x > 3 için g(x) < 0."
+   ],
+   "sonuc": "Azalan; (0, 9) ve (3, 0) noktalarından geçer; x < 3'te pozitif."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafikten denklem",
+   "aciklama": "Doğruyu iki noktadan da geçirmeye çalış. Nokta doğru üzerine gelince yeşile döner.",
+   "sim": { "kind": "e-dogru-donusum", "a": 1, "r": 0, "k": 0, "points": [[-1, 5], [2, -1]] },
+   "gorev": { "metin": "Doğruyu (−1, 5) ve (2, −1) noktalarından geçir.", "check": { "all": [ { "key": "egim", "eq": -2 }, { "key": "kesim", "eq": 3 } ] } },
+   "dene": ["Önce eğimi hesapla: (−1 − 5) ÷ (2 − (−1)) = −2.", "Sonra r = 2, k = −1 al: doğru (2, −1)'den geçer. Diğer noktadan da geçiyor mu?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "İki noktadan doğrusal fonksiyon",
+   "govde": "(x₁, y₁) ve (x₂, y₂) noktalarından geçen doğrusal fonksiyonun eğimi\n\n**a = (y₂ − y₁) ÷ (x₂ − x₁)**\n\nve fonksiyon g(x) = a(x − x₁) + y₁ biçiminde doğrudan yazılabilir. Bu tam olarak r = x₁, k = y₁ seçimidir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: yanan mum",
+   "soru": "20 cm boyundaki bir mum yakıldıktan sonra her saat 2,5 cm kısalıyor. t saat sonraki boyu h(t) olsun. Fonksiyonu yaz, tanım kümesini ve nitel özelliklerini belirle.",
+   "cozum": [
+    "h(t) = 20 − 2,5t (eğim −2,5: azalan).",
+    "Mum bitince h(t) = 0: 2,5t = 20 ⇒ t = 8.",
+    "Anlamlı tanım kümesi: 0 ≤ t ≤ 8. Görüntü kümesi: 0 ≤ h ≤ 20.",
+    "Grafik (0, 20) ve (8, 0) noktalarını birleştiren doğru parçasıdır."
+   ],
+   "sonuc": "h(t) = 20 − 2,5t, 0 ≤ t ≤ 8."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- f(x − 3)'ü 3 birim sola kaydırmak. x − 3 = 0 için x = 3: grafik **sağa** kayar.\n- g(x) = 2(x − 1) + 3'te y eksenini kesim noktasını 3 sanmak: g(0) = −2 + 3 = 1.\n- Eğim ile y eksenini kesim noktasını karıştırmak.\n- Gerçek hayat problemlerinde tanım kümesini kısıtlamayı unutmak (negatif zaman gibi)."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "g(x) = 4(x + 1) − 2 fonksiyonunun sadeleşmiş biçimi hangisidir?", "options": ["4x − 1", "4x + 2", "4x + 6", "4x − 6"], "answer": 1, "why": "4x + 4 − 2 = 4x + 2.", "hint": "Parantezi aç, sabitleri topla." },
+  { "prompt": "f(x) = −x + 5 için hangisi doğrudur?", "options": ["Artandır.", "Sıfırı x = −5'tir.", "x > 5 için f(x) < 0'dır.", "Orijinden geçer."], "answer": 2, "why": "Sıfırı x = 5, eğim negatif; x > 5 için değerler negatif.", "hint": "Önce sıfırı bul, sonra eğimin işaretine bak." },
+  { "prompt": "f(x) = x grafiği 3 birim sağa, 2 birim yukarı kaydırılırsa elde edilen fonksiyon hangisidir?", "options": ["x + 1", "x − 5", "x + 5", "x − 1"], "answer": 3, "why": "g(x) = (x − 3) + 2 = x − 1.", "hint": "Sağa kaydırma x'in yerine x − 3 yazmaktır." },
+  { "prompt": "(1, 3) ve (3, 7) noktalarından geçen doğrusal fonksiyon hangisidir?", "options": ["f(x) = 2x + 1", "f(x) = 4x − 1", "f(x) = x + 2", "f(x) = 2x − 1"], "answer": 0, "why": "Eğim (7 − 3) ÷ (3 − 1) = 2; f(x) = 2(x − 1) + 3 = 2x + 1.", "hint": "Eğimi bul, sonra bir noktayı yerine koy." }
+ ]
+}

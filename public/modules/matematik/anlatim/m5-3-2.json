@@ -1,0 +1,202 @@
+{
+ "id": "m5-3-2",
+ "baslik": "Değişme-Birleşme ve Dağılma Özellikleri",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.2.1",
+  "MAT.5.2.2",
+  "MAT.5.2.3",
+  "MAT.5.2.4"
+ ],
+ "sure": 14,
+ "ozet": "Toplama ve çarpmada değişme ve birleşme özelliklerini, çarpmanın toplama ve çıkarma üzerine dağılma özelliğini modellerle görecek ve işlemleri kolaylaştırmak için kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Değişme özelliği",
+   "govde": "Toplamada ve çarpmada sayıların **yerini değiştirmek** sonucu değiştirmez:\n\na + b = b + a ve a × b = b × a\n\n4 + 9 = 9 + 4 = 13 ve 3 × 7 = 7 × 3 = 21. Çıkarmada ve bölmede değişme özelliği **yoktur**: 12 − 4 ile 4 − 12 aynı değildir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Döndür, alan değişmesin",
+   "aciklama": "3 satır ve 7 sütunluk dikdörtgen. Satır ve sütun sayılarını değiştir.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 3,
+    "cols": 7,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Dikdörtgeni 7 satır ve 3 sütun yap.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 7
+      },
+      {
+       "key": "cols",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Dikdörtgeni çeyrek tur döndürmüş gibi oldun: kare sayısı hâlâ 21.",
+    "3 × 7 = 7 × 3."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birleşme özelliği",
+   "govde": "Üç sayıyı toplarken ya da çarparken **hangi ikisini önce işleme soktuğumuz** sonucu değiştirmez:\n\n(a + b) + c = a + (b + c) ve (a × b) × c = a × (b × c)\n\nBu özellik işlemi kolaylaştırır: 36 + 47 + 64 = (36 + 64) + 47 = 100 + 47 = 147."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Prizmayla birleşme",
+   "aciklama": "Prizmanın küp sayısı üç kenarın çarpımıdır: 2 × 5 × 3.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 2,
+    "b": 5,
+    "c": 3
+   },
+   "gorev": {
+    "metin": "Kenarları 3, 2, 5 yap. Küp sayısı aynı mı?",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 3
+      },
+      {
+       "key": "b",
+       "eq": 2
+      },
+      {
+       "key": "c",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "(2 × 5) × 3 = 10 × 3 = 30.",
+    "2 × (5 × 3) = 2 × 15 = 30."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dağılma özelliği",
+   "govde": "Bir sayıyı bir toplamla çarpmak, sayıyı **toplamın her terimiyle ayrı ayrı çarpıp** sonuçları toplamakla aynıdır:\n\na × (b + c) = a × b + a × c\n\nÇıkarma için de geçerlidir: a × (b − c) = a × b − a × c."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alanı parçala",
+   "aciklama": "Sütun sayısı 10'u geçince dikdörtgen iki renge ayrılır: ilk 10 sütun ve kalanlar.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 6,
+    "cols": 13,
+    "split": true,
+    "max": 14
+   },
+   "gorev": {
+    "metin": "8 × 14'ü iki parçaya ayırarak göster.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 8
+      },
+      {
+       "key": "cols",
+       "eq": 14
+      }
+     ]
+    }
+   },
+   "dene": [
+    "8 × 14 = 8 × (10 + 4) = 8 × 10 + 8 × 4 = 80 + 32 = 112.",
+    "Büyük dikdörtgenin alanı iki küçük dikdörtgenin alanları toplamıdır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Değişme ve birleşme",
+   "soru": "25 × 17 × 4 işlemini kolay yoldan yapalım.",
+   "cozum": [
+    "Değişme: 25 × 17 × 4 = 25 × 4 × 17.",
+    "Birleşme: (25 × 4) × 17 = 100 × 17.",
+    "100 × 17 = 1 700."
+   ],
+   "sonuc": "25 × 17 × 4 = 1 700."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Dağılma",
+   "soru": "7 × 98 işlemini zihinden yapalım.",
+   "cozum": [
+    "98 = 100 − 2.",
+    "7 × (100 − 2) = 7 × 100 − 7 × 2.",
+    "700 − 14 = 686."
+   ],
+   "sonuc": "7 × 98 = 686."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Dağılmada ikinci terimi çarpmayı unutmak sık yapılır: 6 × (10 + 3) = 60 + 3 yanlıştır. 6, parantezin içindeki **her terimle** çarpılır: 6 × 10 + 6 × 3 = 60 + 18 = **78**.\n\nÇıkarmada değişme özelliği olduğunu sanmak da hatadır: 12 − 4 = 8 ama 4 − 12 doğal sayı bile değildir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "9 × (20 + 3) = 9 × 20 + 9 × 3 eşitliğinde hangi özellik kullanılmıştır?",
+   "options": [
+    "Değişme",
+    "Birleşme",
+    "Dağılma",
+    "Hiçbiri"
+   ],
+   "answer": 2,
+   "why": "Çarpma, parantezdeki toplamın her terimine dağıtılmıştır.",
+   "hint": "9 neyle ayrı ayrı çarpılmış?"
+  },
+  {
+   "prompt": "(18 × 5) × 2 işlemini kolaylaştırmanın en uygun yolu hangisidir?",
+   "options": [
+    "18 × (5 × 2) = 180",
+    "(18 + 5) × 2 = 46",
+    "18 × 5 + 2 = 92",
+    "18 × 7 = 126"
+   ],
+   "answer": 0,
+   "why": "Birleşme özelliği: 5 × 2 = 10, 18 × 10 = 180.",
+   "hint": "Hangi iki sayının çarpımı 10 eder?"
+  },
+  {
+   "prompt": "15 × 102 işleminin sonucu kaçtır?",
+   "options": [
+    "1 502",
+    "1 530",
+    "1 520",
+    "1 350"
+   ],
+   "answer": 1,
+   "why": "15 × (100 + 2) = 1 500 + 30 = 1 530.",
+   "hint": "102'yi 100 + 2 diye yaz."
+  },
+  {
+   "prompt": "Hangi işlemde sayıların yeri değişince sonuç değişir?",
+   "options": [
+    "4 + 9",
+    "6 × 3",
+    "5 × 8",
+    "12 − 4"
+   ],
+   "answer": 3,
+   "why": "Çıkarmanın değişme özelliği yoktur: 12 − 4 ≠ 4 − 12.",
+   "hint": "Toplama ve çarpmanın değişme özelliği vardır."
+  }
+ ]
+}

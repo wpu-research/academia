@@ -1,0 +1,193 @@
+{
+ "id": "m6-3-3",
+ "baslik": "Cebirsel İfadeler ve Algoritma",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.2.3"
+ ],
+ "sure": 14,
+ "ozet": "Sözel durumları harfli ifadelerle yazacak, ifadenin terimlerini ve katsayılarını tanıyacak, adım adım bir algoritmayı cebirsel ifadeye çevirip değerini hesaplayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Cebirsel ifade",
+   "govde": "Bir taksi binişte 20 TL, her kilometre için 15 TL alıyor. Gidilen yolu k ile gösterirsek ödenecek ücret **15k + 20** olur.\n\nİçinde harf (değişken) ve işlem bulunan bu tür yazılara **cebirsel ifade** denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İfadenin parçaları",
+   "govde": "15k + 20 ifadesinde:\n\n- **Terimler:** 15k ve 20\n- **Değişken:** k\n- **Katsayı:** 15 (değişkenin önündeki sayı)\n- **Sabit terim:** 20\n\nDeğişkenin yerine bir sayı koyup işlemi yapmaya **ifadenin değerini bulmak** denir: k = 8 için 15 · 8 + 20 = 140."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Algoritmadan ifadeye",
+   "aciklama": "Makine bir algoritmayı adım adım uyguluyor. Girdiyi değiştir, aradaki sonuçları izle.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      2
+     ],
+     [
+      "+",
+      5
+     ]
+    ],
+    "x": 1,
+    "min": 0,
+    "max": 10,
+    "ifade": "2x + 5"
+   },
+   "gorev": {
+    "metin": "Çıktı 19 olsun.",
+    "check": {
+     "key": "y",
+     "eq": 19
+    }
+   },
+   "dene": [
+    "Algoritmadaki adımları sırayla yazınca ifade çıkar: önce 2 ile çarp (2x), sonra 5 ekle (2x + 5).",
+    "Girdi 1 artınca çıktı kaç artıyor? Bu sayı katsayıdır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "4a − 3 ifadesinin a = 5 için değerini bulalım.",
+   "cozum": [
+    "a yerine 5 yaz: 4 · 5 − 3.",
+    "Önce çarpma: 20 − 3.",
+    "Sonra çıkarma: 17."
+   ],
+   "sonuc": "4a − 3 = 17."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıra önemli",
+   "aciklama": "Bu makine önce 4 ekleyip sonra 3 ile çarpıyor: 3 · (x + 4).",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "+",
+      4
+     ],
+     [
+      "×",
+      3
+     ]
+    ],
+    "x": 1,
+    "min": 0,
+    "max": 10,
+    "ifade": "3(x + 4)"
+   },
+   "gorev": {
+    "metin": "Çıktı 30 olsun.",
+    "check": {
+     "key": "y",
+     "eq": 30
+    }
+   },
+   "dene": [
+    "x = 2 için 3(x + 4) = 18, ama 3x + 4 = 10. Sıra değişince ifade değişir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "3 tane x: alan modeli",
+   "aciklama": "3 satırlı bir dikdörtgende sütun sayısı x olsun. Birimkare sayısı 3 · x = 3x olur.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 3,
+    "cols": 2
+   },
+   "gorev": {
+    "metin": "3 satırı koru ve 3x = 21 olacak biçimde x'i seç.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 3
+      },
+      {
+       "key": "area",
+       "eq": 21
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Sütun sayısını artırdıkça alan 3'er artar."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Taksi",
+   "soru": "Bir taksi binişte 20 TL ve her kilometre için 15 TL alıyor. 8 km yol gidilirse kaç TL ödenir? Algoritmasını yazalım.",
+   "cozum": [
+    "Başla. Kilometreyi (k) al.",
+    "k'yi 15 ile çarp: 15k.",
+    "Sonuca 20 ekle: 15k + 20.",
+    "k = 8: 15 · 8 + 20 = 120 + 20 = 140. Sonucu yaz, bitir."
+   ],
+   "sonuc": "140 TL ödenir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "3x + 4 ile 3(x + 4) aynı değildir. İlkinde önce çarpılır sonra eklenir; ikincisinde önce eklenir sonra çarpılır. x = 2 için 3x + 4 = 10, 3(x + 4) = 18.\n\nBir başka hata: x = 3 için 2x'i \"23\" diye okumak. 2x, 2 · x demektir: 2 · 3 = 6."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "5n − 2 ifadesinde n'nin katsayısı kaçtır?",
+   "options": [
+    "5",
+    "−2",
+    "n",
+    "3"
+   ],
+   "answer": 0,
+   "why": "Değişkenin önündeki sayı katsayıdır: 5.",
+   "hint": "Katsayı, değişkenle çarpılan sayıdır."
+  },
+  {
+   "prompt": "3a + 7 ifadesinin a = 4 için değeri kaçtır?",
+   "options": [
+    "37",
+    "14",
+    "19",
+    "21"
+   ],
+   "answer": 2,
+   "why": "3 · 4 + 7 = 12 + 7 = 19.",
+   "hint": "3a, 3 · a demektir."
+  },
+  {
+   "prompt": "\"Bir sayıya 3 ekle, sonucu 2 ile çarp.\" algoritmasının ifadesi hangisidir?",
+   "options": [
+    "2x + 3",
+    "x + 6",
+    "3x + 2",
+    "2(x + 3)"
+   ],
+   "answer": 3,
+   "why": "Önce ekleme yapılır, sonuç çarpılır: 2(x + 3).",
+   "hint": "İşlem sırası parantezle gösterilir."
+  },
+  {
+   "prompt": "Bir tarifede aylık 50 TL sabit ücret ve konuşulan her dakika için 2 TL ödeniyor. d dakika konuşan biri kaç TL öder?",
+   "options": [
+    "2 + 50d",
+    "2d + 50",
+    "50d + 2",
+    "52d"
+   ],
+   "answer": 1,
+   "why": "Dakikaya bağlı kısım 2d, sabit kısım 50: 2d + 50.",
+   "hint": "Hangi miktar dakikayla birlikte değişir?"
+  }
+ ]
+}

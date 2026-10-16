@@ -1,0 +1,169 @@
+{
+ "id": "m4-3-4",
+ "baslik": "Zaman Ölçme",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.3.4.1",
+  "M.4.3.4.2"
+ ],
+ "sure": 12,
+ "ders": "saat-ve-para",
+ "ozet": "Saniye, dakika, saat, gün, hafta, ay ve yıl arasındaki ilişkileri açıklayacak, birbirine dönüştürecek ve zamanla ilgili problemler çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Zaman birimleri",
+   "govde": "- 1 dakika = 60 saniye\n- 1 saat = 60 dakika\n- 1 gün = 24 saat\n- 1 hafta = 7 gün\n- 1 ay = 30 ya da 31 gün (şubat 28 ya da 29 gün)\n- 1 yıl = 12 ay = 365 ya da 366 gün\n\nÇeyrek saat 15 dakika, yarım saat 30 dakikadır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Geçen zamanı göster",
+   "aciklama": "Saat 3.00'ü gösteriyor. Uzun ibreyi (yelkovan) sürükle; kısa ibre (akrep) kendiliğinden ilerler.",
+   "sim": {
+    "kind": "saat",
+    "h": 3,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saat 3.00'ten 1 saat 45 dakika sonrasını göster.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 4
+      },
+      {
+       "key": "m",
+       "eq": 45
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce yelkovanı bir tam tur döndür: 1 saat geçer, saat 4.00 olur.",
+    "Sonra 45 dakika daha: yelkovan 9'u gösterir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birimleri dönüştürme",
+   "govde": "**Büyük birimden küçük birime** geçerken çarparız: 3 saat = 3 × 60 = 180 dakika.\n\n**Küçük birimden büyük birime** geçerken böleriz: 150 dakika = 150 ÷ 60 → 2 saat, kalan 30 dakika = 2 saat 30 dakika."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ders ne zaman bitecek?",
+   "aciklama": "Saat 9.40'ı gösteriyor.",
+   "sim": {
+    "kind": "saat",
+    "h": 9,
+    "m": 40
+   },
+   "gorev": {
+    "metin": "9.40'ta başlayan ve 40 dakika süren dersin bitiş saatini göster.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 10
+      },
+      {
+       "key": "m",
+       "eq": 20
+      }
+     ]
+    }
+   },
+   "dene": [
+    "20 dakika sonra saat 10.00 olur; kalan 20 dakikayı ekle.",
+    "Dakikalar 60'a ulaşınca saat bir artar."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Dönüştürme",
+   "soru": "2 saat 15 dakikayı dakikaya, 200 saniyeyi dakika ve saniyeye çevirelim.",
+   "cozum": [
+    "2 saat = 2 × 60 = 120 dakika; 120 + 15 = 135 dakika.",
+    "200 ÷ 60 → 3, kalan 20.",
+    "200 saniye = 3 dakika 20 saniye."
+   ],
+   "sonuc": "135 dakika ve 3 dakika 20 saniye."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "1 saat 50 dakika süren bir film 19.25'te başladı. Film saat kaçta biter?",
+   "cozum": [
+    "19.25'e 1 saat ekle: 20.25.",
+    "20.25'e 35 dakika ekle: 21.00.",
+    "Kalan 15 dakikayı ekle: 21.15."
+   ],
+   "sonuc": "Film 21.15'te biter."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Gün ve hafta",
+   "soru": "3 hafta 4 gün kaç gündür?",
+   "cozum": [
+    "3 hafta = 3 × 7 = 21 gün.",
+    "21 + 4 = 25 gün."
+   ],
+   "sonuc": "25 gün."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Saati 100 dakika sanmak sık yapılan bir hatadır: 1 saat 30 dakika 130 dakika değil, 60 + 30 = **90 dakikadır**. Aynı şekilde 9.40'a 40 dakika eklenince 9.80 olmaz; 60 dakika 1 saat ettiği için **10.20** olur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "3 saat kaç dakikadır?",
+   "options": [
+    "300",
+    "180",
+    "90",
+    "120"
+   ],
+   "answer": 1,
+   "why": "3 × 60 = 180 dakika.",
+   "hint": "1 saat kaç dakika?"
+  },
+  {
+   "prompt": "150 dakika kaç saat kaç dakikadır?",
+   "options": [
+    "1 sa 50 dk",
+    "1 sa 30 dk",
+    "2 sa 50 dk",
+    "2 sa 30 dk"
+   ],
+   "answer": 3,
+   "why": "150 = 2 × 60 + 30: 2 saat 30 dakika.",
+   "hint": "150'nin içinde kaç tane 60 var?"
+  },
+  {
+   "prompt": "2 yıl kaç aydır?",
+   "options": [
+    "24",
+    "20",
+    "12",
+    "36"
+   ],
+   "answer": 0,
+   "why": "2 × 12 = 24 ay.",
+   "hint": "1 yıl kaç ay?"
+  },
+  {
+   "prompt": "08.35'te başlayan ve 50 dakika süren bir etkinlik saat kaçta biter?",
+   "options": [
+    "09.15",
+    "08.85",
+    "09.25",
+    "09.35"
+   ],
+   "answer": 2,
+   "why": "08.35 + 25 dakika = 09.00; kalan 25 dakika: 09.25.",
+   "hint": "Önce saati tamamla."
+  }
+ ]
+}

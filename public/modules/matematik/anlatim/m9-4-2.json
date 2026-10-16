@@ -1,0 +1,83 @@
+{
+ "id": "m9-4-2",
+ "baslik": "Eşlik ve Benzerlik Koşulları",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.4.2"],
+ "sure": 17,
+ "ozet": "İki üçgenin eş ya da benzer olduğunu söylemek için altı elemanın hepsini karşılaştırmak gerekmez. Hangi asgari bilgilerin yettiğini, hangilerinin yetmediğini karşı örneklerle göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Asgari koşul ne demek?",
+   "govde": "İki üçgenin üç kenarı ve üç açısı vardır. Hepsi karşılıklı eşitse üçgenler eştir. Ama bir üçgeni tek biçimde belirleyen üç uygun bilgi verildiğinde geri kalanlar zaten belirlenmiş olur. Bu yüzden eşliği ya da benzerliği göstermek için **asgari** (en az) koşullar yeterlidir.\n\nBir bilgi takımının yetmediğini göstermek için ise aynı bilgileri taşıyan iki farklı üçgen bulmak, yani bir **karşı örnek** vermek yeter."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşlik koşulları",
+   "govde": "- **KKK:** Üç kenar karşılıklı eşit.\n- **KAK:** İki kenar ve bunların **arasındaki** açı eşit.\n- **AKA:** İki açı ve bunların arasındaki kenar eşit.\n- **AAK:** İki açı ve bunlardan birinin karşısındaki kenar eşit (üçüncü açı da eşit olacağından AKA'ya döner).\n\nYetmeyenler: **AAA** (yalnız biçimi belirler, büyüklüğü belirlemez) ve **KKA** (iki kenar ve aralarında olmayan bir açı)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "K-K-A neden yetmez?",
+   "aciklama": "A açısı 40° ve |AC| = 6 sabit. BC kenarını (a) değiştir. C merkezli, a yarıçaplı çember ışını kaç noktada keserse o kadar üçgen vardır.",
+   "sim": { "kind": "e-kka", "aci": 40, "b": 6, "a": 3, "max": 10, "adim": 0.5 },
+   "gorev": { "metin": "Aynı üç bilgiyle iki farklı üçgen elde et.", "check": { "key": "sayi", "eq": 2 } },
+   "dene": ["a ≥ 6 olunca yalnız bir üçgen kalır: ikinci kesim noktası A'nın gerisine düşer.", "a ≈ 3,86 civarında çember ışına teğet olur ve tek bir dik üçgen oluşur."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Benzerlik koşulları",
+   "govde": "- **AA:** İki açı karşılıklı eşit (üçüncüler de eşit olur).\n- **KAK:** İki kenar aynı oranla orantılı ve aralarındaki açılar eşit.\n- **KKK:** Üç kenar aynı oranla orantılı.\n\nBenzer üçgenlerde karşılıklı kenarların oranı benzerlik oranı k'dir; eşlik, k = 1 olan benzerliktir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Orantı bozulunca açılar da bozulur",
+   "aciklama": "Soldaki üçgenin kopyasını yatayda ve dikeyde ayrı ayrı ölçekle. Ölçekler eşit değilken kenar oranlarına ve açılara bak.",
+   "sim": { "kind": "e-benzerlik", "sekil": [[0, 0], [5, 0], [1, 3]], "kx": 2, "ky": 1, "kmin": 0.5, "kmax": 2.5, "adim": 0.5, "acilar": true },
+   "gorev": { "metin": "Benzerlik oranı 1,5 olan bir kopya oluştur.", "check": { "all": [ { "key": "benzer", "eq": 1 }, { "key": "kx", "eq": 1.5 } ] } },
+   "dene": ["Ölçekler eşitken açılar hiç değişmiyor (AA).", "Eş kopya için ölçekler ne olmalı?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek: KAK benzerliği",
+   "soru": "ABC'de |AB| = 4, |AC| = 6, m(A) = 50°; DEF'te |DE| = 6, |DF| = 9, m(D) = 50°. Üçgenler benzer midir? |BC| = 5 ise |EF| kaçtır?",
+   "cozum": [
+    "6 ÷ 4 = 1,5 ve 9 ÷ 6 = 1,5: iki kenar aynı oranla orantılı.",
+    "Aralarındaki açılar eşit (50°): KAK benzerliği, ABC ~ DEF, k = 1,5.",
+    "|EF| = 5 · 1,5 = 7,5."
+   ],
+   "sonuc": "Benzerdir; |EF| = 7,5."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "KKK ile karar",
+   "soru": "Kenarları 3-4-5 olan üçgen, kenarları 6-8-10 ve 6-8-9 olan üçgenlerle benzer midir?",
+   "cozum": [
+    "6/3 = 8/4 = 10/5 = 2: üç oran eşit, benzer.",
+    "6/3 = 2, 8/4 = 2, 9/5 = 1,8: oranlar farklı, benzer değil."
+   ],
+   "sonuc": "6-8-10 benzer, 6-8-9 benzer değil."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: yeterli mi?",
+   "soru": "ABC ve DEF üçgenlerinde |AB| = |DE|, |BC| = |EF| ve m(C) = m(F) olduğu biliniyor. Üçgenlerin eş olduğu kesin midir?",
+   "cozum": [
+    "Verilen açı (C), eşit kenarların arasında değil; AB kenarının karşısında.",
+    "Bu KKA durumudur; simülasyondaki gibi aynı bilgilerle iki farklı üçgen çizilebilir."
+   ],
+   "sonuc": "Kesin değildir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- AAA'yı eşlik koşulu sanmak; yalnız benzerliği garanti eder.\n- KAK'ta açının iki kenarın **arasında** olması gerektiğini unutmak.\n- Benzerlikte kenarları yanlış eşleştirmek: eşit açıların karşısındaki kenarlar karşılık gelir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Hangisi iki üçgenin eşliği için yeterli değildir?", "options": ["KKK", "KAK", "AAA", "AKA"], "answer": 2, "why": "Açıları eşit üçgenler farklı büyüklükte olabilir; AAA yalnız benzerlik verir.", "hint": "Hangi koşulda hiç kenar uzunluğu yok?" },
+  { "prompt": "Hangisi iki üçgenin benzerliği için yeterlidir?", "options": ["İki açının karşılıklı eşit olması", "Bir kenarın eşit olması", "Bir açının eşit olması", "İki kenarın eşit olması"], "answer": 0, "why": "AA benzerliği: iki açı eşitse üçüncü de eşittir.", "hint": "Açıların toplamı 180°." },
+  { "prompt": "Kenarları 5, 7, 9 olan üçgene benzer olan hangisidir?", "options": ["6, 8, 10", "10, 14, 18", "7, 9, 11", "15, 21, 25"], "answer": 1, "why": "10/5 = 14/7 = 18/9 = 2.", "hint": "Üç oranın da eşit olması gerekir." },
+  { "prompt": "ABC'nin DEF'e benzerlik oranı 3/4 ve ABC'nin çevresi 24 cm ise DEF'in çevresi kaç cm'dir?", "options": ["18", "30", "28", "32"], "answer": 3, "why": "Çevreler de 3/4 oranındadır: 24 ÷ (3/4) = 32.", "hint": "Çevre oranı benzerlik oranına eşittir." }
+ ]
+}

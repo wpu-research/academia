@@ -1,0 +1,175 @@
+{
+ "id": "m2-3-6",
+ "baslik": "Dört İşlemde Eşitlik",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.2.6"
+ ],
+ "sure": 12,
+ "ozet": "Eşittirin iki yanında farklı işlemler olabileceğini görecek; toplama, çıkarma, çarpma ve bölme içeren eşitlikleri tamamlayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşit işaretinin anlamları",
+   "govde": "“=” işareti iki yanın **aynı değerde** olduğunu söyler. İki yanda farklı işlemler olabilir:\n\n- 3 × 4 = 10 + 2 (iki yan da 12)\n- 2 × 6 = 3 × 4 (iki yan da 12)\n- 20 − 5 = 3 × 5 (iki yan da 15)\n\nEşitliği bir terazi gibi düşün: Dengede kalması için iki yanın değeri aynı olmalı."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpma ile toplama",
+   "aciklama": "Solda 3 × 4, sağda □ + 2 var.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     3,
+     4
+    ],
+    "solOp": "×",
+    "sag": [
+     null,
+     2
+    ],
+    "sagOp": "+",
+    "min": 0,
+    "max": 15
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Önce 3 × 4'ü hesapla.",
+    "Hangi sayıya 2 eklersen 12 olur?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eksik sayıyı bulma yolu",
+   "govde": "1. Bütün sayıları bilinen yanı hesapla.\n2. Öbür yanda eksik sayıyı, bu değeri verecek biçimde bul.\n3. Bulduğun sayıyı yerine koyup iki yanı karşılaştırarak kontrol et."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölme ile toplama",
+   "aciklama": "Solda 12 ÷ □, sağda 2 + 1 var.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     12,
+     null
+    ],
+    "solOp": "÷",
+    "sag": [
+     2,
+     1
+    ],
+    "sagOp": "+",
+    "min": 1,
+    "max": 12,
+    "v": 1
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sağ yan 3 eder. 12'yi kaça bölersen 3 olur?",
+    "3 × ? = 12 diye de düşünebilirsin."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpma ile toplama II",
+   "aciklama": "Solda 2 × 5, sağda □ + 5 var.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     2,
+     5
+    ],
+    "solOp": "×",
+    "sag": [
+     null,
+     5
+    ],
+    "sagOp": "+",
+    "min": 0,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   }
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "4 × 2 = □ − 2 eşitliğinde kutuya hangi sayı gelir?",
+   "cozum": [
+    "Sol yan: 4 × 2 = 8.",
+    "□ − 2 = 8 olmalı; kutu bütün: 8 + 2 = 10."
+   ],
+   "sonuc": "Kutuya **10** gelir. Kontrol: 10 − 2 = 8."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“5 × 3 = 3 × 5” doğru mu?",
+   "cozum": [
+    "Sol: 5 × 3 = 15.",
+    "Sağ: 3 × 5 = 15."
+   ],
+   "sonuc": "**Doğrudur**; çarpmada sayıların yeri değişince sonuç değişmez."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "6 × 2 = □ + 4 sorusunda kutuya 12 yazmak yanlıştır; 12 + 4 = 16 olur. Kutuya, 4 ile toplandığında 12 eden sayı gelir: **8**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "2 × 8 = 10 + □",
+   "options": [
+    "16",
+    "6",
+    "8",
+    "4"
+   ],
+   "answer": 1,
+   "why": "Sol 16; 10 + 6 = 16.",
+   "hint": "Önce 2 × 8'i bul."
+  },
+  {
+   "prompt": "Hangisi doğru bir eşitliktir?",
+   "options": [
+    "3 × 3 = 6",
+    "10 ÷ 2 = 4",
+    "4 + 4 = 2 × 4",
+    "5 × 2 = 12"
+   ],
+   "answer": 2,
+   "why": "4 + 4 = 8 ve 2 × 4 = 8.",
+   "hint": "Her iki yanı ayrı ayrı hesapla."
+  },
+  {
+   "prompt": "15 ÷ 3 = □ × 1",
+   "options": [
+    "5",
+    "3",
+    "15",
+    "45"
+   ],
+   "answer": 0,
+   "why": "Sol 5; 5 × 1 = 5.",
+   "hint": "15'i 3'e bölünce kaç olur?"
+  }
+ ]
+}

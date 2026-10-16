@@ -1,0 +1,182 @@
+{
+ "id": "m4-3-3",
+ "baslik": "Alan Ölçme",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.3.3.1",
+  "M.4.3.3.2"
+ ],
+ "sure": 12,
+ "ozet": "Bir şeklin alanının, onu kaplayan birimkarelerin sayısı olduğunu görecek ve kare ile dikdörtgenin alanını toplama ve çarpma işlemleriyle ilişkilendireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Alan nedir?",
+   "govde": "Bir şeklin **alanı**, kapladığı yüzeyin büyüklüğüdür. Alanı ölçmek için yüzeyi boşluk kalmadan ve üst üste gelmeden **birimkarelerle** kaplarız. Kaç birimkare kullandıysak alan o kadar **birimkaredir**.\n\nÇevre sınırın uzunluğunu, alan ise içerinin büyüklüğünü anlatır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birimkarelerle kapla",
+   "aciklama": "Karelere dokunarak bir şekil oluştur. Altta alanı ve çevresi yazar.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "serbest",
+    "cols": 8,
+    "rows": 5
+   },
+   "gorev": {
+    "metin": "Alanı 6 birimkare olan bir şekil oluştur.",
+    "check": {
+     "key": "alan",
+     "eq": 6
+    }
+   },
+   "dene": [
+    "6 kareyi önce 2 × 3 dikdörtgen, sonra uzun bir sıra (1 × 6) olarak diz: alan aynı, çevre farklı.",
+    "Alanı aynı olan şekillerin çevreleri farklı olabilir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dikdörtgen ve karenin alanı",
+   "govde": "Dikdörtgeni satır satır kaplarsak her satırda aynı sayıda birimkare olur. 3 satır ve her satırda 4 kare varsa alan 4 + 4 + 4 = 3 × 4 = 12 birimkaredir.\n\n- **Dikdörtgenin alanı** = satırdaki kare sayısı × satır sayısı\n- **Karenin alanı** = kenar × kenar"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alanı çarpmayla bul",
+   "aciklama": "Satır ve sütun sayılarını değiştir. Sağda çarpma işlemi yazar.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 3,
+    "cols": 4,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "4 satırlı ve alanı 24 birimkare olan bir dikdörtgen yap.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 4
+      },
+      {
+       "key": "area",
+       "eq": 24
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Her satırda kaç kare olmalı? 4 × ? = 24.",
+    "Satır ve sütunları yer değiştirince alan değişmez."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kare yap",
+   "aciklama": "Eni ve boyu ayrı ayrı değiştir.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "dikdortgen",
+    "en": 5,
+    "boy": 2,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "Alanı 16 birimkare olan bir kare yap.",
+    "check": {
+     "all": [
+      {
+       "key": "en",
+       "eq": 4
+      },
+      {
+       "key": "boy",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Karenin eni ve boyu eşittir: ? × ? = 16.",
+    "Alan ile çevreyi karşılaştır: 4 × 4 karede alan 16 birimkare, çevre 16 birim; birimler farklı."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kenarları 7 birim ve 5 birim olan dikdörtgenin ve bir kenarı 6 birim olan karenin alanlarını bulalım.",
+   "cozum": [
+    "Dikdörtgen: 5 satır, her satırda 7 kare: 5 × 7 = 35 birimkare.",
+    "Kare: 6 × 6 = 36 birimkare."
+   ],
+   "sonuc": "Dikdörtgenin alanı 35, karenin alanı 36 birimkaredir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Toplamayla",
+   "soru": "Bir dikdörtgenin alanı 5 + 5 + 5 + 5 toplamıyla bulunuyor. Bu dikdörtgenin kenarları ve alanı nedir?",
+   "cozum": [
+    "Her satırda 5 kare var.",
+    "4 tane 5 toplandığına göre 4 satır var.",
+    "4 × 5 = 20."
+   ],
+   "sonuc": "Kenarları 5 ve 4 birim; alanı 20 birimkare."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Alan ile çevreyi karıştırmak sık yapılır. Kenarları 7 ve 5 birim olan dikdörtgende kareleri değil kenarları sayarsan 24 bulursun; bu çevredir. Alan **içerideki birimkarelerin** sayısıdır: **35 birimkare**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "6 satır ve her satırda 9 birimkare olan bir dikdörtgenin alanı kaç birimkaredir?",
+   "options": [
+    "15",
+    "54",
+    "30",
+    "45"
+   ],
+   "answer": 1,
+   "why": "6 × 9 = 54 birimkare.",
+   "hint": "Satır sayısı × bir satırdaki kare sayısı."
+  },
+  {
+   "prompt": "Bir kenarı 7 birim olan karenin alanı kaç birimkaredir?",
+   "options": [
+    "28",
+    "14",
+    "49",
+    "56"
+   ],
+   "answer": 2,
+   "why": "7 × 7 = 49 birimkare.",
+   "hint": "28 çevredir; alan için kenarı kenarla çarp."
+  },
+  {
+   "prompt": "Bir dikdörtgenin alanı 4 + 4 + 4 + 4 + 4 toplamıyla bulunuyor. Kenar uzunlukları nedir?",
+   "options": [
+    "4 ve 4",
+    "4 ve 20",
+    "5 ve 5",
+    "4 ve 5"
+   ],
+   "answer": 3,
+   "why": "Her satırda 4 kare, 5 satır var: 4 ve 5 birim.",
+   "hint": "Kaç tane 4 toplanmış?"
+  },
+  {
+   "prompt": "Hangisinin alanı 12 birimkaredir?",
+   "options": [
+    "3 × 4 dikdörtgen",
+    "2 × 5 dikdörtgen",
+    "3 × 3 kare",
+    "2 × 7 dikdörtgen"
+   ],
+   "answer": 0,
+   "why": "3 × 4 = 12.",
+   "hint": "Her seçenekte iki kenarı çarp."
+  }
+ ]
+}

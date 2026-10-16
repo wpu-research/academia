@@ -1,0 +1,169 @@
+{
+ "id": "m3-2-1",
+ "baslik": "Bütün, Yarım ve Çeyreğin Kesir Gösterimi",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.9"
+ ],
+ "sure": 12,
+ "ders": "kesirler-sayi-dogrusu",
+ "ozet": "Bir bütünü 2 ve 4 eş parçaya bölerek yarım ve çeyreği modellerle göstereceğiz; bunları 1/2 ve 1/4 kesirleriyle yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bütün, yarım, çeyrek",
+   "govde": "Bölünmemiş bir elma, bir ekmek ya da bir pizza **bütün**dür.\n\nBir bütünü **2 eş parçaya** bölersek her parça bir **yarım** olur.\nBir bütünü **4 eş parçaya** bölersek her parça bir **çeyrek** olur.\n\nParçaların **eş**, yani aynı büyüklükte olması şarttır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yarımı boya",
+   "aciklama": "Daire 2 eş parçaya bölündü. Parçalara dokunarak boya.",
+   "sim": {
+    "kind": "b-pasta",
+    "n": 2
+   },
+   "gorev": {
+    "metin": "Dairenin yarımını boya.",
+    "check": {
+     "key": "shaded",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "İki parçadan birini boyaman yeterli.",
+    "İki parçayı da boyarsan bütünün tamamını boyamış olursun."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kesirle yazmak",
+   "govde": "Yarım **1/2** diye yazılır, \"bir bölü iki\" diye okunur.\nÇeyrek **1/4** diye yazılır, \"bir bölü dört\" diye okunur.\n\nÇizginin altındaki sayı (**payda**) bütünün kaç eş parçaya bölündüğünü, üstündeki sayı (**pay**) kaç parçanın alındığını gösterir.\n\n2 yarım = 1 bütün · 4 çeyrek = 1 bütün · 2 çeyrek = 1 yarım"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çeyrekler yarımı yapar",
+   "aciklama": "Üstteki çubuğun yarısı boyalı. Alttaki çubuk 4 eş parçaya bölündü; parçalarına dokunarak boya.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 2,
+      "shaded": 1,
+      "label": "1/2"
+     },
+     {
+      "n": 4,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Alttaki çubukta üstteki yarıma eşit miktarda çeyrek boya.",
+    "check": {
+     "key": "shaded1",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Boyalı kısımların uzunluğu aynı olmalı.",
+    "Kaç çeyrek bir yarım eder?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dört çeyrek",
+   "aciklama": "Daire 4 eş parçaya bölündü.",
+   "sim": {
+    "kind": "b-pasta",
+    "n": 4
+   },
+   "gorev": {
+    "metin": "Bütün daireyi çeyreklerle tamamla.",
+    "check": {
+     "key": "butun",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Her dokunuşta bir çeyrek boyanır. Kaç çeyrekte bütün tamamlanır?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir ekmek 2 eş parçaya bölündü. Her parça bütünün ne kadarıdır? Nasıl yazılır?",
+   "cozum": [
+    "Bütün 2 eş parçaya bölündü: payda 2.",
+    "Bir parça alındı: pay 1."
+   ],
+   "sonuc": "Her parça bir yarım ekmektir: **1/2**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Pizza dilimleri",
+   "soru": "Bir pizza 4 eş dilime bölündü. Elif 1 dilim, Can 2 dilim yedi. Kim ne kadar yedi?",
+   "cozum": [
+    "Her dilim 1/4, yani çeyrek pizza.",
+    "Elif 1 dilim yedi: 1/4 pizza.",
+    "Can 2 dilim yedi: 2 çeyrek, bu da yarım pizza eder."
+   ],
+   "sonuc": "Elif çeyrek pizza (1/4), Can yarım pizza yedi."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bir bütünü eş olmayan iki parçaya bölüp parçalardan birine \"yarım\" demek yanlıştır. Büyük ve küçük iki parçadan hiçbiri yarım değildir. Yarım ve çeyrek için parçalar **eş** olmalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir bütün kaç çeyrekten oluşur?",
+   "options": [
+    "8",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 3,
+   "why": "Bütün 4 eş parçaya bölününce her parça bir çeyrektir; 4 çeyrek bir bütündür.",
+   "hint": "Çeyrek için bütün kaç parçaya bölünüyordu?"
+  },
+  {
+   "prompt": "1/2 nasıl okunur ve neyi gösterir?",
+   "options": [
+    "Bir bölü iki: yarım",
+    "İki bölü bir: iki bütün",
+    "Bir bölü iki: çeyrek",
+    "Bir bölü dört: yarım"
+   ],
+   "answer": 0,
+   "why": "1/2 \"bir bölü iki\" diye okunur ve yarımı gösterir.",
+   "hint": "Payda 2 ise bütün kaç parçaya bölünmüş?"
+  },
+  {
+   "prompt": "2 çeyrek neye eşittir?",
+   "options": [
+    "Yarımın yarısı",
+    "1 bütün",
+    "1 yarım",
+    "2 yarım"
+   ],
+   "answer": 2,
+   "why": "4 çeyrek 1 bütün, 2 çeyrek bunun yarısıdır: 1 yarım.",
+   "hint": "Kesir çubuğunda 2 çeyrek ile 1 yarımı karşılaştır."
+  },
+  {
+   "prompt": "Hangi durumda boyalı kısım bütünün çeyreğidir?",
+   "options": [
+    "4 eş parçadan 2'si boyalı",
+    "4 eş parçadan 1'i boyalı",
+    "2 eş parçadan 1'i boyalı",
+    "4 eş olmayan parçadan 1'i boyalı"
+   ],
+   "answer": 1,
+   "why": "Çeyrek, 4 eş parçadan biridir.",
+   "hint": "Parçalar eş mi, kaç parça var, kaçı boyalı?"
+  }
+ ]
+}

@@ -1,0 +1,186 @@
+{
+ "id": "m7-1-1",
+ "baslik": "Tam Sayılar",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.1"
+ ],
+ "sure": 15,
+ "ozet": "Negatif sayıların gerektiği durumları tanıyacak, tam sayıları sayı doğrusunda gösterip karşılaştıracak, mutlak değeri öğrenecek ve sayma pullarıyla toplama ile çıkarmayı modelleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sıfırın altı",
+   "govde": "Bir kış sabahı termometre sıfırın 4 derece altını gösteriyor: **−4 °C**. Denizin 20 m altındaki bir dalgıcın konumu **−20 m**'dir. Bu durumları doğal sayılarla anlatamayız.\n\n…, −3, −2, −1, 0, 1, 2, 3, … sayılarının hepsine **tam sayı** denir. 0'ın sağındakiler **pozitif**, solundakiler **negatif** tam sayılardır; 0 ne pozitif ne negatiftir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusu",
+   "aciklama": "Noktayı sürükle ya da ok tuşlarını kullan.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": -6,
+    "max": 6,
+    "den": 1,
+    "value": 0
+   },
+   "gorev": {
+    "metin": "−4'ü bul.",
+    "check": {
+     "key": "value",
+     "eq": -4
+    }
+   },
+   "dene": [
+    "Sağa gittikçe sayılar büyür: −4, −1'den küçüktür.",
+    "−4 ile 4 sıfıra eşit uzaklıkta. Bu sayılara ters işaretli sayılar denir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Karşılaştırma ve mutlak değer",
+   "govde": "- Sayı doğrusunda **sağdaki sayı daha büyüktür.** Her pozitif sayı her negatif sayıdan büyüktür: −7 < −2 < 0 < 3.\n- Bir sayının sıfıra olan uzaklığına **mutlak değer** denir: |−5| = 5, |5| = 5, |0| = 0.\n- Mutlak değer bir uzaklık olduğu için negatif olamaz."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Toplama ve çıkarma: sayma pulları",
+   "govde": "Bir **+** pul +1'i, bir **−** pul −1'i gösterir. Bir + ve bir − pul yan yana gelince birbirini yok eder: (+1) + (−1) = 0. Bu ikiliye **sıfır çifti** denir.\n\n- **Toplama:** pulları bir araya koy, sıfır çiftlerini at, kalanı say.\n- **Çıkarma:** istenen pulları çıkar. Yeterli pul yoksa önce sıfır çifti ekle (değer değişmez)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "(+4) + (−7)",
+   "aciklama": "Masada 4 pozitif ve 7 negatif pul var.",
+   "sim": {
+    "kind": "d-sayma-pullari",
+    "arti": 4,
+    "eksi": 7
+   },
+   "gorev": {
+    "metin": "Sıfır çiftlerini atıp sonucu bul.",
+    "check": {
+     "all": [
+      {
+       "key": "cift",
+       "eq": 0
+      },
+      {
+       "key": "value",
+       "eq": -3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "4 sıfır çifti gider, 3 negatif pul kalır: (+4) + (−7) = −3."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "(−3) − (−5)",
+   "aciklama": "Masada −3'ü gösteren 3 negatif pul var. Buradan 5 negatif pul çıkarmalıyız ama yalnız 3 tane var.",
+   "sim": {
+    "kind": "d-sayma-pullari",
+    "arti": 0,
+    "eksi": 3
+   },
+   "gorev": {
+    "metin": "5 negatif pulu çıkar ve sonucu bul.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 2
+      },
+      {
+       "key": "eksi",
+       "eq": 0
+      },
+      {
+       "key": "arti",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce 2 sıfır çifti ekle (değer hâlâ −3). Sonra 5 negatif pulu çıkar.",
+    "Sonuç (−3) + (+5) ile aynı: bir sayıyı çıkarmak, tersini eklemektir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "(−6) + (+9) ve (−3) − (−5) işlemlerini yapalım.",
+   "cozum": [
+    "(−6) + (+9): 6 sıfır çifti gider, 3 pozitif kalır → +3.",
+    "(−3) − (−5) = (−3) + (+5): 3 sıfır çifti gider, 2 pozitif kalır → +2."
+   ],
+   "sonuc": "(−6) + (+9) = 3 ve (−3) − (−5) = 2."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Sıcaklık",
+   "soru": "Erzurum'da sabah sıcaklık −4 °C idi. Öğlene kadar 9 derece arttı, akşama kadar 7 derece azaldı. Akşam sıcaklık kaç derecedir?",
+   "cozum": [
+    "Öğlen: −4 + 9 = 5 °C.",
+    "Akşam: 5 − 7 = −2 °C."
+   ],
+   "sonuc": "Akşam sıcaklık −2 °C'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"7, 2'den büyük; o hâlde −7 de −2'den büyüktür\" demek yanlıştır. Negatif sayılarda mutlak değeri büyük olan sayı sıfırdan daha uzakta, yani daha **soldadır**: −7 < −2. Sıcaklık düşünerek kontrol et: −7 °C, −2 °C'den daha soğuktur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi en küçüktür?",
+   "options": [
+    "−3",
+    "0",
+    "−8",
+    "2"
+   ],
+   "answer": 2,
+   "why": "Sayı doğrusunda en solda −8 vardır.",
+   "hint": "Negatif sayılarda sıfırdan en uzak olan en küçüktür."
+  },
+  {
+   "prompt": "(−7) + (+4) işleminin sonucu kaçtır?",
+   "options": [
+    "−11",
+    "−3",
+    "3",
+    "11"
+   ],
+   "answer": 1,
+   "why": "4 sıfır çifti gider, 3 negatif kalır: −3.",
+   "hint": "Farklı işaretli sayıları toplarken sıfır çiftlerini düşün."
+  },
+  {
+   "prompt": "(+2) − (−6) işleminin sonucu kaçtır?",
+   "options": [
+    "8",
+    "−4",
+    "4",
+    "−8"
+   ],
+   "answer": 0,
+   "why": "−6'yı çıkarmak +6 eklemektir: 2 + 6 = 8.",
+   "hint": "Bir sayıyı çıkarmak, tersini eklemektir."
+  },
+  {
+   "prompt": "|−9| + |4| işleminin sonucu kaçtır?",
+   "options": [
+    "−5",
+    "5",
+    "−13",
+    "13"
+   ],
+   "answer": 3,
+   "why": "|−9| = 9, |4| = 4; 9 + 4 = 13.",
+   "hint": "Mutlak değer sıfıra uzaklıktır, hep pozitif ya da 0'dır."
+  }
+ ]
+}

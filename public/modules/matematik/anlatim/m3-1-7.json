@@ -1,0 +1,181 @@
+{
+ "id": "m3-1-7",
+ "baslik": "Sayı ve Şekil Örüntüleri",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.7"
+ ],
+ "sure": 12,
+ "ders": "oruntuler",
+ "ozet": "Bir örüntünün kuralını bulup sıradaki terimleri tahmin edeceğiz. Şekil örüntülerini sayılara çevirip aynı yolla çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örüntü nedir?",
+   "govde": "Belli bir kurala göre devam eden sayı ya da şekil dizisine **örüntü** denir. Dizideki her sayıya **terim** deriz.\n\n4, 9, 14, 19… örüntüsünde her terim bir öncekinden 5 fazladır. Kural: **5 ekle**.\n\n90, 81, 72… örüntüsünde her terim 9 azalır. Kural: **9 çıkar**."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kuralı bulmak",
+   "govde": "1. Ardışık iki terim arasındaki farkı bul.\n2. Bu farkın her adımda aynı olup olmadığını kontrol et.\n3. Kuralı uygulayarak sıradaki terimi yaz.\n\nŞekil örüntüsünde önce her adımdaki şekilleri say; elde ettiğin sayılar bir sayı örüntüsüdür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Nokta örüntüsü",
+   "aciklama": "Her adımda kahverengi noktalardan bir sütun daha eklenir; gri noktalar hep aynı kalır. Kaydırıcıyla adımı değiştir.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 3,
+    "b": 1,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "5. adımı göster ve nokta sayısını oku.",
+    "check": {
+     "key": "n",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "Adımlardaki nokta sayıları: 4, 7, 10, 13… Kural: 3 ekle.",
+    "5. adımda 13 + 3 = 16 nokta olmalı."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hangi adımda 14 nokta var?",
+   "aciklama": "Bu örüntüde her adımda 2 nokta eklenir, 2 gri nokta sabittir.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 2,
+    "b": 2,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "Kaydırıcıyla 14 noktalı adımı bul.",
+    "check": {
+     "key": "count",
+     "eq": 14
+    }
+   },
+   "dene": [
+    "Nokta sayıları: 4, 6, 8, 10… 14'e kaç adımda ulaşılır?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı örüntüsü sayı doğrusunda",
+   "aciklama": "Örüntü 5'ten başlıyor ve kuralı \"4 ekle\". Her +4 sıçraması örüntünün bir sonraki terimini gösterir.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 40,
+    "tick": 1,
+    "label": 5,
+    "start": 5,
+    "hops": [
+     4
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "Örüntünün 8. terimine ulaş.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 33
+      },
+      {
+       "key": "hops",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1. terim 5'tir; 8. terime ulaşmak için 7 sıçrama gerekir.",
+    "5, 9, 13, 17, 21, 25, 29, 33."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "4, 9, 14, 19, ? örüntüsünde sıradaki terimi bulalım.",
+   "cozum": [
+    "9 − 4 = 5, 14 − 9 = 5, 19 − 14 = 5.",
+    "Kural: her adımda 5 ekle.",
+    "19 + 5 = 24."
+   ],
+   "sonuc": "Sıradaki terim **24**'tür."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Şekil örüntüsü",
+   "soru": "Kibrit çöpleriyle yan yana kareler yapılıyor. 1 kare için 4, 2 kare için 7, 3 kare için 10 çöp gerekiyor. 5 kare için kaç çöp gerekir?",
+   "cozum": [
+    "Çöp sayıları: 4, 7, 10. Her yeni kare için 3 çöp ekleniyor.",
+    "4 kare: 10 + 3 = 13 çöp.",
+    "5 kare: 13 + 3 = 16 çöp."
+   ],
+   "sonuc": "5 kare için **16** çöp gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kuralı yalnız ilk iki terime bakarak bulmak yanıltabilir; farkı birkaç terimde kontrol et. Ayrıca adımları sayarken başlangıç terimini unutma: 1. terim 5 ise, 8. terim için 7 kez 4 eklenir, 8 kez değil."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "2, 6, 10, 14, ? Sıradaki terim kaçtır?",
+   "options": [
+    "16",
+    "18",
+    "20",
+    "24"
+   ],
+   "answer": 1,
+   "why": "Kural: 4 ekle. 14 + 4 = 18.",
+   "hint": "Ardışık terimlerin farkını bul."
+  },
+  {
+   "prompt": "90, 81, 72, 63, ? Sıradaki terim kaçtır?",
+   "options": [
+    "54",
+    "56",
+    "45",
+    "53"
+   ],
+   "answer": 0,
+   "why": "Kural: 9 çıkar. 63 − 9 = 54.",
+   "hint": "Terimler her adımda ne kadar azalıyor?"
+  },
+  {
+   "prompt": "1. adımında 5 kare olan bir örüntüde her adımda 3 kare ekleniyor. 4. adımda kaç kare olur?",
+   "options": [
+    "17",
+    "15",
+    "14",
+    "12"
+   ],
+   "answer": 2,
+   "why": "5, 8, 11, 14: 4. adımda 14 kare.",
+   "hint": "Adımları tek tek yaz: 1. adım 5, 2. adım…"
+  },
+  {
+   "prompt": "İlk terimi 7 olan ve kuralı \"6 ekle\" olan örüntünün 5. terimi kaçtır?",
+   "options": [
+    "35",
+    "37",
+    "30",
+    "31"
+   ],
+   "answer": 3,
+   "why": "7, 13, 19, 25, 31.",
+   "hint": "1. terimden 5. terime kaç kez 6 eklenir?"
+  }
+ ]
+}

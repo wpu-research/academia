@@ -1,0 +1,206 @@
+{
+ "id": "m7-7-2",
+ "baslik": "Açıortay",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.5.1"
+ ],
+ "sure": 13,
+ "ozet": "Üçgende açıortayı tanıyacak, açıortay üzerindeki noktaların kollara eşit uzaklıkta olduğunu inceleyecek ve açıortayla ilgili açı problemlerini çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Üçgende açıortay",
+   "govde": "Bir üçgende bir iç açıyı iki eş açıya bölen ve karşı kenara kadar uzanan doğru parçasına o köşeden çizilen **açıortay** denir. Her üçgenin üç iç açıortayı vardır.\n\nAçıortay inşası bir önceki konuda öğrendiğin pergel-cetvel adımlarıyla yapılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açıortayı izle",
+   "aciklama": "A köşesinden çizilen açıortay ve oluşan iki eş açı görünüyor. Köşeleri sürükle.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "aciortay",
+    "points": [
+     [
+      2,
+      1
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "kose": 0
+   },
+   "gorev": {
+    "metin": "A açısını 90° yap ve açıortayın ayırdığı açılara bak.",
+    "check": {
+     "key": "aA",
+     "eq": 90
+    }
+   },
+   "dene": [
+    "A açısı 90° iken her parça 45°.",
+    "Açıortayın karşı kenarı kestiği nokta, kenarın orta noktası mı? Yalnız |AB| = |AC| ise."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açıortayın özellikleri",
+   "govde": "- Açıortay, açıyı iki **eş** açıya böler.\n- Açıortay üzerindeki her nokta açının **kollarına eşit uzaklıktadır**.\n- Üçgenin üç iç açıortayı **tek bir noktada** kesişir.\n- Açıortay, karşı kenarı genellikle iki eş parçaya **bölmez** (kenarortaydan farkı)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kollara eşit uzaklık",
+   "aciklama": "80°'lik bir açının açıortayını inşa et; P'yi açıortay üzerinde gezdir.",
+   "sim": {
+    "kind": "d-esit-uzaklik",
+    "mod": "aciortay",
+    "aci": 80,
+    "r": 2,
+    "r2": 1,
+    "p": [
+     2,
+     1
+    ]
+   },
+   "gorev": {
+    "metin": "Açıortayı inşa et ve P'yi kollara eşit uzaklıkta, O'dan en az 2 birim uzağa koy.",
+    "check": {
+     "all": [
+      {
+       "key": "kesisir",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 0.1
+      },
+      {
+       "key": "uzak",
+       "gte": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "P açıortaydan uzaklaştıkça iki uzaklık arasındaki fark büyüyor."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üç açıortay",
+   "aciklama": "Üç açıortayı birden çiz.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "aciortay",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "kose": 1
+   },
+   "gorev": {
+    "metin": "Üç açıortayı birden çiz.",
+    "check": {
+     "key": "hepsi",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Köşeleri sürükle: üç açıortay hep tek bir noktada kesişiyor mu?",
+    "Bu nokta üç kenara da eşit uzaklıktadır; üçgenin içine teğet çizilen çemberin merkezidir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "ABC üçgeninde B açısı 50°, C açısı 70°'dir. A köşesinden çizilen açıortay [BC]'yi D'de kesiyor. BAD ve ADC açıları kaç derecedir?",
+   "cozum": [
+    "A = 180 − 50 − 70 = 60°.",
+    "Açıortay: BAD = DAC = 30°.",
+    "ADC üçgeninde: ADC = 180 − 30 − 70 = 80°."
+   ],
+   "sonuc": "BAD = 30°, ADC = 80°."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Park lambası",
+   "soru": "Bir parkın köşesinde iki düz yol 70°'lik açıyla birleşiyor. Park bekçisi, iki yola da eşit uzaklıkta durmak için nerede yürümelidir? Yürüdüğü yolun yollardan biriyle yaptığı açı kaç derecedir?",
+   "cozum": [
+    "İki kola eşit uzaklıktaki noktalar açıortay üzerindedir.",
+    "Açıortay açıyı ikiye böler: 70 ÷ 2 = 35°."
+   ],
+   "sonuc": "Açıortay boyunca yürümeli; yollarla 35° açı yapar."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Açıortayın karşı kenarı her zaman ortaladığını sanmak yanlıştır. Açıortay **açıyı** ortalar; karşı kenarı yalnız açının iki kolu eşit uzunluktaysa ortalar. Simülasyonda A açıortayının ayağının nereye düştüğüne bak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "84°'lik bir açının açıortayının ayırdığı açılardan biri kaç derecedir?",
+   "options": [
+    "84°",
+    "42°",
+    "21°",
+    "96°"
+   ],
+   "answer": 1,
+   "why": "84 ÷ 2 = 42.",
+   "hint": "Açıortay açıyı iki eş parçaya böler."
+  },
+  {
+   "prompt": "ABC üçgeninde B = 40°, C = 60° ve [AD] açıortaydır. BAD açısı kaç derecedir?",
+   "options": [
+    "40°",
+    "80°",
+    "50°",
+    "60°"
+   ],
+   "answer": 0,
+   "why": "A = 80°; 80 ÷ 2 = 40.",
+   "hint": "Önce A açısını bul."
+  },
+  {
+   "prompt": "Bir açının açıortayı üzerindeki bir nokta için hangisi doğrudur?",
+   "options": [
+    "Açının köşesine eşit uzaklıktadır.",
+    "Karşı kenarın uçlarına eşit uzaklıktadır.",
+    "Açının kollarına eşit uzaklıktadır.",
+    "Hiçbir şeye eşit uzaklıkta değildir."
+   ],
+   "answer": 2,
+   "why": "Açıortay, kollara eşit uzaklıktaki noktaların oluşturduğu ışındır.",
+   "hint": "Simülasyondaki kesikli uzaklıkları hatırla."
+  },
+  {
+   "prompt": "Bir üçgende açıortay, karşı kenarı her zaman iki eş parçaya böler mi?",
+   "options": [
+    "Evet, her zaman",
+    "Yalnız dik üçgende",
+    "Yalnız geniş açılı üçgende",
+    "Hayır; yalnız açının iki kolu eşitse böler"
+   ],
+   "answer": 3,
+   "why": "Kenarı ortalayan kenarortaydır; açıortay ancak ikizkenar durumda onunla çakışır.",
+   "hint": "Kenarortay ile açıortay arasındaki farkı düşün."
+  }
+ ]
+}

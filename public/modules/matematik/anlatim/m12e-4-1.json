@@ -1,0 +1,242 @@
+{
+ "id": "m12e-4-1",
+ "baslik": "Analitik Düzlemde Temel Dönüşümler",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.4.1.1",
+  "12.4.1.2"
+ ],
+ "sure": 18,
+ "ders": "geometrik-donusumler",
+ "ozet": "Bir noktanın öteleme, simetri (yansıma) ve dönme altındaki görüntüsünü koordinatlarla bulacağız; dönüşümleri art arda uygulayarak bileşkelerini inceleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dönüşüm nedir?",
+   "govde": "Düzlemdeki her noktayı bir başka noktaya götüren kurala **dönüşüm** denir. P noktasının görüntüsü P′ ile gösterilir.\n\nÖteleme, simetri ve dönme şeklin uzunluklarını ve açılarını değiştirmez; yalnız yerini ya da yönünü değiştirir. Bu dönüşümlere **eşmetri (izometri)** denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Öteleme ve simetri",
+   "govde": "- **Öteleme:** (a, b) kadar öteleme: (x, y) → (x + a, y + b)\n- x eksenine göre simetri: (x, y) → (x, −y)\n- y eksenine göre simetri: (x, y) → (−x, y)\n- Orijine göre simetri: (x, y) → (−x, −y)\n- y = x doğrusuna göre: (x, y) → (y, x)\n- y = −x doğrusuna göre: (x, y) → (−y, −x)\n- x = k doğrusuna göre: (x, y) → (2k − x, y)\n- y = k doğrusuna göre: (x, y) → (x, 2k − y)\n- A(a, b) noktasına göre: (x, y) → (2a − x, 2b − y)"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dönme",
+   "govde": "Orijin etrafında **pozitif yönde** (saatin tersine) döndürme:\n\n- 90°: (x, y) → (−y, x)\n- 180°: (x, y) → (−x, −y) (orijine göre simetriyle aynı)\n- 270° (yani −90°): (x, y) → (y, −x)\n- Genel θ açısı: (x, y) → (x cos θ − y sin θ, x sin θ + y cos θ)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Noktayı dönüştür",
+   "aciklama": "P noktasını sürükleyebilir ya da kaydırıcılarla taşıyabilirsin. Düğmeler P'ye uygulanır; görüntü yeşil nokta P′. Kesikli çizgiler y = x ve y = −x doğruları.",
+   "sim": {
+    "kind": "g-nokta-donusum",
+    "p": [
+     3,
+     1
+    ],
+    "target": [
+     1,
+     3
+    ]
+   },
+   "gorev": {
+    "metin": "P(3, 1) noktasını kesikli çemberle gösterilen (1, 3) noktasına tek dönüşümle götür.",
+    "check": {
+     "all": [
+      {
+       "key": "hit",
+       "eq": 1
+      },
+      {
+       "key": "steps",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "y = x doğrusuna göre simetride koordinatlar yer değiştirir.",
+    "Aynı noktaya başka hangi tek dönüşüm götürür? (Hiçbiri: 90° döndürme (−1, 3) verir.)"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bileşke: art arda iki dönüşüm",
+   "aciklama": "Düğmeler art arda uygulanır; zincir aşağıda yazılır. Önce bir dönüşüm, sonra ötekini uygulamak iki dönüşümün **bileşkesidir**.",
+   "sim": {
+    "kind": "g-nokta-donusum",
+    "p": [
+     2,
+     1
+    ],
+    "target": [
+     -1,
+     -2
+    ]
+   },
+   "gorev": {
+    "metin": "P(2, 1)'i önce 90° döndür, sonra bir yansımayla (−1, −2)'ye götür.",
+    "check": {
+     "all": [
+      {
+       "key": "hit",
+       "eq": 1
+      },
+      {
+       "key": "steps",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "(2, 1) → 90° → (−1, 2) → x eksenine göre → (−1, −2).",
+    "Baştan başla ve aynı noktaya tek düğmeyle git: y = −x'e göre simetri. Bileşke tek bir dönüşüme eşit olabilir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1 · Bileşke",
+   "soru": "A(−2, 5) noktası önce (3, −1) kadar ötelenip sonra orijine göre yansıtılıyor. Son görüntü nedir?",
+   "cozum": [
+    "Öteleme: (−2 + 3, 5 − 1) = (1, 4).",
+    "Orijine göre simetri: (1, 4) → (−1, −4)."
+   ],
+   "sonuc": "A″(−1, −4)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2 · Doğruya ve noktaya göre simetri",
+   "soru": "B(4, −2) noktasının x = 1 doğrusuna ve K(1, 3) noktasına göre simetriklerini bulalım.",
+   "cozum": [
+    "x = 1'e göre: (2 · 1 − 4, −2) = (−2, −2).",
+    "K(1, 3)'e göre: (2 · 1 − 4, 2 · 3 − (−2)) = (−2, 8).",
+    "Kontrol: K, B ile (−2, 8)'in orta noktasıdır: ((4 − 2)/2, (−2 + 8)/2) = (1, 3)."
+   ],
+   "sonuc": "x = 1'e göre (−2, −2); K'ye göre (−2, 8)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3 · Dönme",
+   "soru": "C(2, 3) noktasının orijin etrafında 90° ve A(4, 0) noktasının 60° döndürülmüş görüntülerini bulalım.",
+   "cozum": [
+    "90°: (x, y) → (−y, x) ⇒ C′(−3, 2).",
+    "60°: (4 cos 60° − 0 · sin 60°, 4 sin 60° + 0 · cos 60°).",
+    "= (4 · 1/2, 4 · √3/2) = (2, 2√3)."
+   ],
+   "sonuc": "C′(−3, 2) ve A′(2, 2√3)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Şekli döndür",
+   "aciklama": "Şekil de noktalar gibi dönüşür: her köşe aynı kuralla taşınır. Kesikli şekil, L şeklinin orijin etrafında 180° döndürülmüş hâli.",
+   "sim": {
+    "kind": "donusum",
+    "target": [
+     [
+      -1,
+      -1
+     ],
+     [
+      -3,
+      -1
+     ],
+     [
+      -3,
+      -2
+     ],
+     [
+      -2,
+      -2
+     ],
+     [
+      -2,
+      -4
+     ],
+     [
+      -1,
+      -4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "L şeklini kesikli hedefe oturt.",
+    "check": {
+     "key": "match",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "90° döndürme düğmesine iki kez bas.",
+    "Ya da önce x eksenine, sonra y eksenine göre yansıt: iki eksene göre yansımanın bileşkesi 180° dönmedir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "y = 2x + 1 doğrusunun y = x doğrusuna göre simetriği olan doğrunun denklemi nedir?",
+   "cozum": [
+    "y = x'e göre simetride her (x, y) noktası (y, x)'e gider; bu yüzden denklemde x ile y yer değiştirir.",
+    "x = 2y + 1.",
+    "y'yi yalnız bırak: y = (x − 1)/2."
+   ],
+   "sonuc": "y = (x − 1)/2."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- 90° döndürmede (−y, x) ile (y, −x)'i karıştırmak. Kontrol: (1, 0) noktası 90° dönünce (0, 1)'e gitmeli.\n- y = −x'e göre simetride yalnız yer değiştirip işareti unutmak: doğrusu (−y, −x).\n- Bileşkede sırayı değiştirmek. Öteleme ile yansımanın sırası değişirse sonuç genellikle değişir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "(5, −2) noktasının y eksenine göre simetriği nedir?",
+   "options": [
+    "(5, 2)",
+    "(−5, 2)",
+    "(−5, −2)",
+    "(−2, 5)"
+   ],
+   "answer": 2,
+   "why": "y eksenine göre: (x, y) → (−x, y).",
+   "hint": "Hangi koordinatın işareti değişir?"
+  },
+  {
+   "prompt": "(−3, 4) noktası (2, −5) kadar ötelenirse hangi noktaya gelir?",
+   "options": [
+    "(−1, −1)",
+    "(−5, 9)",
+    "(−1, 9)",
+    "(5, −1)"
+   ],
+   "answer": 0,
+   "why": "(−3 + 2, 4 − 5) = (−1, −1).",
+   "hint": "Koordinatlara öteleme miktarlarını ekle."
+  },
+  {
+   "prompt": "(1, 4) noktası orijin etrafında pozitif yönde 270° döndürülürse hangi noktaya gelir?",
+   "options": [
+    "(−4, 1)",
+    "(−1, −4)",
+    "(4, 1)",
+    "(4, −1)"
+   ],
+   "answer": 3,
+   "why": "270°: (x, y) → (y, −x) = (4, −1).",
+   "hint": "270° pozitif yön, 90° negatif yönle aynıdır."
+  },
+  {
+   "prompt": "P(2, 7) noktasının y = −x doğrusuna göre simetriği nedir?",
+   "options": [
+    "(7, 2)",
+    "(−7, −2)",
+    "(−2, −7)",
+    "(7, −2)"
+   ],
+   "answer": 1,
+   "why": "(x, y) → (−y, −x) = (−7, −2).",
+   "hint": "Koordinatlar yer değiştirir ve ikisinin de işareti değişir."
+  }
+ ]
+}

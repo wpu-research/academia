@@ -1,0 +1,91 @@
+{
+ "id": "m10-1-3",
+ "baslik": "Üçgenin Alanı",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.1.3"],
+ "sure": 15,
+ "ozet": "Üçgenin alanı bir kenar ile o kenara ait yüksekliğe bağlıdır. Taban ya da yükseklik değişince alanın nasıl değiştiğini simülasyonla görecek, iki kenar ve aradaki açıyla alan formülüne geçeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Taban ve yükseklik",
+   "govde": "Bir üçgenin herhangi bir kenarını **taban** seçebiliriz. O tabanın karşısındaki köşeden tabana (ya da tabanın uzantısına) indirilen dikmenin uzunluğu, o tabana ait **yüksekliktir**.\n\nBir üçgen, aynı tabanlı ve aynı yükseklikli bir paralelkenarın yarısıdır. Bu yüzden:"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Temel formül",
+   "govde": "Alan(ABC) = (taban · yükseklik) / 2 = a · hₐ / 2 = b · h_b / 2 = c · h_c / 2\n\nHangi kenarı taban seçersen seç sonuç aynıdır; yalnız o kenara ait yüksekliği kullanmalısın."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yüksekliği değiştir",
+   "aciklama": "A ve B sabit; taban |AB| = 6. Yalnız C köşesini sürükleyebilirsin. Turuncu çizgi AB tabanına ait yüksekliktir.",
+   "sim": { "kind": "f-ucgen", "points": [[1, 1], [7, 1], [3, 3]], "lock": [0, 1], "show": ["alan"], "info": ["alan"] },
+   "gorev": { "metin": "C'yi, üçgenin alanı 12 birimkare olacak şekilde taşı.", "check": { "key": "area", "eq": 12, "tol": 0.001 } },
+   "dene": ["Alan 12 olunca C'yi sağa sola kaydır: yükseklik değişmediği sürece alan da değişmez.", "C'yi tabanın dışına (x = 9 gibi) taşı: yükseklik tabanın uzantısına iner, formül yine geçerli."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Değişime bağlı sonuçlar",
+   "govde": "- Taban sabitken yükseklik k katına çıkarsa alan da k katına çıkar (ve tersi).\n- Taban ve yükseklik ikisi de k katına çıkarsa alan k² katına çıkar.\n- Tepe köşesi tabana paralel bir doğru üzerinde hareket ederse alan değişmez.\n- Yükseklikleri ortak olan üçgenlerin alanları oranı tabanları oranına eşittir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tabanı iki katına çıkar",
+   "aciklama": "Geometri tahtasındaki üçgenin tabanı 2, yüksekliği 3. Köşeleri sürükleyebilirsin.",
+   "sim": { "kind": "geometri-tahtasi", "points": [[1, 1], [3, 1], [2, 4]] },
+   "gorev": { "metin": "Yüksekliği 3 bırakıp tabanı iki katına çıkar: alan 6 birimkare olsun.", "check": { "key": "area", "eq": 6 } },
+   "dene": ["Alan 3'ten 6'ya çıktı: taban 2 katına çıkınca alan da 2 katına çıktı.", "Tepe köşesini yukarı taşıyıp yüksekliği de 2 katına çıkar (6): alan kaç kat oldu?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Tabanı 10 cm, yüksekliği 6 cm olan bir üçgenin tabanı %20 artırılıp yüksekliği %20 azaltılıyor. Alan nasıl değişir?",
+   "cozum": [
+    "İlk alan: 10 · 6 / 2 = 30 cm².",
+    "Yeni taban 12 cm, yeni yükseklik 4,8 cm.",
+    "Yeni alan: 12 · 4,8 / 2 = 28,8 cm².",
+    "Değişim: (30 − 28,8) / 30 = 0,04."
+   ],
+   "sonuc": "Alan %4 azalır. Artış ve azalış yüzdesi aynı olsa da birbirini götürmez: 1,2 · 0,8 = 0,96."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "ABC üçgeninde D noktası BC kenarı üzerindedir. |BD| = 3, |DC| = 5 ve Alan(ABD) = 12 ise Alan(ADC) kaçtır?",
+   "cozum": [
+    "ABD ve ADC üçgenlerinin A'dan BC'ye inen yüksekliği ortaktır.",
+    "Alanlar oranı tabanlar oranına eşit: Alan(ADC) / 12 = 5 / 3.",
+    "Alan(ADC) = 12 · 5 / 3 = 20."
+   ],
+   "sonuc": "Alan(ADC) = 20 birimkare."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İki kenar ve aradaki açı",
+   "govde": "b ve c kenarları arasındaki açı A ise c kenarına ait yükseklik h = b · sin A olur (dik üçgende karşı = hipotenüs · sinüs). Buradan:\n\nAlan(ABC) = (1/2) · b · c · sin A"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "İki kenarı 6 cm ve 8 cm, bu kenarlar arasındaki açısı 30° olan üçgenin alanı kaç cm²'dir?",
+   "cozum": [
+    "Alan = (1/2) · 6 · 8 · sin 30°.",
+    "sin 30° = 1/2.",
+    "Alan = (1/2) · 48 · (1/2) = 12."
+   ],
+   "sonuc": "Alan 12 cm²'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yan kenarı yükseklik sanmak. Yükseklik tabana **dik** olmalıdır; eğik kenar ancak dik üçgende yükseklik olur. Geniş açılı üçgende yükseklik üçgenin dışına, tabanın uzantısına düşer; bu durumda da formül aynıdır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Tabanı 8 cm, yüksekliği 5 cm olan üçgenin alanı kaç cm²'dir?", "options": ["40", "20", "13", "10"], "answer": 1, "why": "8 · 5 / 2 = 20.", "hint": "Taban ile yüksekliği çarpıp ikiye böl." },
+  { "prompt": "Bir üçgenin tabanı da yüksekliği de 2 katına çıkarılırsa alanı ne olur?", "options": ["2 katına çıkar", "3 katına çıkar", "4 katına çıkar", "Değişmez"], "answer": 2, "why": "(2a · 2h) / 2 = 4 · (a · h / 2).", "hint": "Yeni alanı formülle yaz ve eskisiyle karşılaştır." },
+  { "prompt": "ABC üçgeninde C köşesi AB'ye paralel bir doğru üzerinde hareket ediyor. Alan(ABC) için ne söylenebilir?", "options": ["Artar", "Azalır", "Önce artar sonra azalır", "Değişmez"], "answer": 3, "why": "Taban AB ve C'nin AB'ye uzaklığı (yükseklik) sabit kalır.", "hint": "C hareket ederken yükseklik değişiyor mu?" },
+  { "prompt": "İki kenarı 4 ve 10, aralarındaki açı 30° olan üçgenin alanı kaçtır?", "options": ["10", "20", "40", "5"], "answer": 0, "why": "(1/2) · 4 · 10 · (1/2) = 10.", "hint": "Alan = (1/2) · b · c · sin A." }
+ ]
+}

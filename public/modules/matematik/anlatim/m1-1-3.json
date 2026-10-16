@@ -1,0 +1,127 @@
+{
+ "id": "m1-1-3",
+ "baslik": "Sıra Sayıları",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.3"
+ ],
+ "sure": 10,
+ "ozet": "Birinci, ikinci, üçüncü… Sıradaki yerini sıra sayısıyla söyleyeceğiz ve nokta ile yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kaç tane mi, kaçıncı mı?",
+   "govde": "**Kaç tane?** sorusunun cevabı bir sayıdır: 5 çocuk.\n\n**Kaçıncı?** sorusunun cevabı bir **sıra sayısıdır**: birinci, ikinci, üçüncü, dördüncü, beşinci…\n\nSıra sayısı yazılırken sayının yanına **nokta** konur: 1. (birinci), 2. (ikinci), 3. (üçüncü)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yarışta kaçıncı?",
+   "aciklama": "Çocuklar bitiş çizgisine doğru koşuyor. Bitişe en yakın olan birincidir. Bir koşucuya dokun.",
+   "sim": {
+    "kind": "a-sira",
+    "n": 7
+   },
+   "gorev": {
+    "metin": "Dördüncü sıradaki koşucuyu bul ve ona dokun.",
+    "check": {
+     "key": "sec",
+     "eq": 4
+    }
+   },
+   "dene": [
+    "Saymaya bitiş çizgisinin yanından başla: birinci, ikinci…",
+    "Yanlış koşucuyu seçersen ona yeniden dokun, seçim kalkar."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Nereden saydığın önemli",
+   "govde": "Sıra sayısı, **saymaya nereden başladığına** bağlıdır.\n\nBir sırada 7 kişi varsa baştan 1. olan kişi sondan 7.'dir. Baştan 2. olan sondan 6.'dır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sondan say",
+   "aciklama": "Bu kez bitiş çizgisi sağda. Altta seçtiğin koşucunun sondan kaçıncı olduğu da yazar.",
+   "sim": {
+    "kind": "a-sira",
+    "n": 6,
+    "yon": "sag"
+   },
+   "gorev": {
+    "metin": "Sondan 2. koşucuyu bul.",
+    "check": {
+     "key": "sondan",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Sondaki koşucu, bitişe en uzak olandır.",
+    "Sondan saymaya en soldan başla."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kantinde 8 öğrenci sıraya girdi. Ali baştan 3. sırada. Ali sondan kaçıncı sırada?",
+   "cozum": [
+    "Ali'nin önünde 2 kişi var.",
+    "Ali'nin arkasında 8 − 3 = 5 kişi var.",
+    "Sondan sayarken bu 5 kişiden sonra Ali gelir: 5 + 1 = 6."
+   ],
+   "sonuc": "Ali sondan **6.** sırada."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Rafta 5 kitap var. Soldan 1. kitap kırmızı, 2. kitap mavi. Mavi kitap sağdan kaçıncıdır?",
+   "cozum": [
+    "5 kitap var. Soldan 2. olan kitabın sağında 3 kitap var.",
+    "Sağdan sayınca önce bu 3 kitap, sonra mavi kitap gelir."
+   ],
+   "sonuc": "Mavi kitap sağdan **4.** sıradadır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**3** ile **3.** aynı şey değildir. “3 çocuk” kaç çocuk olduğunu söyler. “3. çocuk” ise sırada üçüncü olan tek bir çocuktur. Sıra sayısında noktayı unutma."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Beşinci” nasıl yazılır?",
+   "options": [
+    "5",
+    "5.",
+    "50",
+    ".5"
+   ],
+   "answer": 1,
+   "why": "Sıra sayıları nokta ile yazılır: 5.",
+   "hint": "Sıra sayısında sayının yanına ne konur?"
+  },
+  {
+   "prompt": "Bir sırada 6 kişi var. Baştan 1. olan kişi sondan kaçıncıdır?",
+   "options": [
+    "1.",
+    "5.",
+    "2.",
+    "6."
+   ],
+   "answer": 3,
+   "why": "En baştaki kişi, sondan sayınca en son sayılır: 6.",
+   "hint": "Sondan saymaya başla; baştakine en son gelirsin."
+  },
+  {
+   "prompt": "Hangisi bir sıra sayısıdır?",
+   "options": [
+    "üçüncü",
+    "üç",
+    "otuz",
+    "üçer"
+   ],
+   "answer": 0,
+   "why": "“Üçüncü” bir sırayı gösterir.",
+   "hint": "“Kaçıncı?” sorusunun cevabını bul."
+  }
+ ]
+}

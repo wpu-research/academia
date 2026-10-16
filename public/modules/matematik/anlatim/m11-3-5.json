@@ -1,0 +1,92 @@
+{
+ "id": "m11-3-5",
+ "baslik": "Logaritmik Fonksiyonlar ve Nitel Özellikleri",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.5"],
+ "sure": 18,
+ "ozet": "f(x) = logₐ x fonksiyonunun tanım kümesini, düşey asimptotunu ve monotonluğunu inceleyecek; k · logₐ(x − r) + s dönüşümlerini grafikte izleyecek ve logaritmanın işlem kurallarını üstel kurallardan çıkaracağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "f(x) = logₐ x özellikleri (a > 0, a ≠ 1)",
+   "govde": "- Tanım kümesi (0, ∞), görüntü kümesi ℝ.\n- Grafik (1, 0) noktasından ve (a, 1) noktasından geçer.\n- x = 0 (y ekseni) düşey asimptottur.\n- a > 1 ise artan, 0 < a < 1 ise azalandır.\n- Bire birdir: logₐ x = logₐ y ⇔ x = y.\n- Grafik, y = aˣ grafiğinin y = x doğrusuna göre yansımasıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tabana göre artan ya da azalan",
+   "aciklama": "Kırmızı kesikli doğru düşey asimptot (x = 0). Tabanı değiştir.",
+   "sim": { "kind": "f-fonk", "f": "log", "b": 2, "sliders": ["b"], "tools": ["asimptot"], "parent": false },
+   "gorev": { "metin": "Tabanı 1'den küçük seçerek fonksiyonu azalan yap.", "check": { "key": "b", "lt": 1 } },
+   "dene": ["Her tabanda grafik (1, 0)'dan geçiyor.", "Taban 10 iken grafik çok yavaş yükseliyor: log 1000 yalnız 3."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dönüşümler: g(x) = k · logₐ(x − r) + s",
+   "govde": "- Tanım kümesi: x − r > 0 → (r, ∞). Düşey asimptot **x = r**.\n- Görüntü kümesi ℝ (dönüşümler bunu değiştirmez).\n- x = r + 1 iken logₐ 1 = 0 olduğundan g(r + 1) = s.\n- k < 0 grafiği x eksenine göre yansıtır, monotonluğu tersine çevirir.\n- Genel biçim k · logₐ(mx − r) + s için tanım kümesi mx − r > 0 eşitsizliğinden bulunur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Asimptotu ve bir noktayı yerleştir",
+   "aciklama": "g(x) = a · log₂(x − r) + k.",
+   "sim": { "kind": "f-fonk", "f": "log", "b": 2, "a": 1, "h": 0, "k": 0, "sliders": ["a", "h", "k"], "tools": ["asimptot"] },
+   "gorev": { "metin": "Düşey asimptotu x = −3 olan ve (−2, 1) noktasından geçen grafiği oluştur.", "check": { "all": [{ "key": "h", "eq": -3 }, { "key": "k", "eq": 1 }] } },
+   "dene": ["x = r + 1 noktasında logaritma 0 olur; bu noktada g = k.", "a'yı değiştirince asimptot ve (r + 1, k) noktası yerinde kalıyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "f(x) = log₂(x − 1) + 3 fonksiyonunun tanım kümesini, asimptotunu, f(3) değerini ve x eksenini kestiği noktayı bulalım.",
+   "cozum": [
+    "x − 1 > 0 → tanım kümesi (1, ∞); asimptot x = 1.",
+    "f(3) = log₂ 2 + 3 = 1 + 3 = 4.",
+    "f(x) = 0 → log₂(x − 1) = −3 → x − 1 = 2⁻³ = 1/8 → x = 9/8."
+   ],
+   "sonuc": "Tanım kümesi (1, ∞), asimptot x = 1, f(3) = 4, x eksenini (9/8, 0) noktasında keser."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Logaritma kuralları",
+   "govde": "aᵐ · aⁿ = aᵐ⁺ⁿ gibi üs kurallarından (x, y > 0):\n- logₐ(x · y) = logₐ x + logₐ y\n- logₐ(x / y) = logₐ x − logₐ y\n- logₐ(xⁿ) = n · logₐ x\n- Taban değiştirme: logₐ x = log_b x / log_b a; özel olarak logₐ b = 1 / log_b a."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "(a) log₂ 12 − log₂ 3, (b) log 2 + log 50, (c) log₃ 81² ifadelerini hesaplayalım.",
+   "cozum": [
+    "(a) log₂(12/3) = log₂ 4 = 2.",
+    "(b) log(2 · 50) = log 100 = 2.",
+    "(c) 2 · log₃ 81 = 2 · 4 = 8."
+   ],
+   "sonuc": "(a) 2, (b) 2, (c) 8."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Logaritmik denklemi grafikle çöz",
+   "aciklama": "y = log₂ x ve y = c doğrusu.",
+   "sim": { "kind": "f-fonk", "f": "log", "b": 2, "c": 1, "sliders": ["c"], "tools": ["cizgi"], "parent": false },
+   "gorev": { "metin": "c'yi 2 yap ve log₂ x = 2 denkleminin çözümünü oku.", "check": { "key": "c", "eq": 2 } },
+   "dene": ["Çözüm x = 2² = 4.", "c negatifken de çözüm var: görüntü kümesi ℝ. c = −1 için x = 1/2."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = log₃(x² − 4x) fonksiyonunun en geniş tanım kümesini bulalım.",
+   "cozum": [
+    "x² − 4x > 0 → x(x − 4) > 0.",
+    "Çarpım pozitif: iki çarpan aynı işaretli → x < 0 ya da x > 4."
+   ],
+   "sonuc": "Tanım kümesi (−∞, 0) ∪ (4, ∞)."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "log(x + y)'yi log x + log y diye açmak. Kural **çarpımın** logaritması içindir: log(x · y) = log x + log y. Toplamın logaritmasının böyle bir açılımı yoktur. Benzer şekilde (log x)² ile log(x²) farklıdır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "f(x) = ln(5 − x) fonksiyonunun en geniş tanım kümesi nedir?", "options": ["(5, ∞)", "(−∞, 5)", "(−5, ∞)", "ℝ − {5}"], "answer": 1, "why": "5 − x > 0 → x < 5.", "hint": "Logaritmanın içi pozitif olmalı." },
+  { "prompt": "log₂ 40 − log₂ 5 kaçtır?", "options": ["3", "35", "8", "5"], "answer": 0, "why": "log₂(40/5) = log₂ 8 = 3.", "hint": "Farkın logaritması bölümün logaritmasıdır." },
+  { "prompt": "f(x) = log₀,₅ x (taban 1/2) fonksiyonu için hangisi doğrudur?", "options": ["Artandır", "(0, 1) noktasından geçer", "Azalandır", "Tanım kümesi ℝ'dir"], "answer": 2, "why": "Taban 0 ile 1 arasında: azalan. Grafik (1, 0)'dan geçer.", "hint": "Tabana bak." },
+  { "prompt": "g(x) = log₃(x − 2) + 1 fonksiyonunun düşey asimptotu hangisidir?", "options": ["x = 1", "x = −2", "y = 1", "x = 2"], "answer": 3, "why": "x − 2 = 0 → x = 2.", "hint": "Logaritmanın içini sıfır yapan x." }
+ ]
+}

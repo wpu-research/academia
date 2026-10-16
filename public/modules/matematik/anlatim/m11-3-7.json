@@ -1,0 +1,90 @@
+{
+ "id": "m11-3-7",
+ "baslik": "Fonksiyonların Bileşkesi",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.7"],
+ "sure": 16,
+ "ozet": "Bir fonksiyonun çıktısını diğerine girdi olarak vermek: bileşke. İki makineyi art arda bağlayarak g∘f ile f∘g'nin neden genelde farklı olduğunu görecek, bileşkenin tanım kümesini ve bileşkeden bir fonksiyonu bulmayı öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Tanım",
+   "govde": "f: A → B ve g: B → C fonksiyonları için\n\n**(g∘f)(x) = g(f(x))**\n\nÖnce f uygulanır, çıkan sonuca g uygulanır (sağdaki fonksiyon önce çalışır). (g∘f)(x)'in tanımlı olması için x, f'nin tanım kümesinde; f(x) de g'nin tanım kümesinde olmalıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki makineyi art arda bağla",
+   "aciklama": "f(x) = 2x + 1 ve g(x) = x². Üstteki düğmeyle makinelerin sırasını değiştir.",
+   "sim": { "kind": "f-bileske", "f": "2x+1", "g": "x2", "x": 1, "gofText": "(2x + 1)²", "fogText": "2x² + 1" },
+   "gorev": { "metin": "(g∘f)(x) ile (f∘g)(x)'in eşit olduğu bir x bul.", "check": { "key": "same", "eq": 1 } },
+   "dene": ["x = 1 için (g∘f)(1) = 9 ama (f∘g)(1) = 3: sıra önemli.", "Eşitlik için (2x + 1)² = 2x² + 1 → 2x² + 4x = 0 → x = 0 ya da x = −2."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "f(x) = x² + 1 ve g(x) = 3x − 2 için (f∘g)(1), (g∘f)(1), (f∘g)(x) ve (g∘f)(x)'i bulalım.",
+   "cozum": [
+    "(f∘g)(1) = f(g(1)) = f(1) = 2.",
+    "(g∘f)(1) = g(f(1)) = g(2) = 4.",
+    "(f∘g)(x) = f(3x − 2) = (3x − 2)² + 1 = 9x² − 12x + 5.",
+    "(g∘f)(x) = g(x² + 1) = 3(x² + 1) − 2 = 3x² + 1."
+   ],
+   "sonuc": "(f∘g)(1) = 2, (g∘f)(1) = 4; f∘g ≠ g∘f."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Özellikler",
+   "govde": "- Bileşke işleminin **değişme özelliği yoktur**: genelde f∘g ≠ g∘f.\n- **Birleşme özelliği vardır**: (h∘g)∘f = h∘(g∘f).\n- Birim fonksiyon I(x) = x için f∘I = I∘f = f.\n- f'nin tersi varsa f∘f⁻¹ = f⁻¹∘f = I."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bileşke bir algoritmadır",
+   "aciklama": "Önce f(x) = 3x − 5, sonra g(y) = y²: yani (g∘f)(x) = (3x − 5)².",
+   "sim": { "kind": "f-akis", "alg": "bileske", "x": 2 },
+   "gorev": { "metin": "x = 3 için algoritmayı sonuna kadar çalıştır ve (g∘f)(3)'ü oku.", "check": { "all": [{ "key": "x", "eq": 3 }, { "key": "done", "eq": 1 }] } },
+   "dene": ["(g∘f)(3) = g(4) = 16.", "Adımların sırasını değiştirseydin (önce kare, sonra 3y − 5) f∘g'yi hesaplamış olurdun."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: içteki fonksiyonu bul",
+   "soru": "(f∘g)(x) = 6x + 1 ve g(x) = 2x − 1 ise f(x) nedir?",
+   "cozum": [
+    "u = g(x) = 2x − 1 → x = (u + 1)/2.",
+    "f(u) = 6 · (u + 1)/2 + 1 = 3u + 3 + 1 = 3u + 4.",
+    "Kontrol: f(g(x)) = 3(2x − 1) + 4 = 6x + 1."
+   ],
+   "sonuc": "f(x) = 3x + 4."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: tanım kümesi",
+   "soru": "f(x) = x − 5 ve g(x) = √x için (g∘f)(x)'in en geniş tanım kümesini bulalım.",
+   "cozum": [
+    "(g∘f)(x) = √(x − 5).",
+    "Kök içi: x − 5 ≥ 0 → x ≥ 5."
+   ],
+   "sonuc": "[5, ∞). f her x'te tanımlı olsa da f(x) değerinin g'nin tanım kümesine düşmesi gerekir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = 2x + 3 ve (f∘g)(x) = 4x − 1 ise g(x) nedir?",
+   "cozum": [
+    "f(g(x)) = 2 · g(x) + 3 = 4x − 1.",
+    "2 · g(x) = 4x − 4."
+   ],
+   "sonuc": "g(x) = 2x − 2."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "g∘f'yi \"önce g, sonra f\" diye okumak. (g∘f)(x) = g(f(x)) yazımında x'e en yakın olan f önce çalışır. Bir de bileşkeyi çarpımla karıştırmak: (g∘f)(x) ile g(x) · f(x) tamamen farklıdır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "f(x) = x + 4 ve g(x) = x² için (g∘f)(1) kaçtır?", "options": ["5", "17", "25", "9"], "answer": 2, "why": "f(1) = 5, g(5) = 25.", "hint": "Önce f'yi uygula." },
+  { "prompt": "f(x) = x + 4 ve g(x) = x² için (f∘g)(x) nedir?", "options": ["x² + 4", "(x + 4)²", "x² + 4x", "4x²"], "answer": 0, "why": "f(g(x)) = g(x) + 4 = x² + 4.", "hint": "f'nin içine g(x) yaz." },
+  { "prompt": "Bileşke işlemi için hangisi genel olarak doğrudur?", "options": ["f∘g = g∘f", "f∘g = f · g", "f∘f = f²", "f∘g ≠ g∘f olabilir"], "answer": 3, "why": "Bileşkenin değişme özelliği yoktur.", "hint": "Makine örneğinde sırayı değiştirince ne oldu?" },
+  { "prompt": "f(x) = 3x − 1 ve (g∘f)(x) = 6x + 5 ise g(x) nedir?", "options": ["2x + 5", "2x + 7", "3x + 6", "6x + 7"], "answer": 1, "why": "u = 3x − 1 → x = (u + 1)/3; g(u) = 2(u + 1) + 5 = 2u + 7.", "hint": "f(x)'i u ile göster ve x'i u cinsinden yaz." }
+ ]
+}

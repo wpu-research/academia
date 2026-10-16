@@ -1,0 +1,154 @@
+{
+ "id": "m3-2-6",
+ "baslik": "Olayların Oluş Sürelerini Tahmin Etme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.14"
+ ],
+ "sure": 10,
+ "ozet": "Bir olayın ne kadar süreceğini uygun birimle tahmin edeceğiz; sonra ölçüp tahminimizin ne kadar iyi olduğuna karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Hangi birim?",
+   "govde": "Bir olayın süresini tahmin ederken önce **uygun birimi** seçeriz:\n\n- Göz kırpmak, bir kelime söylemek: **saniye**\n- Diş fırçalamak, el yıkamak: **dakika**\n- Okulda bir gün geçirmek, uzun bir yolculuk: **saat**\n- Yaz tatili: **hafta** ya da **ay**\n- Bir bebeğin yürümeyi öğrenmesi: **ay**\n\nBirimi seçtikten sonra sayıyı tahmin ederiz: \"Diş fırçalamak yaklaşık 2 dakika sürer.\""
+  },
+  {
+   "tur": "sim",
+   "baslik": "Saniyeyi hisset",
+   "aciklama": "Başlat'a bas ve ekrana bakmadan içinden say: \"bir bin, iki bin, üç bin…\" 10 saniye geçtiğini düşündüğünde Durdur'a bas.",
+   "sim": {
+    "kind": "b-kronometre",
+    "hedef": 10
+   },
+   "gorev": {
+    "metin": "10 saniyeyi en fazla 1,5 saniye farkla tahmin et.",
+    "check": {
+     "all": [
+      {
+       "key": "deneme",
+       "gte": 1
+      },
+      {
+       "key": "fark",
+       "lt": 1.5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "\"Bir bin\" demek yaklaşık 1 saniye sürer.",
+    "Farkın büyükse bir daha dene; her denemede tahminin gelişir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tahmin et, ölç, karar ver",
+   "govde": "1. Uygun birimi seç.\n2. Daha önce yaşadığın benzer olaylarla karşılaştırarak bir sayı tahmin et.\n3. Saatle ya da kronometreyle ölç.\n4. Tahminini ölçümle karşılaştır: fark küçükse tahmin iyidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ders ne zaman biter?",
+   "aciklama": "Ders saat 9.00'da başlıyor ve 40 dakika sürüyor.",
+   "sim": {
+    "kind": "saat",
+    "h": 9,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saati dersin bittiği zamana getir.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 9
+      },
+      {
+       "key": "m",
+       "eq": 40
+      }
+     ]
+    }
+   },
+   "dene": [
+    "40 dakika = 8 × 5 dakika; yelkovan 8'i göstermeli."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ayakkabı bağlamak yaklaşık ne kadar sürer: 10 saniye mi, 10 dakika mı, 10 saat mi?",
+   "cozum": [
+    "10 saat bir günün neredeyse yarısıdır, çok uzun.",
+    "10 dakika bir teneffüs kadardır, yine uzun.",
+    "Birkaç hareketle biten bir iş için saniye uygun."
+   ],
+   "sonuc": "Yaklaşık **10 saniye**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Tahmini değerlendirmek",
+   "soru": "Deniz, okuldan eve yürümenin 15 dakika süreceğini tahmin etti. Ölçtüğünde 18 dakika sürdü. Tahmini nasıldı?",
+   "cozum": [
+    "Fark: 18 − 15 = 3 dakika.",
+    "Birim doğru seçilmiş ve fark küçük."
+   ],
+   "sonuc": "Deniz'in tahmini iyi bir tahmindir; gerçek süreden yalnız 3 dakika az."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Birimi yanlış seçmek tahmini anlamsız yapar: \"Kahvaltı 20 saat sürdü\" ya da \"Yaz tatili 3 dakika\" demek gibi. Önce birimi, sonra sayıyı düşün."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi yaklaşık 1 dakika sürer?",
+   "options": [
+    "Bir film izlemek",
+    "Ellerini sabunla yıkamak",
+    "Gözünü kırpmak",
+    "Bir gece uyumak"
+   ],
+   "answer": 1,
+   "why": "El yıkamak yaklaşık bir dakika sürer; diğerleri çok daha uzun ya da çok daha kısadır.",
+   "hint": "Her olayın saniye mi, dakika mı, saat mi sürdüğünü düşün."
+  },
+  {
+   "prompt": "Bir futbol maçının iki yarısı toplam ne kadar sürer?",
+   "options": [
+    "90 dakika",
+    "90 saniye",
+    "90 saat",
+    "90 gün"
+   ],
+   "answer": 0,
+   "why": "Futbol maçının iki yarısı 45'er dakikadır: 90 dakika.",
+   "hint": "Hangi birim bir maç için uygundur?"
+  },
+  {
+   "prompt": "Yaz tatilinin süresini belirtmek için en uygun birim hangisidir?",
+   "options": [
+    "Saniye",
+    "Dakika",
+    "Hafta",
+    "Saat"
+   ],
+   "answer": 2,
+   "why": "Yaz tatili haftalarca sürer.",
+   "hint": "Tatil bir günden çok daha uzun."
+  },
+  {
+   "prompt": "Elif diş fırçalamanın 2 dakika süreceğini tahmin etti; ölçünce 3 dakika sürdü. Tahmini gerçek süreden ne kadar az?",
+   "options": [
+    "5 dakika",
+    "2 dakika",
+    "3 dakika",
+    "1 dakika"
+   ],
+   "answer": 3,
+   "why": "3 − 2 = 1 dakika.",
+   "hint": "Ölçülen süreden tahmini çıkar."
+  }
+ ]
+}

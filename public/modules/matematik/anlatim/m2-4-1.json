@@ -1,0 +1,239 @@
+{
+ "id": "m2-4-1",
+ "baslik": "Geometrik Cisimler",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.1"
+ ],
+ "sure": 14,
+ "ozet": "Küp, kare prizma, dikdörtgen prizma, üçgen prizma, silindir, koni ve küreyi tanıyacak; günlük nesneleri bu cisimlere göre gruplayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Cisim nedir?",
+   "govde": "Kâğıda çizilen kare, üçgen gibi şekiller düzdür. Elimize alabildiğimiz, **yer kaplayan** nesneler ise **cisimdir**.\n\n- **Küp**: Zar gibi. 6 yüzü de eş karedir.\n- **Kare prizma**: İki yüzü kare, öbür yüzleri dikdörtgendir.\n- **Dikdörtgen prizma**: Ayakkabı kutusu gibi.\n- **Üçgen prizma**: İki yüzü üçgendir; çadıra benzer.\n- **Silindir**: Konserve kutusu gibi. İki düz yüzü dairedir.\n- **Koni**: Dondurma külahı gibi. Bir düz yüzü daire, bir de sivri ucu var.\n- **Küre**: Top gibi. Hiç düz yüzü yoktur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Cisimleri incele",
+   "aciklama": "Cisimleri seç, döndürerek her yanını gör. Sağda yüz, köşe ve yuvarlanma bilgileri var.",
+   "sim": {
+    "kind": "a-cisim",
+    "cisim": "kup",
+    "secenek": [
+     "kup",
+     "kare-prizma",
+     "prizma",
+     "ucgen-prizma",
+     "silindir",
+     "koni",
+     "kure"
+    ]
+   },
+   "gorev": {
+    "metin": "Küreyi seç ve döndür.",
+    "check": {
+     "all": [
+      {
+       "key": "cisim",
+       "eq": 6
+      },
+      {
+       "key": "aci",
+       "gte": 90
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kesikli çizgiler arkada kalan kenarları gösterir.",
+    "Hangi cisimlerin eğri yüzü var?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Düz yüz ve eğri yüz",
+   "govde": "Cisimleri yüzlerine göre iki gruba ayırabiliriz:\n\n- **Yalnız düz yüzleri olanlar**: küp, kare prizma, dikdörtgen prizma, üçgen prizma. Bunlar **kayar**, yuvarlanmaz.\n- **Eğri yüzü olanlar**: silindir, koni, küre. Bunlar **yuvarlanabilir**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Silindir biçimli nesneler",
+   "aciklama": "Kartlardaki günlük nesneleri düşün.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "s",
+    "items": [
+     {
+      "k": "s",
+      "yazi": "Konserve kutusu"
+     },
+     {
+      "k": "n",
+      "yazi": "Futbol topu"
+     },
+     {
+      "k": "s",
+      "yazi": "Pil"
+     },
+     {
+      "k": "n",
+      "yazi": "Zar"
+     },
+     {
+      "k": "n",
+      "yazi": "Dondurma külahı"
+     },
+     {
+      "k": "n",
+      "yazi": "Ayakkabı kutusu"
+     },
+     {
+      "k": "s",
+      "yazi": "Silindir mum"
+     },
+     {
+      "k": "n",
+      "yazi": "Portakal"
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Silindir biçimindeki bütün nesneleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Silindirin iki ucu düz ve dairedir, yan yüzü eğridir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yuvarlananlar",
+   "aciklama": "Bu kez cisimlere bak.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "y",
+    "items": [
+     {
+      "k": "y",
+      "cisim": "kure",
+      "ad": "Küre"
+     },
+     {
+      "k": "n",
+      "cisim": "kup",
+      "ad": "Küp"
+     },
+     {
+      "k": "y",
+      "cisim": "silindir",
+      "ad": "Silindir"
+     },
+     {
+      "k": "n",
+      "cisim": "prizma",
+      "ad": "Dikdörtgen prizma"
+     },
+     {
+      "k": "y",
+      "cisim": "koni",
+      "ad": "Koni"
+     },
+     {
+      "k": "n",
+      "cisim": "ucgen-prizma",
+      "ad": "Üçgen prizma"
+     },
+     {
+      "k": "n",
+      "cisim": "kare-prizma",
+      "ad": "Kare prizma"
+     },
+     {
+      "k": "n",
+      "cisim": "kup",
+      "ad": "Küp",
+      "c": 1
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Yuvarlanabilen bütün cisimleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Eğri yüzü olan cisimleri ara."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir zarın yüzleri hangi şekildedir? Zar hangi cisme benzer?",
+   "cozum": [
+    "Zarın 6 yüzü var ve hepsi eş kare.",
+    "6 yüzü eş kare olan cisim küptür."
+   ],
+   "sonuc": "Yüzleri **kare**; zar **küp** biçimindedir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Futbol topu ve konserve kutusunu masada ittik. Hangisi her yöne yuvarlanır?",
+   "cozum": [
+    "Topun hiç düz yüzü yok: küre.",
+    "Konserve kutusu silindir; yalnız yan yatınca, belli bir yöne yuvarlanır."
+   ],
+   "sonuc": "**Futbol topu** her yöne yuvarlanır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kare ile küpü karıştırmak sık yapılan bir hatadır. **Kare** kâğıt üstünde düz bir **şekildir**; **küp** ise elimize alabildiğimiz, 6 kare yüzü olan bir **cisimdir**. Aynı karışıklık daire ile küre arasında da olur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi koni biçimindedir?",
+   "options": [
+    "Zar",
+    "Dondurma külahı",
+    "Konserve kutusu",
+    "Top"
+   ],
+   "answer": 1,
+   "why": "Külahın bir düz daire yüzü ve sivri bir ucu vardır.",
+   "hint": "Sivri uçlu cismi düşün."
+  },
+  {
+   "prompt": "Hangi cismin hiç düz yüzü yoktur?",
+   "options": [
+    "Küp",
+    "Silindir",
+    "Koni",
+    "Küre"
+   ],
+   "answer": 3,
+   "why": "Kürenin tek yüzü eğridir.",
+   "hint": "Top gibi cismi düşün."
+  },
+  {
+   "prompt": "Ayakkabı kutusu hangi cisme benzer?",
+   "options": [
+    "Dikdörtgen prizma",
+    "Küre",
+    "Koni",
+    "Silindir"
+   ],
+   "answer": 0,
+   "why": "Yüzleri dikdörtgen olan kutular dikdörtgen prizmadır.",
+   "hint": "Yüzlerinin şekline bak."
+  }
+ ]
+}

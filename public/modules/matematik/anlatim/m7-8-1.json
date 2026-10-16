@@ -1,0 +1,264 @@
+{
+ "id": "m7-8-1",
+ "baslik": "Kategorik ve Nicel (Sürekli) Veri Dağılımları",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.6.1",
+  "MAT.7.6.2"
+ ],
+ "sure": 16,
+ "ozet": "Ölçerek elde edilen (sürekli) veriyi gruplayıp sıklık tablosu ve histogramla gösterecek; ortalama, ortanca ve tepe değerle veriyi yorumlayıp başkalarının vardığı sonuçları tartışacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kesikli ve sürekli veri",
+   "govde": "- **Kesikli veri** sayarak elde edilir: kardeş sayısı 2 ya da 3 olur, 2,5 olmaz.\n- **Sürekli veri** ölçerek elde edilir ve iki değer arasında her değeri alabilir: boy (152,4 cm), süre, kütle, sıcaklık.\n- **Kategorik veri** bir özellik belirtir: en sevilen renk, ulaşım aracı.\n\nSürekli veride hemen her değer farklı çıkabileceği için veriyi **gruplara** ayırırız."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Gruplama ve histogram",
+   "govde": "1. **Açıklığı** bul: en büyük − en küçük.\n2. Grup sayısına karar ver; **grup genişliği ≈ açıklık ÷ grup sayısı** (bir üst uygun sayıya yuvarla).\n3. Grupları en küçük değerden başlayarak, **çakışmayacak** biçimde yaz: 140–144, 145–149, …\n4. Her gruptaki veri sayısını (sıklığı) say.\n\n**Histogram**, gruplanmış verinin sütun grafiğidir; sürekli bir aralığı gösterdiği için sütunlar arasında **boşluk bırakılmaz**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Boy uzunlukları histogramı",
+   "aciklama": "Bir sınıftaki 30 öğrencinin boy uzunlukları (cm, örnek veri). Grup genişliğini değiştir.",
+   "sim": {
+    "kind": "d-histogram",
+    "veri": [
+     148,
+     152,
+     155,
+     141,
+     163,
+     158,
+     150,
+     147,
+     160,
+     166,
+     153,
+     157,
+     145,
+     162,
+     151,
+     159,
+     170,
+     149,
+     154,
+     156,
+     143,
+     161,
+     158,
+     152,
+     165,
+     172,
+     150,
+     157,
+     146,
+     155
+    ],
+    "baslangic": 140,
+    "genislikler": [
+     2,
+     5,
+     10
+    ],
+    "genislik": 5,
+    "birim": "cm",
+    "eksen": "Boy (cm)"
+   },
+   "gorev": {
+    "metin": "En kalabalık grupta 15 öğrenci olacak biçimde grup genişliğini seç.",
+    "check": {
+     "key": "maxf",
+     "eq": 15
+    }
+   },
+   "dene": [
+    "Genişlik 2 iken çok fazla grup var ve grafik dağınık; 10 iken çok az grup var ve ayrıntı kayboluyor.",
+    "Hangi genişlik dağılımı en iyi anlatıyor?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ekran süresi",
+   "aciklama": "24 öğrencinin günlük ekran süresi (dakika, örnek veri).",
+   "sim": {
+    "kind": "d-histogram",
+    "veri": [
+     45,
+     62,
+     75,
+     88,
+     95,
+     110,
+     120,
+     58,
+     70,
+     84,
+     99,
+     105,
+     130,
+     142,
+     66,
+     78,
+     91,
+     115,
+     125,
+     150,
+     38,
+     82,
+     97,
+     108
+    ],
+    "baslangic": 30,
+    "genislikler": [
+     10,
+     20,
+     30
+    ],
+    "genislik": 10,
+    "birim": "dk",
+    "eksen": "Süre (dakika)"
+   },
+   "gorev": {
+    "metin": "Veriyi 7 gruba ayır.",
+    "check": {
+     "key": "k",
+     "eq": 7
+    }
+   },
+   "dene": [
+    "Açıklık 150 − 38 = 112; 112 ÷ 7 = 16 → 20'lik gruplar uygun."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Merkezi eğilim ölçüleri",
+   "govde": "- **Aritmetik ortalama:** toplam ÷ veri sayısı.\n- **Ortanca:** veriler küçükten büyüğe sıralanınca ortadaki değer; veri sayısı çiftse ortadaki iki değerin ortalaması.\n- **Tepe değer:** en çok tekrar eden değer.\n\nAşırı uç değerler ortalamayı çok etkiler, ortancayı az etkiler."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ortalama ile ortanca",
+   "aciklama": "Yedi öğrencinin bir haftada çözdüğü test sayısı. Sütunları sürükle.",
+   "sim": {
+    "kind": "veri-grafigi",
+    "labels": [
+     "Ali",
+     "Bora",
+     "Cem",
+     "Defne",
+     "Ela",
+     "Fırat",
+     "Gül"
+    ],
+    "values": [
+     5,
+     6,
+     4,
+     7,
+     6,
+     8,
+     6
+    ],
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Ortanca 6 kalsın ama ortalama 7 olsun.",
+    "check": {
+     "all": [
+      {
+       "key": "median",
+       "eq": 6
+      },
+      {
+       "key": "mean",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Ortancayı değiştirmeden ortalamayı artırmak için en büyük değerleri büyüt.",
+    "Uç değerler ortalamayı çeker, ortancayı pek etkilemez."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "12, 15, 9, 20, 15, 18, 11 verilerinin ortancasını ve tepe değerini bulalım. 8, 3, 5, 10 verilerinin ortancası kaçtır?",
+   "cozum": [
+    "Sırala: 9, 11, 12, 15, 15, 18, 20. 7 veri; ortadaki (4.) değer 15.",
+    "En çok tekrar eden 15: tepe değer 15.",
+    "3, 5, 8, 10: 4 veri; ortadaki ikisi 5 ve 8, ortalamaları 6,5."
+   ],
+   "sonuc": "Ortanca 15, tepe değer 15; ikinci verinin ortancası 6,5."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Sonucu tartış",
+   "soru": "Boy histogramında (grup genişliği 10 cm) gruplar ve sıklıklar: 140–149: 7, 150–159: 15, 160–169: 6, 170–179: 2. Bir öğrenci \"Sınıfın yarısından fazlası 160 cm'den uzundur\" diyor. Bu yorum doğru mu? 150 cm ve üzeri kaç öğrenci var?",
+   "cozum": [
+    "160 cm ve üzeri: 6 + 2 = 8 öğrenci; 30'un yarısı 15.",
+    "8 < 15: yorum yanlış.",
+    "150 cm ve üzeri: 15 + 6 + 2 = 23 öğrenci."
+   ],
+   "sonuc": "Yorum yanlıştır; 150 cm ve üzeri 23 öğrenci var."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Grupları çakıştırmak (140–150, 150–160) yanlıştır: 150 cm olan öğrenci iki gruba birden sayılır. Histogramda sütunlar arasında boşluk bırakmak da hatalıdır; boşluk o aralıkta hiç veri olmadığı anlamına gelir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi sürekli bir veridir?",
+   "options": [
+    "Kardeş sayısı",
+    "Sınıftaki sıra sayısı",
+    "Bir öğrencinin boyu",
+    "En sevilen renk"
+   ],
+   "answer": 2,
+   "why": "Boy ölçülerek elde edilir ve ara değerler alabilir.",
+   "hint": "Hangisi ölçülerek elde edilir?"
+  },
+  {
+   "prompt": "12, 15, 9, 20, 15, 18, 11 verilerinin ortancası kaçtır?",
+   "options": [
+    "15",
+    "14",
+    "12",
+    "20"
+   ],
+   "answer": 0,
+   "why": "Sıralı: 9, 11, 12, 15, 15, 18, 20 → ortadaki 15.",
+   "hint": "Önce sırala."
+  },
+  {
+   "prompt": "8, 3, 5, 10 verilerinin ortancası kaçtır?",
+   "options": [
+    "5",
+    "6,5",
+    "8",
+    "6"
+   ],
+   "answer": 1,
+   "why": "Sıralı: 3, 5, 8, 10; (5 + 8) ÷ 2 = 6,5.",
+   "hint": "Veri sayısı çift: ortadaki iki değerin ortalaması."
+  },
+  {
+   "prompt": "En küçüğü 41, en büyüğü 79 olan veri 4 gruba ayrılacak. Uygun grup genişliği hangisidir?",
+   "options": [
+    "9",
+    "38",
+    "5",
+    "10"
+   ],
+   "answer": 3,
+   "why": "Açıklık 38; 38 ÷ 4 = 9,5 → 10.",
+   "hint": "Açıklığı grup sayısına böl, yukarı yuvarla."
+  }
+ ]
+}

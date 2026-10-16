@@ -1,0 +1,178 @@
+{
+ "id": "m5-3-3",
+ "baslik": "İşlem Önceliği",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.2.1",
+  "MAT.5.2.2",
+  "MAT.5.2.3",
+  "MAT.5.2.4"
+ ],
+ "sure": 12,
+ "ozet": "Birden fazla işlem içeren ifadelerde işlemlerin hangi sırayla yapılacağını öğrenecek, işlem önceliğini günlük hayattaki durumlarla yorumlayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden bir sıra gerekir?",
+   "govde": "3 + 4 × 2 ifadesini iki kişi farklı sırayla hesaplarsa farklı sonuç bulur: önce toplayan 7 × 2 = 14, önce çarpan 3 + 8 = 11 bulur. Herkesin aynı sonucu bulması için matematikte **ortak bir kural** kullanılır. Bu kurala göre doğru sonuç **11**'dir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İşlem önceliği",
+   "govde": "1. **Parantez** içindeki işlemler önce yapılır.\n2. **Çarpma ve bölme** yapılır; bunlar aynı öncelikte olduğundan **soldan sağa** sırayla yapılır.\n3. **Toplama ve çıkarma** yapılır; bunlar da aynı öncelikte olduğundan **soldan sağa** yapılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıradaki işlemi seç",
+   "aciklama": "İfadede sıradaki işlemin işaretine dokun. Doğru seçersen işlem yapılır; yanlış seçersen nedeni yazılır.",
+   "sim": {
+    "kind": "c-islem-onceligi",
+    "ifade": "3 + 4 × (6 − 2)"
+   },
+   "gorev": {
+    "metin": "İfadeyi hiç hata yapmadan hesapla.",
+    "check": {
+     "all": [
+      {
+       "key": "bitti",
+       "eq": 1
+      },
+      {
+       "key": "hata",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce parantez: 6 − 2.",
+    "Hata yaparsan \"Baştan\" düğmesiyle yeniden başla."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Aynı öncelik: soldan sağa",
+   "aciklama": "Bölme ve çarpma aynı önceliktedir.",
+   "sim": {
+    "kind": "c-islem-onceligi",
+    "ifade": "48 ÷ 6 × 2 − 5"
+   },
+   "gorev": {
+    "metin": "İfadeyi hiç hata yapmadan hesapla.",
+    "check": {
+     "all": [
+      {
+       "key": "bitti",
+       "eq": 1
+      },
+      {
+       "key": "hata",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce ×'e dokunursan ne olur? 48 ÷ 12 = 4 olur ve sonuç değişir.",
+    "Doğru sıra: 48 ÷ 6 = 8, 8 × 2 = 16, 16 − 5 = 11."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hepsi bir arada",
+   "aciklama": "Parantez, bölme, çarpma ve toplama bir arada.",
+   "sim": {
+    "kind": "c-islem-onceligi",
+    "ifade": "(15 − 3) ÷ 4 + 2 × 5"
+   },
+   "gorev": {
+    "metin": "İfadeyi sonuna kadar hesapla.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Parantezden sonra iki işlem birden yapılabilir görünüyor: soldaki bölmeyle başla."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Günlük hayat",
+   "soru": "Tanesi 25 TL olan 3 defter ve tanesi 10 TL olan 2 kalem alan biri kaç TL öder? Durumu tek bir ifadeyle yazalım.",
+   "cozum": [
+    "Defterler: 3 × 25. Kalemler: 2 × 10.",
+    "İfade: 3 × 25 + 2 × 10.",
+    "Önce çarpmalar: 75 + 20.",
+    "Sonra toplama: 95."
+   ],
+   "sonuc": "95 TL öder; işlem önceliği durumun anlamıyla örtüşür."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "20 − 12 ÷ 4 + 1 ifadesinin değerini bulalım.",
+   "cozum": [
+    "Önce bölme: 12 ÷ 4 = 3. İfade: 20 − 3 + 1.",
+    "Çıkarma ve toplama soldan sağa: 20 − 3 = 17.",
+    "17 + 1 = 18."
+   ],
+   "sonuc": "20 − 12 ÷ 4 + 1 = 18."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İşlemleri yazıldığı sırayla soldan sağa yapmak sık yapılan hatadır: 3 + 4 × 2 = 7 × 2 = 14 yanlıştır. Çarpma toplamadan önce yapılır: 3 + 8 = **11**.\n\nTam tersi de hatadır: 20 − 3 + 1 ifadesinde \"toplama önce\" deyip 20 − 4 = 16 bulmak. Toplama ve çıkarma aynı öncelikte olduğu için soldan sağa yapılır: **18**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "5 + 3 × 4 işleminin sonucu kaçtır?",
+   "options": [
+    "32",
+    "17",
+    "27",
+    "12"
+   ],
+   "answer": 1,
+   "why": "Önce çarpma: 3 × 4 = 12; sonra 5 + 12 = 17.",
+   "hint": "Çarpma mı toplama mı önce?"
+  },
+  {
+   "prompt": "(8 + 2) × 3 − 6 işleminin sonucu kaçtır?",
+   "options": [
+    "24",
+    "20",
+    "8",
+    "36"
+   ],
+   "answer": 0,
+   "why": "Parantez: 10. Çarpma: 30. Çıkarma: 24.",
+   "hint": "Önce parantez içini hesapla."
+  },
+  {
+   "prompt": "36 ÷ 6 × 2 işleminin sonucu kaçtır?",
+   "options": [
+    "3",
+    "72",
+    "12",
+    "6"
+   ],
+   "answer": 2,
+   "why": "Aynı öncelik, soldan sağa: 36 ÷ 6 = 6, 6 × 2 = 12.",
+   "hint": "Bölme ve çarpma aynı öncelikte; hangisi solda?"
+  },
+  {
+   "prompt": "Elif 12'li 4 paket kalem alıp 5 kalemi kardeşine verdi. Elif'te kalan kalem sayısını hangi ifade gösterir?",
+   "options": [
+    "4 × (12 − 5)",
+    "(4 + 12) − 5",
+    "4 + 12 × 5",
+    "4 × 12 − 5"
+   ],
+   "answer": 3,
+   "why": "Toplam kalem 4 × 12; 5 tanesi verilince 4 × 12 − 5 = 43.",
+   "hint": "Önce kaç kalem aldığını yaz."
+  }
+ ]
+}

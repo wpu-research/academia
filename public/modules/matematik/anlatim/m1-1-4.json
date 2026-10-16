@@ -1,0 +1,140 @@
+{
+ "id": "m1-1-4",
+ "baslik": "Büyüklükleri Karşılaştırma",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.4"
+ ],
+ "sure": 10,
+ "ozet": "İki grubu bire bir eşleyerek hangisinin daha çok, hangisinin daha az olduğunu ya da eşit olduklarını bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bire bir eşleme",
+   "govde": "İki grubu karşılaştırmak için her nesneyi öbür gruptan bir nesneyle **eşleriz**.\n\n- Eşi olmayan nesneler hangi gruptaysa o grup **daha çoktur**.\n- Öbür grup **daha azdır**.\n- Hepsi eşleşirse iki grup **eşittir**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Elmalar ve armutlar",
+   "aciklama": "Kesikli çizgiler eşleşen nesneleri gösterir. Kırmızı halkalı elmaların eşi yok. Armutları + ve − ile değiştir.",
+   "sim": {
+    "kind": "a-karsilastir",
+    "a": 6,
+    "b": 4,
+    "max": 10,
+    "adlar": [
+     "Elma",
+     "Armut"
+    ],
+    "sabitA": true,
+    "sabitB": false
+   },
+   "gorev": {
+    "metin": "Armut sayısını elma sayısına eşit yap.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Eşi olmayan elma kalmayana kadar armut ekle.",
+    "Fazla armut eklersen hangi grup daha çok olur?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Karşılaştırma sözcükleri",
+   "govde": "- **Çok / az**: Bir grup için kullanılır. “Sepette çok elma var.”\n- **Daha çok / daha az**: İki grup karşılaştırılır. “Elmalar armutlardan daha çok.”\n- **Eşit**: İki grupta aynı sayıda nesne vardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "2 daha az",
+   "aciklama": "Elmalar 3 tane ve değişmiyor. Armutları ayarla.",
+   "sim": {
+    "kind": "a-karsilastir",
+    "a": 3,
+    "b": 7,
+    "max": 10,
+    "adlar": [
+     "Elma",
+     "Armut"
+    ],
+    "sabitA": true,
+    "sabitB": false
+   },
+   "gorev": {
+    "metin": "Armutlar elmalardan 2 daha az olsun.",
+    "check": {
+     "key": "fark",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Önce armutları elmalara eşitle, sonra 2 tane çıkar."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Masada 5 tabak ve 7 kaşık var. Hangisi daha çok?",
+   "cozum": [
+    "Her tabağın yanına bir kaşık koy.",
+    "5 tabağın hepsi bir kaşık aldı, 2 kaşık arttı."
+   ],
+   "sonuc": "Kaşıklar **daha çok**, tabaklar **daha az**. Kaşıklar 2 fazla."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ayşe'nin 6 boncuğu, Can'ın 6 boncuğu var. Ne söyleriz?",
+   "cozum": [
+    "Boncukları bire bir eşle.",
+    "Eşi olmayan boncuk kalmıyor."
+   ],
+   "sonuc": "İki çocuğun boncukları **eşittir**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Daha uzun yere yayılan grup daha çok **görünür** ama daha çok olmayabilir. 4 büyük top, 6 küçük bilyeden daha çok yer kaplar; yine de bilyeler daha çoktur. Karar vermek için eşle ya da say."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "8 kalem ve 5 silgi var. Hangisi doğru?",
+   "options": [
+    "Silgiler daha çok.",
+    "Kalemler daha çok.",
+    "Eşitler.",
+    "Kalemler daha az."
+   ],
+   "answer": 1,
+   "why": "8, 5'ten çoktur; eşlemede 3 kalem artar.",
+   "hint": "Her kaleme bir silgi eşle."
+  },
+  {
+   "prompt": "4 kuş ve 4 yuva var. Her kuş bir yuvaya girerse ne olur?",
+   "options": [
+    "Bir yuva boş kalır.",
+    "Bir kuş dışarıda kalır.",
+    "İki kuş dışarıda kalır.",
+    "Hiç yuva boş kalmaz, hepsi eşleşir."
+   ],
+   "answer": 3,
+   "why": "Sayılar eşit; her kuş bir yuva bulur.",
+   "hint": "İki grupta kaçar tane var?"
+  },
+  {
+   "prompt": "Hangi grup en azdır?",
+   "options": [
+    "9 elma",
+    "7 armut",
+    "3 erik",
+    "5 muz"
+   ],
+   "answer": 2,
+   "why": "3, öbür sayıların hepsinden küçüktür.",
+   "hint": "En küçük sayıyı bul."
+  }
+ ]
+}

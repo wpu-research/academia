@@ -1,0 +1,180 @@
+{
+ "id": "m7-5-2",
+ "baslik": "Dikdörtgenler Prizmasının Hacmi ve Yüzey Alanı",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.4.2",
+  "MAT.7.4.3",
+  "MAT.7.4.4",
+  "MAT.7.4.6"
+ ],
+ "sure": 16,
+ "ders": "olcme-ve-hacim",
+ "ozet": "Dikdörtgenler prizmasının hacmini birim küplerle sayarak bağıntıya ulaşacak, yüzey alanını açınımla bulacak ve kutu, akvaryum gibi problemlerde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Hacim ve yüzey alanı",
+   "govde": "Bir kutunun **hacmi** içine kaç birim küp sığdığını, **yüzey alanı** ise dışını kaplamak için kaç birim kare gerektiğini söyler.\n\nDikdörtgenler prizmasının 6 yüzü vardır; karşılıklı yüzler eştir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birim küplerle hacim",
+   "aciklama": "Uzunluk, genişlik ve yüksekliği değiştir. Hacim ve yüzey alanı canlı hesaplanıyor.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 4,
+    "b": 2,
+    "c": 2
+   },
+   "gorev": {
+    "metin": "Hacmi 12 birimküp olan bir prizma kur.",
+    "check": {
+     "key": "volume",
+     "eq": 12
+    }
+   },
+   "dene": [
+    "Taban katında a · b küp var; c kat üst üste: a · b · c.",
+    "Hacmi 12 olan farklı prizmalar dene: 6 · 2 · 1, 3 · 2 · 2, 4 · 3 · 1…"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Hacim bağıntısı",
+   "govde": "**Hacim = a · b · c = taban alanı · yükseklik**\n\nKüp için (bütün ayrıtlar a): Hacim = a · a · a = **a³**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Aynı hacim, farklı yüzey",
+   "aciklama": "Hacmi aynı olan prizmaların yüzey alanları aynı mı?",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 6,
+    "b": 2,
+    "c": 2
+   },
+   "gorev": {
+    "metin": "Hacmi 24, yüzey alanı 52 birimkare olan prizmayı bul.",
+    "check": {
+     "all": [
+      {
+       "key": "volume",
+       "eq": 24
+      },
+      {
+       "key": "surface",
+       "eq": 52
+      }
+     ]
+    }
+   },
+   "dene": [
+    "6 · 2 · 2'nin yüzey alanı 56. 4 · 3 · 2'yi dene.",
+    "Prizma küpe yaklaştıkça yüzey alanı küçülür."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yüzey alanı",
+   "govde": "Prizmayı açtığımızda (açınım) eş yüzler çiftler hâlinde görünür:\n\n**Yüzey alanı = 2 · (a · b + b · c + a · c)**\n\nKüp için: **6 · a²**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açınım",
+   "aciklama": "\"Açınımı göster\" düğmesiyle prizmayı aç.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 2,
+    "b": 2,
+    "c": 2
+   },
+   "gorev": {
+    "metin": "Yüzey alanı 22 birimkare olan bir prizma kur.",
+    "check": {
+     "key": "surface",
+     "eq": 22
+    }
+   },
+   "dene": [
+    "Açınımda kaç dikdörtgen var? Hangileri eş?",
+    "3 · 2 · 1 prizmasının yüzey alanı: 2 · (6 + 2 + 3) = 22."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Ayrıtları 5 cm, 4 cm ve 3 cm olan dikdörtgenler prizmasının hacmini ve yüzey alanını bulalım.",
+   "cozum": [
+    "Hacim = 5 · 4 · 3 = 60 cm³.",
+    "Yüzey alanı = 2 · (5 · 4 + 4 · 3 + 5 · 3) = 2 · (20 + 12 + 15) = 94 cm²."
+   ],
+   "sonuc": "60 cm³ ve 94 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Hediye kutusu",
+   "soru": "20 cm × 15 cm × 10 cm boyutlarındaki bir hediye kutusu, üst üste binme olmadan ambalaj kâğıdıyla tamamen kaplanacak. En az kaç cm² kâğıt gerekir? Kutu kaç cm³ hacimlidir?",
+   "cozum": [
+    "Yüzey alanı = 2 · (20 · 15 + 15 · 10 + 20 · 10) = 2 · (300 + 150 + 200) = 1300 cm².",
+    "Hacim = 20 · 15 · 10 = 3000 cm³."
+   ],
+   "sonuc": "1300 cm² kâğıt; hacim 3000 cm³."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Hacim ile yüzey alanını karıştırmak sık yapılan bir hatadır. \"Kutuyu boyamak, kaplamak\" yüzey alanı (cm²), \"kutuyu doldurmak, içine sığdırmak\" hacim (cm³) sorusudur. Yüzey alanında **2 ile çarpmayı** unutma: her yüzün bir eşi vardır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Ayrıtları 6 cm, 5 cm ve 2 cm olan prizmanın hacmi kaç cm³'tür?",
+   "options": [
+    "26",
+    "60",
+    "104",
+    "13"
+   ],
+   "answer": 1,
+   "why": "6 · 5 · 2 = 60.",
+   "hint": "Hacim = a · b · c."
+  },
+  {
+   "prompt": "Bir ayrıtı 4 cm olan küpün yüzey alanı kaç cm²'dir?",
+   "options": [
+    "64",
+    "16",
+    "96",
+    "48"
+   ],
+   "answer": 2,
+   "why": "6 · 4² = 6 · 16 = 96.",
+   "hint": "Küpün 6 eş kare yüzü var."
+  },
+  {
+   "prompt": "Hacmi 120 cm³, taban ayrıtları 4 cm ve 5 cm olan prizmanın yüksekliği kaç cm'dir?",
+   "options": [
+    "6",
+    "20",
+    "100",
+    "9"
+   ],
+   "answer": 0,
+   "why": "Taban alanı 20; 120 ÷ 20 = 6.",
+   "hint": "Hacim = taban alanı · yükseklik."
+  },
+  {
+   "prompt": "Ayrıtları 3, 2 ve 1 birim olan prizmanın yüzey alanı kaç birimkaredir?",
+   "options": [
+    "6",
+    "11",
+    "12",
+    "22"
+   ],
+   "answer": 3,
+   "why": "2 · (3 · 2 + 2 · 1 + 3 · 1) = 2 · 11 = 22.",
+   "hint": "Üç farklı yüz alanını bul, topla, 2 ile çarp."
+  }
+ ]
+}

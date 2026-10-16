@@ -1,0 +1,171 @@
+{
+ "id": "m2-2-4",
+ "baslik": "Uzunluk ve Kütle Ölçme Araç ve Birimleri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.10"
+ ],
+ "sure": 14,
+ "ozet": "Karış gibi birimlerin kişiden kişiye değiştiğini görüp metre, santimetre ve kilogram gibi standart birimlerin neden gerekli olduğunu anlayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Herkesin karışı farklı",
+   "govde": "Bir masayı karışla ölçersek sonuç, **kimin karışıyla** ölçtüğümüze göre değişir. Çocuğun karışı küçük, büyüklerin karışı büyüktür.\n\nHerkesin aynı sonucu bulması için **standart birimler** kullanırız. Bunlar herkes için aynı uzunluktadır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Masayı karışla ölç",
+   "aciklama": "Masayı iki farklı karışla ölç. Birimi değiştirince ölçüm baştan başlar.",
+   "sim": {
+    "kind": "a-uzunluk",
+    "nesne": "Masa",
+    "boy": 24,
+    "birimler": [
+     {
+      "ad": "Ayşe'nin karışı",
+      "uz": 4
+     },
+     {
+      "ad": "Öğretmenin karışı",
+      "uz": 6
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Masayı öğretmenin karışıyla tam olarak ölç.",
+    "check": {
+     "all": [
+      {
+       "key": "birim",
+       "eq": 1
+      },
+      {
+       "key": "tam",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce Ayşe'nin karışıyla ölç: kaç çıktı?",
+    "Aynı masa, iki farklı sonuç. Hangisi doğru?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Standart birimler",
+   "govde": "**Uzunluk** için:\n\n- **metre (m)**: Kapı, sınıf, koridor gibi uzun şeyleri ölçeriz. Ölçme aracı: metre, şerit metre.\n- **santimetre (cm)**: Kalem, defter gibi kısa şeyleri ölçeriz. Ölçme aracı: cetvel.\n- **1 m = 100 cm**\n\n**Kütle** için **kilogram (kg)** kullanırız. Ölçme aracı: terazi, baskül."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Cetvelle ölç",
+   "aciklama": "Kalemi sürükle. Ölçmeye cetvelin sıfırından başlamalısın.",
+   "sim": {
+    "kind": "olcme",
+    "length": 7,
+    "start": 2
+   },
+   "gorev": {
+    "metin": "Kalemin başını cetvelin 0 çizgisine getir.",
+    "check": {
+     "key": "start",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Şimdi bitiş noktası kalemin boyunu gösteriyor: kaç cm?",
+    "Kalem 2'den başlarken bitiş 9'du. 9 − 2 kaç eder?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Karpuzu kilogramla tart",
+   "aciklama": "Sağ kefeye 1 kg'lık ağırlıklar koy.",
+   "sim": {
+    "kind": "a-kefe",
+    "nesneler": [
+     {
+      "ad": "Karpuz",
+      "w": 4
+     }
+    ],
+    "birim": "kg",
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "denge",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Terazi dengeye gelince karpuzun kütlesini oku."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ayşe sınıfın boyunu 30 adım, öğretmeni 20 adım buldu. Sınıfın boyu değişti mi?",
+   "cozum": [
+    "Sınıf aynı sınıf; değişen, adımların uzunluğu.",
+    "Öğretmenin adımı daha uzun olduğu için daha az adım attı."
+   ],
+   "sonuc": "Sınıfın boyu **değişmedi**. Farklı sonuçlar çıkmaması için metre gibi standart bir birim gerekir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kalemin boyunu ve bir kapının boyunu ölçmek için hangi birimleri seçeriz?",
+   "cozum": [
+    "Kalem kısadır: santimetre.",
+    "Kapı uzundur: metre."
+   ],
+   "sonuc": "Kalem için **cm**, kapı için **m**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Cetvelle ölçerken nesneyi 0 yerine 1'den başlatmak sık yapılan bir hatadır. 1'den 8'e uzanan bir kalem 8 cm değil, **7 cm**'dir. Ölçmeye **0**'dan başla ya da başlangıcı bitişten çıkar."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir okul koridorunun uzunluğunu hangi birimle ölçmek uygundur?",
+   "options": [
+    "santimetre",
+    "metre",
+    "kilogram",
+    "karış"
+   ],
+   "answer": 1,
+   "why": "Koridor uzundur; metre uygundur.",
+   "hint": "Uzun şeyler için hangi standart birim?"
+  },
+  {
+   "prompt": "1 metre kaç santimetredir?",
+   "options": [
+    "10",
+    "1000",
+    "100",
+    "60"
+   ],
+   "answer": 2,
+   "why": "1 m = 100 cm.",
+   "hint": "Metre ile santimetre arasındaki ilişkiyi hatırla."
+  },
+  {
+   "prompt": "Neden standart birimler kullanırız?",
+   "options": [
+    "Herkes aynı sonucu bulsun diye",
+    "Ölçmek daha uzun sürsün diye",
+    "Karış her zaman aynı olduğu için",
+    "Cetvel olmadığı için"
+   ],
+   "answer": 0,
+   "why": "Standart birimler herkes için aynıdır.",
+   "hint": "Karışla ölçünce ne olmuştu?"
+  }
+ ]
+}

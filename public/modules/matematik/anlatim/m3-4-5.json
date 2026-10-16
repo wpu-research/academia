@@ -1,0 +1,159 @@
+{
+ "id": "m3-4-5",
+ "baslik": "Sıvı Miktarını Tahmin Etme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.5"
+ ],
+ "sure": 10,
+ "ozet": "Sıvıları litre ile ölçeceğiz; yarım litre ve çeyrek litreyi kullanarak bir kabın ne kadar sıvı alacağını tahmin edip kontrol edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Litre",
+   "govde": "Su, süt, ayran gibi sıvıların miktarını **litre** ile ölçeriz. Litrenin kısaltması **L**'dir.\n\nMarketteki büyük su şişelerinin üzerinde 1 L, 1,5 L, 5 L gibi yazılar görürsün. Bir litrelik bir şişeyi tahmin için **referans** olarak kullanabiliriz: \"Bu kova kaç şişe su alır?\""
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yarım ve çeyrek litre",
+   "govde": "1 litre = 2 yarım litre = 4 çeyrek litre\n\n1 yarım litre = 2 çeyrek litre\n\nKüçük miktarlar için yarım litre ve çeyrek litre, büyük miktarlar için litre kullanırız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kabı doldur",
+   "aciklama": "Sürahi 1 litre, şişe yarım litre, bardak çeyrek litre su döker. Kabın yanındaki çizgiler litreyi gösterir; yeşil kesikli çizgi hedeftir.",
+   "sim": {
+    "kind": "b-sivi",
+    "kapasite": 4,
+    "hedef": 2.5
+   },
+   "gorev": {
+    "metin": "Kabı taşırmadan tam 2,5 litre (2 buçuk litre) doldur.",
+    "check": {
+     "all": [
+      {
+       "key": "litre",
+       "eq": 2.5,
+       "tol": 0.001
+      },
+      {
+       "key": "tasti",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 sürahi ve 1 şişe dökmeyi dene.",
+    "Başka bir yol: 1 sürahi, 2 şişe ve 2 bardak."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir litre kaç bardak?",
+   "aciklama": "Bu kez yalnız çeyrek litrelik bardak var.",
+   "sim": {
+    "kind": "b-sivi",
+    "kapasite": 2,
+    "birimler": [
+     0.25
+    ],
+    "hedef": 1
+   },
+   "gorev": {
+    "metin": "Kabı tam 1 litre çizgisine kadar doldur.",
+    "check": {
+     "all": [
+      {
+       "key": "litre",
+       "eq": 1,
+       "tol": 0.001
+      },
+      {
+       "key": "tasti",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kaç bardak döktüğünü say: 4 çeyrek litre 1 litredir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "3 litre ayran çeyrek litrelik bardaklara dolduruluyor. Kaç bardak dolar?",
+   "cozum": [
+    "1 litre 4 çeyrek litredir: 1 litreden 4 bardak.",
+    "3 litre için 4 + 4 + 4 = 12."
+   ],
+   "sonuc": "**12 bardak** dolar."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Tahmin",
+   "soru": "Bir kovanın ne kadar su aldığı için en uygun tahmin hangisidir: 1 litre, 10 litre ya da 100 litre?",
+   "cozum": [
+    "1 litre bir büyük şişe kadardır; kova bundan çok daha büyük.",
+    "100 litre bir küvete yakındır; kova bundan çok daha küçük."
+   ],
+   "sonuc": "Kova yaklaşık **10 litre** su alır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kabın boyuna bakıp \"uzun kap daha çok alır\" demek her zaman doğru değildir. İnce uzun bir şişe, kısa ama geniş bir tencereden daha az su alabilir. Tahmini, bildiğin bir ölçüyle (örneğin 1 litrelik şişe) karşılaştırarak yap."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "2 litre kaç yarım litredir?",
+   "options": [
+    "1",
+    "2",
+    "4",
+    "8"
+   ],
+   "answer": 2,
+   "why": "1 litre 2 yarım litre; 2 litre 4 yarım litre.",
+   "hint": "1 litrede kaç yarım litre var?"
+  },
+  {
+   "prompt": "Hangisinin aldığı sıvı miktarını litreyle söylemek daha uygundur?",
+   "options": [
+    "Bir küvet",
+    "Bir yüksük",
+    "Bir damlalık",
+    "Bir çay kaşığı"
+   ],
+   "answer": 0,
+   "why": "Küvet çok miktarda su alır; litre ile ölçülür.",
+   "hint": "Hangisi en büyük kap?"
+  },
+  {
+   "prompt": "8 çeyrek litre kaç litredir?",
+   "options": [
+    "4",
+    "8",
+    "32",
+    "2"
+   ],
+   "answer": 3,
+   "why": "4 çeyrek litre 1 litre; 8 çeyrek litre 2 litre.",
+   "hint": "Kaç tane 4 çeyrek litre var?"
+  },
+  {
+   "prompt": "Sürahide 1 litre su vardı. İki tane çeyrek litrelik bardak dolduruldu. Sürahide ne kadar su kaldı?",
+   "options": [
+    "Hiç kalmadı",
+    "Yarım litre",
+    "Çeyrek litre",
+    "1 litre"
+   ],
+   "answer": 1,
+   "why": "2 çeyrek litre yarım litre eder; 1 litreden yarım litre çıkınca yarım litre kalır.",
+   "hint": "2 çeyrek litre ne kadar eder?"
+  }
+ ]
+}

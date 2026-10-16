@@ -1,0 +1,213 @@
+{
+ "id": "m3-3-4",
+ "baslik": "Çarpma ve Bölme İşlemlerini Çözümleme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.4"
+ ],
+ "sure": 14,
+ "ders": "carpma-alan-modeli",
+ "ozet": "İki basamaklı bir sayıyı onluk ve birliklerine ayırıp alan modeliyle çarpacak, bölmede bölüm ve kalanı paylaştırarak bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çarpmayı parçalara ayırmak",
+   "govde": "14 × 6'yı bir dikdörtgen olarak düşün: 6 satır, 14 sütun. 14'ü 10 ve 4 diye ayırırsak dikdörtgen iki parçaya bölünür:\n\n6 × 14 = 6 × 10 + 6 × 4 = 60 + 24 = 84\n\nBöylece büyük bir çarpmayı bildiğimiz küçük çarpmalara çözümleriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Onluk ve birlik parçaları",
+   "aciklama": "Sütun sayısı 10'u geçince dikdörtgen iki renge ayrılır: onluk kısım ve birlik kısım.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 3,
+    "cols": 4,
+    "split": true,
+    "max": 14
+   },
+   "gorev": {
+    "metin": "6 × 14 dikdörtgenini kur ve iki parçanın toplamını oku.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 6
+      },
+      {
+       "key": "cols",
+       "eq": 14
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Modelin yanındaki yazı işlemi 6 × 10 + 6 × 4 = 60 + 24 olarak çözümler.",
+    "Satır sayısını 7 yapınca hangi parçalar değişiyor?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bölmenin terimleri",
+   "govde": "29 ÷ 4 = 7, kalan 1\n\n- **Bölünen:** 29 · **Bölen:** 4 · **Bölüm:** 7 · **Kalan:** 1\n\nKalan her zaman **bölenden küçük** olmalıdır.\n**Sağlama:** bölüm × bölen + kalan = bölünen → 7 × 4 + 1 = 29."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kalanlı bölme",
+   "aciklama": "17 nesneyi 5 tabağa tur tur dağıt. Bir tur yapmaya yetmeyen nesneler kalan olur.",
+   "sim": {
+    "kind": "b-paylastir",
+    "toplam": 17,
+    "grup": 5,
+    "max": 30,
+    "maxGrup": 6
+   },
+   "gorev": {
+    "metin": "Dağıtmayı bitir ve bölüm ile kalanı oku.",
+    "check": {
+     "all": [
+      {
+       "key": "toplam",
+       "eq": 17
+      },
+      {
+       "key": "grup",
+       "eq": 5
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kalan nesneler 5 tabağa birer tane daha vermeye yetmiyor.",
+    "Sağlama: 3 × 5 + 2 = 17."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Gruplayarak bölme",
+   "aciklama": "Bu kez nesneleri belli büyüklükte gruplara ayırıyoruz: 20 kalemi 4'erli paketle.",
+   "sim": {
+    "kind": "b-paylastir",
+    "toplam": 20,
+    "grup": 4,
+    "mod": "grupla",
+    "max": 30,
+    "maxGrup": 6
+   },
+   "gorev": {
+    "metin": "Paketlemeyi bitir.",
+    "check": {
+     "all": [
+      {
+       "key": "toplam",
+       "eq": 20
+      },
+      {
+       "key": "grup",
+       "eq": 4
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kaç paket oldu? 20 ÷ 4 = 5.",
+    "Nesne sayısını 22 yaparsan kaç kalem pakete girmez?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "23 × 4 işlemini çözümleyerek yapalım.",
+   "cozum": [
+    "23 = 20 + 3.",
+    "20 × 4 = 80, 3 × 4 = 12.",
+    "80 + 12 = 92."
+   ],
+   "sonuc": "23 × 4 = **92**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Üç basamaklı sayıyla",
+   "soru": "124 × 3 işlemini çözümleyerek yapalım.",
+   "cozum": [
+    "124 = 100 + 20 + 4.",
+    "100 × 3 = 300, 20 × 3 = 60, 4 × 3 = 12.",
+    "300 + 60 + 12 = 372."
+   ],
+   "sonuc": "124 × 3 = **372**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Kalanlı bölme",
+   "soru": "29 ÷ 4 işleminin bölümünü ve kalanını bulalım.",
+   "cozum": [
+    "4'ün katlarından 29'u geçmeyen en büyüğü 28: 4 × 7 = 28.",
+    "29 − 28 = 1 kalır.",
+    "Sağlama: 7 × 4 + 1 = 29."
+   ],
+   "sonuc": "Bölüm 7, kalan 1."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kalanın bölenden büyük ya da bölene eşit olması hatadır. 29 ÷ 4 için \"6, kalan 5\" yazılırsa kalan 5'ten bir grup daha çıkar; doğrusu 7, kalan 1'dir. Çarpmada da onluk kısmı unutup yalnız birlikleri çarpmamaya dikkat et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "16 × 5 = ?",
+   "options": [
+    "85",
+    "55",
+    "70",
+    "80"
+   ],
+   "answer": 3,
+   "why": "10 × 5 = 50, 6 × 5 = 30; 50 + 30 = 80.",
+   "hint": "16'yı 10 ve 6 diye ayır."
+  },
+  {
+   "prompt": "38 ÷ 6 işleminin bölümü ve kalanı nedir?",
+   "options": [
+    "6, kalan 4",
+    "7, kalan 0",
+    "6, kalan 2",
+    "5, kalan 8"
+   ],
+   "answer": 2,
+   "why": "6 × 6 = 36, 38 − 36 = 2. Sağlama: 6 × 6 + 2 = 38.",
+   "hint": "6'nın katlarından 38'i geçmeyen en büyüğü hangisi?"
+  },
+  {
+   "prompt": "Bir bölmede bölen 7'dir. Kalan en çok kaç olabilir?",
+   "options": [
+    "8",
+    "6",
+    "0",
+    "7"
+   ],
+   "answer": 1,
+   "why": "Kalan bölenden küçük olmalı; en çok 6 olabilir.",
+   "hint": "Kalan 7 olsaydı ne olurdu?"
+  },
+  {
+   "prompt": "Bölümü 5, böleni 8, kalanı 3 olan bölmede bölünen kaçtır?",
+   "options": [
+    "43",
+    "40",
+    "48",
+    "35"
+   ],
+   "answer": 0,
+   "why": "Bölünen = 5 × 8 + 3 = 43.",
+   "hint": "Sağlama kuralını kullan."
+  }
+ ]
+}

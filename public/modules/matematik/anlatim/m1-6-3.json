@@ -1,0 +1,235 @@
+{
+ "id": "m1-6-3",
+ "baslik": "Geometrik Şekilleri Sınıflandırma",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.3.5"
+ ],
+ "sure": 12,
+ "ozet": "Şekilleri kenar ve köşe sayılarına göre gruplayacağız. Renk, büyüklük ve yönün şeklin adını değiştirmediğini göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neye göre gruplarız?",
+   "govde": "Şekilleri sınıflandırırken **kenar sayısına** ve **köşe sayısına** bakarız.\n\n- 3 kenar, 3 köşe → **üçgen**\n- 4 kenar, 4 köşe → **kare** ya da **dikdörtgen**\n- Köşesi yok, kenarı eğri → **daire**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgen avı",
+   "aciklama": "Üçgenler farklı biçimlerde, renklerde ve büyüklüklerde olabilir.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 5,
+    "hedef": "u",
+    "items": [
+     {
+      "k": "u",
+      "s": "ucgen",
+      "c": 0
+     },
+     {
+      "k": "n",
+      "s": "kare",
+      "c": 1
+     },
+     {
+      "k": "u",
+      "s": "ucgen",
+      "v": "dik",
+      "r": 20,
+      "c": 1
+     },
+     {
+      "k": "n",
+      "s": "daire",
+      "c": 2
+     },
+     {
+      "k": "u",
+      "s": "ucgen",
+      "v": "genis",
+      "c": 2
+     },
+     {
+      "k": "n",
+      "s": "dikdortgen",
+      "c": 3
+     },
+     {
+      "k": "u",
+      "s": "ucgen",
+      "v": "ince",
+      "r": 200,
+      "c": 3
+     },
+     {
+      "k": "n",
+      "s": "besgen",
+      "c": 0
+     },
+     {
+      "k": "u",
+      "s": "ucgen",
+      "b": 0.6,
+      "r": 180,
+      "c": 1
+     },
+     {
+      "k": "n",
+      "s": "altigen",
+      "c": 2
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Bütün üçgenleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Her şeklin kenarlarını say.",
+    "Ters duran ya da çok küçük bir üçgen de üçgendir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Değişmeyenler",
+   "govde": "Bir şeklin **rengi**, **büyüklüğü** ya da **duruşu** değişse de adı değişmez.\n\nUcu aşağıda duran üçgen de üçgendir. Köşesi üstte duran kare de karedir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "4 kenarlılar",
+   "aciklama": "Bu kez kenar sayısı 4 olan şekilleri gruplayalım.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "d",
+    "items": [
+     {
+      "k": "d",
+      "s": "kare",
+      "c": 0
+     },
+     {
+      "k": "n",
+      "s": "ucgen",
+      "c": 1
+     },
+     {
+      "k": "d",
+      "s": "kare",
+      "r": 45,
+      "b": 0.9,
+      "c": 2
+     },
+     {
+      "k": "n",
+      "s": "daire",
+      "c": 3
+     },
+     {
+      "k": "d",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 44,
+      "c": 1
+     },
+     {
+      "k": "n",
+      "s": "besgen",
+      "c": 2
+     },
+     {
+      "k": "d",
+      "s": "dikdortgen",
+      "w": 40,
+      "h": 80,
+      "r": 20,
+      "c": 3
+     },
+     {
+      "k": "n",
+      "s": "altigen",
+      "c": 0
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "4 kenarlı bütün şekilleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Eğik duran şekillerin de kenarlarını say."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Elimizde 2 kare, 3 üçgen ve 1 daire var. Bunları köşe sayısına göre gruplarsak kaç grup olur?",
+   "cozum": [
+    "Kareler: 4 köşe.",
+    "Üçgenler: 3 köşe.",
+    "Daire: köşesi yok."
+   ],
+   "sonuc": "**3** grup olur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ali bir şekil çizdi: 4 kenarı var, karşılıklı kenarları eşit ama hepsi eşit değil. Hangi gruba girer?",
+   "cozum": [
+    "4 kenarlı: kare ya da dikdörtgen.",
+    "Kenarlarının hepsi eşit değil."
+   ],
+   "sonuc": "**Dikdörtgen** grubuna girer."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Ters duran bir üçgeni ya da köşesi üstte duran bir kareyi “başka bir şekil” sanmak yaygın bir hatadır. Şeklin adını kenar ve köşe sayısı belirler, duruşu değil."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisinin 3 köşesi vardır?",
+   "options": [
+    "Kare",
+    "Daire",
+    "Dikdörtgen",
+    "Üçgen"
+   ],
+   "answer": 3,
+   "why": "Üçgenin 3 köşesi vardır.",
+   "hint": "“Üç”gen sözcüğüne bak."
+  },
+  {
+   "prompt": "Ucu aşağı bakan bir üçgen hangi gruba girer?",
+   "options": [
+    "Üçgenler",
+    "Kareler",
+    "Daireler",
+    "Hiçbiri"
+   ],
+   "answer": 0,
+   "why": "Duruşu değişse de 3 kenarı vardır; üçgendir.",
+   "hint": "Kenarlarını say."
+  },
+  {
+   "prompt": "Hangi şeklin köşesi yoktur?",
+   "options": [
+    "Kare",
+    "Daire",
+    "Üçgen",
+    "Dikdörtgen"
+   ],
+   "answer": 1,
+   "why": "Dairenin kenarı eğridir, köşesi yoktur.",
+   "hint": "Hangisinin sivri yeri yok?"
+  }
+ ]
+}

@@ -1,0 +1,171 @@
+{
+ "id": "m6-6-1",
+ "baslik": "Kategorik ve Nicel (Kesikli) Veri Dağılımları",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.5.1",
+  "MAT.6.5.2"
+ ],
+ "sure": 15,
+ "ders": "veri-ortalama",
+ "ozet": "Kategorik ve nicel (kesikli) veriyi ayırt edecek, sıklık tablosu ve sütun grafiğiyle gösterecek; aritmetik ortalama ve açıklıkla veriyi yorumlayıp karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Veri türleri",
+   "govde": "Bir araştırmada topladığımız bilgilere **veri** denir.\n\n- **Kategorik veri:** sayı değil, bir grup ya da özellik belirtir. Göz rengi, en sevilen spor, doğduğu şehir.\n- **Nicel (kesikli) veri:** sayarak elde edilir ve sayılar arasında ara değer yoktur. Kardeş sayısı, okunan kitap sayısı, bir maçtaki gol sayısı.\n\nKategorik veride ortalama hesaplanmaz; en sık görülen kategoriye bakılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kategorik veri: sütun grafiği",
+   "aciklama": "Bir sınıfta en sevilen spor dalı soruldu. Sütunları sürükleyerek sıklıkları değiştir.",
+   "sim": {
+    "kind": "veri-grafigi",
+    "labels": [
+     "Futbol",
+     "Voleybol",
+     "Basketbol",
+     "Yüzme"
+    ],
+    "values": [
+     8,
+     5,
+     6,
+     3
+    ],
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Sınıfta toplam 30 öğrenci olsun.",
+    "check": {
+     "key": "total",
+     "eq": 30
+    }
+   },
+   "dene": [
+    "Kategorik veride anlamlı olan, en uzun sütunun kategorisidir (en çok tercih edilen).",
+    "Grafiğin altındaki ortalama ve ortanca sütun yüksekliklerine aittir; spor dalları için bir ortalama düşünülemez."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ortalama ve açıklık",
+   "govde": "**Aritmetik ortalama** = verilerin toplamı ÷ veri sayısı\n\n**Açıklık** = en büyük değer − en küçük değer\n\nOrtalama verinin \"merkezini\", açıklık verinin ne kadar yayıldığını anlatır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Nicel veri: okunan kitaplar",
+   "aciklama": "Yedi öğrencinin bir ayda okuduğu kitap sayıları. Sütunları sürükle; yeşil kesikli çizgi ortalamayı gösteriyor.",
+   "sim": {
+    "kind": "veri-grafigi",
+    "labels": [
+     "Ada",
+     "Can",
+     "Eda",
+     "Efe",
+     "İpek",
+     "Mert",
+     "Su"
+    ],
+    "values": [
+     3,
+     5,
+     2,
+     6,
+     4,
+     7,
+     1
+    ],
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Ortalamayı 5 kitaba çıkar.",
+    "check": {
+     "key": "mean",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "Ortalama 5 olması için toplam 7 × 5 = 35 olmalı.",
+    "Bir öğrencinin değerini çok büyütünce ortalama ve açıklık nasıl değişiyor?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir kırtasiyede 5 günde satılan defter sayıları: 12, 15, 9, 18, 11. Ortalama ve açıklığı bulalım.",
+   "cozum": [
+    "Toplam: 12 + 15 + 9 + 18 + 11 = 65.",
+    "Ortalama: 65 ÷ 5 = 13.",
+    "Açıklık: 18 − 9 = 9."
+   ],
+   "sonuc": "Ortalama 13 defter, açıklık 9 defterdir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Takım seçimi",
+   "soru": "Bir yarışma için iki takımın son beş puanı:\nA takımı: 8, 9, 10, 9, 9\nB takımı: 4, 14, 9, 12, 6\nHangi takımın daha istikrarlı olduğunu verilerle açıklayalım.",
+   "cozum": [
+    "A'nın ortalaması: 45 ÷ 5 = 9; açıklığı: 10 − 8 = 2.",
+    "B'nin ortalaması: 45 ÷ 5 = 9; açıklığı: 14 − 4 = 10.",
+    "Ortalamalar eşit; A'nın puanları ortalamaya çok daha yakın (açıklık küçük)."
+   ],
+   "sonuc": "A takımı daha istikrarlıdır. Yalnız ortalamaya bakmak bu farkı göstermez."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kategorik veride ortalama hesaplamak anlamsızdır: \"Futbol, voleybol ve yüzmenin ortalaması\" diye bir şey yoktur. Bir de ortalamayı hesaplarken **veri sayısına** değil kategori sayısına bölmek sık yapılan bir hatadır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi kategorik bir veridir?",
+   "options": [
+    "Boy uzunluğu",
+    "Kardeş sayısı",
+    "Göz rengi",
+    "Ayakkabı numarası"
+   ],
+   "answer": 2,
+   "why": "Göz rengi bir sayı değil, bir özelliktir.",
+   "hint": "Hangisi sayıyla ifade edilmez?"
+  },
+  {
+   "prompt": "6, 8, 10, 4, 7 verilerinin aritmetik ortalaması kaçtır?",
+   "options": [
+    "7",
+    "8",
+    "35",
+    "6"
+   ],
+   "answer": 0,
+   "why": "Toplam 35; 35 ÷ 5 = 7.",
+   "hint": "Toplamı veri sayısına böl."
+  },
+  {
+   "prompt": "12, 5, 20, 9 verilerinin açıklığı kaçtır?",
+   "options": [
+    "20",
+    "5",
+    "11",
+    "15"
+   ],
+   "answer": 3,
+   "why": "20 − 5 = 15.",
+   "hint": "En büyükten en küçüğü çıkar."
+  },
+  {
+   "prompt": "4 sayının ortalaması 10'dur. Bu sayılara 20 eklenirse yeni ortalama kaç olur?",
+   "options": [
+    "15",
+    "12",
+    "10",
+    "11"
+   ],
+   "answer": 1,
+   "why": "İlk toplam 40; yeni toplam 60, veri sayısı 5: 60 ÷ 5 = 12.",
+   "hint": "Önce eski toplamı bul."
+  }
+ ]
+}

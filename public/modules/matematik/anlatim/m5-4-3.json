@@ -1,0 +1,191 @@
+{
+ "id": "m5-4-3",
+ "baslik": "Çokgenler ve Çember",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.3.1",
+  "MAT.5.3.2",
+  "MAT.5.3.3",
+  "MAT.5.3.4",
+  "MAT.5.3.5",
+  "MAT.5.3.6",
+  "MAT.5.3.7"
+ ],
+ "sure": 14,
+ "ozet": "Çokgenleri ardışık olarak kesişen doğru parçalarının oluşturduğu kapalı şekiller olarak tanıyacak, kenar, köşe ve açı sayılarını inceleyecek, çemberin merkez, yarıçap ve çapını keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çokgen nedir?",
+   "govde": "Düzlemde doğru parçalarının **uç uca eklenmesiyle** oluşan, kendini kesmeyen **kapalı** şekillere **çokgen** denir. Her doğru parçası bir **kenar**, iki kenarın birleştiği yer bir **köşedir**; her köşede bir **iç açı** vardır.\n\nBir çokgende kenar, köşe ve iç açı sayıları birbirine eşittir. Çokgenler kenar sayısına göre adlandırılır: üçgen (3), dörtgen (4), beşgen (5), altıgen (6), sekizgen (8)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Beşgeni incele",
+   "aciklama": "Köşeleri sürükleyerek beşgenin biçimini değiştir. Açılar köşelerde, toplamları sağda yazar.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      0,
+      3
+     ]
+    ],
+    "angles": true
+   },
+   "dene": [
+    "Biçim değişse de kenar ve köşe sayısı 5 kalır.",
+    "İç açıların toplamına bak: köşeleri taşıdığında değişiyor mu?",
+    "Aynı şeyi üçgende dene: aşağıdaki tahtada iç açılar toplamı kaç?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Düzgün çokgen",
+   "govde": "Bütün kenarları eşit uzunlukta ve bütün iç açıları eşit ölçüde olan çokgene **düzgün çokgen** denir. Eşkenar üçgen ve kare düzgün çokgendir. Dikdörtgenin açıları eşittir ama kenarları eşit olmayabilir; bu yüzden her dikdörtgen düzgün çokgen değildir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgen",
+   "aciklama": "Üçgenin köşelerini sürükle.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "angles": true
+   },
+   "dene": [
+    "Hangi biçimi verirsen ver, üçgenin iç açıları toplamı 180°.",
+    "Bir açıyı büyütünce öteki açılar küçülüyor."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Çember",
+   "govde": "Düzlemde sabit bir noktaya **eşit uzaklıktaki** bütün noktaların oluşturduğu kapalı eğriye **çember** denir. Sabit nokta çemberin **merkezi**dir.\n\n- Merkezi çember üzerindeki bir noktaya birleştiren doğru parçası **yarıçaptır** (r).\n- Çember üzerindeki iki noktayı birleştiren ve **merkezden geçen** doğru parçası **çaptır**.\n- Çap = 2 × yarıçap.\n\nÇember bir çokgen değildir; çünkü doğru parçalarından değil, eğri bir çizgiden oluşur. Çember ile içindeki bölgenin birlikte oluşturduğu şekle **daire** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Merkez, yarıçap, çap",
+   "aciklama": "A noktasını çember üzerinde gezdir; merkeze uzaklığı değişiyor mu? Kaydırıcıyla yarıçapı değiştir.",
+   "sim": {
+    "kind": "c-cember",
+    "r": 2
+   },
+   "gorev": {
+    "metin": "Çapı 10 birim olan bir çember çiz.",
+    "check": {
+     "key": "r",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "Çap = 2 × yarıçap: 2 × ? = 10.",
+    "B noktası A'nın tam karşısında; [AB] merkezden geçer."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Çokgen",
+   "soru": "Altıgenin kaç kenarı, kaç köşesi, kaç iç açısı vardır?",
+   "cozum": [
+    "\"Altı\" + \"gen\": 6 kenar.",
+    "Kenar, köşe ve iç açı sayıları eşittir."
+   ],
+   "sonuc": "6 kenar, 6 köşe, 6 iç açı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Çember",
+   "soru": "Çapı 14 cm olan bir çemberin yarıçapı kaç cm'dir? Yarıçapı 9 cm olan çemberin çapı kaç cm'dir?",
+   "cozum": [
+    "Yarıçap = çap ÷ 2 = 14 ÷ 2 = 7 cm.",
+    "Çap = 2 × yarıçap = 2 × 9 = 18 cm."
+   ],
+   "sonuc": "7 cm ve 18 cm."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Açık bir şekli ya da kenarları birbirini kesen bir şekli çokgen sanmak hatadır; çokgen **kapalı** olmalı ve kenarları yalnız uç noktalarda birleşmelidir.\n\nYarıçap ile çapı karıştırmak da sık yapılır: çap, yarıçapın **iki katıdır** ve mutlaka merkezden geçer."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Sekizgenin kaç köşesi vardır?",
+   "options": [
+    "6",
+    "8",
+    "16",
+    "4"
+   ],
+   "answer": 1,
+   "why": "Kenar sayısı ile köşe sayısı eşittir: 8.",
+   "hint": "Adındaki sayıya bak."
+  },
+  {
+   "prompt": "Yarıçapı 9 cm olan çemberin çapı kaç cm'dir?",
+   "options": [
+    "4,5 cm",
+    "9 cm",
+    "18 cm",
+    "81 cm"
+   ],
+   "answer": 2,
+   "why": "Çap = 2 × 9 = 18 cm.",
+   "hint": "Çap yarıçapın kaç katıdır?"
+  },
+  {
+   "prompt": "Hangisi bir çokgen değildir?",
+   "options": [
+    "Çember",
+    "Kare",
+    "Üçgen",
+    "Altıgen"
+   ],
+   "answer": 0,
+   "why": "Çember eğri bir çizgidir; doğru parçalarından oluşmaz.",
+   "hint": "Kenarları doğru parçası olmayan şekli ara."
+  },
+  {
+   "prompt": "Çemberin üzerindeki bütün noktalar için hangisi doğrudur?",
+   "options": [
+    "Merkezden geçerler",
+    "Çapın ortasındadırlar",
+    "Birbirlerine eşit uzaklıktadırlar",
+    "Merkeze eşit uzaklıktadırlar"
+   ],
+   "answer": 3,
+   "why": "Çember, merkeze eşit uzaklıktaki noktalardan oluşur; bu uzaklık yarıçaptır.",
+   "hint": "Çemberin tanımını hatırla."
+  }
+ ]
+}

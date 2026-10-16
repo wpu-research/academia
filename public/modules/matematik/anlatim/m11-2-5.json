@@ -1,0 +1,91 @@
+{
+ "id": "m11-2-5",
+ "baslik": "Çokgenlerle İlgili Problemler",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.2.5"],
+ "sure": 17,
+ "ozet": "Çokgen bilgilerini problemlerde birleştireceğiz: düzlemi döşeme, düzgün altıgende uzunluk ve alan, birleşik şekillerde açı ve koordinatlarla alan hesabı.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Problem çözme araçları",
+   "govde": "Çokgen problemlerinde en çok kullanılan araçlar:\n- İç açılar toplamı (n − 2) · 180°, dış açılar toplamı 360°.\n- Düzgün çokgende eş kenarlar → **ikizkenar üçgenler**; eş kenar ve 60° → **eşkenar üçgen**.\n- Çokgeni üçgenlere, dikdörtgenlere bölerek alan bulmak.\n- Bir noktada buluşan açıların toplamı 360°."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Düzlemi döşeme",
+   "govde": "Eş düzgün çokgenler bir köşe etrafında boşluksuz ve üst üste binmeden yerleşecekse, o köşede buluşan iç açıların toplamı 360° olmalıdır. Yani bir iç açı 360°'yi tam bölmelidir.\n\nYalnız tek tür düzgün çokgenle döşeme üç biçimde mümkündür: eşkenar üçgen (6 tane, 6 · 60°), kare (4 · 90°), düzgün altıgen (3 · 120°)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hangi çokgen döşer?",
+   "aciklama": "Kenar sayısını değiştir ve bir iç açının 360°'yi tam bölüp bölmediğine bak.",
+   "sim": { "kind": "f-duzgun", "n": 5, "show": [], "toggles": ["ucgen", "dis"] },
+   "gorev": { "metin": "Arı peteğindeki düzgün çokgeni bul: bir köşede bunlardan 3 tanesi buluşur.", "check": { "key": "ic", "eq": 120, "tol": 1e-9 } },
+   "dene": ["Beşgen: 360° / 108° = 3,33... tam sayı değil, boşluk kalır.", "Sekizgen: 135° · 2 = 270°; kalan 90° bir kareyle doldurulabilir (sekizgen + kare döşemesi)."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: düzgün altıgen",
+   "soru": "Kenarı 6 cm olan düzgün altıgen ABCDEF'de |AD| (uzun köşegen), |AC| (kısa köşegen) ve alanı bulalım.",
+   "cozum": [
+    "Altıgen 6 eşkenar üçgenden oluşur; AD iki üçgenin kenarından geçer: |AD| = 2 · 6 = 12.",
+    "ABC üçgeninde |AB| = |BC| = 6, B açısı 120°. Kosinüs teoremi: |AC|² = 36 + 36 − 2 · 36 · cos 120° = 72 + 36 = 108.",
+    "|AC| = √108 = 6√3.",
+    "Alan: 6 · (√3/4) · 36 = 54√3."
+   ],
+   "sonuc": "|AD| = 12 cm, |AC| = 6√3 cm, alan 54√3 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: birleşik şekil",
+   "soru": "ABCD karesinin BC kenarı üzerine, karenin dışında BCE eşkenar üçgeni çiziliyor. ∠BAE kaç derecedir?",
+   "cozum": [
+    "|AB| = |BC| = |BE| (karenin ve eşkenar üçgenin kenarları).",
+    "∠ABE = ∠ABC + ∠CBE = 90° + 60° = 150°.",
+    "ABE ikizkenar üçgen: taban açıları (180° − 150°)/2 = 15°."
+   ],
+   "sonuc": "∠BAE = 15°."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Koordinatlarla alan",
+   "aciklama": "Geometri tahtasında köşeler tam sayı noktalarda. Alan otomatik hesaplanıyor; sen de şekli dikdörtgen ve üçgenlere bölerek doğrula.",
+   "sim": { "kind": "geometri-tahtasi", "points": [[1, 1], [6, 1], [7, 4], [4, 6], [1, 4]] },
+   "gorev": { "metin": "Köşeleri taşıyarak alanı 20 birimkare olan bir beşgen yap.", "check": { "all": [{ "key": "area", "eq": 20 }, { "key": "n", "eq": 5 }] } },
+   "dene": ["Başlangıçtaki beşgenin alanı 22,5: 1 ≤ x ≤ 6, 1 ≤ y ≤ 4 dikdörtgeni (15) + iki üçgen.", "Bir köşeyi bir birim içeri çekmek alanı ne kadar değiştiriyor?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: köşegenden çokgene",
+   "soru": "Bir düzgün çokgenin bir dış açısı 40°'dir. Bu çokgenin köşegen sayısı kaçtır?",
+   "cozum": [
+    "n = 360° / 40° = 9.",
+    "Köşegen sayısı: 9 · 6 / 2 = 27."
+   ],
+   "sonuc": "27 köşegen."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Düzgün bir altıgen ile düzgün bir sekizgen bir kenarları ortak olacak şekilde yan yana konuyor. Ortak kenarın bir ucunda, iki çokgenin dışında kalan açı kaç derecedir?",
+   "cozum": [
+    "Düzgün altıgenin iç açısı 120°, düzgün sekizgeninki 135°.",
+    "Bir noktadaki açılar toplamı 360°.",
+    "Dışta kalan açı: 360° − 120° − 135° = 105°."
+   ],
+   "sonuc": "105°."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Şekilde görünene güvenip ölçü uydurmak. Bir açının 15° olduğunu \"küçük görünüyor\" diye değil, eşit kenarlardan (ikizkenar üçgen) ve bilinen açılardan çıkarmalısın. Önce eş uzunlukları işaretle, sonra açı bağıntılarını yaz."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Aşağıdaki düzgün çokgenlerden hangisi tek başına düzlemi boşluksuz döşeyemez?", "options": ["Eşkenar üçgen", "Kare", "Düzgün beşgen", "Düzgün altıgen"], "answer": 2, "why": "Beşgenin iç açısı 108°; 360°'yi tam bölmez.", "hint": "İç açı 360°'yi tam bölmeli." },
+  { "prompt": "Kenarı 2 cm olan düzgün altıgenin alanı kaç cm²'dir?", "options": ["6√3", "12√3", "3√3", "24"], "answer": 0, "why": "6 eşkenar üçgen: 6 · (√3/4) · 4 = 6√3.", "hint": "Altıgeni 6 eşkenar üçgene ayır." },
+  { "prompt": "ABCD karesinin dışına BCE eşkenar üçgeni çiziliyor. ∠BAE kaç derecedir?", "options": ["30°", "15°", "60°", "45°"], "answer": 1, "why": "ABE ikizkenar, tepe açısı 150°; taban açıları 15°.", "hint": "|AB| = |BE| olduğunu gör." },
+  { "prompt": "Bir dış açısı 40° olan düzgün çokgenin kaç köşegeni vardır?", "options": ["36", "9", "20", "27"], "answer": 3, "why": "n = 9; 9 · 6 / 2 = 27.", "hint": "Önce kenar sayısını bul." }
+ ]
+}

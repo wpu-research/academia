@@ -1,0 +1,161 @@
+{
+ "id": "m3-1-5",
+ "baslik": "Tek ve Çift Sayılar",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.5"
+ ],
+ "sure": 10,
+ "ozet": "Nesneleri ikişerli eşleyerek bir sayının tek mi çift mi olduğunu bulacağız. Sonra kısa yolu öğreneceğiz: birler basamağına bakmak.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "İkişerli eşleme",
+   "govde": "Bir sınıftaki öğrenciler ikişerli eş olacak. Herkes bir eş bulursa öğrenci sayısı **çift**, bir kişi eşsiz kalırsa **tek**tir.\n\nÇift sayılar: 0, 2, 4, 6, 8, 10, 12…\nTek sayılar: 1, 3, 5, 7, 9, 11, 13…\n\nSayı doğrusunda tek ve çift sayılar sırayla gelir: tek, çift, tek, çift…"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşleri bul",
+   "aciklama": "Kaydırıcıyla nesne sayısını değiştir. Nesneler ikişerli sütunlara dizilir; eşsiz kalan nesne turuncu görünür.",
+   "sim": {
+    "kind": "b-ciftler",
+    "n": 7,
+    "max": 20
+   },
+   "gorev": {
+    "metin": "12'den büyük ve hiç eşsiz nesne kalmayan bir sayı bul.",
+    "check": {
+     "all": [
+      {
+       "key": "cift",
+       "eq": 1
+      },
+      {
+       "key": "n",
+       "gte": 13
+      }
+     ]
+    }
+   },
+   "dene": [
+    "13 nesnede bir nesne eşsiz kalır. 1 nesne daha eklersen ne olur?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kısa yol: birler basamağı",
+   "govde": "Bir sayının birler basamağında **0, 2, 4, 6 ya da 8** varsa sayı **çift**tir.\nBirler basamağında **1, 3, 5, 7 ya da 9** varsa sayı **tek**tir.\n\nYüzler ve onlar basamağına bakmaya gerek yoktur: 346 çifttir, çünkü birler basamağında 6 var."
+  },
+  {
+   "tur": "sim",
+   "baslik": "2'şer sayınca",
+   "aciklama": "Nokta 1'de. +2 düğmesiyle 2'şer ileri sıçra ve nokta hangi sayılara basıyor, izle.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 20,
+    "tick": 1,
+    "label": 2,
+    "start": 1,
+    "hops": [
+     2
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "1'den 2'şer sayarak 15'e ulaş.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 15
+      },
+      {
+       "key": "hops",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1, 3, 5, 7… Bir tek sayıya 2 eklemek yine tek sayı verir.",
+    "0'dan başlasaydın hep çift sayılara basardın."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "346 ve 579 sayıları tek mi, çift mi?",
+   "cozum": [
+    "346'nın birler basamağında 6 var: çift.",
+    "579'un birler basamağında 9 var: tek."
+   ],
+   "sonuc": "346 çift, 579 tek sayıdır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınıfta eşleşme",
+   "soru": "13 öğrenci ikişerli eş olursa kaç çift oluşur, kaç kişi eşsiz kalır?",
+   "cozum": [
+    "12 öğrenci 6 çift oluşturur.",
+    "13 − 12 = 1 öğrenci kalır."
+   ],
+   "sonuc": "6 çift oluşur, 1 öğrenci eşsiz kalır. 13 tek sayıdır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Sayının ilk rakamına bakmak yanlıştır. 521'in ilk rakamı 5 olduğu için değil, **birler basamağı 1** olduğu için tektir. 254'ün ilk rakamı 2'dir ama 254'ün çift olmasının nedeni birler basamağındaki 4'tür."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi çift sayıdır?",
+   "options": [
+    "357",
+    "591",
+    "806",
+    "733"
+   ],
+   "answer": 2,
+   "why": "806'nın birler basamağında 6 var.",
+   "hint": "Yalnız birler basamağına bak."
+  },
+  {
+   "prompt": "Hangisi tek sayıdır?",
+   "options": [
+    "248",
+    "610",
+    "492",
+    "175"
+   ],
+   "answer": 3,
+   "why": "175'in birler basamağında 5 var.",
+   "hint": "Birler basamağı 1, 3, 5, 7 ya da 9 olanı ara."
+  },
+  {
+   "prompt": "13 öğrenci ikişerli eş olunca kaç öğrenci eşsiz kalır?",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "0"
+   ],
+   "answer": 0,
+   "why": "12 öğrenci 6 çift olur, 1 öğrenci kalır.",
+   "hint": "13'ten küçük en büyük çift sayı kaç?"
+  },
+  {
+   "prompt": "4, 7 ve 2 rakamlarını birer kez kullanarak yazılabilecek en büyük tek sayı hangisidir?",
+   "options": [
+    "247",
+    "427",
+    "742",
+    "724"
+   ],
+   "answer": 1,
+   "why": "Tek olması için birler basamağı 7 olmalı. Kalan 4 ve 2 ile en büyük sayı: 427.",
+   "hint": "Önce birler basamağına hangi rakam gelmeli, onu bul."
+  }
+ ]
+}

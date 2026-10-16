@@ -1,0 +1,144 @@
+{
+ "id": "m2-1-2",
+ "baslik": "Sayıları Çözümleme",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.2"
+ ],
+ "sure": 12,
+ "ders": "basamak-degeri",
+ "ozet": "İki basamaklı sayıların basamak değerlerini bulacak, bir sayıyı farklı biçimlerde onluk ve birliklere ayıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Basamak ve basamak değeri",
+   "govde": "İki basamaklı bir sayının sağdaki basamağı **birler**, soldaki basamağı **onlar** basamağıdır.\n\n**75** sayısında:\n\n- 7 onlar basamağında; **basamak değeri 70**.\n- 5 birler basamağında; **basamak değeri 5**.\n\nSayı, basamak değerlerinin toplamıdır: **75 = 70 + 5**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Fazla birlikleri grupla",
+   "aciklama": "Ekranda 3 onluk ve 14 birlik var. Bu sayıyı düzenli göster.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 3,
+    "o": 14
+   },
+   "gorev": {
+    "metin": "Sayıyı en çok 9 birlikle göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 44
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "“10 birlik → 1 onluk” düğmesini kullan.",
+    "Sayının değeri değişti mi?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Aynı sayı, farklı çözümleme",
+   "govde": "Bir onluğu bozarsak 10 birlik elde ederiz. Sayının değeri değişmez:\n\n**52** = 5 onluk 2 birlik = 4 onluk 12 birlik = 3 onluk 22 birlik.\n\nBu, çıkarma yaparken çok işimize yarar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir onluğu boz",
+   "aciklama": "Ekranda 52 var: 5 onluk ve 2 birlik.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 5,
+    "o": 2
+   },
+   "gorev": {
+    "metin": "52'yi 4 onluk ve 12 birlikle göster.",
+    "check": {
+     "all": [
+      {
+       "key": "t",
+       "eq": 4
+      },
+      {
+       "key": "o",
+       "eq": 12
+      }
+     ]
+    }
+   },
+   "dene": [
+    "“1 onluk → 10 birlik” düğmesine bas."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "38 sayısını basamak değerleriyle yazalım.",
+   "cozum": [
+    "3 onlar basamağında: değeri 30.",
+    "8 birler basamağında: değeri 8."
+   ],
+   "sonuc": "**38 = 30 + 8**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "6 onluk ve 15 birlik hangi sayıdır?",
+   "cozum": [
+    "15 birlik = 1 onluk ve 5 birlik.",
+    "6 + 1 = 7 onluk ve 5 birlik.",
+    "7 onluk 5 birlik = 75."
+   ],
+   "sonuc": "Sayı **75**'tir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Rakam ile basamak değerini karıştırmamak gerekir. 46 sayısında 4 **rakamdır**, ama onlar basamağında olduğu için **basamak değeri 40**'tır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "83 sayısında 8'in basamak değeri kaçtır?",
+   "options": [
+    "8",
+    "3",
+    "80",
+    "83"
+   ],
+   "answer": 2,
+   "why": "8 onlar basamağında; değeri 80.",
+   "hint": "8 hangi basamakta?"
+  },
+  {
+   "prompt": "Hangisi 64'e eşittir?",
+   "options": [
+    "5 onluk 14 birlik",
+    "6 onluk 14 birlik",
+    "4 onluk 6 birlik",
+    "5 onluk 4 birlik"
+   ],
+   "answer": 0,
+   "why": "5 onluk 14 birlik = 50 + 14 = 64.",
+   "hint": "Her seçeneği hesapla."
+  },
+  {
+   "prompt": "90 + 7 = ?",
+   "options": [
+    "16",
+    "907",
+    "79",
+    "97"
+   ],
+   "answer": 3,
+   "why": "9 onluk ve 7 birlik: 97.",
+   "hint": "Onlar ve birleri birleştir."
+  }
+ ]
+}

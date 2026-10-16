@@ -1,0 +1,87 @@
+{
+ "id": "m10-4-4",
+ "baslik": "Rasyonel Fonksiyon ve Nitel Özellikleri",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.4.4"],
+ "sure": 17,
+ "ozet": "f(x) = 1/x grafiği iki koldan oluşur ve iki eksene sonsuz yaklaşır ama dokunmaz. g(x) = a/(x − r) + k dönüşümlerinde asimptotları, tanım ve görüntü kümesini okuyacak; (ax + b)/(cx + d) biçimini bu kalıba çevireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Referans fonksiyon f(x) = 1/x",
+   "govde": "- x = 0 için tanımsızdır: tanım kümesi ℝ − {0}.\n- 1/x hiçbir zaman 0 olmaz: görüntü kümesi ℝ − {0}.\n- x büyüdükçe 1/x sıfıra yaklaşır; x sıfıra yaklaştıkça |1/x| sınırsız büyür.\n- Grafiğin yaklaştığı ama kesmediği doğrulara **asimptot** denir: x = 0 düşey, y = 0 yatay asimptot.\n- (−∞, 0) ve (0, ∞) aralıklarının her birinde azalandır; grafik orijine göre simetriktir: f(−x) = −f(x)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "g(x) = a/(x − r) + k",
+   "govde": "- Düşey asimptot **x = r**, yatay asimptot **y = k**.\n- Tanım kümesi ℝ − {r}, görüntü kümesi ℝ − {k}.\n- a > 0 ise kollar 1/x gibi (1. ve 3. bölgeye benzer), her parçada azalan; a < 0 ise kollar yansır, her parçada artan.\n- Asimptotların kesişimi (r, k) grafiğin simetri merkezidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Asimptotları taşı",
+   "aciklama": "Kırmızı kesikli doğrular asimptotlardır. Grafiği a, r ve k ile dönüştür.",
+   "sim": { "kind": "f-fonk", "f": "rasyonel", "a": 1, "h": 0, "k": 0, "sliders": ["a", "h", "k"], "tools": ["asimptot"] },
+   "gorev": { "metin": "Asimptotları x = 2 ve y = −1 olan bir grafik oluştur.", "check": { "all": [{ "key": "h", "eq": 2 }, { "key": "k", "eq": -1 }] } },
+   "dene": ["a'yı negatif yap: kollar diğer iki bölgeye geçer ve fonksiyon her parçada artan olur.", "|a| büyüdükçe kollar asimptotlardan uzaklaşır."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "g(x) = 3/(x − 2) + 1 fonksiyonunun asimptotlarını, eksenleri kestiği noktaları bulalım.",
+   "cozum": [
+    "Düşey asimptot x = 2, yatay asimptot y = 1.",
+    "Tanım kümesi ℝ − {2}, görüntü kümesi ℝ − {1}.",
+    "y eksenini kestiği nokta: g(0) = 3/(−2) + 1 = −1/2.",
+    "x eksenini kestiği nokta: 3/(x − 2) = −1 → x − 2 = −3 → x = −1."
+   ],
+   "sonuc": "Asimptotlar x = 2, y = 1; eksenleri (0, −1/2) ve (−1, 0) noktalarında keser."
+  },
+  {
+   "tur": "kural",
+   "baslik": "(ax + b)/(cx + d) biçimi",
+   "govde": "Payı paydaya bölerek bölüm + kalan/payda biçimine getiririz. Örneğin\n(2x + 1)/(x − 1) = [2(x − 1) + 3]/(x − 1) = 2 + 3/(x − 1).\n\nGenel olarak (ax + b)/(cx + d) için (c ≠ 0): düşey asimptot paydayı sıfır yapan x = −d/c, yatay asimptot y = a/c."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Görüntü kümesindeki boşluk",
+   "aciklama": "Turuncu kesikli doğru y = c. Doğrunun grafiği kestiği noktalar 1/x = c denkleminin çözümleridir.",
+   "sim": { "kind": "f-fonk", "f": "rasyonel", "c": 2, "sliders": ["c"], "tools": ["cizgi", "asimptot"] },
+   "gorev": { "metin": "y = c doğrusunu, grafiği hiç kesmeyeceği yere getir.", "check": { "key": "nsol", "eq": 0 } },
+   "dene": ["Yalnız c = 0 iken kesişim yok: 1/x hiçbir zaman 0 olmaz, görüntü kümesi ℝ − {0}.", "c = 2 iken çözüm x = 0,5; yeşil bölge 1/x > 2 olan x'ler: 0 < x < 0,5."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "f(x) = (2x + 1)/(x − 1) fonksiyonunun asimptotlarını, tanım ve görüntü kümesini bulalım.",
+   "cozum": [
+    "f(x) = 2 + 3/(x − 1) biçiminde yaz.",
+    "Düşey asimptot x = 1, yatay asimptot y = 2.",
+    "Tanım kümesi ℝ − {1}, görüntü kümesi ℝ − {2}.",
+    "a = 3 > 0 olduğundan her iki parçada azalan."
+   ],
+   "sonuc": "x = 1 ve y = 2 asimptotlar; tanım kümesi ℝ − {1}, görüntü kümesi ℝ − {2}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = (ax + 3)/(x − b) fonksiyonunun grafiğinin asimptotları x = 2 ve y = 4 ise a + b kaçtır?",
+   "cozum": [
+    "Düşey asimptot paydayı sıfır yapan değer: x = b = 2.",
+    "Yatay asimptot katsayılar oranı: y = a/1 = 4 → a = 4.",
+    "a + b = 6."
+   ],
+   "sonuc": "a + b = 6."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "1/(x + 2) için düşey asimptotu x = 2 yazmak. Paydayı sıfır yapan değer x = −2'dir. İkinci hata: yatay asimptotu tanım kümesinden çıkarmak. y = k doğrusu **görüntü** kümesinden çıkar, tanım kümesinden değil."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "g(x) = 2/(x + 3) − 1 fonksiyonunun düşey asimptotu hangisidir?", "options": ["x = 3", "x = −3", "y = −1", "x = 2"], "answer": 1, "why": "Payda x + 3 = 0 iken x = −3.", "hint": "Paydayı sıfır yapan x." },
+  { "prompt": "g(x) = 2/(x + 3) − 1 fonksiyonunun görüntü kümesi nedir?", "options": ["ℝ − {−3}", "ℝ", "ℝ − {−1}", "ℝ − {2}"], "answer": 2, "why": "2/(x + 3) hiçbir zaman 0 olmadığından g(x) ≠ −1.", "hint": "Yatay asimptot görüntü kümesinden çıkar." },
+  { "prompt": "f(x) = (3x − 1)/(x + 2) fonksiyonunun yatay asimptotu hangisidir?", "options": ["y = −1/2", "y = −2", "y = 1", "y = 3"], "answer": 3, "why": "Baş katsayılar oranı 3/1 = 3.", "hint": "y = a/c." },
+  { "prompt": "f(x) = 1/x için hangisi doğrudur?", "options": ["(−∞, 0) ve (0, ∞) aralıklarının her birinde azalandır", "ℝ'de artandır", "f(0) = 0'dır", "Grafiği y eksenine göre simetriktir"], "answer": 0, "why": "Her iki parçada x büyüdükçe 1/x küçülür. Grafik orijine göre simetriktir, 0'da tanımsızdır.", "hint": "x = 1, 2, 4 için değerlere bak." }
+ ]
+}

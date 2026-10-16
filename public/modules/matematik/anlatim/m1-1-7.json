@@ -1,0 +1,144 @@
+{
+ "id": "m1-1-7",
+ "baslik": "Nesne Sayısını Tahmin Etme",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.7"
+ ],
+ "sure": 10,
+ "ozet": "Saymadan önce, bildiğimiz küçük bir grubu ölçü alarak 20'ye kadar nesnenin sayısını tahmin edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Tahmin nedir?",
+   "govde": "**Tahmin**, saymadan önce yaklaşık kaç tane olduğunu söylemektir. Tahmin tam doğru olmak zorunda değildir ama **gerçeğe yakın** olmalıdır.\n\nİyi tahmin için bir **ölçü grup** kullanırız: Kutudaki 5 nesneye bakıp “Geri kalanlar kaç tane 5'lik grup eder?” diye düşünürüz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kaç tane var?",
+   "aciklama": "Kutuda 5 nesne var. Saymadan tahminini kaydırıcıyla seç, sonra sayarak kontrol et.",
+   "sim": {
+    "kind": "a-tahmin",
+    "n": 17,
+    "max": 20,
+    "ref": 5,
+    "seed": 11
+   },
+   "gorev": {
+    "metin": "Gerçek sayıya en çok 3 uzak bir tahmin yap ve kontrol et.",
+    "check": {
+     "all": [
+      {
+       "key": "acik",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kutu dışındaki nesneleri gözünle 5'li gruplara ayır.",
+    "Tahminin uzaksa gizle ve yeniden dene."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tahmin adımları",
+   "govde": "1. Ölçü gruba bak (örneğin 5 tane).\n2. Kalan nesneler bu gruptan kaç tane eder, gözünle böl.\n3. Grupları birleştir: 5, 10, 15…\n4. Sayarak kontrol et ve tahmininle karşılaştır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir tahmin daha",
+   "aciklama": "Bu kez kutuda 4 nesne var.",
+   "sim": {
+    "kind": "a-tahmin",
+    "n": 12,
+    "max": 20,
+    "ref": 4,
+    "seed": 5
+   },
+   "gorev": {
+    "metin": "Gerçek sayıya en çok 3 uzak bir tahmin yap ve kontrol et.",
+    "check": {
+     "all": [
+      {
+       "key": "acik",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir tabakta 5 çilek ölçü grubu olarak ayrılmış. Kalan çilekler aşağı yukarı bu grubun iki katı kadar yer kaplıyor. Toplam kaç çilek olabilir?",
+   "cozum": [
+    "Ölçü grup: 5 çilek.",
+    "Kalanlar yaklaşık iki grup: 5 + 5 = 10.",
+    "Hepsi: 5 + 10 = 15."
+   ],
+   "sonuc": "Yaklaşık **15** çilek vardır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Elif bir avuç bilye için 12 diye tahmin etti. Saydığında 14 çıktı. Tahmini iyi mi?",
+   "cozum": [
+    "Tahmin ile sayı arasındaki fark: 14 − 12 = 2.",
+    "Fark küçük, tahmin gerçeğe yakın."
+   ],
+   "sonuc": "Evet, **iyi bir tahmin**; yalnız 2 eksik."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Tahmin yaparken nesneleri tek tek saymak tahmin değildir. Bir de tersi var: hiç düşünmeden rastgele bir sayı söylemek. Ölçü grubu kullanarak düşün."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Gerçekte 16 nesne var. Hangi tahmin en yakındır?",
+   "options": [
+    "10",
+    "20",
+    "15",
+    "8"
+   ],
+   "answer": 2,
+   "why": "15 ile 16 arasında yalnız 1 fark var.",
+   "hint": "Her tahminin 16'ya uzaklığını düşün."
+  },
+  {
+   "prompt": "Ölçü grupta 5 nesne var. Kalan nesneler 3 tane bu kadarlık grup ediyor. Toplam yaklaşık kaç nesne var?",
+   "options": [
+    "20",
+    "8",
+    "15",
+    "10"
+   ],
+   "answer": 0,
+   "why": "5 + 5 + 5 + 5 = 20 (ölçü grup ve 3 grup).",
+   "hint": "Ölçü grubu da eklemeyi unutma."
+  },
+  {
+   "prompt": "Tahmin için hangisi doğrudur?",
+   "options": [
+    "Tahmin her zaman tam doğru olmalıdır.",
+    "Tahmin, saymadan söylenen yakın bir sayıdır.",
+    "Tahmin için nesneleri tek tek sayarız.",
+    "Tahminin gerçeğe yakın olması gerekmez."
+   ],
+   "answer": 1,
+   "why": "Tahmin saymadan söylenir ve gerçeğe yakın olmalıdır.",
+   "hint": "Tahmin ile saymak arasındaki farkı düşün."
+  }
+ ]
+}

@@ -1,0 +1,93 @@
+{
+ "id": "m8-1-2",
+ "baslik": "Üslü İfadeler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.1.2.1", "M.8.1.2.2", "M.8.1.2.3", "M.8.1.2.4", "M.8.1.2.5"],
+ "sure": 16,
+ "ozet": "Tam sayıların tam sayı kuvvetlerini, sıfırıncı ve negatif kuvvetin neden öyle tanımlandığını, üslü ifadelerin kurallarını ve bilimsel gösterimi öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kuvvet: tekrarlı çarpma",
+   "govde": "aⁿ ifadesinde **a taban**, **n üs**tür. n pozitif bir tam sayıysa aⁿ, n tane a'nın çarpımıdır: 2⁴ = 2 · 2 · 2 · 2 = 16.\n\nTaban negatifse parantez önemlidir:\n\n- (−2)⁴ = (−2)(−2)(−2)(−2) = 16 (çift sayıda negatif çarpan → pozitif)\n- (−2)³ = −8 (tek sayıda negatif çarpan → negatif)\n- −2⁴ = −(2⁴) = −16 (üs yalnız 2'ye aittir)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kuvvet merdiveni",
+   "aciklama": "Kutular a'nın ardışık kuvvetleri. Sağa her adım a ile çarpar, sola her adım a'ya böler. Üssü küçülterek 2⁰ ve negatif kuvvetlere in.",
+   "sim": { "kind": "e-us-kuvvet", "a": 2, "n": 3, "aAralik": [-3, 10], "nAralik": [-4, 6] },
+   "gorev": { "metin": "Tabanı 2 tutarak sonucu 1/8 yap.", "check": { "all": [ { "key": "a", "eq": 2 }, { "key": "n", "eq": -3 } ] } },
+   "dene": ["2³ = 8'den sola: 4, 2, 1, 1/2, 1/4, 1/8. Her adımda 2'ye böldük; 2⁰ = 1 böyle çıkar.", "Tabanı 10 yap ve 10⁻¹, 10⁻², 10⁻³ değerlerine bak: 0,1; 0,01; 0,001."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sıfırıncı ve negatif kuvvet",
+   "govde": "a ≠ 0 olmak üzere:\n\n- a⁰ = 1\n- a⁻ⁿ = 1 / aⁿ (negatif üs sonucu negatif yapmaz; tabanın çarpmaya göre tersini alır)\n- (a/b)⁻ⁿ = (b/a)ⁿ\n\nÖrnekler: 5⁰ = 1, 3⁻² = 1/9, (2/3)⁻² = (3/2)² = 9/4. 0⁰ ve 0'ın negatif kuvvetleri tanımsızdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Negatif tabanda işaret",
+   "aciklama": "Taban negatifken üssü değiştir; sonucun işaretinin üssün tek ya da çift olmasına göre nasıl değiştiğini izle.",
+   "sim": { "kind": "e-us-kuvvet", "a": -2, "n": 2, "aAralik": [-3, 10], "nAralik": [-4, 6] },
+   "gorev": { "metin": "Tabanı −3 yap ve sonucu negatif olan bir kuvvet bul.", "check": { "all": [ { "key": "a", "eq": -3 }, { "key": "isaret", "eq": -1 } ] } },
+   "dene": ["(−3)⁻¹ = −1/3 de negatiftir; negatif üste de tek/çift kuralı geçerli."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üslü ifadelerde işlem kuralları",
+   "govde": "a, b ≠ 0 ve m, n tam sayılar için:\n\n- aᵐ · aⁿ = aᵐ⁺ⁿ (tabanlar aynı → üsler toplanır)\n- aᵐ ÷ aⁿ = aᵐ⁻ⁿ\n- (aᵐ)ⁿ = aᵐ·ⁿ\n- (a · b)ⁿ = aⁿ · bⁿ (üsler aynı → tabanlar çarpılır)\n\nToplamada böyle bir kural yoktur: 2³ + 2² = 8 + 4 = 12, 2⁵ değil."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "2⁵ · 2⁻³ ÷ 2⁴ ve 8² · 4⁻³ ifadelerinin değerlerini bulalım.",
+   "cozum": [
+    "Tabanlar aynı: 2⁵ · 2⁻³ ÷ 2⁴ = 2⁵⁺⁽⁻³⁾⁻⁴ = 2⁻² = 1/4.",
+    "8 = 2³ ve 4 = 2² yaz: 8² · 4⁻³ = (2³)² · (2²)⁻³ = 2⁶ · 2⁻⁶.",
+    "2⁶ · 2⁻⁶ = 2⁰ = 1."
+   ],
+   "sonuc": "Sonuçlar 1/4 ve 1."
+  },
+  {
+   "tur": "metin",
+   "baslik": "10'un kuvvetleriyle çözümleme",
+   "govde": "Ondalık sayılar basamak değerleri 10'un tam sayı kuvvetleri kullanılarak yazılabilir:\n\n82,53 = 8 · 10¹ + 2 · 10⁰ + 5 · 10⁻¹ + 3 · 10⁻²\n\nAynı sayı 10'un farklı kuvvetleriyle de yazılabilir: 51,2 · 10⁵ = 512 · 10⁴ = 5,12 · 10⁶. Virgül bir basamak sola kayınca katsayı 10'a bölünür, bunu dengelemek için üs 1 artar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Virgülü kaydır, üssü dengele",
+   "aciklama": "Ekrandaki sayı 51,2 · 10⁵. Virgülü kaydırdıkça sayının değeri hiç değişmez; yalnız yazılışı değişir.",
+   "sim": { "kind": "e-bilimsel", "rakamlar": "512", "kaydir": -1, "us": 5 },
+   "gorev": { "metin": "Sayıyı bilimsel gösterimle yaz (katsayı 1 ile 10 arasında).", "check": { "key": "bilimsel", "eq": 1 } },
+   "dene": ["Bilimsel gösterimde üs kaç oldu? 5,12 · 10⁶.", "Virgülü sağa kaydırarak 512 · 10⁴ biçimine de ulaş."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bilimsel gösterim",
+   "govde": "1 ≤ a < 10 ve n bir tam sayı olmak üzere **a · 10ⁿ** biçimine bilimsel gösterim denir.\n\n- 4 800 000 = 4,8 · 10⁶\n- 0,00035 = 3,5 · 10⁻⁴\n\nBilimsel gösterimdeki iki sayıyı karşılaştırırken önce üslere bakılır; üsler eşitse katsayılar karşılaştırılır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: uzaklıklar",
+   "soru": "Dünya ile Güneş arasındaki ortalama uzaklık yaklaşık 150 000 000 km, Dünya ile Ay arasındaki ortalama uzaklık yaklaşık 384 000 km'dir. İkisini bilimsel gösterimle yaz ve hangisinin yaklaşık kaç kat büyük olduğunu bul.",
+   "cozum": [
+    "150 000 000 = 1,5 · 10⁸ km.",
+    "384 000 = 3,84 · 10⁵ km.",
+    "Üsler 8 ve 5: ilk uzaklık çok daha büyük.",
+    "Oran: (1,5 · 10⁸) ÷ (3,84 · 10⁵) = (1,5 ÷ 3,84) · 10³ ≈ 0,39 · 1000 ≈ 390."
+   ],
+   "sonuc": "Güneş'e olan uzaklık, Ay'a olan uzaklığın yaklaşık 390 katıdır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- 2⁻³'ü −8 ya da −6 sanmak. Doğrusu 2⁻³ = 1/8; üs negatif diye sonuç negatif olmaz.\n- −3² ile (−3)²'yi karıştırmak: −3² = −9, (−3)² = 9.\n- 2³ · 3² = 6⁵ yazmak. Ne tabanlar ne üsler aynı; kural uygulanamaz: 8 · 9 = 72.\n- 45 · 10³'ü bilimsel gösterim sanmak. Katsayı 10'dan küçük olmalı: 4,5 · 10⁴."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "(−3)⁻² ifadesinin değeri kaçtır?", "options": ["−9", "−1/9", "1/9", "9"], "answer": 2, "why": "(−3)⁻² = 1 / (−3)² = 1/9. Üs çift olduğu için sonuç pozitif.", "hint": "Önce negatif üssü 1 / (…)² biçimine çevir." },
+  { "prompt": "5⁴ · 5⁻⁶ ÷ 5⁻³ işleminin sonucu hangisidir?", "options": ["5⁻⁵", "1/5", "5¹³", "5"], "answer": 3, "why": "Üsler: 4 + (−6) − (−3) = 1, yani 5¹ = 5.", "hint": "Tabanlar aynı. Çarpmada üsler toplanır, bölmede çıkarılır." },
+  { "prompt": "0,000072 sayısının bilimsel gösterimi hangisidir?", "options": ["72 · 10⁻⁶", "7,2 · 10⁻⁵", "0,72 · 10⁻⁴", "7,2 · 10⁻⁶"], "answer": 1, "why": "Virgül 5 basamak sağa kayınca 7,2 olur; dengelemek için 10⁻⁵ ile çarparız. İlk ve üçüncü şık değerce doğru ama katsayı 1 ile 10 arasında değil.", "hint": "Katsayı 1 ile 10 arasında olmalı. Virgülü kaç basamak kaydırdın?" },
+  { "prompt": "Hangisi en büyüktür?", "options": ["4,1 · 10⁷", "9,8 · 10⁶", "3,9 · 10⁷", "1,2 · 10⁵"], "answer": 0, "why": "En büyük üs 7. Üssü 7 olanlardan katsayısı büyük olan 4,1 · 10⁷.", "hint": "Önce üslere, sonra katsayılara bak." }
+ ]
+}

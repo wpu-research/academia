@@ -1,0 +1,254 @@
+{
+ "id": "m12e-5-3",
+ "baslik": "Türevin Uygulamaları",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.5.3.1",
+  "12.5.3.2",
+  "12.5.3.3",
+  "12.5.3.4"
+ ],
+ "sure": 24,
+ "ders": "turev-kesenden-tegete",
+ "ozet": "Türevin işaretinden fonksiyonun artan ve azalan olduğu aralıkları, yerel ve mutlak ekstremumları bulacağız; f ile f′ grafiklerini yan yana görüp bir kutu problemini türevle çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Türevin işareti ne söyler?",
+   "govde": "Bir fonksiyonun grafiğinde soldan sağa yürüdüğünü düşün. Yokuş çıkarken teğet yukarı doğru eğimlidir (f′ > 0), inerken aşağı doğrudur (f′ < 0). Tepede ve çukurda teğet yataydır (f′ = 0).\n\nYani **türevin işareti**, fonksiyonun nerede arttığını ve nerede azaldığını söyler."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Artan, azalan ve yerel ekstremum",
+   "govde": "f bir aralıkta türevli olsun.\n\n- O aralıkta **f′(x) > 0** ise f **artandır**.\n- O aralıkta **f′(x) < 0** ise f **azalandır**.\n- f′(c) = 0 ya da f′(c) tanımsız olan iç noktalara **kritik nokta** denir.\n- **Birinci türev testi:** c'den geçerken f′'nin işareti + → − değişiyorsa c'de **yerel maksimum**, − → + değişiyorsa **yerel minimum** vardır. İşaret değişmiyorsa ekstremum yoktur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "f ve f′ birlikte",
+   "aciklama": "Üstte f(x) = x³ − 3x ve teğeti, altta türevi f′(x) = 3x² − 3. Alt grafikte yeşil bölgeler f′ > 0, kırmızı bölgeler f′ < 0. Dikey çizgiyi x kaydırıcısıyla gezdir.",
+   "sim": {
+    "kind": "g-turev-isaret",
+    "coef": [
+     1,
+     0,
+     -3,
+     0
+    ],
+    "x": -2
+   },
+   "gorev": {
+    "metin": "Teğetin yatay olduğu bir nokta bul.",
+    "check": {
+     "key": "d",
+     "eq": 0,
+     "tol": 1e-06
+    }
+   },
+   "dene": [
+    "f′ yeşil bölgedeyken üstteki eğri yükseliyor.",
+    "x = −1'de f′ + → − değişiyor: yerel maksimum. x = 1'de − → +: yerel minimum."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "f(x) = x³ − 6x² + 9x + 1 fonksiyonunun artan-azalan olduğu aralıkları ve yerel ekstremumlarını bulalım.",
+   "cozum": [
+    "f′(x) = 3x² − 12x + 9 = 3(x − 1)(x − 3).",
+    "İşaret tablosu: x < 1 için +, 1 < x < 3 için −, x > 3 için +.",
+    "f, (−∞, 1) ve (3, ∞) aralıklarında artan; (1, 3) aralığında azalandır.",
+    "x = 1'de yerel maksimum: f(1) = 1 − 6 + 9 + 1 = 5. x = 3'te yerel minimum: f(3) = 27 − 54 + 27 + 1 = 1."
+   ],
+   "sonuc": "Yerel maksimum (1, 5), yerel minimum (3, 1)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Örneği grafikte doğrula",
+   "aciklama": "Aynı fonksiyon: f(x) = x³ − 6x² + 9x + 1. Turuncu noktalar türevin sıfır olduğu yerler.",
+   "sim": {
+    "kind": "g-turev-isaret",
+    "coef": [
+     1,
+     -6,
+     9,
+     1
+    ],
+    "xr": [
+     -0.5,
+     4.5
+    ],
+    "yr": [
+     -2,
+     7
+    ],
+    "dyr": [
+     -4,
+     10
+    ],
+    "x": 0,
+    "grid": {
+     "sx": 1,
+     "sy": 1,
+     "lx": 1,
+     "ly": 2
+    }
+   },
+   "gorev": {
+    "metin": "Yerel minimum noktasına git.",
+    "check": {
+     "key": "x",
+     "eq": 3,
+     "tol": 1e-06
+    }
+   },
+   "dene": [
+    "x = 2'de f′(2) = −3: f azalıyor.",
+    "Yerel minimum değeri 1, ama x = −0,5'te f daha küçük; yerel minimum mutlak minimum olmak zorunda değildir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Mutlak ekstremum",
+   "govde": "f, kapalı [a, b] aralığında sürekli ise bu aralıkta **mutlak maksimum** ve **mutlak minimum** değerlerini alır. Bulmak için:\n\n1. (a, b) içindeki kritik noktaları bul.\n2. f'yi kritik noktalarda ve **uç noktalar** a ile b'de hesapla.\n3. En büyük değer mutlak maksimum, en küçüğü mutlak minimumdur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "f(x) = x³ − 3x fonksiyonunun [−2, 3] aralığındaki mutlak maksimum ve minimum değerlerini bulalım.",
+   "cozum": [
+    "f′(x) = 3x² − 3 = 0 ⇒ x = −1 ya da x = 1 (ikisi de aralıkta).",
+    "f(−2) = −2, f(−1) = 2, f(1) = −2, f(3) = 18.",
+    "En büyük 18, en küçük −2."
+   ],
+   "sonuc": "Mutlak maksimum 18 (x = 3'te), mutlak minimum −2 (x = −2 ve x = 1'de)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Türevle grafik çizimi",
+   "govde": "1. Tanım kümesini belirle.\n2. Eksenleri kestiği noktaları bul (bulabiliyorsan).\n3. f′'yü bul, kritik noktaları ve işaret tablosunu çıkar.\n4. Yerel ekstremum noktalarını hesapla.\n5. x → ±∞ iken (ya da aralığın uçlarında) davranışı incele.\n6. Noktaları işaretle ve tablodaki artış-azalışa uyarak birleştir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kutu problemi",
+   "aciklama": "Kenarı 12 cm olan kare kartonun köşelerinden kenarı x olan kareler kesilip kenarlar katlanıyor. Kutunun hacmi V(x) = x(12 − 2x)², 0 < x < 6. Altta V′(x) = 12x² − 96x + 144.",
+   "sim": {
+    "kind": "g-turev-isaret",
+    "coef": [
+     4,
+     -48,
+     144,
+     0
+    ],
+    "xr": [
+     0,
+     6
+    ],
+    "yr": [
+     -10,
+     140
+    ],
+    "dyr": [
+     -60,
+     160
+    ],
+    "x": 0.5,
+    "step": 0.25,
+    "label": "x(12 − 2x)²",
+    "dlabel": "12(x − 2)(x − 6)",
+    "name": "V",
+    "dname": "V′",
+    "grid": {
+     "sx": 1,
+     "sy": 20,
+     "lx": 1,
+     "ly": 40
+    },
+    "dgrid": {
+     "sx": 1,
+     "sy": 40,
+     "lx": 1,
+     "ly": 80
+    }
+   },
+   "gorev": {
+    "metin": "Hacmi en büyük yapan x'i bul.",
+    "check": {
+     "key": "x",
+     "eq": 2,
+     "tol": 1e-06
+    }
+   },
+   "dene": [
+    "V′(x) = 12(x − 2)(x − 6): x = 2'de işaret + → −.",
+    "En büyük hacim V(2) = 2 · 8² = 128 cm³."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "Çevresi 40 m olan dikdörtgen biçimli bir bahçenin alanı en çok kaç m² olabilir?",
+   "cozum": [
+    "Kenarlar x ve 20 − x olsun (0 < x < 20). Alan A(x) = x(20 − x) = 20x − x².",
+    "A′(x) = 20 − 2x = 0 ⇒ x = 10.",
+    "x < 10 için A′ > 0, x > 10 için A′ < 0: x = 10'da maksimum.",
+    "A(10) = 10 · 10 = 100."
+   ],
+   "sonuc": "En büyük alan 100 m²; bahçe kare olur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- f′(c) = 0 olan her noktayı ekstremum sanmak. f(x) = x³ için f′(0) = 0 ama türev işaret değiştirmez; x = 0'da ekstremum yoktur.\n- Kapalı aralıkta mutlak ekstremum ararken **uç noktaları** denemeyi unutmak (Örnek 2'de maksimum uçta, x = 3'te).\n- Yerel maksimum değerini her zaman en büyük değer sanmak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "f(x) = x² − 4x + 1 fonksiyonu hangi aralıkta azalandır?",
+   "options": [
+    "(2, ∞)",
+    "(−∞, 2)",
+    "(−∞, 4)",
+    "(−2, 2)"
+   ],
+   "answer": 1,
+   "why": "f′(x) = 2x − 4 < 0 ⇔ x < 2.",
+   "hint": "f′(x) < 0 eşitsizliğini çöz."
+  },
+  {
+   "prompt": "f(x) = 2x³ − 3x² − 12x fonksiyonunun yerel maksimum noktasının apsisi kaçtır?",
+   "options": [
+    "x = 2",
+    "x = 1",
+    "x = −2",
+    "x = −1"
+   ],
+   "answer": 3,
+   "why": "f′(x) = 6(x − 2)(x + 1); x = −1'de işaret + → − değişir.",
+   "hint": "Kritik noktaları bul ve hangisinde türevin + → − değiştiğine bak."
+  },
+  {
+   "prompt": "f(x) = x³ − 3x + 2 fonksiyonunun [0, 2] aralığındaki mutlak minimum değeri kaçtır?",
+   "options": [
+    "0",
+    "2",
+    "−1",
+    "4"
+   ],
+   "answer": 0,
+   "why": "Kritik nokta x = 1: f(1) = 0; uçlarda f(0) = 2, f(2) = 4.",
+   "hint": "Kritik noktada ve uçlarda değerleri karşılaştır."
+  },
+  {
+   "prompt": "Toplamları 12 olan iki pozitif sayının çarpımı en çok kaçtır?",
+   "options": [
+    "32",
+    "35",
+    "36",
+    "144"
+   ],
+   "answer": 2,
+   "why": "Ç(x) = x(12 − x), Ç′ = 12 − 2x = 0 ⇒ x = 6; çarpım 36.",
+   "hint": "Sayılar x ve 12 − x olsun."
+  }
+ ]
+}

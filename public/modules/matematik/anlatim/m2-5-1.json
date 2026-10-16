@@ -1,0 +1,259 @@
+{
+ "id": "m2-5-1",
+ "baslik": "Yer ve Yön Bulma",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.6"
+ ],
+ "sure": 14,
+ "ozet": "Bir hedefe ulaşmak için yön ve adım sayısını içeren yönergeler yazacak, farklı yolları karşılaştırıp en kısasını seçeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yönerge ve strateji",
+   "govde": "Bir yere giderken **yön** (sağa, sola, yukarı, aşağı) ve **mesafe** (kaç adım) söyleriz: “3 adım sağa, 2 adım yukarı.”\n\nBir hedefe giden **birçok yol** olabilir. Engelleri dolaşırken farklı yollar deneriz ve **en kısa** olanı seçeriz. Buna **strateji** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Evden okula",
+   "aciklama": "Yeşil bloklar engel. Okul sağ üst köşede.",
+   "sim": {
+    "kind": "a-yon",
+    "w": 7,
+    "h": 5,
+    "start": [
+     0,
+     0
+    ],
+    "hedef": [
+     6,
+     4
+    ],
+    "engeller": [
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      5,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "yerler": [
+     [
+      0,
+      0,
+      "Ev"
+     ],
+     [
+      6,
+      4,
+      "Okul"
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Okula en kısa yoldan, 10 adımda git.",
+    "check": {
+     "all": [
+      {
+       "key": "ulasti",
+       "eq": 1
+      },
+      {
+       "key": "adim",
+       "eq": 10
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce birkaç yolu dene, adım sayılarını karşılaştır.",
+    "Altta yazan yönergeyi oku: daha kısa yazılabilir mi?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "En kısa yolu bulmak",
+   "govde": "1. Hedefin hangi **yönde** olduğuna bak (sağda mı, yukarıda mı?).\n2. Mümkünse yalnız **hedefe yaklaştıran** adımlar at.\n3. Engel varsa dolaşmanın en az adım süren yolunu seç.\n4. Adımları say, başka bir yolla karşılaştır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Parka git",
+   "aciklama": "Bu kez sol üstten sağ alttaki parka gidiyorsun.",
+   "sim": {
+    "kind": "a-yon",
+    "w": 7,
+    "h": 5,
+    "start": [
+     0,
+     4
+    ],
+    "hedef": [
+     6,
+     0
+    ],
+    "engeller": [
+     [
+      1,
+      0
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      0
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      5,
+      2
+     ]
+    ],
+    "yerler": [
+     [
+      0,
+      4,
+      "Ev"
+     ],
+     [
+      6,
+      0,
+      "Park"
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Parka en kısa yoldan, 14 adımda git.",
+    "check": {
+     "all": [
+      {
+       "key": "ulasti",
+       "eq": 1
+      },
+      {
+       "key": "adim",
+       "eq": 14
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Engellerin açık uçlarını bul.",
+    "Bazen hedeften uzaklaşan bir adım gerekebilir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ece evden çıkıp 4 adım sağa, 3 adım yukarı yürüyerek markete vardı. Marketten eve dönmek için ne yapmalı?",
+   "cozum": [
+    "Ters yönlerde aynı sayıda adım atmalı.",
+    "Sağın tersi sol, yukarının tersi aşağı."
+   ],
+   "sonuc": "**3 adım aşağı, 4 adım sola** (ya da 4 adım sola, 3 adım aşağı) yürümeli."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "İki yol var: A yolu 5 adım sağa ve 2 adım yukarı; B yolu 2 adım yukarı, 7 adım sağa ve 2 adım sola. Hangisi daha kısa?",
+   "cozum": [
+    "A: 5 + 2 = 7 adım.",
+    "B: 2 + 7 + 2 = 11 adım."
+   ],
+   "sonuc": "**A yolu** daha kısa."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yönergeyi yazarken sayıyı ya da yönü unutmak sık bir hatadır. “Sağa yürü” eksiktir; “**3 adım** sağa yürü” denmelidir. Yönü kimin baktığı yere göre söylediğini de belirt."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“2 adım ileri, 2 adım geri” giden biri nerede durur?",
+   "options": [
+    "2 adım ileride",
+    "4 adım ileride",
+    "Başladığı yerde",
+    "2 adım geride"
+   ],
+   "answer": 2,
+   "why": "İleri ve geri adımlar birbirini götürür.",
+   "hint": "Geri adımlar ileri adımları siler mi?"
+  },
+  {
+   "prompt": "Bir yol 3 adım sağa ve 4 adım yukarı. Toplam kaç adım?",
+   "options": [
+    "7",
+    "12",
+    "1",
+    "34"
+   ],
+   "answer": 0,
+   "why": "3 + 4 = 7 adım.",
+   "hint": "Adımları topla."
+  },
+  {
+   "prompt": "5 adım sola giden biri, başladığı yere dönmek için ne yapmalı?",
+   "options": [
+    "5 adım sola",
+    "5 adım yukarı",
+    "10 adım sağa",
+    "5 adım sağa"
+   ],
+   "answer": 3,
+   "why": "Ters yönde aynı sayıda adım.",
+   "hint": "Solun tersi hangi yön?"
+  }
+ ]
+}

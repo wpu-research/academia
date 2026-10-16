@@ -1,0 +1,177 @@
+{
+ "id": "m6-3-1",
+ "baslik": "Bilinmeyen Nicelikler",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.2.1"
+ ],
+ "sure": 14,
+ "ozet": "Bilmediğimiz bir niceliği harfle gösterecek, durumu bir eşitlikle yazacak ve terazideki denge fikriyle bilinmeyeni bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bilinmeyeni harfle göstermek",
+   "govde": "\"Bir sayının 3 katının 5 fazlası 26'dır.\" Bu sayıyı bilmiyoruz; ona bir ad verelim: **x**.\n\n- Sayının 3 katı: 3x (3 · x)\n- 3 katının 5 fazlası: 3x + 5\n- Bu 26'ya eşit: **3x + 5 = 26**\n\nİçinde bilinmeyen bulunan böyle eşitliklere **denklem** denir. Bilinmeyenin eşitliği doğru yapan değerine **çözüm** denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Denge fikri",
+   "govde": "Bir eşitlik dengedeki bir terazi gibidir. **İki tarafa aynı işlemi** yaparsak denge bozulmaz:\n\n- İki taraftan aynı sayıyı çıkarabiliriz.\n- İki tarafı aynı sayıya bölebiliriz (0 hariç).\n\nAmaç bilinmeyeni tek başına bırakmaktır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Terazide x + 5 = 12",
+   "aciklama": "Sol kefede bir x kutusu ve 5 birim, sağda 12 birim var.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 1,
+    "b": 5,
+    "c": 12
+   },
+   "gorev": {
+    "metin": "x'in değerini bul.",
+    "check": {
+     "key": "x",
+     "eq": 7
+    }
+   },
+   "dene": [
+    "İki taraftan da 1 çıkararak ilerle.",
+    "\"Yalnız soldan 1 çıkar\" düğmesine bas: terazi bozulur. Neden?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Terazide 2x + 3 = 11",
+   "aciklama": "Bu kez iki x kutusu var.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 2,
+    "b": 3,
+    "c": 11
+   },
+   "gorev": {
+    "metin": "Denklemi çöz.",
+    "check": {
+     "key": "solved",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Önce birimleri at: 2x = 8. Sonra iki tarafı 2'ye böl.",
+    "Çözümü kontrol et: 2 · 4 + 3 = 11."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir sayının 3 katının 5 fazlası 26'dır. Sayı kaçtır?",
+   "cozum": [
+    "Denklem: 3x + 5 = 26.",
+    "İki taraftan 5 çıkar: 3x = 21.",
+    "İki tarafı 3'e böl: x = 7.",
+    "Kontrol: 3 · 7 + 5 = 26."
+   ],
+   "sonuc": "Sayı 7'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İşlem makinesi",
+   "aciklama": "Makine girdiyi 4 ile çarpıp 3 ekliyor. Çıktıdan geri giderek girdiyi bul.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      4
+     ],
+     [
+      "+",
+      3
+     ]
+    ],
+    "x": 1,
+    "min": 0,
+    "max": 10,
+    "ifade": "4x + 3"
+   },
+   "gorev": {
+    "metin": "Çıktı 31 olsun.",
+    "check": {
+     "key": "y",
+     "eq": 31
+    }
+   },
+   "dene": [
+    "Ters işlemlerle geri git: 31 − 3 = 28, 28 ÷ 4 = 7."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Kırtasiye",
+   "soru": "Ece kırtasiyeden 3 defter ve tanesi 7 TL olan 2 kalem aldı, toplam 50 TL ödedi. Defterlerin hepsi aynı fiyatta. Bir defter kaç TL'dir?",
+   "cozum": [
+    "Bir defterin fiyatı x olsun. Defterler 3x, kalemler 2 · 7 = 14 TL.",
+    "Denklem: 3x + 14 = 50.",
+    "İki taraftan 14 çıkar: 3x = 36.",
+    "İki tarafı 3'e böl: x = 12."
+   ],
+   "sonuc": "Bir defter 12 TL'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Eşitliğin yalnız bir tarafında işlem yapmak dengeyi bozar. 2x + 3 = 11'de soldan 3 çıkarıp sağdan çıkarmazsan 2x = 11 gibi yanlış bir eşitlik elde edersin. **Her adımda iki tarafa aynı işlemi** yap ve sonunda bulduğun değeri denklemde yerine koyarak kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "\"Bir sayının 5 fazlası 13'tür.\" Bu durumu gösteren denklem hangisidir?",
+   "options": [
+    "x − 5 = 13",
+    "5x = 13",
+    "x + 5 = 13",
+    "x ÷ 5 = 13"
+   ],
+   "answer": 2,
+   "why": "\"5 fazlası\" toplama demektir: x + 5.",
+   "hint": "\"Fazlası\" hangi işlemi anlatır?"
+  },
+  {
+   "prompt": "3x − 4 = 17 denkleminin çözümü kaçtır?",
+   "options": [
+    "7",
+    "13/3",
+    "5",
+    "21"
+   ],
+   "answer": 0,
+   "why": "İki tarafa 4 ekle: 3x = 21; 3'e böl: x = 7.",
+   "hint": "Önce 4'ü yok et, sonra 3'e böl."
+  },
+  {
+   "prompt": "4x + 6 = 30 ise x kaçtır?",
+   "options": [
+    "9",
+    "24",
+    "4",
+    "6"
+   ],
+   "answer": 3,
+   "why": "4x = 24, x = 6.",
+   "hint": "İki taraftan 6 çıkar."
+  },
+  {
+   "prompt": "Bir sayının yarısının 3 eksiği 5'tir. Sayı kaçtır?",
+   "options": [
+    "4",
+    "16",
+    "10",
+    "13"
+   ],
+   "answer": 1,
+   "why": "x ÷ 2 − 3 = 5 → x ÷ 2 = 8 → x = 16.",
+   "hint": "Sondan başa ters işlemlerle git: önce 3 ekle, sonra 2 ile çarp."
+  }
+ ]
+}

@@ -1,0 +1,152 @@
+{
+ "id": "m2-1-4",
+ "baslik": "Ritmik Sayma",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.4"
+ ],
+ "sure": 12,
+ "ozet": "İleriye ve geriye ikişer, üçer, dörder, beşer ve onar sayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşit adımlarla saymak",
+   "govde": "Ritmik saymada her adımda aynı sayı eklenir (ileri) ya da çıkarılır (geri).\n\n- 3'er ileri: 3, 6, 9, 12, 15…\n- 4'er ileri: 4, 8, 12, 16, 20…\n- 10'ar geri: 90, 80, 70, 60…\n\nRitmik sayma, çarpmayı öğrenirken de çok işe yarar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "3'er ve 4'er",
+   "aciklama": "Adımı seç ve ileri sek.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 40,
+    "adimlar": [
+     3,
+     4
+    ]
+   },
+   "gorev": {
+    "metin": "4'er sayarak 28'e ulaş.",
+    "check": {
+     "all": [
+      {
+       "key": "pos",
+       "eq": 28
+      },
+      {
+       "key": "step",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kaç sekmede 28'e vardın?",
+    "3'er sayarak 28'e ulaşabilir misin? Neden?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "İleri ve geri",
+   "govde": "Ritmik sayarken **ileri** gidince sayılar büyür, **geri** gidince küçülür.\n\n5'er sayarken sayılar hep 0 ya da 5 ile biter. 10'ar sayarken birler basamağı değişmez: 7, 17, 27, 37…"
+  },
+  {
+   "tur": "sim",
+   "baslik": "100'den geriye",
+   "aciklama": "Nokta 100'de.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 100,
+    "start": 100,
+    "adimlar": [
+     10,
+     5
+    ],
+    "ileri": false
+   },
+   "gorev": {
+    "metin": "100'den geriye 5'er sayarak 75'e in.",
+    "check": {
+     "all": [
+      {
+       "key": "pos",
+       "eq": 75
+      },
+      {
+       "key": "step",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Adımı 5 seç.",
+    "Sayılar hep 0 ya da 5 ile mi bitiyor?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "2'şer ileri sayalım: 1'den başlarsak ilk beş sayı nedir?",
+   "cozum": [
+    "1 + 2 = 3, 3 + 2 = 5, 5 + 2 = 7, 7 + 2 = 9."
+   ],
+   "sonuc": "**1, 3, 5, 7, 9**. Bunlar tek sayılardır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir paket 3 kalem. 6 pakette kaç kalem var?",
+   "cozum": [
+    "3'er say: 3, 6, 9, 12, 15, 18.",
+    "Her paket için bir sayı söyledik, 6 sayı."
+   ],
+   "sonuc": "**18** kalem var."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Geriye sayarken yönü karıştırıp sayıyı büyütmek sık yapılan bir hatadır. 50'den geriye 10'ar: 50, **40**, 30… (60 değil)."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4'er sayalım: 8, 12, 16, ?",
+   "options": [
+    "18",
+    "20",
+    "24",
+    "17"
+   ],
+   "answer": 1,
+   "why": "16 + 4 = 20.",
+   "hint": "Son sayıya 4 ekle."
+  },
+  {
+   "prompt": "Geriye 3'er: 30, 27, 24, ?",
+   "options": [
+    "21",
+    "20",
+    "27",
+    "22"
+   ],
+   "answer": 0,
+   "why": "24 − 3 = 21.",
+   "hint": "Her adımda 3 azalıyor."
+  },
+  {
+   "prompt": "10'ar ileri: 6, 16, 26, ?",
+   "options": [
+    "27",
+    "30",
+    "36",
+    "62"
+   ],
+   "answer": 2,
+   "why": "26 + 10 = 36; birler basamağı hep 6.",
+   "hint": "Onlar basamağı bir artar."
+  }
+ ]
+}

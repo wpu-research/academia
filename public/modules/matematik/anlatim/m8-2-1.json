@@ -1,0 +1,97 @@
+{
+ "id": "m8-2-1",
+ "baslik": "Cebirsel İfadeler ve Özdeşlikler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.2.1.1", "M.8.2.1.2", "M.8.2.1.3", "M.8.2.1.4"],
+ "sure": 18,
+ "ozet": "Cebirsel ifadeleri sadeleştirip çarpacak, (a + b)² ve a² − b² özdeşliklerini alan modelleriyle görecek ve ifadeleri çarpanlarına ayıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Terim, katsayı, benzer terim",
+   "govde": "3x² − 5x + 7 ifadesinde üç **terim** vardır. 3, x²'nin; −5, x'in **katsayısı**dır; 7 **sabit terim**dir.\n\nDeğişkenleri ve üsleri aynı olan terimler **benzer terim**dir ve toplanabilir: 3x + 2y − x + 5 = 2x + 2y + 5. 3x ile 3x² benzer değildir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Cebirsel ifadelerin çarpımı",
+   "govde": "Her terim, diğer parantezdeki her terimle çarpılır (dağılma özelliği):\n\n- a(b + c) = ab + ac\n- (x + 2)(x + 3) = x · x + x · 3 + 2 · x + 2 · 3 = x² + 5x + 6\n\nAlan modelinde bu çarpım, kenarları (x + 2) ve (x + 3) olan dikdörtgenin dört parçaya bölünmesidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "(x + p)(x + q) alan modeli",
+   "aciklama": "Büyük kare x², yeşil şeritlerin her biri x, turuncu küçük kareler 1 birimkaredir. p ve q'yu değiştir; çarpımın her terimini parçalarda say.",
+   "sim": { "kind": "e-alan-ozdeslik", "mode": "carpim", "p": 2, "q": 3 },
+   "gorev": { "metin": "Alanı x² + 7x + 12 olan dikdörtgeni kur.", "check": { "all": [ { "key": "orta", "eq": 7 }, { "key": "sabit", "eq": 12 } ] } },
+   "dene": ["Toplamı 7, çarpımı 12 olan iki sayı ara. Bulduğunda x² + 7x + 12 = (x + 3)(x + 4) çarpanlara ayrılmış olur."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "(2x − 1)(x + 4) çarpımını yapalım.",
+   "cozum": [
+    "2x · x = 2x², 2x · 4 = 8x.",
+    "−1 · x = −x, −1 · 4 = −4.",
+    "Benzer terimleri topla: 8x − x = 7x."
+   ],
+   "sonuc": "(2x − 1)(x + 4) = 2x² + 7x − 4"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Özdeşlikler",
+   "govde": "Değişkenlere verilen her değer için doğru olan eşitliklere **özdeşlik** denir.\n\n- **(a + b)² = a² + 2ab + b²**\n- **(a − b)² = a² − 2ab + b²**\n- **a² − b² = (a − b)(a + b)** (iki kare farkı)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tam kare: (a + b)²",
+   "aciklama": "Kenarı a + b olan kare dört parçaya ayrıldı: a², iki tane ab ve b².",
+   "sim": { "kind": "e-alan-ozdeslik", "mode": "tam-kare", "a": 5, "b": 2, "max": 8 },
+   "gorev": { "metin": "b = 3 iken toplam alanı 64 yap.", "check": { "all": [ { "key": "b", "eq": 3 }, { "key": "alan", "eq": 64 } ] } },
+   "dene": ["Alan 64 ise kenar 8 olmalı: a + 3 = 8.", "a² + b²'yi hesapla ve (a + b)² ile karşılaştır; fark hep 2ab."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki kare farkı: kes ve taşı",
+   "aciklama": "a × a kareden b × b kare kesildi. Kalan L biçimli parçanın yeşil kısmını kesip taşıyınca bir dikdörtgen oluşur.",
+   "sim": { "kind": "e-alan-ozdeslik", "mode": "fark", "a": 7, "b": 3, "max": 8 },
+   "gorev": { "metin": "a² − b² = 33 olacak şekilde a ve b'yi seç, sonra parçayı taşı.", "check": { "all": [ { "key": "alan", "eq": 33 }, { "key": "tasindi", "eq": 1 } ] } },
+   "dene": ["Taşıdıktan sonra dikdörtgenin kenarlarına bak: (a − b) ve (a + b). 33 = 3 · 11."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Özdeşliklerle hızlı hesap",
+   "soru": "101² ve 49 · 51 işlemlerini özdeşliklerle yapalım.",
+   "cozum": [
+    "101² = (100 + 1)² = 100² + 2 · 100 · 1 + 1² = 10 000 + 200 + 1.",
+    "49 · 51 = (50 − 1)(50 + 1) = 50² − 1² = 2500 − 1."
+   ],
+   "sonuc": "101² = 10 201 ve 49 · 51 = 2499."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çarpanlara ayırma",
+   "govde": "Çarpanlara ayırma, çarpmanın tersidir.\n\n- **Ortak çarpan parantezi:** 6x² + 9x = 3x(2x + 3)\n- **İki kare farkı:** x² − 25 = (x − 5)(x + 5)\n- **Tam kare:** x² + 6x + 9 = (x + 3)², x² − 10x + 25 = (x − 5)²\n\nSonucu kontrol etmek için parantezleri yeniden çarp."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: köşesi kesilen bahçe",
+   "soru": "Kenarı (x + 3) metre olan kare biçimli bir bahçenin bir köşesinden kenarı 3 metre olan kare bir bölüm havuz için ayrılıyor. Kalan alanı çarpanlarına ayrılmış biçimde yazalım.",
+   "cozum": [
+    "Kalan alan = (x + 3)² − 3² = (x + 3)² − 9.",
+    "(x + 3)² = x² + 6x + 9 olduğundan kalan alan x² + 6x.",
+    "Ortak çarpan x: x² + 6x = x(x + 6). (İki kare farkıyla da: (x + 3 − 3)(x + 3 + 3).)"
+   ],
+   "sonuc": "Kalan alan x(x + 6) m²."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- (a + b)² = a² + b² yazmak. Alan modelindeki iki yeşil dikdörtgen (2ab) unutulmuş olur: (3 + 2)² = 25, ama 3² + 2² = 13.\n- (x − 3)² = x² − 9 yazmak. Doğrusu x² − 6x + 9; x² − 9 ise (x − 3)(x + 3)'tür.\n- 3x + 2x² = 5x³ gibi benzer olmayan terimleri toplamak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "(x + 5)² ifadesinin açılımı hangisidir?", "options": ["x² + 25", "x² + 5x + 25", "x² + 10x + 25", "x² + 10x + 5"], "answer": 2, "why": "(a + b)² = a² + 2ab + b²: x² + 2 · x · 5 + 25.", "hint": "Ortadaki terim 2ab'dir." },
+  { "prompt": "x² − 49 ifadesinin çarpanlarına ayrılmış biçimi hangisidir?", "options": ["(x − 7)²", "(x − 7)(x + 7)", "(x + 7)²", "x(x − 49)"], "answer": 1, "why": "İki kare farkı: x² − 7² = (x − 7)(x + 7).", "hint": "49 hangi sayının karesi?" },
+  { "prompt": "(x − 2)(x + 6) çarpımı hangisidir?", "options": ["x² + 4x − 12", "x² − 4x − 12", "x² + 8x − 12", "x² − 12"], "answer": 0, "why": "x² + 6x − 2x − 12 = x² + 4x − 12.", "hint": "Dört çarpımı yaz, sonra benzer terimleri topla." },
+  { "prompt": "99² kaçtır?", "options": ["9999", "9081", "9811", "9801"], "answer": 3, "why": "(100 − 1)² = 10 000 − 200 + 1 = 9801.", "hint": "99'u 100 − 1 olarak yaz ve (a − b)² özdeşliğini kullan." }
+ ]
+}

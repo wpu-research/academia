@@ -1,0 +1,195 @@
+{
+ "id": "m3-3-5",
+ "baslik": "Dört İşlemi Yönergelere Göre Yorumlama",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.5"
+ ],
+ "sure": 12,
+ "ozet": "\"Önce şunu yap, sonra bunu\" diyen yönergeleri işlem makinesiyle takip edeceğiz; işlemlerin sırasının sonucu nasıl değiştirdiğini ve geriye doğru nasıl çalışılacağını göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yönerge nedir?",
+   "govde": "**Yönerge**, ne yapacağımızı sırasıyla söyleyen bir talimattır: \"8'e 2 ekle, sonucu 5 ile çarp.\"\n\nYönergeyi takip ederken her adımın sonucunu bir sonraki adımda kullanırız:\n8 + 2 = 10 → 10 × 5 = 50."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İşlem makinesi",
+   "aciklama": "Girdi sayısı soldan sağa kutulardan geçer: önce 4 eklenir, sonra 3 ile çarpılır. Kaydırıcıyla girdiyi değiştir.",
+   "sim": {
+    "kind": "b-islem-makinesi",
+    "adimlar": [
+     [
+      "+",
+      4
+     ],
+     [
+      "×",
+      3
+     ]
+    ],
+    "giris": 2,
+    "min": 0,
+    "max": 20,
+    "hedef": 30
+   },
+   "gorev": {
+    "metin": "Çıktısı 30 olan girdiyi bul.",
+    "check": {
+     "key": "cikis",
+     "eq": 30
+    }
+   },
+   "dene": [
+    "Çıktı 30 ise 3 ile çarpmadan önce sayı kaçtı?",
+    "Geriye doğru düşün: 30 ÷ 3 = 10, 10 − 4 = 6."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sıra önemlidir",
+   "govde": "Yönergedeki adımları **yazıldığı sırayla** uygula. Sıra değişirse sonuç da değişebilir:\n\n- 6'ya 4 ekle, 3 ile çarp → 30\n- 6'yı 3 ile çarp, 4 ekle → 22\n\n**Geriye doğru çalışmak:** Sonuç verilip başlangıç sorulursa, adımları **sondan başa** doğru ve **ters işlemle** uygula. Toplamanın tersi çıkarma, çarpmanın tersi bölmedir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sırayı değiştir",
+   "aciklama": "Bu makinede aynı işlemler ters sırada: önce 3 ile çarp, sonra 4 ekle.",
+   "sim": {
+    "kind": "b-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      3
+     ],
+     [
+      "+",
+      4
+     ]
+    ],
+    "giris": 2,
+    "min": 0,
+    "max": 20
+   },
+   "gorev": {
+    "metin": "Girdiyi 6 yap ve çıktıyı önceki makineyle karşılaştır.",
+    "check": {
+     "key": "giris",
+     "eq": 6
+    }
+   },
+   "dene": [
+    "Önceki makinede 6'nın çıktısı 30'du. Bu makinede kaç?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölmeli yönerge",
+   "aciklama": "Girdi 5'er 5'er değişiyor. Makine önce 5'e böler, sonra 2 çıkarır.",
+   "sim": {
+    "kind": "b-islem-makinesi",
+    "adimlar": [
+     [
+      "÷",
+      5
+     ],
+     [
+      "−",
+      2
+     ]
+    ],
+    "giris": 10,
+    "min": 10,
+    "max": 50,
+    "adim": 5,
+    "hedef": 6
+   },
+   "gorev": {
+    "metin": "Çıktısı 6 olan girdiyi bul.",
+    "check": {
+     "key": "cikis",
+     "eq": 6
+    }
+   },
+   "dene": [
+    "Geriye doğru: 6 + 2 = 8, 8 × 5 = 40."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "\"Aklımdan bir sayı tuttum. 5 ekledim, sonucu 2 ile çarptım, 18 buldum.\" Tuttuğum sayı kaç?",
+   "cozum": [
+    "Son adım ×2 idi; tersi ÷2: 18 ÷ 2 = 9.",
+    "Önceki adım +5 idi; tersi −5: 9 − 5 = 4.",
+    "Kontrol: 4 + 5 = 9, 9 × 2 = 18."
+   ],
+   "sonuc": "Tutulan sayı **4**'tür."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Adım adım",
+   "soru": "\"25'ten başla, 4 çıkar, sonucu 3'e böl.\" Sonuç kaçtır?",
+   "cozum": [
+    "25 − 4 = 21.",
+    "21 ÷ 3 = 7."
+   ],
+   "sonuc": "Sonuç **7**'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yönergedeki adımların sırasını değiştirmek sonucu değiştirir. Geriye doğru çalışırken de ters işlemleri **ters sırayla** uygulamak gerekir; 18'den başlayıp önce 5 çıkarmak (13), sonra 2'ye bölmek doğru sonuca götürmez."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "\"8'e 2 ekle, sonucu 5 ile çarp.\" Sonuç kaçtır?",
+   "options": [
+    "42",
+    "50",
+    "40",
+    "18"
+   ],
+   "answer": 1,
+   "why": "8 + 2 = 10, 10 × 5 = 50.",
+   "hint": "Önce toplama, sonra çarpma."
+  },
+  {
+   "prompt": "Bir sayıyı 4 ile çarpıp 6 ekleyince 26 buluyoruz. Sayı kaçtır?",
+   "options": [
+    "5",
+    "8",
+    "20",
+    "4"
+   ],
+   "answer": 0,
+   "why": "Geriye doğru: 26 − 6 = 20, 20 ÷ 4 = 5.",
+   "hint": "Son adımdan başla ve ters işlem yap."
+  },
+  {
+   "prompt": "\"36'yı 4'e böl, sonra 7 ekle.\" Sonuç kaçtır?",
+   "options": [
+    "11",
+    "13",
+    "16",
+    "43"
+   ],
+   "answer": 2,
+   "why": "36 ÷ 4 = 9, 9 + 7 = 16.",
+   "hint": "Önce bölme."
+  },
+  {
+   "prompt": "Hangi yönerge 10'u 3'e dönüştürür?",
+   "options": [
+    "2 çıkar, sonra 4'e böl",
+    "5 çıkar, sonra 2 ekle",
+    "3 ile çarp, sonra 10 çıkar",
+    "2 ekle, sonra 4'e böl"
+   ],
+   "answer": 3,
+   "why": "10 + 2 = 12, 12 ÷ 4 = 3.",
+   "hint": "Her yönergeyi 10 ile dene."
+  }
+ ]
+}

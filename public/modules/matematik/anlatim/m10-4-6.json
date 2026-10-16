@@ -1,0 +1,95 @@
+{
+ "id": "m10-4-6",
+ "baslik": "Gerçek Sayılarda Tanımlı Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.4.6"],
+ "sure": 18,
+ "ozet": "f(x) = c denklemi, f'nin grafiği ile y = c doğrusunun kesiştiği x'lerdir; f(x) > c eşitsizliği, grafiğin doğrunun üstünde kaldığı x'lerdir. Bu bakışla karesel, karekök ve rasyonel denklemleri çözecek, gerçek yaşam problemlerine uygulayacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Grafikle çözüm",
+   "govde": "- f(x) = c denkleminin çözümleri: y = f(x) grafiği ile y = c doğrusunun kesişim noktalarının apsisleri. Çözüm sayısı = kesişim sayısı.\n- f(x) > c eşitsizliğinin çözümü: grafiğin doğrunun **üstünde** kaldığı x değerleri; f(x) < c için altında kalanlar.\n- f(x) = g(x) denklemi için iki grafiğin kesişimlerine bakılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir karesel denklem ve eşitsizlik",
+   "aciklama": "f(x) = (x − 2)² − 1. Turuncu kesikli doğru y = c; turuncu noktalar çözümler, x eksenindeki yeşil bölgeler f(x) > c'nin çözümü.",
+   "sim": { "kind": "f-fonk", "f": "kare", "h": 2, "k": -1, "c": 0, "sliders": ["c"], "tools": ["cizgi"], "parent": false },
+   "gorev": { "metin": "c'yi 3 yap: (x − 2)² − 1 = 3 denkleminin çözümlerini oku.", "check": { "key": "c", "eq": 3 } },
+   "dene": ["c = 3 iken çözümler 0 ve 4; yeşil bölge x < 0 ya da x > 4, yani f(x) > 3.", "c = −1 iken tek çözüm (tepe noktası), c < −1 iken çözüm yok."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: atış problemi",
+   "soru": "Yerden yukarı atılan bir topun t saniye sonraki yüksekliği h(t) = −5t² + 20t metredir. Top en çok kaç metreye çıkar ve hangi zaman aralığında 15 metreden yüksektedir?",
+   "cozum": [
+    "h(t) = −5(t² − 4t) = −5(t − 2)² + 20: tepe noktası (2, 20).",
+    "En büyük yükseklik 20 m, t = 2 saniyede.",
+    "−5t² + 20t > 15 → t² − 4t + 3 < 0 → (t − 1)(t − 3) < 0.",
+    "Çarpım negatif ⇔ 1 < t < 3."
+   ],
+   "sonuc": "En çok 20 m; 1. ve 3. saniyeler arasında 15 m'den yüksektedir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Karekök denklemi",
+   "aciklama": "y = √(x − r) grafiği ve y = c doğrusu.",
+   "sim": { "kind": "f-fonk", "f": "kok", "h": 0, "c": 1, "sliders": ["h", "c"], "tools": ["cizgi"], "parent": false },
+   "gorev": { "metin": "√(x + 2) = 2 denklemini kur (r = −2, c = 2) ve çözümü oku.", "check": { "all": [{ "key": "h", "eq": -2 }, { "key": "c", "eq": 2 }] } },
+   "dene": ["Çözüm x = 2: √4 = 2.", "c < 0 seç: karekök negatif olamayacağından çözüm yok."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: karekök denklemi",
+   "soru": "√(x + 1) = x − 5 denklemini çözelim.",
+   "cozum": [
+    "Şart: x − 5 ≥ 0 → x ≥ 5.",
+    "Kare al: x + 1 = x² − 10x + 25 → x² − 11x + 24 = 0 → (x − 3)(x − 8) = 0.",
+    "x = 3 şartı sağlamaz; x = 8: √9 = 3 = 8 − 5."
+   ],
+   "sonuc": "Çözüm kümesi {8}."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Rasyonel eşitsizlik",
+   "aciklama": "y = 1/x ve y = c. Yeşil bölge 1/x > c'nin çözümü.",
+   "sim": { "kind": "f-fonk", "f": "rasyonel", "c": 1, "sliders": ["c"], "tools": ["cizgi", "asimptot"], "parent": false },
+   "gorev": { "metin": "c'yi 0,5 yap: 1/x = 1/2 denkleminin çözümünü ve 1/x > 1/2 eşitsizliğinin çözümünü oku.", "check": { "key": "c", "eq": 0.5 } },
+   "dene": ["1/x > 1/2 ⇔ 0 < x < 2. x'i 2 ile çarparken x'in işaretine dikkat: negatif x'ler zaten 1/x < 0 verir.", "c negatifken yeşil bölge iki parçalı."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: ortalama maliyet",
+   "soru": "Bir atölyede x ürün üretmenin maliyeti 200 + 5x TL'dir. Ürün başına ortalama maliyet M(x) = (200 + 5x)/x TL'dir. Ortalama maliyetin 9 TL'yi geçmemesi için en az kaç ürün üretilmelidir?",
+   "cozum": [
+    "M(x) = 5 + 200/x (x > 0).",
+    "5 + 200/x ≤ 9 → 200/x ≤ 4.",
+    "x > 0 olduğundan iki tarafı x ile çarpabiliriz: 200 ≤ 4x → x ≥ 50."
+   ],
+   "sonuc": "En az 50 ürün. Yatay asimptot y = 5: üretim arttıkça ortalama maliyet 5 TL'ye yaklaşır ama ulaşmaz."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "x² − 5x + 6 ≤ 0 eşitsizliğinin çözüm kümesini bulalım.",
+   "cozum": [
+    "x² − 5x + 6 = (x − 2)(x − 3); sıfırlar 2 ve 3.",
+    "Kolları yukarı olan parabol sıfırlar arasında x ekseninin altında.",
+    "Eşitlik de dahil olduğundan uç noktalar alınır."
+   ],
+   "sonuc": "Çözüm kümesi [2, 3]."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Eşitsizliği işareti bilinmeyen bir ifadeyle çarpmak. 1/x > 1/2 eşitsizliğini x ile çarpıp 2 > x yazarsan negatif x'leri de çözüme katmış olursun; oysa x < 0 için 1/x negatiftir. Ya x'in işaretine göre durum ayır ya da grafiğe bak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "x² − 4 > 0 eşitsizliğinin çözümü nedir?", "options": ["(−2, 2)", "x < −2 veya x > 2", "x > 2", "x < 2"], "answer": 1, "why": "Parabol sıfırlar (±2) dışında x ekseninin üstündedir.", "hint": "y = x² − 4 grafiğini düşün." },
+  { "prompt": "√(x − 3) = 2 denkleminin çözümü nedir?", "options": ["5", "1", "7", "4"], "answer": 2, "why": "x − 3 = 4 → x = 7.", "hint": "İki tarafın karesini al." },
+  { "prompt": "1/(x − 1) > 0 eşitsizliğinin çözümü nedir?", "options": ["x < 1", "x > 0", "x ≠ 1", "x > 1"], "answer": 3, "why": "Kesir pozitif ⇔ payda pozitif ⇔ x > 1.", "hint": "Pay pozitif; paydanın işaretine bak." },
+  { "prompt": "f(x) = c denkleminin çözüm sayısı neye eşittir?", "options": ["f'nin grafiği ile y = c doğrusunun kesişim noktası sayısına", "f'nin x eksenini kestiği nokta sayısına", "c'nin değerine", "Her zaman 2'ye"], "answer": 0, "why": "Her kesişim noktasının apsisi bir çözümdür.", "hint": "Grafikle çözüm yöntemini hatırla." }
+ ]
+}

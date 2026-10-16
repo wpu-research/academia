@@ -1,0 +1,167 @@
+{
+ "id": "m5-3-5",
+ "baslik": "Temel Aritmetik İşlemler ve Algoritma",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.2.1",
+  "MAT.5.2.2",
+  "MAT.5.2.3",
+  "MAT.5.2.4"
+ ],
+ "sure": 14,
+ "ozet": "Toplama, çıkarma, çarpma ve bölme işlemlerinin adım adım uygulanan birer algoritma olduğunu görecek, algoritmaların adımlarını yorumlayacak ve bir algoritmadaki hatayı bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Algoritma nedir?",
+   "govde": "Bir işi yapmak için izlenen, **sırası belli** ve **her seferinde aynı sonucu veren** adımlar dizisine **algoritma** denir. Yemek tarifi de, alt alta toplama da birer algoritmadır.\n\nAlt alta toplama algoritması:\n1. Sayıları basamakları hizalı yaz.\n2. Birler basamağından başla, o basamaktaki rakamları (ve eldeyi) topla.\n3. Toplam 10 ya da büyükse birler rakamını yaz, onluğu sol basamağa elde olarak aktar.\n4. Bir sol basamağa geç ve 2. adımdan devam et; basamak kalmayınca dur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Toplama algoritması",
+   "aciklama": "5 678 + 4 596 işlemini adım adım izle. Her adımda aynı kural tekrarlanıyor.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "+",
+    "a": 5678,
+    "b": 4596
+   },
+   "gorev": {
+    "metin": "Algoritmayı sonuna kadar uygula.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Son basamakta da elde çıktı: en sola yazılır ve sayı beş basamaklı olur."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çıkarma algoritması",
+   "aciklama": "7 002 − 3 485 işlemini izle. Bozma adımı ne zaman gerekiyor?",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "-",
+    "a": 7002,
+    "b": 3485
+   },
+   "gorev": {
+    "metin": "Algoritmayı sonuna kadar uygula.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Üstteki rakam alttakinden küçükse sol basamaktan 1 bozulur.",
+    "Sağlama: 3 517 + 3 485 = 7 002."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bölme algoritması",
+   "govde": "Uzun bölmede dört adım **tekrar tekrar** uygulanır:\n\n1. **Böl:** Sıradaki parçanın içinde bölen kaç kez var?\n2. **Çarp:** Bölüme yazdığın rakamı bölenle çarp.\n3. **Çıkar:** Çarpımı parçadan çıkar.\n4. **İndir:** Sıradaki basamağı yanına indir.\n\nİndirilecek basamak kalmayınca dur; son fark kalandır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölme algoritması",
+   "aciklama": "9 876 ÷ 7 işleminde dört adımın nasıl tekrarlandığını izle.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "÷",
+    "a": 9876,
+    "b": 7
+   },
+   "gorev": {
+    "metin": "Algoritmayı sonuna kadar uygula.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Son adımda 6'nın içinde 7 yok: bölüme 0 yazılır.",
+    "Sağlama: 7 × 1 410 + 6 = 9 876."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Kısa yol algoritması",
+   "soru": "Bir sayıyı 9 ile çarpmak için şu algoritma kullanılıyor: \"Sayıyı 10 ile çarp, sonuçtan sayının kendisini çıkar.\" 47 × 9 işlemini bu algoritmayla yapalım. Algoritma neden doğru?",
+   "cozum": [
+    "47 × 10 = 470.",
+    "470 − 47 = 423.",
+    "Neden: 47 × 9 = 47 × (10 − 1) = 47 × 10 − 47 × 1 (dağılma özelliği)."
+   ],
+   "sonuc": "47 × 9 = 423."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Hatayı bul",
+   "soru": "Ece 503 − 128 işlemini 425 buldu. Algoritmanın hangi adımında hata yaptı?",
+   "cozum": [
+    "Ece birlerde 8 − 3 = 5, onlarda 2 − 0 = 2, yüzlerde 5 − 1 = 4 yazmış.",
+    "Oysa birlerde üstte 3 var: 3'ten 8 çıkmaz, bozma gerekir.",
+    "Doğru çözüm: onlar 0 olduğu için yüzlerden bozulur; 13 − 8 = 5, 9 − 2 = 7, 4 − 1 = 3."
+   ],
+   "sonuc": "Ece bozma adımını atlamış; doğru sonuç 375."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Algoritmada her basamakta \"büyük rakamdan küçüğü çıkarmak\" çıkarma algoritmasının bir adımı değildir. Algoritma her zaman **üstteki rakamdan alttakini** çıkarır; yetmezse bozma yapılır. Sağlama yaparak hatayı yakalayabilirsin: 425 + 128 = 553, 503 değil."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Uzun bölme algoritmasında tekrarlanan adımların doğru sırası hangisidir?",
+   "options": [
+    "Çıkar, böl, topla, çarp",
+    "Böl, çarp, çıkar, aşağı indir",
+    "Topla, çarp, böl, indir",
+    "İndir, topla, çarp, böl"
+   ],
+   "answer": 1,
+   "why": "Böl, çarp, çıkar, indir; sonra yeniden böl.",
+   "hint": "Önce bölüme yazılacak rakamı buluruz."
+  },
+  {
+   "prompt": "6 045 − 2 678 işleminin sonucu kaçtır?",
+   "options": [
+    "3 367",
+    "4 633",
+    "3 467",
+    "3 377"
+   ],
+   "answer": 0,
+   "why": "Sağlama: 3 367 + 2 678 = 6 045.",
+   "hint": "Bozma gereken basamaklara dikkat et; sağlama yap."
+  },
+  {
+   "prompt": "\"10 ile çarp, sayının kendisini çıkar\" algoritmasıyla 58 × 9 kaç bulunur?",
+   "options": [
+    "580",
+    "512",
+    "522",
+    "468"
+   ],
+   "answer": 2,
+   "why": "58 × 10 = 580; 580 − 58 = 522.",
+   "hint": "Önce 58'i 10 ile çarp."
+  },
+  {
+   "prompt": "Alt alta toplama algoritmasında işleme hangi basamaktan başlanır?",
+   "options": [
+    "En büyük basamaktan",
+    "Onlar basamağından",
+    "Yüzler basamağından",
+    "Birler basamağından"
+   ],
+   "answer": 3,
+   "why": "Elde sola aktarıldığı için birlerden başlanır.",
+   "hint": "Elde hangi yöne aktarılıyor?"
+  }
+ ]
+}

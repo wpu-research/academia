@@ -1,0 +1,177 @@
+{
+ "id": "m12e-3-1",
+ "baslik": "Toplam-Fark ve İki kat Açı Formülleri",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.3.1.1",
+  "12.3.1.2"
+ ],
+ "sure": 18,
+ "ozet": "sin(a + b) neden sin a + sin b değildir? Birim çemberde iki açıyı art arda ekleyerek toplam-fark formüllerini sayılarla doğrulayacak, iki kat açı formüllerini bunlardan elde edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sinüs toplanmaz",
+   "govde": "sin 30° = 1/2 ve sin 60° = √3/2. Toplamları (1 + √3)/2 ≈ 1,37 eder; oysa sin 90° = 1. Demek ki **sin(a + b) ≠ sin a + sin b**.\n\nİki açının toplamının sinüs ve kosinüsü, açıların kendi sinüs ve kosinüsleriyle başka bir biçimde ilişkilidir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Toplam ve fark formülleri",
+   "govde": "- **sin(a + b) = sin a · cos b + cos a · sin b**\n- **sin(a − b) = sin a · cos b − cos a · sin b**\n- **cos(a + b) = cos a · cos b − sin a · sin b**\n- **cos(a − b) = cos a · cos b + sin a · sin b**\n- **tan(a ± b) = (tan a ± tan b) / (1 ∓ tan a · tan b)**\n\nKosinüs formülünde işaret ters döner: toplamda **eksi**, farkta **artı**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki açıyı art arda ekle",
+   "aciklama": "Kahverengi ışın a açısını, yeşil ışın a ± b açısını gösteriyor. Sağda formül, a ve b'nin sinüs ve kosinüsleriyle hesaplanıyor; yeşil noktanın koordinatlarıyla aynı çıktığına bak.",
+   "sim": {
+    "kind": "g-toplam-aci",
+    "a": 30,
+    "b": 45
+   },
+   "gorev": {
+    "metin": "Fark formülünü seçip 15° açısını elde et.",
+    "check": {
+     "all": [
+      {
+       "key": "op",
+       "eq": -1
+      },
+      {
+       "key": "t",
+       "eq": 15
+      }
+     ]
+    }
+   },
+   "dene": [
+    "a = 30°, b = 45° iken sin 75° ≈ 0,966 = (√6 + √2)/4.",
+    "a = 45°, b = 30° seçip fark alırsan cos 15° de 0,966 çıkar: cos 15° = sin 75°."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "sin 75° ve cos 15° değerlerini bulalım.",
+   "cozum": [
+    "sin 75° = sin(45° + 30°) = sin 45° · cos 30° + cos 45° · sin 30°.",
+    "= (√2/2)(√3/2) + (√2/2)(1/2) = (√6 + √2)/4.",
+    "cos 15° = cos(45° − 30°) = cos 45° · cos 30° + sin 45° · sin 30° = (√6 + √2)/4."
+   ],
+   "sonuc": "sin 75° = cos 15° = (√6 + √2)/4 ≈ 0,966."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "tan 15° değerini bulalım.",
+   "cozum": [
+    "tan 15° = tan(45° − 30°) = (1 − √3/3) / (1 + √3/3).",
+    "Pay ve paydayı 3 ile çarp: (3 − √3)/(3 + √3).",
+    "Eşleniğiyle genişlet: (3 − √3)² / (9 − 3) = (12 − 6√3)/6."
+   ],
+   "sonuc": "tan 15° = 2 − √3."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İki kat açı formülleri",
+   "govde": "Toplam formüllerinde b = a alınırsa:\n\n- **sin 2a = 2 · sin a · cos a**\n- **cos 2a = cos²a − sin²a = 2cos²a − 1 = 1 − 2sin²a**\n- **tan 2a = 2 tan a / (1 − tan²a)**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki kat açı",
+   "aciklama": "Bu kez b = a. Yeşil ışın 2a açısında. Formülle bulunan değer ile yeşil noktanın koordinatlarını karşılaştır.",
+   "sim": {
+    "kind": "g-toplam-aci",
+    "double": true,
+    "a": 30
+   },
+   "gorev": {
+    "metin": "cos 2a = 0 olacak dar açıyı bul.",
+    "check": {
+     "key": "a",
+     "eq": 45
+    }
+   },
+   "dene": [
+    "a = 45° iken 2a = 90°: yeşil nokta y ekseni üzerinde.",
+    "a 45°'yi geçince cos 2a negatif olur."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3",
+   "soru": "a dar açı ve sin a = 3/5 ise sin 2a ve cos 2a değerlerini bulalım.",
+   "cozum": [
+    "a dar açı: cos a = √(1 − 9/25) = 4/5.",
+    "sin 2a = 2 · (3/5) · (4/5) = 24/25.",
+    "cos 2a = cos²a − sin²a = 16/25 − 9/25 = 7/25."
+   ],
+   "sonuc": "sin 2a = 24/25, cos 2a = 7/25."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "tan a = 2 ise tan(a + 45°) kaçtır? Ayrıca sin 15° · cos 15° çarpımını bulalım.",
+   "cozum": [
+    "tan(a + 45°) = (tan a + 1)/(1 − tan a · 1) = (2 + 1)/(1 − 2) = −3.",
+    "sin 15° · cos 15° = (1/2) · 2 sin 15° cos 15° = (1/2) · sin 30°.",
+    "= (1/2) · (1/2) = 1/4."
+   ],
+   "sonuc": "tan(a + 45°) = −3; sin 15° · cos 15° = 1/4."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- cos(a + b) formülünde artı yazmak. Doğrusu: cos(a + b) = cos a cos b **−** sin a sin b.\n- sin 2a = 2 sin a sanmak. Örneğin sin 60° ≈ 0,87 ama 2 sin 30° = 1.\n- cos 2a'nın üç biçiminden soruya uygun olanı seçmemek: yalnız sin a biliniyorsa 1 − 2sin²a en kısa yoldur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "sin 105° kaçtır?",
+   "options": [
+    "(√6 − √2)/4",
+    "(√6 + √2)/4",
+    "(√3 + 1)/2",
+    "√2/2"
+   ],
+   "answer": 1,
+   "why": "sin(60° + 45°) = (√3/2)(√2/2) + (1/2)(√2/2) = (√6 + √2)/4.",
+   "hint": "105° = 60° + 45°."
+  },
+  {
+   "prompt": "cos²22,5° − sin²22,5° kaçtır?",
+   "options": [
+    "1/2",
+    "√3/2",
+    "1",
+    "√2/2"
+   ],
+   "answer": 3,
+   "why": "cos²a − sin²a = cos 2a = cos 45° = √2/2.",
+   "hint": "Hangi iki kat açı formülüne benziyor?"
+  },
+  {
+   "prompt": "tan x = 1/2 ve tan y = 1/3 ise tan(x + y) kaçtır?",
+   "options": [
+    "1",
+    "5/6",
+    "6/5",
+    "1/2"
+   ],
+   "answer": 0,
+   "why": "(1/2 + 1/3)/(1 − 1/6) = (5/6)/(5/6) = 1.",
+   "hint": "tan(x + y) = (tan x + tan y)/(1 − tan x tan y)."
+  },
+  {
+   "prompt": "cos a = 1/3 ise cos 2a kaçtır?",
+   "options": [
+    "2/3",
+    "7/9",
+    "−7/9",
+    "−1/3"
+   ],
+   "answer": 2,
+   "why": "cos 2a = 2cos²a − 1 = 2/9 − 1 = −7/9.",
+   "hint": "Yalnız cos a verildiğinde cos 2a = 2cos²a − 1 kullan."
+  }
+ ]
+}

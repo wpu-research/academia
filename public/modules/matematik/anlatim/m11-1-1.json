@@ -1,0 +1,88 @@
+{
+ "id": "m11-1-1",
+ "baslik": "İki Nicel Değişkenli Veriler",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.1.1"],
+ "sure": 17,
+ "ozet": "İki ölçülebilir değişkeni serpme diyagramında gösterecek, ilişkinin yönünü ve gücünü gözle ve korelasyon katsayısıyla değerlendirecek, eğilim doğrusuyla tahmin yapacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Serpme diyagramı",
+   "govde": "Boy ve kilo, çalışma süresi ve sınav puanı gibi değerleri sayı olan değişkenlere **nicel değişken** denir. Aynı bireyde iki nicel değişken ölçüldüğünde her birey bir (x, y) noktasıdır. Bu noktaların koordinat düzleminde gösterilmesine **serpme (saçılım) diyagramı** denir.\n\nDiyagrama bakarken üç şeye dikkat ederiz:\n- **Yön**: x arttıkça y de artma eğiliminde mi (pozitif), azalma eğiliminde mi (negatif)?\n- **Biçim**: noktalar bir doğru çevresinde mi toplanıyor (doğrusal ilişki)?\n- **Güç**: noktalar o doğruya ne kadar yakın?"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Noktaları taşı, r'yi izle",
+   "aciklama": "Her nokta bir öğrencinin günlük çalışma saati (x) ve deneme puanını (y, 10 üzerinden) gösteriyor (kurgu veri). Sağda korelasyon katsayısı r canlı hesaplanıyor.",
+   "sim": { "kind": "f-sacilim", "xlab": "Çalışma süresi", "ylab": "Puan" },
+   "gorev": { "metin": "Noktaları sürükleyerek güçlü negatif bir ilişki oluştur (r < −0,7).", "check": { "key": "r", "lt": -0.7 } },
+   "dene": ["Noktaları bir doğru üzerine dizersen r tam 1 ya da −1 olur.", "Noktaları rastgele dağıtırsan r 0'a yaklaşır."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Korelasyon katsayısı r",
+   "govde": "Doğrusal ilişkinin yönünü ve gücünü tek sayıyla özetler:\n\nr = Σ(xᵢ − x̄)(yᵢ − ȳ) / √[Σ(xᵢ − x̄)² · Σ(yᵢ − ȳ)²]\n\n- −1 ≤ r ≤ 1.\n- r > 0 pozitif, r < 0 negatif yönlü ilişki.\n- |r| 1'e yaklaştıkça noktalar bir doğruya yaklaşır; r = ±1 tüm noktalar aynı doğru üzerinde demektir.\n- r ≈ 0 doğrusal ilişki yok demektir (ama başka türden bir ilişki olabilir).\n\nKaba bir yorum: |r| ≥ 0,7 güçlü, 0,4–0,7 orta, 0,4'ün altı zayıf."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Beş öğrencinin günlük çalışma saati ve puanı: (1, 50), (2, 55), (3, 65), (4, 70), (5, 80). Korelasyon katsayısını hesaplayalım.",
+   "cozum": [
+    "x̄ = 3, ȳ = 64.",
+    "Farklar: x − x̄ = −2, −1, 0, 1, 2; y − ȳ = −14, −9, 1, 6, 16.",
+    "Σ(x − x̄)(y − ȳ) = 28 + 9 + 0 + 6 + 32 = 75.",
+    "Σ(x − x̄)² = 10, Σ(y − ȳ)² = 196 + 81 + 1 + 36 + 256 = 570.",
+    "r = 75 / √(10 · 570) = 75 / √5700 ≈ 0,993."
+   ],
+   "sonuc": "r ≈ 0,99: çok güçlü pozitif doğrusal ilişki."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eğilim (regresyon) doğrusu",
+   "govde": "Noktalara en iyi uyan doğru y = mx + n'dir; burada\n\nm = Σ(x − x̄)(y − ȳ) / Σ(x − x̄)², n = ȳ − m · x̄.\n\nDoğru her zaman (x̄, ȳ) noktasından geçer. Eğimin işareti r'nin işaretiyle aynıdır. Doğru, verinin **aralığı içinde** tahmin yapmak için kullanılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hepsini bir doğruya diz",
+   "aciklama": "Turuncu kesikli doğru eğilim doğrusu. Noktaları taşıdıkça doğru da güncelleniyor.",
+   "sim": { "kind": "f-sacilim", "points": [[1, 3], [2, 2], [3, 5], [5, 4], [6, 7], [8, 6]], "lineOn": true, "xlab": "x", "ylab": "y" },
+   "gorev": { "metin": "Noktaları aynı doğru üzerine dizerek r = 1 elde et.", "check": { "key": "r", "gte": 0.9999 } },
+   "dene": ["Örneğin y = x doğrusu: (1, 1), (2, 2), ...", "Eğilim doğrusu her zaman ortalama noktadan (x̄, ȳ) geçer."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: tahmin",
+   "soru": "Örnek 1'deki veri için eğilim doğrusunu bulup günde 6 saat çalışan bir öğrencinin puanını tahmin edelim.",
+   "cozum": [
+    "m = 75 / 10 = 7,5.",
+    "n = ȳ − m · x̄ = 64 − 7,5 · 3 = 41,5.",
+    "y = 7,5x + 41,5.",
+    "x = 6: y = 45 + 41,5 = 86,5."
+   ],
+   "sonuc": "Tahmin yaklaşık 86,5 puan. 6 saat veri aralığının (1–5) biraz dışında olduğundan tahmine temkinli bakılmalı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Araçların yaşı (yıl) ile ikinci el fiyatı arasındaki korelasyon katsayısı r = −0,99 bulunmuştur. Bu sonuç için hangi yorum doğrudur?",
+   "cozum": [
+    "r negatif: yaş arttıkça fiyat azalma eğiliminde.",
+    "|r| 1'e çok yakın: noktalar azalan bir doğruya çok yakın.",
+    "r ilişkiyi ölçer; fiyatı neyin belirlediğine dair tek başına kanıt değildir."
+   ],
+   "sonuc": "Güçlü, negatif yönlü doğrusal bir ilişki vardır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "r = 0'ı \"hiç ilişki yok\" diye okumak. r yalnız **doğrusal** ilişkiyi ölçer; noktalar bir parabol üzerinde dizilse bile r 0 çıkabilir. Bir de güçlü korelasyonu neden-sonuç sanmak: iki değişken birlikte değişiyor olabilir ama biri diğerine neden olmayabilir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "İki değişken arasında r = −0,92 bulundu. Doğru yorum hangisidir?", "options": ["Zayıf pozitif ilişki", "İlişki yok", "Güçlü negatif doğrusal ilişki", "Güçlü pozitif doğrusal ilişki"], "answer": 2, "why": "İşaret negatif (yön), mutlak değer 1'e yakın (güç).", "hint": "İşarete ve büyüklüğe ayrı ayrı bak." },
+  { "prompt": "Aşağıdaki değişken çiftlerinden hangisinde pozitif bir ilişki beklenir?", "options": ["Boy ve ayakkabı numarası", "Arabanın yaşı ve fiyatı", "Hız ve varış süresi (aynı yol)", "Dışarıdaki sıcaklık ve kalorifer gideri"], "answer": 0, "why": "Boy arttıkça ayak boyu da artma eğilimindedir; diğerlerinde biri artarken diğeri azalır.", "hint": "Biri artınca diğeri de artıyor mu?" },
+  { "prompt": "Korelasyon katsayısı r hangi aralıkta değer alır?", "options": ["[0, 1]", "[0, ∞)", "(−∞, ∞)", "[−1, 1]"], "answer": 3, "why": "r her zaman −1 ile 1 arasındadır.", "hint": "Tam doğrusal ilişkide r kaç olur?" },
+  { "prompt": "Eğilim doğrusu y = 2x + 10 olan bir veride x = 7 için tahmin edilen y kaçtır?", "options": ["17", "24", "27", "14"], "answer": 1, "why": "2 · 7 + 10 = 24.", "hint": "x'i doğru denkleminde yerine koy." }
+ ]
+}

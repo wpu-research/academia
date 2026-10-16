@@ -1,0 +1,181 @@
+{
+ "id": "m2-6-1",
+ "baslik": "Veriyle Çalışma ve Veriye Dayalı Karar Verme",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.4.1"
+ ],
+ "sure": 14,
+ "ozet": "İki sınıftan toplanan verileri aynı çetele ve nesne grafiğinde gösterecek, grupları karşılaştırıp karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "İki veri grubu",
+   "govde": "Aynı soruyu iki farklı gruba sorabiliriz: “En sevdiğin spor hangisi?” sorusunu hem 2-A hem 2-B sınıfına soralım.\n\nİki grubun verisini **aynı tabloda** ama **farklı renklerle** gösterirsek gruplar kolayca karşılaştırılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Verileri kaydet",
+   "aciklama": "2-A: Futbol 6, Basketbol 3, Voleybol 4. 2-B: Futbol 5, Basketbol 5, Voleybol 2. Kahverengi satırlar 2-A, yeşil satırlar 2-B.",
+   "sim": {
+    "kind": "a-cetele",
+    "kategoriler": [
+     "Futbol",
+     "Basketbol",
+     "Voleybol"
+    ],
+    "degerler": [
+     0,
+     0,
+     0
+    ],
+    "birinciAd": "2-A",
+    "ikinci": {
+     "ad": "2-B",
+     "degerler": [
+      0,
+      0,
+      0
+     ]
+    },
+    "max": 10
+   },
+   "gorev": {
+    "metin": "İki sınıfın verilerini de doğru kaydet.",
+    "check": {
+     "all": [
+      {
+       "key": "c0",
+       "eq": 6
+      },
+      {
+       "key": "c1",
+       "eq": 3
+      },
+      {
+       "key": "c2",
+       "eq": 4
+      },
+      {
+       "key": "d0",
+       "eq": 5
+      },
+      {
+       "key": "d1",
+       "eq": 5
+      },
+      {
+       "key": "d2",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Her satırın başındaki renk sınıfı gösterir.",
+    "Altta iki sınıfın toplamı da yazar."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "İki grupla karar vermek",
+   "govde": "İki grubun verisine bakarak şunları sorarız:\n\n- Her grupta **en çok** hangisi seçilmiş?\n- Bir seçenekte hangi grup **daha çok**?\n- İki grup **birlikte** düşünülünce en çok hangisi?\n\nKarar, sorulan soruya göre değişir: Ortak bir spor günü için iki sınıfın **toplamına** bakarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafiği yorumla",
+   "aciklama": "Kaydettiğin veri burada hazır. Değerleri değiştirip sonuçların nasıl değiştiğine bak.",
+   "sim": {
+    "kind": "a-cetele",
+    "kategoriler": [
+     "Futbol",
+     "Basketbol",
+     "Voleybol"
+    ],
+    "degerler": [
+     6,
+     3,
+     4
+    ],
+    "birinciAd": "2-A",
+    "ikinci": {
+     "ad": "2-B",
+     "degerler": [
+      5,
+      5,
+      2
+     ]
+    },
+    "max": 10
+   },
+   "dene": [
+    "2-B'de basketbol ile futbol eşit. 2-A'da durum ne?",
+    "Voleybolu en çok seven sınıf hangisi?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "İki sınıf birlikte düşünülünce en çok sevilen spor hangisi?",
+   "cozum": [
+    "Futbol: 6 + 5 = 11.",
+    "Basketbol: 3 + 5 = 8.",
+    "Voleybol: 4 + 2 = 6."
+   ],
+   "sonuc": "En çok **futbol** seviliyor (11 öğrenci)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Hangi sınıfta daha çok öğrenci oy verdi?",
+   "cozum": [
+    "2-A: 6 + 3 + 4 = 13.",
+    "2-B: 5 + 5 + 2 = 12."
+   ],
+   "sonuc": "**2-A**'da 1 öğrenci daha fazla oy verdi."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İki grubu karşılaştırırken grupları karıştırmak sık bir hatadır: 2-B'nin basketbol sayısını 2-A'nın satırından okumak gibi. Her satırda hangi gruba baktığını **renkten** kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Verilere göre 2-A sınıfında en çok sevilen spor hangisidir?",
+   "options": [
+    "Basketbol",
+    "Voleybol",
+    "Futbol",
+    "Hepsi eşit"
+   ],
+   "answer": 2,
+   "why": "2-A'da futbol 6, basketbol 3, voleybol 4.",
+   "hint": "Yalnız 2-A satırlarına bak."
+  },
+  {
+   "prompt": "Basketbolu seven toplam kaç öğrenci var?",
+   "options": [
+    "8",
+    "5",
+    "3",
+    "2"
+   ],
+   "answer": 0,
+   "why": "3 + 5 = 8.",
+   "hint": "İki sınıfın basketbol sayılarını topla."
+  },
+  {
+   "prompt": "2-B sınıfında voleybolu kaç öğrenci seçti?",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "2"
+   ],
+   "answer": 3,
+   "why": "2-B'nin voleybol satırında 2 var.",
+   "hint": "Yeşil satırlara bak."
+  }
+ ]
+}

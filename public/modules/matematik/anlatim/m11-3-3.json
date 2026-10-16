@@ -1,0 +1,96 @@
+{
+ "id": "m11-3-3",
+ "baslik": "Üstel Fonksiyonlar ve Nitel Özellikleri",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.3"],
+ "sure": 17,
+ "ozet": "f(x) = aˣ fonksiyonunda değişken üsse çıkar: her adımda aynı oranda büyüme ya da küçülme. Tabanın 1'den büyük ya da küçük olmasının grafiğe etkisini, yatay asimptotu ve k · a^(x − r) + s dönüşümlerini inceleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sabit oranla değişim",
+   "govde": "Doğrusal bir fonksiyonda x 1 artınca y'ye hep aynı sayı **eklenir**. Üstel bir fonksiyonda ise y hep aynı sayıyla **çarpılır**: f(x) = 2ˣ için 1, 2, 4, 8, 16, ...\n\n**Tanım:** a > 0 ve a ≠ 1 olmak üzere f(x) = aˣ fonksiyonuna üstel fonksiyon denir. a = 1 olsaydı fonksiyon sabit (1ˣ = 1) olurdu; a ≤ 0 için de aˣ her gerçek x'te tanımlı değildir (ör. (−4)^(1/2))."
+  },
+  {
+   "tur": "kural",
+   "baslik": "f(x) = aˣ özellikleri",
+   "govde": "- Tanım kümesi ℝ, görüntü kümesi (0, ∞): aˣ hiçbir zaman 0 ya da negatif olmaz.\n- Grafik her zaman (0, 1) noktasından geçer (a⁰ = 1).\n- y = 0 (x ekseni) yatay asimptottur.\n- a > 1 ise **artan**, 0 < a < 1 ise **azalan**dır.\n- (1/a)ˣ = a^(−x): y = (1/2)ˣ grafiği y = 2ˣ grafiğinin y eksenine göre yansımasıdır.\n- Bire birdir: aˣ = aʸ ⇔ x = y."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tabanı değiştir",
+   "aciklama": "Gri kesikli eğri referans; kaydırıcıyla tabanı değiştir. Grafiğin hep (0, 1)'den geçtiğine dikkat et.",
+   "sim": { "kind": "f-fonk", "f": "ustel", "b": 2, "sliders": ["b"], "parent": false, "tools": ["asimptot"] },
+   "gorev": { "metin": "Fonksiyonu azalan yap.", "check": { "key": "b", "lt": 1 } },
+   "dene": ["1/2 ile 2 tabanlarını karşılaştır: grafikler y eksenine göre simetrik.", "Taban büyüdükçe x > 0 tarafında grafik daha hızlı yükseliyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "f(x) = 2ˣ için f(3), f(0), f(−2) ve f(1/2) değerlerini bulalım.",
+   "cozum": [
+    "f(3) = 8, f(0) = 1.",
+    "f(−2) = 2⁻² = 1/4.",
+    "f(1/2) = √2 ≈ 1,414."
+   ],
+   "sonuc": "8, 1, 1/4, √2."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dönüşümler: g(x) = k · a^(x − r) + s",
+   "govde": "- r: yatay öteleme; s: dikey öteleme. **Yatay asimptot y = s** olur.\n- k > 0 ise görüntü kümesi (s, ∞), k < 0 ise (−∞, s).\n- k < 0 grafiği x eksenine göre yansıtır; bu durumda artan/azalan durumu da tersine döner.\n- (Genel biçim k · a^(mx − r) + s'de m içerideki ölçeklemedir; m < 0 ise grafik y eksenine göre yansır.)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Asimptotu taşı",
+   "aciklama": "Kırmızı kesikli doğru yatay asimptot. Kaydırıcılarla grafiği dönüştür; sağda özellikler canlı yazılıyor.",
+   "sim": { "kind": "f-fonk", "f": "ustel", "a": 1, "h": 0, "k": 0, "b": 2, "sliders": ["a", "h", "k", "b"], "tools": ["asimptot"] },
+   "gorev": { "metin": "Yatay asimptotu y = 3 olan artan bir üstel fonksiyon oluştur (a pozitif, taban 1'den büyük).", "check": { "all": [{ "key": "k", "eq": 3 }, { "key": "a", "gte": 0.5 }, { "key": "b", "gte": 2 }] } },
+   "dene": ["a'yı negatif yaparsan görüntü kümesi (−∞, 3) olur ve fonksiyon azalan olur.", "r yalnız grafiği sağa sola kaydırır; asimptot değişmez."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "g(x) = 3 · 2^(x − 1) + 1 fonksiyonunun tanım ve görüntü kümesini, asimptotunu ve y eksenini kestiği noktayı bulalım.",
+   "cozum": [
+    "Tanım kümesi ℝ.",
+    "2^(x − 1) > 0 → 3 · 2^(x − 1) > 0 → g(x) > 1: görüntü kümesi (1, ∞), asimptot y = 1.",
+    "k = 3 > 0 ve taban 2 > 1: artan.",
+    "g(0) = 3 · 2⁻¹ + 1 = 3/2 + 1 = 5/2."
+   ],
+   "sonuc": "Görüntü kümesi (1, ∞), asimptot y = 1, artan; y eksenini (0, 5/2) noktasında keser."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: büyüme",
+   "soru": "Bir laboratuvarda 500 bakteri ile başlanan bir kültürde bakteri sayısı her 3 saatte iki katına çıkıyor. 12 saat sonra kaç bakteri olur?",
+   "cozum": [
+    "N(t) = 500 · 2^(t/3) (t saat).",
+    "t = 12: 2^(12/3) = 2⁴ = 16.",
+    "N(12) = 500 · 16."
+   ],
+   "sonuc": "8000 bakteri."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = 3^(x + 1) − 9 fonksiyonunun grafiğinin eksenleri kestiği noktaları bulalım.",
+   "cozum": [
+    "x ekseni: 3^(x + 1) = 9 = 3² → x + 1 = 2 → x = 1.",
+    "y ekseni: f(0) = 3 − 9 = −6."
+   ],
+   "sonuc": "(1, 0) ve (0, −6). Asimptot y = −9."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "2^(x + 1)'i 2ˣ + 1 sanmak. Doğrusu 2^(x + 1) = 2 · 2ˣ'tir: üsse eklenen sayı, sonucu **çarpar**. Bir de aˣ'i x^a ile karıştırmak: 2ˣ üstel, x² karesel fonksiyondur; büyüklükleri çok farklı davranır (x = 10 için 1024 ve 100)."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "f(x) = 4ˣ için f(−1/2) kaçtır?", "options": ["−2", "2", "1/2", "−1/2"], "answer": 2, "why": "4^(−1/2) = 1/√4 = 1/2.", "hint": "Negatif üs: çarpmaya göre tersini al." },
+  { "prompt": "g(x) = 2ˣ − 3 fonksiyonunun görüntü kümesi nedir?", "options": ["(−3, ∞)", "(0, ∞)", "ℝ", "(3, ∞)"], "answer": 0, "why": "2ˣ > 0 → 2ˣ − 3 > −3.", "hint": "Asimptotu bul." },
+  { "prompt": "Aşağıdaki fonksiyonlardan hangisi azalandır?", "options": ["y = 3ˣ", "y = (0,3)ˣ", "y = 2^(x + 1)", "y = 5^(2x)"], "answer": 1, "why": "Taban 0 ile 1 arasında: x arttıkça değer küçülür.", "hint": "Tabanı 1'den küçük olanı ara." },
+  { "prompt": "Değeri her yıl %10 azalan (yani 0,9 ile çarpılan) 10 000 TL'lik bir eşyanın 2 yıl sonraki değeri kaç TL'dir?", "options": ["8000", "9000", "8019", "8100"], "answer": 3, "why": "10 000 · 0,9² = 10 000 · 0,81 = 8100.", "hint": "Her yıl 0,9 ile çarp." }
+ ]
+}

@@ -1,0 +1,165 @@
+{
+ "id": "m5-5-1",
+ "baslik": "Dikdörtgenin Çevre Uzunluğu ve Alanı",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.4.1",
+  "MAT.5.4.2",
+  "MAT.5.4.3",
+  "MAT.5.4.4"
+ ],
+ "sure": 15,
+ "ozet": "Dikdörtgenin alanını birimkarelerden yola çıkarak değerlendirecek; çevresi verilen bir dikdörtgenin kenarlarını ve alanını, alanı verilen bir dikdörtgenin çevresini yorumlayacak ve problemler çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çevre ve alan",
+   "govde": "Bir dikdörtgenin **çevresi** sınırının uzunluğudur ve birimle ölçülür. **Alanı** ise içini kaplayan birimkarelerin sayısıdır ve birimkareyle ölçülür.\n\nKenarları a ve b birim olan dikdörtgende:\n\n- Çevre = a + b + a + b = 2 × (a + b)\n- Alan = a × b (her satırda a kare, b satır)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çevre ve alanı birlikte izle",
+   "aciklama": "Kaydırıcılarla eni ve boyu değiştir.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "dikdortgen",
+    "en": 4,
+    "boy": 3,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Alanı 24 birimkare, çevresi 20 birim olan dikdörtgeni bul.",
+    "check": {
+     "all": [
+      {
+       "key": "alan",
+       "eq": 24
+      },
+      {
+       "key": "cevre",
+       "eq": 20
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Alanı 24 olan dikdörtgenler: 1 × 24 (olmaz, en çok 10), 2 × 12 (olmaz), 3 × 8, 4 × 6. Hangisinin çevresi 20?",
+    "En + boy = 20 ÷ 2 = 10 olmalı."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çevreden kenarlara",
+   "govde": "Çevre biliniyorsa, **en + boy = çevre ÷ 2**'dir. Kenar uzunlukları doğal sayıysa toplamı bu sayıyı veren bütün ikilileri yazarız.\n\nÇevresi 20 birim olan dikdörtgenler: 1 ve 9, 2 ve 8, 3 ve 7, 4 ve 6, 5 ve 5. Alanları 9, 16, 21, 24, 25 birimkaredir: **çevre aynı olsa da alan değişebilir**. Kenarlar birbirine yaklaştıkça alan büyür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çevre sabit, alan değişiyor",
+   "aciklama": "Bu dikdörtgenin çevresi hep 20 birim. En değişince boy kendiliğinden ayarlanır.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "dikdortgen",
+    "cevre": 20,
+    "en": 1
+   },
+   "gorev": {
+    "metin": "Çevresi 20 birim olan dikdörtgenler arasında alanı en büyük olanı bul.",
+    "check": {
+     "key": "alan",
+     "eq": 25
+    }
+   },
+   "dene": [
+    "Eni 1'den 9'a kadar gezdir ve alanları karşılaştır.",
+    "En büyük alan, kenarlar eşit olduğunda (kare) elde edilir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Alandan çevreye",
+   "soru": "Alanı 36 birimkare olan ve kenarları doğal sayı olan dikdörtgenlerden çevresi en küçük olanı bulalım.",
+   "cozum": [
+    "Çarpımı 36 olan ikililer: 1 × 36, 2 × 18, 3 × 12, 4 × 9, 6 × 6.",
+    "Çevreler: 74, 40, 30, 26, 24.",
+    "En küçük çevre 6 × 6'da."
+   ],
+   "sonuc": "6 × 6'lık kare; çevresi 24 birim."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "Çevresi 30 birim olan bir dikdörtgenin bir kenarı 9 birimdir. Alanı kaç birimkaredir?",
+   "cozum": [
+    "En + boy = 30 ÷ 2 = 15.",
+    "Diğer kenar: 15 − 9 = 6.",
+    "Alan: 9 × 6 = 54."
+   ],
+   "sonuc": "Alan 54 birimkaredir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Bahçe",
+   "soru": "Kenarları 12 ve 8 birim olan dikdörtgen bir bahçenin etrafına çit çekilecek, içine çim ekilecek. Kaç birim çit ve kaç birimkare çim gerekir?",
+   "cozum": [
+    "Çit çevreyi kaplar: 2 × (12 + 8) = 40 birim.",
+    "Çim alanı kaplar: 12 × 8 = 96 birimkare."
+   ],
+   "sonuc": "40 birim çit, 96 birimkare çim."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Çevresi aynı olan dikdörtgenlerin alanları da aynıdır\" düşüncesi yanlıştır. Çevresi 20 birim olan 1 × 9'luk dikdörtgenin alanı 9, 5 × 5'lik karenin alanı 25 birimkaredir.\n\nÇevre ile alanın birimlerini karıştırmamak gerekir: çevre **birim**, alan **birimkare**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kenarları 7 ve 5 birim olan dikdörtgenin alanı ve çevresi nedir?",
+   "options": [
+    "Alan 24, çevre 35",
+    "Alan 35, çevre 24",
+    "Alan 12, çevre 35",
+    "Alan 35, çevre 12"
+   ],
+   "answer": 1,
+   "why": "Alan 7 × 5 = 35 birimkare; çevre 2 × (7 + 5) = 24 birim.",
+   "hint": "Alan için çarp, çevre için dört kenarı topla."
+  },
+  {
+   "prompt": "Çevresi 18 birim olan bir dikdörtgenin bir kenarı 4 birimdir. Alanı kaç birimkaredir?",
+   "options": [
+    "14",
+    "36",
+    "20",
+    "22"
+   ],
+   "answer": 2,
+   "why": "En + boy = 9, diğer kenar 5; alan 4 × 5 = 20.",
+   "hint": "Önce diğer kenarı bul."
+  },
+  {
+   "prompt": "Alanı 30 birimkare olan bir dikdörtgenin kısa kenarı 5 birimdir. Çevresi kaç birimdir?",
+   "options": [
+    "22",
+    "11",
+    "30",
+    "35"
+   ],
+   "answer": 0,
+   "why": "Uzun kenar 30 ÷ 5 = 6; çevre 2 × (5 + 6) = 22.",
+   "hint": "Önce uzun kenarı bul."
+  },
+  {
+   "prompt": "Çevresi 16 birim olan ve kenarları doğal sayı olan dikdörtgenlerden alanı en büyük olanın alanı kaçtır?",
+   "options": [
+    "15",
+    "12",
+    "7",
+    "16"
+   ],
+   "answer": 3,
+   "why": "En + boy = 8; 4 × 4 = 16 en büyük alandır.",
+   "hint": "Kenarları birbirine en yakın olan ikiliyi düşün."
+  }
+ ]
+}

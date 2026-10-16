@@ -1,0 +1,203 @@
+{
+ "id": "m7-5-1",
+ "baslik": "Cisimlerin Farklı Yönlerden Görünümleri",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.4.1"
+ ],
+ "sure": 14,
+ "ozet": "Eş küplerle kurulan yapıların önden, sağdan ve üstten görünümlerini çizecek; verilen görünümlerden yapıyı kuracak ve gereken en az küp sayısını bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Üç bakış",
+   "govde": "Bir küp yapıya üç yönden bakalım:\n\n- **Önden:** her sütunda (soldan sağa) en yüksek kule görünür.\n- **Sağdan:** her sırada (önden arkaya) en yüksek kule görünür.\n- **Üstten:** zeminde küp bulunan hücreler görünür.\n\nGörünümlerde yalnız **en öndeki** yüzler görülür; arkadaki küpler öndekilerin arkasında saklanabilir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Zemin planı",
+   "govde": "Bir yapıyı **zemin planıyla** anlatabiliriz: yapıyı üstten çizip her hücreye o hücredeki küp sayısını yazarız.\n\n- Önden görünümde bir sütunun yüksekliği = o sütundaki **en büyük** sayı.\n- Sağdan görünümde bir sıranın yüksekliği = o sıradaki **en büyük** sayı.\n- Küp sayısı = plandaki **sayıların toplamı**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yapını kur",
+   "aciklama": "Zemin planındaki hücrelere dokunarak küp ekle. Görünümler canlı çiziliyor; kesikli kareler hedef görünüm.",
+   "sim": {
+    "kind": "d-kup-yapi",
+    "h": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      1,
+      2,
+      1
+     ]
+    ],
+    "hedef": {
+     "on": [
+      1,
+      3,
+      2
+     ],
+     "sag": [
+      3,
+      1,
+      2
+     ]
+    }
+   },
+   "gorev": {
+    "metin": "Önden 1-3-2, sağdan 3-1-2 görünen yapıyı en az küple kur.",
+    "check": {
+     "all": [
+      {
+       "key": "on",
+       "eq": 132
+      },
+      {
+       "key": "sag",
+       "eq": 312
+      },
+      {
+       "key": "kup",
+       "eq": 6
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce görünümleri tuttur, sonra gereksiz küpleri at.",
+    "Aynı görünümleri veren yapıda en çok kaç küp olabilir? (14)"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Zemin planı (üstten; arka sıra en üstte):\narka: 0 1 0\norta: 0 0 2\nön: 2 1 1\nYapının önden ve sağdan görünümlerini ve küp sayısını bulalım.",
+   "cozum": [
+    "Önden (sol, orta, sağ sütun): en büyükler 2, 1, 2.",
+    "Sağdan (ön, orta, arka sıra): en büyükler 2, 2, 1.",
+    "Küp sayısı: 1 + 2 + 2 + 1 + 1 = 7."
+   ],
+   "sonuc": "Önden 2-1-2, sağdan 2-2-1; 7 küp."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: En az küp",
+   "soru": "Bir yapının önden görünümü 1-2-1, sağdan görünümü (önden arkaya) 2-1-1'dir. Bu yapı en az kaç küpten oluşur?",
+   "cozum": [
+    "Önden ortadaki 2'lik sütun ile sağdan öndeki 2'lik sıra aynı hücrede birleşebilir: ön sıra ortaya 2 küp.",
+    "Önden soldaki ve sağdaki 1'lik sütunlar, sağdan orta ve arka 1'lik sıralarla birleşebilir: orta sıra sola 1, arka sıra sağa 1 küp.",
+    "Toplam: 2 + 1 + 1 = 4. Daha azıyla her iki görünümü de sağlamak mümkün değil."
+   ],
+   "sonuc": "En az 4 küp."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Serbest yapı",
+   "aciklama": "Kendi yapını kur ve görünümlerini incele.",
+   "sim": {
+    "kind": "d-kup-yapi",
+    "h": [
+     [
+      1,
+      0,
+      0
+     ],
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      2,
+      1,
+      1
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Üstten görünümü 9 karenin hepsi dolu olan, 9 küplük bir yapı kur.",
+    "check": {
+     "all": [
+      {
+       "key": "ust",
+       "eq": 111111111
+      },
+      {
+       "key": "kup",
+       "eq": 9
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Bütün hücrelerde birer küp: önden ve sağdan görünüm 1-1-1 olur.",
+    "Şimdi bir hücreyi 3 yap: hangi görünümler değişti?"
+   ]
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Görünümlerden küp sayısını saymaya çalışmak yanlıştır: önden görünümde 6 kare görmek yapıda 6 küp olduğu anlamına gelmez; arkada saklı küpler olabilir ya da bir sütun boş olabilir. Küp sayısını **zemin planındaki sayıların toplamı** verir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Zemin planı arka: 0 1 0, orta: 0 0 2, ön: 2 1 1 olan yapının önden görünümünde sütun yükseklikleri (soldan sağa) nedir?",
+   "options": [
+    "2, 2, 1",
+    "2, 1, 2",
+    "0, 1, 0",
+    "2, 1, 1"
+   ],
+   "answer": 1,
+   "why": "Her sütunun en büyük sayısı: sol 2, orta 1, sağ 2.",
+   "hint": "Önden görünümde her sütunun en yüksek kulesi görünür."
+  },
+  {
+   "prompt": "Zemin planı arka: 0 1 0, orta: 0 0 2, ön: 2 1 1 olan yapı kaç küpten oluşur?",
+   "options": [
+    "5",
+    "6",
+    "7",
+    "9"
+   ],
+   "answer": 2,
+   "why": "0 + 1 + 0 + 0 + 0 + 2 + 2 + 1 + 1 = 7.",
+   "hint": "Plandaki sayıları topla."
+  },
+  {
+   "prompt": "Önden görünümü 1-2-1, sağdan görünümü 2-1-1 olan bir yapı en az kaç küptür?",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "3"
+   ],
+   "answer": 0,
+   "why": "Ön-orta 2, orta-sol 1, arka-sağ 1: 4 küp iki görünümü de sağlar.",
+   "hint": "Yüksek sütun ile yüksek sırayı aynı hücrede birleştir."
+  },
+  {
+   "prompt": "Bir yapının üstten görünümünde kaç kare görünür?",
+   "options": [
+    "Küp sayısı kadar",
+    "En yüksek kulenin yüksekliği kadar",
+    "Önden görünümdeki kare sayısı kadar",
+    "Zeminde en az bir küp bulunan hücre sayısı kadar"
+   ],
+   "answer": 3,
+   "why": "Üstten her dolu hücre tek bir kare olarak görünür; üst üste küpler tek kare verir.",
+   "hint": "Üst üste duran küpler üstten nasıl görünür?"
+  }
+ ]
+}

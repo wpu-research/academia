@@ -1,0 +1,91 @@
+{
+ "id": "m9-4-5",
+ "baslik": "Eşlik ve Benzerlik Problemleri",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.4.5"],
+ "sure": 18,
+ "ozet": "Benzer üçgenleri bulup karşılıklı kenarları doğru eşleştirerek uzunluk, alan ve ölçek problemleri çözeceğiz; gölge, kelebek ve harita problemlerini adım adım inceleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Problem çözme stratejisi",
+   "govde": "1. Şekilde benzer (ya da eş) olabilecek üçgenleri bul: paralel doğrular, ortak açılar, ters açılar, dik açılar ipucudur.\n2. Benzerlik koşulunu belirle (çoğunlukla AA).\n3. **Eşit açıların karşısındaki** kenarları eşleştir; bunu bir tabloyla yazmak hatayı önler.\n4. Oranı kur, çöz ve sonucun mantıklı olup olmadığını kontrol et (büyük üçgenin kenarı büyük mü?)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Oranları eşleştir",
+   "aciklama": "|AB| = 8, |AC| = 10, |BC| = 12. DE ∥ BC. D'yi kaydır ve oranları izle.",
+   "sim": { "kind": "e-tales", "AB": 8, "AC": 10, "BC": 12, "AD": 2 },
+   "gorev": { "metin": "|DE| = 9 olacak şekilde D'yi yerleştir.", "check": { "key": "DE", "eq": 9, "tol": 1e-6 } },
+   "dene": ["9 / 12 = 3/4, yani |AD| = 8 · 3/4 = 6.", "Bu durumda |AE| ve |EC| kaç?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Işıklı direk ve gölge",
+   "soru": "6 m yüksekliğindeki bir sokak lambasının dibinden 9 m uzakta duran 1,5 m boyundaki bir çocuğun gölgesi kaç metredir?",
+   "cozum": [
+    "Gölge s olsun. Lamba tepesi, gölgenin ucu ve lamba dibi büyük dik üçgeni; çocuk, gölge ucu ve ayak noktası küçük dik üçgeni oluşturur. Gölge ucundaki açı ortak: AA benzerliği.",
+    "Oran: s / (s + 9) = 1,5 / 6 = 1/4.",
+    "4s = s + 9 ⇒ 3s = 9 ⇒ s = 3."
+   ],
+   "sonuc": "Gölge 3 m."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Kelebek benzerliği",
+   "soru": "AB ∥ CD ve AD ile BC doğru parçaları E noktasında kesişiyor. |AB| = 4, |CD| = 10, |AE| = 3 ise |ED| kaçtır?",
+   "cozum": [
+    "E'deki ters açılar eşit; AB ∥ CD olduğundan iç ters açılar eşit: ABE ~ DCE.",
+    "Eşleşme: A ↔ D, B ↔ C, E ↔ E. Oran k = |DC| / |AB| = 10 / 4 = 2,5.",
+    "|ED| = |AE| · 2,5 = 7,5."
+   ],
+   "sonuc": "|ED| = 7,5"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çevre ve alan oranı",
+   "govde": "Benzerlik oranı k olan iki üçgende:\n\n- Karşılıklı kenarların, yüksekliklerin, kenarortayların oranı **k**\n- Çevrelerin oranı **k**\n- Alanların oranı **k²**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alan oranını keşfet",
+   "aciklama": "Kopyanın benzerlik oranını değiştir; alan oranının k² olduğunu doğrula.",
+   "sim": { "kind": "e-benzerlik", "tek": true, "sekil": [[0, 0], [4, 0], [1, 3]], "k": 1, "kmin": 0.5, "kmax": 3, "adim": 0.5 },
+   "gorev": { "metin": "Alanı asıl üçgenin 4 katı olan benzer üçgeni oluştur.", "check": { "key": "alanOrani", "eq": 4, "tol": 1e-9 } },
+   "dene": ["k = 3 için alan 9 katı olur.", "k = 1,5 için alan oranı 2,25."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: alan",
+   "soru": "İki benzer üçgenden küçüğünün alanı 8 cm², benzerlik oranı 3 ise büyüğünün alanı kaç cm²'dir?",
+   "cozum": [
+    "Alan oranı k² = 9.",
+    "8 · 9 = 72."
+   ],
+   "sonuc": "72 cm²"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Eşlikle ispat",
+   "soru": "ABC ikizkenar üçgeninde |AB| = |AC| ve AD, A açısının açıortayı (D ∈ BC). D'nin BC'nin orta noktası olduğunu gösterelim.",
+   "cozum": [
+    "ABD ve ACD üçgenlerinde |AB| = |AC| (verilen).",
+    "m(BAD) = m(CAD) (açıortay).",
+    "AD ortak kenar.",
+    "KAK'tan ABD ≅ ACD; karşılıklı kenarlar eşit: |BD| = |DC|."
+   ],
+   "sonuc": "D orta noktadır; ikizkenar üçgende tepe açıortayı aynı zamanda kenarortaydır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Alan oranını k almak; alan oranı k²'dir.\n- Kelebek şeklinde kenarları \"yan yana duranlar\" diye eşleştirmek. Eşleşme açılara göre yapılır: AB'nin karşılığı CD'dir.\n- Gölge probleminde küçük üçgenin tabanını yalnız gölge, büyük üçgeninkini yalnız aradaki uzaklık almak; büyük üçgenin tabanı **uzaklık + gölge**dir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "İki benzer üçgenin çevreleri 12 cm ve 18 cm'dir. Küçüğünün alanı 20 cm² ise büyüğününki kaç cm²'dir?", "options": ["30", "45", "40", "27"], "answer": 1, "why": "k = 18/12 = 1,5; alan oranı 2,25; 20 · 2,25 = 45.", "hint": "Önce k'yi bul, alan için karesini al." },
+  { "prompt": "AB ∥ CD ve AD ile BC, E'de kesişiyor. |AB| = 6, |CD| = 9, |BE| = 4 ise |EC| kaçtır?", "options": ["6", "4", "9", "8"], "answer": 0, "why": "ABE ~ DCE, k = 9/6 = 1,5. B ↔ C olduğundan |EC| = 4 · 1,5 = 6.", "hint": "Hangi köşelerin karşılık geldiğini açılardan bul." },
+  { "prompt": "Boyu 2 m olan bir kişi, 8 m yüksekliğindeki lambanın dibinden 6 m uzakta duruyor. Gölgesi kaç metredir?", "options": ["3", "1,5", "4", "2"], "answer": 3, "why": "s / (s + 6) = 2/8 ⇒ 8s = 2s + 12 ⇒ s = 2.", "hint": "Büyük üçgenin tabanı uzaklık + gölge." },
+  { "prompt": "1 : 50 000 ölçekli bir haritada 4 cm olan yol gerçekte kaç km'dir?", "options": ["20 km", "200 m", "2 km", "0,2 km"], "answer": 2, "why": "4 · 50 000 = 200 000 cm = 2 km.", "hint": "Önce cm cinsinden bul, sonra km'ye çevir." }
+ ]
+}

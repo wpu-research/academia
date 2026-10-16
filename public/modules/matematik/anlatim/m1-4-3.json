@@ -1,0 +1,172 @@
+{
+ "id": "m1-4-3",
+ "baslik": "Toplama ve Çıkarma İşlemlerinde Eşitlik",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.2.3"
+ ],
+ "sure": 12,
+ "ozet": "Eşit işaretinin “cevap buraya” değil, “iki yan aynı değerde” demek olduğunu bir terazi ile göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "“=” ne demek?",
+   "govde": "Eşit işareti **=**, solundaki ile sağındakinin **aynı değerde** olduğunu söyler. Bir terazi gibi düşün: İki kefe aynı ağırlıktaysa terazi **dengededir**.\n\n3 + 4 = 7 doğrudur. **7 = 3 + 4** de doğrudur. **3 + 4 = 5 + 2** de doğrudur, çünkü iki yan da 7'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Teraziyi dengele",
+   "aciklama": "Solda 3 + 4, sağda 5 + □ var. Kutudaki sayıyı değiştir.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     3,
+     4
+    ],
+    "solOp": "+",
+    "sag": [
+     5,
+     null
+    ],
+    "sagOp": "+",
+    "min": 0,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeye getir.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sol taraf kaç ediyor? Sağ taraf da o kadar etmeli.",
+    "Fazla eklersen terazi sağa yatar."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşitliğin iki yanı",
+   "govde": "Bir eşitlikte **iki yanın değeri aynıdır**. Eksik sayıyı bulmak için:\n\n1. Bilinen yanın değerini bul.\n2. Öbür yanı bu değere tamamla.\n\n4 + 5 = 3 + □ → sol 9 eder, 3 + 6 = 9, kutuya **6** gelir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çıkarmada denge",
+   "aciklama": "Solda 9 − □, sağda 2 + 4 var.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     9,
+     null
+    ],
+    "solOp": "−",
+    "sag": [
+     2,
+     4
+    ],
+    "sagOp": "+",
+    "min": 0,
+    "max": 9
+   },
+   "gorev": {
+    "metin": "Kutuya hangi sayı gelmeli? Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sağ taraf 6 eder. 9'dan kaç çıkarırsan 6 kalır?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tek sayı da bir yan olabilir",
+   "aciklama": "Solda yalnız 8 var.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     8
+    ],
+    "sag": [
+     null,
+     3
+    ],
+    "sagOp": "+",
+    "min": 0,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "8 = □ + 3 eşitliğini tamamla.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   }
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "6 + 2 = □ + 5 eşitliğinde kutuya hangi sayı gelir?",
+   "cozum": [
+    "Sol taraf: 6 + 2 = 8.",
+    "Sağ taraf da 8 olmalı: □ + 5 = 8.",
+    "3 + 5 = 8."
+   ],
+   "sonuc": "Kutuya **3** gelir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“10 = 7 + 3” yazımı doğru mu?",
+   "cozum": [
+    "Sağ taraf: 7 + 3 = 10.",
+    "Sol taraf da 10. İki yan eşit."
+   ],
+   "sonuc": "Evet, **doğrudur**. İşlem eşittirin sağında da olabilir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "4 + 5 = □ + 6 sorusunda kutuya **9** yazmak çok yapılan bir hatadır. 9 + 6 = 15 olur, 9 değil. “=” işareti “sonucu yaz” demek değildir; iki yanın **eşit** olması gerekir: kutuya **3** gelir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "5 + 3 = □ + 2 eşitliğinde kutuya hangi sayı gelir?",
+   "options": [
+    "8",
+    "10",
+    "6",
+    "5"
+   ],
+   "answer": 2,
+   "why": "Sol 8 eder; 6 + 2 = 8.",
+   "hint": "Önce solun değerini bul."
+  },
+  {
+   "prompt": "Hangisi doğru bir eşitliktir?",
+   "options": [
+    "4 + 4 = 9",
+    "7 = 4 + 3",
+    "6 + 1 = 8",
+    "5 = 2 + 2"
+   ],
+   "answer": 1,
+   "why": "4 + 3 = 7, iki yan eşit.",
+   "hint": "Her eşitliğin iki yanını ayrı ayrı hesapla."
+  },
+  {
+   "prompt": "10 − 4 = 3 + □",
+   "options": [
+    "3",
+    "6",
+    "7",
+    "1"
+   ],
+   "answer": 0,
+   "why": "Sol 6 eder; 3 + 3 = 6.",
+   "hint": "10 − 4 kaç eder?"
+  }
+ ]
+}

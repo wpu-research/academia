@@ -1,0 +1,191 @@
+{
+ "id": "m6-1-3",
+ "baslik": "Asal Sayılar ve Asal Çarpanlar",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.1.3"
+ ],
+ "sure": 14,
+ "ozet": "Yalnız 1'e ve kendisine bölünen sayıları tanıyacak, bir sayının asal olup olmadığını kontrol edecek ve her doğal sayıyı asal sayıların çarpımı olarak yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Asal sayı",
+   "govde": "Bazı sayılar dikdörtgen biçiminde birçok yolla dizilebilir: 12 → 2 × 6, 3 × 4. Bazıları ise yalnız **tek sıra** dizilebilir: 7 → 1 × 7.\n\n1'den büyük ve yalnız **1'e ve kendisine** bölünen doğal sayılara **asal sayı** denir: 2, 3, 5, 7, 11, 13, …\n\n1'den büyük olup asal olmayan sayılara **bileşik sayı** denir: 4, 6, 8, 9, 10, …"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Asal sayılar tek sıra dizilir",
+   "aciklama": "Satır ve sütun sayısını değiştir. Alanı 7 olan dikdörtgenleri dene.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 2,
+    "cols": 3
+   },
+   "gorev": {
+    "metin": "Alanı 7 birimkare olan bir dikdörtgen kur.",
+    "check": {
+     "key": "area",
+     "eq": 7
+    }
+   },
+   "dene": [
+    "7 yalnız 1 × 7 ya da 7 × 1 olur: 7 asaldır.",
+    "Şimdi alanı 8 olan dikdörtgen dene: 2 × 4 de olur, 8 bileşiktir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bilmen gerekenler",
+   "govde": "- **1 asal değildir**; asal sayıların tanımında \"1'den büyük\" koşulu vardır.\n- **2 tek çift asal sayıdır.** 2'den büyük çift sayılar 2'ye bölündüğü için asal değildir.\n- 50'ye kadar asal sayılar: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47.\n- Bir sayının asal olup olmadığını anlamak için onu 2, 3, 5, 7, … asallarına sırayla böl. Asalın karesi sayıyı geçince durabilirsin."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "91 asal mıdır?",
+   "cozum": [
+    "2 ile bölünmez (tek).",
+    "3 ile bölünmez: 9 + 1 = 10.",
+    "5 ile bölünmez: birler basamağı 1.",
+    "7 ile deneyelim: 91 ÷ 7 = 13."
+   ],
+   "sonuc": "91 = 7 × 13 olduğu için asal değildir, bileşiktir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Asal çarpanlara ayırma",
+   "govde": "Her bileşik sayı, asal sayıların çarpımı olarak **tek bir biçimde** yazılabilir (çarpanların sırası önemli değil). Sayıyı en küçük asaldan başlayarak bölmeye devam ederiz; bölüm asal olunca dururuz.\n\nAynı asal birden çok kez çıkarsa üslü yazarız: 2 · 2 · 3 · 5 = 2² · 3 · 5."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpan ağacı",
+   "aciklama": "Bir sayı seç ve onu asal sayılara böl. Bölünemeyen bir asal seçersen kalanı görürsün.",
+   "sim": {
+    "kind": "d-carpan-agaci",
+    "n": 60,
+    "secenek": [
+     36,
+     60,
+     84,
+     90,
+     97
+    ]
+   },
+   "gorev": {
+    "metin": "Seçtiğin sayıyı asal çarpanlarına tamamen ayır.",
+    "check": {
+     "key": "done",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Aynı sayıyı farklı sırayla böl (örneğin 60'ı önce 5 ile). Sonuçtaki asallar değişiyor mu?",
+    "97'yi seç: hiçbir asal bölmüyorsa sayı asaldır."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Daha büyük bir sayı",
+   "aciklama": "126'yı asal çarpanlarına ayır.",
+   "sim": {
+    "kind": "d-carpan-agaci",
+    "n": 126
+   },
+   "gorev": {
+    "metin": "126'yı asal çarpanlarına ayır.",
+    "check": {
+     "all": [
+      {
+       "key": "n",
+       "eq": 126
+      },
+      {
+       "key": "done",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Rakamlar toplamı 1 + 2 + 6 = 9: 126, 3 ile ve 9 ile bölünür. Bu sana hangi asalları kullanacağını söylüyor?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "84'ü asal çarpanlarına ayıralım.",
+   "cozum": [
+    "84 ÷ 2 = 42",
+    "42 ÷ 2 = 21",
+    "21 ÷ 3 = 7; 7 asal, dur."
+   ],
+   "sonuc": "84 = 2 · 2 · 3 · 7 = 2² · 3 · 7."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek",
+   "soru": "Asal çarpanları **yalnız** 2, 3 ve 5 olan (üçü de bulunan) en küçük üç basamaklı sayı kaçtır?",
+   "cozum": [
+    "Sayı 2, 3 ve 5'in her biriyle bölünmeli: 30'un katı olmalı.",
+    "30'un katları: 30, 60, 90, 120, … En küçük üç basamaklı olanı 120.",
+    "120 = 2³ · 3 · 5: başka asal çarpanı yok."
+   ],
+   "sonuc": "120."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bütün tek sayıları asal sanmak yanlıştır: 9 = 3 · 3, 15 = 3 · 5, 21 = 3 · 7 tek ama bileşiktir. Bir de 1'i asal saymak sık yapılır; 1 ne asal ne bileşiktir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi asaldır?",
+   "options": [
+    "21",
+    "27",
+    "29",
+    "33"
+   ],
+   "answer": 2,
+   "why": "29 yalnız 1'e ve 29'a bölünür. 21 = 3 · 7, 27 = 3 · 9, 33 = 3 · 11.",
+   "hint": "Her sayıyı 2, 3, 5 ile bölmeyi dene."
+  },
+  {
+   "prompt": "72'nin asal çarpanlarına ayrılmış hâli hangisidir?",
+   "options": [
+    "2³ · 3²",
+    "2² · 3³",
+    "2 · 6²",
+    "8 · 9"
+   ],
+   "answer": 0,
+   "why": "72 = 2 · 2 · 2 · 3 · 3 = 2³ · 3². 8 ve 9 ile 6 asal değil.",
+   "hint": "Çarpanların hepsi asal olmalı."
+  },
+  {
+   "prompt": "1 ile 20 arasında kaç asal sayı vardır?",
+   "options": [
+    "7",
+    "9",
+    "10",
+    "8"
+   ],
+   "answer": 3,
+   "why": "2, 3, 5, 7, 11, 13, 17, 19: 8 tane.",
+   "hint": "1'i saymamayı ve 2'yi saymayı unutma."
+  },
+  {
+   "prompt": "90'ın farklı asal çarpanlarının toplamı kaçtır?",
+   "options": [
+    "8",
+    "10",
+    "13",
+    "15"
+   ],
+   "answer": 1,
+   "why": "90 = 2 · 3² · 5; farklı asallar 2, 3, 5; toplamları 10.",
+   "hint": "Önce 90'ı asal çarpanlarına ayır, her asalı bir kez say."
+  }
+ ]
+}

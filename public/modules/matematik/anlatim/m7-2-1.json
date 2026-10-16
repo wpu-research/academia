@@ -1,0 +1,156 @@
+{
+ "id": "m7-2-1",
+ "baslik": "Oran",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.5"
+ ],
+ "sure": 13,
+ "ders": "oran-oranti",
+ "ozet": "İki çokluğu bölme yoluyla karşılaştırmayı (oranı) öğrenecek; oranları sadeleştirecek, birim oranla fiyat ve hız gibi durumları karşılaştıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Oran nedir?",
+   "govde": "Bir limonata tarifinde 2 bardak limon suyuna 3 bardak su konuyor. Limon suyunun suya **oranı** 2'ye 3'tür: **2/3** ya da **2 : 3** yazılır.\n\nOran, iki çokluğun bölme yoluyla karşılaştırılmasıdır. Bu çokluklar aynı birimdense oranın birimi olmaz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Aynı tonu yakala",
+   "aciklama": "Kırmızı ve beyaz boya ölçeklerini karıştır. Dıştaki halka hedef tonu gösteriyor.",
+   "sim": {
+    "kind": "oran-karistirma",
+    "r": 1,
+    "w": 1,
+    "target": [
+     2,
+     3
+    ]
+   },
+   "gorev": {
+    "metin": "Kırmızının beyaza oranını 2 : 3 yap.",
+    "check": {
+     "key": "ratio",
+     "eq": 0.6667,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "4 : 6 ve 6 : 9 da aynı tonu verir; çünkü sadeleşince 2 : 3 olurlar.",
+    "Oran değişmedikçe renk değişmez; yalnız boya miktarı artar."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Oranın özellikleri",
+   "govde": "- Oranın iki terimi aynı sayıyla çarpılır ya da bölünürse oran değişmez: 2 : 3 = 4 : 6 = 10 : 15.\n- Oranlarken birimler aynı olmalı: 40 cm : 2 m oranında önce 2 m = 200 cm yazılır → 40 : 200 = 1 : 5.\n- Farklı birimli çoklukların oranı yeni bir birim oluşturur: 150 km / 2 saat = **75 km/sa** (hız), 135 TL / 3 kg = **45 TL/kg** (birim fiyat). Paydası 1 olan bu tür oranlara **birim oran** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hedef miktar",
+   "aciklama": "Bu kez hem oran hem toplam miktar önemli.",
+   "sim": {
+    "kind": "oran-karistirma",
+    "r": 1,
+    "w": 1,
+    "target": [
+     3,
+     1
+    ]
+   },
+   "gorev": {
+    "metin": "Oran 3 : 1, toplam 12 ölçek olsun.",
+    "check": {
+     "all": [
+      {
+       "key": "ratio",
+       "eq": 3
+      },
+      {
+       "key": "total",
+       "eq": 12
+      }
+     ]
+    }
+   },
+   "dene": [
+    "3 : 1 oranında her 4 ölçeğin 3'ü kırmızı. 12 ölçekte kaç kırmızı olur?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir sınıfta 14 kız ve 16 erkek öğrenci var. Kızların erkeklere oranını ve kızların tüm sınıfa oranını bulalım.",
+   "cozum": [
+    "Kız : erkek = 14 : 16 = 7 : 8.",
+    "Sınıf mevcudu 14 + 16 = 30. Kız : sınıf = 14 : 30 = 7 : 15."
+   ],
+   "sonuc": "7 : 8 ve 7 : 15."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Hangi paket daha ucuz?",
+   "soru": "A marketinde 3 kg pirinç 135 TL, B marketinde 5 kg pirinç 210 TL. Hangisi daha ekonomiktir?",
+   "cozum": [
+    "A'nın birim fiyatı: 135 ÷ 3 = 45 TL/kg.",
+    "B'nin birim fiyatı: 210 ÷ 5 = 42 TL/kg."
+   ],
+   "sonuc": "B marketi daha ekonomiktir (kilogramı 3 TL daha ucuz)."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Birimleri eşitlemeden oran yazmak yanlıştır: 40 cm : 2 m oranı 40 : 2 = 20 : 1 değildir. 2 m = 200 cm olduğu için oran 40 : 200 = **1 : 5**'tir. Ayrıca oranın terimlerinin sırası önemlidir: 2 : 3 ile 3 : 2 farklı oranlardır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "24 : 36 oranının en sade hâli hangisidir?",
+   "options": [
+    "3 : 2",
+    "2 : 3",
+    "4 : 6",
+    "12 : 18"
+   ],
+   "answer": 1,
+   "why": "İki terimi 12'ye böl: 2 : 3.",
+   "hint": "İki sayının en büyük ortak bölenini bul."
+  },
+  {
+   "prompt": "150 km yolu 2 saatte giden bir aracın saatteki hızı kaç km'dir?",
+   "options": [
+    "300",
+    "152",
+    "75",
+    "50"
+   ],
+   "answer": 2,
+   "why": "150 ÷ 2 = 75 km/sa.",
+   "hint": "Birim oran: 1 saatte kaç km?"
+  },
+  {
+   "prompt": "1,5 m'nin 30 cm'ye oranı hangisidir?",
+   "options": [
+    "1 : 5",
+    "1 : 20",
+    "20 : 1",
+    "5 : 1"
+   ],
+   "answer": 3,
+   "why": "1,5 m = 150 cm; 150 : 30 = 5 : 1.",
+   "hint": "Önce birimleri eşitle."
+  },
+  {
+   "prompt": "A paketi 250 g ve 30 TL, B paketi 400 g ve 44 TL'dir. Hangisi daha ekonomiktir?",
+   "options": [
+    "B",
+    "A",
+    "Eşit",
+    "Bilinemez"
+   ],
+   "answer": 0,
+   "why": "A: 30 ÷ 250 = 0,12 TL/g; B: 44 ÷ 400 = 0,11 TL/g.",
+   "hint": "Gram başına fiyatı karşılaştır."
+  }
+ ]
+}

@@ -1,0 +1,185 @@
+{
+ "id": "m1-2-1",
+ "baslik": "Uzunluk ve Kütle Ölçme",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.8"
+ ],
+ "sure": 14,
+ "ders": "olcme-ve-hacim",
+ "ozet": "Ataş, silgi, küp gibi standart olmayan birimlerle uzunluk ve kütle ölçmeyi, sonucu önceden tahmin etmeyi öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ölçmek ne demek?",
+   "govde": "Bir şeyi **ölçmek**, onun içinde bir birimin kaç kez bulunduğunu saymaktır.\n\nUzunluğu ölçmek için ataş, silgi, karış gibi **birimleri** uç uca dizeriz. Kalem 4 ataş boyundaysa uzunluğu “4 ataş”tır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kalemi ataşla ölç",
+   "aciklama": "Ataşları kalemin altına uç uca diz. Önce kaç ataş olduğunu tahmin et.",
+   "sim": {
+    "kind": "a-uzunluk",
+    "nesne": "Kalem",
+    "boy": 12,
+    "birimler": [
+     {
+      "ad": "ataş",
+      "uz": 3
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Kalemi ataşlarla tam olarak ölç.",
+    "check": {
+     "key": "tam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Son ataş kalemin ucunda bitmeli.",
+    "Tahminin kaçtı, ölçüm kaç çıktı?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ölçerken dikkat",
+   "govde": "- Birimleri **uç uca** koy, arada **boşluk bırakma**.\n- Birimleri **üst üste bindirme**.\n- Ölçmeye nesnenin **ucundan** başla.\n- Her ölçümde **aynı birimi** kullan.\n\nBirim **büyüdükçe** sayı **küçülür**; birim küçüldükçe sayı büyür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Farklı birimler",
+   "aciklama": "Defteri hem ataşla hem silgiyle ölçebilirsin. Birim değiştirince dizi baştan başlar.",
+   "sim": {
+    "kind": "a-uzunluk",
+    "nesne": "Defter",
+    "boy": 10,
+    "birimler": [
+     {
+      "ad": "ataş",
+      "uz": 3
+     },
+     {
+      "ad": "silgi",
+      "uz": 5
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Defteri silgiyle ölç: tam kaç silgi?",
+    "check": {
+     "all": [
+      {
+       "key": "birim",
+       "eq": 1
+      },
+      {
+       "key": "tam",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Ataşla ölçünce defter 3 ile 4 ataş arasında kalır. “Yaklaşık” deriz.",
+    "Silgi ataştan uzun, o yüzden daha az silgi gerekir."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Kütleyi karşılaştırmak",
+   "govde": "**Eşit kollu terazi** iki tarafı karşılaştırır. Ağır taraf aşağı iner. İki taraf eşitse terazi **dengede** kalır.\n\nBir elmayı küplerle dengeleyebiliriz. Terazi dengeye gelince elmanın kütlesi “kaç küp” olduğunu söyleriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Elmayı küplerle tart",
+   "aciklama": "Önce elmanın kaç küp ağırlığında olduğunu tahmin et, sonra küp ekle.",
+   "sim": {
+    "kind": "a-kefe",
+    "nesneler": [
+     {
+      "ad": "Elma",
+      "w": 6
+     }
+    ],
+    "birim": "küp",
+    "max": 12,
+    "tahmin": true
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeye getir.",
+    "check": {
+     "key": "denge",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Elmanın tarafı aşağıdaysa elma daha ağırdır, küp ekle.",
+    "Küp tarafı aşağı inerse bir küp çıkar."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Masanın boyu 6 karış çıktı. Aynı masayı daha küçük bir birim olan kalemle ölçersek sonuç 6'dan çok mu, az mı olur?",
+   "cozum": [
+    "Kalem karıştan kısadır.",
+    "Kısa birimle ölçünce birimi daha çok kez dizmek gerekir."
+   ],
+   "sonuc": "Sonuç 6'dan **çok** olur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kitap 9 küple, bir oyuncak araba 4 küple dengelendi. Hangisi daha ağırdır?",
+   "cozum": [
+    "Aynı küplerle ölçtük, sayıları karşılaştırabiliriz.",
+    "9, 4'ten büyüktür."
+   ],
+   "sonuc": "**Kitap** daha ağırdır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Ataşları aralarında boşluk bırakarak dizmek ölçümü yanlış yapar. Boşluklar sayılmaz; kalem olduğundan **daha uzun** çıkar. Birimleri uç uca, boşluksuz diz."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir silgi 3 ataş uzunluğunda. Silgi ile ölçülen bir kurdele 2 silgi geldi. Kurdele kaç ataş gelir?",
+   "options": [
+    "2",
+    "5",
+    "3",
+    "6"
+   ],
+   "answer": 3,
+   "why": "Her silgi 3 ataş: 3 + 3 = 6 ataş.",
+   "hint": "İki silgiyi ataşla düşün."
+  },
+  {
+   "prompt": "Hangisi doğru bir ölçme yoludur?",
+   "options": [
+    "Birimleri uç uca, boşluksuz dizmek",
+    "Birimler arasında boşluk bırakmak",
+    "Birimleri üst üste koymak",
+    "Her seferinde farklı birim kullanmak"
+   ],
+   "answer": 0,
+   "why": "Birimler uç uca ve boşluksuz dizilir.",
+   "hint": "Boşluklar ölçümü nasıl etkiler?"
+  },
+  {
+   "prompt": "Terazinin bir kefesinde top, öbüründe 5 küp var. Terazi dengede. Topun kütlesi için ne söyleriz?",
+   "options": [
+    "Top 5 küpten ağırdır.",
+    "Top 5 küpten hafiftir.",
+    "Top 5 küp ağırlığındadır.",
+    "Bir şey söyleyemeyiz."
+   ],
+   "answer": 2,
+   "why": "Dengede olan terazide iki taraf eşit ağırlıktadır.",
+   "hint": "Denge ne demek?"
+  }
+ ]
+}

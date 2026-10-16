@@ -1,0 +1,101 @@
+{
+ "id": "m8-2-2",
+ "baslik": "Doğrusal Denklemler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.2.2.1", "M.8.2.2.2", "M.8.2.2.3", "M.8.2.2.4", "M.8.2.2.5", "M.8.2.2.6"],
+ "sure": 20,
+ "ders": "denklem-terazisi",
+ "ozet": "Birinci dereceden denklemleri terazi mantığıyla çözecek, koordinat sistemini tanıyacak, doğrusal ilişkileri tablo, denklem ve grafikle gösterecek ve eğimi öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Denklem bir terazidir",
+   "govde": "3x + 2 = 14 denkleminde eşittir işaretinin iki yanı dengededir. Dengeyi bozmadan x'i yalnız bırakmak için **iki tarafa aynı işlemi** uygularız: önce iki taraftan 2 çıkarırız, sonra iki tarafı 3'e böleriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Teraziyi dengede tutarak çöz",
+   "aciklama": "Kareler x, daireler 1 birimdir. Yalnız bir taraftan çıkarmayı da dene; terazinin nasıl bozulduğuna bak.",
+   "sim": { "kind": "denklem-terazisi", "a": 3, "b": 2, "c": 14 },
+   "gorev": { "metin": "Denklemi çöz: sol kefede yalnız bir x kalsın.", "check": { "key": "solved", "eq": 1 } },
+   "dene": ["Çözümü denklemde yerine koyarak kontrol et: 3 · 4 + 2 = 14."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Rasyonel katsayılı denklem",
+   "soru": "(x − 1)/2 + x/3 = 3 denklemini çözelim.",
+   "cozum": [
+    "Paydaları yok etmek için iki tarafı 6 ile çarp: 3(x − 1) + 2x = 18.",
+    "Parantezi aç: 3x − 3 + 2x = 18, yani 5x − 3 = 18.",
+    "İki tarafa 3 ekle: 5x = 21.",
+    "İki tarafı 5'e böl: x = 21/5."
+   ],
+   "sonuc": "x = 21/5 = 4,2"
+  },
+  {
+   "tur": "metin",
+   "baslik": "Koordinat sistemi",
+   "govde": "Birbirine dik iki sayı doğrusu (x ekseni ve y ekseni) düzlemi dört bölgeye ayırır. Kesiştikleri nokta **orijin**dir: (0, 0).\n\nHer nokta bir **sıralı ikili** ile gösterilir: (3, −2) noktasına ulaşmak için orijinden 3 birim sağa, 2 birim aşağı gidilir. Sıra önemlidir: (3, −2) ile (−2, 3) farklı noktalardır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Doğrusal ilişki: tablo, denklem, grafik",
+   "govde": "Bir taksi açılışta 20 TL alıyor ve her kilometre için 8 TL ekliyor. Ücret y, yol x km ise:\n\n- Tablo: x = 0, 1, 2, 3 için y = 20, 28, 36, 44 (her adımda 8 artıyor)\n- Denklem: **y = 8x + 20**\n- Grafik: bu noktalar bir doğru üzerindedir.\n\nx bir birim arttıkça y hep aynı miktarda değişiyorsa ilişki **doğrusal**dır; grafiği bir doğrudur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eğim",
+   "govde": "Bir doğrunun **eğimi**, doğru üzerinde yatayda 1 birim ilerleyince dikeyde ne kadar değişildiğini gösterir:\n\neğim = dikey değişim ÷ yatay değişim = (y₂ − y₁) ÷ (x₂ − x₁)\n\ny = mx + n denkleminde m eğim, n doğrunun y eksenini kestiği noktanın ordinatıdır.\n\n- m > 0: doğru sağa doğru yükselir; m < 0: alçalır.\n- m = 0 (y = n): x eksenine paraleldir.\n- x = a biçimindeki doğrular y eksenine paraleldir.\n- n = 0 ise doğru orijinden geçer."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Doğruyu iki noktadan geçir",
+   "aciklama": "Kaydırıcılar doğrunun eğimini (m) ve y eksenini kestiği yeri (n) değiştirir. Doğru bir noktadan geçince nokta yeşile döner.",
+   "sim": { "kind": "koordinat-duzlemi", "m": 1, "n": 0, "points": [[0, -2], [3, 4]] },
+   "gorev": { "metin": "Doğruyu (0, −2) ve (3, 4) noktalarından geçir.", "check": { "all": [ { "key": "m", "eq": 2, "tol": 0.001 }, { "key": "n", "eq": -2, "tol": 0.001 } ] } },
+   "dene": ["Eğimi hesapla: (4 − (−2)) ÷ (3 − 0) = 2.", "n'yi doğrudan (0, −2) noktasından okuyabilirsin."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eksene paralel doğru",
+   "aciklama": "İki noktanın da y koordinatı 3. Bu noktalardan geçen doğruyu bul.",
+   "sim": { "kind": "koordinat-duzlemi", "m": 1, "n": 0, "points": [[-2, 3], [2, 3]] },
+   "gorev": { "metin": "Doğruyu iki noktadan da geçir.", "check": { "all": [ { "key": "m", "eq": 0, "tol": 0.001 }, { "key": "n", "eq": 3, "tol": 0.001 } ] } },
+   "dene": ["Eğim 0 olunca denklem y = 3 olur; doğru x eksenine paraleldir."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "İki noktadan denklem",
+   "soru": "(1, 2) ve (3, 8) noktalarından geçen doğrunun denklemini ve eksenleri kestiği noktaları bulalım.",
+   "cozum": [
+    "Eğim: (8 − 2) ÷ (3 − 1) = 6 ÷ 2 = 3.",
+    "y = 3x + n; (1, 2) noktasını yerleştir: 2 = 3 + n, n = −1.",
+    "y eksenini kestiği nokta: x = 0 → (0, −1).",
+    "x eksenini kestiği nokta: y = 0 → 3x = 1 → (1/3, 0)."
+   ],
+   "sonuc": "y = 3x − 1"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: boşalan depo",
+   "soru": "Bir depoda 600 L su var. Açılan musluktan dakikada 15 L su akıyor. x dakika sonra depodaki su miktarı y litre ise denklemi yazalım ve deponun kaç dakikada boşalacağını bulalım.",
+   "cozum": [
+    "Her dakika 15 L azalıyor: y = 600 − 15x.",
+    "Eğim −15: grafik sağa doğru alçalır.",
+    "Depo boşalınca y = 0: 600 − 15x = 0, x = 40."
+   ],
+   "sonuc": "Depo 40 dakikada boşalır. Grafik (0, 600) ve (40, 0) noktalarından geçer."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Eğimi hesaplarken farkların sırasını karıştırmak: (y₂ − y₁) ile (x₂ − x₁) aynı sırayla alınmalı.\n- y = 3 doğrusunu dikey sanmak. y = 3 yataydır; dikey olan x = 3'tür.\n- Denklemde yalnız bir tarafa işlem yapmak (terazinin bozulması).\n- (2, 5) noktasını x = 5, y = 2 diye okumak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "2(x − 3) = x + 4 denkleminin çözümü nedir?", "options": ["1", "10", "−2", "7"], "answer": 1, "why": "2x − 6 = x + 4 ⇒ x = 10.", "hint": "Önce parantezi aç, sonra x'leri bir tarafta topla." },
+  { "prompt": "(0, 5) ve (2, 1) noktalarından geçen doğrunun eğimi kaçtır?", "options": ["2", "−1/2", "1/2", "−2"], "answer": 3, "why": "(1 − 5) ÷ (2 − 0) = −4 ÷ 2 = −2.", "hint": "Dikey değişimi yatay değişime böl." },
+  { "prompt": "y = −4 doğrusu için hangisi doğrudur?", "options": ["x eksenine paraleldir.", "y eksenine paraleldir.", "Orijinden geçer.", "Eğimi −4'tür."], "answer": 0, "why": "y = −4'te eğim 0'dır; doğru x eksenine paralel, y eksenini (0, −4)'te keser.", "hint": "Bu doğru üzerindeki bütün noktaların y koordinatı aynıdır." },
+  { "prompt": "3x − y = 6 doğrusu y eksenini hangi noktada keser?", "options": ["(2, 0)", "(0, 6)", "(0, −6)", "(−6, 0)"], "answer": 2, "why": "x = 0 ⇒ −y = 6 ⇒ y = −6.", "hint": "y ekseni üzerindeki noktalarda x = 0'dır." }
+ ]
+}

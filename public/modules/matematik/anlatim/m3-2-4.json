@@ -1,0 +1,184 @@
+{
+ "id": "m3-2-4",
+ "baslik": "Analog ve Dijital Saatlerde Zamanı Okuma ve Yazma",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.12"
+ ],
+ "sure": 12,
+ "ders": "saat-ve-para",
+ "ozet": "Akrep ve yelkovanın ne gösterdiğini öğrenip analog saati okuyacak, aynı zamanı dijital saat gibi yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Akrep ve yelkovan",
+   "govde": "Analog saatte iki ibre vardır:\n\n- **Akrep** (kısa ibre) saati gösterir.\n- **Yelkovan** (uzun ibre) dakikayı gösterir.\n\nYelkovan bir rakamdan sonrakine gelince **5 dakika** geçer. Yelkovan saati bir tam turda dolaşınca **60 dakika**, yani 1 saat geçer; bu sürede akrep bir rakamdan sonrakine ilerler."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Okuma ve yazma",
+   "govde": "- Yelkovan 12'deyse saat **tam**dır: 3.00\n- Yelkovan 3'teyse **çeyrek geçe**: 3.15\n- Yelkovan 6'daysa **buçuk**: 3.30\n- Yelkovan 9'daysa **çeyrek var**: 3.45, yani \"dörde çeyrek var\"\n\nDijital saatte önce saat, sonra nokta ya da iki nokta, sonra dakika yazılır: 07.20. Öğleden sonraki saatlere 12 eklenir: öğleden sonra 3.00 = **15.00**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Saati kur",
+   "aciklama": "Yelkovanı sürükle ya da saati seçip ok tuşlarını kullan. Akrep kendiliğinden ilerler; saatin yanındaki dijital gösterime bak.",
+   "sim": {
+    "kind": "saat",
+    "h": 3,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saati 7.20 yap.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 7
+      },
+      {
+       "key": "m",
+       "eq": 20
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yelkovanı 4 tam tur çevirmen gerekir; her turda akrep bir saat ilerler.",
+    "20 dakika için yelkovan 4 rakamını göstermeli: 4 × 5 = 20."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çeyrek geçe",
+   "aciklama": "Saat 10.00'ı gösteriyor.",
+   "sim": {
+    "kind": "saat",
+    "h": 10,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saati \"onu çeyrek geçe\" yap.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 10
+      },
+      {
+       "key": "m",
+       "eq": 15
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Çeyrek saat 15 dakikadır; yelkovan 3'ü göstermeli."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çeyrek var",
+   "aciklama": "Saat 4.00'ı gösteriyor.",
+   "sim": {
+    "kind": "saat",
+    "h": 4,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saati \"beşe çeyrek var\" yap.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 4
+      },
+      {
+       "key": "m",
+       "eq": 45
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Beşe çeyrek var, 4.45 demektir; yelkovan 9'u göstermeli.",
+    "Akrep 4 ile 5 arasında, 5'e yakın olur."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Akrep 8 ile 9 arasında, yelkovan 4'ü gösteriyor. Saat kaçtır?",
+   "cozum": [
+    "Akrep 8'i geçmiş ama 9'a gelmemiş: saat 8.",
+    "Yelkovan 4'te: 4 × 5 = 20 dakika."
+   ],
+   "sonuc": "Saat **8.20**'dir: \"sekizi yirmi geçiyor\"."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Öğleden sonra",
+   "soru": "Akrep 2 ile 3 arasında, yelkovan 9'u gösteriyor. Öğleden sonra olduğuna göre dijital saatte nasıl yazılır?",
+   "cozum": [
+    "Saat 2, yelkovan 9'da: 9 × 5 = 45 dakika → 2.45 (\"üçe çeyrek var\").",
+    "Öğleden sonra olduğu için 2 + 12 = 14."
+   ],
+   "sonuc": "Dijital saatte **14.45** yazılır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yelkovanın gösterdiği rakamı dakika sanmak yaygın bir hatadır: yelkovan 4'teyse 4 dakika değil, **20 dakika** geçmiştir. Ayrıca kısa ve uzun ibreyi karıştırmamaya dikkat et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Yelkovan 6'yı, akrep 3 ile 4 arasını gösteriyor. Saat kaçtır?",
+   "options": [
+    "4.30",
+    "6.15",
+    "3.30",
+    "3.06"
+   ],
+   "answer": 2,
+   "why": "Akrep 3'ü geçmiş: saat 3. Yelkovan 6'da: 30 dakika. 3.30.",
+   "hint": "Kısa ibre saati, uzun ibre dakikayı gösterir."
+  },
+  {
+   "prompt": "\"Dokuza on var\" dijital saatte nasıl gösterilir?",
+   "options": [
+    "9.10",
+    "8.10",
+    "9.50",
+    "8.50"
+   ],
+   "answer": 3,
+   "why": "Dokuza 10 dakika var: saat 8'i 50 dakika geçiyor, 8.50.",
+   "hint": "Dokuz olmadan 10 dakika önce saat kaçtır?"
+  },
+  {
+   "prompt": "Dijital saatte 07.45 yazıyor. Analog saatte yelkovan hangi rakamı gösterir?",
+   "options": [
+    "9",
+    "7",
+    "4",
+    "45"
+   ],
+   "answer": 0,
+   "why": "45 dakika = 9 × 5; yelkovan 9'dadır.",
+   "hint": "Her rakam 5 dakika."
+  },
+  {
+   "prompt": "Öğleden sonra saat 5.30 dijital saatte nasıl yazılır?",
+   "options": [
+    "15.30",
+    "17.30",
+    "17.03",
+    "05.30"
+   ],
+   "answer": 1,
+   "why": "Öğleden sonra saatlere 12 eklenir: 5 + 12 = 17. 17.30.",
+   "hint": "Öğleden sonra saatleri yazarken kaç eklenir?"
+  }
+ ]
+}

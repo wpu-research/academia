@@ -1,0 +1,170 @@
+{
+ "id": "m4-1-7",
+ "baslik": "Kesirlerle İşlemler",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.1.7.1",
+  "M.4.1.7.2"
+ ],
+ "sure": 12,
+ "ozet": "Paydaları eşit kesirleri modellerle toplayıp çıkaracak, bir bütünden kesir çıkaracak ve kesir problemleri çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Aynı büyüklükte parçalar",
+   "govde": "Paydaları eşit kesirlerde bütün aynı sayıda eş parçaya bölünmüştür; **parçaların büyüklüğü aynıdır**. Bu yüzden parçaları sayar gibi toplayıp çıkarabiliriz: 3 sekizlik + 2 sekizlik = 5 sekizlik."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Modelle topla",
+   "aciklama": "Üstteki iki çubuk 3/8 ve 2/8'i gösteriyor. Alttaki çubuğa dokunarak toplamı boya.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 8,
+      "shaded": 3,
+      "label": "3/8"
+     },
+     {
+      "n": 8,
+      "shaded": 2,
+      "label": "2/8"
+     },
+     {
+      "n": 8,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "3/8 + 2/8 toplamını alttaki çubukta boya.",
+    "check": {
+     "key": "shaded2",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "Parçaların büyüklüğü değişmedi; sadece parçaları saydın.",
+    "Toplam 5/8: payda yine 8."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Paydaları eşit kesirlerde toplama ve çıkarma",
+   "govde": "Paydaları eşit kesirleri toplarken ya da çıkarırken **payları toplar ya da çıkarırız**, **paydayı aynen yazarız**.\n\n3/8 + 2/8 = 5/8 ve 7/9 − 4/9 = 3/9.\n\nBir bütün, paydası ne olursa olsun payı paydasına eşit bir kesirle yazılabilir: 1 = 5/5 = 7/7."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda çıkar",
+   "aciklama": "Sayı doğrusunda 0 ile 1 arası 6 eş parçaya bölündü. Nokta 5/6'da. Noktayı sürükle ya da ok tuşlarıyla 1/6'lık adımlarla ilerlet.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 0,
+    "max": 1,
+    "den": 6,
+    "value": 0.8333333333
+   },
+   "gorev": {
+    "metin": "5/6'dan 2/6 geri git: 5/6 − 2/6 işleminin sonucunu göster.",
+    "check": {
+     "key": "value",
+     "eq": 0.5,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "İki adım sola gidince 3/6'ya gelirsin.",
+    "Sayı doğrusu 3/6'yı 1/2 olarak yazar: 3/6 ile 1/2 aynı noktadır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "7/9 − 4/9 işlemini yapalım.",
+   "cozum": [
+    "Paydalar eşit (9).",
+    "Payları çıkar: 7 − 4 = 3.",
+    "Paydayı aynen yaz."
+   ],
+   "sonuc": "7/9 − 4/9 = 3/9."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "Bir pastanın 2/7'sini Ali, 3/7'sini Ayşe yedi. Pastanın ne kadarı kaldı?",
+   "cozum": [
+    "Yenen kısım: 2/7 + 3/7 = 5/7.",
+    "Pastanın tamamı 7/7'dir.",
+    "Kalan: 7/7 − 5/7 = 2/7."
+   ],
+   "sonuc": "Pastanın 2/7'si kaldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Bütünden çıkarma",
+   "soru": "1 − 3/5 işlemini yapalım.",
+   "cozum": [
+    "1 bütünü paydası 5 olan kesirle yaz: 1 = 5/5.",
+    "5/5 − 3/5 = 2/5."
+   ],
+   "sonuc": "1 − 3/5 = 2/5."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Paydaları da toplamak yanlıştır: 3/8 + 2/8 = 5/16 değildir. Payda parçaların büyüklüğünü gösterir; parçaları birleştirince parça büyüklüğü değişmez. Doğrusu **5/8**'dir.\n\nKontrol: 5/16, 3/8'den bile küçüktür; iki kesrin toplamı ilk kesirden küçük olamaz."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4/11 + 5/11 işleminin sonucu nedir?",
+   "options": [
+    "9/22",
+    "1/11",
+    "20/11",
+    "9/11"
+   ],
+   "answer": 3,
+   "why": "Paylar toplanır, payda aynen yazılır: 9/11.",
+   "hint": "Payda değişir mi?"
+  },
+  {
+   "prompt": "8/9 − 3/9 işleminin sonucu nedir?",
+   "options": [
+    "5/9",
+    "11/9",
+    "5/18",
+    "3/9"
+   ],
+   "answer": 0,
+   "why": "8 − 3 = 5; payda 9 kalır: 5/9.",
+   "hint": "Yalnız payları çıkar."
+  },
+  {
+   "prompt": "Bir şişe suyun 2/6'sı sabah, 3/6'sı öğlen içildi. Şişedeki suyun ne kadarı kaldı?",
+   "options": [
+    "5/6",
+    "5/12",
+    "1/6",
+    "2/6"
+   ],
+   "answer": 2,
+   "why": "İçilen 5/6; kalan 6/6 − 5/6 = 1/6.",
+   "hint": "Şişenin tamamını 6/6 diye düşün."
+  },
+  {
+   "prompt": "1 − 4/7 işleminin sonucu nedir?",
+   "options": [
+    "4/7",
+    "3/7",
+    "5/7",
+    "3/14"
+   ],
+   "answer": 1,
+   "why": "1 = 7/7; 7/7 − 4/7 = 3/7.",
+   "hint": "1'i paydası 7 olan bir kesir olarak yaz."
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "id": "m10-4-3",
+ "baslik": "Karekök Fonksiyonu ve Nitel Özellikleri",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.4.3"],
+ "sure": 16,
+ "ozet": "f(x) = √x yarım bir parabol gibi görünür: x² fonksiyonunun x ≥ 0 parçasının y = x doğrusuna göre yansımasıdır. g(x) = a√(x − r) + k dönüşümlerinde başlangıç noktasını, tanım ve görüntü kümesini okuyacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Referans fonksiyon f(x) = √x",
+   "govde": "√x, karesi x olan negatif olmayan sayıdır. Bu yüzden:\n- Tanım kümesi [0, ∞) (negatif sayının gerçek karekökü yoktur).\n- Görüntü kümesi [0, ∞).\n- Grafik (0, 0) noktasından başlar ve hep artar; ama artış giderek yavaşlar: √1 = 1, √4 = 2, √9 = 3.\n- y = x² fonksiyonunun x ≥ 0 için tersidir; grafikleri y = x doğrusuna göre simetriktir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "g(x) = a√(x − r) + k",
+   "govde": "- Başlangıç noktası (r, k).\n- Tanım kümesi: x − r ≥ 0 → [r, ∞).\n- a > 0 ise grafik başlangıç noktasından yukarı doğru gider, artandır; görüntü kümesi [k, ∞).\n- a < 0 ise aşağı doğru gider, azalandır; görüntü kümesi (−∞, k].\n- |a| büyüdükçe grafik dikeyde uzar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Başlangıç noktasını taşı",
+   "aciklama": "Gri kesikli eğri y = √x. Kaydırıcılarla grafiği ötele.",
+   "sim": { "kind": "fonksiyon-grafigi", "g": "kok", "a": 1, "h": 0, "k": 0, "target": [-2, 1] },
+   "gorev": { "metin": "Grafiğin başlangıç noktasını (−2, 1) noktasına taşı.", "check": { "all": [{ "key": "h", "eq": -2 }, { "key": "k", "eq": 1 }] } },
+   "dene": ["Denklem √(x + 2) + 1 oldu: içerideki +2 grafiği sola götürdü.", "a'yı −1 yap: grafik başlangıç noktasından aşağı doğru gider."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "g(x) = 2√(x − 3) + 1 fonksiyonunun tanım kümesini, görüntü kümesini ve monotonluğunu bulalım.",
+   "cozum": [
+    "x − 3 ≥ 0 → tanım kümesi [3, ∞).",
+    "Başlangıç noktası (3, 1); a = 2 > 0.",
+    "Görüntü kümesi [1, ∞); fonksiyon artandır.",
+    "Bir nokta: g(7) = 2 · √4 + 1 = 5."
+   ],
+   "sonuc": "Tanım kümesi [3, ∞), görüntü kümesi [1, ∞), artan."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Azalan bir karekök fonksiyonu",
+   "aciklama": "Sağdaki satırlarda tanım kümesi, görüntü kümesi ve monotonluk canlı yazılıyor.",
+   "sim": { "kind": "f-fonk", "f": "kok", "a": 1, "h": 0, "k": 0, "sliders": ["a", "h", "k"] },
+   "gorev": { "metin": "Azalan ve görüntü kümesi (−∞, 2] olan bir karekök fonksiyonu oluştur.", "check": { "all": [{ "key": "a", "lt": 0 }, { "key": "k", "eq": 2 }] } },
+   "dene": ["h'yi değiştirmek görüntü kümesini etkilemiyor, yalnız tanım kümesini kaydırıyor.", "a = 0 seçersen ne oluyor?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "g(x) = −√(x + 4) + 2 grafiği x eksenini hangi noktada keser?",
+   "cozum": [
+    "Tanım kümesi [−4, ∞), başlangıç noktası (−4, 2), a < 0 → azalan.",
+    "g(x) = 0 → √(x + 4) = 2.",
+    "x + 4 = 4 → x = 0."
+   ],
+   "sonuc": "Grafik x eksenini (0, 0) noktasında keser."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Denklemi grafikle çöz",
+   "aciklama": "y = √(x − r) + k grafiği ile y = c doğrusunun kesişimi, √(x − r) + k = c denkleminin çözümünü verir.",
+   "sim": { "kind": "f-fonk", "f": "kok", "h": -2, "c": 1, "sliders": ["h", "c"], "tools": ["cizgi"] },
+   "gorev": { "metin": "c'yi 2 yap ve √(x + 2) = 2 denkleminin çözümünü oku.", "check": { "all": [{ "key": "h", "eq": -2 }, { "key": "c", "eq": 2 }] } },
+   "dene": ["c negatifken kesişim yok: karekök negatif değer almaz.", "Yeşil bölge √(x + 2) > c eşitsizliğinin çözümü."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "√(2x + 1) = x − 1 denkleminin çözüm kümesini bulalım.",
+   "cozum": [
+    "Sağ taraf bir karekök değerine eşit, negatif olamaz: x − 1 ≥ 0 → x ≥ 1.",
+    "İki tarafın karesi: 2x + 1 = x² − 2x + 1 → x² − 4x = 0 → x = 0 ya da x = 4.",
+    "x = 0, x ≥ 1 şartını sağlamaz (√1 = 1 ama 0 − 1 = −1).",
+    "x = 4: √9 = 3 = 4 − 1. Sağlar."
+   ],
+   "sonuc": "Çözüm kümesi {4}."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Karesini alıp bulunan her kökü kabul etmek. Kare alma işlemi yeni (yabancı) kökler üretebilir; bulduğun değerleri **ilk denklemde** mutlaka dene. Ayrıca √(x²) = x değil, |x|'tir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "f(x) = √(x + 5) fonksiyonunun tanım kümesi nedir?", "options": ["[5, ∞)", "(−5, ∞)", "[−5, ∞)", "ℝ"], "answer": 2, "why": "x + 5 ≥ 0 → x ≥ −5; −5 dahil (√0 = 0).", "hint": "Kök içi negatif olamaz." },
+  { "prompt": "g(x) = 3 − √(x − 2) fonksiyonunun görüntü kümesi nedir?", "options": ["[3, ∞)", "(−∞, 3]", "[2, ∞)", "(−∞, 2]"], "answer": 1, "why": "√(x − 2) ≥ 0 olduğundan g(x) ≤ 3; başlangıç (2, 3), aşağı doğru.", "hint": "a'nın işareti negatif." },
+  { "prompt": "√(x + 3) = 4 denkleminin çözümü nedir?", "options": ["1", "19", "7", "13"], "answer": 3, "why": "x + 3 = 16 → x = 13.", "hint": "İki tarafın karesini al." },
+  { "prompt": "g(x) = √(x − 1) + 2 grafiğinin başlangıç noktası hangisidir?", "options": ["(1, 2)", "(−1, 2)", "(2, 1)", "(1, −2)"], "answer": 0, "why": "r = 1, k = 2.", "hint": "a√(x − r) + k biçiminde (r, k)." }
+ ]
+}

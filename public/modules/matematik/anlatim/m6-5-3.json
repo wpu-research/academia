@@ -1,0 +1,157 @@
+{
+ "id": "m6-5-3",
+ "baslik": "Çemberin ve Çapın Uzunlukları Arasındaki İlişki",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.4.4",
+  "MAT.6.4.5"
+ ],
+ "sure": 13,
+ "ozet": "Bir çemberi yuvarlayarak çevresinin çapının yaklaşık 3,14 katı olduğunu keşfedecek, π sayısını tanıyacak ve çember uzunluğu problemlerini çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çember, merkez, çap",
+   "govde": "Bir düzlemde bir noktaya (merkez) eşit uzaklıktaki noktaların oluşturduğu şekle **çember** denir.\n\n- Merkezden çembere uzaklık: **yarıçap (r)**\n- Merkezden geçen ve uçları çember üzerinde olan doğru parçası: **çap (d)**, d = 2r\n\nÇemberin uzunluğuna **çevre** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çemberi yuvarla",
+   "aciklama": "Çember düz bir yolda kaymadan yuvarlanıyor. Yeşil nokta başlangıçta yere değiyordu. Yolun altındaki çentikler çap uzunluklarını gösteriyor.",
+   "sim": {
+    "kind": "d-cember-acinim",
+    "d": 2
+   },
+   "gorev": {
+    "metin": "Çemberi tam bir tur yuvarla.",
+    "check": {
+     "key": "t",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Bir tur sonunda yeşil nokta yeniden yere değer; alınan yol çemberin çevresidir.",
+    "Çevre kaç çap boyu? 3'ten biraz fazla."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "π sayısı",
+   "govde": "Her çemberde **çevre ÷ çap** aynı sayıyı verir: yaklaşık **3,14**. Bu sayıya **π (pi)** denir.\n\n**Çevre = π × d = 2 × π × r**\n\nHesaplarda π genellikle 3 ya da 3,14 alınır; soruda hangisinin kullanılacağı belirtilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çap büyürse?",
+   "aciklama": "Çapı değiştir ve yeniden yuvarla.",
+   "sim": {
+    "kind": "d-cember-acinim",
+    "d": 1
+   },
+   "gorev": {
+    "metin": "Çapı 4 birim olan çemberi tam bir tur yuvarla.",
+    "check": {
+     "all": [
+      {
+       "key": "d",
+       "eq": 4
+      },
+      {
+       "key": "t",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Çap 2 katına çıkınca çevre de 2 katına çıkıyor mu?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Yarıçapı 5 cm olan çemberin çevresi kaç cm'dir? (π = 3,14)",
+   "cozum": [
+    "Çevre = 2 × π × r",
+    "= 2 × 3,14 × 5",
+    "= 31,4"
+   ],
+   "sonuc": "31,4 cm."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Çevresi 37,68 cm olan çemberin çapı kaç cm'dir? (π = 3,14)",
+   "cozum": [
+    "π × d = 37,68",
+    "d = 37,68 ÷ 3,14 = 12"
+   ],
+   "sonuc": "Çap 12 cm, yarıçap 6 cm'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Bisiklet",
+   "soru": "Çapı 60 cm olan bir bisiklet tekerleği 100 tur dönüyor. Bisiklet kaç metre yol alır? (π = 3,14)",
+   "cozum": [
+    "Bir turda alınan yol = çevre = 3,14 × 60 = 188,4 cm.",
+    "100 turda: 188,4 × 100 = 18 840 cm.",
+    "18 840 cm = 188,4 m."
+   ],
+   "sonuc": "188,4 m yol alır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yarıçap verildiğinde π × r hesaplamak yanlıştır; bu çevrenin yarısını verir. Ya **2 × π × r** kullan ya da önce çapı bul (d = 2r) ve **π × d** hesapla."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Çapı 10 cm olan çemberin çevresi kaç cm'dir? (π = 3)",
+   "options": [
+    "60",
+    "30",
+    "15",
+    "300"
+   ],
+   "answer": 1,
+   "why": "π × d = 3 × 10 = 30.",
+   "hint": "Çevre = π × çap."
+  },
+  {
+   "prompt": "Yarıçapı 7 cm olan çemberin çevresi kaç cm'dir? (π = 3)",
+   "options": [
+    "21",
+    "49",
+    "42",
+    "14"
+   ],
+   "answer": 2,
+   "why": "2 × 3 × 7 = 42.",
+   "hint": "Yarıçap verildiğinde 2 ile çarpmayı unutma."
+  },
+  {
+   "prompt": "Çevresi 18 cm olan çemberin yarıçapı kaç cm'dir? (π = 3)",
+   "options": [
+    "6",
+    "9",
+    "2",
+    "3"
+   ],
+   "answer": 3,
+   "why": "2 × 3 × r = 18 → r = 3.",
+   "hint": "Önce çapı bul: 18 ÷ 3 = 6."
+  },
+  {
+   "prompt": "Bir çemberin çevresinin çapına oranı için hangisi doğrudur?",
+   "options": [
+    "Yaklaşık 3,14'tür ve her çemberde aynıdır.",
+    "Çember büyüdükçe artar.",
+    "2'dir.",
+    "Yarıçapa eşittir."
+   ],
+   "answer": 0,
+   "why": "Bu oran π sayısıdır, çemberin büyüklüğüne bağlı değildir.",
+   "hint": "Simülasyonda farklı çaplar için çevre ÷ çap kaç çıktı?"
+  }
+ ]
+}

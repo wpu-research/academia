@@ -1,0 +1,156 @@
+{
+ "id": "m3-4-1",
+ "baslik": "Geometrik Cisimlerin Özellikleri",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.1"
+ ],
+ "sure": 14,
+ "ozet": "Küp, prizmalar, piramit, silindir, koni ve küreyi döndürerek inceleyecek; yüz, ayrıt ve köşe sayılarına göre özelliklerini yorumlayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yüz, ayrıt, köşe",
+   "govde": "Etrafımızdaki kutular, toplar, konserve kutuları birer **geometrik cisim** örneğidir.\n\n- **Yüz:** Cismin dış yüzeyini oluşturan düz ya da eğri parçalar. Bir kutunun her bir kapağı ve yanı bir yüzdür.\n- **Ayrıt:** İki yüzün birleştiği çizgi.\n- **Köşe:** Ayrıtların birleştiği nokta."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Cisimleri döndür ve say",
+   "aciklama": "Bir cisim seç, sürükleyerek döndür. \"Yüzler\", \"Köşeler\", \"Ayrıtlar\" düğmeleri ilgili parçaları vurgular; arkada kalan ayrıtlar kesikli çizilir.",
+   "sim": {
+    "kind": "b-cisim",
+    "liste": [
+     "kup",
+     "kareprizma",
+     "dikprizma",
+     "ucgenprizma",
+     "silindir",
+     "koni",
+     "kure"
+    ],
+    "cisim": "kup",
+    "goster": "yuz"
+   },
+   "gorev": {
+    "metin": "5 yüzü olan cismi bul.",
+    "check": {
+     "key": "yuz",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "Küpün 6 yüzü var; daha az yüzü olan ama köşeleri de olan bir cisme bak.",
+    "Silindir, koni ve kürenin eğri yüzleri vardır; köşeleri yoktur."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Cisimlerin özellikleri",
+   "govde": "- **Küp:** 6 yüz (hepsi eş kare), 12 ayrıt, 8 köşe\n- **Kare prizma ve dikdörtgenler prizması:** 6 yüz, 12 ayrıt, 8 köşe\n- **Üçgen prizma:** 5 yüz (2 üçgen, 3 dikdörtgen), 9 ayrıt, 6 köşe\n- **Silindir:** 2 düz yüz (daire), 1 eğri yüz, köşesi yok\n- **Koni:** 1 düz yüz (daire), 1 eğri yüz, 1 tepe noktası\n- **Küre:** yalnız 1 eğri yüz; köşesi ve ayrıtı yok\n\nEğri yüzü olan cisimler yuvarlanabilir; yalnız düz yüzleri olanlar yuvarlanmaz, kayar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Prizma mı, piramit mi?",
+   "aciklama": "Bu kez bir piramit de var. Ayrıtları vurgula ve say.",
+   "sim": {
+    "kind": "b-cisim",
+    "liste": [
+     "kup",
+     "dikprizma",
+     "ucgenprizma",
+     "karepiramit"
+    ],
+    "cisim": "kup",
+    "goster": "ayrit"
+   },
+   "gorev": {
+    "metin": "8 ayrıtı olan cismi bul.",
+    "check": {
+     "key": "ayrit",
+     "eq": 8
+    }
+   },
+   "dene": [
+    "Kare piramidin tabanında 4, yan yüzlerinin tepede birleştiği yerde 4 ayrıt vardır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir zar hangi geometrik cisme benzer? Kaç yüzü, ayrıtı ve köşesi vardır?",
+   "cozum": [
+    "Zarın bütün yüzleri eş karedir: küp.",
+    "Karşılıklı 3 çift yüz: 6 yüz.",
+    "Üstte 4, altta 4, yanlarda 4 ayrıt: 12 ayrıt.",
+    "Üstte 4, altta 4 köşe: 8 köşe."
+   ],
+   "sonuc": "Zar bir **küp**tür: 6 yüz, 12 ayrıt, 8 köşe."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Üçgen prizma",
+   "soru": "Bir çadır üçgen prizma biçimindedir. Yüzlerini sayalım.",
+   "cozum": [
+    "Ön ve arka yüzler üçgendir: 2 yüz.",
+    "İki eğimli yan ve zemin dikdörtgendir: 3 yüz.",
+    "2 + 3 = 5."
+   ],
+   "sonuc": "Çadırın **5 yüzü** vardır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bir cisme bakınca yalnız gördüğümüz yüzleri saymak yanlıştır. Bir küpün aynı anda en çok 3 yüzü görünür ama 6 yüzü vardır. Cismi döndürerek ya da arkada kalan kesikli ayrıtları düşünerek say."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Dikdörtgenler prizmasının kaç köşesi vardır?",
+   "options": [
+    "6",
+    "8",
+    "12",
+    "4"
+   ],
+   "answer": 1,
+   "why": "Üst yüzde 4, alt yüzde 4 köşe: 8.",
+   "hint": "Üst ve alt yüzün köşelerini say."
+  },
+  {
+   "prompt": "Hangisinin köşesi yoktur?",
+   "options": [
+    "Küp",
+    "Üçgen prizma",
+    "Silindir",
+    "Kare prizma"
+   ],
+   "answer": 2,
+   "why": "Silindirin yüzeyleri birleşirken köşe oluşmaz.",
+   "hint": "Eğri yüzü olan cisim hangisi?"
+  },
+  {
+   "prompt": "Ayrıt nedir?",
+   "options": [
+    "Cismin en üst noktası",
+    "Cismin düz bir yüzü",
+    "Cismin iç kısmı",
+    "İki yüzün birleştiği çizgi"
+   ],
+   "answer": 3,
+   "why": "İki yüzün birleştiği çizgiye ayrıt denir.",
+   "hint": "Bir kutunun kenar çizgilerini düşün."
+  },
+  {
+   "prompt": "Küpün kaç ayrıtı vardır?",
+   "options": [
+    "12",
+    "6",
+    "8",
+    "10"
+   ],
+   "answer": 0,
+   "why": "Üstte 4, altta 4, yanlarda 4: 12 ayrıt.",
+   "hint": "Üst, alt ve yan ayrıtları ayrı ayrı say."
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+{
+ "id": "m3-3-8",
+ "baslik": "Dört İşlemde Eşitlik",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.8"
+ ],
+ "sure": 12,
+ "ozet": "Eşittir işaretinin \"sonuç budur\" değil \"iki taraf aynı değerdedir\" anlamına geldiğini terazilerle göreceğiz; eşitliği bozmadan eksik sayıyı bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşittir ne demek?",
+   "govde": "**=** işareti, iki yanındaki ifadelerin **aynı değerde** olduğunu gösterir. Bir terazi gibi düşün: iki kefe eşit ağırlıktaysa terazi dengededir.\n\n8 + 5 = 13 doğru bir eşitliktir. 8 + 5 = 7 + 6 da doğrudur, çünkü iki taraf da 13'tür.\n\nEşittir işaretinin sağında her zaman tek bir sonuç olmak zorunda değildir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Teraziyi dengele",
+   "aciklama": "Sol kefede 8 + 5, sağ kefede □ + 6 var. Kutudaki sayıyı kaydırıcıyla değiştir; turuncu kareler her kefedeki toplamı gösterir.",
+   "sim": {
+    "kind": "b-terazi",
+    "sol": [
+     8,
+     "+",
+     5
+    ],
+    "sag": [
+     null,
+     "+",
+     6
+    ],
+    "x": 0,
+    "min": 0,
+    "max": 20
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeleyen sayıyı bul.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sol taraf kaç ediyor? Sağ tarafa 6 eklenince aynı sayıya ulaşmalısın.",
+    "Kutuya 13 yazmak doğru değildir: 13 + 6 = 19."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eksik sayıyı bulmak",
+   "govde": "1. Değeri bilinen tarafı hesapla.\n2. Diğer taraf da aynı değeri vermeli: kutuya hangi sayı gelirse bu değer elde edilir?\n3. Bulduğun sayıyı yerine koyarak kontrol et.\n\nÖrnek: 9 + 6 = □ + 10 → sol 15 → □ + 10 = 15 → □ = 5."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpmayla denge",
+   "aciklama": "Sol kefede 4 × 6, sağ kefede □ × 3 var.",
+   "sim": {
+    "kind": "b-terazi",
+    "sol": [
+     4,
+     "×",
+     6
+    ],
+    "sag": [
+     null,
+     "×",
+     3
+    ],
+    "x": 1,
+    "min": 0,
+    "max": 20
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "4 × 6 = 24. Hangi sayının 3 katı 24'tür?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çıkarma ve bölme",
+   "aciklama": "Sol kefede □ − 4, sağ kefede 15 ÷ 3 var.",
+   "sim": {
+    "kind": "b-terazi",
+    "sol": [
+     null,
+     "−",
+     4
+    ],
+    "sag": [
+     15,
+     "÷",
+     3
+    ],
+    "x": 4,
+    "min": 4,
+    "max": 20
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "15 ÷ 3 = 5. Hangi sayıdan 4 çıkarınca 5 kalır?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "9 + 6 = □ + 10 eşitliğinde □ yerine hangi sayı gelmelidir?",
+   "cozum": [
+    "Sol taraf: 9 + 6 = 15.",
+    "Sağ taraf da 15 olmalı: □ + 10 = 15.",
+    "□ = 5. Kontrol: 5 + 10 = 15 ✓"
+   ],
+   "sonuc": "□ = **5**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Doğru mu, yanlış mı?",
+   "soru": "7 + 3 = 10 + 2 eşitliği doğru mudur?",
+   "cozum": [
+    "Sol taraf: 7 + 3 = 10.",
+    "Sağ taraf: 10 + 2 = 12.",
+    "10 ile 12 eşit değil."
+   ],
+   "sonuc": "Bu eşitlik **yanlıştır**; doğrusu 7 + 3 = 10 ya da 7 + 5 = 10 + 2 olabilir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çarpmalı eşitlik",
+   "soru": "4 × 5 = 2 × □ eşitliğinde □ kaçtır?",
+   "cozum": [
+    "Sol taraf: 4 × 5 = 20.",
+    "2 × □ = 20 → □ = 10."
+   ],
+   "sonuc": "□ = **10**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "8 + 5 = □ + 6 eşitliğinde kutuya 13 yazmak çok yapılan bir hatadır. Eşittirin sağına \"sonucu\" yazmak gerekmez; iki tarafın değeri eşit olmalıdır. 13 + 6 = 19 olur ve terazi dengede kalmaz; doğru cevap 7'dir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "12 + 7 = □ + 9 eşitliğinde □ kaçtır?",
+   "options": [
+    "10",
+    "28",
+    "2",
+    "19"
+   ],
+   "answer": 0,
+   "why": "Sol 19; □ + 9 = 19 → □ = 10.",
+   "hint": "Önce sol tarafı hesapla."
+  },
+  {
+   "prompt": "Hangisi doğru bir eşitliktir?",
+   "options": [
+    "10 − 3 = 2 + 4",
+    "8 ÷ 2 = 3 + 2",
+    "5 + 4 = 3 × 3",
+    "6 + 2 = 4 × 3"
+   ],
+   "answer": 2,
+   "why": "5 + 4 = 9 ve 3 × 3 = 9.",
+   "hint": "Her iki tarafı ayrı ayrı hesapla."
+  },
+  {
+   "prompt": "3 × □ = 30 − 6 eşitliğinde □ kaçtır?",
+   "options": [
+    "27",
+    "6",
+    "24",
+    "8"
+   ],
+   "answer": 3,
+   "why": "30 − 6 = 24; 3 × 8 = 24.",
+   "hint": "Sağ tarafı hesapla, sonra 3'ün hangi katı olduğunu bul."
+  },
+  {
+   "prompt": "36 ÷ □ = 2 + 7 eşitliğinde □ kaçtır?",
+   "options": [
+    "6",
+    "4",
+    "9",
+    "7"
+   ],
+   "answer": 1,
+   "why": "2 + 7 = 9; 36 ÷ 4 = 9.",
+   "hint": "36'yı hangi sayıya bölünce 9 kalır?"
+  }
+ ]
+}

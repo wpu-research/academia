@@ -1,0 +1,68 @@
+{
+ "id": "m9-4-3",
+ "baslik": "Benzer Üçgenler Oluşturma",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.4.3"],
+ "sure": 15,
+ "ozet": "Bir üçgene benzer üçgenleri kenara paralel doğru çizerek ve bütün kenarları aynı oranla ölçekleyerek oluşturacak; temel orantı teoremini ve orta taban özelliğini bu yolla göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Benzer üçgen üretmenin yolları",
+   "govde": "1. **Paralel çizmek:** ABC'de AB üzerinde bir D noktasından BC'ye paralel çizilen doğru AC'yi E'de kessin. ADE ile ABC'nin A açısı ortaktır; paralellik nedeniyle D ve B açıları, E ve C açıları eşittir. AA'dan **ADE ~ ABC**.\n2. **Ölçeklemek:** Bütün kenarları aynı k sayısıyla çarpmak (açıları koruyarak) benzer bir üçgen verir.\n3. **Bir noktadan büyütmek:** Bir O noktasından köşelere ışınlar çizip her köşeyi O'ya uzaklığının k katı uzaklığa taşımak da benzer bir üçgen oluşturur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paralel doğruyla küçük üçgen",
+   "aciklama": "|AB| = 6, |AC| = 9, |BC| = 12. D noktasını AB üzerinde kaydır; DE her zaman BC'ye paralel.",
+   "sim": { "kind": "e-tales", "AB": 6, "AC": 9, "BC": 12, "AD": 2 },
+   "gorev": { "metin": "|DE| = 8 olacak şekilde D'yi yerleştir.", "check": { "key": "DE", "eq": 8, "tol": 1e-6 } },
+   "dene": ["|AD| / |AB| oranı ne olunca |DE| = 8 oldu? 8/12 = 2/3.", "D, AB'nin orta noktasındayken |DE| kaç? Orta taban kuralını gör."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Temel orantı teoremi",
+   "govde": "ABC'de DE ∥ BC (D ∈ AB, E ∈ AC) ise:\n\n**|AD| / |AB| = |AE| / |AC| = |DE| / |BC|** ve **|AD| / |DB| = |AE| / |EC|**\n\nÖzel durum (**orta taban**): D ve E kenarların orta noktalarıysa DE ∥ BC ve |DE| = |BC| / 2."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ölçekleyerek benzer üçgen",
+   "aciklama": "Bütün kenarlar aynı oranla ölçeklenir. Alanın nasıl değiştiğini izle.",
+   "sim": { "kind": "e-benzerlik", "tek": true, "sekil": [[0, 0], [6, 0], [2, 4]], "k": 1, "kmin": 0.5, "kmax": 2.5, "adim": 0.5 },
+   "gorev": { "metin": "Alanı asıl üçgenin alanının dörtte biri olan benzer üçgeni oluştur.", "check": { "key": "alanOrani", "eq": 0.25, "tol": 1e-9 } },
+   "dene": ["Alan oranı k²'dir: k = 1/2 için 1/4.", "k = 2 için alan kaç katına çıkıyor?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "ABC üçgeninde D ∈ AB, E ∈ AC ve DE ∥ BC. |AD| = 4, |AB| = 10, |BC| = 15 ise |DE| kaçtır?",
+   "cozum": [
+    "ADE ~ ABC, oran |AD| / |AB| = 4/10 = 2/5.",
+    "|DE| = 15 · 2/5 = 6."
+   ],
+   "sonuc": "|DE| = 6"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: gölge",
+   "soru": "Aynı anda 1,6 m boyundaki bir öğrencinin gölgesi 2 m, bir ağacın gölgesi 15 m ölçülüyor. Ağacın boyu kaç metredir?",
+   "cozum": [
+    "Güneş ışınları paralel kabul edilir; öğrenci-gölge ve ağaç-gölge dik üçgenleri AA'dan benzerdir.",
+    "Oran: 15 ÷ 2 = 7,5.",
+    "Ağacın boyu: 1,6 · 7,5 = 12."
+   ],
+   "sonuc": "12 m"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- |DE| / |BC| oranını |AD| / |DB| ile kurmak. Doğrusu |AD| / |AB|; büyük üçgenin kenarı **bütün** AB'dir.\n- Alan oranını k sanmak; alan oranı k²'dir.\n- Kenarlara aynı sayıyı ekleyerek \"benzer\" üçgen oluşturmaya çalışmak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "ABC'de DE ∥ BC, |AD| = 3, |DB| = 6, |BC| = 12 ise |DE| kaçtır?", "options": ["6", "4", "3", "8"], "answer": 1, "why": "|AB| = 9; |DE| = 12 · 3/9 = 4.", "hint": "Oranı |AD| / |AB| ile kur." },
+  { "prompt": "Bir üçgende orta tabanın uzunluğu 7 cm ise ona paralel olan kenar kaç cm'dir?", "options": ["7", "3,5", "21", "14"], "answer": 3, "why": "Orta taban paralel kenarın yarısıdır.", "hint": "Orta noktaları birleştirince oran 1/2 olur." },
+  { "prompt": "Benzerlik oranı 1/3 olan iki üçgenin alanları oranı kaçtır?", "options": ["1/9", "1/3", "1/6", "2/3"], "answer": 0, "why": "Alan oranı k² = 1/9.", "hint": "Alan iki uzunluğun çarpımıyla ölçülür." },
+  { "prompt": "1,5 m'lik bir çubuğun gölgesi 2 m iken aynı anda gölgesi 12 m olan direğin boyu kaç metredir?", "options": ["16", "8", "9", "10"], "answer": 2, "why": "12 ÷ 2 = 6; 1,5 · 6 = 9.", "hint": "Gölgelerin oranı boyların oranına eşittir." }
+ ]
+}

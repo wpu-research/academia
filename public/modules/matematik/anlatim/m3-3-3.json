@@ -1,0 +1,209 @@
+{
+ "id": "m3-3-3",
+ "baslik": "Çarpma ve Bölme İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.3"
+ ],
+ "sure": 14,
+ "ozet": "Çarpmayı eşit sıçramalar, bölmeyi eşit paylaştırma olarak göreceğiz. 10 ve 100 ile çarpmayı, yuvarlayarak tahmin etmeyi ve bölmeyi çarpım tablosundan bulmayı öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çarpma ve bölme ne anlatır?",
+   "govde": "**Çarpma** eşit grupların toplamıdır: 4 × 6, dört tane 6 demektir: 6 + 6 + 6 + 6 = 24.\n\n**Bölme** bir çokluğu eşit gruplara ayırmaktır: 24 ÷ 6 = 4, 24 nesneyi 6 gruba eşit paylaştırınca her grupta 4 nesne olur.\n\nÇarpma ile bölme birbirinin **tersi**dir: 6 × 4 = 24 ise 24 ÷ 6 = 4 ve 24 ÷ 4 = 6."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpma eşit sıçramalardır",
+   "aciklama": "Nokta 0'da. +6 düğmesiyle eşit sıçramalar yap.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 60,
+    "tick": 1,
+    "label": 10,
+    "start": 0,
+    "hops": [
+     6
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "4 × 6'yı sayı doğrusunda göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 24
+      },
+      {
+       "key": "hops",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "4 × 6: dört tane 6'lık sıçrama.",
+    "Sıçrama sayısını değiştirince sonuç nasıl değişiyor?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Zihinden çarpma ve tahmin",
+   "govde": "- Bir sayıyı **10** ile çarpınca sağına bir **0** eklenir: 23 × 10 = 230.\n- **100** ile çarpınca sağına iki **0** eklenir: 7 × 100 = 700.\n- **Tahmin:** Çarpılan sayıyı en yakın onluğa yuvarla: 49 × 4 ≈ 50 × 4 = 200.\n- **Bölme:** Çarpım tablosunu tersinden kullan: 56 ÷ 8 = ? → 8 × ? = 56 → 7."
+  },
+  {
+   "tur": "sim",
+   "baslik": "10 ile çarpmak",
+   "aciklama": "Kaydırıcılarla satır ve sütun sayısını değiştir; her kare 1 birim.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 3,
+    "cols": 4,
+    "max": 12
+   },
+   "gorev": {
+    "metin": "6 × 10 dikdörtgenini kur.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 6
+      },
+      {
+       "key": "cols",
+       "eq": 10
+      }
+     ]
+    }
+   },
+   "dene": [
+    "6 satırın her birinde 10 kare var: 10, 20, 30, 40, 50, 60.",
+    "6 × 10 = 60: 6'nın sağına bir 0."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölme eşit paylaştırmadır",
+   "aciklama": "Nesneleri tabaklara tur tur dağıt.",
+   "sim": {
+    "kind": "b-paylastir",
+    "toplam": 24,
+    "grup": 6,
+    "max": 30,
+    "maxGrup": 6
+   },
+   "gorev": {
+    "metin": "24 nesneyi 6 tabağa eşit paylaştır.",
+    "check": {
+     "all": [
+      {
+       "key": "toplam",
+       "eq": 24
+      },
+      {
+       "key": "grup",
+       "eq": 6
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Her turda her tabağa 1 nesne konur. Kaç tur sürdü?",
+    "Tur sayısı her tabaktaki nesne sayısıdır: 24 ÷ 6 = 4."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "23 × 10 ve 7 × 100 işlemlerini zihinden yapalım.",
+   "cozum": [
+    "23 × 10: 23'ün sağına bir 0 → 230.",
+    "7 × 100: 7'nin sağına iki 0 → 700."
+   ],
+   "sonuc": "23 × 10 = **230**, 7 × 100 = **700**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çarpmada tahmin",
+   "soru": "Bir kutuda 49 kalem var. 4 kutuda yaklaşık kaç kalem vardır?",
+   "cozum": [
+    "49'u en yakın onluğa yuvarla: 50.",
+    "50 × 4 = 200.",
+    "Gerçek sonuç: 49 × 4 = 196."
+   ],
+   "sonuc": "Yaklaşık **200** kalem; gerçekte 196."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Zihinden bölme",
+   "soru": "56 ÷ 8 işlemini zihinden yapalım.",
+   "cozum": [
+    "8 ile hangi sayıyı çarparsak 56 eder?",
+    "8 × 7 = 56."
+   ],
+   "sonuc": "56 ÷ 8 = **7**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "10 ile çarparken sayının sağına 0 eklenir; 30 × 10 = **300** olur, 3000 ya da 3010 değil. Ayrıca bölmede yeri değişen sayılar sonucu değiştirir: 24 ÷ 6 ile 6 ÷ 24 aynı şey değildir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "45 × 10 = ?",
+   "options": [
+    "145",
+    "4510",
+    "450",
+    "4500"
+   ],
+   "answer": 2,
+   "why": "45'in sağına bir 0 eklenir: 450.",
+   "hint": "10 ile çarpınca sayıya ne olur?"
+  },
+  {
+   "prompt": "31 × 6 işleminin sonucu için en iyi tahmin hangisidir?",
+   "options": [
+    "120",
+    "240",
+    "300",
+    "180"
+   ],
+   "answer": 3,
+   "why": "31 → 30; 30 × 6 = 180. (Gerçek sonuç 186.)",
+   "hint": "31'i en yakın onluğa yuvarla."
+  },
+  {
+   "prompt": "72 ÷ 9 = ?",
+   "options": [
+    "8",
+    "6",
+    "7",
+    "9"
+   ],
+   "answer": 0,
+   "why": "9 × 8 = 72, o hâlde 72 ÷ 9 = 8.",
+   "hint": "9 ile hangi sayıyı çarpınca 72 eder?"
+  },
+  {
+   "prompt": "9 × 100 = ?",
+   "options": [
+    "109",
+    "900",
+    "90",
+    "9000"
+   ],
+   "answer": 1,
+   "why": "9'un sağına iki 0: 900.",
+   "hint": "100 ile çarpınca kaç 0 eklenir?"
+  }
+ ]
+}

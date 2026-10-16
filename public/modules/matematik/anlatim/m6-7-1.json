@@ -1,0 +1,142 @@
+{
+ "id": "m6-7-1",
+ "baslik": "Deneysel Olasılık",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.6.1"
+ ],
+ "sure": 13,
+ "ders": "olasilik-zar",
+ "ozet": "Bir deneyi defalarca tekrarlayıp sonuçları sayarak bir olayın olasılığını tahmin edecek; deneme sayısı arttıkça tahminin nasıl kararlı hâle geldiğini göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Deney, çıktı, olay",
+   "govde": "Zar atmak bir **deneydir**. Zarın üst yüzünde görülebilecek her sayı bir **çıktıdır**: 1, 2, 3, 4, 5, 6. \"Çift sayı gelmesi\" gibi çıktılardan oluşan bir duruma **olay** denir.\n\nBir olayın ne sıklıkla gerçekleşeceğini tahmin etmenin bir yolu deneyi **çok kez yapıp** sonuçları saymaktır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Deneysel olasılık",
+   "govde": "**Deneysel olasılık = olayın gözlendiği deneme sayısı ÷ toplam deneme sayısı**\n\nBir para 50 kez atıldığında 18 kez tura geldiyse turanın deneysel olasılığı 18/50 = 0,36'dır.\n\nDeneysel olasılık 0 ile 1 arasında bir sayıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Zar at",
+   "aciklama": "Zarı 1, 10 ya da 100 kez at. Sütunlar her yüzün göreli sıklığını gösteriyor.",
+   "sim": {
+    "kind": "olasilik-sim",
+    "dice": 1
+   },
+   "gorev": {
+    "metin": "En az 100 atış yap.",
+    "check": {
+     "key": "total",
+     "gte": 100
+    }
+   },
+   "dene": [
+    "10 atışta sütunlar çok farklı olabilir. 500 atış sonra sütunlar birbirine yaklaşıyor mu?",
+    "Kesikli çizgi, çok sayıda atışta beklenen değeri gösteriyor."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Torbadan top çek",
+   "aciklama": "Torbada 3 kırmızı ve 1 yeşil top var. Her çekişten sonra top torbaya geri atılıyor.",
+   "sim": {
+    "kind": "d-torba",
+    "toplar": [
+     3,
+     1
+    ],
+    "teorik": false
+   },
+   "gorev": {
+    "metin": "En az 100 çekiş yap.",
+    "check": {
+     "key": "total",
+     "gte": 100
+    }
+   },
+   "dene": [
+    "Kırmızının göreli sıklığı hangi sayının çevresinde dolaşıyor?",
+    "Torbada kırmızılar yeşillerin 3 katı. Çekişlerde de böyle mi?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir şehirde 30 günün 12'sinde yağmur yağdı. Bu verilere göre ertesi gün yağmur yağmasının deneysel olasılığı nedir?",
+   "cozum": [
+    "Yağmurlu gün sayısı 12, toplam gün 30.",
+    "12/30 = 2/5 = 0,4."
+   ],
+   "sonuc": "Deneysel olasılık 2/5'tir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Basketbol",
+   "soru": "Bir basketbolcu son 40 serbest atışının 30'unu isabetle sonuçlandırdı. Sonraki 20 serbest atışta yaklaşık kaç isabet beklenir?",
+   "cozum": [
+    "İsabetin deneysel olasılığı: 30/40 = 3/4.",
+    "20 atışta: 20 × 3/4 = 15."
+   ],
+   "sonuc": "Yaklaşık 15 isabet beklenir. Bu bir tahmindir; kesin sonuç değildir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Az sayıda denemeyle kesin sonuç çıkarmak yanlıştır. Zar 6 kez atılıp hiç 6 gelmediyse \"6 gelme olasılığı 0\" denemez. Deneme sayısı arttıkça deneysel olasılık daha güvenilir bir tahmin olur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir zar 80 kez atıldı ve 20 kez 4 geldi. 4 gelmesinin deneysel olasılığı nedir?",
+   "options": [
+    "4/80",
+    "1/20",
+    "1/4",
+    "20"
+   ],
+   "answer": 2,
+   "why": "20/80 = 1/4.",
+   "hint": "Gözlenen ÷ toplam deneme."
+  },
+  {
+   "prompt": "Bir oyuncu 25 atışın 15'inde isabet sağladı. İsabetin deneysel olasılığı nedir?",
+   "options": [
+    "3/5",
+    "2/5",
+    "15/40",
+    "1/15"
+   ],
+   "answer": 0,
+   "why": "15/25 = 3/5.",
+   "hint": "İsabet sayısını atış sayısına böl."
+  },
+  {
+   "prompt": "Deneme sayısı arttıkça deneysel olasılık için ne söylenebilir?",
+   "options": [
+    "Hep artar.",
+    "Hep azalır.",
+    "Hep 0 olur.",
+    "Belli bir değer çevresinde kararlı hâle gelir."
+   ],
+   "answer": 3,
+   "why": "Çok sayıda denemede göreli sıklık daha az dalgalanır.",
+   "hint": "Simülasyonda 100 ve 500 atışı karşılaştır."
+  },
+  {
+   "prompt": "200 kişilik bir ankette 60 kişi kırmızıyı seçti. Aynı eğilimle 1000 kişiden yaklaşık kaçının kırmızıyı seçmesi beklenir?",
+   "options": [
+    "60",
+    "300",
+    "600",
+    "200"
+   ],
+   "answer": 1,
+   "why": "60/200 = 3/10; 1000 × 3/10 = 300.",
+   "hint": "Önce deneysel olasılığı bul."
+  }
+ ]
+}

@@ -1,0 +1,217 @@
+{
+ "id": "m7-2-2",
+ "baslik": "Orantılı Durumlar",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.6"
+ ],
+ "sure": 14,
+ "ders": "oran-oranti",
+ "ozet": "İki oranın eşitliğini (orantıyı) tanıyacak; iki çokluğun doğru orantılı olup olmadığını tablo, orantı sabiti ve grafikle belirleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Orantı",
+   "govde": "İki oranın eşitliğine **orantı** denir: 2/3 = 8/12.\n\na/b = c/d orantısında **içler çarpımı dışlar çarpımına eşittir**: a · d = b · c. Bu özellik bilinmeyen bir terimi bulmamızı sağlar:\n\n3/5 = x/20 → 5 · x = 3 · 20 → x = 12."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Doğru orantı",
+   "govde": "İki çokluktan biri kaç katına çıkarken diğeri de aynı kat artıyorsa bu çokluklar **doğru orantılıdır**.\n\n- Karşılıklı değerlerin oranı hep aynıdır: y/x = k. Bu sabit sayıya **orantı sabiti** denir.\n- y = k · x biçiminde yazılır.\n- Grafiği **başlangıç noktasından (0, 0) geçen** bir doğrudur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafikte doğru orantı",
+   "aciklama": "Noktalar bir doğru orantıya ait: (1, 2), (2, 4), (3, 6). Kaydırıcılarla doğruyu noktaların üzerinden geçir.",
+   "sim": {
+    "kind": "koordinat-duzlemi",
+    "m": 1,
+    "n": 0,
+    "points": [
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      3,
+      6
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Üç noktadan da geçen doğruyu bul.",
+    "check": {
+     "all": [
+      {
+       "key": "m",
+       "eq": 2
+      },
+      {
+       "key": "n",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Eğim m burada orantı sabitidir: y/x = 2.",
+    "Doğru (0, 0)'dan geçiyor mu?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Orantılı mı, değil mi?",
+   "aciklama": "Bu noktalar bir taksi ücretini gösteriyor: açılış 3 birim ve her km için 1 birim.",
+   "sim": {
+    "kind": "koordinat-duzlemi",
+    "m": 2,
+    "n": 0,
+    "points": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      5
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Noktalardan geçen doğruyu bul.",
+    "check": {
+     "all": [
+      {
+       "key": "m",
+       "eq": 1
+      },
+      {
+       "key": "n",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Doğru (0, 0)'dan geçmiyor: ücret ile yol doğru orantılı değil.",
+    "Yol 2 katına çıkınca (1 km → 2 km) ücret 2 katına çıkıyor mu? 4 → 5."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tarifi büyüt",
+   "aciklama": "Bir boya tarifinde kırmızının beyaza oranı 1 : 2.",
+   "sim": {
+    "kind": "oran-karistirma",
+    "r": 1,
+    "w": 1,
+    "target": [
+     1,
+     2
+    ]
+   },
+   "gorev": {
+    "metin": "Aynı tonda toplam 9 ölçek boya hazırla.",
+    "check": {
+     "all": [
+      {
+       "key": "ratio",
+       "eq": 0.5
+      },
+      {
+       "key": "total",
+       "eq": 9
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kırmızı ile beyaz miktarı doğru orantılı: kırmızı 3 katına çıkarsa beyaz da 3 katına çıkmalı."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Tabloda x ve y değerleri veriliyor: x = 2, 4, 6 için y = 7, 14, 21. x ile y doğru orantılı mıdır? Orantı sabiti kaçtır?",
+   "cozum": [
+    "Oranlar: 7/2 = 3,5; 14/4 = 3,5; 21/6 = 3,5.",
+    "Oranlar eşit olduğu için doğru orantılıdır."
+   ],
+   "sonuc": "Orantı sabiti 3,5; y = 3,5 · x."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Kırtasiye",
+   "soru": "Tanesi aynı fiyatta olan kalemlerden 3 tanesi 24 TL'dir. Alınan kalem sayısı ile ödenen tutar doğru orantılı mıdır? 0 kalem için ne ödenir?",
+   "cozum": [
+    "Kalem sayısı 2 katına çıkınca tutar da 2 katına çıkar: doğru orantılı.",
+    "Orantı sabiti: 24 ÷ 3 = 8 TL (bir kalemin fiyatı).",
+    "0 kalem için 0 TL: grafik (0, 0)'dan geçer."
+   ],
+   "sonuc": "Doğru orantılıdır; tutar = 8 · kalem sayısı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"İki çokluk birlikte artıyorsa doğru orantılıdır\" demek yanlıştır. Taksi ücretinde yol arttıkça ücret de artar ama açılış ücreti yüzünden oran sabit kalmaz: 1 km 4 TL, 2 km 5 TL. Doğru orantıda **oranın sabit** kalması ve grafiğin (0, 0)'dan geçmesi gerekir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4/x = 6/15 orantısında x kaçtır?",
+   "options": [
+    "9",
+    "10",
+    "12",
+    "8"
+   ],
+   "answer": 1,
+   "why": "6 · x = 4 · 15 = 60 → x = 10.",
+   "hint": "İçler çarpımı dışlar çarpımına eşittir."
+  },
+  {
+   "prompt": "Hangi tabloda x ile y doğru orantılıdır?",
+   "options": [
+    "x: 1, 2, 3 → y: 3, 5, 7",
+    "x: 1, 2, 3 → y: 2, 3, 4",
+    "x: 1, 2, 3 → y: 4, 8, 12",
+    "x: 1, 2, 3 → y: 6, 3, 2"
+   ],
+   "answer": 2,
+   "why": "4/1 = 8/2 = 12/3 = 4: oran sabit.",
+   "hint": "Her satırda y/x oranını hesapla."
+  },
+  {
+   "prompt": "y = 5x doğru orantısının grafiği hangi noktadan geçer?",
+   "options": [
+    "(5, 1)",
+    "(3, 8)",
+    "(2, 7)",
+    "(3, 15)"
+   ],
+   "answer": 3,
+   "why": "x = 3 için y = 15.",
+   "hint": "x yerine noktanın birinci bileşenini koy."
+  },
+  {
+   "prompt": "3 kalem 24 TL ise kalem sayısı ile tutar arasındaki orantı sabiti kaçtır?",
+   "options": [
+    "8",
+    "3",
+    "24",
+    "72"
+   ],
+   "answer": 0,
+   "why": "24 ÷ 3 = 8 TL/kalem.",
+   "hint": "Tutarı kalem sayısına böl."
+  }
+ ]
+}

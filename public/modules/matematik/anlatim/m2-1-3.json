@@ -1,0 +1,143 @@
+{
+ "id": "m2-1-3",
+ "baslik": "Sayıları Sıralama",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.3"
+ ],
+ "sure": 12,
+ "ozet": "İki basamaklı sayıları önce onlar, sonra birler basamağına bakarak karşılaştırıp sıralayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Karşılaştırma işaretleri",
+   "govde": "İki sayıyı karşılaştırırken üç işaret kullanırız:\n\n- **<** küçüktür: 23 < 41\n- **>** büyüktür: 70 > 58\n- **=** eşittir: 35 = 35\n\nİşaretin **açık ağzı** her zaman büyük sayıya bakar."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Önce onlar, sonra birler",
+   "govde": "1. **Onlar basamaklarını** karşılaştır. Onluğu çok olan büyüktür: 72 > 49, çünkü 7 > 4.\n2. Onlar eşitse **birler basamaklarına** bak: 64 > 61, çünkü 4 > 1."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Küçükten büyüğe",
+   "aciklama": "Kartların arasındaki işaretler canlı değişir. Bir karta, sonra yer değiştireceği karta dokun.",
+   "sim": {
+    "kind": "a-sirala",
+    "sayilar": [
+     47,
+     12,
+     85,
+     30
+    ],
+    "yon": "artan"
+   },
+   "gorev": {
+    "metin": "Sayıları küçükten büyüğe sırala.",
+    "check": {
+     "key": "sirali",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "En küçük sayıyı bul ve en başa getir.",
+    "Kırmızı işaretler sıranın bozuk olduğu yerleri gösterir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Büyükten küçüğe",
+   "aciklama": "Bu sayıların rakamları birbirine benziyor; dikkat!",
+   "sim": {
+    "kind": "a-sirala",
+    "sayilar": [
+     64,
+     46,
+     69,
+     96
+    ],
+    "yon": "azalan"
+   },
+   "gorev": {
+    "metin": "Sayıları büyükten küçüğe sırala.",
+    "check": {
+     "key": "sirali",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "64 ile 69'un onlar basamağı aynı. Birlere bak.",
+    "46 ile 64 aynı rakamlardan oluşuyor ama aynı sayı değil."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Önce, sonra, arasında",
+   "govde": "Bir sayıdan **hemen önce** gelen sayı 1 eksiğidir, **hemen sonra** gelen sayı 1 fazlasıdır: 39 → **40** → 41.\n\n36 ile 40 **arasındaki** sayılar: 37, 38, 39."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "58, 85, 55, 80 sayılarını küçükten büyüğe sıralayalım.",
+   "cozum": [
+    "Onlar basamakları: 5, 8, 5, 8.",
+    "5 onluklular: 55 < 58. 8 onluklular: 80 < 85.",
+    "Önce 5 onluklular, sonra 8 onluklular gelir."
+   ],
+   "sonuc": "**55 < 58 < 80 < 85**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "70'ten hemen önce ve hemen sonra gelen sayılar hangileridir?",
+   "cozum": [
+    "Hemen önce: 70 − 1 = 69.",
+    "Hemen sonra: 70 + 1 = 71."
+   ],
+   "sonuc": "**69** ve **71**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız birler basamağına bakarak karar vermek sık yapılan bir hatadır: “39'da 9 var, 41'de 1 var, o hâlde 39 büyük” denemez. Önce onlara bakılır: 4 > 3, yani **41 > 39**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi doğrudur?",
+   "options": [
+    "52 > 61",
+    "47 < 39",
+    "88 = 80",
+    "35 < 53"
+   ],
+   "answer": 3,
+   "why": "3 onluk, 5 onluktan azdır: 35 < 53.",
+   "hint": "Önce onlar basamaklarını karşılaştır."
+  },
+  {
+   "prompt": "74, 47, 77, 44 sayılarından en büyüğü hangisidir?",
+   "options": [
+    "77",
+    "74",
+    "47",
+    "44"
+   ],
+   "answer": 0,
+   "why": "7 onluklular 74 ve 77; birlere bakınca 77 büyük.",
+   "hint": "Önce onlar, sonra birler."
+  },
+  {
+   "prompt": "Hangi sayı 59'dan hemen sonra gelir?",
+   "options": [
+    "58",
+    "50",
+    "60",
+    "69"
+   ],
+   "answer": 2,
+   "why": "59 + 1 = 60.",
+   "hint": "1 fazlasını bul."
+  }
+ ]
+}

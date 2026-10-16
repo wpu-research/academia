@@ -1,0 +1,140 @@
+{
+ "id": "m1-1-1",
+ "baslik": "Rakamlar ve Sayılar",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.1"
+ ],
+ "sure": 10,
+ "ozet": "On rakamı tanıyacağız, 20'ye kadar sayıları sayacak, okuyacak ve yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "On tane rakam",
+   "govde": "Sayıları yazmak için **rakam** kullanırız. Toplam on rakam vardır:\n\n**0, 1, 2, 3, 4, 5, 6, 7, 8, 9**\n\nHiç nesne yoksa **0 (sıfır)** deriz. Bir nesne varsa **1**, iki nesne varsa **2** deriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayaçları say",
+   "aciklama": "Çerçevenin karelerine dokunarak sayaç koy ya da + ve − düğmelerini kullan. Altta sayının rakamla ve yazıyla gösterilişini gör.",
+   "sim": {
+    "kind": "a-cerceve",
+    "n": 0,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Çerçevede 7 sayaç olsun.",
+    "check": {
+     "key": "n",
+     "eq": 7
+    }
+   },
+   "dene": [
+    "Üst sırada 5 kare var. 5'ten sonra alt sıraya geç: 6, 7…",
+    "Çerçeve tamamen dolunca kaç sayaç olur?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Onu aşınca",
+   "govde": "On sayaç bir çerçeveyi doldurur. Bu bir **onluk** olur.\n\n10'dan sonraki sayılar **10 ve birkaç** demektir:\n\n- 11 = 10 ve 1 → on bir\n- 15 = 10 ve 5 → on beş\n- 20 = 10 ve 10 → yirmi\n\nOn bir, on iki, on üç… gibi sayılar **iki rakamla** yazılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "20'ye kadar",
+   "aciklama": "Şimdi iki çerçeve var. Birinci çerçeve dolu, yani 10 sayaç var.",
+   "sim": {
+    "kind": "a-cerceve",
+    "n": 10,
+    "max": 20
+   },
+   "gorev": {
+    "metin": "Toplam 16 sayaç olsun.",
+    "check": {
+     "key": "n",
+     "eq": 16
+    }
+   },
+   "dene": [
+    "İkinci çerçevede kaç sayaç olmalı? 10 ve ? = 16",
+    "Yazıyla nasıl okunuyor, alttan bak."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Masada 10 kalemlik dolu bir kutu ve yanında 4 kalem var. Kaç kalem var?",
+   "cozum": [
+    "Kutuda 10 kalem var. Bu bir onluk.",
+    "Yanında 4 kalem daha var.",
+    "10 ve 4 birlikte 14 eder."
+   ],
+   "sonuc": "14 kalem var. **On dört** diye okunur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "18 sayısını yazarken hangi rakamları kullanırız?",
+   "cozum": [
+    "18, on sekiz diye okunur.",
+    "Önce 1, sonra 8 yazılır."
+   ],
+   "sonuc": "**1** ve **8** rakamlarını kullanırız."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "“On iki” sayısını **21** diye yazmak yanlıştır. On iki = 10 ve 2'dir; önce 1, sonra 2 yazılır: **12**. Yirmi bir ise **21** yazılır, ikisi farklı sayılardır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kaç tane rakam vardır?",
+   "options": [
+    "9",
+    "10",
+    "20",
+    "8"
+   ],
+   "answer": 1,
+   "why": "0'dan 9'a kadar on rakam vardır.",
+   "hint": "0'ı da saymayı unutma."
+  },
+  {
+   "prompt": "“On yedi” nasıl yazılır?",
+   "options": [
+    "71",
+    "107",
+    "17",
+    "7"
+   ],
+   "answer": 2,
+   "why": "On yedi = 10 ve 7, yani 17.",
+   "hint": "Önce onu, sonra yediyi yaz."
+  },
+  {
+   "prompt": "10 ve 5 kaç eder?",
+   "options": [
+    "15",
+    "105",
+    "50",
+    "51"
+   ],
+   "answer": 0,
+   "why": "Bir onluk ve 5 birlik on beş eder: 15.",
+   "hint": "Dolu bir çerçeveye 5 sayaç daha ekle."
+  },
+  {
+   "prompt": "Hangisi bir rakam değil, iki rakamla yazılan bir sayıdır?",
+   "options": [
+    "7",
+    "0",
+    "9",
+    "12"
+   ],
+   "answer": 3,
+   "why": "12, 1 ve 2 rakamlarıyla yazılır.",
+   "hint": "Rakamlar 0'dan 9'a kadardır."
+  }
+ ]
+}

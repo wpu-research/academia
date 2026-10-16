@@ -1,0 +1,85 @@
+{
+ "id": "m11-3-1",
+ "baslik": "Trigonometrik Fonksiyonlar ve Nitel Özellikleri",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.1"],
+ "sure": 18,
+ "ders": "birim-cember",
+ "ozet": "Birim çemberde dönen bir noktanın koordinatlarından sinüs ve kosinüs fonksiyonlarını, oranlarından tanjantı tanımlayacağız. Periyot, görüntü kümesi, tek-çift olma ve a·sin(bx) + k dönüşümlerini grafikte izleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Açıdan gerçek sayıya",
+   "govde": "Dik üçgende trigonometrik oranlar yalnız dar açılar için tanımlıydı. Birim çemberde (yarıçapı 1, merkezi orijin) başlangıç kolu x ekseninin pozitif yönü olan bir açı düşünelim. Açının bitim kolu çemberi P noktasında keserse:\n- cos x = P'nin apsisi, sin x = P'nin ordinatı.\n- tan x = sin x / cos x (cos x ≠ 0).\n\nAçıyı **radyan** ile ölçeriz: yarıçap uzunluğundaki yayı gören merkez açı 1 radyandır. 180° = π radyan, dolayısıyla 1° = π/180 radyan."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Noktayı çemberde gezdir",
+   "aciklama": "Kahverengi parça kosinüs, yeşil parça sinüs. Açının radyan karşılığı da yazılıyor.",
+   "sim": { "kind": "birim-cember", "deg": 30 },
+   "gorev": { "metin": "sin x = 1/2 olan ikinci açıyı (0° ile 360° arasında) bul.", "check": { "key": "deg", "eq": 150 } },
+   "dene": ["30° ve 150° noktaları y eksenine göre simetrik: ordinatları aynı.", "90°'den 180°'ye geçerken kosinüs negatif oluyor; II. bölgede sinüs pozitif, kosinüs negatif."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Nitel özellikler",
+   "govde": "- f(x) = sin x ve f(x) = cos x: tanım kümesi ℝ, görüntü kümesi [−1, 1], esas periyot 2π.\n- f(x) = tan x: tanım kümesi x ≠ π/2 + kπ (k ∈ ℤ), görüntü kümesi ℝ, esas periyot π; x = π/2 + kπ doğruları düşey asimptottur.\n- cos(−x) = cos x (**çift** fonksiyon, grafik y eksenine göre simetrik); sin(−x) = −sin x ve tan(−x) = −tan x (**tek** fonksiyonlar, grafik orijine göre simetrik).\n- sin²x + cos²x = 1 her x için geçerlidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafiği dönüştür",
+   "aciklama": "y = a · f(bx) + k. Fonksiyonu üstteki düğmelerle seç; yatay eksen derece.",
+   "sim": { "kind": "f-trig", "fn": 0, "a": 1, "b": 1, "k": 0, "sliders": ["a", "b", "k"] },
+   "gorev": { "metin": "Periyodu 180° ve en büyük değeri 2 olan y = 2 sin(2x) grafiğini oluştur.", "check": { "all": [{ "key": "fn", "eq": 0 }, { "key": "a", "eq": 2 }, { "key": "b", "eq": 2 }, { "key": "k", "eq": 0 }] } },
+   "dene": ["b büyüdükçe grafik yatayda sıkışıyor: periyot 360°/b.", "tan'ı seç: periyot 180° ve kesintiler (asimptotlar) görünüyor."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "y = a · sin(bx) + k ve y = a · cos(bx) + k",
+   "govde": "- Esas periyot T = 2π / |b| (tanjant için π / |b|).\n- En büyük değer |a| + k, en küçük değer −|a| + k; görüntü kümesi [k − |a|, k + |a|].\n- a < 0 ise grafik x eksenine göre yansır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "y = 3 sin(2x) − 1 fonksiyonunun esas periyodunu, en büyük ve en küçük değerini bulalım.",
+   "cozum": [
+    "T = 2π / 2 = π.",
+    "sin(2x) ∈ [−1, 1] → 3 sin(2x) ∈ [−3, 3] → y ∈ [−4, 2]."
+   ],
+   "sonuc": "Periyot π; en büyük değer 2, en küçük değer −4."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "150° ve 240° açılarını radyana çevirip sinüs ve kosinüslerini bulalım.",
+   "cozum": [
+    "150° = 150 · π/180 = 5π/6; 240° = 4π/3.",
+    "5π/6 II. bölgede, referans açı π/6: sin = 1/2, cos = −√3/2.",
+    "4π/3 III. bölgede, referans açı π/3: sin = −√3/2, cos = −1/2."
+   ],
+   "sonuc": "sin(5π/6) = 1/2, cos(5π/6) = −√3/2; sin(4π/3) = −√3/2, cos(4π/3) = −1/2."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = 2 cos(3x) + 5 fonksiyonunun görüntü kümesini ve esas periyodunu bulalım.",
+   "cozum": [
+    "cos(3x) ∈ [−1, 1] → 2 cos(3x) ∈ [−2, 2].",
+    "f(x) ∈ [3, 7].",
+    "T = 2π / 3."
+   ],
+   "sonuc": "Görüntü kümesi [3, 7], esas periyot 2π/3."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Periyodu b ile çarpmak: sin(2x)'in periyodu 4π değil, 2π/2 = π'dir; içerideki katsayı grafiği **sıkıştırır**. Bir de genliği k ile karıştırmak: y = sin x + 3 grafiğinin genliği yine 1'dir, yalnız 3 birim yukarı kaymıştır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "y = sin(4x) fonksiyonunun esas periyodu nedir?", "options": ["π/4", "2π", "π/2", "4π"], "answer": 2, "why": "2π / 4 = π/2.", "hint": "T = 2π / |b|." },
+  { "prompt": "y = 3 cos x − 2 fonksiyonunun görüntü kümesi nedir?", "options": ["[−5, 1]", "[−3, 3]", "[−2, 1]", "[−1, 5]"], "answer": 0, "why": "3 cos x ∈ [−3, 3]; 2 çıkarınca [−5, 1].", "hint": "cos x'in alabileceği değerlerden başla." },
+  { "prompt": "tan x aşağıdaki değerlerden hangisinde tanımsızdır?", "options": ["x = 0", "x = π/2", "x = π", "x = 2π"], "answer": 1, "why": "cos(π/2) = 0 olduğundan sin/cos tanımsız.", "hint": "Kosinüsün sıfır olduğu yer." },
+  { "prompt": "240° kaç radyandır?", "options": ["3π/4", "2π/3", "5π/4", "4π/3"], "answer": 3, "why": "240 · π / 180 = 4π/3.", "hint": "π/180 ile çarp." }
+ ]
+}

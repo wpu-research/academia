@@ -1,0 +1,185 @@
+{
+ "id": "m12e-1-2",
+ "baslik": "Logaritma Fonksiyonu",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.1.2.1",
+  "12.1.2.2",
+  "12.1.2.3"
+ ],
+ "sure": 20,
+ "ozet": "Logaritmayı üstel fonksiyonun tersi olarak tanımlayacağız; 10 ve e tabanlarını, e sayısını ve logaritmanın işlem özelliklerini öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Üstel fonksiyonun tersi",
+   "govde": "2ˣ = 8 denkleminin çözümü kolay: x = 3. Peki 2ˣ = 5? Çözüm 2 ile 3 arasında bir sayıdır ve tam sayı değildir. Bu sayıya **log₂ 5** deriz: 2'yi kaçıncı kuvvetine yükseltirsek 5 elde ederiz?\n\nÜstel fonksiyon birebir ve örten olduğu için tersi vardır. Bu ters fonksiyon **logaritma fonksiyonudur**."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tanım",
+   "govde": "a > 0, a ≠ 1 ve x > 0 olmak üzere\n\n**y = aˣ ⇔ x = logₐ y**\n\n**f: ℝ⁺ → ℝ, f(x) = logₐ x** fonksiyonu, g(x) = aˣ fonksiyonunun tersidir.\n\n- logₐ x yazabilmek için **x > 0** olmalıdır.\n- Taban için **a > 0 ve a ≠ 1** şartı vardır.\n- Grafik (1, 0) noktasından geçer; a > 1 ise artan, 0 < a < 1 ise azalandır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ayna: y = x doğrusu",
+   "aciklama": "Kahverengi eğri bˣ, yeşil eğri onun tersi log_b x. Kahverengi noktayı gezdirdiğinde yeşil nokta onun y = x doğrusuna göre yansımasıdır: (x, y) ↔ (y, x).",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "ikisi",
+    "b": 2,
+    "x": 1
+   },
+   "gorev": {
+    "metin": "Tabanı 3 yap ve x = 2 noktasına git: 3² = 9 olduğundan log₃ 9 = 2.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": 3
+      },
+      {
+       "key": "x",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Üstel fonksiyonun (0, 1) noktası, logaritmada (1, 0) noktasına dönüşür.",
+    "Tabanı 1/2 yap: iki eğri de azalan olur."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "10 ve e tabanında logaritma",
+   "govde": "- **Bayağı (onluk) logaritma:** log₁₀ x kısaca **log x** yazılır. log 100 = 2, log 0,001 = −3.\n- **Doğal logaritma:** tabanı e olan logaritma, **ln x** yazılır.\n\n**e sayısı**, n büyüdükçe (1 + 1/n)ⁿ ifadesinin yaklaştığı sayıdır: e ≈ 2,71828… e **irrasyoneldir**; ondalık açılımı devirsiz ve sonsuzdur (π gibi).\n\ne; sürekli bileşik faizde, nüfus ve bakteri büyüme modellerinde, radyoaktif bozunmada ve ısınma-soğuma problemlerinde doğal olarak ortaya çıkar. Bu yüzden fen bilimlerinde en çok kullanılan taban e'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "log_b x = c ise x = bᶜ",
+   "aciklama": "Grafik log_b x. Turuncu yatay doğru y = c. Kesişim noktasının x'i, logₐ x = c denkleminin çözümüdür.",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "log",
+    "b": 10,
+    "x": 1,
+    "c": 0.5,
+    "cmin": -2,
+    "cmax": 2,
+    "cstep": 0.5
+   },
+   "gorev": {
+    "metin": "Tabanı e, c'yi 1 yap: ln x = 1 denkleminin çözümü x = e ≈ 2,718.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": 2.718281828,
+       "tol": 0.001
+      },
+      {
+       "key": "c",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Taban 10 iken c = 1 için x = 10 olur (grafiğin dışında kalır).",
+    "c negatifken çözüm 0 ile 1 arasındadır: log x < 0 ⇔ 0 < x < 1 (taban 1'den büyükse)."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Logaritmanın özellikleri",
+   "govde": "a, b > 0, a ≠ 1, b ≠ 1 ve x, y > 0 olmak üzere:\n\n- logₐ 1 = 0 ve logₐ a = 1\n- logₐ (x · y) = logₐ x + logₐ y\n- logₐ (x / y) = logₐ x − logₐ y\n- logₐ (xⁿ) = n · logₐ x\n- log_(aᵐ) (xⁿ) = (n/m) · logₐ x\n- Taban değiştirme: logₐ x = log_b x / log_b a; özel olarak logₐ b · log_b a = 1\n- a^(logₐ x) = x"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "log₂ 48 − log₂ 3 işleminin sonucunu bulalım.",
+   "cozum": [
+    "Fark kuralı: log₂ 48 − log₂ 3 = log₂ (48 / 3) = log₂ 16.",
+    "16 = 2⁴ olduğundan log₂ 16 = 4."
+   ],
+   "sonuc": "Sonuç 4."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "log 2 = p ise log 50 ifadesini p cinsinden yazalım.",
+   "cozum": [
+    "50 = 100 / 2.",
+    "log 50 = log 100 − log 2 = 2 − p."
+   ],
+   "sonuc": "log 50 = 2 − p."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "log₃ 5 = a ise log₁₅ 45 ifadesinin a türünden eşiti nedir?",
+   "cozum": [
+    "Taban değiştir: log₁₅ 45 = log₃ 45 / log₃ 15.",
+    "log₃ 45 = log₃ (9 · 5) = 2 + a.",
+    "log₃ 15 = log₃ (3 · 5) = 1 + a."
+   ],
+   "sonuc": "log₁₅ 45 = (2 + a) / (1 + a)."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- log(x + y) ≠ log x + log y. Toplamın logaritması için bir kural yoktur; **çarpımın** logaritması toplama dönüşür.\n- (log x)² ile log x² farklıdır: log x² = 2 log x, ama (log x)² = log x · log x.\n- logₐ x yazarken x > 0 ve taban şartını kontrol etmeyi unutma."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "log₂ 32 + log₃ (1/9) kaçtır?",
+   "options": [
+    "3",
+    "7",
+    "−3",
+    "5"
+   ],
+   "answer": 0,
+   "why": "log₂ 32 = 5 ve log₃ (1/9) = −2; toplam 3.",
+   "hint": "1/9 sayısını 3'ün kuvveti olarak yaz."
+  },
+  {
+   "prompt": "f(x) = log₃ (x − 2) fonksiyonunun en geniş tanım kümesi nedir?",
+   "options": [
+    "ℝ",
+    "(0, ∞)",
+    "[2, ∞)",
+    "(2, ∞)"
+   ],
+   "answer": 3,
+   "why": "Logaritmanın içi pozitif olmalı: x − 2 > 0 ⇒ x > 2.",
+   "hint": "Logaritmanın içindeki ifade hangi şartı sağlamalı?"
+  },
+  {
+   "prompt": "log 2 ≈ 0,30 alınırsa log 5 yaklaşık kaçtır?",
+   "options": [
+    "0,50",
+    "0,60",
+    "0,70",
+    "0,80"
+   ],
+   "answer": 2,
+   "why": "log 5 = log (10/2) = 1 − log 2 ≈ 0,70.",
+   "hint": "5'i 10 ve 2 ile yaz."
+  },
+  {
+   "prompt": "ln (e³) + log 1000 kaçtır?",
+   "options": [
+    "3",
+    "6",
+    "9",
+    "1"
+   ],
+   "answer": 1,
+   "why": "ln e³ = 3 ve log 1000 = 3; toplam 6.",
+   "hint": "Her iki terimde de taban, içerideki sayının tabanıyla aynı."
+  }
+ ]
+}

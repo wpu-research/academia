@@ -1,0 +1,145 @@
+{
+ "id": "m6-2-1",
+ "baslik": "Ondalık Gösterimleri Çözümleme",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.1.5"
+ ],
+ "sure": 12,
+ "ozet": "Ondalık gösterimdeki her basamağın değerini onda bir, yüzde bir ve binde bir kesirleriyle anlamlandıracak; ondalık gösterimleri basamak değerlerine göre çözümleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Virgülün sağındaki basamaklar",
+   "govde": "Doğal sayılarda her basamak sağındakinin 10 katıdır. Bu düzen virgülün sağında da sürer: her basamak solundakinin **onda biri**dir.\n\n- Birler: 1\n- Onda birler: 1/10 = 0,1\n- Yüzde birler: 1/100 = 0,01\n- Binde birler: 1/1000 = 0,001"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yüzlük tablo",
+   "aciklama": "Bütün tablo 1'i gösteriyor. Bir sütun 1/10 = 0,1; bir küçük kare 1/100 = 0,01. Karelere dokunarak ya da düğmelerle boya.",
+   "sim": {
+    "kind": "d-yuzluk",
+    "start": 23,
+    "yuzde": false
+   },
+   "gorev": {
+    "metin": "0,47'yi göster.",
+    "check": {
+     "key": "count",
+     "eq": 47
+    }
+   },
+   "dene": [
+    "0,47 = 4 onda bir + 7 yüzde bir: 4 tam sütun ve 7 kare.",
+    "0,5 ile 0,05'i ayrı ayrı göster. Hangisi daha büyük?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çözümleme",
+   "govde": "Bir ondalık gösterimi basamak değerlerinin toplamı olarak yazmaya **çözümleme** denir.\n\n4,375 = 4 + 0,3 + 0,07 + 0,005\n= 4 · 1 + 3 · 1/10 + 7 · 1/100 + 5 · 1/1000\n\nRakamın değeri bulunduğu basamağa göre değişir: 4,375'teki 7'nin basamak değeri 0,07'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "12,08'i çözümleyelim.",
+   "cozum": [
+    "1 onluk: 1 · 10",
+    "2 birlik: 2 · 1",
+    "0 onda birlik: 0 · 0,1",
+    "8 yüzde birlik: 8 · 0,01"
+   ],
+   "sonuc": "12,08 = 1 · 10 + 2 · 1 + 0 · 0,1 + 8 · 0,01. Ortadaki 0, onda birler basamağının boş olduğunu gösterir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda onda birler",
+   "aciklama": "2 ile 3 arası 10 eş parçaya bölündü. Her küçük çentik 0,1.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 2,
+    "max": 3,
+    "den": 10,
+    "value": 2
+   },
+   "gorev": {
+    "metin": "2,7'yi bul.",
+    "check": {
+     "key": "value",
+     "eq": 2.7,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "2,7 = 2 + 7/10: 2'den başlayıp 7 çentik ilerle.",
+    "Ok tuşları ile 0,1'lik adımlarla da gidebilirsin."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Boy ölçümü",
+   "soru": "Elif'in boyu 1,57 m. Bu ölçümdeki her rakam ne anlatır?",
+   "cozum": [
+    "1 m = 1 metre.",
+    "0,5 m = 5/10 m = 5 dm (1 dm = 0,1 m).",
+    "0,07 m = 7/100 m = 7 cm (1 cm = 0,01 m)."
+   ],
+   "sonuc": "1,57 m = 1 m + 5 dm + 7 cm = 157 cm."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"0,25 > 0,3, çünkü 25 > 3\" demek yanlıştır. Önce aynı basamaklara bak: 0,3 = 0,30. 30 yüzde bir, 25 yüzde birden büyüktür. Demek ki 0,3 > 0,25.\n\n0,5 ile 0,05 de farklıdır: 0,5 = 5/10, 0,05 = 5/100."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "6,409 sayısındaki 9 hangi basamaktadır?",
+   "options": [
+    "Onda birler",
+    "Yüzde birler",
+    "Binde birler",
+    "Birler"
+   ],
+   "answer": 2,
+   "why": "Virgülden sonra 4 onda birler, 0 yüzde birler, 9 binde birler basamağındadır.",
+   "hint": "Virgülden sonraki basamakları sırayla say."
+  },
+  {
+   "prompt": "3 + 0,4 + 0,007 toplamı hangisidir?",
+   "options": [
+    "3,47",
+    "3,407",
+    "3,047",
+    "3,0407"
+   ],
+   "answer": 1,
+   "why": "Onda birler 4, yüzde birler 0, binde birler 7: 3,407.",
+   "hint": "Boş kalan yüzde birler basamağına 0 yaz."
+  },
+  {
+   "prompt": "2/10 + 5/1000 toplamının ondalık gösterimi hangisidir?",
+   "options": [
+    "0,25",
+    "0,0205",
+    "0,2005",
+    "0,205"
+   ],
+   "answer": 3,
+   "why": "2 onda bir, 0 yüzde bir, 5 binde bir: 0,205.",
+   "hint": "Her kesri basamağına yerleştir."
+  },
+  {
+   "prompt": "1,75 m kaç santimetredir?",
+   "options": [
+    "175",
+    "17,5",
+    "1750",
+    "107"
+   ],
+   "answer": 0,
+   "why": "1 m = 100 cm, 0,75 m = 75 cm; toplam 175 cm.",
+   "hint": "1 cm = 0,01 m."
+  }
+ ]
+}

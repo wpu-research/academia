@@ -1,0 +1,133 @@
+{
+ "id": "m2-1-5",
+ "baslik": "Sayı ve Şekil Örüntüleri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.5"
+ ],
+ "sure": 14,
+ "ders": "oruntuler",
+ "ozet": "Şekil örüntülerini sayılara çevirecek, kuralı bulup ileriki adımları tahmin edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Şekilden sayıya",
+   "govde": "Bir şekil örüntüsündeki nesneleri sayarsak bir **sayı örüntüsü** elde ederiz.\n\nAşağıdaki örüntüde 1. adımda 4, 2. adımda 7, 3. adımda 10 nokta var: **4, 7, 10, …** Kural: **her adımda 3 artır**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Büyüyen nokta örüntüsü",
+   "aciklama": "Kaydırıcıyla adımları değiştir. Gri nokta hep aynı kalıyor, kahverengi sütunlar her adımda 3 nokta ekliyor.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 3,
+    "b": 1,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "Kaçıncı adımda 16 nokta olduğunu bul.",
+    "check": {
+     "key": "count",
+     "eq": 16
+    }
+   },
+   "dene": [
+    "4, 7, 10, 13, … diye devam et.",
+    "Kuralı bilince adımları tek tek çizmeden de bulabilirsin."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kural nasıl bulunur?",
+   "govde": "1. Ardışık terimlerin **farkını** bul.\n2. Fark hep aynıysa kural “o kadar artır” ya da “o kadar azalt” olur.\n3. Kuralı uygulayarak sıradaki terimleri yaz.\n\n50, 46, 42, 38… → fark 4 ve sayılar azalıyor: **4 azalt**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Azalan örüntü",
+   "aciklama": "50'den başlayan, her adımda 4 azalan örüntü.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 50,
+    "start": 50,
+    "adim": 4,
+    "ileri": false
+   },
+   "gorev": {
+    "metin": "Örüntünün 5. terimini bul (5. terime in).",
+    "check": {
+     "key": "pos",
+     "eq": 34
+    }
+   },
+   "dene": [
+    "1. terim 50. Dört kez geri sekmen gerekir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kibrit çöpleriyle yan yana kareler yapılıyor: 1 kare 4 çöp, 2 kare 7 çöp, 3 kare 10 çöp. 5 kare için kaç çöp gerekir?",
+   "cozum": [
+    "Fark: 7 − 4 = 3, 10 − 7 = 3. Her yeni kare 3 çöp ekliyor.",
+    "4 kare: 10 + 3 = 13 çöp.",
+    "5 kare: 13 + 3 = 16 çöp."
+   ],
+   "sonuc": "**16** çöp gerekir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "2, 4, 8, 16 örüntüsünde fark hep aynı mı?",
+   "cozum": [
+    "4 − 2 = 2, 8 − 4 = 4, 16 − 8 = 8.",
+    "Farklar değişiyor. Bu örüntüde her terim bir öncekinin iki katı."
+   ],
+   "sonuc": "Fark aynı **değil**; kural “iki katını al”. Sıradaki terim **32**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız ilk iki terime bakıp kural söylemek yanıltabilir. 2, 4 ile başlayan bir örüntü “2 artır” da olabilir, “iki katını al” da. **En az üç terime** bak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "5, 9, 13, 17, ? örüntüsünde sıradaki terim nedir?",
+   "options": [
+    "19",
+    "20",
+    "22",
+    "21"
+   ],
+   "answer": 3,
+   "why": "Kural 4 artır: 17 + 4 = 21.",
+   "hint": "Ardışık terimlerin farkı kaç?"
+  },
+  {
+   "prompt": "80, 70, 60, 50 örüntüsünün kuralı nedir?",
+   "options": [
+    "10 azalt",
+    "10 artır",
+    "1 azalt",
+    "20 azalt"
+   ],
+   "answer": 0,
+   "why": "Her terim bir öncekinden 10 eksik.",
+   "hint": "Sayılar artıyor mu, azalıyor mu?"
+  },
+  {
+   "prompt": "1. adımda 2, 2. adımda 4, 3. adımda 6 kare var. 6. adımda kaç kare olur?",
+   "options": [
+    "8",
+    "10",
+    "12",
+    "14"
+   ],
+   "answer": 2,
+   "why": "Her adımda 2 kare ekleniyor: 8, 10, 12.",
+   "hint": "4. ve 5. adımları da yaz."
+  }
+ ]
+}

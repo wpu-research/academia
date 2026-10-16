@@ -1,0 +1,175 @@
+{
+ "id": "m3-3-1",
+ "baslik": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.1"
+ ],
+ "sure": 14,
+ "ozet": "Sayıları en yakın onluğa ya da yüzlüğe yuvarlayarak toplama ve çıkarmanın sonucunu tahmin edecek, onluk ve birlik sıçramalarıyla zihinden işlem yapacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden tahmin?",
+   "govde": "Markette sepetteki ürünlerin toplamını hızlıca kestirmek ya da yaptığımız bir işlemin sonucunun mantıklı olup olmadığını kontrol etmek için **tahmin** yaparız.\n\nTahmin için sayıları **yuvarlarız**: 48 sayısı 50'ye çok yakındır, 31 sayısı 30'a. 48 + 31 yerine 50 + 30 = 80 diye düşünürüz. Gerçek sonuç 79'dur; tahminimiz çok yakın."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yuvarlama kuralı",
+   "govde": "**En yakın onluğa:** Birler basamağına bak. 0, 1, 2, 3, 4 ise aşağıdaki onluğa; 5, 6, 7, 8, 9 ise yukarıdaki onluğa yuvarla. 43 → 40, 45 → 50, 47 → 50.\n\n**En yakın yüzlüğe:** Onlar basamağına bak. 0–4 ise aşağı, 5–9 ise yukarı. 286 → 300, 349 → 300, 410 → 400."
+  },
+  {
+   "tur": "sim",
+   "baslik": "En yakın yüzlük",
+   "aciklama": "Noktayı sürükle ya da sıçrama düğmelerini kullan. Yeşil kesikli halka noktanın en yakın yüzlüğünü gösterir.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 1000,
+    "tick": 10,
+    "label": 100,
+    "start": 380,
+    "hops": [
+     100,
+     10
+    ],
+    "yuvarla": 100
+   },
+   "gorev": {
+    "metin": "Noktayı en yakın yüzlüğü 600 olan bir sayıya götür.",
+    "check": {
+     "key": "yakin",
+     "eq": 600
+    }
+   },
+   "dene": [
+    "550 ile 649 arasındaki sayılar 600'e yuvarlanır.",
+    "550'de onlar basamağı 5'tir; yukarı yuvarlanır."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Zihinden toplama: onluk ve birlik sıçramaları",
+   "aciklama": "Nokta 37'de. 37 + 25'i bulmak için önce onluk, sonra birlik sıçramaları yap. Yaptığın sıçramalar alttaki satırda işlem olarak yazılır.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 100,
+    "tick": 1,
+    "label": 10,
+    "start": 37,
+    "hops": [
+     10,
+     1
+    ],
+    "yuvarla": 10
+   },
+   "gorev": {
+    "metin": "Sıçramalarla 37 + 25'in sonucuna ulaş.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 62
+      },
+      {
+       "key": "hops",
+       "gte": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "25 = 2 onluk + 5 birlik: iki kez +10, beş kez +1.",
+    "Kısa yol: üç kez +10 (30 ekledin), sonra beş kez −1."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "48 + 31 işleminin sonucunu en yakın onluklarla tahmin edelim.",
+   "cozum": [
+    "48 → 50 (birler 8, yukarı).",
+    "31 → 30 (birler 1, aşağı).",
+    "50 + 30 = 80."
+   ],
+   "sonuc": "Tahmin 80; gerçek sonuç 79."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Zihinden çıkarma",
+   "soru": "92 − 39 işlemini zihinden yapalım.",
+   "cozum": [
+    "39, 40'a çok yakın: önce 40 çıkar: 92 − 40 = 52.",
+    "1 fazla çıkardık; 1 geri ekle: 52 + 1 = 53."
+   ],
+   "sonuc": "92 − 39 = **53**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yüzlüklerle tahmin",
+   "soru": "286 + 410 işleminin sonucunu en yakın yüzlüklerle tahmin edelim.",
+   "cozum": [
+    "286 → 300 (onlar 8, yukarı).",
+    "410 → 400 (onlar 1, aşağı).",
+    "300 + 400 = 700."
+   ],
+   "sonuc": "Tahmin 700; gerçek sonuç 696."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "45'i 40'a yuvarlamak yanlıştır. Birler basamağı **5** ise yukarı yuvarlanır: 45 → 50. Bir de zihinden çıkarmada fazla çıkarılan kısmı geri eklemeyi unutma: 92 − 39'da 40 çıkarıp 52'de bırakmak hatalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "67 + 22 işleminin sonucunu en yakın onluklarla tahmin edersek hangisini buluruz?",
+   "options": [
+    "90",
+    "100",
+    "89",
+    "80"
+   ],
+   "answer": 0,
+   "why": "67 → 70, 22 → 20; 70 + 20 = 90.",
+   "hint": "Önce her sayıyı en yakın onluğa yuvarla."
+  },
+  {
+   "prompt": "58 − 19'u zihinden yaparken önce 58 − 20 = 38 bulduk. Sonra ne yapmalıyız?",
+   "options": [
+    "2 ekle: 40",
+    "Hiçbir şey: 38",
+    "1 ekle: 39",
+    "1 çıkar: 37"
+   ],
+   "answer": 2,
+   "why": "19 yerine 20 çıkardık, yani 1 fazla çıkardık; 1 geri ekleriz: 39.",
+   "hint": "Gerçekte çıkarman gerekenden fazla mı, az mı çıkardın?"
+  },
+  {
+   "prompt": "349 + 252 işleminin sonucunu en yakın yüzlüklerle tahmin edersek hangisini buluruz?",
+   "options": [
+    "700",
+    "600",
+    "650",
+    "500"
+   ],
+   "answer": 1,
+   "why": "349 → 300, 252 → 300; 300 + 300 = 600.",
+   "hint": "Yüzlüğe yuvarlarken onlar basamağına bak."
+  },
+  {
+   "prompt": "Hangi sayı en yakın onluğa yuvarlanınca 80 olur?",
+   "options": [
+    "74",
+    "85",
+    "88",
+    "76"
+   ],
+   "answer": 3,
+   "why": "76'nın birler basamağı 6: yukarı, 80. 74 → 70, 85 → 90, 88 → 90.",
+   "hint": "75 ile 84 arasındaki sayılar 80'e yuvarlanır."
+  }
+ ]
+}

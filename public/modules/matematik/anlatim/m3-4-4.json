@@ -1,0 +1,164 @@
+{
+ "id": "m3-4-4",
+ "baslik": "Geometrik Şekillerin Çevre Uzunluklarını Tahmin Etme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.4"
+ ],
+ "sure": 12,
+ "ozet": "Çevrenin bir şeklin bütün kenarlarının toplam uzunluğu olduğunu göreceğiz. Karış, ataç gibi standart olmayan araçlarla ve cetvelle çevreyi tahmin edip ölçeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çevre nedir?",
+   "govde": "Bir şeklin etrafını bir kez dolaşınca aldığımız yolun uzunluğuna **çevre** denir. Çevreyi bulmak için **bütün kenarların uzunluklarını toplarız**.\n\nUzunluğu ölçmek için **standart olmayan** araçlar (karış, adım, ataç, kalem boyu) ya da **standart** araçlar (cetvel, metre) kullanabiliriz. Standart olmayan araçlar kişiden kişiye değişir; cetvel herkes için aynı sonucu verir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir kenarı ölç",
+   "aciklama": "Bu çubuk bir karenin bir kenarı. Çubuğu sürükleyip cetvelle ölç.",
+   "sim": {
+    "kind": "olcme",
+    "length": 4,
+    "start": 3
+   },
+   "gorev": {
+    "metin": "Çubuğun bir ucunu cetvelin 0 çizgisine getir.",
+    "check": {
+     "key": "start",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Kenar 4 cm ise karenin çevresini tahmin et: 4 kenar eşit.",
+    "4 + 4 + 4 + 4 = 16 cm."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çevreyi tahmin etmek",
+   "govde": "1. Şeklin kenarlarına bak; eşit görünen kenarları belirle.\n2. Bir kenarı bildiğin bir uzunlukla karşılaştır (bir karış, bir kalem boyu, 1 cm…).\n3. Kenarların tahmini uzunluklarını topla.\n4. Ölçerek tahminini kontrol et."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çevresi 12 birim olan şekil",
+   "aciklama": "Noktalara dokunarak bir şekil çiz. Kenarlar yatay ve dikey olduğunda sim kenar uzunluklarını ve çevreyi gösterir.",
+   "sim": {
+    "kind": "b-cokgen",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      1,
+      4
+     ]
+    ],
+    "birim": "birim"
+   },
+   "gorev": {
+    "metin": "Çevresi 12 birim olan bir şekil oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "cevre",
+       "eq": 12
+      },
+      {
+       "key": "kesisim",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Tahtadaki dikdörtgenin çevresi 5 + 3 + 5 + 3 = 16 birim. Onu küçült.",
+    "Kenarı 3 birim olan bir kare ya da 4'e 2'lik bir dikdörtgen olabilir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir masanın uzun kenarı yaklaşık 6 karış, kısa kenarı yaklaşık 4 karıştır. Masanın çevresi yaklaşık kaç karıştır?",
+   "cozum": [
+    "Karşılıklı kenarlar eşit: 6, 4, 6, 4 karış.",
+    "6 + 4 + 6 + 4 = 20."
+   ],
+   "sonuc": "Masanın çevresi yaklaşık **20 karış**tır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Karenin çevresi",
+   "soru": "Bir kenarı 5 cm olan karenin çevresini bulalım.",
+   "cozum": [
+    "Karenin 4 kenarı eşittir.",
+    "5 + 5 + 5 + 5 = 20."
+   ],
+   "sonuc": "Çevre **20 cm**'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız iki kenarı toplayıp çevre demek yanlıştır; şeklin **bütün** kenarları toplanır. Bir de farklı birimleri toplama: 3 karış ile 20 cm toplanamaz; önce aynı birimle ölçmek gerekir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kenarları 3 cm, 4 cm ve 5 cm olan üçgenin çevresi kaç cm'dir?",
+   "options": [
+    "7",
+    "12",
+    "60",
+    "9"
+   ],
+   "answer": 1,
+   "why": "3 + 4 + 5 = 12 cm.",
+   "hint": "Bütün kenarları topla."
+  },
+  {
+   "prompt": "Hangisi standart bir ölçme aracıdır?",
+   "options": [
+    "Cetvel",
+    "Ataç",
+    "Karış",
+    "Adım"
+   ],
+   "answer": 0,
+   "why": "Cetvel herkes için aynı birimi (cm) gösterir.",
+   "hint": "Kişiden kişiye değişmeyen araç hangisi?"
+  },
+  {
+   "prompt": "Kenarı 6 cm olan karenin çevresi kaç cm'dir?",
+   "options": [
+    "36",
+    "10",
+    "24",
+    "12"
+   ],
+   "answer": 2,
+   "why": "6 + 6 + 6 + 6 = 24 cm.",
+   "hint": "Karenin kaç kenarı var?"
+  },
+  {
+   "prompt": "Ali bir masanın çevresini 20 karış, babası 14 karış ölçtü. Neden farklı buldular?",
+   "options": [
+    "Masa ölçerken küçüldü",
+    "Ali yanlış saydı",
+    "Çevre her ölçümde değişir",
+    "Babasının karışı daha uzundur"
+   ],
+   "answer": 3,
+   "why": "Karış standart değildir; uzun karışla daha az sayıda karış ölçülür.",
+   "hint": "Karışları aynı uzunlukta mı?"
+  }
+ ]
+}

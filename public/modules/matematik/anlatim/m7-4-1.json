@@ -1,0 +1,237 @@
+{
+ "id": "m7-4-1",
+ "baslik": "Yansıma Dönüşümü",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.3.1"
+ ],
+ "sure": 13,
+ "ders": "geometrik-donusumler",
+ "ozet": "Bir şeklin bir doğruya göre yansımasını oluşturacak; yansımada nelerin korunup nelerin değiştiğini görecek ve koordinat düzleminde eksenlere göre yansıma kuralını keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ayna gibi",
+   "govde": "Aynaya baktığında görüntün senden aynaya ne kadar uzaksa aynanın o kadar arkasında görünür; sağ elin görüntünün sol eli gibidir.\n\nBir şeklin bir doğruya göre **yansıması**, her noktanın bu doğruya göre ayna görüntüsünün alınmasıyla oluşur. Bu doğruya **yansıma doğrusu (simetri ekseni)** denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yansımanın özellikleri",
+   "govde": "- Bir nokta ile görüntüsünü birleştiren doğru parçası, yansıma doğrusuna **diktir** ve yansıma doğrusu bu parçayı **ortalar**.\n- Şekil ile görüntüsü **eştir**: kenar uzunlukları ve açılar korunur.\n- Şeklin **yönü ters döner** (sağ-sol ya da alt-üst yer değiştirir).\n- Yansıma doğrusu üzerindeki noktalar yerinde kalır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "y eksenine göre yansıt",
+   "aciklama": "Kesikli çizgili hedef, L şeklinin y eksenine göre yansıması. Düğmelerle şekli hedefe oturt.",
+   "sim": {
+    "kind": "donusum",
+    "target": [
+     [
+      -1,
+      1
+     ],
+     [
+      -3,
+      1
+     ],
+     [
+      -3,
+      2
+     ],
+     [
+      -2,
+      2
+     ],
+     [
+      -2,
+      4
+     ],
+     [
+      -1,
+      4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Şekli y eksenine göre yansıtarak hedefe oturt.",
+    "check": {
+     "key": "match",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Her nokta y ekseninin öbür yanına, eksene aynı uzaklığa gider.",
+    "Öteleme düğmeleriyle hedefe ulaşmayı dene: neden olmuyor?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Koordinat kuralı",
+   "govde": "- **x eksenine göre** yansıma: (a, b) → (a, −b)\n- **y eksenine göre** yansıma: (a, b) → (−a, b)\n\nÖrnek: A(3, −2) noktasının y eksenine göre yansıması A'(−3, −2), x eksenine göre yansıması A''(3, 2)'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "x eksenine göre yansıt",
+   "aciklama": "Bu kez hedef x ekseninin altında.",
+   "sim": {
+    "kind": "donusum",
+    "target": [
+     [
+      1,
+      -1
+     ],
+     [
+      3,
+      -1
+     ],
+     [
+      3,
+      -2
+     ],
+     [
+      2,
+      -2
+     ],
+     [
+      2,
+      -4
+     ],
+     [
+      1,
+      -4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Şekli hedefe oturt.",
+    "check": {
+     "key": "match",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "x eksenine göre yansımada noktaların x koordinatı değişmez."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Art arda iki yansıma",
+   "aciklama": "Hedef, şeklin önce x eksenine sonra y eksenine göre yansıması.",
+   "sim": {
+    "kind": "donusum",
+    "target": [
+     [
+      -1,
+      -1
+     ],
+     [
+      -3,
+      -1
+     ],
+     [
+      -3,
+      -2
+     ],
+     [
+      -2,
+      -2
+     ],
+     [
+      -2,
+      -4
+     ],
+     [
+      -1,
+      -4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "İki yansımayla şekli hedefe oturt.",
+    "check": {
+     "key": "match",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sırayı değiştir: önce y eksenine, sonra x eksenine. Sonuç aynı mı?",
+    "İki yansımadan sonra şeklin yönü yeniden düzeldi mi?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Köşeleri A(1, 2), B(4, 2), C(4, 5) olan üçgenin y eksenine göre yansımasının köşelerini bulalım.",
+   "cozum": [
+    "y eksenine göre yansımada x koordinatının işareti değişir, y aynı kalır.",
+    "A'(−1, 2), B'(−4, 2), C'(−4, 5)."
+   ],
+   "sonuc": "A'(−1, 2), B'(−4, 2), C'(−4, 5)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Göl kıyısı",
+   "soru": "Bir göl kıyısındaki 12 m yüksekliğindeki ağacın sudaki yansıması izleniyor. Kıyı çizgisi yansıma doğrusu kabul edilirse ağacın tepesinin yansıması su yüzeyinin kaç metre altında görünür? Ağacın tepesi ile yansımasının tepesi arasındaki uzaklık kaç metredir?",
+   "cozum": [
+    "Yansımada nokta ile yansıma doğrusu arası uzaklık korunur: tepe yüzeyin 12 m üstünde → yansıma 12 m altında.",
+    "Aradaki uzaklık: 12 + 12 = 24 m."
+   ],
+   "sonuc": "12 m altında; aradaki uzaklık 24 m."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yansımayı ötelemeyle karıştırmak sık yapılan bir hatadır. Ötelemede şekil yön değiştirmeden kayar; yansımada **yönü ters döner**. Bir de görüntüyü yansıma doğrusuna olan uzaklığı ölçmeden çizmek hatalıdır: her nokta doğrunun öbür yanında **aynı uzaklıkta** olmalı."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "(4, 1) noktasının x eksenine göre yansıması hangisidir?",
+   "options": [
+    "(−4, 1)",
+    "(4, −1)",
+    "(−4, −1)",
+    "(1, 4)"
+   ],
+   "answer": 1,
+   "why": "x eksenine göre yansımada y koordinatının işareti değişir.",
+   "hint": "Nokta x ekseninin öbür yanına geçer."
+  },
+  {
+   "prompt": "(−2, 5) noktasının y eksenine göre yansıması hangisidir?",
+   "options": [
+    "(2, 5)",
+    "(−2, −5)",
+    "(2, −5)",
+    "(5, −2)"
+   ],
+   "answer": 0,
+   "why": "y eksenine göre yansımada x koordinatının işareti değişir.",
+   "hint": "Nokta y ekseninin öbür yanına geçer."
+  },
+  {
+   "prompt": "Bir nokta yansıma doğrusuna 3 birim uzaklıktadır. Nokta ile görüntüsü arasındaki uzaklık kaç birimdir?",
+   "options": [
+    "3",
+    "9",
+    "1,5",
+    "6"
+   ],
+   "answer": 3,
+   "why": "Görüntü de doğruya 3 birim uzakta, öbür yanda: 3 + 3 = 6.",
+   "hint": "Görüntü doğrunun öbür yanında aynı uzaklıktadır."
+  },
+  {
+   "prompt": "Yansıma dönüşümünde hangisi değişmez?",
+   "options": [
+    "Şeklin konumu",
+    "Şeklin yönü",
+    "Kenar uzunlukları ve açılar",
+    "Hiçbiri"
+   ],
+   "answer": 2,
+   "why": "Yansımada şekil ile görüntüsü eştir.",
+   "hint": "Görüntü şeklin bir kopyası mı?"
+  }
+ ]
+}

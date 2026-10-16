@@ -1,0 +1,190 @@
+{
+ "id": "m7-3-1",
+ "baslik": "Cebirsel İfadelerle İşlemler",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.2.1"
+ ],
+ "sure": 15,
+ "ozet": "Benzer terimleri tanıyacak, cebirsel ifadeleri toplayıp çıkaracak ve bir cebirsel ifadeyi bir rasyonel sayıyla çarpacağız. Cebir karolarıyla her adımı göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Terim ve benzer terim",
+   "govde": "3x + 2y − 5 ifadesinde **3x, 2y ve −5** terimlerdir. Değişkeni ve değişkenin üssü aynı olan terimlere **benzer terim** denir: 3x ile −7x benzerdir, 3x ile 2y benzer değildir. Sabit terimler de birbirine benzerdir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Toplama ve çıkarma",
+   "govde": "Yalnız **benzer terimler** toplanıp çıkarılır: katsayılar toplanır, değişken aynen yazılır.\n\n(3x − 4) + (2x + 7) = (3x + 2x) + (−4 + 7) = **5x + 3**\n\nÇıkarmada parantezin önündeki eksi, parantezin **içindeki her terimin işaretini** değiştirir:\n\n(5a + 2) − (2a − 6) = 5a + 2 − 2a + 6 = **3a + 8**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Cebir karoları",
+   "aciklama": "Uzun kahverengi karo x, kırmızı uzun karo −x; sarı küçük karo 1, kırmızı küçük karo −1. Düğmelerle karo ekle, bir karoya dokunarak onu çıkar.",
+   "sim": {
+    "kind": "d-cebir-karolari",
+    "x": 2,
+    "nx": 0,
+    "bir": 3,
+    "eksibir": 0,
+    "carp": false
+   },
+   "gorev": {
+    "metin": "(2x + 3) + (x − 5) toplamını karolarla oluştur ve sadeleştir.",
+    "check": {
+     "all": [
+      {
+       "key": "x",
+       "eq": 3
+      },
+      {
+       "key": "c",
+       "eq": -2
+      },
+      {
+       "key": "sade",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Masada 2x + 3 var. Bir x ve beş tane −1 ekle.",
+    "\"Sıfır çiftlerini at\" ile 1 ve −1'leri eşleştir: 3x − 2 kalır."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bir sayıyla çarpma (dağılma)",
+   "govde": "Bir ifadeyi bir rasyonel sayıyla çarparken sayı, parantezdeki **her terimle** çarpılır:\n\n- 2(x + 2) = 2x + 4\n- −3(x − 2) = −3x + 6\n- 1/2 · (4x − 6) = 2x − 3"
+  },
+  {
+   "tur": "sim",
+   "baslik": "İfadeyi 2 ile çarp",
+   "aciklama": "Masada x + 2 var.",
+   "sim": {
+    "kind": "d-cebir-karolari",
+    "x": 1,
+    "nx": 0,
+    "bir": 2,
+    "eksibir": 0
+   },
+   "gorev": {
+    "metin": "2(x + 2) ifadesini karolarla göster.",
+    "check": {
+     "all": [
+      {
+       "key": "px",
+       "eq": 2
+      },
+      {
+       "key": "p1",
+       "eq": 4
+      },
+      {
+       "key": "nx",
+       "eq": 0
+      },
+      {
+       "key": "n1",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "\"İfadeyi 2 ile çarp\" düğmesi masadaki her karonun bir kopyasını ekler.",
+    "2(x + 2) = 2x + 4: hem x'ler hem birler ikiye katlandı."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "(5a + 2) − (2a − 6) işlemini yapalım.",
+   "cozum": [
+    "Eksiyi dağıt: 5a + 2 − 2a + 6.",
+    "Benzer terimleri grupla: (5a − 2a) + (2 + 6).",
+    "3a + 8."
+   ],
+   "sonuc": "3a + 8."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "−3(x − 2) + 1/2 · (4x − 6) ifadesini sadeleştirelim.",
+   "cozum": [
+    "−3(x − 2) = −3x + 6.",
+    "1/2 · (4x − 6) = 2x − 3.",
+    "Topla: −3x + 2x + 6 − 3 = −x + 3."
+   ],
+   "sonuc": "−x + 3."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Bahçe çiti",
+   "soru": "Dikdörtgen biçimindeki bir bahçenin kısa kenarı (x + 3) m, uzun kenarı 2x m'dir. Bahçenin etrafına çit çekilecek. Çitin uzunluğunu veren ifadeyi yazalım; x = 5 ise çit kaç metredir?",
+   "cozum": [
+    "Çevre = 2 · (kısa + uzun) = 2 · (x + 3 + 2x).",
+    "= 2 · (3x + 3) = 6x + 6.",
+    "x = 5: 6 · 5 + 6 = 36."
+   ],
+   "sonuc": "Çit uzunluğu 6x + 6; x = 5 için 36 m."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Parantezin önündeki eksiyi yalnız ilk terime uygulamak yanlıştır: (5a + 2) − (2a − 6) ≠ 5a + 2 − 2a − 6. Doğrusu **+ 6**'dır. Ayrıca benzer olmayan terimleri birleştirmek yanlıştır: 3x + 4 ≠ 7x."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4x + 3 − x + 5 ifadesinin en sade hâli hangisidir?",
+   "options": [
+    "5x + 8",
+    "3x + 8",
+    "3x − 2",
+    "11x"
+   ],
+   "answer": 1,
+   "why": "4x − x = 3x; 3 + 5 = 8.",
+   "hint": "x'li terimleri ve sabitleri ayrı grupla."
+  },
+  {
+   "prompt": "(6y − 1) − (2y − 4) işleminin sonucu hangisidir?",
+   "options": [
+    "4y − 5",
+    "8y + 3",
+    "4y + 3",
+    "4y − 3"
+   ],
+   "answer": 2,
+   "why": "6y − 1 − 2y + 4 = 4y + 3.",
+   "hint": "Eksi, ikinci parantezdeki her terimin işaretini değiştirir."
+  },
+  {
+   "prompt": "−2(3m − 5) ifadesine eşit olan hangisidir?",
+   "options": [
+    "−6m + 10",
+    "−6m − 10",
+    "6m − 10",
+    "−5m + 3"
+   ],
+   "answer": 0,
+   "why": "−2 · 3m = −6m, −2 · (−5) = +10.",
+   "hint": "−2'yi her terimle çarp."
+  },
+  {
+   "prompt": "Kenar uzunluğu (a + 4) cm olan karenin çevresi hangisidir?",
+   "options": [
+    "a + 16",
+    "4a + 4",
+    "8a",
+    "4a + 16"
+   ],
+   "answer": 3,
+   "why": "4(a + 4) = 4a + 16.",
+   "hint": "Karenin dört kenarı eşittir."
+  }
+ ]
+}

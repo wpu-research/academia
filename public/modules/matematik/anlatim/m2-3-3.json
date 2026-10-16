@@ -1,0 +1,162 @@
+{
+ "id": "m2-3-3",
+ "baslik": "Toplama ve Çıkarma İşlemlerinin İlişkisi",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.2.3"
+ ],
+ "sure": 12,
+ "ozet": "Çıkarmanın toplamanın tersi olduğunu kullanarak eksik sayıları bulacak ve işlemlerimizi kontrol edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ters işlemler",
+   "govde": "Toplama ile çıkarma **ters işlemlerdir**. Biri öbürünü geri alır:\n\n26 + 28 = 54 ise **54 − 28 = 26** ve **54 − 26 = 28**.\n\nAynı üç sayıyla dört işlem yazabiliriz. Bu dört işleme **işlem ailesi** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İşlem ailesi",
+   "aciklama": "Bütün 17. Birinci parçayı değiştir, alttaki dört işlemi izle.",
+   "sim": {
+    "kind": "a-parca-butun",
+    "butun": 17,
+    "a": 4,
+    "maxButun": 20
+   },
+   "gorev": {
+    "metin": "17 − 9 işleminin cevabını görmek için birinci parçayı 9 yap.",
+    "check": {
+     "key": "a",
+     "eq": 9
+    }
+   },
+   "dene": [
+    "Yeşil parça 17 − 9'un cevabıdır.",
+    "Aynı çubukta 9 + 8 = 17 yazıyor mu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eksik sayıyı bulmak",
+   "govde": "- Eksik **toplanan**: □ + 8 = 15 → **15 − 8** = 7\n- Eksik **çıkan**: 15 − □ = 8 → **15 − 8** = 7\n- Eksik **eksilen**: □ − 8 = 7 → **7 + 8** = 15"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eksik toplanan",
+   "aciklama": "Terazide □ + 8 ile 15 var. Kutudaki sayıyı değiştir.",
+   "sim": {
+    "kind": "a-esitlik",
+    "sol": [
+     null,
+     8
+    ],
+    "solOp": "+",
+    "sag": [
+     15
+    ],
+    "min": 0,
+    "max": 15
+   },
+   "gorev": {
+    "metin": "Teraziyi dengele.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "15 − 8 kaç eder?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "İleri sayarak çıkarma",
+   "aciklama": "54 − 26'yı bulmak için 26'dan 54'e ileri sek; toplam ne kadar ilerlediğine bak.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 60,
+    "start": 26,
+    "adimlar": [
+     10,
+     1
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "26'dan 54'e sek.",
+    "check": {
+     "key": "pos",
+     "eq": 54
+    }
+   },
+   "dene": [
+    "İki tane 10'luk sekme seni 46'ya götürür. Sonra kaç tane 1'lik?",
+    "Toplam ilerleme: 10 + 10 + 8 = 28."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "□ − 23 = 41 işleminde kutuya hangi sayı gelir?",
+   "cozum": [
+    "Kutudaki sayıdan 23 çıkınca 41 kalıyor; kutu bütündür.",
+    "Bütün = 41 + 23 = 64."
+   ],
+   "sonuc": "Kutuya **64** gelir. Kontrol: 64 − 23 = 41."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Selin 85 − 39 = 46 buldu. Toplamayla kontrol edelim.",
+   "cozum": [
+    "46 + 39 işlemini yap: 46 + 30 = 76, 76 + 9 = 85.",
+    "Sonuç 85, yani eksilen sayı."
+   ],
+   "sonuc": "Selin'in cevabı **doğrudur**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Eksik eksileni bulurken çıkarma yapmak sık bir hatadır: □ − 8 = 7 sorusunda 7 − 8 yapılamaz. Kutu **bütündür**; parçaları topla: 7 + 8 = 15."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "□ + 25 = 60 işleminde kutuya hangi sayı gelir?",
+   "options": [
+    "85",
+    "35",
+    "45",
+    "25"
+   ],
+   "answer": 1,
+   "why": "60 − 25 = 35.",
+   "hint": "Bütünden bilinen parçayı çıkar."
+  },
+  {
+   "prompt": "72 − 18 = 54 işlemini hangi işlem kontrol eder?",
+   "options": [
+    "54 + 72",
+    "72 + 18",
+    "18 − 54",
+    "54 + 18"
+   ],
+   "answer": 3,
+   "why": "Kalan ile çıkan toplanınca eksilen bulunur: 54 + 18 = 72.",
+   "hint": "Kalanı ve çıkanı birleştir."
+  },
+  {
+   "prompt": "□ − 30 = 25 işleminde kutuya hangi sayı gelir?",
+   "options": [
+    "55",
+    "5",
+    "25",
+    "30"
+   ],
+   "answer": 0,
+   "why": "Bütün = 25 + 30 = 55.",
+   "hint": "Kutu bütün mü, parça mı?"
+  }
+ ]
+}

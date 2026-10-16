@@ -1,0 +1,72 @@
+{
+ "id": "m9-1-4",
+ "baslik": "Gerçek Sayıların İşlem Özelliklerini Cebirsel Olarak İfade Etme",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.1.4"],
+ "sure": 15,
+ "ozet": "Sayılarla yaptığımız hesaplardaki değişme, birleşme ve dağılma özelliklerini harflerle genelleyecek; etkisiz ve ters elemanı tanıyacak ve bu özellikleri hızlı hesapta kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sayılardan harflere",
+   "govde": "12 · 13'ü kafadan hesaplarken 12 · 10 + 12 · 3 = 120 + 36 = 156 yaparız. Aynı düşünceyi her sayı için yazmak istersek harf kullanırız: a(b + c) = ab + ac.\n\nBöylece tek bir örnekte gördüğümüz bir düzeni, **bütün gerçek sayılar için** geçerli bir kural olarak ifade etmiş oluruz. Bu, sayılardan cebire **analojik** bir geçiştir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Gerçek sayılarda işlem özellikleri",
+   "govde": "a, b, c ∈ ℝ için:\n\n- **Değişme:** a + b = b + a, a · b = b · a\n- **Birleşme:** (a + b) + c = a + (b + c), (a · b) · c = a · (b · c)\n- **Dağılma:** a(b + c) = ab + ac\n- **Etkisiz eleman:** a + 0 = a, a · 1 = a\n- **Ters eleman:** a + (−a) = 0; a ≠ 0 ise a · (1/a) = 1\n\nÇıkarma ve bölme değişmeli değildir: 5 − 3 ≠ 3 − 5."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dağılma özelliği: dikdörtgeni böl",
+   "aciklama": "Sütun sayısı 10'u geçince dikdörtgen 10 sütunluk ve kalan sütunlardan oluşan iki parçaya ayrılır: a · (10 + c) = a · 10 + a · c.",
+   "sim": { "kind": "alan-modeli", "rows": 4, "cols": 11, "max": 12, "split": true },
+   "gorev": { "metin": "7 · 12 çarpımını iki parçaya ayrılmış olarak göster.", "check": { "all": [ { "key": "rows", "eq": 7 }, { "key": "cols", "eq": 12 } ] } },
+   "dene": ["7 · 12 = 7 · 10 + 7 · 2 = 70 + 14 = 84."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki kez dağılma: (x + p)(x + q)",
+   "aciklama": "Aynı özellik iki parantez için iki kez uygulanır: (x + p)(x + q) = x² + px + qx + pq.",
+   "sim": { "kind": "e-alan-ozdeslik", "mode": "carpim", "p": 1, "q": 1 },
+   "gorev": { "metin": "x² + 6x + 8 ifadesini modelle.", "check": { "all": [ { "key": "orta", "eq": 6 }, { "key": "sabit", "eq": 8 } ] } },
+   "dene": ["Sayılarla aynı yapı: 12 · 14 = (10 + 2)(10 + 4) = 100 + 60 + 8 = 168. Burada x = 10."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Özelliklerle hızlı hesap",
+   "soru": "37 · 99 ve 25 · 17 · 4 işlemlerini hesaplayalım.",
+   "cozum": [
+    "Dağılma: 37 · 99 = 37 · (100 − 1) = 3700 − 37 = 3663.",
+    "Değişme ve birleşme: 25 · 17 · 4 = (25 · 4) · 17 = 100 · 17 = 1700."
+   ],
+   "sonuc": "3663 ve 1700"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sıfır çarpanı",
+   "govde": "İki gerçek sayının çarpımı 0 ise en az biri 0'dır:\n\n**a · b = 0 ⇒ a = 0 veya b = 0**\n\nBu özellik, çarpanlarına ayrılmış denklemleri çözmenin temelidir: (x − 2)(x + 5) = 0 ⇒ x = 2 veya x = −5."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: ortak çarpan",
+   "soru": "x · y + x · z = 42 ve y + z = 7 ise x kaçtır?",
+   "cozum": [
+    "Dağılma özelliğini tersinden kullan: xy + xz = x(y + z).",
+    "x · 7 = 42."
+   ],
+   "sonuc": "x = 6"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- −(a − b) = −a − b yazmak. Doğrusu −a + b; eksi parantezin içindeki her terime dağılır.\n- Toplamayı çarpma üzerine dağıtmak: a + (b · c) ≠ (a + b)(a + c).\n- (a + b)/c = a/c + b/c doğrudur, ama c/(a + b) = c/a + c/b yanlıştır: 6/(1 + 2) = 2, oysa 6 + 3 = 9.\n- Çıkarmada değişme özelliğini kullanmak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "3(x − 4) + 2x ifadesinin sadeleşmiş biçimi hangisidir?", "options": ["5x − 4", "3x − 10", "5x + 12", "5x − 12"], "answer": 3, "why": "3x − 12 + 2x = 5x − 12.", "hint": "3'ü parantezin içindeki iki terime de dağıt." },
+  { "prompt": "Hangisi dağılma özelliğidir?", "options": ["a + b = b + a", "a(b + c) = ab + ac", "(ab)c = a(bc)", "a + 0 = a"], "answer": 1, "why": "Çarpma, toplamanın üzerine dağılır.", "hint": "Hangisinde bir çarpan parantezin içine dağıtılıyor?" },
+  { "prompt": "4/7 sayısının çarpma işlemine göre tersi hangisidir?", "options": ["7/4", "−4/7", "−7/4", "1"], "answer": 0, "why": "4/7 · 7/4 = 1. −4/7 toplamaya göre terstir.", "hint": "Çarpınca etkisiz eleman olan 1'i veren sayıyı ara." },
+  { "prompt": "48 · 102 kaçtır?", "options": ["4816", "4996", "4896", "5096"], "answer": 2, "why": "48 · 100 + 48 · 2 = 4800 + 96 = 4896.", "hint": "102'yi 100 + 2 olarak yaz." }
+ ]
+}

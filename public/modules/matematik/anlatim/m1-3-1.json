@@ -1,0 +1,152 @@
+{
+ "id": "m1-3-1",
+ "baslik": "Paralarımız",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.9"
+ ],
+ "sure": 10,
+ "ders": "saat-ve-para",
+ "ozet": "1, 5, 10, 20, 50, 100 ve 200 TL'yi tanıyıp hangisinin daha çok değeri olduğunu karşılaştıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Paramız: Türk lirası",
+   "govde": "Ülkemizin parası **Türk lirası**dır, kısaca **TL** yazılır.\n\nBu konuda tanıyacağımız paralar: **1 TL, 5 TL, 10 TL, 20 TL, 50 TL, 100 TL ve 200 TL**.\n\nHer paranın üzerinde **değeri** yazar. 1 TL madeni paradır. Değeri büyük olan para daha çok şey satın alır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "5 TL kaç tane 1 TL?",
+   "aciklama": "Paralara dokunarak tepsiye ekle. Altta toplam tutar ve para sayısı yazar.",
+   "sim": {
+    "kind": "para",
+    "only": [
+     5,
+     1
+    ]
+   },
+   "gorev": {
+    "metin": "5 TL'yi yalnız 1 TL'lerle oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 5,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1, 2, 3, 4, 5 diye sayarak ekle.",
+    "Bir 5 TL ile beş tane 1 TL aynı değerdedir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Değerleri sıralayalım",
+   "govde": "Küçükten büyüğe: **1 TL < 5 TL < 10 TL < 20 TL < 50 TL < 100 TL < 200 TL**.\n\nİki tane 5 TL, bir tane 10 TL'ye eşittir. İki tane 10 TL, bir tane 20 TL'ye eşittir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "20 TL'yi iki parayla",
+   "aciklama": "Şimdi daha çok para var.",
+   "sim": {
+    "kind": "para",
+    "only": [
+     1,
+     5,
+     10,
+     20
+    ]
+   },
+   "gorev": {
+    "metin": "20 TL'yi tam iki parayla oluştur, ama 20 TL'lik kâğıt parayı kullanma.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 20,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Hangi iki eş para 20 eder?",
+    "Yanlış bir para eklersen yanındaki − ile çıkar."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ece'nin bir 10 TL'si, Mert'in iki 5 TL'si var. Kimin parası daha çok?",
+   "cozum": [
+    "5 TL + 5 TL = 10 TL.",
+    "Ece'nin de 10 TL'si var."
+   ],
+   "sonuc": "İkisinin parası **eşit**: 10 TL."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir 50 TL ile bir 20 TL'den hangisi daha değerlidir?",
+   "cozum": [
+    "Paraların üzerindeki sayılara bak: 50 ve 20.",
+    "50, 20'den büyüktür."
+   ],
+   "sonuc": "**50 TL** daha değerlidir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Para sayısı çok diye toplam değerin çok olduğunu düşünmek yanlıştır. Üç tane 1 TL (3 TL), bir tane 5 TL'den azdır. Paraları sayarken **değerlerine** bak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi en değerli paradır?",
+   "options": [
+    "100 TL",
+    "50 TL",
+    "200 TL",
+    "20 TL"
+   ],
+   "answer": 2,
+   "why": "200, öbür sayılardan büyüktür.",
+   "hint": "Paraların üzerindeki en büyük sayıyı bul."
+  },
+  {
+   "prompt": "İki tane 5 TL kaç TL eder?",
+   "options": [
+    "10 TL",
+    "5 TL",
+    "55 TL",
+    "2 TL"
+   ],
+   "answer": 0,
+   "why": "5 + 5 = 10.",
+   "hint": "5 TL'ye 5 TL ekle."
+  },
+  {
+   "prompt": "Hangisi 20 TL'ye eşittir?",
+   "options": [
+    "Bir 10 TL",
+    "İki 5 TL",
+    "Bir 10 TL ve bir 5 TL",
+    "İki 10 TL"
+   ],
+   "answer": 3,
+   "why": "10 + 10 = 20.",
+   "hint": "Her seçeneğin toplamını bul."
+  }
+ ]
+}

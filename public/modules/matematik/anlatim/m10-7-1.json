@@ -1,0 +1,85 @@
+{
+ "id": "m10-7-1",
+ "baslik": "Koşullu Olasılık",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.7.1"],
+ "sure": 17,
+ "ozet": "Bir olayın gerçekleştiğini bilmek, diğer olayın olasılığını değiştirebilir. Koşullu olasılığı çapraz tablodan ve alan modelinden okuyacak, çarpma kuralını ve bağımsızlığı bu tanımdan çıkaracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örnek uzayı daraltmak",
+   "govde": "\"B olayının gerçekleştiği bilindiğine göre A'nın olasılığı\" sorusunda artık tüm örnek uzaya değil, yalnız **B'nin içine** bakarız. B yeni örnek uzayımızdır; A'nın bu uzaydaki payı A ∩ B'dir.\n\nBu olasılık P(A | B) ile gösterilir ve \"B verildiğinde A'nın olasılığı\" diye okunur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tanım",
+   "govde": "P(B) > 0 olmak üzere\n\nP(A | B) = P(A ∩ B) / P(B)\n\nEş olasılıklı sonuçlarda: P(A | B) = s(A ∩ B) / s(B).\n\nBuradan **çarpma kuralı** çıkar: P(A ∩ B) = P(B) · P(A | B) = P(A) · P(B | A)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tablodan koşullu olasılık",
+   "aciklama": "60 öğrencinin cinsiyeti ve gözlük kullanımı (kurgu veri). Koşul ve olay seçerek koşullu olasılığı oku; seçili hücre vurgulanır.",
+   "sim": { "kind": "f-capraz", "corner": "Cinsiyet / Gözlük", "rows": ["Kız", "Erkek"], "cols": ["Gözlüklü", "Gözlüksüz"], "data": [[12, 18], [8, 22]], "edit": false, "kosul": true },
+   "gorev": { "metin": "Koşulu \"Erkek\", olayı \"Gözlüklü\" seç ve P(Gözlüklü | Erkek) değerini oku.", "check": { "all": [{ "key": "si", "eq": 1 }, { "key": "sj", "eq": 0 }] } },
+   "dene": ["P(Gözlüklü | Kız) = 12/30 = 0,4 ama P(Gözlüklü) = 20/60 ≈ 0,333: kız olduğunu bilmek olasılığı değiştirdi.", "Paydaya hep koşulun satır toplamı geliyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "İki zar atılıyor. Üst yüzlerin toplamının 8 olduğu bilindiğine göre iki zarın da çift gelmiş olma olasılığı kaçtır?",
+   "cozum": [
+    "Koşul B (toplam 8): (2, 6), (3, 5), (4, 4), (5, 3), (6, 2) → 5 sonuç.",
+    "Bunlardan ikisi de çift olanlar: (2, 6), (4, 4), (6, 2) → 3 sonuç.",
+    "P(A | B) = 3/5."
+   ],
+   "sonuc": "3/5. Koşulsuz olasılık 9/36 = 1/4 idi; bilgi olasılığı değiştirdi."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: iadesiz çekiliş",
+   "soru": "Bir torbada 5 kırmızı, 3 mavi bilye var. Geri koymadan art arda iki bilye çekiliyor. İkisinin de kırmızı olma olasılığı kaçtır?",
+   "cozum": [
+    "İlk bilye kırmızı: 5/8.",
+    "İlki kırmızıyken torbada 4 kırmızı, 3 mavi kalır: P(2. kırmızı | 1. kırmızı) = 4/7.",
+    "Çarpma kuralı: 5/8 · 4/7 = 20/56."
+   ],
+   "sonuc": "5/14."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bağımsız olaylar",
+   "govde": "B'nin gerçekleşmesi A'nın olasılığını değiştirmiyorsa, yani P(A | B) = P(A) ise A ile B **bağımsızdır**. Bu durumda\n\nP(A ∩ B) = P(A) · P(B)\n\nÖrnek: bir zarı iki kez atmak; birinci atış ikinciyi etkilemez. Geri koymadan çekilişte ise olaylar bağımlıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bağımsız bir tablo kur",
+   "aciklama": "Aynı tablo, bu kez değiştirebilirsin.",
+   "sim": { "kind": "f-capraz", "corner": "Cinsiyet / Gözlük", "rows": ["Kız", "Erkek"], "cols": ["Gözlüklü", "Gözlüksüz"], "data": [[12, 18], [8, 22]], "kosul": true },
+   "gorev": { "metin": "Tabloyu, gözlük kullanmak cinsiyetten bağımsız olacak şekilde değiştir: P(Gözlüklü | Kız) = P(Gözlüklü | Erkek).", "check": { "key": "diff", "lt": 0.005 } },
+   "dene": ["Erkek satırını 12 ve 18 yap: iki satırın oranı da 0,4.", "Bağımsızken P(Gözlüklü | Kız) = P(Gözlüklü) olduğunu aşağıdaki satırda gör."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "P(A) = 0,4, P(B) = 0,5 ve P(A ∩ B) = 0,2 ise P(A | B) kaçtır? A ve B bağımsız mıdır?",
+   "cozum": [
+    "P(A | B) = 0,2 / 0,5 = 0,4.",
+    "P(A | B) = P(A) = 0,4.",
+    "Ayrıca P(A) · P(B) = 0,2 = P(A ∩ B)."
+   ],
+   "sonuc": "P(A | B) = 0,4; olaylar bağımsızdır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "P(A | B) ile P(B | A)'yı karıştırmak. \"Kız öğrencilerin ne kadarı gözlüklü?\" (12/30) ile \"Gözlüklülerin ne kadarı kız?\" (12/20) farklı sorulardır; paydalar farklıdır. Paydaya her zaman **koşul olan** olay gelir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "P(A ∩ B) = 0,12 ve P(B) = 0,3 ise P(A | B) kaçtır?", "options": ["0,36", "0,4", "0,12", "0,18"], "answer": 1, "why": "0,12 / 0,3 = 0,4.", "hint": "P(A | B) = P(A ∩ B) / P(B)." },
+  { "prompt": "Bir zar atılıyor. Gelen sayının 4'ten büyük olduğu bilindiğine göre çift olma olasılığı kaçtır?", "options": ["1/3", "1/6", "1/2", "2/3"], "answer": 2, "why": "Koşul {5, 6}; bunlardan çift olan yalnız 6: 1/2.", "hint": "Yeni örnek uzay {5, 6}." },
+  { "prompt": "Torbada 4 beyaz, 2 siyah top var. Geri koymadan iki top çekiliyor. Birincinin beyaz, ikincinin siyah olma olasılığı kaçtır?", "options": ["4/15", "1/3", "2/9", "2/5"], "answer": 0, "why": "4/6 · 2/5 = 8/30 = 4/15.", "hint": "İlk çekilişten sonra torbada 5 top kalır." },
+  { "prompt": "A ve B olaylarının bağımsız olması ne demektir?", "options": ["P(A ∩ B) = 0", "P(A | B) = P(B | A)", "P(A) + P(B) = 1", "P(A | B) = P(A)"], "answer": 3, "why": "B'yi bilmek A'nın olasılığını değiştirmiyorsa olaylar bağımsızdır.", "hint": "Bağımsızlık \"bilgi bir şey değiştirmiyor\" demektir." }
+ ]
+}

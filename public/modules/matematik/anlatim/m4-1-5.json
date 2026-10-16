@@ -1,0 +1,260 @@
+{
+ "id": "m4-1-5",
+ "baslik": "Doğal Sayılarla Bölme İşlemi",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.1.5.1",
+  "M.4.1.5.2",
+  "M.4.1.5.3",
+  "M.4.1.5.4",
+  "M.4.1.5.5",
+  "M.4.1.5.6",
+  "M.4.1.5.7",
+  "M.4.1.5.8"
+ ],
+ "sure": 18,
+ "ozet": "Bölmeyi eşit paylaştırma olarak modelleyecek, bölünen, bölen, bölüm ve kalan arasındaki ilişkiyi kuracak, uzun bölme algoritmasını adım adım uygulayacak ve eşitliğin iki tarafını dengeleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bölme: eşit paylaştırma",
+   "govde": "Bölme, bir çokluğu **eş gruplara ayırmaktır**. 23 cevizi 4 çocuğa eşit paylaştırırsak her çocuk 5 ceviz alır, 3 ceviz artar.\n\n23 ÷ 4 işleminde 23 **bölünen**, 4 **bölen**, 5 **bölüm**, 3 **kalan**dır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paylaştırarak böl",
+   "aciklama": "Nesneleri gruplara birer birer dağıt. Kaydırıcılarla bölüneni ve böleni değiştirebilirsin.",
+   "sim": {
+    "kind": "c-paylastir",
+    "bolunen": 23,
+    "bolen": 4,
+    "ayar": true,
+    "maxBolunen": 40
+   },
+   "gorev": {
+    "metin": "Bölüneni 30, böleni 7 yap ve hepsini dağıt.",
+    "check": {
+     "all": [
+      {
+       "key": "bolunen",
+       "eq": 30
+      },
+      {
+       "key": "bolen",
+       "eq": 7
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "30 ÷ 7: her grupta 4 olur, 2 artar. 30 = 7 × 4 + 2.",
+    "Kalan her zaman bölenden küçüktür. Kalan 7 olsaydı her gruba bir tane daha verebilirdik."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bölme işleminin elemanları",
+   "govde": "**Bölünen = Bölen × Bölüm + Kalan**\n\nKalan, bölenden **küçük** olmalıdır. Kalan 0 ise bölme **tam bölünür**.\n\nBu eşitlik bölmenin sağlamasıdır: 23 = 4 × 5 + 3."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Uzun bölme · Bir basamaklı bölen",
+   "aciklama": "473 ÷ 6 işlemini adım adım izle. Her adımda dört iş yaparız: böl, çarp, çıkar, aşağı indir.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "÷",
+    "a": 473,
+    "b": 6
+   },
+   "gorev": {
+    "metin": "İşlemi sonuna kadar izle.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "4'ün içinde 6 yok; bu yüzden ilk iki basamağa (47) bakıyoruz.",
+    "Bölüm iki basamaklı çıktı, çünkü ilk parça iki basamaklıydı."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Uzun bölme · İki basamaklı bölen",
+   "aciklama": "936 ÷ 24 işlemini izle. İki basamaklı bölende tahmin işe yarar: 93 içinde 24 kaç kez var? 24'ü 20 gibi düşünüp dene.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "÷",
+    "a": 936,
+    "b": 24
+   },
+   "gorev": {
+    "metin": "İşlemi sonuna kadar izle.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "3 × 24 = 72, 4 × 24 = 96 > 93; bu yüzden bölüme 3 yazılır.",
+    "Kalan 0: 936, 24'e tam bölünür."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "10, 100 ve 1000'e zihinden bölme",
+   "govde": "Son üç basamağı sıfır olan bir sayıyı:\n\n- 10'a bölerken sağdan **bir** sıfır,\n- 100'e bölerken **iki** sıfır,\n- 1000'e bölerken **üç** sıfır sileriz.\n\n45 000 ÷ 10 = 4 500, 45 000 ÷ 100 = 450, 45 000 ÷ 1000 = 45."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Çarpma ile bölmenin ilişkisi",
+   "govde": "Çarpma ve bölme birbirinin **tersidir**. 6 × 8 = 48 ise 48 ÷ 6 = 8 ve 48 ÷ 8 = 6'dır.\n\nAlan modelinde: alanı 48 olan ve 6 satırdan oluşan bir dikdörtgenin kaç sütunu vardır? Bu soru 48 ÷ 6 sorusudur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölmeyi çarpmayla bul",
+   "aciklama": "Satır sayısını 6'da tut, sütun sayısını değiştir.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 6,
+    "cols": 1,
+    "max": 12
+   },
+   "gorev": {
+    "metin": "Alanı 48 birimkare olan, 6 satırlı dikdörtgeni yap.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 6
+      },
+      {
+       "key": "area",
+       "eq": 48
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kaç sütun gerekti? Bu sayı 48 ÷ 6'nın sonucudur.",
+    "Aynı dikdörtgen 8 satır, 6 sütun da olabilirdi: 48 ÷ 8 = 6."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Eşitliğin iki tarafı",
+   "govde": "Eşittir işareti \"sonuç budur\" demek değildir; **iki tarafın aynı değerde olduğunu** söyler. 8 + 5 = ? + 4 ifadesinde sol taraf 13'tür; sağ tarafın da 13 olması için ? yerine 9 gelmelidir.\n\nEşit olmayan iki ifadeyi eşitlemek için birine ekleme ya da çıkarma yaparız: 8 + 5 ≠ 12 − 3, çünkü 13 ≠ 9. Sağ tarafa 4 eklersek ya da sol taraftan 4 çıkarırsak eşitlik sağlanır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşitlik terazisi",
+   "aciklama": "Sol kefede 8 ve 5, sağ kefede 12 ve bir ? kutusu var. Kaydırıcı ? kutusunun değerini değiştirir.",
+   "sim": {
+    "kind": "c-terazi-sayi",
+    "sol": [
+     8,
+     5
+    ],
+    "sag": [
+     12
+    ],
+    "ayar": "sag",
+    "deger": 0,
+    "min": 0,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeye getir.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sol taraf 13. Sağ tarafta 12 var; 13'e ulaşmak için ? kaç olmalı?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Bölme",
+   "soru": "4 728 ÷ 8 işlemini yapalım.",
+   "cozum": [
+    "4'ün içinde 8 yok; 47'ye bakarız: 47 içinde 8, 5 kez var. 5 × 8 = 40, 47 − 40 = 7.",
+    "2'yi indir: 72 içinde 8, 9 kez var. 9 × 8 = 72, kalan 0.",
+    "8'i indir: 8 içinde 8, 1 kez var. Kalan 0.",
+    "Sağlama: 8 × 591 = 4 728."
+   ],
+   "sonuc": "4 728 ÷ 8 = 591."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem ve tahmin",
+   "soru": "345 öğrenci 15 kişilik gruplara ayrılacak. Kaç grup oluşur? 387 ÷ 4 işleminin sonucunu da önce tahmin edelim.",
+   "cozum": [
+    "345 ÷ 15: 34 içinde 15, 2 kez (30), kalan 4; 5'i indir: 45 içinde 15, 3 kez. Bölüm 23.",
+    "Sağlama: 15 × 23 = 345.",
+    "387 ÷ 4 için tahmin: 400 ÷ 4 = 100. Gerçek sonuç: bölüm 96, kalan 3."
+   ],
+   "sonuc": "23 grup oluşur; 387 ÷ 4 tahmini 100, sonucu 96 (kalan 3)."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Uzun bölmede bir basamak indirildiğinde sayı bölenden küçükse bölüme **0 yazmayı** unutmak sık yapılır. 612 ÷ 6 işleminde 1'in içinde 6 olmadığı için bölüme 0 yazılmalıdır; sonuç 12 değil **102**'dir.\n\nSağlama yaparak hatayı yakalarsın: 6 × 12 = 72, 612 değil."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "835 ÷ 5 işleminin sonucu kaçtır?",
+   "options": [
+    "157",
+    "167",
+    "177",
+    "1 670"
+   ],
+   "answer": 1,
+   "why": "8 içinde 5 bir kez (kalan 3), 33 içinde 6 kez (kalan 3), 35 içinde 7 kez: 167.",
+   "hint": "Böl, çarp, çıkar, indir adımlarını sırayla uygula."
+  },
+  {
+   "prompt": "Bir bölme işleminde bölen 9, bölüm 14 ve kalan 5'tir. Bölünen kaçtır?",
+   "options": [
+    "126",
+    "135",
+    "131",
+    "140"
+   ],
+   "answer": 2,
+   "why": "Bölünen = 9 × 14 + 5 = 126 + 5 = 131.",
+   "hint": "Bölünen = Bölen × Bölüm + Kalan."
+  },
+  {
+   "prompt": "72 000 ÷ 100 işleminin sonucu nedir?",
+   "options": [
+    "720",
+    "72",
+    "7 200",
+    "72 000"
+   ],
+   "answer": 0,
+   "why": "100'e bölerken sağdan iki sıfır silinir: 720.",
+   "hint": "100'de kaç sıfır var?"
+  },
+  {
+   "prompt": "Bir bölme işleminde bölen 7 ise kalan en çok kaç olabilir?",
+   "options": [
+    "7",
+    "8",
+    "0",
+    "6"
+   ],
+   "answer": 3,
+   "why": "Kalan bölenden küçük olmalı; 7'den küçük en büyük doğal sayı 6.",
+   "hint": "Kalan bölene eşit olursa ne olur?"
+  }
+ ]
+}

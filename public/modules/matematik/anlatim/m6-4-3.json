@@ -1,0 +1,191 @@
+{
+ "id": "m6-4-3",
+ "baslik": "Yamuk, Paralelkenar, Eşkenar Dörtgen, Dikdörtgen ve Karenin Kenar, Açı ve Köşegen Özellikleri",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.3.3",
+  "MAT.6.3.4"
+ ],
+ "sure": 16,
+ "ozet": "Dörtgenleri kenar, açı ve köşegen özellikleriyle tanıyacak; köşegenleri birbirini ortalayan dörtgenlerin paralelkenar olduğunu keşfedecek ve açı problemlerini çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dörtgenler ailesi",
+   "govde": "Dört kenarlı kapalı şekillere **dörtgen** denir. Bir dörtgenin iç açıları toplamı **360°**'dir (bir köşegen dörtgeni iki üçgene böler: 2 · 180°).\n\nKarşılıklı köşeleri birleştiren doğru parçalarına **köşegen** denir. Her dörtgenin iki köşegeni vardır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Özellikler tablosu",
+   "govde": "- **Yamuk:** en az bir çift karşılıklı kenarı paraleldir. Aynı yan kenara komşu iki açının toplamı 180°'dir.\n- **Paralelkenar:** karşılıklı kenarlar paralel ve eş; karşılıklı açılar eş; komşu açılar toplamı 180°; **köşegenler birbirini ortalar**.\n- **Dikdörtgen:** bütün açıları 90° olan paralelkenar; **köşegenleri eş**.\n- **Eşkenar dörtgen:** bütün kenarları eş paralelkenar; **köşegenleri dik** kesişir ve köşe açılarını ikiye böler.\n- **Kare:** hem dikdörtgen hem eşkenar dörtgen; köşegenleri eş ve dik."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşegenlerden dörtgen kur",
+   "aciklama": "İki köşegen O noktasında kesişiyor. Köşegenlerin uzunluğunu, aralarındaki açıyı ve O'nun yerini değiştir; oluşan dörtgenin adı ve özellikleri yanda.",
+   "sim": {
+    "kind": "d-kosegen",
+    "e": 8,
+    "f": 6,
+    "aci": 60,
+    "k": 5
+   },
+   "gorev": {
+    "metin": "Köşegenleri eşit yaparak bir dikdörtgen elde et.",
+    "check": {
+     "key": "tur",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "O noktasını ortadan kaydır: köşegenler birbirini ortalamayınca karşılıklı kenarlar eşitliğini kaybeder.",
+    "Açıyı 90° yap ve köşegenleri farklı bırak: hangi dörtgen oldu?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşkenar dörtgeni bul",
+   "aciklama": "Bu kez O noktası ortada değil.",
+   "sim": {
+    "kind": "d-kosegen",
+    "e": 10,
+    "f": 6,
+    "aci": 50,
+    "k": 3
+   },
+   "gorev": {
+    "metin": "Köşegenler birbirini ortalasın ve dik kesişsin; eşkenar dörtgen elde et.",
+    "check": {
+     "key": "tur",
+     "eq": 3
+    }
+   },
+   "dene": [
+    "Eşkenar dörtgende dört kenar da eşit çıkıyor mu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Köşegenlerle tanıma",
+   "govde": "Köşegenleri **birbirini ortalayan** her dörtgen bir **paralelkenardır**. Buna ek olarak:\n\n- Köşegenler eşse → dikdörtgen\n- Köşegenler dikse → eşkenar dörtgen\n- Köşegenler hem eş hem dikse → kare"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yamukta açılar",
+   "aciklama": "Bu yamuğun alt ve üst kenarları paralel. Köşeleri sürükleyip açılara bak.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      2,
+      4
+     ]
+    ],
+    "angles": true
+   },
+   "dene": [
+    "Sol yan kenara komşu iki açının toplamı kaç? Sağ yan kenar için de bak.",
+    "Dört açının toplamı her zaman 360°."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir paralelkenarın bir açısı 65°'dir. Diğer açıları bulalım.",
+   "cozum": [
+    "Komşu açılar toplamı 180°: 180 − 65 = 115.",
+    "Karşılıklı açılar eş: 65° ve 115° karşılarında tekrar eder."
+   ],
+   "sonuc": "Açılar 65°, 115°, 65°, 115°."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "ABCD bir eşkenar dörtgen ve A açısı 70°'dir. [AC] köşegeni ile [AB] kenarı arasındaki açı kaç derecedir? Köşegenlerin kesişim noktası O ise ABO açısı kaç derecedir?",
+   "cozum": [
+    "Eşkenar dörtgende köşegen köşe açısını ikiye böler: 70 ÷ 2 = 35°.",
+    "Köşegenler dik kesişir: AOB açısı 90°.",
+    "ABO üçgeninde: 180 − 90 − 35 = 55."
+   ],
+   "sonuc": "35° ve 55°."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Merdiven korkuluğu",
+   "soru": "Bir merdiven korkuluğundaki ABCD yamuğunda AB ∥ DC'dir. A açısı 75° ise D açısı kaç derecedir?",
+   "cozum": [
+    "AB ∥ DC ve AD bu iki paralel kenarı kesen bir kenar.",
+    "A ve D aynı yan kenara (AD) komşu: karşı durumlu açılar, toplamları 180°.",
+    "D = 180 − 75 = 105."
+   ],
+   "sonuc": "D açısı 105°'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Her dikdörtgenin köşegenleri dik kesişir\" demek yanlıştır. Dikdörtgenin köşegenleri **eş**tir ama yalnız kare olduğunda dik kesişir. Simülasyonda köşegenleri eşit, açıyı 60° yap: köşegenler dik olmadığı hâlde dikdörtgen elde edersin."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Köşegenleri birbirini ortalayan ve eş uzunlukta olan dörtgen aşağıdakilerden hangisidir?",
+   "options": [
+    "Yamuk",
+    "Eşkenar dörtgen",
+    "Dikdörtgen",
+    "Herhangi bir dörtgen"
+   ],
+   "answer": 2,
+   "why": "Birbirini ortalayan köşegenler paralelkenar verir; eş köşegenli paralelkenar dikdörtgendir.",
+   "hint": "Önce köşegenleri birbirini ortalayan dörtgeni düşün."
+  },
+  {
+   "prompt": "ABCD paralelkenarında B açısı 3x + 10, D açısı x + 50 derecedir. B açısı kaç derecedir?",
+   "options": [
+    "20°",
+    "70°",
+    "110°",
+    "50°"
+   ],
+   "answer": 1,
+   "why": "Karşılıklı açılar eş: 3x + 10 = x + 50 → x = 20; B = 70°.",
+   "hint": "B ile D karşılıklı açılardır."
+  },
+  {
+   "prompt": "Bir dörtgenin üç açısı 80°, 95° ve 110° ise dördüncü açısı kaç derecedir?",
+   "options": [
+    "75°",
+    "85°",
+    "95°",
+    "65°"
+   ],
+   "answer": 0,
+   "why": "360 − 80 − 95 − 110 = 75.",
+   "hint": "Dörtgenin iç açıları toplamı 360°."
+  },
+  {
+   "prompt": "Köşegenleri dik kesişen paralelkenar hangisidir?",
+   "options": [
+    "Dikdörtgen",
+    "Yamuk",
+    "Her paralelkenar",
+    "Eşkenar dörtgen"
+   ],
+   "answer": 3,
+   "why": "Paralelkenarlar içinde köşegenleri dik olanlar eşkenar dörtgenlerdir (kare de bir eşkenar dörtgendir).",
+   "hint": "Simülasyonda açıyı 90° yaptığında hangi ad çıktı?"
+  }
+ ]
+}

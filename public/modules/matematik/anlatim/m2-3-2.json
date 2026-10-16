@@ -1,0 +1,151 @@
+{
+ "id": "m2-3-2",
+ "baslik": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.2.2"
+ ],
+ "sure": 14,
+ "ozet": "Sayıları en yakın onluğa yuvarlayarak sonucu tahmin edecek, önce onlukları sonra birlikleri ekleyip çıkararak zihinden işlem yapacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Önce onluklar",
+   "govde": "İki basamaklı sayıları zihinden toplarken sayıyı parçalara ayırırız:\n\n34 + 25 → önce 34'e **2 onluk** ekle: 44, 54. Sonra **5 birlik** ekle: 59.\n\nÇıkarmada da aynısı: 72 − 26 → 72 − 20 = 52, 52 − 6 = 46."
+  },
+  {
+   "tur": "sim",
+   "baslik": "34 + 25",
+   "aciklama": "Nokta 34'te. 10'luk ve 1'lik sekmelerle 25 ekle.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 100,
+    "start": 34,
+    "adimlar": [
+     10,
+     1
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "34 + 25'i sayı doğrusunda yap.",
+    "check": {
+     "key": "pos",
+     "eq": 59
+    }
+   },
+   "dene": [
+    "25 = 2 onluk ve 5 birlik.",
+    "Toplam 7 sekmede bitirebilirsin."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "72 − 26",
+   "aciklama": "Nokta 72'de. Bu kez geri sek.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 100,
+    "start": 72,
+    "adimlar": [
+     10,
+     1
+    ],
+    "ileri": false
+   },
+   "gorev": {
+    "metin": "72 − 26'yı sayı doğrusunda yap.",
+    "check": {
+     "key": "pos",
+     "eq": 46
+    }
+   },
+   "dene": [
+    "Önce 2 tane 10'luk geri sek, sonra 6 tane 1'lik."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yuvarlayarak tahmin",
+   "govde": "Sonucu önceden tahmin etmek için sayıları **en yakın onluğa** yuvarlarız:\n\n- 38, 40'a yakındır; 21, 20'ye yakındır.\n- 38 + 21 ≈ 40 + 20 = **60**. Gerçek sonuç 59, tahmine çok yakın.\n\nBirler basamağı 5 ya da daha büyükse yukarıdaki onluğa, 5'ten küçükse aşağıdaki onluğa yuvarlarız."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "47 + 32 işleminin sonucunu önce tahmin edelim, sonra bulalım.",
+   "cozum": [
+    "Tahmin: 47 ≈ 50, 32 ≈ 30. 50 + 30 = 80.",
+    "İşlem: 47 + 30 = 77, 77 + 2 = 79."
+   ],
+   "sonuc": "Tahmin **80**, sonuç **79**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kemal 63 − 28 işlemini 45 buldu. Tahminle kontrol edelim.",
+   "cozum": [
+    "Tahmin: 63 ≈ 60, 28 ≈ 30. 60 − 30 = 30.",
+    "45, 30'dan çok uzak; Kemal yanlış yapmış olabilir.",
+    "İşlem: 63 − 20 = 43, 43 − 8 = 35."
+   ],
+   "sonuc": "Doğru sonuç **35**; tahmin, hatayı yakalamamızı sağladı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Onlukları eklerken onlar basamağını yanlış artırmak sık bir hatadır: 34 + 20 işleminde 34'ün **onlar** basamağı 2 artar: 54. Birler basamağı değişmez; 36 değil."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "56 sayısı en yakın hangi onluğa yuvarlanır?",
+   "options": [
+    "50",
+    "55",
+    "60",
+    "65"
+   ],
+   "answer": 2,
+   "why": "Birler basamağı 6, yani 5'ten büyük; yukarı yuvarlanır: 60.",
+   "hint": "Birler basamağına bak."
+  },
+  {
+   "prompt": "29 + 42 işlemi için en iyi tahmin hangisidir?",
+   "options": [
+    "70",
+    "60",
+    "80",
+    "50"
+   ],
+   "answer": 0,
+   "why": "29 ≈ 30, 42 ≈ 40; 30 + 40 = 70.",
+   "hint": "Her sayıyı en yakın onluğa yuvarla."
+  },
+  {
+   "prompt": "45 + 30 = ?",
+   "options": [
+    "48",
+    "65",
+    "35",
+    "75"
+   ],
+   "answer": 3,
+   "why": "45'e 3 onluk ekle: 55, 65, 75.",
+   "hint": "Yalnız onlar basamağı değişir."
+  },
+  {
+   "prompt": "80 − 37 = ?",
+   "options": [
+    "53",
+    "43",
+    "47",
+    "57"
+   ],
+   "answer": 1,
+   "why": "80 − 30 = 50, 50 − 7 = 43.",
+   "hint": "Önce onlukları çıkar."
+  }
+ ]
+}

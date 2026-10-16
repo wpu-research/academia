@@ -1,0 +1,69 @@
+{
+ "id": "m8-4-1",
+ "baslik": "Veri Analizi",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.4.1.1", "M.8.4.1.2"],
+ "sure": 14,
+ "ders": "veri-ortalama",
+ "ozet": "Sütun, çizgi ve daire grafiklerini okuyacak, aynı veriyi bir grafikten diğerine dönüştürecek ve hangi grafiğin hangi soruya daha uygun olduğunu tartışacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Üç grafik, üç güçlü yan",
+   "govde": "- **Sütun grafiği:** kategorileri karşılaştırmak için. Hangisi en çok, hangisi en az, hemen görülür.\n- **Çizgi grafiği:** zamanla değişimi göstermek için. Artış ve azalışlar çizginin eğiminden okunur.\n- **Daire grafiği:** bir bütünün parçalara nasıl bölündüğünü göstermek için. Her dilim bütünün bir yüzdesidir.\n\nAynı grafikte en fazla üç veri grubu verilebilir; renkler bir açıklama (lejant) ile ayırt edilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki veri grubunu karşılaştır",
+   "aciklama": "İki kırtasiyenin dört aylık defter satışları. Sütun ve çizgi grafiği arasında geçiş yap.",
+   "sim": { "kind": "e-grafik-donustur", "labels": ["Eylül", "Ekim", "Kasım", "Aralık"], "seriler": [ { "ad": "A Kırtasiyesi", "values": [12, 15, 9, 18] }, { "ad": "B Kırtasiyesi", "values": [10, 14, 16, 12] } ], "max": 20, "turler": ["sutun", "cizgi"] },
+   "gorev": { "metin": "Grafiği çizgi grafiğine çevir.", "check": { "key": "tur", "eq": 1 } },
+   "dene": ["Hangi ayda B, A'yı geçmiş? Çizgilerin kesiştiği yerlere bak.", "Hangi kırtasiyenin satışları dört ayda daha dengeli?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Daire grafiğinde merkez açı",
+   "govde": "Daire grafiğinde bir dilimin merkez açısı, o kategorinin bütün içindeki payıyla orantılıdır:\n\n**merkez açı = (kategori değeri ÷ toplam) × 360°**\n\nTersinden: değer = (merkez açı ÷ 360°) × toplam. Örneğin toplam 30 kişiden 6'sı için 6/30 = %20, açı 72°."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sütundan daireye",
+   "aciklama": "Bir sınıfta 30 öğrencinin en sevdiği spor. Sütun grafiğinde değerleri sürükleyerek değiştirebilir, daire grafiğine geçince dilimlere bakabilirsin.",
+   "sim": { "kind": "e-grafik-donustur", "labels": ["Futbol", "Basketbol", "Voleybol", "Yüzme"], "values": [6, 9, 3, 12], "max": 20, "tur": "sutun" },
+   "gorev": { "metin": "Yüzme dilimini tam yarım daire (180°) yap ve daire grafiğinde gör.", "check": { "all": [ { "key": "tur", "eq": 2 }, { "key": "v3", "eq": 18 } ] } },
+   "dene": ["Yarım daire için Yüzme, diğer üçünün toplamına eşit olmalı: 6 + 9 + 3 = 18.", "Daire grafiğinde toplam kişi sayısını göremezsin; yalnız oranları görürsün."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "450 öğrencinin okula geliş biçimleri daire grafiğinde gösterilmiş. Otobüs diliminin merkez açısı 72°, yürüyerek gelenlerinki 144° ise kaç öğrenci otobüsle, kaç öğrenci yürüyerek geliyor?",
+   "cozum": [
+    "Otobüs: 72 ÷ 360 = 1/5. 450 · 1/5 = 90.",
+    "Yürüyerek: 144 ÷ 360 = 2/5. 450 · 2/5 = 180."
+   ],
+   "sonuc": "90 öğrenci otobüsle, 180 öğrenci yürüyerek geliyor."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: uygun grafik",
+   "soru": "Bir şehrin yıl boyunca aylık ortalama sıcaklıkları ile bir ailenin aylık bütçesinin harcama kalemlerine dağılımı gösterilecek. Hangi grafikler uygundur?",
+   "cozum": [
+    "Sıcaklıklar zamana bağlı değişiyor: çizgi grafiği değişimi en iyi gösterir.",
+    "Bütçe bir bütün ve kalemleri parçalar: daire grafiği her kalemin payını gösterir.",
+    "İki veri de sütun grafiğiyle gösterilebilir, ama değişim ve pay bu kadar kolay okunmaz."
+   ],
+   "sonuc": "Sıcaklık için çizgi, bütçe dağılımı için daire grafiği."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Daire grafiğinden doğrudan sayı okumaya çalışmak: toplam verilmeden yalnız oranlar bilinir.\n- Birbirinden bağımsız kategorileri çizgi grafiğiyle göstermek: çizgi, aradaki değerler varmış gibi bir izlenim verir.\n- Dikey ekseni 0'dan başlatmamak: farklar olduğundan büyük görünür."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir yıl boyunca aylık sıcaklık değişimini göstermek için en uygun grafik hangisidir?", "options": ["Daire grafiği", "Çizgi grafiği", "Sütun grafiği", "Hiçbiri"], "answer": 1, "why": "Zamana bağlı değişim çizgi grafiğiyle en iyi gösterilir.", "hint": "Artış ve azalışı en iyi hangi grafik gösterir?" },
+  { "prompt": "Toplam 360 kişiden 90'ını gösteren dilimin merkez açısı kaç derecedir?", "options": ["25°", "45°", "90°", "120°"], "answer": 2, "why": "90 ÷ 360 × 360° = 90°.", "hint": "Değer ÷ toplam × 360°." },
+  { "prompt": "Toplam 60 olan bir veride 120°'lik dilim kaç birimi gösterir?", "options": ["30", "40", "12", "20"], "answer": 3, "why": "120 ÷ 360 = 1/3; 60 · 1/3 = 20.", "hint": "Açıyı 360°'ye böl, toplamla çarp." },
+  { "prompt": "Bir bütünün parçalara dağılımını en iyi gösteren grafik hangisidir?", "options": ["Daire grafiği", "Çizgi grafiği", "Sıklık tablosu", "Hiçbiri"], "answer": 0, "why": "Daire grafiğinde her dilim bütünün bir payıdır.", "hint": "Pasta dilimlerini düşün." }
+ ]
+}

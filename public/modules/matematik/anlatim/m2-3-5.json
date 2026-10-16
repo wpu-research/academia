@@ -1,0 +1,167 @@
+{
+ "id": "m2-3-5",
+ "baslik": "Çarpma ve Bölme İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.2.5"
+ ],
+ "sure": 14,
+ "ozet": "İkiye katlama, ritmik sayma ve 10 ile çarpma gibi kısa yollarla zihinden çarpıp bölecek, sonucu önceden tahmin edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kısa yollar",
+   "govde": "- **Ritmik sayma**: 5 × 7 için 5'er say: 5, 10, 15, 20, 25, 30, 35.\n- **İkiye katlama**: 2 × 6 = 12 ise 4 × 6, bunun iki katı: 24.\n- **10 ile çarpma**: 10 × 4 = 40; 4 onluk demektir.\n- **Yer değiştirme**: 3 × 5 = 5 × 3. Kolay olanı seç."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dizilimi ikiye böl",
+   "aciklama": "4 sıra 5'er kare: 4 × 5. Üstteki 2 sıra ile alttaki 2 sıra aynı.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 2,
+    "cols": 5,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "4 × 5'lik dizilimi kur.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 4
+      },
+      {
+       "key": "cols",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 × 5 = 10. 4 sıra bunun iki katı.",
+    "Sıra sayısını 5 yapınca toplam kaç artar?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "5'er say",
+   "aciklama": "Her sekme 5 birim.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 50,
+    "adim": 5,
+    "geri": false
+   },
+   "gorev": {
+    "metin": "5 × 7'yi 5'er sayarak bul.",
+    "check": {
+     "all": [
+      {
+       "key": "pos",
+       "eq": 35
+      },
+      {
+       "key": "ileri",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "7 kez sekmen gerekiyor."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tahmin",
+   "govde": "Sonucu önceden kestirmek, bulduğun cevabı kontrol etmeye yarar:\n\n- 9 × 3 işleminde 9, 10'a yakındır. 10 × 3 = 30, sonuç 30'dan biraz az olmalı. (Gerçek: 27)\n- 21 ÷ 3: 3 × 7 = 21, sonuç 7. 3 × 10 = 30 olduğu için sonuç 10'dan küçük olmalıydı."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölmeyi çarpmayla düşün",
+   "aciklama": "20 kalem 4 kutuya paylaştırılıyor. Dağıtmadan önce sonucu tahmin et.",
+   "sim": {
+    "kind": "a-paylastir",
+    "toplam": 20,
+    "grup": 4,
+    "sabit": true
+   },
+   "gorev": {
+    "metin": "Kalemleri eşit dağıt.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "4 kere kaç 20 eder?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "6 × 4 işlemini ikiye katlamayla yapalım.",
+   "cozum": [
+    "3 × 4 = 12.",
+    "6, 3'ün iki katı; sonuç da iki katı.",
+    "12 + 12 = 24."
+   ],
+   "sonuc": "6 × 4 = **24**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "30 ÷ 10 = ? Zihinden bulalım.",
+   "cozum": [
+    "10 × ? = 30 diye düşün.",
+    "10 × 3 = 30."
+   ],
+   "sonuc": "30 ÷ 10 = **3**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Çarpma ile toplamayı karıştırmak sık bir hatadır: 4 × 5 = 9 değil, 20'dir. Tahmin bu hatayı yakalar: 4 tane 5 en az 10'dan büyük olmalı."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "2 × 7 = 14 ise 4 × 7 kaçtır?",
+   "options": [
+    "18",
+    "21",
+    "28",
+    "11"
+   ],
+   "answer": 2,
+   "why": "4, 2'nin iki katı: 14 + 14 = 28.",
+   "hint": "İkiye katla."
+  },
+  {
+   "prompt": "10 × 6 = ?",
+   "options": [
+    "16",
+    "60",
+    "106",
+    "66"
+   ],
+   "answer": 1,
+   "why": "10 × 6 = 6 onluk = 60.",
+   "hint": "10 ile çarpınca kaç onluk olur?"
+  },
+  {
+   "prompt": "8 × 3 için en iyi tahmin hangisidir?",
+   "options": [
+    "30'dan biraz az",
+    "Yaklaşık 11",
+    "100'den fazla",
+    "Yaklaşık 50"
+   ],
+   "answer": 0,
+   "why": "8, 10'a yakın; 10 × 3 = 30'dan biraz az. Gerçek sonuç 24.",
+   "hint": "8'i 10 gibi düşün."
+  }
+ ]
+}

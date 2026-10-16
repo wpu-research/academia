@@ -1,0 +1,165 @@
+{
+ "id": "m1-1-5",
+ "baslik": "Ritmik Sayma",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.5"
+ ],
+ "sure": 12,
+ "ozet": "Sayı doğrusunda eşit sekmelerle ileriye 2'şer, 5'er, 10'ar; geriye 1'er sayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ritmik sayma nedir?",
+   "govde": "Hep **aynı sayıda** atlayarak saymaya **ritmik sayma** denir. Bir kurbağa gibi düşün: her sekişi aynı uzunluktadır.\n\n- 2'şer: 2, 4, 6, 8, 10…\n- 5'er: 5, 10, 15, 20…\n- 10'ar: 10, 20, 30, 40…"
+  },
+  {
+   "tur": "sim",
+   "baslik": "2'şer say",
+   "aciklama": "Nokta 0'da. “İleri sek” her basışta 2 ilerler. Söylediğin sayılar altta yazar.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 20,
+    "adim": 2,
+    "geri": false
+   },
+   "gorev": {
+    "metin": "2'şer sayarak 20'ye ulaş.",
+    "check": {
+     "key": "pos",
+     "eq": 20
+    }
+   },
+   "dene": [
+    "Kaç sekmede 20'ye vardın?",
+    "Söylediğin sayıların hepsi çift sayıdır."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "100'e kadar 5'er ve 10'ar",
+   "govde": "10'ar sayarken her sekmede **bir onluk** ekleriz: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100.\n\n5'er sayarken sayılar hep **5** ya da **0** ile biter: 5, 10, 15, 20, 25…"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Büyük sekmeler",
+   "aciklama": "Sayı doğrusu 0'dan 100'e. Adımı 10 ya da 5 seç.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 100,
+    "adimlar": [
+     10,
+     5
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "5'er sayarak 35'e ulaş.",
+    "check": {
+     "all": [
+      {
+       "key": "pos",
+       "eq": 35
+      },
+      {
+       "key": "step",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce 10'ar sayıp 100'e git; kaç sekme sürdü?",
+    "Baştan başla, adımı 5 seç."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Geriye say",
+   "aciklama": "Bu kez 20'den başlayıp geriye 1'er sayıyoruz.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 20,
+    "start": 20,
+    "adim": 1,
+    "ileri": false
+   },
+   "gorev": {
+    "metin": "20'den geriye sayarak 12'ye gel.",
+    "check": {
+     "key": "pos",
+     "eq": 12
+    }
+   },
+   "dene": [
+    "Yirmi, on dokuz, on sekiz… diye sesli say."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "10'ar sayarken 40'tan sonra hangi iki sayı gelir?",
+   "cozum": [
+    "Her seferinde bir onluk ekle.",
+    "40 + 10 = 50, 50 + 10 = 60."
+   ],
+   "sonuc": "**50** ve **60** gelir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir eldiven çiftinde 2 eldiven var. 4 çiftte kaç eldiven var?",
+   "cozum": [
+    "2'şer say: 2, 4, 6, 8.",
+    "4 çift için 4 sayı söyledin."
+   ],
+   "sonuc": "**8** eldiven var."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Ritmik sayarken parmakla sayıp sekme sayısını karıştırmak sık görülür. 5'er sayarken “5, 6, 7…” diye birer birer devam etmek yanlıştır; her sekme 5 ilerler: 5, 10, 15."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "5'er sayalım: 15, 20, 25, ?",
+   "options": [
+    "26",
+    "35",
+    "30",
+    "40"
+   ],
+   "answer": 2,
+   "why": "25'ten 5 ilerleyince 30 olur.",
+   "hint": "Son sayıya 5 ekle."
+  },
+  {
+   "prompt": "10'ar sayalım: 30, 40, ?, 60",
+   "options": [
+    "50",
+    "45",
+    "41",
+    "70"
+   ],
+   "answer": 0,
+   "why": "40'tan sonra 50, sonra 60 gelir.",
+   "hint": "Her sayı bir onluk artıyor."
+  },
+  {
+   "prompt": "20'den geriye 1'er sayarken 17'den sonra hangi sayı gelir?",
+   "options": [
+    "18",
+    "15",
+    "19",
+    "16"
+   ],
+   "answer": 3,
+   "why": "Geriye sayınca sayılar birer azalır: 17'den sonra 16.",
+   "hint": "Geriye saymak, sayıyı küçültür."
+  }
+ ]
+}

@@ -1,0 +1,87 @@
+{
+ "id": "m9-2-2",
+ "baslik": "Mutlak Değer Fonksiyonu ve Nitel Özellikleri",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.2.2"],
+ "sure": 20,
+ "ders": "fonksiyon-donusumleri",
+ "ozet": "Mutlak değeri uzaklık olarak yorumlayacak, |g(x)| grafiğini doğrusal fonksiyonun grafiğinden elde edecek ve ±|ax + b| ± c biçimindeki fonksiyonların tepe noktası, en büyük ya da en küçük değeri, artan-azalan olduğu aralıkları ve sıfırlarını bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Mutlak değer: uzaklık",
+   "govde": "|x|, sayı doğrusunda x'in 0'a uzaklığıdır; bu yüzden hiçbir zaman negatif değildir.\n\n|x| = x (x ≥ 0 ise) ve |x| = −x (x < 0 ise)\n\n|x − 3|, x'in 3'e uzaklığıdır. m(x) = |x| grafiği tepe noktası (0, 0) olan bir V'dir: x < 0'da y = −x, x ≥ 0'da y = x doğrusunun parçaları."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Doğrusal fonksiyondan mutlak değere",
+   "govde": "g(x) = ax + b bir doğrusal fonksiyon olsun. m(x) = |g(x)|:\n\n- g(x) ≥ 0 olan yerlerde grafik değişmez.\n- g(x) < 0 olan yerlerde grafik x eksenine göre **yukarı katlanır**.\n\nKırılma (tepe) noktası g'nin sıfırıdır: x = −b/a. Kollardan birinin eğimi |a|, diğerininki −|a| olur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Doğruyu katla",
+   "aciklama": "Kesikli doğru içerideki g(x) = a(x − r) + k. Kalın çizgi m(x) = |g(x)|. Doğrunun x ekseninin altında kalan kısmının nereye gittiğine bak.",
+   "sim": { "kind": "e-dogru-donusum", "mutlak": true, "a": 1, "r": 0, "k": 0 },
+   "gorev": { "metin": "İçerideki doğru 2x − 4 olsun: m(x) = |2x − 4|.", "check": { "all": [ { "key": "egim", "eq": 2 }, { "key": "kesim", "eq": -4 } ] } },
+   "dene": ["Tepe noktası nerede? 2x − 4 = 0 ⇒ x = 2.", "a = −2 ve kesim 4 seçince m(x) = |−2x + 4| olur; grafik değişmez. Neden? |−u| = |u|."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "m(x) = a|x − h| + k biçimi",
+   "govde": "|ax + b| = |a| · |x + b/a| olduğundan ±|ax ± b| ± c biçimindeki her fonksiyon **m(x) = a|x − h| + k** biçiminde yazılabilir.\n\n- Tepe noktası **(h, k)**; simetri ekseni x = h.\n- a > 0: kollar yukarı; en küçük değer k; görüntü kümesi [k, ∞). x < h'de azalan, x > h'de artan.\n- a < 0: kollar aşağı; en büyük değer k; görüntü kümesi (−∞, k].\n- |a| büyüdükçe V daralır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tepe noktasını taşı",
+   "aciklama": "Gri eğri |x|, renkli eğri a|x − h| + k. Kaydırıcılarla a, h, k'yi değiştir.",
+   "sim": { "kind": "fonksiyon-grafigi", "g": "mutlak", "a": 1, "h": 0, "k": 0 },
+   "gorev": { "metin": "m(x) = −|x − 2| + 3 grafiğini oluştur.", "check": { "all": [ { "key": "a", "eq": -1 }, { "key": "h", "eq": 2 }, { "key": "k", "eq": 3 } ] } },
+   "dene": ["Bu fonksiyonun en büyük değeri kaç, x eksenini nerelerde kesiyor?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "m(x) = |2x − 6| + 1 fonksiyonunu inceleyelim.",
+   "cozum": [
+    "|2x − 6| = 2|x − 3| ⇒ m(x) = 2|x − 3| + 1.",
+    "Tepe noktası (3, 1), simetri ekseni x = 3.",
+    "a = 2 > 0: en küçük değer 1, görüntü kümesi [1, ∞).",
+    "x < 3 için azalan, x > 3 için artan.",
+    "En küçük değer 1 > 0 olduğundan x eksenini kesmez."
+   ],
+   "sonuc": "Tepe (3, 1); görüntü kümesi [1, ∞); sıfırı yok."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "En büyük değer ve sıfırlar",
+   "soru": "m(x) = −|x + 1| + 4 fonksiyonunun en büyük değerini, sıfırlarını ve pozitif olduğu aralığı bulalım.",
+   "cozum": [
+    "Tepe (−1, 4), a = −1 < 0: en büyük değer 4.",
+    "Sıfırlar: |x + 1| = 4 ⇒ x + 1 = 4 veya x + 1 = −4 ⇒ x = 3 veya x = −5.",
+    "Kollar aşağı olduğundan iki sıfırın arasında pozitif: (−5, 3)."
+   ],
+   "sonuc": "En büyük değer 4; sıfırlar −5 ve 3; m(x) > 0 ⇔ x ∈ (−5, 3)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: tolerans",
+   "soru": "Bir odanın sıcaklığı T °C ve hedef 22 °C. Sapma |T − 22| en fazla 3 olmalı. Kabul edilen sıcaklıklar hangileridir?",
+   "cozum": [
+    "|T − 22| ≤ 3 ⇔ T'nin 22'ye uzaklığı en fazla 3.",
+    "−3 ≤ T − 22 ≤ 3 ⇒ 19 ≤ T ≤ 25."
+   ],
+   "sonuc": "T ∈ [19, 25]"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- |a + b| = |a| + |b| sanmak: |3 + (−5)| = 2, ama 3 + 5 = 8.\n- m(x) = |x + 2| grafiğini sağa kaydırmak; tepe noktası x = −2'dedir.\n- |x| = −2 denklemini çözmeye çalışmak: mutlak değer negatif olamaz, çözüm kümesi ∅.\n- −|x| ile |−x|'i karıştırmak: |−x| = |x|, ama −|x| ≤ 0."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "m(x) = |x − 4| − 3 fonksiyonunun tepe noktası hangisidir?", "options": ["(−4, −3)", "(4, 3)", "(4, −3)", "(−3, 4)"], "answer": 2, "why": "a|x − h| + k biçiminde h = 4, k = −3.", "hint": "Mutlak değerin içini sıfır yapan x'i bul." },
+  { "prompt": "m(x) = −2|x| + 6 fonksiyonunun görüntü kümesi hangisidir?", "options": ["[6, ∞)", "(−∞, 6]", "ℝ", "[0, 6]"], "answer": 1, "why": "a < 0: kollar aşağı, en büyük değer 6.", "hint": "a'nın işareti kolların yönünü belirler." },
+  { "prompt": "|2x − 1| = 7 denkleminin çözüm kümesi hangisidir?", "options": ["{4}", "{−4, 3}", "∅", "{−3, 4}"], "answer": 3, "why": "2x − 1 = 7 ⇒ x = 4; 2x − 1 = −7 ⇒ x = −3.", "hint": "İçerisi 7 ya da −7 olabilir." },
+  { "prompt": "m(x) = |x + 1| + 2 için hangisi doğrudur?", "options": ["En küçük değeri 2'dir.", "Tepe noktası (1, 2)'dir.", "x > −1 için azalandır.", "Grafiği x eksenini keser."], "answer": 0, "why": "Tepe (−1, 2), a > 0; en küçük değer 2 olduğundan x eksenini kesmez.", "hint": "Önce tepe noktasını bul." }
+ ]
+}

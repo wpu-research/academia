@@ -1,0 +1,163 @@
+{
+ "id": "m2-3-1",
+ "baslik": "Toplama ve Çıkarma İşlemleriyle İlgili Problemler",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.2.1"
+ ],
+ "sure": 16,
+ "ozet": "Günlük yaşam problemlerini dört adımda çözeceğiz: anla, plan yap, çöz, kontrol et.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Problem çözme adımları",
+   "govde": "1. **Anla**: Ne biliniyor, ne soruluyor?\n2. **Plan yap**: Gruplar birleşiyor mu (toplama), bir kısım gidiyor ya da fark mı soruluyor (çıkarma)?\n3. **Çöz**: İşlemi yap.\n4. **Kontrol et**: Cevap mantıklı mı? Ters işlemle sağla."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kitaplar geldi",
+   "aciklama": "Okul kütüphanesinde 45 kitap vardı, 28 kitap daha geldi. Ekranda 45 var; gelen kitapları ekle.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 4,
+    "o": 5
+   },
+   "gorev": {
+    "metin": "Toplam kitap sayısını en çok 9 birlikle göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 73
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "28 = 2 onluk 8 birlik. Önce onlukları, sonra birlikleri ekle.",
+    "Birlikler 10'u geçince bir onluğa çevir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bozarak çıkar",
+   "aciklama": "Bir sepette 52 elma vardı, 17'si satıldı. Ekranda 52 var.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 5,
+    "o": 2
+   },
+   "gorev": {
+    "metin": "Kalan elmaları göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 35
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 birlikten 7 birlik çıkmaz. Bir onluğu 10 birliğe çevir.",
+    "Sonra 1 onluk ve 7 birlik çıkar."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Parça ve bütün",
+   "aciklama": "Bir otobüste 60 koltuk var; 25'i dolu. Çubuk 60'ı gösteriyor.",
+   "sim": {
+    "kind": "a-parca-butun",
+    "butun": 60,
+    "a": 0,
+    "maxButun": 60
+   },
+   "gorev": {
+    "metin": "Dolu koltukları birinci parça olarak göster.",
+    "check": {
+     "key": "a",
+     "eq": 25
+    }
+   },
+   "dene": [
+    "Boş koltuk sayısı yeşil parçadır. Hangi işlemle bulunur?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ali'nin 38 bilyesi var. Dedesi 24 bilye daha verdi. Ali'nin kaç bilyesi oldu?",
+   "cozum": [
+    "Anla: Bilyeler artıyor, toplam soruluyor.",
+    "Plan: Toplama: 38 + 24.",
+    "Çöz: 30 + 20 = 50, 8 + 4 = 12, 50 + 12 = 62.",
+    "Kontrol: 62 − 24 = 38. Doğru."
+   ],
+   "sonuc": "Ali'nin **62** bilyesi oldu."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kümeste 62 yumurta vardı. 15'i kullanıldı. Kaç yumurta kaldı?",
+   "cozum": [
+    "Anla: Yumurtalar azalıyor, kalan soruluyor.",
+    "Plan: Çıkarma: 62 − 15.",
+    "Çöz: 62 − 10 = 52, 52 − 5 = 47.",
+    "Kontrol: 47 + 15 = 62. Doğru."
+   ],
+   "sonuc": "**47** yumurta kaldı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Problemdeki “daha” sözcüğünü görünce hemen toplamak hata olabilir. “Ece'nin 40 kalemi var, Can'ın Ece'den 12 **daha az** kalemi var” problemi çıkarma ister: 40 − 12 = 28. Önce olayı anla."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir sınıfta 27 öğrenci var, 3 öğrenci daha geldi. Sınıfta kaç öğrenci oldu?",
+   "options": [
+    "24",
+    "30",
+    "33",
+    "57"
+   ],
+   "answer": 1,
+   "why": "27 + 3 = 30.",
+   "hint": "Öğrenci sayısı arttı mı?"
+  },
+  {
+   "prompt": "Bir pastanede 70 poğaça yapıldı, 45'i satıldı. Kaç poğaça kaldı?",
+   "options": [
+    "35",
+    "115",
+    "30",
+    "25"
+   ],
+   "answer": 3,
+   "why": "70 − 45 = 25.",
+   "hint": "Satılanlar bütünden çıkar."
+  },
+  {
+   "prompt": "Zeynep'in 50 TL'si var. 18 TL'lik bir kitap alırsa kaç TL'si kalır?",
+   "options": [
+    "32",
+    "68",
+    "42",
+    "38"
+   ],
+   "answer": 0,
+   "why": "50 − 18 = 32; kontrol: 32 + 18 = 50.",
+   "hint": "Kalan parayı bul."
+  }
+ ]
+}

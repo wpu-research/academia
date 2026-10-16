@@ -1,0 +1,245 @@
+{
+ "id": "m4-1-6",
+ "baslik": "Kesirler",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.1.6.1",
+  "M.4.1.6.2",
+  "M.4.1.6.3",
+  "M.4.1.6.4"
+ ],
+ "sure": 15,
+ "ders": "kesirler-sayi-dogrusu",
+ "ozet": "Basit, bileşik ve tam sayılı kesirleri modellerle tanıyacak, birim kesirleri ve paydaları eşit kesirleri karşılaştıracak, bir çokluğun belirtilen kesir kadarını bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kesir nedir?",
+   "govde": "Bir bütün **eş parçalara** bölündüğünde, alınan parçaları kesirle gösteririz. 3/4 kesrinde çizginin altındaki 4 **payda**dır: bütün 4 eş parçaya bölünmüştür. Çizginin üstündeki 3 **pay**dır: bu parçalardan 3'ü alınmıştır. Aradaki çizgiye **kesir çizgisi** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kesri boya",
+   "aciklama": "Çubuk 4 eş parçaya bölündü. Parçalara dokunarak boya.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 4,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Çubuğun 3/4'ünü boya.",
+    "check": {
+     "key": "shaded0",
+     "eq": 3
+    }
+   },
+   "dene": [
+    "Hangi parçaları boyadığın önemli değil, kaç parça boyadığın önemli."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Basit, bileşik ve tam sayılı kesir",
+   "govde": "- **Basit kesir:** Payı paydasından küçük kesir. Bir bütünden azdır: 3/5.\n- **Bileşik kesir:** Payı paydasına eşit ya da paydasından büyük kesir. Bir bütüne eşit ya da bütünden fazladır: 4/4, 7/4.\n- **Tam sayılı kesir:** Bir doğal sayı ve bir basit kesirle yazılır: 1 tam 3/4. Bu, 7/4 ile aynı miktardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bütünden fazlası",
+   "aciklama": "Her çubuk bir bütündür ve 4 eş parçaya bölündü. Üstteki çubuk tamamen dolu.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 4,
+      "shaded": 4,
+      "label": "4/4"
+     },
+     {
+      "n": 4,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "İki çubukla birlikte 7/4'ü göster.",
+    "check": {
+     "key": "shaded1",
+     "eq": 3
+    }
+   },
+   "dene": [
+    "Toplam 7 çeyrek: bir bütün (4 çeyrek) ve 3 çeyrek daha.",
+    "7/4 = 1 tam 3/4."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birim kesirleri karşılaştırma",
+   "govde": "Payı 1 olan kesirlere **birim kesir** denir: 1/2, 1/3, 1/8 gibi.\n\nAynı bütün daha çok parçaya bölündükçe parçalar küçülür. Bu yüzden birim kesirlerde **paydası büyük olan daha küçüktür**: 1/8 < 1/5 < 1/3.\n\nPaydaları eşit kesirlerde ise **payı büyük olan daha büyüktür**: 2/9 < 5/9 < 7/9."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birim kesirleri karşılaştır",
+   "aciklama": "Alttaki çubuk 1/8'i gösteriyor. Kaydırıcıyla üst çubuğun paydasını değiştir.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 2,
+      "shaded": 1
+     },
+     {
+      "n": 8,
+      "shaded": 1,
+      "label": "1/8"
+     }
+    ],
+    "slider": {
+     "min": 2,
+     "max": 10,
+     "label": "Üst çubuğun paydası"
+    }
+   },
+   "gorev": {
+    "metin": "Üst çubuğu 1/8'den büyük, 1/4'ten küçük bir birim kesir yap.",
+    "check": {
+     "all": [
+      {
+       "key": "n0",
+       "gte": 5
+      },
+      {
+       "key": "n0",
+       "lt": 8
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1/4'ten küçük olması için paydası 4'ten büyük olmalı; 1/8'den büyük olması için 8'den küçük.",
+    "1/5, 1/6 ve 1/7 bu koşula uyar."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Bir çokluğun kesri kadarı",
+   "govde": "12 elmanın 3/4'ünü bulmak için elmaları **4 eş gruba** ayırırız: her grupta 12 ÷ 4 = 3 elma olur. 3/4'ü, bu gruplardan 3 tanesidir: 3 × 3 = 9 elma."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grupları seç",
+   "aciklama": "12 nesne 4 eş gruba ayrıldı. Gruplara dokunarak seç. Üstteki düğmelerle grup sayısını değiştirebilirsin.",
+   "sim": {
+    "kind": "c-cokluk",
+    "toplam": 12,
+    "payda": 4,
+    "paydalar": [
+     2,
+     3,
+     4,
+     6
+    ]
+   },
+   "gorev": {
+    "metin": "12'nin 3/4'ünü göster.",
+    "check": {
+     "all": [
+      {
+       "key": "payda",
+       "eq": 4
+      },
+      {
+       "key": "secili",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "12'nin 2/3'ünü de dene: 3 eş grup, 2 grup seç. Sonuç 8.",
+    "12'nin 4/4'ü 12'nin tamamıdır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Çokluğun kesri",
+   "soru": "20 cevizin 2/5'i kaç cevizdir?",
+   "cozum": [
+    "Payda 5: 20 cevizi 5 eş gruba ayır: 20 ÷ 5 = 4.",
+    "Pay 2: iki grubu al: 2 × 4 = 8."
+   ],
+   "sonuc": "20 cevizin 2/5'i 8 cevizdir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Sıralama",
+   "soru": "5/9, 2/9 ve 7/9 kesirlerini küçükten büyüğe sıralayalım.",
+   "cozum": [
+    "Paydalar eşit: parçaların büyüklüğü aynı.",
+    "Paylar 2 < 5 < 7."
+   ],
+   "sonuc": "2/9 < 5/9 < 7/9."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"8, 3'ten büyük; o hâlde 1/8 de 1/3'ten büyük\" demek yanlıştır. Payda, bütünün kaç parçaya bölündüğünü gösterir; payda büyüdükçe **her parça küçülür**. Bu yüzden 1/8 < 1/3."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi bileşik kesirdir?",
+   "options": [
+    "3/5",
+    "9/7",
+    "1/4",
+    "5/8"
+   ],
+   "answer": 1,
+   "why": "9/7'de pay paydadan büyük; bileşik kesirdir.",
+   "hint": "Payı paydasına eşit ya da paydasından büyük olan kesri ara."
+  },
+  {
+   "prompt": "Hangi sıralama doğrudur?",
+   "options": [
+    "1/3 < 1/5 < 1/9",
+    "1/5 < 1/3 < 1/9",
+    "1/9 < 1/5 < 1/3",
+    "1/9 < 1/3 < 1/5"
+   ],
+   "answer": 2,
+   "why": "Birim kesirlerde paydası büyük olan küçüktür: 1/9 < 1/5 < 1/3.",
+   "hint": "Bütünü 9 parçaya bölersen parçalar mı büyür, küçülür mü?"
+  },
+  {
+   "prompt": "24'ün 3/8'i kaçtır?",
+   "options": [
+    "8",
+    "9",
+    "3",
+    "21"
+   ],
+   "answer": 1,
+   "why": "24 ÷ 8 = 3, 3 × 3 = 9.",
+   "hint": "Önce 24'ü 8 eş gruba ayır."
+  },
+  {
+   "prompt": "Her biri 4 eş parçaya bölünmüş iki bütünden toplam 6 parça boyandı. Boyalı kısım hangi kesirle gösterilir?",
+   "options": [
+    "6/4",
+    "6/8",
+    "2/6",
+    "4/6"
+   ],
+   "answer": 0,
+   "why": "Her parça 1/4'tür; 6 tanesi 6/4 = 1 tam 2/4 eder.",
+   "hint": "Bir parçanın kesri nedir? Payda bir bütünün kaç parçaya bölündüğünü gösterir."
+  }
+ ]
+}

@@ -1,0 +1,150 @@
+{
+ "id": "m1-1-2",
+ "baslik": "Sayıları Çözümleme",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.2"
+ ],
+ "sure": 12,
+ "ders": "basamak-degeri",
+ "ozet": "Bir grubu sayarken onu parçalara ayırmayı öğreneceğiz: 8 = 5 ve 3, 14 = 10 ve 4.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Gruplayarak saymak",
+   "govde": "Nesneler dağınık olunca saymak zorlaşır. Onları **düzenli** dizersek kolayca sayarız. Onluk çerçevede üst sıra 5 tanedir. 5'i görünce bir daha saymaya gerek kalmaz.\n\nBir sayıyı iki parçaya ayırabiliriz. Buna **çözümleme** denir. 8 sayacı 5 kahverengi ve 3 yeşil olarak görebiliriz: **8 = 5 + 3**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir sayı, iki parça",
+   "aciklama": "Kahverengi ve yeşil sayaçları ayrı ayrı ekle ya da çıkar. Toplam hep altta yazar.",
+   "sim": {
+    "kind": "a-cerceve",
+    "renk2": true,
+    "a": 5,
+    "b": 3,
+    "max": 10,
+    "adlar": [
+     "Kahverengi",
+     "Yeşil"
+    ]
+   },
+   "gorev": {
+    "metin": "Toplam yine 8 olsun ama kahverengi sayaç 6 tane olsun.",
+    "check": {
+     "all": [
+      {
+       "key": "n",
+       "eq": 8
+      },
+      {
+       "key": "a",
+       "eq": 6
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Bir yeşili çıkar, bir kahverengi ekle.",
+    "8'i başka hangi parçalara ayırabilirsin? 4 ve 4, 7 ve 1…"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Aynı sayı, farklı parçalar",
+   "govde": "Bir sayı birçok farklı biçimde parçalanabilir. Hepsi aynı sayıdır:\n\n**8 = 7 + 1 = 6 + 2 = 5 + 3 = 4 + 4**\n\n10'dan büyük sayılarda bir parça hep **10** olabilir: 14 = 10 + 4, 19 = 10 + 9."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Onluk ve birlik",
+   "aciklama": "Her onluk çubuğu 10 birliktir. Ekranda 14 var: 1 onluk ve 4 birlik.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "t": 1,
+    "o": 4
+   },
+   "gorev": {
+    "metin": "17 sayısını 1 onluk ve 7 birlikle göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 17
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yalnız birlik eklemen yeter.",
+    "Yüzlük satırına bu konuda gerek yok."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir tabakta 13 ceviz var. Bunu 10 ve kaç diye söyleriz?",
+   "cozum": [
+    "13 = 10 + 3.",
+    "Yani bir onluk ve 3 birlik."
+   ],
+   "sonuc": "13 = **10 ve 3**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "9 bilyeyi iki kutuya koyacağız. Birinci kutuya 4 bilye koyarsak ikinci kutuya kaç bilye kalır?",
+   "cozum": [
+    "9'u 4 ve bir parça olarak düşün.",
+    "4'ten 9'a kadar say: 5, 6, 7, 8, 9. Beş sayı saydın."
+   ],
+   "sonuc": "İkinci kutuya **5** bilye kalır: 9 = 4 + 5."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Dağınık nesneleri sayarken aynı nesneyi iki kez saymak ya da birini atlamak sık yapılan bir hatadır. Saydığın nesneye dokun ya da işaretle; bitince bir daha say."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi 7 sayısının iki parçası değildir?",
+   "options": [
+    "5 ve 2",
+    "4 ve 3",
+    "6 ve 2",
+    "7 ve 0"
+   ],
+   "answer": 2,
+   "why": "6 ve 2 sekiz eder, yedi değil.",
+   "hint": "Her seçenekteki iki sayıyı birleştir."
+  },
+  {
+   "prompt": "15 = 10 + ?",
+   "options": [
+    "5",
+    "1",
+    "15",
+    "10"
+   ],
+   "answer": 0,
+   "why": "On beş, bir onluk ve 5 birliktir.",
+   "hint": "On beşte kaç birlik var?"
+  },
+  {
+   "prompt": "Onluk çerçevenin üst sırası dolu, altta 2 sayaç var. Kaç sayaç var?",
+   "options": [
+    "5",
+    "2",
+    "10",
+    "7"
+   ],
+   "answer": 3,
+   "why": "Üst sıra 5, alt sıra 2: 5 + 2 = 7.",
+   "hint": "Üst sırada kaç kare olduğunu hatırla."
+  }
+ ]
+}

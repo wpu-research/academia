@@ -1,0 +1,96 @@
+{
+ "id": "m11-3-6",
+ "baslik": "Üstel ve Logaritmik Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.6"],
+ "sure": 18,
+ "ozet": "Faiz, nüfus artışı, radyoaktif bozunma gibi gerçek durumları üstel modellerle kuracak; denklemleri tabanları eşitleyerek ya da logaritma alarak, eşitsizlikleri tabanın 1'den büyük ya da küçük olmasına dikkat ederek çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Çözüm yolları",
+   "govde": "- **Tabanları eşitle**: aᶠ⁽ˣ⁾ = aᵍ⁽ˣ⁾ ⇔ f(x) = g(x).\n- **Logaritma al**: aˣ = b ⇔ x = logₐ b; gerekirse log b / log a ile hesapla.\n- **Logaritmik denklem**: logₐ f(x) = c ⇔ f(x) = aᶜ; bulunan kökün f(x) > 0 şartını sağladığını kontrol et.\n- **Eşitsizlik**: a > 1 ise aˣ ve logₐ x artandır, eşitsizlik yön değiştirmez. **0 < a < 1 ise yön değişir.**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Taban 1'den büyükken",
+   "aciklama": "y = 2ˣ ve y = c. Turuncu nokta denklemin çözümü, yeşil bölge 2ˣ > c'nin çözümü.",
+   "sim": { "kind": "f-fonk", "f": "ustel", "b": 2, "c": 1, "sliders": ["c"], "tools": ["cizgi", "asimptot"], "parent": false },
+   "gorev": { "metin": "c'yi 4 yap: 2ˣ = 4 → x = 2 ve 2ˣ > 4 → x > 2.", "check": { "key": "c", "eq": 4 } },
+   "dene": ["c ≤ 0 iken çözüm yok, ama 2ˣ > c her x için doğru.", "Yeşil bölge noktanın sağında: artan fonksiyonda eşitsizlik yön değiştirmez."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Taban 1'den küçükken",
+   "aciklama": "y = (1/2)ˣ ve y = c.",
+   "sim": { "kind": "f-fonk", "f": "ustel", "b": 0.5, "c": 1, "sliders": ["c"], "tools": ["cizgi", "asimptot"], "parent": false },
+   "gorev": { "metin": "c'yi 4 yap ve (1/2)ˣ > 4 eşitsizliğinin çözümünü oku.", "check": { "key": "c", "eq": 4 } },
+   "dene": ["Çözüm x < −2: yeşil bölge bu kez noktanın solunda.", "(1/2)ˣ > (1/2)⁻² → x < −2: taban 1'den küçükken eşitsizlik yön değiştirir."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: denklem ve eşitsizlik",
+   "soru": "(a) 2^(x + 1) = 16, (b) 3ˣ = 7, (c) log₂(x − 1) < 3 çözelim.",
+   "cozum": [
+    "(a) 16 = 2⁴ → x + 1 = 4 → x = 3.",
+    "(b) x = log₃ 7 = log 7 / log 3 ≈ 1,77.",
+    "(c) Şart: x − 1 > 0 → x > 1. Taban 2 > 1: x − 1 < 2³ = 8 → x < 9.",
+    "İkisini birleştir: 1 < x < 9."
+   ],
+   "sonuc": "(a) 3, (b) log₃ 7, (c) (1, 9)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: bileşik faiz",
+   "soru": "10 000 TL, yıllık %20 bileşik faizle bankaya yatırılıyor. Para en az kaç tam yılda iki katını aşar?",
+   "cozum": [
+    "t yıl sonra: A(t) = 10 000 · 1,2ᵗ.",
+    "1,2ᵗ > 2 → t > log 2 / log 1,2 ≈ 3,80.",
+    "Tam yıl: t = 4. Kontrol: 1,2³ = 1,728 (17 280 TL), 1,2⁴ = 2,0736 (20 736 TL)."
+   ],
+   "sonuc": "4 yıl."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: yarı ömür",
+   "soru": "Yarı ömrü 5 yıl olan radyoaktif bir maddenin 80 gramı var. Kaç yıl sonra 10 grama iner?",
+   "cozum": [
+    "m(t) = 80 · (1/2)^(t/5).",
+    "80 · (1/2)^(t/5) = 10 → (1/2)^(t/5) = 1/8 = (1/2)³.",
+    "t/5 = 3 → t = 15."
+   ],
+   "sonuc": "15 yıl."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Logaritmik model",
+   "aciklama": "y = log₂(x − 1) ve y = c. Yeşil bölge log₂(x − 1) > c.",
+   "sim": { "kind": "f-fonk", "f": "log", "b": 2, "h": 1, "c": 0, "sliders": ["c"], "tools": ["cizgi", "asimptot"], "parent": false },
+   "gorev": { "metin": "c'yi 2 yap ve log₂(x − 1) = 2 denkleminin çözümünü oku.", "check": { "key": "c", "eq": 2 } },
+   "dene": ["Çözüm x = 1 + 2² = 5.", "Eşitsizliğin çözümü x > 5; x ≤ 1 hiç tanımlı değil."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı: nüfus",
+   "soru": "2 milyon nüfuslu bir şehrin nüfusu her yıl %2 artıyor. Nüfus kaç tam yıl sonra ilk kez 3 milyonu aşar? (log 1,5 ≈ 0,1761, log 1,02 ≈ 0,0086 alınabilir.)",
+   "cozum": [
+    "P(t) = 2 · 1,02ᵗ (milyon).",
+    "2 · 1,02ᵗ > 3 → 1,02ᵗ > 1,5 → t > log 1,5 / log 1,02.",
+    "0,1761 / 0,0086 ≈ 20,5.",
+    "Kontrol: 2 · 1,02²⁰ ≈ 2,97, 2 · 1,02²¹ ≈ 3,03."
+   ],
+   "sonuc": "21 yıl sonra."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Tabanı 1'den küçük eşitsizliklerde yönü çevirmeyi unutmak: (1/3)ˣ > 9 ⇔ (1/3)ˣ > (1/3)⁻² ⇔ x < −2. Logaritmik denklemlerde de bulunan kökün logaritmanın içini pozitif yapıp yapmadığı kontrol edilmezse yabancı kök kabul edilmiş olur."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "3^(2x − 1) = 27 denkleminin çözümü nedir?", "options": ["1", "2", "3", "4"], "answer": 1, "why": "27 = 3³ → 2x − 1 = 3 → x = 2.", "hint": "27'yi 3'ün kuvveti olarak yaz." },
+  { "prompt": "(1/3)ˣ > 9 eşitsizliğinin çözümü nedir?", "options": ["x > 2", "x > −2", "x < −2", "x < 2"], "answer": 2, "why": "9 = (1/3)⁻²; taban 1'den küçük, yön değişir: x < −2.", "hint": "Taban 1'den küçükse eşitsizlik yön değiştirir." },
+  { "prompt": "log₂(x + 1) ≤ 3 eşitsizliğinin çözümü nedir?", "options": ["x ≤ 7", "x ≤ 8", "0 < x ≤ 7", "−1 < x ≤ 7"], "answer": 3, "why": "x + 1 > 0 ve x + 1 ≤ 8 → −1 < x ≤ 7.", "hint": "Tanım şartını unutma." },
+  { "prompt": "Yarı ömrü 4 saat olan bir ilacın vücuttaki 64 mg'lık miktarı 12 saat sonra kaç mg olur?", "options": ["8 mg", "16 mg", "4 mg", "21 mg"], "answer": 0, "why": "12 saat = 3 yarı ömür: 64 · (1/2)³ = 8.", "hint": "Kaç yarı ömür geçti?" }
+ ]
+}

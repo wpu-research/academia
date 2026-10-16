@@ -1,0 +1,149 @@
+{
+ "id": "m2-2-5",
+ "baslik": "Uzunluk ve Kütle Ölçmede Tahmin",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.11"
+ ],
+ "sure": 12,
+ "ozet": "Bildiğimiz örnek uzunluk ve kütleleri kullanarak santimetre, metre ve kilogram cinsinden tahmin yapıp ölçerek kontrol edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Akılda tutulacak örnekler",
+   "govde": "Tahmin yaparken bildiğimiz örneklerden yararlanırız:\n\n- Serçe parmağının genişliği yaklaşık **1 cm**.\n- Bir kurşun kalem aşağı yukarı **15-20 cm**.\n- Bir kapının boyu yaklaşık **2 m**.\n- Ağzına kadar dolu 1 litrelik su şişesi yaklaşık **1 kg**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Önce tahmin, sonra ölç",
+   "aciklama": "Şeridin kaç cm olduğunu önce tahmin et. Sonra şeridi sıfıra getirip ölç.",
+   "sim": {
+    "kind": "olcme",
+    "length": 9,
+    "start": 3
+   },
+   "gorev": {
+    "metin": "Şeridi cetvelin 0 çizgisine getir ve boyunu oku.",
+    "check": {
+     "key": "start",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Tahminin ile ölçüm arasında kaç cm fark var?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tahmini kontrol et",
+   "govde": "1. Önce birimi seç: kısa şeyler cm, uzun şeyler m, kütle kg.\n2. Bildiğin bir örnekle karşılaştırarak tahmin et.\n3. Ölçerek kontrol et.\n4. Tahminin ile ölçümün farkına bak. Fark küçükse iyi bir tahmin yapmışsındır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kaç kilogram?",
+   "aciklama": "Bir nesne seç, kaç kg olduğunu tahmin et, sonra tart.",
+   "sim": {
+    "kind": "a-kefe",
+    "nesneler": [
+     {
+      "ad": "Un",
+      "w": 2
+     },
+     {
+      "ad": "Karpuz",
+      "w": 6
+     },
+     {
+      "ad": "Çanta",
+      "w": 3
+     }
+    ],
+    "birim": "kg",
+    "max": 10,
+    "tahmin": true
+   },
+   "gorev": {
+    "metin": "Karpuzun kütlesini ölç.",
+    "check": {
+     "all": [
+      {
+       "key": "nesne",
+       "eq": 1
+      },
+      {
+       "key": "denge",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Tahminini kaydırıcıyla seçmeyi unutma.",
+    "Nesne değiştirince ağırlıklar sıfırlanır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir sınıf tahtasının uzunluğu için hangi tahmin daha akla yatkındır: 3 cm mi, 3 m mi?",
+   "cozum": [
+    "3 cm, bir parmak eklemi kadar kısadır.",
+    "Tahta bir kapıdan daha geniştir; birkaç metre olur."
+   ],
+   "sonuc": "**3 m** daha akla yatkındır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kitap çantasının kütlesini Ece 5 kg, Can 20 kg tahmin etti. Tartınca 4 kg geldi. Kimin tahmini daha iyi?",
+   "cozum": [
+    "Ece: 5 − 4 = 1 kg fark.",
+    "Can: 20 − 4 = 16 kg fark."
+   ],
+   "sonuc": "**Ece**'nin tahmini daha iyi."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Tahmin yaparken birimi unutmak ya da yanlış birim seçmek sık bir hatadır. “Kapı 2 boyunda” eksiktir; “kapı yaklaşık **2 m**” denmelidir. 2 cm demek de çok yanlış bir tahmin olur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir silginin uzunluğu için en uygun tahmin hangisidir?",
+   "options": [
+    "4 m",
+    "40 m",
+    "4 cm",
+    "40 kg"
+   ],
+   "answer": 2,
+   "why": "Silgi küçüktür; birkaç santimetre gelir.",
+   "hint": "Kısa şeyler hangi birimle ölçülür?"
+  },
+  {
+   "prompt": "Bir okul kapısının boyu yaklaşık kaçtır?",
+   "options": [
+    "2 m",
+    "2 cm",
+    "20 m",
+    "2 kg"
+   ],
+   "answer": 0,
+   "why": "Kapılar yaklaşık 2 metredir.",
+   "hint": "Kendi boyunla karşılaştır."
+  },
+  {
+   "prompt": "Hangisinin kütlesi 1 kg'a en yakındır?",
+   "options": [
+    "Bir tüy",
+    "Bir araba",
+    "Bir ataş",
+    "Dolu 1 litrelik su şişesi"
+   ],
+   "answer": 3,
+   "why": "Dolu 1 litrelik su şişesi yaklaşık 1 kg gelir.",
+   "hint": "Örnekleri hatırla."
+  }
+ ]
+}

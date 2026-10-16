@@ -1,0 +1,147 @@
+{
+ "id": "m3-1-8",
+ "baslik": "Nesne Sayısını Tahmin Etme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.8"
+ ],
+ "sure": 10,
+ "ozet": "Çok sayıda nesneyi tek tek saymadan, küçük bir bölümü sayıp bütünle ilişkilendirerek 100'e kadar olan çoklukları tahmin edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Saymadan önce tahmin",
+   "govde": "Bir kavanozdaki bilyeleri ya da bahçedeki çiçekleri tek tek saymak uzun sürer. Bu durumda **tahmin** yaparız. Tahmin, gerçek sayıya yakın, mantıklı bir sayıdır; tam doğru olması gerekmez.\n\nİyi bir tahmin rastgele söylenmez. Bir **ilişkiden** yararlanılır: küçük bir bölümdeki nesneleri sayarız, bütünün bu bölümden kaç tane içerdiğine bakarız."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tahmin stratejisi",
+   "govde": "1. Çokluğu yaklaşık eşit bölümlere ayır.\n2. Bir bölümdeki nesneleri say.\n3. Bölüm sayısı kadar bu sayıyı topla (ya da ritmik say).\n4. Sonra say ve tahminini kontrol et: fark ne kadar az ise tahmin o kadar iyidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölümlerden tahmin et",
+   "aciklama": "Nesneler 6 eş bölüme dağılmış. İlk bölümde kaç nesne olduğu yazıyor. Kaydırıcıyla tahminini seç, sonra kaydet; sim nesneleri sayıp farkı gösterir.",
+   "sim": {
+    "kind": "b-tahmin",
+    "count": 60,
+    "bolge": 6,
+    "max": 100,
+    "seed": 11
+   },
+   "gorev": {
+    "metin": "Gerçek sayıya en fazla 10 fark olacak bir tahmin kaydet.",
+    "check": {
+     "all": [
+      {
+       "key": "kaydedildi",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 11
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Bir bölümde 10 nesne var; 6 bölüm için 10'ar say: 10, 20, 30…",
+    "Tahminin uzak çıkarsa \"Yeniden tahmin et\" ile tekrar dene."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Daha az bölüm, daha çok nesne",
+   "aciklama": "Bu kez 4 bölüm var ve her bölüm daha kalabalık.",
+   "sim": {
+    "kind": "b-tahmin",
+    "count": 48,
+    "bolge": 4,
+    "max": 100,
+    "seed": 5
+   },
+   "gorev": {
+    "metin": "Gerçek sayıya en fazla 5 fark olacak bir tahmin kaydet.",
+    "check": {
+     "all": [
+      {
+       "key": "kaydedildi",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 6
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Bir bölümdeki sayıyı 4 kez topla."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir rafta 5 sıra kitap var. Bir sırada yaklaşık 20 kitap var. Rafta yaklaşık kaç kitap vardır?",
+   "cozum": [
+    "Her sıra yaklaşık 20 kitap.",
+    "20'şer say: 20, 40, 60, 80, 100."
+   ],
+   "sonuc": "Rafta yaklaşık **100** kitap vardır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Tahmini kontrol etmek",
+   "soru": "Bir avuçta yaklaşık 10 fasulye var. Ece torbadaki fasulyeleri 9 avuçta boşalttı. Torbada yaklaşık kaç fasulye vardı? Saydığında 86 çıktı; tahmini iyi mi?",
+   "cozum": [
+    "10'ar say: 9 avuç → 90.",
+    "Tahmin 90, gerçek 86.",
+    "Fark 90 − 86 = 4."
+   ],
+   "sonuc": "Tahmin yaklaşık 90'dır; gerçek sayıya yalnız 4 uzak, iyi bir tahmin."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Tahmin ederken hiçbir ilişki kullanmadan aklına gelen sayıyı söylemek ya da tahmin yerine tek tek saymaya başlamak yanlıştır. Tahminin gerçek sayıdan biraz farklı çıkması ise hata değildir; tahminin doğası budur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir çiçek tarlası 4 eş bölüme ayrıldı. Bir bölümde yaklaşık 20 çiçek var. Tarlada yaklaşık kaç çiçek vardır?",
+   "options": [
+    "40",
+    "60",
+    "80",
+    "24"
+   ],
+   "answer": 2,
+   "why": "20 + 20 + 20 + 20 = 80.",
+   "hint": "Bir bölümdeki sayıyı kaç kez toplamalısın?"
+  },
+  {
+   "prompt": "Bir sayfada 9 satır, her satırda yaklaşık 10 kelime var. Sayfadaki kelime sayısı için en iyi tahmin hangisidir?",
+   "options": [
+    "90",
+    "900",
+    "9",
+    "19"
+   ],
+   "answer": 0,
+   "why": "10'ar saymak: 9 satır → yaklaşık 90 kelime.",
+   "hint": "9 satırın her biri için 10 kelime say."
+  },
+  {
+   "prompt": "Ece bir kavanozdaki şekerleri 40 tane diye tahmin etti. Saydığında 47 çıktı. Tahmini ile gerçek sayı arasındaki fark kaçtır?",
+   "options": [
+    "13",
+    "8",
+    "47",
+    "7"
+   ],
+   "answer": 3,
+   "why": "47 − 40 = 7.",
+   "hint": "Büyük sayıdan küçüğü çıkar."
+  }
+ ]
+}

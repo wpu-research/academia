@@ -1,0 +1,171 @@
+{
+ "id": "m4-4-1",
+ "baslik": "Veri Toplama ve Değerlendirme",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.4.1.1",
+  "M.4.4.1.2",
+  "M.4.4.1.3",
+  "M.4.4.1.4"
+ ],
+ "sure": 14,
+ "ozet": "Veriyi çetele ve sıklık tablosuyla düzenleyecek, sütun grafiği oluşturacak, grafiği yorumlayıp tahminler yapacak ve grafikteki bilgileri kullanarak problemler çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Veriyi düzenlemek",
+   "govde": "Bir soruya cevap aramak için topladığımız bilgilere **veri** denir. Sınıfta \"En sevdiğin meyve hangisi?\" diye sorduğumuzu düşünelim. Cevapları önce **çeteleyle** sayarız: her cevap için bir çizgi çizer, beşinci çizgiyi öbür dördünün üstüne çapraz çizeriz.\n\nSonra **sıklık tablosu** yaparız: her meyvenin yanına kaç kişinin seçtiğini yazarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sütun grafiği oluştur",
+   "aciklama": "Sıklık tablosu: **Elma 6, Muz 3, Çilek 8, Portakal 5.** Sütunları + ve − düğmeleriyle ya da sürükleyerek ayarla. Tabloya uyan sütun yeşile döner.",
+   "sim": {
+    "kind": "c-sutun-grafigi",
+    "etiketler": [
+     "Elma",
+     "Muz",
+     "Çilek",
+     "Portakal"
+    ],
+    "hedef": [
+     6,
+     3,
+     8,
+     5
+    ],
+    "max": 10,
+    "birim": "Öğrenci sayısı"
+   },
+   "gorev": {
+    "metin": "Tablodaki verilerle sütun grafiğini oluştur.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sütunun yüksekliği o meyveyi seçen öğrenci sayısıdır.",
+    "Grafik tamamlanınca en uzun sütun en çok seçilen meyveyi gösterir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sütun grafiğinin parçaları",
+   "govde": "Bir sütun grafiğinde **başlık**, **yatay eksen** (kategoriler: meyveler) ve **dikey eksen** (sayılar) bulunur. Her kategori için bir **sütun** çizilir; sütunlar eşit genişlikte ve aralıklıdır.\n\nGrafiği okurken önce dikey eksenin kaçar kaçar arttığına (ölçeğe) bakarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafikle problem çöz",
+   "aciklama": "Grafik bir sınıfın beş günde okuduğu kitap sayılarını gösteriyor. Yalnız Cuma sütununu ayarlayabilirsin.",
+   "sim": {
+    "kind": "c-sutun-grafigi",
+    "etiketler": [
+     "Pzt",
+     "Salı",
+     "Çrş",
+     "Prş",
+     "Cuma"
+    ],
+    "degerler": [
+     12,
+     15,
+     9,
+     18,
+     0
+    ],
+    "max": 20,
+    "birim": "Okunan kitap",
+    "ayarla": [
+     4
+    ]
+   },
+   "gorev": {
+    "metin": "Beş günün toplamı 70 kitap olsun: Cuma sütununu ayarla.",
+    "check": {
+     "key": "toplam",
+     "eq": 70
+    }
+   },
+   "dene": [
+    "İlk dört günün toplamı 12 + 15 + 9 + 18 = 54.",
+    "Cuma: 70 − 54 = ?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Tablo okuma",
+   "soru": "Meyve tablosuna göre (Elma 6, Muz 3, Çilek 8, Portakal 5) elmayı seçenler muzu seçenlerden kaç fazladır? Ankete kaç öğrenci katılmıştır?",
+   "cozum": [
+    "Fark: 6 − 3 = 3.",
+    "Toplam: 6 + 3 + 8 + 5 = 22."
+   ],
+   "sonuc": "3 öğrenci fazla; ankete 22 öğrenci katılmış."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Şekil grafiği",
+   "soru": "Bir şekil grafiğinde her ★ 5 öğrenciyi gösteriyor. Futbol satırında 7 ★ var. Futbolu kaç öğrenci seçmiştir?",
+   "cozum": [
+    "Bir yıldız 5 öğrenci.",
+    "7 yıldız: 7 × 5 = 35."
+   ],
+   "sonuc": "35 öğrenci."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Grafiğin ölçeğine bakmadan okumak sık yapılır. Dikey eksen 0, 2, 4, 6 diye ikişer artıyorsa bir sütunun 3 çizgi yüksekliğinde olması 3 değil **6** demektir. Önce eksendeki sayılara bak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Okunan kitaplar: Pazartesi 12, Salı 15, Çarşamba 9, Perşembe 18. En az kitap hangi gün okunmuştur?",
+   "options": [
+    "Pazartesi",
+    "Salı",
+    "Çarşamba",
+    "Perşembe"
+   ],
+   "answer": 2,
+   "why": "En küçük sayı 9: Çarşamba.",
+   "hint": "En kısa sütunu düşün."
+  },
+  {
+   "prompt": "Aynı verilere göre Perşembe günü okunan kitap sayısı, Çarşamba gününden kaç fazladır?",
+   "options": [
+    "6",
+    "9",
+    "3",
+    "27"
+   ],
+   "answer": 1,
+   "why": "18 − 9 = 9.",
+   "hint": "Büyükten küçüğü çıkar."
+  },
+  {
+   "prompt": "Aynı verilere göre dört günde toplam kaç kitap okunmuştur?",
+   "options": [
+    "54",
+    "45",
+    "48",
+    "64"
+   ],
+   "answer": 0,
+   "why": "12 + 15 + 9 + 18 = 54.",
+   "hint": "Dört sayıyı topla."
+  },
+  {
+   "prompt": "Bir şekil grafiğinde her ☆ 5 öğrenciyi gösteriyor. 7 tane ☆ kaç öğrenciyi gösterir?",
+   "options": [
+    "12",
+    "7",
+    "30",
+    "35"
+   ],
+   "answer": 3,
+   "why": "7 × 5 = 35.",
+   "hint": "Bir yıldız kaç öğrenci?"
+  }
+ ]
+}

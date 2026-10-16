@@ -1,0 +1,201 @@
+{
+ "id": "m3-2-7",
+ "baslik": "Uzunluk ve Kütle Ölçü Birimleri",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.15"
+ ],
+ "sure": 14,
+ "ders": "olcme-ve-hacim",
+ "ozet": "Metre ile santimetre, kilogram ile gram arasındaki ilişkiyi kullanarak uzunlukları ve kütleleri farklı biçimlerde yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Doğru ölçmek",
+   "govde": "Uzunluğu cetvel ya da metreyle ölçeriz. Kısa uzunluklar için **santimetre (cm)**, daha uzunları için **metre (m)** kullanırız.\n\nCetvelle ölçerken nesnenin bir ucunu cetvelin **0** çizgisine koyarız; öbür ucun karşısındaki sayı uzunluktur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıfırdan başla",
+   "aciklama": "Çubuğu sürükleyerek cetvelin üzerinde kaydır. Başlangıç ve bitiş değerlerini oku.",
+   "sim": {
+    "kind": "olcme",
+    "length": 7,
+    "start": 2
+   },
+   "gorev": {
+    "metin": "Çubuğun bir ucunu cetvelin 0 çizgisine getir.",
+    "check": {
+     "key": "start",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Çubuk 2'den başlarken bitiş 9'du; uzunluk 9 − 2 = 7 cm.",
+    "0'dan başlatınca bitiş değeri doğrudan uzunluğu verir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Uzunluk ve kütle birimleri",
+   "govde": "**Uzunluk:** 1 m = 100 cm · yarım metre = 50 cm\n**Kütle:** 1 kg = 1000 g · yarım kilogram = 500 g · çeyrek kilogram = 250 g\n\nBüyük birimle yazılmış bir ölçüyü küçük birime çevirirken bu ilişkileri kullanırız: 3 m 25 cm = 300 cm + 25 cm = 325 cm."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Santimetreleri metreye topla",
+   "aciklama": "Santimetre ekle; 100 cm dolunca 1 metre oluşur.",
+   "sim": {
+    "kind": "b-gruplama",
+    "kucuk": "cm",
+    "buyuk": "metre",
+    "grup": 100,
+    "n": 0,
+    "max": 300,
+    "adimlar": [
+     10,
+     50,
+     100
+    ]
+   },
+   "gorev": {
+    "metin": "1 m 30 cm uzunluk biriktir.",
+    "check": {
+     "all": [
+      {
+       "key": "buyuk",
+       "eq": 1
+      },
+      {
+       "key": "kalan",
+       "eq": 30
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1 m 30 cm = 130 cm."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Gramları kilograma topla",
+   "aciklama": "Gram ekle; 1000 g dolunca 1 kilogram oluşur.",
+   "sim": {
+    "kind": "b-gruplama",
+    "kucuk": "g",
+    "buyuk": "kilogram",
+    "grup": 1000,
+    "n": 0,
+    "max": 3000,
+    "adimlar": [
+     100,
+     250,
+     500
+    ]
+   },
+   "gorev": {
+    "metin": "2 kg 500 g biriktir.",
+    "check": {
+     "all": [
+      {
+       "key": "buyuk",
+       "eq": 2
+      },
+      {
+       "key": "kalan",
+       "eq": 500
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 kg 500 g = 2500 g. Kaç tane 500 g gerekir?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "3 m 25 cm kaç santimetredir?",
+   "cozum": [
+    "1 m = 100 cm, 3 m = 300 cm.",
+    "300 + 25 = 325."
+   ],
+   "sonuc": "3 m 25 cm = **325 cm**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Kütle",
+   "soru": "1 kg 250 g kaç gramdır?",
+   "cozum": [
+    "1 kg = 1000 g.",
+    "1000 + 250 = 1250."
+   ],
+   "sonuc": "1 kg 250 g = **1250 g**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Küçük birimden büyüğe",
+   "soru": "450 cm kaç metre kaç santimetredir?",
+   "cozum": [
+    "450'nin içinde 4 tane 100 var: 4 m.",
+    "450 − 400 = 50 cm kalır."
+   ],
+   "sonuc": "450 cm = **4 m 50 cm**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "2 m 5 cm'yi 25 cm ya da 250 cm diye yazmak yanlıştır: 2 m = 200 cm, 200 + 5 = **205 cm**. Ayrıca 1 m'yi 10 cm, 1 kg'ı 100 g sanma; 1 m = 100 cm, 1 kg = 1000 g."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4 m kaç santimetredir?",
+   "options": [
+    "104",
+    "40",
+    "400",
+    "4000"
+   ],
+   "answer": 2,
+   "why": "1 m = 100 cm; 4 m = 400 cm.",
+   "hint": "Bir metrede kaç santimetre var?"
+  },
+  {
+   "prompt": "2 kg 300 g kaç gramdır?",
+   "options": [
+    "2300",
+    "23 000",
+    "230",
+    "2030"
+   ],
+   "answer": 0,
+   "why": "2 kg = 2000 g; 2000 + 300 = 2300 g.",
+   "hint": "Önce kilogramları grama çevir."
+  },
+  {
+   "prompt": "Yarım kilogram kaç gramdır?",
+   "options": [
+    "50",
+    "250",
+    "5000",
+    "500"
+   ],
+   "answer": 3,
+   "why": "1 kg = 1000 g; yarısı 500 g.",
+   "hint": "1000'in yarısı kaç?"
+  },
+  {
+   "prompt": "608 cm kaç metre kaç santimetredir?",
+   "options": [
+    "68 m",
+    "6 m 8 cm",
+    "60 m 8 cm",
+    "6 m 80 cm"
+   ],
+   "answer": 1,
+   "why": "600 cm = 6 m; kalan 8 cm.",
+   "hint": "608'in içinde kaç tane 100 var?"
+  }
+ ]
+}

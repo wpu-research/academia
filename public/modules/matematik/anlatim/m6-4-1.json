@@ -1,0 +1,184 @@
+{
+ "id": "m6-4-1",
+ "baslik": "İki Paralel Doğrunun Bir Kesen ile Oluşturduğu Açılar",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.3.1",
+  "MAT.6.3.2"
+ ],
+ "sure": 15,
+ "ozet": "İki paralel doğruyu bir doğru kestiğinde oluşan sekiz açıyı tanıyacak; yöndeş, iç ters, dış ters ve karşı durumlu açıların ilişkilerini keşfedip açı problemlerinde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kesen ve sekiz açı",
+   "govde": "d₁ ve d₂ doğruları paralel olsun (d₁ ∥ d₂). Bu iki doğruyu kesen k doğrusuna **kesen** denir. Kesen her doğruyla 4 açı oluşturur; toplam **8 açı** olur.\n\nAçıların bir kısmı iki doğrunun **arasında** (iç açılar), bir kısmı **dışında** (dış açılar) kalır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yöndeş açılar",
+   "aciklama": "Kesenin açısını kaydırıcıyla değiştir. Renkli açılar yöndeş açı çiftleri: her kesişim noktasında aynı konumdalar.",
+   "sim": {
+    "kind": "d-paralel-kesen",
+    "aci": 60,
+    "mod": "yondes"
+   },
+   "gorev": {
+    "metin": "Kesenin açısını 110° yap.",
+    "check": {
+     "key": "aci",
+     "eq": 110
+    }
+   },
+   "dene": [
+    "Üst düğmelerden iç ters, dış ters ve karşı durumlu açıları da incele.",
+    "Kaç farklı açı ölçüsü görüyorsun? Yalnız iki: α ve 180° − α."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açı ilişkileri (d₁ ∥ d₂)",
+   "govde": "- **Yöndeş açılar** eşittir (iki kesişimde aynı konumdaki açılar).\n- **İç ters açılar** eşittir (iç bölgede, kesenin farklı yanlarında).\n- **Dış ters açılar** eşittir (dış bölgede, kesenin farklı yanlarında).\n- **Karşı durumlu açıların** toplamı 180°'dir (kesenin aynı yanında; iç karşı durumlu ve dış karşı durumlu).\n- Bir kesişimde **ters açılar** eşit, komşu açılar bütünlerdir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paralellik bozulursa",
+   "aciklama": "Bu kez d₂ doğrusunu döndürebilirsin. İç ters açılar ne zaman eşit?",
+   "sim": {
+    "kind": "d-paralel-kesen",
+    "aci": 65,
+    "egim": 10,
+    "mod": "ic",
+    "egimli": true
+   },
+   "gorev": {
+    "metin": "d₂'yi döndürerek d₁'e yeniden paralel yap.",
+    "check": {
+     "key": "paralel",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Doğrular paralel değilken iç ters açılar farklı çıkar.",
+    "Ters açılar ise paralellikten bağımsız olarak hep eşittir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "İç karşı durumlu açılar",
+   "aciklama": "Kesenin aynı yanında, iki doğrunun arasında kalan açılar.",
+   "sim": {
+    "kind": "d-paralel-kesen",
+    "aci": 60,
+    "mod": "ick"
+   },
+   "gorev": {
+    "metin": "Kesenin açısını 50° yap ve iç karşı durumlu açıları göster.",
+    "check": {
+     "all": [
+      {
+       "key": "aci",
+       "eq": 50
+      },
+      {
+       "key": "mod",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "50° + 130° = 180°."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "d₁ ∥ d₂ ve kesenin d₁ ile yaptığı açılardan biri 65°'dir. Sekiz açının ölçülerini bulalım.",
+   "cozum": [
+    "65° açının komşusu: 180° − 65° = 115°.",
+    "Ters açılar eşit: üst kesişimde 65°, 115°, 65°, 115°.",
+    "Yöndeş açılar eşit olduğundan alt kesişimde de aynı ölçüler tekrar eder."
+   ],
+   "sonuc": "Dört açı 65°, dört açı 115°'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "d₁ ∥ d₂. İç ters açılardan biri 3x − 20, diğeri x + 40 derecedir. x kaçtır ve açılar kaç derecedir?",
+   "cozum": [
+    "İç ters açılar eşittir: 3x − 20 = x + 40.",
+    "İki taraftan x çıkar: 2x − 20 = 40.",
+    "İki tarafa 20 ekle: 2x = 60 → x = 30.",
+    "Açı: 30 + 40 = 70°."
+   ],
+   "sonuc": "x = 30, açılar 70°'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Raylar",
+   "soru": "Birbirine paralel iki demiryolu rayını düz bir yol kesiyor. Yolun sağ tarafında, rayların arasında kalan ve üst rayda oluşan açı 48°'dir. Yine yolun sağ tarafında, rayların arasında kalan ve alt rayda oluşan açı kaç derecedir?",
+   "cozum": [
+    "İki açı da rayların arasında (iç bölgede) ve kesenin (yolun) aynı yanında: iç karşı durumlu açılar.",
+    "Raylar paralel olduğu için toplamları 180°.",
+    "Aranan açı = 180° − 48° = 132°."
+   ],
+   "sonuc": "132°."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Karşı durumlu açıları eşit sanmak sık yapılan bir hatadır. Karşı durumlu açılar kesenin **aynı yanındadır** ve toplamları **180°**'dir. Eşit olanlar yöndeş, iç ters ve dış ters açılardır. Bu ilişkilerin hepsi yalnız **doğrular paralelse** geçerlidir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "d₁ ∥ d₂ ise yöndeş açılardan biri 72° olduğunda diğeri kaç derecedir?",
+   "options": [
+    "108°",
+    "72°",
+    "18°",
+    "144°"
+   ],
+   "answer": 1,
+   "why": "Yöndeş açılar eşittir.",
+   "hint": "Yöndeş açılar aynı konumdadır."
+  },
+  {
+   "prompt": "d₁ ∥ d₂. İç karşı durumlu açılardan biri 55° ise diğeri kaç derecedir?",
+   "options": [
+    "55°",
+    "35°",
+    "125°",
+    "145°"
+   ],
+   "answer": 2,
+   "why": "Karşı durumlu açıların toplamı 180°: 180 − 55 = 125.",
+   "hint": "Karşı durumlu açılar bütünlerdir."
+  },
+  {
+   "prompt": "d₁ ∥ d₂. İç ters açılar 3x − 20 ve x + 40 derece ise x kaçtır?",
+   "options": [
+    "30",
+    "20",
+    "10",
+    "15"
+   ],
+   "answer": 0,
+   "why": "3x − 20 = x + 40 → 2x = 60 → x = 30.",
+   "hint": "İç ters açılar eşittir; bir denklem kur."
+  },
+  {
+   "prompt": "d₁ ile d₂ paralel **değilse** hangisi yine de kesinlikle doğrudur?",
+   "options": [
+    "Yöndeş açılar eşittir.",
+    "İç ters açılar eşittir.",
+    "Karşı durumlu açıların toplamı 180°'dir.",
+    "Ters açılar eşittir."
+   ],
+   "answer": 3,
+   "why": "Ters açılar aynı kesişim noktasındadır; paralellikten bağımsızdır.",
+   "hint": "Hangi ilişki tek bir kesişim noktasında oluşur?"
+  }
+ ]
+}

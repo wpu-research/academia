@@ -1,0 +1,148 @@
+{
+ "id": "m5-3-4",
+ "baslik": "Örüntüler",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.2.1",
+  "MAT.5.2.2",
+  "MAT.5.2.3",
+  "MAT.5.2.4"
+ ],
+ "sure": 13,
+ "ders": "oruntuler",
+ "ozet": "Sayı ve şekil örüntülerinin kuralını bulacak, kuralı adım sayısıyla ilişkilendirerek istenen adımdaki terimi hesaplayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örüntü ve kural",
+   "govde": "Belirli bir kurala göre devam eden sayı ya da şekil dizilerine **örüntü** denir. Örüntüdeki her sayıya **terim**, sırasına **adım** denir.\n\n5, 9, 13, 17, ... örüntüsünde terimler 4'er artıyor. Ama \"10. terim kaç?\" sorusuna her seferinde 4 ekleyerek gitmek yorucudur; bu yüzden terim ile **adım sayısı** arasındaki ilişkiyi ararız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Şekil örüntüsü",
+   "aciklama": "Her adımda turuncu noktalar bir sütun büyür, gri noktalar aynı kalır. Kaydırıcıyla adımları gez.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 3,
+    "b": 1,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "Kaçıncı adımda 22 nokta olduğunu bul ve o adıma git.",
+    "check": {
+     "key": "n",
+     "eq": 7
+    }
+   },
+   "dene": [
+    "Kural: 3 × adım + 1.",
+    "3 × ? + 1 = 22 ise 3 × ? = 21."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kuralı adım sayısıyla yazmak",
+   "govde": "Terimler hep aynı sayı kadar artıyorsa:\n\n1. Artış miktarını bul (örneğin 4).\n2. Adım sayısını bu sayıyla çarp: 4 × adım.\n3. İlk terimi tutturmak için ne eklenmeli ya da çıkarılmalı, bak: 4 × 1 = 4, ilk terim 5 → +1.\n\nKural: **4 × adım + 1**. 10. terim: 4 × 10 + 1 = 41."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kuralla tahmin et",
+   "aciklama": "Bu örüntüde her adımda 2 nokta eklenir, başta 3 sabit nokta vardır.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 2,
+    "b": 3,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "8. adıma git ve nokta sayısını kuralla önceden tahmin et.",
+    "check": {
+     "key": "n",
+     "eq": 8
+    }
+   },
+   "dene": [
+    "Kural: 2 × adım + 3. 8. adım: 2 × 8 + 3 = 19.",
+    "Tahminin doğru çıktı mı?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Kibrit kareleri",
+   "soru": "Kibritlerle yan yana kareler yapılıyor: 1 kare 4, 2 kare 7, 3 kare 10 kibritle yapılıyor. 10 kare için kaç kibrit gerekir?",
+   "cozum": [
+    "Her yeni kare 3 kibrit ekler (bir kenarı öncekiyle ortak).",
+    "Kural: 3 × kare sayısı + 1. Kontrol: 3 × 1 + 1 = 4.",
+    "10 kare: 3 × 10 + 1 = 31."
+   ],
+   "sonuc": "31 kibrit gerekir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Azalan örüntü",
+   "soru": "100, 93, 86, ... örüntüsünün 5. terimini bulalım.",
+   "cozum": [
+    "Her adımda 7 azalıyor.",
+    "100, 93, 86, 79, 72."
+   ],
+   "sonuc": "5. terim 72'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Artış miktarını adım sayısıyla çarpıp ilk terimi eklemek sık yapılan bir hatadır: 5, 9, 13, ... örüntüsünde 10. terim için 5 + 4 × 10 = 45 bulmak yanlıştır. İlk terimden 10. terime **9 adım** gidilir: 5 + 4 × 9 = **41**. Kuralı ilk terimle kontrol et: 4 × 1 + 1 = 5."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "7, 12, 17, 22, ... örüntüsünde sonraki terim kaçtır?",
+   "options": [
+    "26",
+    "27",
+    "32",
+    "29"
+   ],
+   "answer": 1,
+   "why": "Terimler 5'er artıyor: 22 + 5 = 27.",
+   "hint": "Ardışık terimlerin farkına bak."
+  },
+  {
+   "prompt": "Kuralı \"2 × adım + 5\" olan örüntünün 6. terimi kaçtır?",
+   "options": [
+    "17",
+    "13",
+    "11",
+    "16"
+   ],
+   "answer": 0,
+   "why": "2 × 6 + 5 = 17.",
+   "hint": "Adım yerine 6 yaz."
+  },
+  {
+   "prompt": "4, 7, 10, 13, ... örüntüsünün kuralı hangisidir?",
+   "options": [
+    "4 × adım",
+    "adım + 3",
+    "3 × adım + 1",
+    "3 × adım + 4"
+   ],
+   "answer": 2,
+   "why": "3'er artıyor; 3 × 1 + 1 = 4, 3 × 2 + 1 = 7.",
+   "hint": "Kuralı ilk iki terimde dene."
+  },
+  {
+   "prompt": "80, 74, 68, ... örüntüsünün 6. terimi kaçtır?",
+   "options": [
+    "56",
+    "44",
+    "62",
+    "50"
+   ],
+   "answer": 3,
+   "why": "Her adımda 6 azalıyor; 6. terime 5 adım: 80 − 5 × 6 = 50.",
+   "hint": "1. terimden 6. terime kaç adım var?"
+  }
+ ]
+}

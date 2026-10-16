@@ -1,0 +1,172 @@
+{
+ "id": "m12e-1-1",
+ "baslik": "Üstel Fonksiyon",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.1.1.1"
+ ],
+ "sure": 15,
+ "ozet": "a > 0 ve a ≠ 1 olmak üzere f(x) = aˣ fonksiyonunu tanıyacağız. Tabanın 1'den büyük ya da küçük olmasının grafiği nasıl değiştirdiğini simülasyonda göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Katlanarak büyüme",
+   "govde": "Bir bakteri kolonisi her saat ikiye katlanıyor. Başta 1 bakteri varsa 1 saat sonra 2, 2 saat sonra 4, 3 saat sonra 8 bakteri olur. t saat sonraki sayı **2ᵗ**'dir.\n\nBuradaki fark şudur: değişken t **üste** yazılır. x² gibi kuvvet fonksiyonlarında değişken tabandadır; 2ˣ gibi **üstel** fonksiyonlarda üsttedir. Üstel büyüme başta yavaş görünür, sonra çok hızlanır: 2¹⁰ = 1024."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tanım",
+   "govde": "a > 0 ve a ≠ 1 olmak üzere\n\n**f: ℝ → ℝ⁺, f(x) = aˣ**\n\nfonksiyonuna **üstel fonksiyon**, a'ya da **taban** denir.\n\n- a ≤ 0 olamaz: örneğin (−2)^(1/2) gerçek sayı değildir.\n- a = 1 olamaz: 1ˣ = 1 sabit fonksiyondur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "2ˣ grafiği üzerinde gezin",
+   "aciklama": "Kahverengi eğri f(x) = 2ˣ. Turuncu nokta grafiğin her zaman geçtiği (0, 1) noktası. x kaydırıcısıyla noktayı gezdir.",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "ustel",
+    "b": 2,
+    "x": 0
+   },
+   "gorev": {
+    "metin": "Taban 2 iken noktayı f(3) = 8 değerine götür.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": 2
+      },
+      {
+       "key": "x",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "x her 1 arttığında değer 2 katına çıkıyor: 1, 2, 4, 8.",
+    "x negatifken değerler küçülür ama 0 olmaz: 2⁻¹ = 1/2, 2⁻² = 1/4."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üstel fonksiyonun özellikleri",
+   "govde": "- Tanım kümesi ℝ, görüntü kümesi (0, ∞)'dur: **aˣ > 0**.\n- Grafik her zaman **(0, 1)** noktasından geçer, çünkü a⁰ = 1.\n- Grafik x eksenini kesmez; x ekseni yatay asimptottur.\n- **a > 1** ise fonksiyon **artandır**; **0 < a < 1** ise **azalandır**.\n- Fonksiyon birebir ve örtendir (ℝ'den ℝ⁺'ya); bu yüzden tersi vardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tabanı değiştir",
+   "aciklama": "Taban kaydırıcısı 1/4'ten 10'a kadar değerler alır (e ≈ 2,718 de var). Taban 1'in altına inince eğrinin yönüne bak.",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "ustel",
+    "b": 3,
+    "x": 1
+   },
+   "gorev": {
+    "metin": "Fonksiyonu azalan yap.",
+    "check": {
+     "key": "inc",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "(1/2)ˣ = 2⁻ˣ olduğu için (1/2)ˣ grafiği, 2ˣ grafiğinin y eksenine göre simetriğidir.",
+    "Taban büyüdükçe x > 0 için eğri daha dik yükselir; x < 0 için ise x eksenine daha çabuk yaklaşır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "f(x) = 3ˣ⁻¹ + 2 fonksiyonu için f(2) değerini, grafiğin y eksenini kestiği noktayı ve görüntü kümesini bulalım.",
+   "cozum": [
+    "f(2) = 3¹ + 2 = 5.",
+    "y eksenini kestiği nokta x = 0'dadır: f(0) = 3⁻¹ + 2 = 1/3 + 2 = 7/3.",
+    "3ˣ⁻¹ her zaman pozitiftir ve 0'a istenildiği kadar yaklaşır; 2 eklenince değerler 2'den büyük olur."
+   ],
+   "sonuc": "f(2) = 5, kesim noktası (0, 7/3), görüntü kümesi (2, ∞)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2 · Sıralama",
+   "soru": "a = 2³⁰, b = 3²⁰, c = 5¹⁰ sayılarını sıralayalım.",
+   "cozum": [
+    "Üsleri ortak bir sayıya getir: üslerin hepsi 10'un katı.",
+    "a = 2³⁰ = (2³)¹⁰ = 8¹⁰, b = 3²⁰ = (3²)¹⁰ = 9¹⁰, c = 5¹⁰.",
+    "Üs aynı (10) ve pozitif olduğundan taban büyüdükçe sayı büyür: 5 < 8 < 9."
+   ],
+   "sonuc": "c < a < b."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "f(x) = aˣ üstel fonksiyonunun grafiği (2, 9) noktasından geçiyor. f(−1) + f(3) kaçtır?",
+   "cozum": [
+    "f(2) = a² = 9. Taban pozitif olmalı, o hâlde a = 3.",
+    "f(−1) = 3⁻¹ = 1/3, f(3) = 3³ = 27.",
+    "Toplam: 27 + 1/3 = 82/3."
+   ],
+   "sonuc": "f(−1) + f(3) = 82/3."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- aˣ hiçbir zaman 0 ya da negatif olmaz. 2ˣ = −4 gibi bir denklemin gerçek çözümü yoktur.\n- −2ˣ ile (−2)ˣ aynı değildir: −2ˣ = −(2ˣ) demektir. (−2)ˣ ise üstel fonksiyon değildir.\n- 2ˣ ile x² karıştırılmamalı: x = 10 için 2ˣ = 1024, x² = 100."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Günlük hayatta üstel fonksiyon",
+   "govde": "Bileşik faiz, nüfus artışı ve bakteri çoğalması büyüyen (a > 1) üstel modellerdir. Radyoaktif bozunma ise azalan bir modeldir: yarılanma süresi T olan bir maddenin t zaman sonra kalan oranı **(1/2)^(t/T)** olur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi bir üstel fonksiyondur?",
+   "options": [
+    "f(x) = x³",
+    "f(x) = (−3)ˣ",
+    "f(x) = (2/5)ˣ",
+    "f(x) = 1ˣ"
+   ],
+   "answer": 2,
+   "why": "Taban 2/5 pozitif ve 1'den farklı.",
+   "hint": "Tabanın hangi iki şartı sağlaması gerekiyordu?"
+  },
+  {
+   "prompt": "f(x) = 2ˣ + 3 fonksiyonunun görüntü kümesi nedir?",
+   "options": [
+    "(3, ∞)",
+    "[3, ∞)",
+    "(0, ∞)",
+    "ℝ"
+   ],
+   "answer": 0,
+   "why": "2ˣ > 0 olduğundan 2ˣ + 3 > 3 olur; 3 değeri hiç alınmaz.",
+   "hint": "2ˣ hangi değerleri alır? Sonra hepsine 3 ekle."
+  },
+  {
+   "prompt": "f(x) = (1/3)ˣ için hangisi doğrudur?",
+   "options": [
+    "Artan bir fonksiyondur.",
+    "f(−1) = −3",
+    "Grafiği x eksenini keser.",
+    "Grafiği (0, 1) noktasından geçer ve azalandır."
+   ],
+   "answer": 3,
+   "why": "Taban 0 ile 1 arasında: fonksiyon azalan; a⁰ = 1 olduğundan grafik (0, 1)'den geçer.",
+   "hint": "f(−1) = (1/3)⁻¹ değerini dikkatle hesapla."
+  },
+  {
+   "prompt": "f(x) = aˣ⁻¹ grafiği (3, 16) noktasından geçiyorsa a kaçtır?",
+   "options": [
+    "2",
+    "4",
+    "8",
+    "16"
+   ],
+   "answer": 1,
+   "why": "f(3) = a² = 16 ve a > 0 olduğundan a = 4.",
+   "hint": "x = 3'ü yerine koy: üs kaç olur?"
+  }
+ ]
+}

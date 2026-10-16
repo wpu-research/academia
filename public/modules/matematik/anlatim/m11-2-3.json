@@ -1,0 +1,77 @@
+{
+ "id": "m11-2-3",
+ "baslik": "Çokgenlerin Sınıflandırılması",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.2.3"],
+ "sure": 14,
+ "ozet": "Hangi şekiller çokgendir? Bir çokgen ne zaman dışbükey, ne zaman içbükeydir? Açılar, köşegenler ve kenar doğruları yardımıyla üç eşdeğer ölçüt kuracağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Çokgen",
+   "govde": "Düzlemde, uç uca eklenmiş en az üç doğru parçasından oluşan, **kendini kesmeyen** ve **kapalı** şekle çokgen denir.\n- Doğru parçaları kenar, uçları köşedir.\n- Ardışık iki kenar aynı doğru üzerinde olmamalıdır.\n- Kenarları birbirini kesen \"yıldız\" ya da \"kelebek\" biçimli şekiller bu tanıma göre çokgen değildir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dışbükey ve içbükey",
+   "govde": "Bir çokgen için aşağıdaki üç ifade birbirine denktir; biri sağlanırsa çokgen **dışbükey**tir:\n1. Her iç açısı 180°'den küçüktür.\n2. Her köşegeni tamamen çokgenin içindedir.\n3. Hangi kenarı uzatırsan uzat, çokgenin tamamı o doğrunun bir yanında kalır.\n\nDışbükey olmayan çokgene **içbükey** denir: en az bir iç açısı 180°'den büyüktür ve en az bir köşegeni dışarı taşar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir köşeyi içeri it",
+   "aciklama": "Dışbükey bir beşgen. Yeşil kesikli çizgiler içerideki, kırmızılar dışarı taşan köşegenler; 180°'den büyük açı kırmızı yazılır.",
+   "sim": { "kind": "f-cokgen", "points": [[1, 1], [6, 1], [8, 4], [5, 6], [2, 5]] },
+   "gorev": { "metin": "Bir köşeyi içeri sürükleyerek beşgeni içbükey yap.", "check": { "all": [{ "key": "simple", "eq": 1 }, { "key": "convex", "eq": 0 }, { "key": "n", "eq": 5 }] } },
+   "dene": ["Bir iç açı 180°'yi geçtiği anda en az bir köşegen kırmızıya dönüyor.", "İç açılar toplamı yine 540°."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir beşgenin dört iç açısı 100°, 110°, 120° ve 90°'dir. Beşinci açıyı bulup çokgenin dışbükey olup olmadığına karar verelim.",
+   "cozum": [
+    "Beşgenin iç açıları toplamı (5 − 2) · 180° = 540°.",
+    "Beşinci açı: 540° − 420° = 120°.",
+    "Tüm açılar 180°'den küçük."
+   ],
+   "sonuc": "Beşinci açı 120°; beşgen dışbükeydir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İçbükey altıgeni düzelt",
+   "aciklama": "Bu altıgenin bir köşesi içe göçük.",
+   "sim": { "kind": "f-cokgen", "points": [[1, 1], [5, 1], [9, 1], [9, 6], [5, 3], [1, 6]] },
+   "gorev": { "metin": "Köşeleri taşıyarak altıgeni dışbükey yap.", "check": { "all": [{ "key": "convex", "eq": 1 }, { "key": "n", "eq": 6 }] } },
+   "dene": ["Başta (5, 1) köşesindeki açı 180°: bu nokta aslında bir köşe sayılmaz. Onu da aşağı çekmen gerekecek.", "Dışbükey olunca 9 köşegenin hepsi yeşil."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenarlar kesişirse",
+   "aciklama": "Köşe ekleyip silebilirsin.",
+   "sim": { "kind": "f-cokgen", "points": [[2, 1], [7, 1], [7, 5], [2, 5]], "edit": true, "classify": false },
+   "gorev": { "metin": "Bir köşeyi karşı kenarın öbür yanına sürükleyerek kenarları kesişen (çokgen olmayan) bir şekil oluştur.", "check": { "key": "simple", "eq": 0 } },
+   "dene": ["Kelebek biçimi kapalı ama kendini kesiyor; çokgen tanımına uymuyor.", "Köşe ekleyerek beşgen, altıgen dene."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Bir altıgenin iç açılarından biri 200°'dir. Bu altıgen için ne söylenebilir? Kalan beş açının toplamı kaçtır?",
+   "cozum": [
+    "180°'den büyük bir iç açı var: altıgen içbükeydir.",
+    "İç açılar toplamı (6 − 2) · 180° = 720°.",
+    "Kalan beş açı: 720° − 200° = 520°."
+   ],
+   "sonuc": "İçbükeydir; diğer beş açının toplamı 520°."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İçbükey çokgende iç açıyı 180°'den küçük olan \"dış\" taraftan ölçmek. Göçük köşede iç açı çokgenin içinde kalan taraftır ve 180°'den büyüktür. Bu açıyı küçük taraftan ölçersen iç açılar toplamı (n − 2) · 180° çıkmaz."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Hangisi dışbükey çokgenin bir özelliği değildir?", "options": ["Her iç açısı 180°'den küçüktür", "Her köşegeni çokgenin içindedir", "En az bir iç açısı 180°'den büyüktür", "Her kenar doğrusu çokgeni bir yanda bırakır"], "answer": 2, "why": "180°'den büyük iç açı içbükey çokgenin özelliğidir.", "hint": "Hangisi içbükeyliği anlatıyor?" },
+  { "prompt": "Bir dörtgenin açıları 60°, 70°, 30° ve 200° ise dörtgen için ne söylenir?", "options": ["İçbükeydir", "Dışbükeydir", "Böyle bir dörtgen olamaz", "Paralelkenardır"], "answer": 0, "why": "Toplam 360°, ama bir açı 180°'den büyük: içbükey.", "hint": "180°'yi aşan açı var mı?" },
+  { "prompt": "Kenarları birbirini kesen beş köşeli yıldız şekli neden çokgen sayılmaz?", "options": ["Köşe sayısı çift olmadığı için", "Kapalı olmadığı için", "Kenarları eşit olduğu için", "Kendini kestiği için"], "answer": 3, "why": "Çokgen tanımı kenarların kendini kesmemesini ister.", "hint": "Tanımdaki şartları hatırla." },
+  { "prompt": "İçbükey bir yedigenin iç açıları toplamı kaçtır?", "options": ["720°", "900°", "1080°", "540°"], "answer": 1, "why": "(7 − 2) · 180° = 900°; içbükey olması toplamı değiştirmez.", "hint": "(n − 2) · 180°." }
+ ]
+}

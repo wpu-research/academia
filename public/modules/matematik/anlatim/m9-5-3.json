@@ -1,0 +1,80 @@
+{
+ "id": "m9-5-3",
+ "baslik": "Mantık Bağlaçları ve Niceleyicilerin Algoritmik Problemlerde Kullanımı",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.5.3"],
+ "sure": 16,
+ "ozet": "Bileşik koşulların algoritmalarda nasıl kullanıldığını artık yıl kuralıyla, \"her\" ve \"en az bir\" niceleyicilerinin döngülerde nasıl kontrol edildiğini asallık testiyle göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Koşullar bağlaçlarla kurulur",
+   "govde": "Algoritmalardaki `eğer … ise` satırlarının koşulları çoğu zaman bileşik önermelerdir:\n\n- \"Yaş ≥ 14 **ve** öğrenci\" → iki şart birlikte\n- \"Kartı var **veya** nakit ödüyor\" → en az biri yeter\n- \"**değil** (stok = 0)\" → stokta ürün var\n\nKoşulun doğruluk değeri, bağlaçların doğruluk tablolarına göre hesaplanır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Artık yıl kuralı",
+   "govde": "Takvimimizde bir y yılı şu koşul doğruysa artık yıldır (366 gün):\n\n**(4 | y ∧ 100 ∤ y) ∨ 400 | y**\n\nYani 4'e bölünüp 100'e bölünmeyen ya da 400'e bölünen yıllar. 2024 artık yıldır; 1900 değildir; 2000 artık yıldır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Artık yıl algoritması",
+   "aciklama": "Yılı seç ve algoritmayı adım adım çalıştır. p, q, r önermelerinin ve bileşik koşulun değerlerini izle.",
+   "sim": { "kind": "e-algoritma", "alg": "artik-yil", "Y": 1900 },
+   "gorev": { "metin": "2000 yılı için algoritmayı sonuna kadar çalıştır.", "check": { "all": [ { "key": "Y", "eq": 2000 }, { "key": "bitti", "eq": 1 } ] } },
+   "dene": ["1900 ile 2000'i karşılaştır: ikisi de 100'e bölünüyor; farkı r yaratıyor.", "2023 için p yanlış; koşulun geri kalanına bakmaya gerek var mı?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Döngüde niceleyiciler",
+   "govde": "\"n asaldır\" önermesi bir **evrensel** önermedir: n ≥ 2 ve **her** d (2 ≤ d, d · d ≤ n) için d ∤ n.\n\nBunu bir döngüyle kontrol ederiz. Döngü **bir tane** bölen (karşı örnek) bulduğu anda önerme yanlış olur ve döngü durur. Hiç bölen bulunmazsa önerme doğrudur.\n\n√n'den büyük d'leri denemeye gerek yoktur: n = d · e ve d > √n ise e < √n olur; o bölen daha önce bulunmuştu."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Asallık testi",
+   "aciklama": "Döngü koşulu \"d · d ≤ n **ve** asal\" iki önermenin birleşimidir. Bir bölen bulununca asal yanlış olur ve döngü biter.",
+   "sim": { "kind": "e-algoritma", "alg": "asal", "n": 91 },
+   "gorev": { "metin": "97'nin asal olup olmadığını algoritmayla kontrol et.", "check": { "all": [ { "key": "n", "eq": 97 }, { "key": "bitti", "eq": 1 } ] } },
+   "dene": ["91 için döngü d = 7'de bölen buluyor: 91 = 7 · 13.", "97 için d en fazla kaça kadar denendi? 9 · 9 = 81 ≤ 97 < 100 = 10 · 10."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "\"Ancak ve ancak\" tablosu",
+   "aciklama": "p ⇔ q, iki koşulun her zaman birlikte doğru ya da birlikte yanlış olmasını anlatır.",
+   "sim": { "kind": "mantik-tablosu", "op": "ancak" },
+   "gorev": { "metin": "p ⇔ q sütununu doğru doldur.", "check": { "key": "ok", "eq": 1 } },
+   "dene": ["\"n çifttir ⇔ n'nin son basamağı 0, 2, 4, 6 ya da 8'dir\": iki koşul her sayı için aynı değeri alır."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek: katılım koşulu",
+   "soru": "Bir yarışmaya katılma koşulu: yaş ≥ 14 ve (okul öğrencisi veya lisanslı sporcu). Ali 15 yaşında, öğrenci değil, lisanslı sporcu. Ayşe 13 yaşında ve öğrenci. Kimler katılabilir?",
+   "cozum": [
+    "Ali: yaş ≥ 14 (D); öğrenci (Y) veya sporcu (D) ⇒ D. D ve D ⇒ D.",
+    "Ayşe: yaş ≥ 14 (Y). \"Ve\" bağlacında bir yanlış yeter ⇒ Y."
+   ],
+   "sonuc": "Yalnız Ali katılabilir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: koşulun değili",
+   "soru": "Bir program \"değil (x < 0 veya x > 10)\" koşulu doğru olduğunda çalışıyor. Bu koşulu değil kullanmadan yaz; koşulu kaç tam sayı sağlar?",
+   "cozum": [
+    "De Morgan: ¬(x < 0 ∨ x > 10) ≡ x ≥ 0 ∧ x ≤ 10.",
+    "0 ≤ x ≤ 10: 0, 1, …, 10."
+   ],
+   "sonuc": "x ≥ 0 ve x ≤ 10; 11 tam sayı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Artık yıl için yalnız \"4'e bölünür\" koşulunu kullanmak: 1900 ve 2100 artık yıl değildir.\n- Değil alırken bağlacı değiştirmeyi unutmak: ¬(a ≥ 5 ve b ≥ 5) ≡ a < 5 veya b < 5.\n- Karşı örnek bulunduğu hâlde döngüyü sürdürmek; \"her\" önermesi zaten yanlış olmuştur."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "1900 yılı artık yıl mıdır?", "options": ["Evet; 4'e bölünür.", "Hayır; 100'e bölünür ama 400'e bölünmez.", "Evet; 100'e bölünür.", "Hayır; 4'e bölünmez."], "answer": 1, "why": "4 | 1900 ve 100 | 1900, ama 400 ∤ 1900; (D ∧ Y) ∨ Y = Y.", "hint": "Kuralın üç parçasını ayrı ayrı değerlendir." },
+  { "prompt": "\"(x > 3) ve (x < 8)\" koşulunu kaç tam sayı sağlar?", "options": ["5", "6", "4", "3"], "answer": 2, "why": "4, 5, 6, 7.", "hint": "Uçlar dahil değil." },
+  { "prompt": "\"değil (a ≥ 5 ve b ≥ 5)\" koşulunun denki hangisidir?", "options": ["a < 5 ve b < 5", "a ≥ 5 veya b ≥ 5", "a > 5 ve b > 5", "a < 5 veya b < 5"], "answer": 3, "why": "De Morgan: ¬(p ∧ q) ≡ ¬p ∨ ¬q.", "hint": "\"Ve\"nin değili \"veya\" olur." },
+  { "prompt": "Asallık testinde n = 221 için en çok hangi d değerine kadar bölen aramak yeterlidir?", "options": ["14", "110", "17", "221"], "answer": 0, "why": "14² = 196 ≤ 221 < 225 = 15². (Gerçekten 221 = 13 · 17; 13 bulunur.)", "hint": "d · d ≤ n koşulu." }
+ ]
+}

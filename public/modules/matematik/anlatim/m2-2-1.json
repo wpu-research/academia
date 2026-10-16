@@ -1,0 +1,571 @@
+{
+ "id": "m2-2-1",
+ "baslik": "Kesirler",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.7"
+ ],
+ "sure": 14,
+ "ozet": "Bir bütünü eş parçalara ayırarak yarım ve çeyreği tanıyacak, bütün, yarım ve çeyrek arasındaki ilişkiyi bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bütün, yarım, çeyrek",
+   "govde": "Bir elma, bir pizza ya da bir çubuk **bütün** olabilir.\n\n- Bütünü **2 eş parçaya** ayırırsak her parça bir **yarım**dır.\n- Bütünü **4 eş parçaya** ayırırsak her parça bir **çeyrek**tir.\n\nParçaların **eş** (aynı büyüklükte) olması şarttır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yarımı boya",
+   "aciklama": "Çubuk 2 eş parçaya ayrıldı. Parçalara dokunarak boya.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 2,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Çubuğun yarısını boya.",
+    "check": {
+     "key": "shaded0",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "2 eş parçadan biri, bütünün yarısıdır.",
+    "İki parçayı da boyarsan bütünü boyamış olursun."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Aralarındaki ilişki",
+   "govde": "- **2 yarım = 1 bütün**\n- **4 çeyrek = 1 bütün**\n- **2 çeyrek = 1 yarım**\n\nBir bütünü ne kadar çok eş parçaya bölersek her parça o kadar **küçük** olur. Bu yüzden çeyrek, yarımdan küçüktür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çeyreklerle yarım",
+   "aciklama": "Üst çubuk bir yarımı gösteriyor. Alttaki çubuk 4 eş parçaya, yani çeyreklere ayrıldı.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 2,
+      "shaded": 1,
+      "label": "yarım"
+     },
+     {
+      "n": 4,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Alttaki çubukta üsttekiyle aynı miktarı boya.",
+    "check": {
+     "key": "shaded1",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Boyadığın parçaların sonu, üstteki yarımın sonuyla aynı hizada olmalı.",
+    "Kaç çeyrek bir yarım ediyor?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hangisi yarım?",
+   "aciklama": "Bazı şekillerin yarısı boyalı, bazılarının değil. Parçaların eş olup olmadığına dikkat et.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "y",
+    "items": [
+     {
+      "k": "y",
+      "kat": [
+       {
+        "pts": [
+         [
+          15,
+          15
+         ],
+         [
+          50,
+          15
+         ],
+         [
+          50,
+          85
+         ],
+         [
+          15,
+          85
+         ]
+        ],
+        "c": 0
+       },
+       {
+        "pts": [
+         [
+          50,
+          15
+         ],
+         [
+          85,
+          15
+         ],
+         [
+          85,
+          85
+         ],
+         [
+          50,
+          85
+         ]
+        ],
+        "c": "bos"
+       }
+      ]
+     },
+     {
+      "k": "n",
+      "kat": [
+       {
+        "pts": [
+         [
+          15,
+          15
+         ],
+         [
+          35,
+          15
+         ],
+         [
+          35,
+          85
+         ],
+         [
+          15,
+          85
+         ]
+        ],
+        "c": 0
+       },
+       {
+        "pts": [
+         [
+          35,
+          15
+         ],
+         [
+          85,
+          15
+         ],
+         [
+          85,
+          85
+         ],
+         [
+          35,
+          85
+         ]
+        ],
+        "c": "bos"
+       }
+      ]
+     },
+     {
+      "k": "y",
+      "kat": [
+       {
+        "d": "M14,50 A36,36 0 0,1 86,50 Z",
+        "c": 1
+       },
+       {
+        "d": "M14,50 A36,36 0 0,0 86,50 Z",
+        "c": "bos"
+       }
+      ]
+     },
+     {
+      "k": "n",
+      "kat": [
+       {
+        "pts": [
+         [
+          15,
+          15
+         ],
+         [
+          50,
+          15
+         ],
+         [
+          50,
+          50
+         ],
+         [
+          15,
+          50
+         ]
+        ],
+        "c": 2
+       },
+       {
+        "pts": [
+         [
+          50,
+          15
+         ],
+         [
+          85,
+          15
+         ],
+         [
+          85,
+          50
+         ],
+         [
+          50,
+          50
+         ]
+        ],
+        "c": "bos"
+       },
+       {
+        "pts": [
+         [
+          15,
+          50
+         ],
+         [
+          50,
+          50
+         ],
+         [
+          50,
+          85
+         ],
+         [
+          15,
+          85
+         ]
+        ],
+        "c": "bos"
+       },
+       {
+        "pts": [
+         [
+          50,
+          50
+         ],
+         [
+          85,
+          50
+         ],
+         [
+          85,
+          85
+         ],
+         [
+          50,
+          85
+         ]
+        ],
+        "c": "bos"
+       }
+      ]
+     },
+     {
+      "k": "y",
+      "kat": [
+       {
+        "pts": [
+         [
+          15,
+          15
+         ],
+         [
+          85,
+          15
+         ],
+         [
+          15,
+          85
+         ]
+        ],
+        "c": 3
+       },
+       {
+        "pts": [
+         [
+          85,
+          15
+         ],
+         [
+          85,
+          85
+         ],
+         [
+          15,
+          85
+         ]
+        ],
+        "c": "bos"
+       }
+      ]
+     },
+     {
+      "k": "y",
+      "kat": [
+       {
+        "pts": [
+         [
+          15,
+          15
+         ],
+         [
+          50,
+          15
+         ],
+         [
+          50,
+          50
+         ],
+         [
+          15,
+          50
+         ]
+        ],
+        "c": 1
+       },
+       {
+        "pts": [
+         [
+          50,
+          15
+         ],
+         [
+          85,
+          15
+         ],
+         [
+          85,
+          50
+         ],
+         [
+          50,
+          50
+         ]
+        ],
+        "c": "bos"
+       },
+       {
+        "pts": [
+         [
+          15,
+          50
+         ],
+         [
+          50,
+          50
+         ],
+         [
+          50,
+          85
+         ],
+         [
+          15,
+          85
+         ]
+        ],
+        "c": "bos"
+       },
+       {
+        "pts": [
+         [
+          50,
+          50
+         ],
+         [
+          85,
+          50
+         ],
+         [
+          85,
+          85
+         ],
+         [
+          50,
+          85
+         ]
+        ],
+        "c": 1
+       }
+      ]
+     },
+     {
+      "k": "n",
+      "kat": [
+       {
+        "d": "M50,50 L50,14 A36,36 0 0,1 86,50 Z",
+        "c": 2
+       },
+       {
+        "d": "M50,50 L86,50 A36,36 0 1,1 50,14 Z",
+        "c": "bos"
+       }
+      ]
+     },
+     {
+      "k": "n",
+      "kat": [
+       {
+        "pts": [
+         [
+          8,
+          30
+         ],
+         [
+          36,
+          30
+         ],
+         [
+          36,
+          70
+         ],
+         [
+          8,
+          70
+         ]
+        ],
+        "c": 0
+       },
+       {
+        "pts": [
+         [
+          36,
+          30
+         ],
+         [
+          64,
+          30
+         ],
+         [
+          64,
+          70
+         ],
+         [
+          36,
+          70
+         ]
+        ],
+        "c": "bos"
+       },
+       {
+        "pts": [
+         [
+          64,
+          30
+         ],
+         [
+          92,
+          30
+         ],
+         [
+          92,
+          70
+         ],
+         [
+          64,
+          70
+         ]
+        ],
+        "c": "bos"
+       }
+      ]
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Yarısı boyanmış bütün şekilleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "2 eş parçadan 1'i de, 4 eş parçadan 2'si de yarımdır.",
+    "Parçalar eş değilse boyalı kısım yarım değildir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir pizzayı 4 eş dilime böldük. Ali 2 dilim yedi. Ali pizzanın ne kadarını yedi?",
+   "cozum": [
+    "Her dilim bir çeyrek.",
+    "2 çeyrek = 1 yarım."
+   ],
+   "sonuc": "Ali pizzanın **yarısını** yedi."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir ekmeğin yarısı mı, çeyreği mi daha büyüktür?",
+   "cozum": [
+    "Yarım: 2 eş parçadan biri.",
+    "Çeyrek: 4 eş parçadan biri; parçalar daha küçük.",
+    "1 yarım = 2 çeyrek."
+   ],
+   "sonuc": "**Yarım** daha büyüktür."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bir bütünü iki parçaya ayırmak her zaman “yarım” vermez. Parçalardan biri büyük, biri küçükse bunlar yarım **değildir**. Yarım ve çeyrekte parçalar **eş** olmalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir bütün kaç çeyrekten oluşur?",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "1"
+   ],
+   "answer": 2,
+   "why": "Bütün 4 eş parçaya ayrılınca her parça çeyrektir.",
+   "hint": "Çeyrek, kaç eş parçadan biridir?"
+  },
+  {
+   "prompt": "2 çeyrek neye eşittir?",
+   "options": [
+    "1 yarım",
+    "1 bütün",
+    "4 yarım",
+    "1 çeyrek"
+   ],
+   "answer": 0,
+   "why": "4 çeyrek bir bütün, 2 çeyrek bunun yarısı.",
+   "hint": "Çubukta 2 çeyreği bir yarımla karşılaştır."
+  },
+  {
+   "prompt": "Bir kek 2 parçaya kesildi; parçalardan biri öbüründen çok büyük. Her parça için ne söyleriz?",
+   "options": [
+    "Her biri yarımdır.",
+    "Her biri çeyrektir.",
+    "İkisi de bütündür.",
+    "Parçalar eş olmadığı için yarım değildir."
+   ],
+   "answer": 3,
+   "why": "Yarım için parçaların eş olması gerekir.",
+   "hint": "Parçalar aynı büyüklükte mi?"
+  }
+ ]
+}

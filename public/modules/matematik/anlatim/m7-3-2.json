@@ -1,0 +1,203 @@
+{
+ "id": "m7-3-2",
+ "baslik": "Denklem ve Eşitsizlikler",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.2.2"
+ ],
+ "sure": 16,
+ "ders": "denklem-terazisi",
+ "ozet": "Birinci dereceden bir bilinmeyenli denklemleri denge fikriyle çözecek; eşitsizlikleri tanıyıp çözüm kümesini sayı doğrusunda gösterecek ve gerçek yaşam problemlerinde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Denklem ve çözüm",
+   "govde": "İçinde bilinmeyen bulunan ve bilinmeyenin bazı değerleri için doğru olan eşitliklere **denklem** denir. 2x + 5 = 17 birinci dereceden bir bilinmeyenli bir denklemdir (x'in üssü 1).\n\nDenklemi doğru yapan değere **çözüm** denir: x = 6, çünkü 2 · 6 + 5 = 17."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Denklem çözme",
+   "govde": "Eşitliğin iki tarafına **aynı işlemi** yaparız:\n\n1. Parantez varsa dağıt.\n2. Bilinmeyenli terimleri bir tarafa, sabitleri öbür tarafa topla (iki taraftan aynı terimi ekle/çıkar).\n3. İki tarafı bilinmeyenin katsayısına böl.\n4. Bulduğun değeri yerine koyarak kontrol et.\n\n5x − 7 = 2x + 8 → 3x − 7 = 8 → 3x = 15 → x = 5"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Terazide 3x + 2 = 14",
+   "aciklama": "İki tarafa aynı işlemi yap, x'i yalnız bırak.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 3,
+    "b": 2,
+    "c": 14
+   },
+   "gorev": {
+    "metin": "Denklemi çöz.",
+    "check": {
+     "key": "solved",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Önce iki taraftan 2 çıkar, sonra iki tarafı 3'e böl.",
+    "Kontrol: 3 · 4 + 2 = 14."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşitsizlik",
+   "govde": "<, >, ≤, ≥ sembollerinden biriyle kurulan bağıntılara **eşitsizlik** denir.\n\n- x < 3: x, 3'ten küçük (3 dâhil değil) → **boş daire**\n- x ≥ −2: x, −2'den büyük ya da eşit (−2 dâhil) → **dolu daire**\n\nEşitsizlik denklem gibi çözülür; iki tarafa aynı sayı eklenip çıkarılabilir, iki taraf **pozitif** bir sayıyla çarpılıp bölünebilir. (Negatif bir sayıyla çarpılıp bölünürse eşitsizliğin yönü değişir: −x < 2 ise x > −2.)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çözüm kümesini çiz",
+   "aciklama": "İşareti seç, sınır sayısını kaydır.",
+   "sim": {
+    "kind": "d-esitsizlik",
+    "b": 2,
+    "op": 0
+   },
+   "gorev": {
+    "metin": "x ≥ −3 eşitsizliğinin çözümünü göster.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": -3
+      },
+      {
+       "key": "dir",
+       "eq": 1
+      },
+      {
+       "key": "kapali",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "≥ işaretinde sınır çözüme dâhildir: dolu daire.",
+    "x > −3 ile x ≥ −3 arasındaki tek fark −3'ün kendisidir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Önce çöz, sonra çiz",
+   "aciklama": "2x + 1 < 7 eşitsizliğini çöz ve çözümü sayı doğrusunda göster.",
+   "sim": {
+    "kind": "d-esitsizlik",
+    "b": 0,
+    "op": 2
+   },
+   "gorev": {
+    "metin": "2x + 1 < 7 eşitsizliğinin çözümünü göster.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": 3
+      },
+      {
+       "key": "dir",
+       "eq": -1
+      },
+      {
+       "key": "kapali",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "İki taraftan 1 çıkar: 2x < 6. İki tarafı 2'ye böl: x < 3."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "3(x − 2) = 12 denklemini çözelim.",
+   "cozum": [
+    "Dağıt: 3x − 6 = 12.",
+    "İki tarafa 6 ekle: 3x = 18.",
+    "İki tarafı 3'e böl: x = 6.",
+    "Kontrol: 3 · (6 − 2) = 12."
+   ],
+   "sonuc": "x = 6."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "2x + 5 ≤ 17 eşitsizliğini çözüp en büyük tam sayı çözümünü bulalım.",
+   "cozum": [
+    "İki taraftan 5 çıkar: 2x ≤ 12.",
+    "İki tarafı 2'ye böl: x ≤ 6."
+   ],
+   "sonuc": "Çözüm x ≤ 6; en büyük tam sayı çözüm 6."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Tarife",
+   "soru": "Bir mobil tarifede aylık sabit ücret 60 TL, her ek GB internet 15 TL'dir. Elif'in aylık bütçesi 150 TL'dir. En çok kaç GB ek internet alabilir?",
+   "cozum": [
+    "Ek GB sayısı g olsun. Toplam ücret 60 + 15g.",
+    "Bütçeyi aşmamalı: 60 + 15g ≤ 150.",
+    "15g ≤ 90 → g ≤ 6."
+   ],
+   "sonuc": "En çok 6 GB ek internet alabilir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "2x + 1 < 7'de önce 2'ye bölüp \"x + 1 < 3,5\" yazmak ya da sabiti yalnız bir tarafta işlemek hataya götürür. Her adımı iki tarafa uygula. Bir de çözümü sayı doğrusunda gösterirken **dâhil olma** durumuna dikkat et: < ve > için boş, ≤ ve ≥ için dolu daire."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "4x + 9 = 33 denkleminin çözümü kaçtır?",
+   "options": [
+    "10,5",
+    "24",
+    "6",
+    "42/4"
+   ],
+   "answer": 2,
+   "why": "4x = 24 → x = 6.",
+   "hint": "Önce 9'u yok et."
+  },
+  {
+   "prompt": "x/3 − 2 = 4 denkleminin çözümü kaçtır?",
+   "options": [
+    "6",
+    "18",
+    "2",
+    "−6"
+   ],
+   "answer": 1,
+   "why": "x/3 = 6 → x = 18.",
+   "hint": "İki tarafa 2 ekle, sonra 3 ile çarp."
+  },
+  {
+   "prompt": "3x − 4 > 11 eşitsizliğinin çözümü hangisidir?",
+   "options": [
+    "x < 5",
+    "x > 15",
+    "x ≥ 5",
+    "x > 5"
+   ],
+   "answer": 3,
+   "why": "3x > 15 → x > 5.",
+   "hint": "Önce iki tarafa 4 ekle."
+  },
+  {
+   "prompt": "x ≤ −1 eşitsizliğinin sayı doğrusunda gösterimi nasıldır?",
+   "options": [
+    "−1'de dolu daire, sola doğru ok",
+    "−1'de boş daire, sola doğru ok",
+    "−1'de dolu daire, sağa doğru ok",
+    "−1'de boş daire, sağa doğru ok"
+   ],
+   "answer": 0,
+   "why": "≤: −1 dâhil (dolu daire); küçük sayılar solda.",
+   "hint": "Sınır dâhil mi? Hangi yöndeki sayılar daha küçük?"
+  }
+ ]
+}

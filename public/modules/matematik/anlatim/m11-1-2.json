@@ -1,0 +1,80 @@
+{
+ "id": "m11-1-2",
+ "baslik": "Başkaları Tarafından Oluşturulan İki Nicel Değişkenli Verileri İnceleme",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.1.2"],
+ "sure": 15,
+ "ozet": "Haberlerde ve raporlarda karşına çıkan \"X ile Y arasında güçlü ilişki bulundu\" yorumlarını sorgulayacağız: aykırı değerler, küçük örneklem, veri aralığı dışında tahmin ve korelasyonun neden-sonuç sanılması.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bir yorumu değerlendirirken",
+   "govde": "Başkasının oluşturduğu bir serpme diyagramı ya da korelasyon iddiasıyla karşılaştığında sor:\n1. Kaç gözlem var? Veriler nasıl toplandı?\n2. Diyagramda **aykırı** (diğerlerinden çok uzak) nokta var mı? Sonucu o mu belirliyor?\n3. İlişki gerçekten **doğrusal** mı?\n4. Tahmin, verinin **aralığı içinde** mi yapılmış?\n5. İddia ilişkiden mi, yoksa neden-sonuçtan mı söz ediyor? Ortak bir üçüncü değişken olabilir mi?"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tek bir aykırı değer",
+   "aciklama": "Altı nokta neredeyse bir doğru üzerinde, biri (9, 1) çok uzakta. Korelasyon katsayısına bak.",
+   "sim": { "kind": "f-sacilim", "points": [[1, 2], [2, 3], [3, 4], [4, 4], [5, 6], [6, 7], [9, 1]], "lineOn": true, "add": false },
+   "gorev": { "metin": "Aykırı noktayı diğerlerinin hizasına taşı ve r'nin 0,9'u geçtiğini gör.", "check": { "key": "r", "gte": 0.9 } },
+   "dene": ["Aykırı değerle r ≈ 0,04; onsuz r ≈ 0,98.", "Tek bir nokta, eğilim doğrusunun eğimini bile değiştirebiliyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: aykırı değer",
+   "soru": "Bir rapor, yedi mağazanın reklam harcaması ile satışı arasında \"ilişki yok, r ≈ 0,04\" diyor. Diyagramda altı mağaza neredeyse bir doğru üzerinde, biri çok uzakta. Rapor güvenilir mi?",
+   "cozum": [
+    "Altı mağaza güçlü pozitif bir eğilim gösteriyor (o altı nokta için r ≈ 0,98).",
+    "Tek bir aykırı mağaza r'yi neredeyse 0'a indiriyor.",
+    "Aykırı değerin nedeni araştırılmalı: veri hatası mı, farklı bir durum mu (ör. o mağaza tadilattaydı)?"
+   ],
+   "sonuc": "\"İlişki yok\" yorumu yanıltıcı. Aykırı değer ayrıca incelenmeli; sonuç onu dahil ederek ve etmeyerek iki kez raporlanmalı."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Az veriyle güçlü korelasyon",
+   "aciklama": "Yalnız üç nokta var. Nokta ekleyemez, silemezsin.",
+   "sim": { "kind": "f-sacilim", "points": [[2, 3], [5, 8], [8, 4]], "add": false },
+   "gorev": { "metin": "Üç noktayı taşıyarak |r| ≥ 0,99 yap.", "check": { "key": "absr", "gte": 0.99 } },
+   "dene": ["Üç noktayla çok güçlü görünen bir korelasyon elde etmek kolay; bu yüzden küçük örneklemlere temkinli bak.", "Rastgele seçilmiş üç nokta bile tesadüfen yüksek |r| verebilir."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: aralık dışında tahmin",
+   "soru": "2–10 yaş arası çocukların verisiyle boy (cm) için y = 6x + 80 eğilim doğrusu bulunmuş (x: yaş). Bir yazar bu doğruyla 40 yaşındaki bir kişinin boyunu tahmin ediyor. Sonuç ne olur, neden yanlıştır?",
+   "cozum": [
+    "x = 40: y = 6 · 40 + 80 = 320 cm.",
+    "Model yalnız 2–10 yaş aralığındaki veriden kuruldu.",
+    "Büyüme ergenlikten sonra durur; ilişki bu aralığın dışında doğrusal değildir."
+   ],
+   "sonuc": "320 cm gerçek dışı bir sonuç. Eğilim doğrusu yalnız verinin aralığında tahmin için kullanılmalıdır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Korelasyon ≠ neden-sonuç",
+   "govde": "İki değişkenin birlikte değişmesinin üç olası açıklaması vardır:\n- X, Y'ye neden olur.\n- Y, X'e neden olur (ters yön).\n- Üçüncü bir Z değişkeni ikisini birlikte etkiler (**ortak neden**), ya da ilişki tesadüftür.\n\nNeden-sonuç iddiası için kontrollü deney gibi ek kanıt gerekir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Bir haber: \"Evinde daha çok kitap bulunan öğrencilerin sınav puanları daha yüksek (r = 0,6). Her eve kitap gönderelim, puanlar yükselsin.\" Bu çıkarımın zayıf noktası nedir?",
+   "cozum": [
+    "r = 0,6 orta düzeyde pozitif bir ilişki gösterir.",
+    "Ailenin eğitim düzeyi, gelir, okuma alışkanlığı gibi değişkenler hem kitap sayısını hem puanı etkileyebilir.",
+    "Kitap göndermenin puanı artıracağı bu veriden çıkarılamaz."
+   ],
+   "sonuc": "Korelasyon neden-sonuç olarak yorumlanmış; ortak nedenler göz ardı edilmiş."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "r'ye bakıp diyagrama bakmamak. Aynı r değerini veren çok farklı veri kümeleri olabilir: biri gerçekten doğrusal, biri tek bir aykırı noktanın etkisinde, biri eğri biçimli. Her zaman önce diyagramı çiz."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir serpme diyagramında tek bir aykırı nokta eklenince r 0,95'ten 0,30'a düşüyor. En uygun yorum hangisidir?", "options": ["İlişki aslında zayıftır", "Aykırı değer sonucu güçlü biçimde etkiliyor; ayrıca incelenmeli", "Aykırı değer hep silinmelidir", "r yanlış hesaplanmıştır"], "answer": 1, "why": "Tek nokta r'yi büyük ölçüde değiştiriyorsa önce o noktanın nedeni araştırılır; körü körüne silinmez de.", "hint": "Sonucu tek bir nokta mı belirliyor?" },
+  { "prompt": "\"Ayakkabı numarası büyük olan ilkokul öğrencilerinin okuma puanı daha yüksek\" verisindeki ortak neden hangisi olabilir?", "options": ["Ayakkabı markası", "Okulun adı", "Öğrencinin yaşı", "Mevsim"], "answer": 2, "why": "Yaş arttıkça hem ayak büyür hem okuma becerisi gelişir.", "hint": "Hem ayakkabı numarasını hem okumayı ne etkiler?" },
+  { "prompt": "Bir eğilim doğrusu 20–60 °C arasındaki ölçümlerden kurulmuş. Hangisi en güvenilir tahmindir?", "options": ["5 °C için tahmin", "100 °C için tahmin", "−20 °C için tahmin", "45 °C için tahmin"], "answer": 3, "why": "45 °C veri aralığının içinde; diğerleri aralık dışı.", "hint": "Model hangi aralıktaki veriden kuruldu?" },
+  { "prompt": "Yalnız 4 gözleme dayanan r = 0,98 sonucu için en doğru yorum hangisidir?", "options": ["Örneklem çok küçük; sonuç tesadüf olabilir, daha fazla veri gerekir", "Kesin olarak güçlü ilişki vardır", "Neden-sonuç ilişkisi kanıtlanmıştır", "r = 0,98 hiçbir zaman bulunamaz"], "answer": 0, "why": "Az sayıda noktayla yüksek |r| tesadüfen kolayca oluşabilir.", "hint": "Üç noktayla yaptığın denemeyi hatırla." }
+ ]
+}

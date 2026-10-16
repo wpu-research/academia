@@ -1,0 +1,203 @@
+{
+ "id": "m4-2-1",
+ "baslik": "Geometrik Cisimler ve Şekiller",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.2.1.1",
+  "M.4.2.1.2",
+  "M.4.2.1.3",
+  "M.4.2.1.4",
+  "M.4.2.1.5"
+ ],
+ "sure": 15,
+ "ozet": "Üçgen, kare ve dikdörtgenin kenar ve köşelerini adlandıracak, kare ile dikdörtgenin kenar özelliklerini belirleyecek, üçgenleri kenar uzunluklarına göre sınıflayacak ve küpün açınımını inceleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kenar ve köşe",
+   "govde": "Çokgenlerde köşeleri büyük harflerle adlandırırız. ABC üçgeninin köşeleri A, B ve C'dir; kenarları [AB], [BC] ve [AC]'dir. Bir kenarın uzunluğunu |AB| diye yazarız.\n\nKLMN dörtgeninin dört köşesi K, L, M, N; dört kenarı [KL], [LM], [MN] ve [NK]'dir. Köşeler sırayla, şeklin çevresi boyunca dolaşılarak okunur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kare ve dikdörtgenin özellikleri",
+   "govde": "- **Dikdörtgen:** 4 kenarı ve 4 köşesi vardır. **Karşılıklı kenarları eşit uzunluktadır**. Köşelerindeki açıların hepsi dik açıdır.\n- **Kare:** 4 kenarının **hepsi eşit uzunluktadır**. Köşelerindeki açıların hepsi dik açıdır.\n\nKarenin karşılıklı kenarları da eşit olduğu için her kare aynı zamanda özel bir dikdörtgendir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dörtgeni incele",
+   "aciklama": "Köşeleri noktalı tahtada sürükle. Köşelerin üstünde açı ölçüleri yazıyor.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      1,
+      4
+     ]
+    ],
+    "angles": true
+   },
+   "dene": [
+    "Şekil şu an 5 birime 3 birimlik bir dikdörtgen: karşılıklı kenarlar eşit, tüm açılar 90°.",
+    "Sağdaki iki köşeyi sola kaydırarak 3 birimlik bir kare yap. Açılar yine 90° kalıyor mu?",
+    "Bir köşeyi çapraz kaydırınca açılar 90° olmaktan çıkar: artık dikdörtgen değildir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üçgenleri kenarlarına göre sınıflama",
+   "govde": "- **Eşkenar üçgen:** Üç kenarı da eşit uzunlukta.\n- **İkizkenar üçgen:** İki kenarı eşit uzunlukta.\n- **Çeşitkenar üçgen:** Üç kenarının uzunlukları birbirinden farklı."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenarları ayarla",
+   "aciklama": "Kaydırıcılarla üçgenin üç kenarının uzunluğunu değiştir. Üçgenin türü üstte yazar.",
+   "sim": {
+    "kind": "c-pergel-ucgen",
+    "ab": 6,
+    "ac": 5,
+    "bc": 4,
+    "cember": false,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Bir eşkenar üçgen oluştur.",
+    "check": {
+     "key": "tur",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Üç kaydırıcıyı da aynı sayıya getir.",
+    "Sonra yalnız iki kenarı eşit bırak: ikizkenar üçgen olur.",
+    "1, 2 ve 8 gibi kenarlarla üçgen oluşmaz: kısa iki kenar birleşemez."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Küp ve açınımı",
+   "govde": "Küpün **6 yüzü** vardır ve hepsi **eş karedir**. Küpün yüzlerini kesip düz bir yüzeye açtığımızda oluşan şekle **açınım** denir. Açınımı katlayarak küpü yeniden oluşturabiliriz.\n\nEş küpleri üst üste ve yan yana koyarak yapılar kurarız. Bir yapıdaki küp sayısını katman katman sayarız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Küpü aç",
+   "aciklama": "Prizmanın kenarlarını kaydırıcılarla değiştir. \"Açınımı göster\" düğmesi yüzleri düzleme açar.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 3,
+    "b": 2,
+    "c": 2
+   },
+   "gorev": {
+    "metin": "Kenarları 3, 3, 3 olan bir küp yap ve açınımına bak.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 3
+      },
+      {
+       "key": "b",
+       "eq": 3
+      },
+      {
+       "key": "c",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Küpün açınımında 6 eş kare vardır.",
+    "Prizmayı 2 × 2 × 3 yap: 2 kat ve her katta 2 × 2 = 4 küp, toplam 12 küp."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Üçgen türü",
+   "soru": "ABC üçgeninde |AB| = 5 cm, |BC| = 5 cm ve |AC| = 7 cm'dir. Bu üçgenin türünü bulalım.",
+   "cozum": [
+    "Kenar uzunluklarını karşılaştır: |AB| = |BC| = 5 cm.",
+    "Üçüncü kenar 7 cm, diğerlerinden farklı.",
+    "İki kenarı eşit olan üçgen ikizkenar üçgendir."
+   ],
+   "sonuc": "ABC bir ikizkenar üçgendir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Küplerle yapı",
+   "soru": "Eş küplerle 2 katlı bir yapı kurulacak. Her katta 2 sıra ve her sırada 3 küp var. Kaç küp gerekir?",
+   "cozum": [
+    "Bir katta: 2 sıra × 3 küp = 6 küp.",
+    "2 kat: 6 + 6 = 12 küp."
+   ],
+   "sonuc": "12 küp gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kare ile dikdörtgeni tamamen farklı şekiller sanmak sık yapılır. Dikdörtgenin şartı karşılıklı kenarların eşit ve açıların dik olmasıdır; kare bu şartları sağlar. Yani her kare bir dikdörtgendir ama her dikdörtgen kare değildir.\n\nÜçgen sınıflarken şeklin görünüşüne değil **kenar uzunluklarına** bakmalıyız."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kenar uzunlukları 6 cm, 6 cm ve 6 cm olan üçgen hangisidir?",
+   "options": [
+    "Çeşitkenar",
+    "İkizkenar",
+    "Eşkenar",
+    "Dik"
+   ],
+   "answer": 2,
+   "why": "Üç kenarı da eşit olan üçgen eşkenardır.",
+   "hint": "Kaç kenar eşit?"
+  },
+  {
+   "prompt": "Dikdörtgen için hangisi her zaman doğrudur?",
+   "options": [
+    "Dört kenarı eşittir",
+    "Karşılıklı kenarları eşittir",
+    "Üç köşesi vardır",
+    "Köşelerindeki açılar farklıdır"
+   ],
+   "answer": 1,
+   "why": "Dikdörtgenin karşılıklı kenarları eşittir ve tüm açıları diktir.",
+   "hint": "Bir kapının ya da defterin kenarlarını düşün."
+  },
+  {
+   "prompt": "Bir küpün açınımında kaç kare vardır?",
+   "options": [
+    "6",
+    "4",
+    "5",
+    "8"
+   ],
+   "answer": 0,
+   "why": "Küpün 6 yüzü vardır; açınımda 6 eş kare olur.",
+   "hint": "Küpün kaç yüzü var?"
+  },
+  {
+   "prompt": "Kenar uzunlukları 4 cm, 7 cm ve 9 cm olan üçgen hangisidir?",
+   "options": [
+    "Eşkenar",
+    "İkizkenar",
+    "Kare",
+    "Çeşitkenar"
+   ],
+   "answer": 3,
+   "why": "Üç kenarın uzunlukları birbirinden farklı: çeşitkenar.",
+   "hint": "Eşit kenar var mı?"
+  }
+ ]
+}

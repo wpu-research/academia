@@ -1,0 +1,236 @@
+{
+ "id": "m1-5-2",
+ "baslik": "Eş Nesneler",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.3.2"
+ ],
+ "sure": 10,
+ "ozet": "Biçimi ve büyüklüğü aynı olan nesnelere eş denir. Döndürülmüş ya da başka renkteki eş şekilleri bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eş ne demek?",
+   "govde": "İki nesnenin **biçimi** ve **büyüklüğü** aynıysa bu nesneler **eştir**. Birini öbürünün üstüne koyduğumuzda tam olarak örter.\n\n- Rengin farklı olması eşliği bozmaz.\n- Nesneyi döndürmek ya da başka yere koymak eşliği bozmaz.\n- Biri daha büyük ya da daha küçükse eş **değildir**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Modele eş üçgenler",
+   "aciklama": "İlk karttaki kahverengi üçgen model. Ona eş olanların hepsine dokun (modelin kendisi de dahil).",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "es",
+    "items": [
+     {
+      "k": "es",
+      "s": "ucgen",
+      "c": 0,
+      "ad": "Model üçgen"
+     },
+     {
+      "k": "no",
+      "s": "ucgen",
+      "b": 0.7,
+      "c": 0
+     },
+     {
+      "k": "es",
+      "s": "ucgen",
+      "r": 90,
+      "c": 1
+     },
+     {
+      "k": "no",
+      "s": "ucgen",
+      "v": "ince",
+      "c": 2
+     },
+     {
+      "k": "es",
+      "s": "ucgen",
+      "r": 180,
+      "c": 3
+     },
+     {
+      "k": "no",
+      "s": "ucgen",
+      "b": 1.12,
+      "c": 1
+     },
+     {
+      "k": "no",
+      "s": "kare",
+      "c": 0
+     },
+     {
+      "k": "es",
+      "s": "ucgen",
+      "r": -30,
+      "c": 2
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Modele eş olan bütün üçgenleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Döndürülmüş bir üçgen yine eş olabilir.",
+    "Daha büyük ya da daha küçük üçgenler eş değildir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşliği kontrol etmek",
+   "govde": "Eşliği anlamak için kendine iki soru sor:\n\n1. **Biçimleri aynı mı?** (ikisi de üçgen mi, köşeleri aynı mı?)\n2. **Büyüklükleri aynı mı?** (biri öbürünü tam örter mi?)\n\nİki cevap da “evet” ise nesneler eştir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Modele eş dikdörtgenler",
+   "aciklama": "İlk karttaki dikdörtgen model.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "es",
+    "items": [
+     {
+      "k": "es",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 44,
+      "c": 0,
+      "ad": "Model dikdörtgen"
+     },
+     {
+      "k": "es",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 44,
+      "r": 90,
+      "c": 1
+     },
+     {
+      "k": "no",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 30,
+      "c": 2
+     },
+     {
+      "k": "no",
+      "s": "dikdortgen",
+      "w": 60,
+      "h": 44,
+      "c": 3
+     },
+     {
+      "k": "es",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 44,
+      "r": 45,
+      "c": 2
+     },
+     {
+      "k": "no",
+      "s": "kare",
+      "c": 1
+     },
+     {
+      "k": "es",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 44,
+      "c": 3
+     },
+     {
+      "k": "no",
+      "s": "dikdortgen",
+      "w": 70,
+      "h": 52,
+      "c": 0
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Modele eş olan bütün dikdörtgenleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Dik duran dikdörtgen, yatan modelin döndürülmüşü olabilir.",
+    "Kenarlarından biri kısa olan dikdörtgen eş değildir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir sınıftaki sıraların hepsi aynı biçimde ve aynı büyüklükte. Bir sıra mavi, bir sıra kırmızı. Bu iki sıra eş midir?",
+   "cozum": [
+    "Biçimleri aynı.",
+    "Büyüklükleri aynı.",
+    "Renk eşliği değiştirmez."
+   ],
+   "sonuc": "Evet, iki sıra **eştir**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "İki top aynı renk ve yuvarlak. Biri futbol topu, öbürü pinpon topu. Eş midirler?",
+   "cozum": [
+    "Biçimleri aynı: ikisi de yuvarlak.",
+    "Büyüklükleri farklı: futbol topu çok daha büyük."
+   ],
+   "sonuc": "**Eş değildir**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Rengi ya da yönü farklı diye iki şekli “eş değil” saymak yanlıştır. Eşlikte yalnız **biçim** ve **büyüklük** önemlidir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "İki nesnenin eş olması için hangisi gerekir?",
+   "options": [
+    "Aynı renkte olmaları",
+    "Aynı yere konmaları",
+    "Biçim ve büyüklüklerinin aynı olması",
+    "Aynı yöne bakmaları"
+   ],
+   "answer": 2,
+   "why": "Eşlik biçim ve büyüklükle ilgilidir.",
+   "hint": "Renk ve yön eşliği değiştirir mi?"
+  },
+  {
+   "prompt": "Bir kare döndürülürse ilk hâline eş olur mu?",
+   "options": [
+    "Evet, eş olur.",
+    "Hayır, eş olmaz.",
+    "Yalnız rengi değişirse eş olur.",
+    "Büyürse eş olur."
+   ],
+   "answer": 0,
+   "why": "Döndürmek biçimi ve büyüklüğü değiştirmez.",
+   "hint": "Döndürünce boyu değişiyor mu?"
+  },
+  {
+   "prompt": "Hangi ikili eş değildir?",
+   "options": [
+    "İki aynı 5 TL",
+    "Aynı paketteki iki kalem",
+    "Bir oyuncak araba ve gerçek bir araba",
+    "Bir çiftteki iki çorap"
+   ],
+   "answer": 2,
+   "why": "Oyuncak araba gerçeğinden çok küçüktür.",
+   "hint": "Büyüklükler aynı mı?"
+  }
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "id": "m10-2-2",
+ "baslik": "Başkaları Tarafından Oluşturulan İki Kategorik Değişkenli Verileri İnceleme",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.2.2"],
+ "sure": 15,
+ "ozet": "Haberlerde ve raporlarda gördüğün çapraz tablo yorumlarını sorgulamayı öğreneceğiz: yanlış payda, küçük ya da yanlı örneklem, neden-sonuç iddiası ve grupları birleştirince tersine dönen sonuçlar (Simpson paradoksu).",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bir iddiayı okurken sorulacak sorular",
+   "govde": "Biri \"veriler gösteriyor ki...\" dediğinde şunları sor:\n1. **Oranlar mı karşılaştırılmış, sayılar mı?** Doğru payda hangisi?\n2. **Örneklem** kaç kişi, nasıl seçilmiş? Gönüllü katılımlı anketler yanlı olabilir.\n3. **İlişki mi, neden-sonuç mu?** Çapraz tablo yalnız ilişkiyi gösterir.\n4. **Gizli bir üçüncü değişken** var mı? Gruplar birleştirilince sonuç değişiyor mu?"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir reklamın iddiası",
+   "aciklama": "\"B kursuna gidenlerin başarı oranı A kursundakinden çok daha yüksek!\" (kurgu veri, her kursta 100 öğrenci).",
+   "sim": { "kind": "f-capraz", "corner": "Tüm öğrenciler", "rows": ["A kursu", "B kursu"], "cols": ["Başarılı", "Başarısız"], "data": [[42, 58], [62, 38]], "edit": false },
+   "dene": ["Genel tabloda B önde: %62'ye karşı %42.", "Ama öğrenciler aynı mı? Aşağıda seviyelere göre ayıralım."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Aynı veri, seviyelere ayrılmış",
+   "aciklama": "Zorlanan öğrenciler: A kursunda 80, B kursunda 30 kişi. Kolay öğrenen gruptaki sayılar örnek 1'de.",
+   "sim": { "kind": "f-capraz", "corner": "Zorlanan öğrenciler", "rows": ["A kursu", "B kursu"], "cols": ["Başarılı", "Başarısız"], "data": [[24, 56], [6, 24]] },
+   "gorev": { "metin": "B kursunun zorlanan grubunda kaç başarılı öğrenci olsaydı iki kursun oranları eşit olurdu? Tabloyu düzenle (B satırı toplam 30 kalsın).", "check": { "all": [{ "key": "diff", "lt": 0.005 }, { "key": "n10", "eq": 9 }, { "key": "n11", "eq": 21 }] } },
+   "dene": ["Önce A'nın oranına bak: 24 / 80 = %30.", "Zorlanan grupta A, B'den daha başarılı: %30'a karşı %20."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: Simpson paradoksu",
+   "soru": "Kolay öğrenen grupta A kursunda 20 öğrenciden 18'i, B kursunda 70 öğrenciden 56'sı başarılı. Zorlanan grupta A'da 80'den 24'ü, B'de 30'dan 6'sı başarılı. Hangi kurs daha başarılı?",
+   "cozum": [
+    "Kolay grup: A %90 (18/20), B %80 (56/70). A önde.",
+    "Zorlanan grup: A %30 (24/80), B %20 (6/30). A yine önde.",
+    "Birleştirince: A (18 + 24)/100 = %42, B (56 + 6)/100 = %62. B önde!",
+    "Neden? A kursuna zorlanan öğrenciler çok daha fazla gelmiş (100'de 80). Seviye gizli üçüncü değişken."
+   ],
+   "sonuc": "Her alt grupta A daha başarılı olduğu hâlde toplamda B öne geçiyor. Gruplar birleştirilince ilişkinin yönü tersine dönebilir: buna Simpson paradoksu denir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: yanlış payda",
+   "soru": "Bir haber: \"Trafik kazalarına karışan sürücülerin 600'ü gündüz, 200'ü gece yolda. Demek ki gündüz araç kullanmak daha tehlikeli.\" Bu yorum doğru mu?",
+   "cozum": [
+    "Haber yalnız kaza sayılarını veriyor.",
+    "Gündüz yolda çok daha fazla araç varsa kaza sayısının yüksek olması beklenir.",
+    "Karar için \"kaza / o saatlerde yolda olan sürücü\" oranları gerekir."
+   ],
+   "sonuc": "Yorum desteklenmez; doğru payda (yoldaki sürücü sayısı) olmadan karşılaştırma yapılamaz."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Değerlendirme listesi",
+   "govde": "- Sayı yerine **oran** iste.\n- Örneklem **büyüklüğüne ve seçim yoluna** bak: 10 kişilik bir ankette %70 ile 7 kişiyi kastediyorsun.\n- \"İlişkili\" ile \"neden olur\" farklıdır; neden-sonuç için kontrollü deney gerekir.\n- Alt gruplara ayrılmış veri varsa onlara da bak; toplam tablo yanıltabilir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Toplam tablodaki farkı alt gruplara da genellemek. Örnekteki gibi alt grupların büyüklükleri çok farklıysa toplam tablo, her alt grupta görülenin tersini söyleyebilir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir ilacı kullanan 30 kişiden 21'i iyileşmiş. \"İlaç %70 başarılı\" iddiasını değerlendirmek için en çok neye ihtiyaç vardır?", "options": ["İyileşenlerin yaşlarına", "İlacın fiyatına", "İlacı kullanmayan benzer bir grubun iyileşme oranına", "Kişilerin isimlerine"], "answer": 2, "why": "İlaçsız da iyileşme oranı %70 ise ilacın etkisi görünmez; karşılaştırma grubu gerekir.", "hint": "İlaç olmasa ne olurdu?" },
+  { "prompt": "Bir tabloda iki grubun başarı oranları her alt grupta A lehine, toplamda B lehine çıkıyor. Bu duruma ne denir?", "options": ["Simpson paradoksu", "Aykırı değer", "Örneklem hatası", "Ortalama yanılgısı"], "answer": 0, "why": "Gruplar birleşince ilişkinin yönünün değişmesine Simpson paradoksu denir.", "hint": "Alt gruplar ve toplam farklı şey söylüyor." },
+  { "prompt": "\"Dondurma satışlarının yüksek olduğu aylarda boğulma vakaları da artıyor\" verisi için en uygun yorum hangisidir?", "options": ["Dondurma boğulmaya neden olur", "Boğulmalar dondurma satışını artırır", "İki değişken ilgisizdir", "Sıcak hava gibi ortak bir etken ikisini birlikte artırıyor olabilir"], "answer": 3, "why": "İlişki var ama neden-sonuç değil; yaz sıcaklığı hem dondurma hem yüzme etkinliğini artırır.", "hint": "Üçüncü bir değişken düşün." },
+  { "prompt": "Bir internet anketine katılan 50 kişinin %80'i bir diziyi beğenmiş. Bu sonuç neden tüm ülkeye genellenemez?", "options": ["Yüzde yanlış hesaplanmıştır", "Örneklem küçük ve gönüllü katılımlı olduğu için yanlı olabilir", "50 kişi çift sayıdır", "Diziler değerlendirilemez"], "answer": 1, "why": "Diziyi izleyenler ankete katılmaya daha istekli olabilir; örneklem temsil edici değil.", "hint": "Ankete kimler katıldı?" }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "id": "m8-5-1",
+ "baslik": "Basit Olayların Olma Olasılığı",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.5.1.1", "M.8.5.1.2", "M.8.5.1.3", "M.8.5.1.4", "M.8.5.1.5"],
+ "sure": 15,
+ "ozet": "Bir olayın olası durumlarını belirleyecek, olayları olasılıklarına göre karşılaştıracak, eşit şanslı çıktılarda olasılığı hesaplayacak ve olasılığın neden 0 ile 1 arasında olduğunu göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Olası durumlar",
+   "govde": "Bir torbada 3 kırmızı ve 5 yeşil top var. Torbadan bakmadan bir top çekiyoruz. Hangi topun geleceği önceden bilinemez; 8 topun her biri gelebilir. Bu deneyin **olası durum** sayısı 8'dir.\n\nBir zar atıldığında olası durumlar 1, 2, 3, 4, 5, 6'dır (6 durum). Bir madeni para atıldığında yazı ya da tura (2 durum)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Olasılık hesabı",
+   "govde": "Olası durumların her birinin gelme şansı eşitse:\n\n**Bir olayın olasılığı = istenen durumların sayısı ÷ tüm olası durumların sayısı**\n\nn eşit şanslı durumdan her birinin olasılığı **1/n**'dir. Torbadaki örnekte P(kırmızı) = 3/8, P(yeşil) = 5/8."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Torbayı düzenle",
+   "aciklama": "Topları ekle ya da çıkar; her rengin olasılığı alta yazılır. Toplar eşit şanslı çekilir.",
+   "sim": { "kind": "e-torba", "k": 3, "y": 5, "s": 0, "cek": false, "max": 10 },
+   "gorev": { "metin": "Kırmızı top çekme olasılığını 1/4 yap.", "check": { "key": "pK", "eq": 0.25, "tol": 1e-9 } },
+   "dene": ["1/4 için toplam topun dörtte biri kırmızı olmalı: 2 kırmızı ve 6 yeşil gibi.", "Kırmızı ile yeşil sayısını eşitle: olasılıklar da eşit olur."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Olasılık 0 ile 1 arasındadır",
+   "govde": "İstenen durum sayısı en az 0, en çok tüm durumların sayısı olabilir. Bu yüzden her olasılık **0 ≤ P ≤ 1** aralığındadır.\n\n- **İmkânsız olay:** olasılığı 0 (bir zarda 7 gelmesi).\n- **Kesin olay:** olasılığı 1 (bir zarda 7'den küçük bir sayı gelmesi).\n\nOlasılıklar karşılaştırılarak bir olayın diğerinden **daha olası**, **eşit olası** ya da **daha az olası** olduğu söylenir. 15 kız ve 15 erkek öğrencisi olan bir sınıftan rastgele seçilen öğrencinin kız ya da erkek olması eşit olasılıklıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kesin ve imkânsız olay",
+   "aciklama": "Bu kez torbada sarı toplar da olabilir.",
+   "sim": { "kind": "e-torba", "k": 2, "y": 2, "s": 2, "cek": false, "max": 10 },
+   "gorev": { "metin": "Sarı top çekmeyi kesin olay yap.", "check": { "key": "pS", "eq": 1, "tol": 1e-9 } },
+   "dene": ["Kesin olay için torbada sarıdan başka top kalmamalı. O zaman kırmızı çekmek imkânsız olur: P = 0."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Zar: eşit şanslı çıktılar",
+   "aciklama": "Zarı birçok kez at. Kesikli çizgiler her yüzün olasılığını (1/6 ≈ %16,7) gösterir. Atış sayısı arttıkça çubuklar çizgiye yaklaşır.",
+   "sim": { "kind": "olasilik-sim", "dice": 1 },
+   "gorev": { "metin": "Zarı en az 100 kez at.", "check": { "key": "total", "gte": 100 } },
+   "dene": ["10 atışta çubuklar birbirinden çok farklı olabilir; bu zarın hileli olduğu anlamına gelmez."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir zar atılıyor. Üst yüze asal sayı gelme olasılığı nedir?",
+   "cozum": [
+    "Olası durumlar: 1, 2, 3, 4, 5, 6 (6 durum).",
+    "Asal olanlar: 2, 3, 5 (3 durum). 1 asal değildir.",
+    "P = 3/6 = 1/2."
+   ],
+   "sonuc": "1/2"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: top eklemek",
+   "soru": "Bir torbada 4 kırmızı ve 6 yeşil top var. Kırmızı top çekme olasılığının 1/2 olması için torbaya kaç kırmızı top eklenmelidir?",
+   "cozum": [
+    "x kırmızı top eklensin: kırmızı 4 + x, toplam 10 + x.",
+    "(4 + x) ÷ (10 + x) = 1/2 ⇒ 2(4 + x) = 10 + x ⇒ 8 + 2x = 10 + x ⇒ x = 2.",
+    "Kontrol: 6 kırmızı, 6 yeşil; P(kırmızı) = 6/12 = 1/2."
+   ],
+   "sonuc": "2 kırmızı top eklenmelidir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Olasılığı 1'den büyük bulmak: istenen durum sayısı tüm durumlardan fazla olamaz; hesabı kontrol et.\n- \"İki sonuç var, o hâlde her biri 1/2\" demek. 1 kırmızı ve 9 yeşil topta iki renk var ama P(kırmızı) = 1/10'dur; renkler eşit şanslı değildir.\n- Olasılığı yüzde ile karıştırmak: 1/4 = 0,25 = %25 aynı değerdir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "1'den 20'ye kadar numaralanmış kartlardan rastgele çekilen kartın 5'in katı olma olasılığı nedir?", "options": ["1/4", "1/5", "1/20", "1/2"], "answer": 1, "why": "5, 10, 15, 20: 4 kart. 4/20 = 1/5.", "hint": "Önce 5'in katı olan kartları say." },
+  { "prompt": "Hangisi bir olasılık değeri olamaz?", "options": ["0", "3/4", "1", "5/4"], "answer": 3, "why": "Olasılık 0 ile 1 arasındadır; 5/4 > 1.", "hint": "Olasılığın en büyük değeri nedir?" },
+  { "prompt": "Bir torbada 2 kırmızı, 3 yeşil, 5 sarı top var. Yeşil top çekme olasılığı nedir?", "options": ["3/10", "1/3", "3/7", "1/2"], "answer": 0, "why": "Toplam 10 top, 3'ü yeşil: 3/10.", "hint": "Toplam top sayısını unutma." },
+  { "prompt": "Bir zar atılıyor. Hangisi kesin olaydır?", "options": ["Zarın çift gelmesi", "Zarın 7 gelmesi", "Zarın 6 veya 6'dan küçük gelmesi", "Zarın 1 gelmesi"], "answer": 2, "why": "Bütün yüzler 6 veya 6'dan küçüktür; olasılık 6/6 = 1.", "hint": "Hangi olay her atışta gerçekleşir?" }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "id": "m3-4-2",
+ "baslik": "Geometrik Şekilleri Sınıflandırma",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.2"
+ ],
+ "sure": 12,
+ "ozet": "Nokta tahtasında şekiller çizip kenar sayılarına göre üçgen, dörtgen, beşgen ve altıgen diye sınıflandıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kenar ve köşe",
+   "govde": "Düz çizgilerle çevrilmiş kapalı şekillerde her bir düz çizgiye **kenar**, iki kenarın birleştiği noktaya **köşe** denir. Bu şekillerde kenar sayısı ile köşe sayısı her zaman eşittir.\n\nDaire düz kenarlardan oluşmaz; kenarı ve köşesi yoktur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kenar sayısına göre adlar",
+   "govde": "- 3 kenar: **üçgen**\n- 4 kenar: **dörtgen** (kare ve dikdörtgen de birer dörtgendir)\n- 5 kenar: **beşgen**\n- 6 kenar: **altıgen**\n\nŞeklin büyüklüğü, rengi ya da nasıl döndürüldüğü adını değiştirmez; yalnız kenar sayısına bakılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgenden beşgene",
+   "aciklama": "Tahtada bir üçgen var. Boş noktalara dokunarak köşe ekle; bir köşeye yeniden dokunursan silinir. Tahtanın yanındaki yazı şeklin adını ve kenar sayısını gösterir.",
+   "sim": {
+    "kind": "b-cokgen",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      3,
+      4
+     ]
+    ],
+    "cevre": false
+   },
+   "gorev": {
+    "metin": "Şekli bir beşgene dönüştür.",
+    "check": {
+     "all": [
+      {
+       "key": "kenar",
+       "eq": 5
+      },
+      {
+       "key": "kesisim",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yeni köşe en son köşeden sonra eklenir; kenarlar birbirini kesmemeli.",
+    "Aynı doğru üzerindeki bir nokta köşe sayılmaz."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kare olmayan bir dörtgen",
+   "aciklama": "Boş tahtada kendi şeklini çiz.",
+   "sim": {
+    "kind": "b-cokgen",
+    "points": [],
+    "cevre": false
+   },
+   "gorev": {
+    "metin": "Kare olmayan bir dikdörtgen çiz.",
+    "check": {
+     "all": [
+      {
+       "key": "dikdortgen",
+       "eq": 1
+      },
+      {
+       "key": "kare",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Dikdörtgenin karşılıklı kenarları eşit, bütün köşeleri dik köşedir.",
+    "Köşeleri sırayla, şeklin etrafında dolaşarak ekle."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Trafikteki \"DUR\" levhası kaç kenarlıdır?",
+   "cozum": [
+    "Levhanın kenarlarını say: 8 düz kenar.",
+    "8 kenarlı şekle sekizgen denir."
+   ],
+   "sonuc": "DUR levhası bir **sekizgen**dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Dörtgenler",
+   "soru": "Kare ile dikdörtgen hangi gruptadır? Farkları nedir?",
+   "cozum": [
+    "İkisinin de 4 kenarı var: ikisi de dörtgendir.",
+    "İkisinde de bütün köşeler dik köşedir.",
+    "Karenin 4 kenarı eşit; dikdörtgende yalnız karşılıklı kenarlar eşit."
+   ],
+   "sonuc": "Kare ve dikdörtgen birer **dörtgen**dir; karenin bütün kenarları eşittir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Köşesi üstte duran (döndürülmüş) bir kareye \"kare değil\" demek yanlıştır; döndürmek şeklin adını değiştirmez. Daireyi kenarlı bir şekil sanmak da hatadır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "6 kenarlı şekle ne ad verilir?",
+   "options": [
+    "Dörtgen",
+    "Beşgen",
+    "Altıgen",
+    "Sekizgen"
+   ],
+   "answer": 2,
+   "why": "6 kenarlı şekil altıgendir.",
+   "hint": "Kenar sayısı adında saklı."
+  },
+  {
+   "prompt": "Hangisi dörtgen değildir?",
+   "options": [
+    "4 kenarlı herhangi bir şekil",
+    "Kare",
+    "Dikdörtgen",
+    "Üçgen"
+   ],
+   "answer": 3,
+   "why": "Üçgenin 3 kenarı vardır.",
+   "hint": "Kenarları say."
+  },
+  {
+   "prompt": "5 köşesi olan bir şeklin kaç kenarı vardır?",
+   "options": [
+    "5",
+    "4",
+    "6",
+    "10"
+   ],
+   "answer": 0,
+   "why": "Kenar sayısı köşe sayısına eşittir: 5.",
+   "hint": "Kenar ve köşe sayıları arasındaki ilişkiyi hatırla."
+  },
+  {
+   "prompt": "Kare ile dikdörtgenin ortak özelliği hangisidir?",
+   "options": [
+    "Kenarı yoktur",
+    "4 kenarı vardır",
+    "Bütün kenarları eşittir",
+    "3 köşesi vardır"
+   ],
+   "answer": 1,
+   "why": "İkisi de dörtgendir: 4 kenar, 4 köşe.",
+   "hint": "Dikdörtgenin bütün kenarları eşit mi?"
+  }
+ ]
+}

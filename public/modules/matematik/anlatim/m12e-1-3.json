@@ -1,0 +1,252 @@
+{
+ "id": "m12e-1-3",
+ "baslik": "Üstel, Logaritmik Denklemler ve Eşitsizlikler",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.1.3.1",
+  "12.1.3.2"
+ ],
+ "sure": 20,
+ "ozet": "Üstel ve logaritmik denklemleri tabanları eşitleyerek, logaritma alarak ve değişken değiştirerek çözeceğiz. Eşitsizliklerde tabanın 1'den küçük olmasının yönü nasıl çevirdiğini grafikte göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Denklemler için temel kurallar",
+   "govde": "a > 0 ve a ≠ 1 olmak üzere:\n\n- **aˣ = aʸ ⇔ x = y** (üstel fonksiyon birebirdir)\n- b > 0 ise **aˣ = b ⇔ x = logₐ b**; b ≤ 0 ise çözüm yoktur.\n- **logₐ f(x) = logₐ g(x) ⇔ f(x) = g(x)**, ama ayrıca f(x) > 0 ve g(x) > 0 olmalıdır.\n- **logₐ f(x) = c ⇔ f(x) = aᶜ**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "aˣ = c denklemi",
+   "aciklama": "Kahverengi eğri aˣ, turuncu doğru y = c. Kesişim noktasının x'i denklemin çözümüdür. Yatay doğru eğriyi tek noktada keser; bu, üstel fonksiyonun birebir olduğunu gösterir.",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "ustel",
+    "b": 2,
+    "x": 0,
+    "c": 2,
+    "cmin": 0.5,
+    "cmax": 8,
+    "cstep": 0.5
+   },
+   "gorev": {
+    "metin": "Taban 2 iken 2ˣ = 8 denkleminin çözümünü göster.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": 2
+      },
+      {
+       "key": "c",
+       "eq": 8
+      }
+     ]
+    }
+   },
+   "dene": [
+    "c = 8 için kesişim x = 3'te: 2³ = 8.",
+    "c = 5 yap: çözüm log₂ 5 ≈ 2,32, tam sayı değil."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1 · Tabanları eşitle",
+   "soru": "4ˣ⁺¹ = 8ˣ denklemini çözelim.",
+   "cozum": [
+    "İki tarafı da 2'nin kuvveti yap: 4ˣ⁺¹ = 2²ˣ⁺², 8ˣ = 2³ˣ.",
+    "Tabanlar eşit: 2x + 2 = 3x.",
+    "x = 2."
+   ],
+   "sonuc": "Çözüm kümesi {2}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2 · Değişken değiştirme",
+   "soru": "4ˣ − 3 · 2ˣ − 4 = 0 denklemini çözelim.",
+   "cozum": [
+    "2ˣ = t diyelim; t > 0 ve 4ˣ = t².",
+    "t² − 3t − 4 = 0 ⇒ (t − 4)(t + 1) = 0 ⇒ t = 4 ya da t = −1.",
+    "t > 0 olduğundan t = −1 atılır. 2ˣ = 4 ⇒ x = 2."
+   ],
+   "sonuc": "Çözüm kümesi {2}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3 · Logaritmik denklem",
+   "soru": "log₂ (x − 1) + log₂ (x + 1) = 3 denklemini çözelim.",
+   "cozum": [
+    "Tanım şartı: x − 1 > 0 ve x + 1 > 0 ⇒ x > 1.",
+    "Toplam kuralı: log₂ [(x − 1)(x + 1)] = 3 ⇒ x² − 1 = 2³ = 8.",
+    "x² = 9 ⇒ x = 3 ya da x = −3.",
+    "x > 1 şartı nedeniyle x = −3 atılır."
+   ],
+   "sonuc": "Çözüm kümesi {3}."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşitsizlikler",
+   "govde": "**a > 1** ise fonksiyonlar artandır, yön korunur:\n- aˣ < aʸ ⇔ x < y\n- logₐ x < logₐ y ⇔ 0 < x < y\n\n**0 < a < 1** ise fonksiyonlar azalandır, **yön değişir**:\n- aˣ < aʸ ⇔ x > y\n- logₐ x < logₐ y ⇔ x > y > 0"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşitsizliğin çözüm aralığı",
+   "aciklama": "Grafik (1/2)ˣ, turuncu doğru y = 4. Yeşil bant (1/2)ˣ > 4 eşitsizliğinin çözüm kümesini x ekseni üzerinde gösteriyor: x < −2.",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "ustel",
+    "b": 0.5,
+    "x": -1,
+    "c": 4,
+    "ineq": "gt",
+    "cmin": 0.5,
+    "cmax": 8,
+    "cstep": 0.5
+   },
+   "gorev": {
+    "metin": "Tabanı 2 yap (c = 4 kalsın) ve çözüm bandının yönünün değiştiğini gör.",
+    "check": {
+     "all": [
+      {
+       "key": "b",
+       "eq": 2
+      },
+      {
+       "key": "c",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2ˣ > 4 ⇔ x > 2, ama (1/2)ˣ > 4 ⇔ x < −2.",
+    "Bant her zaman eğrinin y = c doğrusunun **üstünde** kaldığı x'lerdir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Logaritmik eşitsizlik",
+   "aciklama": "Grafik log_(1/3) x, turuncu doğru y = −2. Yeşil bant log_(1/3) x > −2 eşitsizliğinin çözümü: 0 < x < 9. Sınırdaki x = 0 dahil değildir, çünkü logaritmanın içi pozitif olmalı.",
+   "sim": {
+    "kind": "g-ustel-log",
+    "mode": "log",
+    "b": 0.3333333333333333,
+    "x": 1,
+    "c": -2,
+    "ineq": "gt",
+    "cmin": -3,
+    "cmax": 2,
+    "cstep": 0.5,
+    "xr": [
+     -1,
+     11
+    ],
+    "yr": [
+     -4,
+     4
+    ],
+    "xmax": 10
+   },
+   "gorev": {
+    "metin": "c'yi −1 yap: log_(1/3) x > −1 ⇔ 0 < x < 3.",
+    "check": {
+     "key": "c",
+     "eq": -1
+    }
+   },
+   "dene": [
+    "Taban 1/3 < 1: grafik azalan, bu yüzden çözüm 9'un solunda kalır.",
+    "Tabanı 3 yaparsan bant sağa döner: log₃ x > −2 ⇔ x > 1/9."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 4",
+   "soru": "log_(1/3) (x − 1) > −2 eşitsizliğini çözelim.",
+   "cozum": [
+    "Tanım şartı: x − 1 > 0 ⇒ x > 1.",
+    "−2 = log_(1/3) 9, çünkü (1/3)⁻² = 9.",
+    "Taban 1'den küçük, yön değişir: x − 1 < 9 ⇒ x < 10.",
+    "İki şartı birleştir."
+   ],
+   "sonuc": "Çözüm kümesi (1, 10)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Gerçek hayattan model",
+   "soru": "Bir bakteri kültüründe t saat sonraki bakteri sayısı N(t) = 500 · 2^(t/3) ile veriliyor. Sayı kaç saat sonra 8000 olur? Ayrıca yıllık %10 bileşik faizle yatırılan para en az kaç yılda iki katına çıkar? (log 2 ≈ 0,301, log 1,1 ≈ 0,0414)",
+   "cozum": [
+    "500 · 2^(t/3) = 8000 ⇒ 2^(t/3) = 16 = 2⁴ ⇒ t/3 = 4 ⇒ t = 12.",
+    "Faizde n yıl sonra para 1,1ⁿ katına çıkar: 1,1ⁿ ≥ 2.",
+    "İki tarafın logaritması: n · log 1,1 ≥ log 2 ⇒ n ≥ 0,301 / 0,0414 ≈ 7,27.",
+    "n tam yıl olduğundan en az 8 yıl."
+   ],
+   "sonuc": "12 saat sonra 8000 bakteri olur; para en az 8 yılda iki katına çıkar."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "9ˣ − 10 · 3ˣ + 9 = 0 denkleminin köklerinin toplamı kaçtır?",
+   "cozum": [
+    "3ˣ = t (t > 0): t² − 10t + 9 = 0.",
+    "(t − 1)(t − 9) = 0 ⇒ t = 1 ya da t = 9.",
+    "3ˣ = 1 ⇒ x = 0; 3ˣ = 9 ⇒ x = 2."
+   ],
+   "sonuc": "Kökler 0 ve 2; toplam 2."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Logaritmik denklemde bulunan kökleri **tanım şartında** denetlemeyi unutmak. Örnek 3'te x = −3 kökü bu yüzden atıldı.\n- Tabanı 0 ile 1 arasında olan eşitsizliklerde yönü çevirmemek.\n- Değişken değiştirmede t = aˣ > 0 şartını unutup negatif kökleri kabul etmek."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "3²ˣ⁻¹ = 27 denkleminin çözümü nedir?",
+   "options": [
+    "1",
+    "3",
+    "2",
+    "4"
+   ],
+   "answer": 2,
+   "why": "27 = 3³ ⇒ 2x − 1 = 3 ⇒ x = 2.",
+   "hint": "27'yi 3'ün kuvveti olarak yaz."
+  },
+  {
+   "prompt": "log₂ (x + 3) = 4 denkleminin çözümü nedir?",
+   "options": [
+    "13",
+    "5",
+    "16",
+    "19"
+   ],
+   "answer": 0,
+   "why": "x + 3 = 2⁴ = 16 ⇒ x = 13; 13 + 3 > 0 olduğu için geçerli.",
+   "hint": "logₐ f(x) = c ⇔ f(x) = aᶜ."
+  },
+  {
+   "prompt": "(1/2)ˣ < 8 eşitsizliğinin çözüm kümesi nedir?",
+   "options": [
+    "x < −3",
+    "x > 3",
+    "x < 3",
+    "x > −3"
+   ],
+   "answer": 3,
+   "why": "(1/2)ˣ = 2⁻ˣ < 2³ ⇒ −x < 3 ⇒ x > −3.",
+   "hint": "Tabanı 2 yap; ya da 0 < taban < 1 olduğu için yönün değiştiğini hatırla."
+  },
+  {
+   "prompt": "log₃ x + log₃ (x − 8) = 2 denkleminin çözüm kümesi nedir?",
+   "options": [
+    "{−1}",
+    "{9}",
+    "{−1, 9}",
+    "{3}"
+   ],
+   "answer": 1,
+   "why": "x(x − 8) = 9 ⇒ x² − 8x − 9 = 0 ⇒ x = 9 ya da x = −1; x > 8 şartı yalnız 9'u bırakır.",
+   "hint": "Kökleri bulduktan sonra x > 0 ve x − 8 > 0 şartlarını denetle."
+  }
+ ]
+}

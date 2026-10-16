@@ -1,0 +1,83 @@
+{
+ "id": "m8-3-4",
+ "baslik": "Geometrik Cisimler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.3.4.1", "M.8.3.4.2", "M.8.3.4.3", "M.8.3.4.4", "M.8.3.4.5", "M.8.3.4.6"],
+ "sure": 20,
+ "ozet": "Dik prizma, dik dairesel silindir, dik piramit ve dik koniyi tanıyacak, açınımlarını görecek; silindirin yüzey alanı ve hacim bağıntılarını oluşturacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dik prizmalar",
+   "govde": "Eş ve paralel iki tabanı olan, yan yüzleri tabanlara dik dikdörtgenler olan cisimlere **dik prizma** denir. Prizmanın adı tabanından gelir: kare prizma, üçgen prizma, beşgen prizma.\n\nTemel elemanlar: **yüz**, **ayrıt** (iki yüzün kesiştiği doğru parçası), **köşe**. Bir dikdörtgenler prizmasının 6 yüzü, 12 ayrıtı, 8 köşesi vardır. Hacim = taban alanı × yükseklik."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birim küplerle prizma",
+   "aciklama": "Kenarları değiştir; \"Açınımı göster\" ile prizmanın düzleme açılmış hâline bak.",
+   "sim": { "kind": "kati-cisim", "a": 3, "b": 2, "c": 2 },
+   "gorev": { "metin": "Hacmi 24 birimküp olan bir prizma kur.", "check": { "key": "volume", "eq": 24 } },
+   "dene": ["24 birimküpü kaç farklı prizmayla elde edebilirsin? Yüzey alanları aynı mı?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dik dairesel silindir",
+   "govde": "İki eş ve paralel daire taban ile bunları birleştiren eğri bir yanal yüzeyden oluşur. Taban yarıçapı r, yükseklik h.\n\nAçınımda yanal yüz bir **dikdörtgendir**: bir kenarı taban çevresi **2πr**, diğer kenarı **h**.\n\n- Yanal alan = 2πr · h\n- Yüzey alanı = 2 · πr² + 2πrh\n- Hacim = taban alanı × yükseklik = **πr² · h**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Silindiri aç, ölç",
+   "aciklama": "Yarıçapı ve yüksekliği değiştir. Açınımda dikdörtgenin uzun kenarının taban çevresine eşit olduğuna bak.",
+   "sim": { "kind": "e-silindir", "r": 2, "h": 5, "rmax": 5, "hmax": 10 },
+   "gorev": { "metin": "Hacmi 36π birimküp olan bir silindir yap.", "check": { "key": "hacimPi", "eq": 36 } },
+   "dene": ["İki farklı çözüm var: r = 3, h = 4 ve r = 2, h = 9. Yüzey alanları aynı mı?", "Yarıçapı 2 katına çıkarınca hacim kaç katına çıkıyor?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Taban yarıçapı 3 cm, yüksekliği 10 cm olan bir silindirin yanal alanını, yüzey alanını ve hacmini bulalım. (π = 3 alın.)",
+   "cozum": [
+    "Yanal alan = 2πrh = 2 · π · 3 · 10 = 60π.",
+    "İki taban = 2 · π · 3² = 18π. Yüzey alanı = 18π + 60π = 78π.",
+    "Hacim = π · 3² · 10 = 90π.",
+    "π = 3 ile: yüzey alanı 234 cm², hacim 270 cm³."
+   ],
+   "sonuc": "60π cm², 78π cm² ve 90π cm³."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: su deposu",
+   "soru": "Taban yarıçapı 50 cm, yüksekliği 120 cm olan silindir biçimli bir su deposu kaç litre su alır? (π = 3, 1 L = 1000 cm³)",
+   "cozum": [
+    "Hacim = π · r² · h = 3 · 50² · 120.",
+    "3 · 2500 · 120 = 900 000 cm³.",
+    "900 000 ÷ 1000 = 900 L."
+   ],
+   "sonuc": "Depo 900 L su alır."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Dik piramit ve dik koni",
+   "govde": "**Piramit**in tabanı bir çokgendir; yan yüzleri bir tepe noktasında birleşen üçgenlerdir. **Dik piramit**te tepe noktası taban merkezinin tam üstündedir ve yan yüzler eş ikizkenar üçgenlerdir. Açınım: taban çokgeni + çevresine dizilmiş üçgenler. Kare dik piramidin 5 yüzü, 8 ayrıtı, 5 köşesi vardır.\n\n**Koni**nin tabanı bir dairedir; yanal yüzey tepe noktasında toplanır. **Dik koni**de tepe, taban merkezinin tam üstündedir. Tepe ile taban çemberi üzerindeki bir noktayı birleştiren doğru parçasına **ana doğru** (ℓ) denir. Açınım: bir daire + bir daire dilimi."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Koninin açınımı",
+   "aciklama": "Dik koninin yanal yüzü açılınca yarıçapı ana doğru (ℓ) olan bir daire dilimi olur. Dilimin yay uzunluğu taban çevresine eşittir.",
+   "sim": { "kind": "e-silindir", "cisim": "koni", "r": 3, "h": 4, "rmax": 6, "hmax": 10, "acinim": true },
+   "gorev": { "metin": "Ana doğrusu 10 birim olan bir koni yap.", "check": { "key": "l", "eq": 10, "tol": 1e-9 } },
+   "dene": ["r, h ve ℓ bir dik üçgen oluşturur: ℓ² = r² + h². 6, 8, 10 üçlüsünü hatırla.", "Yarıçap büyüdükçe dilimin merkez açısı nasıl değişiyor?"]
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Silindirin yanal yüzünün kenarını çap (2r) sanmak; kenar taban **çevresi** 2πr'dir.\n- Yüzey alanında iki tabandan birini unutmak.\n- Piramit ile prizmayı karıştırmak: prizmanın iki tabanı, piramidin bir tabanı ve bir tepe noktası vardır.\n- Koninin yüksekliği (h) ile ana doğrusunu (ℓ) aynı sanmak; ℓ her zaman h'den uzundur."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Taban yarıçapı 2 cm, yüksekliği 7 cm olan silindirin hacmi kaç cm³'tür?", "options": ["14π", "28π", "56π", "98π"], "answer": 1, "why": "π · 2² · 7 = 28π.", "hint": "Hacim = πr² · h." },
+  { "prompt": "Dik dairesel silindirin açınımında yanal yüz hangi şekildir?", "options": ["Daire", "Daire dilimi", "Üçgen", "Dikdörtgen"], "answer": 3, "why": "Yanal yüz açılınca kenarları 2πr ve h olan bir dikdörtgen olur. Daire dilimi koninin açınımındadır.", "hint": "Bir kâğıt rulonun etiketini açtığını düşün." },
+  { "prompt": "Kare dik piramidin kaç yüzü vardır?", "options": ["4", "6", "5", "8"], "answer": 2, "why": "1 kare taban + 4 üçgen yan yüz = 5.", "hint": "Tabanı ve yan yüzleri ayrı ayrı say." },
+  { "prompt": "Taban yarıçapı 5 cm, yüksekliği 4 cm olan silindirin yüzey alanı kaç cm²'dir?", "options": ["90π", "70π", "100π", "140π"], "answer": 0, "why": "2 · π · 25 + 2 · π · 5 · 4 = 50π + 40π = 90π.", "hint": "İki taban alanı ile yanal alanı topla." }
+ ]
+}

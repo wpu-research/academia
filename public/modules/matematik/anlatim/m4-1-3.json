@@ -1,0 +1,159 @@
+{
+ "id": "m4-1-3",
+ "baslik": "Doğal Sayılarla Çıkarma İşlemi",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.1.3.1",
+  "M.4.1.3.2",
+  "M.4.1.3.3",
+  "M.4.1.3.4"
+ ],
+ "sure": 14,
+ "ozet": "En çok dört basamaklı doğal sayılarla bozarak çıkarma yapmayı, sonucu tahmin etmeyi, zihinden çıkarmayı ve toplama-çıkarma problemlerini öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çıkarma ne demek?",
+   "govde": "Çıkarma, bir çokluktan bir kısmını **ayırmak** ya da iki çokluğun **farkını** bulmaktır. Eksilen − Çıkan = Fark.\n\nAlt alta çıkarırken büyük sayı (eksilen) üste yazılır, basamaklar hizalanır ve işleme **birler basamağından** başlanır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bloklarla bozarak çıkarma",
+   "aciklama": "Tabloda 342 var. Bundan 127 çıkaracağız: 1 yüzlük, 2 onluk ve 7 birlik.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "h": 3,
+    "t": 4,
+    "o": 2
+   },
+   "gorev": {
+    "metin": "127'yi çıkar ve 215'i düzenli göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 215
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 birlikten 7 birlik çıkmaz: \"1 onluk → 10 birlik\" düğmesiyle bir onluğu boz.",
+    "Şimdi 12 birlik var; 7 tanesini çıkar."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bozarak çıkarma",
+   "govde": "Bir basamaktaki rakam, altındaki rakamdan **küçükse** bir sol basamaktan **1 bozarız**: sol basamak 1 azalır, bulunduğumuz basamağa 10 eklenir.\n\nSol basamak 0 ise bozmayı daha soldaki basamaktan yaparız; aradaki 0'lar 9 olur.\n\n**Sağlama:** Fark + Çıkan = Eksilen olmalıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıfırlı sayıdan çıkarma",
+   "aciklama": "4 003 − 1 258 işlemini adım adım izle. Üstteki küçük rakamlar bozmadan sonraki yeni değerlerdir.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "-",
+    "a": 4003,
+    "b": 1258
+   },
+   "gorev": {
+    "metin": "İşlemi sonuna kadar izle.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Birler basamağında 3'ten 8 çıkmaz, onlar ve yüzler 0: bozma binlerden yapılır.",
+    "Sağlama yap: 2 745 + 1 258 = 4 003."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Zihinden çıkarma ve tahmin",
+   "govde": "**10'un katını çıkarmak:** 576 − 40 işleminde yalnız onlar basamağı değişir: 7 − 4 = 3, sonuç 536.\n\n**100'ün katını çıkarmak:** 834 − 300 işleminde yalnız yüzler değişir: 534.\n\n**Tahmin:** Sayıları yuvarlayarak çıkarırız. 4 812 − 1 987 ≈ 4 800 − 2 000 = 2 800."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "5 240 − 1 236 işlemini yapıp sağlamasını yapalım.",
+   "cozum": [
+    "Birler: 0'dan 6 çıkmaz; onlardan 1 bozulur: 10 − 6 = 4.",
+    "Onlar: 4 bir azaldı, 3 − 3 = 0.",
+    "Yüzler: 2 − 2 = 0. Binler: 5 − 1 = 4.",
+    "Sağlama: 4 004 + 1 236 = 5 240."
+   ],
+   "sonuc": "5 240 − 1 236 = 4 004."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "Bir çiftlikte 2 450 tavuk vardı. Bunların 875'i satıldı, sonra çiftliğe 320 civciv geldi. Çiftlikte kaç tavuk ve civciv var?",
+   "cozum": [
+    "Satıştan sonra: 2 450 − 875 = 1 575.",
+    "Civcivler gelince: 1 575 + 320 = 1 895."
+   ],
+   "sonuc": "Çiftlikte 1 895 tavuk ve civciv var."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Her basamakta \"büyükten küçüğü\" çıkarmak yanlıştır. 342 − 127 işleminde birlerde 7 − 2 = 5 yazarsan 225 bulursun. Oysa üstte 2, altta 7 var: önce bozmalısın. Doğru sonuç **215**.\n\nSağlama yaparak hatayı yakalayabilirsin: 225 + 127 = 352, 342 değil."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "6 004 − 2 357 işleminin sonucu kaçtır?",
+   "options": [
+    "4 353",
+    "3 657",
+    "3 647",
+    "3 747"
+   ],
+   "answer": 2,
+   "why": "Bozma binlerden yapılır; sonuç 3 647. Sağlama: 3 647 + 2 357 = 6 004.",
+   "hint": "Birler, onlar ve yüzlerde bozma gerekiyor; sağlama ile kontrol et."
+  },
+  {
+   "prompt": "735 − 60 işleminin zihinden sonucu nedir?",
+   "options": [
+    "675",
+    "135",
+    "695",
+    "725"
+   ],
+   "answer": 0,
+   "why": "73 onluktan 6 onluk çıkar: 67 onluk; sonuç 675.",
+   "hint": "60, 6 onluktur; onlar basamağından 6 çıkarabilir misin? Değilse yüzlerden boz."
+  },
+  {
+   "prompt": "4 812 − 1 987 farkını en yakın yüzlüğe yuvarlayarak tahmin edersek hangisini buluruz?",
+   "options": [
+    "3 800",
+    "2 800",
+    "2 900",
+    "2 700"
+   ],
+   "answer": 1,
+   "why": "4 812 ≈ 4 800, 1 987 ≈ 2 000; tahmin 2 800. (Gerçek fark 2 825.)",
+   "hint": "Her sayıyı en yakın yüzlüğe yuvarla, sonra çıkar."
+  },
+  {
+   "prompt": "Bir sayıdan 1 250 çıkarınca 3 480 kalıyor. Bu sayı kaçtır?",
+   "options": [
+    "2 230",
+    "4 630",
+    "4 830",
+    "4 730"
+   ],
+   "answer": 3,
+   "why": "Eksilen = Fark + Çıkan = 3 480 + 1 250 = 4 730.",
+   "hint": "Sağlama kuralını düşün: fark + çıkan = ?"
+  }
+ ]
+}

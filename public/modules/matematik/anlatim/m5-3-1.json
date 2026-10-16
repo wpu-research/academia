@@ -1,0 +1,187 @@
+{
+ "id": "m5-3-1",
+ "baslik": "Eşitliğin Korunumu",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.2.1",
+  "MAT.5.2.2",
+  "MAT.5.2.3",
+  "MAT.5.2.4"
+ ],
+ "sure": 13,
+ "ozet": "Eşittir işaretinin iki tarafın aynı değerde olduğunu söylediğini görecek, iki tarafa aynı işlemi yapınca eşitliğin korunduğunu terazi modeliyle keşfedecek ve eksik değerleri bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşittir ne demek?",
+   "govde": "Eşittir işareti (=) \"sonucu buraya yaz\" demek değildir. **Sol taraftaki ifadenin değeri ile sağ taraftaki ifadenin değeri aynıdır** demektir.\n\n7 + 5 = 9 + 3 doğru bir eşitliktir: iki taraf da 12'dir. Eşitliği dengede duran bir terazi gibi düşünebiliriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Teraziyi dengele",
+   "aciklama": "Sol kefede 7 ve 5 var. Sağ kefede 9 ve bir ? kutusu var. Kaydırıcı ? kutusunun değerini değiştirir.",
+   "sim": {
+    "kind": "c-terazi-sayi",
+    "sol": [
+     7,
+     5
+    ],
+    "sag": [
+     9
+    ],
+    "ayar": "sag",
+    "deger": 0,
+    "min": 0,
+    "max": 15
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeye getir.",
+    "check": {
+     "key": "esit",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sol taraf 12. Sağ tarafta 9 var; 12'ye ulaşmak için ? kaç olmalı?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşitliğin korunumu",
+   "govde": "Bir eşitliğin **iki tarafına aynı sayıyı eklersek** ya da **iki tarafından aynı sayıyı çıkarırsak** eşitlik bozulmaz. İki tarafı aynı sayıyla çarpmak ya da (sıfır olmayan) aynı sayıya bölmek de eşitliği korur.\n\nYalnız bir tarafa işlem yaparsak terazi bozulur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dengeyi koru",
+   "aciklama": "Terazi dengede: 6 + 4 = 10. Düğmelerle kefelere 1'lik ağırlık ekle.",
+   "sim": {
+    "kind": "c-terazi-sayi",
+    "sol": [
+     6,
+     4
+    ],
+    "sag": [
+     10
+    ]
+   },
+   "gorev": {
+    "metin": "Terazi dengede kalacak biçimde sol tarafı 13'e çıkar.",
+    "check": {
+     "all": [
+      {
+       "key": "esit",
+       "eq": 1
+      },
+      {
+       "key": "sol",
+       "eq": 13
+      }
+     ]
+    }
+   },
+   "dene": [
+    "\"Yalnız sola 1 ekle\" düğmesini dene: ne oldu?",
+    "İki tarafa da 3 kez 1 eklersen: 6 + 4 + 3 = 10 + 3."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bilinmeyen kutular",
+   "aciklama": "Bu terazide x yazan kutuların hepsi aynı ağırlıkta. Sol kefede 2 kutu ve 3 birim, sağda 11 birim var.",
+   "sim": {
+    "kind": "denklem-terazisi",
+    "a": 2,
+    "b": 3,
+    "c": 11
+   },
+   "gorev": {
+    "metin": "İki tarafa aynı işlemi yaparak bir kutunun kaç birim olduğunu bul.",
+    "check": {
+     "key": "solved",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Önce iki taraftan birer birer çıkararak sol taraftaki birimleri kaldır.",
+    "Sonra iki tarafı 2'ye böl: bir kutu 4 birim."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Eksik sayı",
+   "soru": "15 + 8 = 20 + ? eşitliğinde ? yerine hangi sayı gelmelidir?",
+   "cozum": [
+    "Sol taraf: 15 + 8 = 23.",
+    "Sağ taraf da 23 olmalı: 20 + ? = 23.",
+    "? = 3."
+   ],
+   "sonuc": "? = 3."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Eşit olmayan ifadeler",
+   "soru": "8 + 5 ≠ 12 − 3 ifadesini eşitlik hâline getirmek için ne yapılabilir?",
+   "cozum": [
+    "Sol taraf 13, sağ taraf 9; sol taraf 4 fazla.",
+    "Ya sağ tarafa 4 ekleriz: 8 + 5 = 12 − 3 + 4.",
+    "Ya da sol taraftan 4 çıkarırız: 8 + 5 − 4 = 12 − 3."
+   ],
+   "sonuc": "İki taraf arasındaki fark (4) kadar düzenleme yapılır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "8 + 4 = ? + 5 sorusunda ? yerine 12 yazmak sık yapılır; eşittiri \"sonuç\" sanmaktan kaynaklanır. Sağ taraf da 12 olmalıdır: ? + 5 = 12, yani **? = 7**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "9 + 6 = ? + 7 eşitliğinde ? yerine hangi sayı gelmelidir?",
+   "options": [
+    "15",
+    "8",
+    "22",
+    "2"
+   ],
+   "answer": 1,
+   "why": "Sol taraf 15; ? + 7 = 15, ? = 8.",
+   "hint": "Sağ taraf da 15 olmalı."
+  },
+  {
+   "prompt": "25 − 10 = 20 − ? eşitliğinde ? yerine hangi sayı gelmelidir?",
+   "options": [
+    "15",
+    "10",
+    "5",
+    "35"
+   ],
+   "answer": 2,
+   "why": "Sol taraf 15; 20 − ? = 15, ? = 5.",
+   "hint": "Önce sol tarafı hesapla."
+  },
+  {
+   "prompt": "a + 4 = 10 eşitliğinin iki tarafına 3 eklenirse sağ taraf kaç olur?",
+   "options": [
+    "13",
+    "10",
+    "7",
+    "17"
+   ],
+   "answer": 0,
+   "why": "İki tarafa 3 ekleriz: a + 4 + 3 = 10 + 3 = 13.",
+   "hint": "Eşitliği korumak için iki tarafa aynı işlemi yap."
+  },
+  {
+   "prompt": "6 + 9 ≠ 20 − 4 ifadesini eşitlik yapmak için ne yapılabilir?",
+   "options": [
+    "Sağ tarafa 1 eklenir",
+    "Sol taraftan 1 çıkarılır",
+    "İki tarafa da 1 eklenir",
+    "Sol tarafa 1 eklenir"
+   ],
+   "answer": 3,
+   "why": "Sol taraf 15, sağ taraf 16; sol tarafa 1 eklenince ikisi de 16 olur.",
+   "hint": "Önce iki tarafı ayrı ayrı hesapla."
+  }
+ ]
+}

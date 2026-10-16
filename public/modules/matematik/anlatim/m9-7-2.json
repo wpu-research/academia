@@ -1,0 +1,80 @@
+{
+ "id": "m9-7-2",
+ "baslik": "Teorik Olasılık",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.7.2"],
+ "sure": 18,
+ "ozet": "Örnek uzayı listeleyerek eşit olasılıklı çıktılarda olasılık hesaplayacak; tümleyen olayı kullanacak ve para atma deneylerinden yola çıkarak genel kurallara tümevarımsal olarak ulaşacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örnek uzay ve olay",
+   "govde": "Bir deneyin bütün olası çıktılarının kümesine **örnek uzay** (E) denir. Örnek uzayın her alt kümesi bir **olay**dır.\n\nİki zar atıldığında bir çıktı sıralı ikilidir: (birinci zar, ikinci zar). (1, 2) ile (2, 1) farklı çıktılardır. Örnek uzayda 6 · 6 = 36 çıktı vardır ve hepsi eşit olasılıklıdır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Teorik olasılık",
+   "govde": "Çıktıları eşit olasılıklı bir deneyde A olayının olasılığı:\n\n**P(A) = s(A) / s(E)** (istenen çıktı sayısı ÷ tüm çıktı sayısı)\n\n- 0 ≤ P(A) ≤ 1; P(∅) = 0, P(E) = 1.\n- **Tümleyen:** P(A′) = 1 − P(A). \"En az bir\" içeren olaylarda tümleyeni hesaplamak çoğu zaman daha kolaydır.\n- A ile B ayrık değilse: P(A ∪ B) = P(A) + P(B) − P(A ∩ B)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Toplamı 7 olan çıktılar",
+   "aciklama": "Tablo iki zarın 36 çıktısını gösteriyor (satır: birinci zar, sütun: ikinci zar). Olaya ait çıktılara dokun.",
+   "sim": { "kind": "e-ornek-uzay", "olay": { "tur": "toplam", "eq": 7 } },
+   "gorev": { "metin": "\"Toplam 7\" olayının bütün çıktılarını seç.", "check": { "key": "uygun", "eq": 1 } },
+   "dene": ["Kaç çıktı seçtin? P(toplam 7) = 6/36 = 1/6. Seçtiğin hücreler bir köşegen oluşturuyor.", "Toplam 2 için yalnız bir hücre var; 2 ile 7 neden eşit olasılıklı değil?"]
+  },
+  {
+   "tur": "sim",
+   "baslik": "En az bir 6",
+   "aciklama": "Bu kez olay \"zarlardan en az biri 6\".",
+   "sim": { "kind": "e-ornek-uzay", "olay": { "tur": "en-az-bir", "deger": 6 } },
+   "gorev": { "metin": "\"En az bir zar 6\" olayının bütün çıktılarını seç.", "check": { "key": "uygun", "eq": 1 } },
+   "dene": ["11 çıktı: son satır ve son sütun (6, 6 bir kez sayılır). P = 11/36.", "Tümleyenle kontrol et: hiç 6 gelmemesi 5 · 5 = 25 çıktı; 1 − 25/36 = 11/36."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "İki zar atılıyor. Toplamın 10 veya daha büyük olma olasılığı nedir?",
+   "cozum": [
+    "Toplam 10: (4, 6), (5, 5), (6, 4).",
+    "Toplam 11: (5, 6), (6, 5). Toplam 12: (6, 6).",
+    "s(A) = 6, s(E) = 36."
+   ],
+   "sonuc": "P = 6/36 = 1/6"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Tümevarımsal akıl yürütme: paralar",
+   "soru": "1, 2, 3 para atıldığında örnek uzaydaki çıktı sayılarını bul; n para için bir kural öner. Üç parada en az iki tura gelme olasılığı nedir?",
+   "cozum": [
+    "1 para: {T, Y} → 2 çıktı. 2 para: {TT, TY, YT, YY} → 4. 3 para: 8.",
+    "Her yeni para her çıktıyı ikiye ayırır: n para için 2ⁿ çıktı. Bütün paraların tura gelme olasılığı 1/2ⁿ.",
+    "3 parada en az iki tura: TTT, TTY, TYT, YTT → 4 çıktı. P = 4/8 = 1/2."
+   ],
+   "sonuc": "n para: 2ⁿ çıktı; üç parada en az iki tura olasılığı 1/2."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: kartlar",
+   "soru": "1'den 30'a kadar numaralanmış kartlardan biri çekiliyor. Kartın 3'ün veya 5'in katı olma olasılığı nedir?",
+   "cozum": [
+    "3'ün katları: 10 tane. 5'in katları: 6 tane.",
+    "İkisinin de katı (15'in katı): 15 ve 30, 2 tane; iki kez sayılmamalı.",
+    "s(A ∪ B) = 10 + 6 − 2 = 14."
+   ],
+   "sonuc": "P = 14/30 = 7/15"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- (1, 2) ile (2, 1)'i aynı çıktı saymak; örnek uzay 36 değil 21 çıkar ve olasılıklar yanlış olur.\n- Toplamları (2, 3, …, 12) eşit olasılıklı sanmak; 11 toplam vardır ama olasılıkları farklıdır.\n- \"Veya\" olaylarında ortak çıktıları iki kez saymak.\n- Olasılığı 1'den büyük bulup kontrol etmemek."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "İki zar atılıyor. Toplamın 4 olma olasılığı nedir?", "options": ["1/12", "1/11", "1/9", "1/6"], "answer": 0, "why": "(1, 3), (2, 2), (3, 1): 3/36 = 1/12.", "hint": "Sıralı ikilileri say." },
+  { "prompt": "Üç madeni para atılıyor. En az bir yazı gelme olasılığı nedir?", "options": ["3/8", "1/2", "7/8", "1/8"], "answer": 2, "why": "Tümleyen: hiç yazı gelmemesi (TTT) 1/8. 1 − 1/8 = 7/8.", "hint": "Tümleyen olayı kullan." },
+  { "prompt": "Dört madeni para atılıyor. Hepsinin aynı yüzü göstermesi olasılığı nedir?", "options": ["1/16", "1/4", "1/2", "1/8"], "answer": 3, "why": "16 çıktıdan yalnız TTTT ve YYYY: 2/16 = 1/8.", "hint": "Örnek uzay 2⁴ çıktı." },
+  { "prompt": "P(A) = 0,35 ise P(A′) kaçtır?", "options": ["0,35", "0,65", "1,35", "0,5"], "answer": 1, "why": "P(A′) = 1 − 0,35 = 0,65.", "hint": "Bir olay ile tümleyeninin olasılıkları toplamı 1'dir." }
+ ]
+}

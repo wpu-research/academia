@@ -1,0 +1,186 @@
+{
+ "id": "m6-5-1",
+ "baslik": "Uzunluk ve Alan Ölçme Birimleri Arasındaki İlişki",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.4.1"
+ ],
+ "sure": 13,
+ "ozet": "Uzunluk birimleri arasındaki 10'luk ilişkiden yola çıkarak alan birimleri arasında neden 100'lük ilişki olduğunu açıklayacak ve alan birimlerini birbirine çevireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Birim kare",
+   "govde": "Kenarı 1 cm olan karenin alanı **1 cm²** (santimetrekare), kenarı 1 m olan karenin alanı **1 m²** (metrekare)'dir. Alan, bir yüzeyi kaç birim karenin kapladığını söyler."
+  },
+  {
+   "tur": "sim",
+   "baslik": "1 dm² kaç cm²?",
+   "aciklama": "Her küçük kare 1 cm² olsun. Kenarı 1 dm = 10 cm olan kareyi kur.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 4,
+    "cols": 4
+   },
+   "gorev": {
+    "metin": "Kenarı 10 cm olan kareyi oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "rows",
+       "eq": 10
+      },
+      {
+       "key": "cols",
+       "eq": 10
+      }
+     ]
+    }
+   },
+   "dene": [
+    "10 satır × 10 sütun = 100 küçük kare: 1 dm² = 100 cm².",
+    "Uzunlukta 1 dm = 10 cm iken alanda neden 100 oldu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Analoji: uzunluk ve alan",
+   "govde": "- **Uzunlukta** her birim bir küçüğünün **10** katıdır: 1 m = 10 dm.\n- **Alanda** her birim bir küçüğünün **10 × 10 = 100** katıdır: 1 m² = 100 dm².\n\nkm² → hm² → dam² → **m²** → dm² → cm² → mm²\n\nKüçük birime inerken her basamakta **100 ile çarp**, büyüğe çıkarken **100'e böl**.\n\n1 m² = 100 dm² = 10 000 cm²"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alan merdiveni",
+   "aciklama": "Bir duvarın alanı 3 m². Birim değiştirdikçe sayının nasıl değiştiğine bak.",
+   "sim": {
+    "kind": "d-birim-donustur",
+    "tur": "alan",
+    "deger": 3,
+    "birim": "m²"
+   },
+   "gorev": {
+    "metin": "3 m²'yi cm² cinsinden yaz.",
+    "check": {
+     "key": "idx",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "m²'den cm²'ye iki basamak: × 100 × 100 = × 10 000."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Arazi ölçüleri",
+   "govde": "Tarla ve arsa gibi büyük alanlarda şu birimler de kullanılır:\n\n- 1 ar = 1 dam² = 100 m²\n- 1 dekar (dönüm) = 1000 m²\n- 1 hektar = 1 hm² = 10 000 m²"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tarla",
+   "aciklama": "Bir tarlanın alanı 25 000 m².",
+   "sim": {
+    "kind": "d-birim-donustur",
+    "tur": "alan",
+    "deger": 25000,
+    "birim": "m²"
+   },
+   "gorev": {
+    "metin": "25 000 m²'yi dam² (ar) cinsinden yaz.",
+    "check": {
+     "key": "idx",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "hm² (hektar) cinsinden kaç olduğuna da bak: 2,5 hektar.",
+    "1 dekar = 1000 m² olduğundan bu tarla 25 dekardır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "4,5 m² kaç dm²'dir?",
+   "cozum": [
+    "m²'den dm²'ye bir basamak iniliyor: 100 ile çarp.",
+    "4,5 × 100 = 450."
+   ],
+   "sonuc": "4,5 m² = 450 dm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "50 cm × 20 cm boyutlarındaki bir panonun alanı kaç dm²'dir?",
+   "cozum": [
+    "Alan = 50 × 20 = 1000 cm².",
+    "cm²'den dm²'ye bir basamak çıkılıyor: 100'e böl.",
+    "1000 ÷ 100 = 10."
+   ],
+   "sonuc": "10 dm². (Ya da önce uzunlukları çevir: 5 dm × 2 dm = 10 dm².)"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Parke",
+   "soru": "3 m × 4 m boyutlarındaki bir odanın zemini, her biri 1 dm² olan kare parkelerle kaplanacak. Kaç parke gerekir?",
+   "cozum": [
+    "Oda alanı: 3 × 4 = 12 m².",
+    "1 m² = 100 dm² → 12 m² = 1200 dm².",
+    "Her parke 1 dm² olduğundan 1200 parke."
+   ],
+   "sonuc": "1200 parke gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "m²'yi cm²'ye çevirirken 100 ile çarpmak yanlıştır; m ile cm arasında iki basamak olduğu için alanda 100 × 100 = **10 000** ile çarpılır. Uzunluk birimlerinin 10'luk kuralını alana aynen taşımak en sık yapılan hatadır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "1 m² kaç cm²'dir?",
+   "options": [
+    "100",
+    "1000",
+    "10 000",
+    "100 000"
+   ],
+   "answer": 2,
+   "why": "1 m = 100 cm → 1 m² = 100 × 100 = 10 000 cm².",
+   "hint": "Kenarı 100 cm olan kareyi düşün."
+  },
+  {
+   "prompt": "5 dm² kaç cm²'dir?",
+   "options": [
+    "50",
+    "500",
+    "5000",
+    "0,05"
+   ],
+   "answer": 1,
+   "why": "Bir basamak iniliyor: 5 × 100 = 500.",
+   "hint": "Alanda her basamak 100'lük."
+  },
+  {
+   "prompt": "30 000 m² kaç hm²'dir?",
+   "options": [
+    "3",
+    "30",
+    "300",
+    "0,3"
+   ],
+   "answer": 0,
+   "why": "m²'den hm²'ye iki basamak çıkılır: 30 000 ÷ 10 000 = 3.",
+   "hint": "1 hm² = 10 000 m²."
+  },
+  {
+   "prompt": "3 m × 4 m boyutlarındaki bir odanın alanı kaç dm²'dir?",
+   "options": [
+    "120",
+    "12 000",
+    "1,2",
+    "1200"
+   ],
+   "answer": 3,
+   "why": "12 m² × 100 = 1200 dm².",
+   "hint": "Önce alanı m² olarak bul."
+  }
+ ]
+}

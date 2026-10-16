@@ -1,0 +1,166 @@
+{
+ "id": "m2-4-2",
+ "baslik": "Geometrik Cisim Modelleri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.2"
+ ],
+ "sure": 12,
+ "ozet": "Cisim modellerini üst üste ve yan yana koyarak yapılar kuracak; hangi cismin üstüne başka cisim konabileceğini keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Cisimlerle yapı kurmak",
+   "govde": "Oyuncak bloklarla kule, köprü, ev yaparız. Bu blokların her biri bir **geometrik cisim modelidir**.\n\nYapı kurarken cisimlerin **yüzleri** önemlidir:\n\n- **Düz yüz** üstünde başka bir cisim durabilir.\n- **Eğri yüz** üstünde cisim durmaz, kayar ya da yuvarlanır.\n- **Sivri uç** üstünde hiçbir şey duramaz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kule kur",
+   "aciklama": "Alttan başlayarak cisim ekle. Bir cismin üstüne konan cisim düşerse altta mesaj çıkar.",
+   "sim": {
+    "kind": "a-kule",
+    "max": 7
+   },
+   "gorev": {
+    "metin": "En az 4 parçalı bir kule kur ve tepesine bir koni koy.",
+    "check": {
+     "all": [
+      {
+       "key": "yukseklik",
+       "gte": 4
+      },
+      {
+       "key": "tepe",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Koniyi en sona sakla.",
+    "Kürenin üstüne bir şey koymayı dene: ne oldu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üstüne ne konur?",
+   "govde": "- Küp, kare prizma, dikdörtgen prizma: Üst yüzleri düzdür; üstlerine cisim konabilir.\n- Silindir: Dik durunca üstü düz bir dairedir; üstüne cisim konabilir.\n- Koni: Üstü sivridir; üstüne cisim konamaz. Kulelerin tepesine yakışır.\n- Küre: Düz yüzü yoktur; üstüne konan cisim düşer."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üstüne cisim konabilenler",
+   "aciklama": "Bir yapının ortasında kullanılabilecek cisimleri düşün.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 3,
+    "hedef": "y",
+    "items": [
+     {
+      "k": "y",
+      "cisim": "kup",
+      "ad": "Küp"
+     },
+     {
+      "k": "n",
+      "cisim": "kure",
+      "ad": "Küre"
+     },
+     {
+      "k": "y",
+      "cisim": "silindir",
+      "ad": "Silindir"
+     },
+     {
+      "k": "n",
+      "cisim": "koni",
+      "ad": "Koni"
+     },
+     {
+      "k": "y",
+      "cisim": "prizma",
+      "ad": "Dikdörtgen prizma"
+     },
+     {
+      "k": "y",
+      "cisim": "kare-prizma",
+      "ad": "Kare prizma"
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Üstüne başka bir cisim konabilen bütün cisimleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Üst yüzü düz olan cisimleri ara.",
+    "Silindiri dik koyduğunu düşün."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kale modeli 4 küp, 2 silindir ve 2 koniden yapıldı. Kalede kaç cisim modeli kullanıldı?",
+   "cozum": [
+    "4 + 2 + 2 işlemini yap.",
+    "4 + 2 = 6, 6 + 2 = 8."
+   ],
+   "sonuc": "**8** cisim modeli kullanıldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ayşe bir kulenin en altına küre koymak istiyor. Bu iyi bir fikir mi?",
+   "cozum": [
+    "Küre her yöne yuvarlanır.",
+    "Kürenin üstünde düz yüz olmadığı için üstüne konanlar düşer."
+   ],
+   "sonuc": "**İyi bir fikir değil**; kulenin tabanına küp ya da prizma gibi düz yüzlü bir cisim koymak gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bir yapıdaki cisimleri sayarken arkada kalan, görünmeyen blokları unutmak sık bir hatadır. Yapıyı farklı yönlerden düşün ya da katman katman say."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisinin üstüne başka bir cisim konamaz?",
+   "options": [
+    "Küp",
+    "Dikdörtgen prizma",
+    "Koni",
+    "Kare prizma"
+   ],
+   "answer": 2,
+   "why": "Koninin üstü sivridir.",
+   "hint": "Üstü düz olmayan cismi bul."
+  },
+  {
+   "prompt": "Bir köprü modelinde 2 silindir ayak ve üstte 1 dikdörtgen prizma var. Kaç cisim kullanıldı?",
+   "options": [
+    "3",
+    "2",
+    "1",
+    "4"
+   ],
+   "answer": 0,
+   "why": "2 silindir + 1 prizma = 3.",
+   "hint": "Bütün parçaları say."
+  },
+  {
+   "prompt": "Bir kulenin tepesine hangisi en uygundur?",
+   "options": [
+    "Küre",
+    "Küp",
+    "Silindir",
+    "Koni"
+   ],
+   "answer": 3,
+   "why": "Koninin sivri ucu tepede güzel durur ve üstüne bir şey konmaz.",
+   "hint": "Kulelerin çatısını düşün."
+  }
+ ]
+}

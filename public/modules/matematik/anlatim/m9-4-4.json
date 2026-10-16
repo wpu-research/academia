@@ -1,0 +1,93 @@
+{
+ "id": "m9-4-4",
+ "baslik": "Tales, Öklid ve Pisagor Teoremleri",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.4.4"],
+ "sure": 22,
+ "ozet": "Tales teoremini benzerlikle, Pisagor teoremini alanları yeniden düzenleyerek, Öklid bağıntılarını dik üçgende hipotenüse çizilen yüksekliğin oluşturduğu benzer üçgenlerle ispatlayacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Tales teoremi",
+   "govde": "Paralel doğrular, kendilerini kesen iki doğru üzerinde **orantılı** parçalar ayırır. d₁ ∥ d₂ ∥ d₃ doğruları bir keseni |AB|, |BC|; diğerini |DE|, |EF| parçalarına ayırıyorsa\n\n**|AB| / |BC| = |DE| / |EF|**\n\nÜçgendeki hâli temel orantı teoremidir: DE ∥ BC ⇒ |AD| / |DB| = |AE| / |EC|.\n\n**İspat fikri:** Paralellik eş açılar oluşturur; AA ile ADE ~ ABC, karşılıklı kenarlar orantılıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paralel doğru, orantılı parçalar",
+   "aciklama": "DE ∥ BC. D'yi kaydır; |AD| / |DB| ile |AE| / |EC| oranının hep eşit kaldığına bak.",
+   "sim": { "kind": "e-tales", "AB": 6, "AC": 9, "BC": 12, "AD": 2 },
+   "gorev": { "metin": "|AD| / |AB| = 1/2 olsun.", "check": { "key": "oran", "eq": 0.5, "tol": 1e-6 } },
+   "dene": ["Bu durumda |AE| = 4,5 ve |DE| = 6: DE orta tabandır."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Pisagor teoremi ve ispatı",
+   "govde": "Dik kenarları a, b ve hipotenüsü c olan dik üçgende **a² + b² = c²**.\n\n**İspat (alan):** Kenarı a + b olan bir karenin içine bu dik üçgenden 4 tane, ortada kenarı c olan bir kare kalacak biçimde yerleştir. Büyük karenin alanı iki yoldan hesaplanır:\n\n(a + b)² = 4 · (ab / 2) + c² ⇒ a² + 2ab + b² = 2ab + c² ⇒ **a² + b² = c²**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenarlar üzerine kareler",
+   "aciklama": "Dik kenarları değiştir; hipotenüs üzerindeki karenin alanını diğer ikisinin toplamıyla karşılaştır.",
+   "sim": { "kind": "e-pisagor", "a": 3, "b": 4, "max": 8 },
+   "gorev": { "metin": "a = 8 iken hipotenüsü tam sayı yap.", "check": { "all": [ { "key": "a", "eq": 8 }, { "key": "tam", "eq": 1 } ] } },
+   "dene": ["8, 6, 10 üçlüsü 3, 4, 5'in iki katıdır."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Öklid bağıntıları",
+   "govde": "Dik kenarları a ve b, hipotenüsü c olan dik üçgende dik köşeden hipotenüse h yüksekliği çizilsin. Yükseklik hipotenüsü iki parçaya ayırır: a kenarına komşu parça p, b kenarına komşu parça k (p + k = c).\n\n- **h² = p · k**\n- **a² = p · c**\n- **b² = k · c**\n\n**İspat fikri:** Yükseklik büyük üçgeni iki küçük dik üçgene ayırır. Üçü de aynı dar açıları paylaştığı için (AA) birbirine benzerdir; karşılıklı kenar oranlarını yazınca bağıntılar çıkar. Son iki bağıntıyı toplayınca a² + b² = (p + k)c = c²: Pisagor teoremi de buradan gelir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Hipotenüse çizilen yükseklik",
+   "aciklama": "Dik kenarları değiştir; p, k ve h ile üç bağıntının sağlandığını izle.",
+   "sim": { "kind": "e-pisagor", "oklid": true, "a": 3, "b": 4, "max": 8 },
+   "gorev": { "metin": "Hipotenüse ait yüksekliği 4,8 yap.", "check": { "key": "h", "eq": 4.8, "tol": 1e-9 } },
+   "dene": ["h = ab / c olduğunu da gör: alan iki yoldan hesaplanabilir, ab / 2 = c · h / 2."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek: Öklid",
+   "soru": "Bir dik üçgende hipotenüse çizilen yükseklik hipotenüsü 4 ve 9 uzunluğunda parçalara ayırıyor (p = 4, k = 9). h, a ve b'yi bulalım.",
+   "cozum": [
+    "h² = p · k = 36 ⇒ h = 6.",
+    "c = p + k = 13.",
+    "a² = p · c = 52 ⇒ a = 2√13.",
+    "b² = k · c = 117 ⇒ b = 3√13.",
+    "Kontrol: a² + b² = 52 + 117 = 169 = 13²."
+   ],
+   "sonuc": "h = 6, a = 2√13, b = 3√13."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek: Tales",
+   "soru": "Üç paralel doğru bir keseni 4 cm ve 6 cm'lik parçalara ayırıyor. Aynı paralel doğruların ikinci bir kesende ayırdığı parçalardan ilki x, ikincisi 9 cm ise x kaçtır?",
+   "cozum": [
+    "Tales: 4 / 6 = x / 9.",
+    "x = 9 · 4 / 6 = 6."
+   ],
+   "sonuc": "x = 6 cm"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam",
+   "soru": "Dik kenarları 6 cm ve 8 cm olan bir dik üçgende hipotenüse ait yükseklik kaç cm'dir?",
+   "cozum": [
+    "Hipotenüs: √(36 + 64) = 10.",
+    "Alan iki yoldan: 6 · 8 / 2 = 10 · h / 2 ⇒ h = 48 / 10."
+   ],
+   "sonuc": "h = 4,8 cm"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Öklid'de p ve k'yi yanlış dik kenarla eşleştirmek: a² = p · c'de p, a kenarının hipotenüs üzerindeki izdüşümüdür (a'ya komşu parça).\n- Pisagor'u dik olmayan üçgenlerde kullanmak.\n- Tales'te bir kesendeki parçayı diğer kesendeki karşılık gelmeyen parçayla oranlamak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir dik üçgende hipotenüse ait yükseklik hipotenüsü 2 ve 8 uzunluğunda parçalara ayırıyor. Yükseklik kaçtır?", "options": ["10", "16", "4", "6"], "answer": 2, "why": "h² = 2 · 8 = 16 ⇒ h = 4.", "hint": "h² = p · k." },
+  { "prompt": "Dik kenarları 5 ve 12 olan dik üçgenin hipotenüsü kaçtır?", "options": ["13", "17", "√119", "60"], "answer": 0, "why": "25 + 144 = 169 = 13².", "hint": "a² + b² = c²." },
+  { "prompt": "Hipotenüsü 10 olan bir dik üçgende a dik kenarının hipotenüs üzerindeki izdüşümü p = 3,6 ise a kaçtır?", "options": ["5", "8", "4", "6"], "answer": 3, "why": "a² = p · c = 3,6 · 10 = 36 ⇒ a = 6.", "hint": "a² = p · c." },
+  { "prompt": "Paralel doğrular bir keseni 3 ve 5 birimlik parçalara ayırıyor. Diğer kesende ilk parça 4,5 ise ikinci parça kaçtır?", "options": ["6", "7,5", "8", "4,5"], "answer": 1, "why": "3 / 5 = 4,5 / x ⇒ x = 7,5.", "hint": "Karşılık gelen parçaların oranları eşittir." }
+ ]
+}

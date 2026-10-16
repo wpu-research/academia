@@ -1,0 +1,194 @@
+{
+ "id": "m6-4-2",
+ "baslik": "Üçgenin Açıları",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.3.4"
+ ],
+ "sure": 13,
+ "ders": "acilar-ve-ucgen",
+ "ozet": "Üçgenin iç açılarının toplamının neden 180° olduğunu paralel doğrularla açıklayacak, dış açıyı tanıyacak ve açılarına göre üçgenleri sınıflandıracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "İç açılar",
+   "govde": "Bir üçgenin üç köşesinde, üçgenin içinde kalan üç açı vardır. Üçgen ne kadar değişirse değişsin bu üç açının toplamı aynıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşeleri sürükle",
+   "aciklama": "Üçgenin köşelerini sürükle ve iç açılar toplamına bak.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "angles": true
+   },
+   "dene": [
+    "Ne kadar uzun ya da basık bir üçgen yaparsan yap, toplam 180° kalıyor mu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kural",
+   "govde": "Bir üçgenin iç açılarının ölçüleri toplamı **180°**'dir.\n\n**Neden?** Bir köşeden karşı kenara paralel bir doğru çiz. Bu doğru üzerinde oluşan üç açı bir doğru açı (180°) oluşturur. Yandaki iki açı, üçgenin taban açılarıyla **iç ters açı** olduğu için onlara eşittir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dış açı",
+   "govde": "Bir kenarı uzattığımızda oluşan, iç açıyla komşu olan açıya **dış açı** denir.\n\n- Dış açı + komşu iç açı = 180°\n- Dış açı = komşu olmayan iki iç açının toplamı"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açı ölçer ile dış açı",
+   "aciklama": "Bir üçgenin iç açılarından biri 55° olsun. Bu köşedeki dış açıyı kur.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 55
+   },
+   "gorev": {
+    "metin": "55° iç açının dış açısını kur.",
+    "check": {
+     "key": "angle",
+     "eq": 125
+    }
+   },
+   "dene": [
+    "Dış açı ile iç açı yan yana bir doğru açı yapar."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açılarına göre üçgenler",
+   "aciklama": "Köşeleri noktalara sürükle. Açılar ve üçgenin türü canlı hesaplanıyor.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "yukseklik",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      8,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "kose": 2
+   },
+   "gorev": {
+    "metin": "Bir dik üçgen oluştur.",
+    "check": {
+     "key": "tip",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Bütün açıları 90°'den küçükse dar açılı, biri 90° ise dik açılı, biri 90°'den büyükse geniş açılı üçgen.",
+    "Bir üçgende neden iki dik açı olamaz?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir üçgenin iki açısı 48° ve 77°'dir. Üçüncü açı kaç derecedir?",
+   "cozum": [
+    "Toplam 180°: 48 + 77 + x = 180.",
+    "125 + x = 180 → x = 55."
+   ],
+   "sonuc": "Üçüncü açı 55°'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Bir üçgenin bir dış açısı 130°, komşu olmayan iç açılardan biri 60°'dir. Diğer iç açılar kaç derecedir?",
+   "cozum": [
+    "Dış açı = komşu olmayan iki iç açının toplamı: 130 = 60 + x → x = 70.",
+    "Dış açının komşusu: 180 − 130 = 50.",
+    "Kontrol: 60 + 70 + 50 = 180."
+   ],
+   "sonuc": "Diğer açılar 70° ve 50°'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Çatı",
+   "soru": "İkizkenar üçgen biçimindeki bir çatının tepe açısı 40°'dir. Çatının yatay kirişle yaptığı taban açıları kaçar derecedir?",
+   "cozum": [
+    "İkizkenar üçgende taban açıları eşittir: x ve x.",
+    "40 + x + x = 180 → 2x = 140 → x = 70."
+   ],
+   "sonuc": "Taban açıları 70°'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Dış açıyı yanındaki iç açıya eşit sanmak yanlıştır. Dış açı ile komşu iç açı **bütünlerdir** (toplamları 180°). Dış açı, komşu **olmayan** iki iç açının toplamına eşittir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir üçgenin iki açısı 35° ve 95° ise üçüncü açısı kaç derecedir?",
+   "options": [
+    "60°",
+    "50°",
+    "70°",
+    "40°"
+   ],
+   "answer": 1,
+   "why": "180 − 35 − 95 = 50.",
+   "hint": "Üç açının toplamı 180°."
+  },
+  {
+   "prompt": "Bir dik üçgenin dar açılarından biri 28° ise diğer dar açısı kaç derecedir?",
+   "options": [
+    "62°",
+    "72°",
+    "152°",
+    "28°"
+   ],
+   "answer": 0,
+   "why": "Dar açıların toplamı 90°: 90 − 28 = 62.",
+   "hint": "Dik açı 90°; kalan iki açı 90°'yi paylaşır."
+  },
+  {
+   "prompt": "Bir üçgende bir dış açı 115° ise bu açıya komşu iç açı kaç derecedir?",
+   "options": [
+    "115°",
+    "25°",
+    "65°",
+    "75°"
+   ],
+   "answer": 2,
+   "why": "Komşu iç ve dış açı bütünlerdir: 180 − 115 = 65.",
+   "hint": "Dış açı ile komşu iç açı bir doğru açı oluşturur."
+  },
+  {
+   "prompt": "Bir üçgenin iki açısı geniş açı olabilir mi?",
+   "options": [
+    "Evet, her zaman",
+    "Evet, ikizkenarsa",
+    "Yalnız dik üçgende",
+    "Hayır, toplam 180°'yi aşar"
+   ],
+   "answer": 3,
+   "why": "İki geniş açının toplamı zaten 180°'den büyüktür.",
+   "hint": "İki geniş açıyı topladığında ne olur?"
+  }
+ ]
+}

@@ -1,0 +1,371 @@
+{
+ "id": "m2-5-2",
+ "baslik": "Simetri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.7"
+ ],
+ "sure": 12,
+ "ozet": "Bir doğruya göre katlandığında iki yarısı tam üst üste gelen şekilleri, yani simetrik şekilleri ayırt edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Simetri nedir?",
+   "govde": "Bir şekli bir çizgi boyunca katladığımızda **iki yarısı tam üst üste geliyorsa** şekil **simetriktir**. Bu çizgiye **simetri doğrusu** denir.\n\nSimetri doğrusunun bir yanı, öbür yanının **aynadaki görüntüsü** gibidir. Kelebeğin kanatları, insan yüzü, birçok yaprak simetriktir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ağacı tamamla",
+   "aciklama": "Kesikli kırmızı çizgi simetri doğrusu. Sağ yarıdaki karelere dokunarak boya.",
+   "sim": {
+    "kind": "a-simetri",
+    "w": 8,
+    "h": 6,
+    "sol": [
+     [
+      3,
+      0
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      3,
+      5
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Ağacı simetri doğrusuna göre tamamla.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Soldaki her karenin çizgiye uzaklığı, sağdaki eşinin uzaklığıyla aynı olmalı.",
+    "Çizgiye bitişik karelerin eşi de çizgiye bitişiktir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Simetrik mi, değil mi?",
+   "govde": "Bir şeklin simetrik olup olmadığını anlamak için:\n\n1. Şeklin ortasından geçen bir katlama çizgisi düşün.\n2. Katlayınca iki yarı **tam üst üste** geliyor mu?\n3. Bir yerde taşma ya da boşluk kalıyorsa o çizgiye göre simetrik değildir. Başka bir çizgi dene."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kelebek",
+   "aciklama": "Kelebeğin sol kanadı hazır.",
+   "sim": {
+    "kind": "a-simetri",
+    "w": 8,
+    "h": 6,
+    "sol": [
+     [
+      0,
+      0
+     ],
+     [
+      1,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      1,
+      5
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Kelebeğin sağ kanadını simetrik olarak tamamla.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   }
+  },
+  {
+   "tur": "sim",
+   "baslik": "Simetrik şekiller",
+   "aciklama": "Her şekil için bir katlama çizgisi düşün.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "s",
+    "items": [
+     {
+      "k": "s",
+      "s": "kalp",
+      "c": 3
+     },
+     {
+      "k": "n",
+      "pts": [
+       [
+        25,
+        10
+       ],
+       [
+        80,
+        10
+       ],
+       [
+        80,
+        28
+       ],
+       [
+        43,
+        28
+       ],
+       [
+        43,
+        44
+       ],
+       [
+        70,
+        44
+       ],
+       [
+        70,
+        60
+       ],
+       [
+        43,
+        60
+       ],
+       [
+        43,
+        90
+       ],
+       [
+        25,
+        90
+       ]
+      ],
+      "c": 0
+     },
+     {
+      "k": "s",
+      "s": "yildiz",
+      "c": 2
+     },
+     {
+      "k": "n",
+      "pts": [
+       [
+        20,
+        10
+       ],
+       [
+        45,
+        10
+       ],
+       [
+        45,
+        65
+       ],
+       [
+        85,
+        65
+       ],
+       [
+        85,
+        90
+       ],
+       [
+        20,
+        90
+       ]
+      ],
+      "c": 1
+     },
+     {
+      "k": "s",
+      "s": "kare",
+      "c": 1
+     },
+     {
+      "k": "n",
+      "pts": [
+       [
+        15,
+        20
+       ],
+       [
+        80,
+        10
+       ],
+       [
+        90,
+        75
+       ],
+       [
+        30,
+        88
+       ]
+      ],
+      "c": 2
+     },
+     {
+      "k": "s",
+      "s": "ucgen",
+      "c": 0
+     },
+     {
+      "k": "n",
+      "s": "ucgen",
+      "v": "genis",
+      "c": 3
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Simetrik olan bütün şekilleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Kalbi ortadan dikey katladığını düşün.",
+    "F harfine benzeyen şeklin iki yarısı üst üste gelir mi?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kâğıt ortadan katlanıp bir yarım kalp kesildi. Kâğıt açılınca ne görürüz?",
+   "cozum": [
+    "Kesilen yarım şekil, katlama çizgisinin iki yanında aynalanır.",
+    "İki yarım birleşince tam bir kalp oluşur."
+   ],
+   "sonuc": "**Simetrik bir kalp** görürüz."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir karenin kaç tane simetri doğrusu vardır?",
+   "cozum": [
+    "Dikey ortadan katla: üst üste gelir (1).",
+    "Yatay ortadan katla: üst üste gelir (2).",
+    "İki köşegenden katla: üst üste gelir (3 ve 4)."
+   ],
+   "sonuc": "Karenin **4** simetri doğrusu vardır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Simetri doğrusunun her zaman dikey olduğunu düşünmek yanlıştır. Bazı şekillerin simetri doğrusu yatay ya da çapraz olabilir. Ayrıca iki yarının yalnız **büyüklüğü** değil, **biçimi** de aynalanmış olmalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi simetrik bir şekildir?",
+   "options": [
+    "F harfine benzeyen şekil",
+    "Kalp",
+    "L harfine benzeyen şekil",
+    "Kenarları farklı bir dörtgen"
+   ],
+   "answer": 1,
+   "why": "Kalp ortadan katlanınca iki yarısı üst üste gelir.",
+   "hint": "Ortadan katlamayı düşün."
+  },
+  {
+   "prompt": "Simetri doğrusu için hangisi doğrudur?",
+   "options": [
+    "Şekli iki eş, aynalanmış yarıya ayırır.",
+    "Her zaman yataydır.",
+    "Şeklin dışından geçer.",
+    "Her şeklin vardır."
+   ],
+   "answer": 0,
+   "why": "Simetri doğrusu şekli birbirinin aynadaki görüntüsü olan iki yarıya ayırır.",
+   "hint": "Katlama çizgisini düşün."
+  },
+  {
+   "prompt": "Bir dairenin kaç simetri doğrusu vardır?",
+   "options": [
+    "1",
+    "2",
+    "4",
+    "Sayısız"
+   ],
+   "answer": 3,
+   "why": "Merkezden geçen her doğru daireyi iki eş yarıya ayırır.",
+   "hint": "Daireyi kaç farklı biçimde ortadan katlayabilirsin?"
+  }
+ ]
+}

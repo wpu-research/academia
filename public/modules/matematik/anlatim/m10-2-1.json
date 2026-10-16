@@ -1,0 +1,170 @@
+{
+ "id": "m10-2-1",
+ "baslik": "İki Kategorik Değişkenli Veriler",
+ "sinif": "10. sınıf",
+ "kazanim": [
+  "MAT.10.2.1"
+ ],
+ "sure": 15,
+ "ozet": "İki kategorik değişkeni çapraz (iki yönlü) tabloda düzenleyecek, satır yüzdelerini karşılaştırarak değişkenler arasında ilişki olup olmadığına karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kategorik değişken ve çapraz tablo",
+   "govde": "Değerleri sayı değil **kategori** olan değişkenlere kategorik değişken denir: cinsiyet, kan grubu, \"spor yapıyor / yapmıyor\" gibi.\n\nAynı kişilerde iki kategorik değişken birlikte gözlendiğinde veriyi **çapraz tablo** (iki yönlü tablo) ile düzenleriz. Satırlar bir değişkenin, sütunlar diğerinin kategorileridir. Satır ve sütun sonundaki **Toplam** değerlerine marjinal toplam denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayılar mı, oranlar mı?",
+   "aciklama": "Bir okulda 9. ve 12. sınıflardan seçilen öğrencilere düzenli spor yapıp yapmadıkları soruldu (kurgu veri). Çubuklar her satırı %100 kabul eder.",
+   "sim": {
+    "kind": "f-capraz",
+    "corner": "Sınıf / Spor",
+    "rows": [
+     "9. sınıf",
+     "12. sınıf"
+    ],
+    "cols": [
+     "Düzenli spor yapan",
+     "Yapmayan"
+    ],
+    "data": [
+     [
+      45,
+      55
+     ],
+     [
+      30,
+      70
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Hücreleri değiştirerek iki sınıfta spor yapanların oranını eşitle: böylece tabloda ilişki kalmasın.",
+    "check": {
+     "key": "diff",
+     "lt": 0.005
+    }
+   },
+   "dene": [
+    "Örneğin 12. sınıf satırını 45 ve 55 yap.",
+    "Grup büyüklükleri farklı olsa da oranlar eşitlenebilir: 9. sınıfı 90 ve 110 yap."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "İlişkiye nasıl karar veririz?",
+   "govde": "1. Karşılaştıracağın grupları seç (ör. satırlar).\n2. Her satırda ilgilendiğin kategorinin **satır yüzdesini** hesapla: hücre / satır toplamı.\n3. Yüzdeler birbirine yakınsa iki değişken arasında ilişki görülmez; belirgin biçimde farklıysa ilişki vardır ve fark büyüdükçe ilişki güçlenir.\n\nKarşılaştırmayı ham sayılarla değil **oranlarla** yaparız, çünkü grupların büyüklüğü farklı olabilir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "200 öğrenciden telefonu günde 3 saatten çok kullanan 80 kişinin 48'i, az kullanan 120 kişinin 36'sı uykusunun yetersiz olduğunu söylüyor. Telefon kullanımı ile uyku arasında ilişki var mı?",
+   "cozum": [
+    "Çok kullananlarda yetersiz uyku oranı: 48 / 80 = %60.",
+    "Az kullananlarda: 36 / 120 = %30.",
+    "Fark 30 yüzde puanı: oranlar belirgin biçimde farklı."
+   ],
+   "sonuc": "Bu veride iki değişken arasında ilişki vardır. Ancak bu, telefonun uykusuzluğa **neden olduğunu** göstermez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Büyük sayı, küçük oran",
+   "aciklama": "İki okulda gözlük kullanan öğrenciler (kurgu veri). Bu tabloyu değiştiremezsin; yalnız incele.",
+   "sim": {
+    "kind": "f-capraz",
+    "corner": "Okul",
+    "rows": [
+     "A okulu",
+     "B okulu"
+    ],
+    "cols": [
+     "Gözlüklü",
+     "Gözlüksüz"
+    ],
+    "data": [
+     [
+      40,
+      160
+     ],
+     [
+      30,
+      70
+     ]
+    ],
+    "edit": false
+   },
+   "dene": [
+    "A okulunda gözlüklü sayısı daha çok (40 > 30) ama oranı daha az: %20'ye karşı %30.",
+    "Sayıları karşılaştırmak yanıltır; oran karşılaştır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: tabloyu tamamla",
+   "soru": "100 kişilik bir ankette 60 kadın vardır. Kadınların 36'sı, erkeklerin 16'sı bir ürünü beğenmiştir. Tabloyu tamamlayıp beğenme oranlarını karşılaştır.",
+   "cozum": [
+    "Erkek sayısı: 100 − 60 = 40.",
+    "Beğenmeyen kadın: 60 − 36 = 24; beğenmeyen erkek: 40 − 16 = 24.",
+    "Beğenen toplam: 36 + 16 = 52; beğenmeyen toplam: 48.",
+    "Oranlar: kadınlarda 36 / 60 = %60, erkeklerde 16 / 40 = %40."
+   ],
+   "sonuc": "Beğenme oranı kadınlarda 20 puan daha yüksek: cinsiyet ile ürünü beğenme arasında ilişki görülüyor."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İki hata çok görülür:\n- Grup büyüklükleri farklıyken ham sayıları karşılaştırmak.\n- İlişkiyi neden-sonuç sanmak. \"Kahvaltı yapanların notları daha yüksek\" verisi, kahvaltının notu yükselttiğini kanıtlamaz; uyku düzeni gibi üçüncü bir etken ikisini birden etkileyebilir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Aşağıdakilerden hangisi kategorik bir değişkendir?",
+   "options": [
+    "Kan grubu",
+    "Boy (cm)",
+    "Yaş",
+    "Kilo"
+   ],
+   "answer": 0,
+   "why": "Kan grubunun değerleri (A, B, AB, 0) kategoridir; diğerleri ölçülen sayılardır.",
+   "hint": "Değeri bir sayı mı, bir sınıf mı?"
+  },
+  {
+   "prompt": "60 erkekten 24'ü, 40 kızdan 20'si bir soruya \"evet\" diyor. Erkeklerde \"evet\" oranı yüzde kaçtır?",
+   "options": [
+    "%24",
+    "%60",
+    "%40",
+    "%50"
+   ],
+   "answer": 2,
+   "why": "24 / 60 = 0,4.",
+   "hint": "Hücreyi satır toplamına böl."
+  },
+  {
+   "prompt": "Önceki sorudaki veriye göre hangisi doğrudur?",
+   "options": [
+    "Erkeklerde \"evet\" diyenlerin oranı daha yüksek",
+    "Kızlarda \"evet\" diyenlerin oranı daha yüksek",
+    "Oranlar eşit",
+    "Karşılaştırılamaz"
+   ],
+   "answer": 1,
+   "why": "Kızlarda 20 / 40 = %50, erkeklerde %40.",
+   "hint": "Sayıları değil oranları karşılaştır."
+  },
+  {
+   "prompt": "İki grupta bir kategorinin satır yüzdeleri %35 ve %35 bulunuyor. Doğru yorum hangisidir?",
+   "options": [
+    "Güçlü ilişki var",
+    "Değişkenlerden biri diğerine neden oluyor",
+    "Gruplar eşit büyüklükte",
+    "Bu veride ilişki görünmüyor"
+   ],
+   "answer": 3,
+   "why": "Oranlar eşitse grup değişkeni bu kategoriyi etkilemiyor görünür.",
+   "hint": "Oranlar eşitse grup bilgisi bir şey değiştiriyor mu?"
+  }
+ ]
+}

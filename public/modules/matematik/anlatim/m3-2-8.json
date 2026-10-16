@@ -1,0 +1,195 @@
+{
+ "id": "m3-2-8",
+ "baslik": "Madenî ve Kâğıt Paralar",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.16"
+ ],
+ "sure": 12,
+ "ders": "saat-ve-para",
+ "ozet": "Madenî ve kâğıt paraları değerlerine göre ilişkilendireceğiz: bir tutarı farklı paralarla oluşturacak, kuruşu liraya çevireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Paralarımız",
+   "govde": "Türk parasının birimi **Türk lirası (TL)**dır. Liradan küçük birim **kuruş**tur.\n\n**1 lira = 100 kuruş**\n\nKuruşlar ve 1 lira madenî paradır. 5, 10, 20, 50, 100 ve 200 liralık kâğıt paralar (banknotlar) vardır.\n\nBir paranın değeri büyüklüğüne ya da parça sayısına değil, üzerinde yazan değere bağlıdır: tek bir 50 liralık, üç tane 10 liralıktan daha değerlidir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Paraları ilişkilendirmek",
+   "govde": "- 2 tane 50 kuruş = 1 lira\n- 4 tane 25 kuruş = 1 lira\n- 2 tane 10 lira = 1 tane 20 lira\n- 2 tane 100 lira = 1 tane 200 lira\n\nBir tutarı en az parça ile oluşturmak için önce en büyük değerli parayı kullanırız."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tutarı oluştur",
+   "aciklama": "Paralara dokunarak tepsiye ekle; − ile çıkar. Alttaki satır toplamı ve parça sayısını gösterir.",
+   "sim": {
+    "kind": "para"
+   },
+   "gorev": {
+    "metin": "35 lira 50 kuruşu en az parça ile oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 35.5,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce 35 liradan küçük en büyük parayı seç: 20 TL. Kalan 15 TL için?",
+    "50 kuruşu tek bir madenî parayla oluşturabilirsin."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kuruşları liraya çevir",
+   "aciklama": "Kuruş ekle; 100 kuruş dolunca 1 lira oluşur.",
+   "sim": {
+    "kind": "b-gruplama",
+    "kucuk": "kuruş",
+    "buyuk": "lira",
+    "grup": 100,
+    "n": 0,
+    "max": 500,
+    "adimlar": [
+     25,
+     50
+    ]
+   },
+   "gorev": {
+    "metin": "1 lira 75 kuruş biriktir.",
+    "check": {
+     "all": [
+      {
+       "key": "buyuk",
+       "eq": 1
+      },
+      {
+       "key": "kalan",
+       "eq": 75
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1 lira 75 kuruş = 175 kuruş.",
+    "Kaç tane 25 kuruş 1 lira eder?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Belli paralarla 100 TL",
+   "aciklama": "Bu kez yalnız 50, 20 ve 10 liralıklar var.",
+   "sim": {
+    "kind": "para",
+    "only": [
+     50,
+     20,
+     10
+    ]
+   },
+   "gorev": {
+    "metin": "100 lirayı tam 4 parça kullanarak oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 100,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 4
+      }
+     ]
+    }
+   },
+   "dene": [
+    "50 + 50 yalnız 2 parça olur. Bir 50'liği daha küçük paralara böl."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "3 tane 25 kuruş ile 1 tane 50 kuruş kaç eder?",
+   "cozum": [
+    "3 × 25 kuruş: 25 + 25 + 25 = 75 kuruş.",
+    "75 + 50 = 125 kuruş.",
+    "125 kuruş = 100 kuruş + 25 kuruş."
+   ],
+   "sonuc": "**1 lira 25 kuruş** eder."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Para üstü",
+   "soru": "Selin 100 liralık bir banknotla 65 liralık bir kitap aldı. Kaç lira para üstü alır?",
+   "cozum": [
+    "Para üstü = verilen − fiyat.",
+    "100 − 65 = 35."
+   ],
+   "sonuc": "Selin **35 lira** para üstü alır; örneğin bir 20, bir 10 ve bir 5 liralık."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Parça sayısı çok olan paranın daha değerli olduğunu sanmak yanlıştır: 6 tane 1 lira (6 TL), 1 tane 10 liradan (10 TL) azdır. Kuruşla lirayı toplarken de birimleri karıştırma: 75 kuruş + 50 kuruş = 125 kuruş = 1 lira 25 kuruş."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "1 lira kaç kuruştur?",
+   "options": [
+    "1000",
+    "10",
+    "50",
+    "100"
+   ],
+   "answer": 3,
+   "why": "1 lira = 100 kuruş.",
+   "hint": "Kuruş liradan küçük birimdir."
+  },
+  {
+   "prompt": "4 tane 25 kuruş kaç eder?",
+   "options": [
+    "40 kuruş",
+    "1 lira",
+    "75 kuruş",
+    "4 lira"
+   ],
+   "answer": 1,
+   "why": "25 + 25 + 25 + 25 = 100 kuruş = 1 lira.",
+   "hint": "25'er say."
+  },
+  {
+   "prompt": "Bir tane 200 TL kaç tane 50 TL'ye eşittir?",
+   "options": [
+    "4",
+    "5",
+    "10",
+    "2"
+   ],
+   "answer": 0,
+   "why": "50 + 50 + 50 + 50 = 200.",
+   "hint": "50'şer sayarak 200'e kaç adımda ulaşırsın?"
+  },
+  {
+   "prompt": "Ayşe 50 TL ile 32 TL'lik bir oyuncak aldı. Kaç TL para üstü alır?",
+   "options": [
+    "28",
+    "82",
+    "18",
+    "22"
+   ],
+   "answer": 2,
+   "why": "50 − 32 = 18 TL.",
+   "hint": "Verilen paradan fiyatı çıkar."
+  }
+ ]
+}

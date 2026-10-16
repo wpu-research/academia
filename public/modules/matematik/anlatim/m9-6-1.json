@@ -1,0 +1,88 @@
+{
+ "id": "m9-6-1",
+ "baslik": "Tek Nicel Değişkenli Veri Dağılımları",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.6.1"],
+ "sure": 20,
+ "ders": "veri-ortalama",
+ "ozet": "Tek bir nicel değişkene ait veriyi nokta grafiği ve kutu grafiğiyle gösterecek; merkezi eğilim ölçülerini (ortalama, ortanca, tepe değer) ve yayılım ölçülerini (açıklık, çeyrekler açıklığı, standart sapma) hesaplayıp yorumlayarak karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Nicel veri ve dağılımı",
+   "govde": "Sayısal ölçümlerle elde edilen değişkenlere (boy, süre, puan, sıcaklık) **nicel değişken** denir. Bir veri grubunu anlamak için üç soruya bakarız:\n\n- **Merkez:** Değerler genellikle nerede toplanıyor?\n- **Yayılım:** Değerler ne kadar dağınık?\n- **Biçim:** Dağılım simetrik mi, bir tarafa mı çarpık? Diğerlerinden çok uzak (aykırı) değer var mı?\n\nNokta grafiğinde her veri bir noktadır; aynı değerler üst üste dizilir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Merkezi eğilim ölçüleri",
+   "govde": "- **Ortalama:** değerlerin toplamı ÷ veri sayısı.\n- **Ortanca (medyan):** veriler sıralanınca ortadaki değer; veri sayısı çiftse ortadaki iki değerin ortalaması.\n- **Tepe değer (mod):** en sık tekrar eden değer.\n\nOrtalama aykırı değerlerden çok etkilenir; ortanca etkilenmez. Çarpık dağılımlarda ve aykırı değer varsa tipik değeri ortanca daha iyi gösterir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Noktaları taşı, ölçüleri izle",
+   "aciklama": "7 öğrencinin bir haftada kitap okumaya ayırdığı saatler. Noktaları sürükle; yeşil kesikli çizgi ortalama, kutu grafiğindeki kırmızı çizgi ortancadır.",
+   "sim": { "kind": "e-nokta-grafigi", "values": [3, 5, 5, 6, 8, 9, 12], "min": 0, "max": 20 },
+   "gorev": { "metin": "Ortanca 6'da kalsın ama ortalama en az 8 olsun.", "check": { "all": [ { "key": "mean", "gte": 8 }, { "key": "median", "eq": 6 } ] } },
+   "dene": ["En büyük değeri 20'ye taşı: ortalama 8'e çıkar, ortanca hiç değişmez.", "Bütün noktaları aynı değere getir: açıklık ve standart sapma 0 olur."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yayılım ölçüleri",
+   "govde": "- **Açıklık:** en büyük değer − en küçük değer.\n- **Çeyrekler:** Sıralı veri ortancayla iki yarıya ayrılır (veri sayısı tekse ortanca iki yarıya da katılmaz). Alt yarının ortancası **1. çeyrek (Ç1)**, üst yarınınki **3. çeyrek (Ç3)**. Çeyrekler açıklığı = Ç3 − Ç1; verinin ortadaki yarısının yayılımıdır.\n- **Standart sapma:** değerlerin ortalamadan ortalama uzaklığını ölçer. Örneklem için s = √( Σ(xᵢ − x̄)² ÷ (n − 1) ). Küçük standart sapma, verinin ortalama etrafında toplandığını gösterir.\n\n**Kutu grafiği** beş değeri gösterir: en küçük, Ç1, ortanca, Ç3, en büyük."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "2, 4, 4, 5, 7, 8, 12 verisinin ortalamasını, ortancasını, tepe değerini, açıklığını ve çeyrekler açıklığını bulalım.",
+   "cozum": [
+    "Ortalama: (2 + 4 + 4 + 5 + 7 + 8 + 12) ÷ 7 = 42 ÷ 7 = 6.",
+    "Ortanca: 7 değerin 4.'sü, 5.",
+    "Tepe değer: 4. Açıklık: 12 − 2 = 10.",
+    "Alt yarı 2, 4, 4 ⇒ Ç1 = 4. Üst yarı 7, 8, 12 ⇒ Ç3 = 8.",
+    "Çeyrekler açıklığı: 8 − 4 = 4."
+   ],
+   "sonuc": "6; 5; 4; 10; 4"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Standart sapma",
+   "soru": "4, 6, 8 verisinin standart sapmasını bulalım.",
+   "cozum": [
+    "Ortalama 6. Farklar: −2, 0, 2.",
+    "Karelerin toplamı: 4 + 0 + 4 = 8.",
+    "n − 1 = 2'ye böl: 4. Karekök: 2."
+   ],
+   "sonuc": "s = 2"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ortalamayı ve ortancayı ayarla",
+   "aciklama": "Beş arkadaşın bir haftada çözdüğü test sayısı. Çubukları sürükle.",
+   "sim": { "kind": "veri-grafigi", "labels": ["Ada", "Can", "Ece", "Mert", "Su"], "values": [4, 6, 5, 7, 3], "max": 10 },
+   "gorev": { "metin": "Ortalama 6, ortanca 5 olsun.", "check": { "all": [ { "key": "mean", "eq": 6, "tol": 0.001 }, { "key": "median", "eq": 5, "tol": 0.001 } ] } },
+   "dene": ["Toplam 30 olmalı; ortadaki değer 5 kalırken büyük değerleri artır."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: karar vermek",
+   "soru": "İki atıcının 5 atışlık puanları: A: 8, 9, 10, 9, 9 ve B: 5, 10, 10, 9, 11. Ortalamaları eşit mi? Takıma tutarlı bir atıcı seçilecekse hangisi seçilmelidir?",
+   "cozum": [
+    "A'nın ortalaması 45 ÷ 5 = 9, B'nin ortalaması 45 ÷ 5 = 9.",
+    "A'nın açıklığı 10 − 8 = 2, B'ninki 11 − 5 = 6.",
+    "A'nın puanları ortalama etrafında daha toplu (standart sapması daha küçük)."
+   ],
+   "sonuc": "Ortalamalar eşit; tutarlılık için A seçilmelidir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Ortancayı veriyi sıralamadan bulmak.\n- Çift sayıda veride ortancayı ortadaki iki değerden biri sanmak; ikisinin ortalaması alınır.\n- Yalnız ortalamaya bakıp karar vermek; yayılım farklı olabilir.\n- Çeyrekleri bulurken farklı kaynakların farklı yöntemler kullanabildiğini unutmak; hangi yöntemi kullandığını belirt."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "3, 7, 7, 9, 14 verisinin ortalaması kaçtır?", "options": ["7", "8", "9", "11"], "answer": 1, "why": "40 ÷ 5 = 8.", "hint": "Değerleri topla, veri sayısına böl." },
+  { "prompt": "5, 1, 9, 3, 8, 6 verisinin ortancası kaçtır?", "options": ["5", "6", "5,5", "4"], "answer": 2, "why": "Sıralı: 1, 3, 5, 6, 8, 9. Ortadakiler 5 ve 6: (5 + 6) ÷ 2 = 5,5.", "hint": "Önce sırala; veri sayısı çift." },
+  { "prompt": "Bir veriye çok büyük bir değer eklenirse hangisi en az etkilenir?", "options": ["Ortalama", "Açıklık", "Standart sapma", "Ortanca"], "answer": 3, "why": "Ortanca yalnız ortadaki değere bakar; uç değerin büyüklüğü onu etkilemez.", "hint": "Hangi ölçü uçtaki değerin ne kadar büyük olduğuyla ilgilenmez?" },
+  { "prompt": "2, 4, 6, 8, 10, 12, 14 verisinin çeyrekler açıklığı kaçtır?", "options": ["8", "6", "10", "12"], "answer": 0, "why": "Ortanca 8. Alt yarı 2, 4, 6 ⇒ Ç1 = 4; üst yarı 10, 12, 14 ⇒ Ç3 = 12. 12 − 4 = 8.", "hint": "Ortancayı ayır, iki yarının ortancalarını bul." }
+ ]
+}

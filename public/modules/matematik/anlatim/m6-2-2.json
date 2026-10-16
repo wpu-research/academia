@@ -1,0 +1,170 @@
+{
+ "id": "m6-2-2",
+ "baslik": "Kesir-Bölme İlişkisi",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.1.6"
+ ],
+ "sure": 12,
+ "ozet": "Paylaştırma durumlarından yola çıkarak a ÷ b bölmesinin a/b kesrine eşit olduğunu keşfedecek, bileşik kesirleri tam sayılı kesre çevirmeyi bölmeyle açıklayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Paylaştırma",
+   "govde": "3 pizzayı 4 kişi eşit paylaşırsa her kişiye bir bütün pizza düşmez. Her pizzayı 4 eş parçaya bölelim: her kişi her pizzadan **1/4** alır. 3 pizzadan toplam **3 tane 1/4**, yani **3/4** pizza alır.\n\nDemek ki 3 ÷ 4 = 3/4."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Pizzaları paylaştır",
+   "aciklama": "Bütün sayısını ve kişi sayısını değiştir. Koyu parçalar 1. kişinin payı.",
+   "sim": {
+    "kind": "d-paylasim",
+    "a": 1,
+    "b": 4
+   },
+   "gorev": {
+    "metin": "Her kişiye 3/4 bütün düşen bir paylaşım kur.",
+    "check": {
+     "key": "share",
+     "eq": 0.75,
+     "tol": 1e-09
+    }
+   },
+   "dene": [
+    "3 bütün 4 kişi dışında, 6 bütün 8 kişi de olur mu? Neden?",
+    "Bütün sayısı kişi sayısından büyükse kişi başına 1'den fazla düşer."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kural",
+   "govde": "Her a ve b doğal sayısı için (b ≠ 0):\n\n**a ÷ b = a/b**\n\nBölünen kesrin **payı**, bölen kesrin **paydası** olur. Bu yüzden kesir çizgisi bir bölme işaretidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kişi başına 1'den fazla",
+   "aciklama": "Bütün sayısı kişi sayısından büyük olunca ne olur?",
+   "sim": {
+    "kind": "d-paylasim",
+    "a": 3,
+    "b": 2
+   },
+   "gorev": {
+    "metin": "Kişi başına 2 tam 1/2 bütün düşsün.",
+    "check": {
+     "key": "share",
+     "eq": 2.5,
+     "tol": 1e-09
+    }
+   },
+   "dene": [
+    "5 ÷ 2 = 5/2 = 2 tam 1/2: 2 bütün ve yarım."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Bileşik kesir ve tam sayılı kesir",
+   "govde": "Bileşik kesri tam sayılı kesre çevirmek bir bölmedir: **pay ÷ payda**.\n\n17/5 → 17 ÷ 5 = 3, kalan 2 → **3 tam 2/5**.\n\nBölüm tam kısım, kalan yeni pay olur; payda değişmez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda 11 ÷ 4",
+   "aciklama": "0 ile 3 arasındaki her birim 4 eş parçaya bölündü.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": 0,
+    "max": 3,
+    "den": 4,
+    "value": 0
+   },
+   "gorev": {
+    "metin": "11 ÷ 4 sonucunu sayı doğrusunda bul.",
+    "check": {
+     "key": "value",
+     "eq": 2.75,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "11 ÷ 4 = 11/4: her biri 1/4 olan 11 adım at.",
+    "11/4 = 2 tam 3/4 = 2,75."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "5 çikolata 8 arkadaşa eşit paylaştırılıyor. Her birine ne kadar düşer?",
+   "cozum": [
+    "Paylaştırma bir bölmedir: 5 ÷ 8.",
+    "5 ÷ 8 = 5/8."
+   ],
+   "sonuc": "Her arkadaşa 5/8 çikolata düşer."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Limonata",
+   "soru": "3 litre limonata 4 eş bardağa eksiksiz dolduruluyor. Her bardakta kaç litre, kaç mililitre limonata vardır?",
+   "cozum": [
+    "Her bardak: 3 ÷ 4 = 3/4 litre.",
+    "3/4 = 75/100 = 0,75 litre.",
+    "1 litre = 1000 mL olduğundan 0,75 litre = 750 mL."
+   ],
+   "sonuc": "Her bardakta 3/4 L = 750 mL limonata vardır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "3 ÷ 4'ü 4/3 diye ters yazmak sık yapılan bir hatadır. **Bölünen paya** yazılır: 3 ÷ 4 = 3/4. 4/3 ise 4 ÷ 3'tür ve 1'den büyüktür; 3 bütün 4 kişiye paylaştırılınca kimseye 1 bütünden fazlası düşemez."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "2 ÷ 7 işleminin sonucu hangisidir?",
+   "options": [
+    "7/2",
+    "2/7",
+    "0,27",
+    "5"
+   ],
+   "answer": 1,
+   "why": "Bölünen paya, bölen paydaya: 2 ÷ 7 = 2/7.",
+   "hint": "Bölünen sayı kesrin neresine yazılır?"
+  },
+  {
+   "prompt": "4 çikolata 5 kişiye eşit paylaştırılırsa kişi başına ne kadar düşer?",
+   "options": [
+    "5/4",
+    "1/5",
+    "4/5",
+    "1 tam 1/4"
+   ],
+   "answer": 2,
+   "why": "4 ÷ 5 = 4/5.",
+   "hint": "Paylaşılan miktar bölünendir."
+  },
+  {
+   "prompt": "23/6 kesrinin tam sayılı gösterimi hangisidir?",
+   "options": [
+    "3 tam 5/6",
+    "3 tam 6/5",
+    "4 tam 1/6",
+    "5 tam 3/6"
+   ],
+   "answer": 0,
+   "why": "23 ÷ 6 = 3, kalan 5: 3 tam 5/6.",
+   "hint": "Payı paydaya böl: bölüm tam kısım, kalan yeni pay."
+  },
+  {
+   "prompt": "Hangi bölme işleminin sonucu 9/4'tür?",
+   "options": [
+    "4 ÷ 9",
+    "9 × 4",
+    "9 − 4",
+    "9 ÷ 4"
+   ],
+   "answer": 3,
+   "why": "a ÷ b = a/b olduğundan 9 ÷ 4 = 9/4.",
+   "hint": "Kesrin payı bölünen, paydası bölendir."
+  }
+ ]
+}

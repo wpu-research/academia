@@ -1,0 +1,171 @@
+{
+ "id": "m7-1-2",
+ "baslik": "Rasyonel Sayılar ve Farklı Temsilleri",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.2"
+ ],
+ "sure": 15,
+ "ozet": "a/b biçiminde yazılabilen sayıları tanıyacak; rasyonel sayıları kesir, ondalık gösterim ve sayı doğrusu üzerinde gösterecek, sonlu ve devirli ondalık gösterimleri ayırt edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Rasyonel sayı",
+   "govde": "a ve b tam sayı ve b ≠ 0 olmak üzere **a/b** biçiminde yazılabilen sayılara **rasyonel sayı** denir: 3/4, −2/5, 7 (= 7/1), 0 (= 0/3), 1,5 (= 3/2).\n\nHer tam sayı bir rasyonel sayıdır, çünkü paydası 1 olan bir kesir olarak yazılabilir.\n\nNegatif bir rasyonel sayının eksi işareti paya, paydaya ya da kesrin önüne yazılabilir: −2/5 = (−2)/5 = 2/(−5)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Negatif kesirler sayı doğrusunda",
+   "aciklama": "Her birim 4 eş parçaya bölündü.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": -2,
+    "max": 2,
+    "den": 4,
+    "value": 0
+   },
+   "gorev": {
+    "metin": "−5/4'ü bul.",
+    "check": {
+     "key": "value",
+     "eq": -1.25,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "−5/4 = −1 tam 1/4: önce −1'e git, sonra bir çeyrek daha sola.",
+    "−5/4 = −1,25."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ondalık gösterime çevirme",
+   "govde": "Rasyonel sayının ondalık gösterimini bulmak için **payı paydaya böleriz**.\n\n- Payda 10, 100, 1000'e genişletilebiliyorsa kolaydır: 3/25 = 12/100 = 0,12.\n- Bölme bir yerde biterse **sonlu ondalık**: 7/8 = 0,875.\n- Kalanlar tekrar etmeye başlarsa **devirli ondalık**: 1/6 = 0,1666… = 0,1**6** (tekrar eden kısmın üstü çizilir).\n\nSadeleşmiş kesrin paydasının asal çarpanları yalnız 2 ve 5 ise ondalık gösterim sonludur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölerek ondalık gösterim",
+   "aciklama": "Pay ve paydayı seç. Tablo bölmeyi adım adım gösteriyor; kalanlar tekrar edince basamaklar da tekrar eder.",
+   "sim": {
+    "kind": "d-ondalik-acilim",
+    "pay": 1,
+    "payda": 6
+   },
+   "gorev": {
+    "metin": "Paydası 12 olan ama sonlu ondalık gösterimi olan bir kesir bul.",
+    "check": {
+     "all": [
+      {
+       "key": "payda",
+       "eq": 12
+      },
+      {
+       "key": "sonlu",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "12 = 2² · 3. Pay 3'ün katı olursa kesir sadeleşince 3 gider.",
+    "1/7'yi dene: kaç basamak tekrar ediyor?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yüzde birlerle ondalık",
+   "aciklama": "Yüzlük tablo 1 bütünü gösteriyor.",
+   "sim": {
+    "kind": "d-yuzluk",
+    "start": 0
+   },
+   "gorev": {
+    "metin": "3/4'ün ondalık gösterimini göster.",
+    "check": {
+     "key": "count",
+     "eq": 75
+    }
+   },
+   "dene": [
+    "3/4 = 75/100 = 0,75 = %75."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "5/11'in ondalık gösterimini bulalım.",
+   "cozum": [
+    "5 ÷ 11: 50 ÷ 11 = 4, kalan 6.",
+    "60 ÷ 11 = 5, kalan 5.",
+    "Kalan yeniden 5 oldu: basamaklar 4, 5, 4, 5, … diye tekrar eder."
+   ],
+   "sonuc": "5/11 = 0,4545… = 0,45 (45 devreder)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Market",
+   "soru": "3 kg pirinç 100 TL'dir. 1 kg pirincin fiyatını kesir ve ondalık olarak yazalım.",
+   "cozum": [
+    "1 kg fiyatı: 100 ÷ 3 = 100/3 TL.",
+    "100 ÷ 3 = 33,333… = 33,3 (3 devreder).",
+    "Parayla ödeme kuruş düzeyinde yapıldığı için yaklaşık 33,33 TL denir."
+   ],
+   "sonuc": "100/3 TL ≈ 33,33 TL."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Devirli ondalığı kısaltıp eşit saymak yanlıştır: 1/3 = 0,333…'tür, 0,3 değil. 0,3 = 3/10'dur ve 1/3'ten küçüktür. Yaklaşık değer kullanacaksan \"≈\" işaretini kullan."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "2/5'in ondalık gösterimi hangisidir?",
+   "options": [
+    "0,25",
+    "0,4",
+    "2,5",
+    "0,04"
+   ],
+   "answer": 1,
+   "why": "2/5 = 4/10 = 0,4.",
+   "hint": "Paydayı 10'a genişlet."
+  },
+  {
+   "prompt": "Hangisinin ondalık gösterimi devirlidir?",
+   "options": [
+    "1/4",
+    "3/20",
+    "7/8",
+    "1/3"
+   ],
+   "answer": 3,
+   "why": "1/3'ün paydası 3; 2 ve 5 dışında bir asal çarpanı var: 1/3 = 0,333…",
+   "hint": "Paydanın asal çarpanlarına bak."
+  },
+  {
+   "prompt": "−1,5 hangi kesre eşittir?",
+   "options": [
+    "−3/2",
+    "−1/5",
+    "−15/100",
+    "3/2"
+   ],
+   "answer": 0,
+   "why": "1,5 = 15/10 = 3/2; işaret negatif.",
+   "hint": "−1,5 = −1 tam 1/2."
+  },
+  {
+   "prompt": "0,666… (6 devreder) hangi kesre eşittir?",
+   "options": [
+    "6/10",
+    "3/5",
+    "2/3",
+    "6/100"
+   ],
+   "answer": 2,
+   "why": "2 ÷ 3 = 0,666…",
+   "hint": "Hangi kesri böldüğünde kalan hep aynı çıkar?"
+  }
+ ]
+}

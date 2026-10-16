@@ -1,0 +1,91 @@
+{
+ "id": "m11-2-1",
+ "baslik": "Dörtgenlerin Özellikleri",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.2.1"],
+ "sure": 17,
+ "ozet": "Her dörtgen bir köşegenle iki üçgene ayrılır. Bu basit gözlemden iç açılar toplamını, köşegenlerle alan formülünü ve kenar orta noktalarının oluşturduğu paralelkenarı çıkaracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dörtgeni üçgenlere ayır",
+   "govde": "ABCD dörtgeninde AC köşegeni dörtgeni ABC ve ACD üçgenlerine ayırır. Üçgenlerin iç açıları toplamı 180° + 180° olduğundan dörtgenin iç açıları toplamı **360°**'dir. Bir köşesi içe doğru göçük (içbükey) dörtgenlerde de, uygun köşegen seçilirse bu sonuç değişmez.\n\nBenzer şekilde dörtgenin alanı iki üçgenin alanları toplamıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açılar toplamı hep 360°",
+   "aciklama": "Köşeleri sürükle. Kesikli çizgiler köşegenler; dörtgenin dışına taşan köşegen kırmızı olur.",
+   "sim": { "kind": "f-cokgen", "points": [[1, 1], [7, 2], [6, 6], [2, 5]], "classify": false },
+   "gorev": { "metin": "Bir köşeyi içeri çekerek içbükey bir dörtgen oluştur.", "check": { "all": [{ "key": "simple", "eq": 1 }, { "key": "convex", "eq": 0 }] } },
+   "dene": ["İçbükey dörtgende bir iç açı 180°'den büyük olur ama toplam yine 360°.", "Köşeleri çaprazlarsan kenarlar kesişir; o zaman şekil artık bir dörtgen değildir."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açı ve kenar özellikleri",
+   "govde": "- İç açılar toplamı 360°; dışbükey dörtgende dış açılar toplamı da 360°.\n- Dışbükey dörtgende köşegenler dörtgenin içinde kesişir.\n- Bir dörtgenin kenarlarının orta noktaları birleştirilirse bir **paralelkenar** oluşur (Varignon). Bu paralelkenarın kenarları köşegenlere paraleldir ve onların yarısı uzunluğundadır; çevresi köşegen uzunlukları toplamına eşittir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir dörtgenin iç açıları 3 : 4 : 5 : 6 oranındadır. Açıları bulalım.",
+   "cozum": [
+    "Açılar 3x, 4x, 5x, 6x olsun: 18x = 360°.",
+    "x = 20°."
+   ],
+   "sonuc": "Açılar 60°, 80°, 100°, 120°."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Köşegenlerle alan",
+   "govde": "Köşegen uzunlukları e ve f, köşegenler arasındaki açı θ olan dışbükey dörtgenin alanı\n\nAlan = (1/2) · e · f · sin θ\n\nKöşegenler dikse sin 90° = 1 olduğundan **Alan = e · f / 2**.\n\nYamuk (paralel kenarları a ve c, yüksekliği h): Alan = (a + c) · h / 2; orta taban (a + c)/2."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşegenleri dik dörtgen",
+   "aciklama": "Sağdaki satırda köşegenlerin dik olup olmadığı yazıyor.",
+   "sim": { "kind": "f-cokgen", "points": [[1, 2], [6, 1], [8, 5], [3, 6]] },
+   "gorev": { "metin": "Köşegenleri birbirine dik olan bir dörtgen oluştur.", "check": { "all": [{ "key": "simple", "eq": 1 }, { "key": "kdik", "eq": 1 }] } },
+   "dene": ["Örneğin (1, 3), (4, 1), (7, 3), (4, 6): köşegenler yatay ve dikey.", "Köşegenler dikken alan = e · f / 2; sağdaki alanla karşılaştır."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Köşegen uzunlukları 10 cm ve 8 cm olan bir dörtgenin (a) köşegenleri dikse, (b) köşegenler arasındaki açı 30° ise alanı kaçtır?",
+   "cozum": [
+    "(a) 10 · 8 / 2 = 40 cm².",
+    "(b) (1/2) · 10 · 8 · sin 30° = 40 · (1/2) = 20 cm²."
+   ],
+   "sonuc": "(a) 40 cm², (b) 20 cm²."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yamuğun alanı",
+   "aciklama": "Tabanları 6 ve 3, yüksekliği 3 olan bir yamuk. Köşeleri sürükleyebilirsin.",
+   "sim": { "kind": "geometri-tahtasi", "points": [[1, 1], [7, 1], [5, 4], [2, 4]] },
+   "gorev": { "metin": "Yüksekliği 3 bırakıp üst tabanı uzatarak alanı 18 birimkare yap.", "check": { "key": "area", "eq": 18 } },
+   "dene": ["(6 + 3) · 3 / 2 = 13,5'ten (6 + 6) · 3 / 2 = 18'e.", "Üst taban 6 olunca yamuk bir paralelkenara dönüşür."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Köşegen uzunlukları 10 cm ve 14 cm olan bir ABCD dörtgeninin kenarlarının orta noktaları birleştirilerek bir dörtgen elde ediliyor. Bu dörtgenin çevresi kaç cm'dir?",
+   "cozum": [
+    "Orta noktaları birleştiren dörtgen bir paralelkenardır.",
+    "Kenarları köşegenlerin yarısı: 5 ve 7 cm.",
+    "Çevre: 2 · (5 + 7) = 24 cm (köşegenlerin toplamı)."
+   ],
+   "sonuc": "24 cm."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "e · f / 2 formülünü her dörtgende kullanmak. Bu formül yalnız köşegenleri **dik** dörtgenlerde geçerlidir; genel durumda (1/2) · e · f · sin θ kullanılır. Yamukta ise yükseklik, yan kenar değil paralel kenarlar arasındaki dik uzaklıktır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir dörtgenin üç iç açısı 80°, 95° ve 110° ise dördüncü açı kaç derecedir?", "options": ["85°", "75°", "95°", "65°"], "answer": 1, "why": "360° − (80° + 95° + 110°) = 75°.", "hint": "Dörtgenin iç açıları toplamı 360°." },
+  { "prompt": "Köşegenleri dik ve uzunlukları 6 ile 9 olan dörtgenin alanı kaçtır?", "options": ["54", "15", "27", "36"], "answer": 2, "why": "6 · 9 / 2 = 27.", "hint": "Köşegenler dikse alan e · f / 2." },
+  { "prompt": "Paralel kenarları 7 ve 13, yüksekliği 4 olan yamuğun alanı kaçtır?", "options": ["80", "52", "20", "40"], "answer": 3, "why": "(7 + 13) · 4 / 2 = 40.", "hint": "Tabanların ortalaması çarpı yükseklik." },
+  { "prompt": "Dışbükey bir dörtgenin dış açıları toplamı kaç derecedir?", "options": ["360°", "180°", "540°", "720°"], "answer": 0, "why": "Her dışbükey çokgenin dış açıları toplamı 360°'dir.", "hint": "Çevrede bir tur dönmeyi düşün." }
+ ]
+}

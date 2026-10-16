@@ -1008,5 +1008,76 @@ window.LESSONS = (() => {
 
   window.addEventListener("hashchange", () => window.AUDIO?.stopAll());
   const registerSim = (kind, fn) => { SIMS[kind] = fn; };
-  return { manifest, lesson, open, context, registerSim, sims: SIMS };
+
+  // ---------- Konu anlatımı ----------
+  // modules/<modül>/anlatim/<konu>.json: bölümler (metin, kural, sim, örnek, hata) + kısa kontrol.
+  // Her anlatımda en az bir simülasyon bölümü vardır; "gorev" bir check kuralıyla canlı olarak işaretlenir (puan yok).
+  const anlatimIndex = (mod) => getJSON(`modules/${mod}/anlatim/index.json`);
+  const anlatimDoc = (mod, id) => getJSON(`modules/${mod}/anlatim/${id}.json`);
+  const mdBlock = (s) => String(s ?? "").split(/\n{2,}/).map((p) => {
+    const lines = p.split("\n");
+    if (lines.every((l) => /^\s*[-•]\s+/.test(l))) return `<ul>${lines.map((l) => `<li>${md(l.replace(/^\s*[-•]\s+/, ""))}</li>`).join("")}</ul>`;
+    if (lines.every((l) => /^\s*\d+[.)]\s+/.test(l))) return `<ol>${lines.map((l) => `<li>${md(l.replace(/^\s*\d+[.)]\s+/, ""))}</li>`).join("")}</ol>`;
+    return `<p>${lines.map(md).join("<br>")}</p>`;
+  }).join("");
+  let curAnlatim = null;
+
+  function openAnlatim(root, mod, id, hooks = {}) {
+    root.innerHTML = `<div class="la"><p class="muted">Konu anlatımı yükleniyor…</p></div>`;
+    Promise.all([anlatimIndex(mod), anlatimDoc(mod, id)]).then(([idx, d]) => {
+      const list = idx.konular, k = list.findIndex((x) => x.id === id), prev = list[k - 1], next = list[k + 1];
+      const sims = [];
+      const sec = (b, i) => {
+        if (b.tur === "kural") return `<div class="la-rule">${b.baslik ? `<h3>${esc(b.baslik)}</h3>` : ""}${mdBlock(b.govde)}</div>`;
+        if (b.tur === "hata") return `<div class="la-warn"><h3>${esc(b.baslik || "Sık yapılan hata")}</h3>${mdBlock(b.govde)}</div>`;
+        if (b.tur === "ornek") return `<div class="la-ex"><h3>${esc(b.baslik || "Çözümlü örnek")}</h3>${mdBlock(b.soru)}
+          <details><summary>Çözümü göster</summary><ol class="la-steps">${(b.cozum || []).map((s) => `<li>${md(s)}</li>`).join("")}</ol>${b.sonuc ? `<p class="la-ans">${md(b.sonuc)}</p>` : ""}</details></div>`;
+        if (b.tur === "sim") {
+          sims.push({ i, b });
+          return `<figure class="la-simbox">${b.baslik ? `<h3>${esc(b.baslik)}</h3>` : ""}${b.aciklama ? mdBlock(b.aciklama) : ""}
+            <div class="lp-sim" data-sim="${i}"></div>
+            ${b.gorev ? `<p class="lp-goal" data-goal="${i}"><i></i>${md(b.gorev.metin)}</p>` : ""}
+            ${(b.dene || []).length ? `<ul class="la-try">${b.dene.map((t) => `<li>${md(t)}</li>`).join("")}</ul>` : ""}</figure>`;
+        }
+        return `<section class="la-text">${b.baslik ? `<h2>${esc(b.baslik)}</h2>` : ""}${mdBlock(b.govde)}</section>`;
+      };
+      const quiz = (d.kontrol || []).map((q, j) => `<div class="la-q" data-q="${j}"><p>${md(q.prompt)}</p>
+        <div class="opts">${q.options.map((o, i) => `<button type="button" class="opt" data-qo="${i}"><span class="letter">${"ABCDE"[i]}</span><span>${md(o)}</span></button>`).join("")}</div><p class="la-why" hidden></p></div>`).join("");
+      root.innerHTML = `<article class="la">
+        <nav class="la-crumb"><a href="#p-${mod}">Matematik</a> / <span>${esc(d.sinif)}</span></nav>
+        <header class="la-head"><span class="eyebrow">Konu anlatımı${d.sure ? ` · ${d.sure} dk` : ""}</span><h1>${esc(d.baslik)}</h1>${d.ozet ? `<p class="lead">${md(d.ozet)}</p>` : ""}
+          ${(d.kazanim || []).length ? `<p class="la-kaz">${d.kazanim.map((x) => `<span class="chip chip-line">${esc(x)}</span>`).join("")}</p>` : ""}</header>
+        ${d.bolumler.map(sec).join("")}
+        ${quiz ? `<section class="la-quiz"><h2>Kendini dene</h2>${quiz}</section>` : ""}
+        <footer class="la-foot">
+          ${d.ders ? `<a class="btn btn-primary" href="#ders-${mod}.${d.ders}">Oyunla pekiştir →</a>` : ""}
+          <div class="la-nav">${prev ? `<a href="#anlatim-${mod}.${prev.id}">← ${esc(prev.baslik)}</a>` : "<span></span>"}${next ? `<a href="#anlatim-${mod}.${next.id}">${esc(next.baslik)} →</a>` : ""}</div>
+        </footer></article>`;
+      curAnlatim = { d, mod };
+      for (const { i, b } of sims) {
+        const el = root.querySelector(`[data-sim="${i}"]`), goal = root.querySelector(`[data-goal="${i}"]`);
+        const fn = SIMS[b.sim.kind];
+        if (!fn) { el.innerHTML = `<p class="muted">Simülasyon yüklenemedi.</p>`; continue; }
+        let st = () => ({});
+        const upd = () => { if (goal) { const met = check(b.gorev.check, st()); goal.classList.toggle("met", met); if (met && !goal.dataset.done) { goal.dataset.done = "1"; hooks.onTask?.(d, i); } } };
+        st = fn(el, b.sim, upd) || st;
+        el.addEventListener("simchange", upd);
+        upd();
+      }
+      root.querySelectorAll(".la-q").forEach((qe) => {
+        const q = d.kontrol[+qe.dataset.q], why = qe.querySelector(".la-why");
+        qe.querySelectorAll("[data-qo]").forEach((b) => b.addEventListener("click", () => {
+          const i = +b.dataset.qo, good = i === q.answer;
+          qe.querySelectorAll("[data-qo]").forEach((x) => { x.classList.toggle("correct", good && +x.dataset.qo === q.answer); x.classList.toggle("wrong", +x.dataset.qo === i && !good); });
+          why.hidden = false; why.innerHTML = `<b>${good ? "Doğru." : "Henüz değil."}</b> ${good ? md(q.why || "") : md(q.hint || "Bir daha dene.")}`;
+          if (good) { qe.querySelectorAll("[data-qo]").forEach((x) => { x.disabled = true; }); hooks.onQuiz?.(d, +qe.dataset.q); }
+        }));
+      });
+      window.MAC?.refresh();
+    }).catch(() => { root.innerHTML = `<div class="la"><p>Bu konunun anlatımı henüz hazır değil.</p><a class="btn btn-outline" href="#p-${mod}">Programa dön</a></div>`; });
+  }
+  const anlatimContext = () => curAnlatim ? { page: `Konu anlatımı: ${curAnlatim.d.baslik}`, context: `${curAnlatim.d.sinif}. ${curAnlatim.d.ozet || ""} ${curAnlatim.d.bolumler.filter((b) => b.govde).map((b) => b.govde).join(" ").slice(0, 1500)}` } : null;
+  window.addEventListener("hashchange", () => { if (!location.hash.startsWith("#anlatim-")) curAnlatim = null; });
+
+  return { manifest, lesson, open, context, registerSim, sims: SIMS, anlatimIndex, openAnlatim, anlatimContext };
 })();

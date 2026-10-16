@@ -608,7 +608,7 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 @media (max-width: 1010px) and (min-width: 961px) { .main-nav > a, .nav-drop > button { padding: 10px 5px; font-size: 13px; } .main-nav > a.nav-cta { padding: 0 10px; margin-left: 4px; } .logo-word { font-size: 20px; } .logo .nut { width: 34px; height: 34px; } }
 
 /* ---------- Müfredat ---------- */
-.cur { display: grid; gap: 10px; }
+#curriculum.cur { display: grid; gap: 10px; }
 .cur-legend { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); }
 .cur-stage { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .cur-stage > summary, .cur-grade > summary { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; cursor: pointer; padding: 14px 16px; list-style-position: inside; }
@@ -851,3 +851,37 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
   .method { gap: 52px; }
   .formula { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
+
+/* ---------- Konu anlatımı ---------- */
+.la { max-width: 760px; margin: 0 auto; padding-block: 24px 80px; display: grid; gap: 22px; min-width: 0; }
+.la-crumb { font-size: 13px; color: var(--muted); }
+.la-crumb a { color: var(--brand); }
+.la-head h1 { font-size: clamp(28px, 4vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
+.la-head .lead { font-size: 18px; line-height: 1.55; color: var(--ink); margin: 0; }
+.la-kaz { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; }
+.la-text h2, .la-quiz h2 { font-size: 22px; margin: 8px 0 8px; }
+.la h3 { font-size: 17px; margin: 0 0 8px; }
+.la p, .la li { font-size: 16.5px; line-height: 1.65; }
+.la p { margin: 0 0 10px; }
+.la ul, .la ol { margin: 0 0 10px; padding-left: 22px; display: grid; gap: 4px; }
+.la code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .92em; background: var(--bg-soft); padding: 1px 6px; border-radius: 4px; }
+.la-rule { border-left: 4px solid var(--brand); background: var(--brand-soft); border-radius: 0 10px 10px 0; padding: 14px 18px; }
+.la-rule p:last-child, .la-warn p:last-child, .la-ex p:last-child { margin-bottom: 0; }
+.la-warn { border: 1px solid var(--warn); background: var(--warn-soft); border-radius: 10px; padding: 14px 18px; }
+.la-warn h3 { color: var(--warn); }
+.la-ex { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 16px 18px; }
+.la-ex details summary { cursor: pointer; color: var(--brand); font-weight: 600; font-size: 15px; }
+.la-steps { margin-top: 10px !important; }
+.la-ans { font-weight: 600; color: var(--good); margin-top: 6px !important; }
+.la-simbox { margin: 0; display: grid; gap: 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); padding: 16px; min-width: 0; }
+.la-simbox .lp-sim { background: var(--surface); }
+.la-try { font-size: 15px; color: var(--muted); margin: 0 !important; }
+.la-try li { font-size: 15px; }
+.la-q { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 4px; }
+.la-q .opts { margin-top: 6px; }
+.la-why { margin-top: 8px !important; font-size: 15px !important; }
+.la-foot { display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 18px; }
+.la-foot .btn { justify-self: start; }
+.la-nav { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 15px; }
+.la-nav a { color: var(--brand); font-weight: 500; }
+@media (max-width: 600px) { .la p, .la li { font-size: 16px; } .la-simbox { padding: 12px; } }

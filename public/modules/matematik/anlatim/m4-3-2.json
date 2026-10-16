@@ -1,0 +1,180 @@
+{
+ "id": "m4-3-2",
+ "baslik": "Çevre Ölçme",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.3.2.1",
+  "M.4.3.2.2",
+  "M.4.3.2.3"
+ ],
+ "sure": 13,
+ "ozet": "Kare ve dikdörtgenin çevresi ile kenarları arasındaki ilişkiyi açıklayacak, aynı çevreye sahip farklı şekiller oluşturacak ve çevre problemleri çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çevre nedir?",
+   "govde": "Bir şeklin **çevre uzunluğu**, onu dolaşan sınırın uzunluğudur; yani **bütün kenar uzunluklarının toplamıdır**. Çevre bir uzunluk olduğu için cm, m gibi uzunluk birimleriyle ölçülür."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kare ve dikdörtgenin çevresi",
+   "govde": "- **Kare:** Dört kenarı eşit olduğu için Çevre = 4 × kenar uzunluğu.\n- **Dikdörtgen:** Karşılıklı kenarlar eşit olduğu için Çevre = kısa kenar + uzun kenar + kısa kenar + uzun kenar = 2 × (kısa kenar + uzun kenar).\n\nTersinden de düşünebiliriz: Karenin çevresi biliniyorsa kenar = çevre ÷ 4."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dikdörtgenin çevresi",
+   "aciklama": "Kaydırıcılarla dikdörtgenin enini ve boyunu değiştir. Turuncu çizgi dikdörtgenin çevresidir.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "dikdortgen",
+    "en": 4,
+    "boy": 3,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Eni 5 birim, çevresi 18 birim olan bir dikdörtgen yap.",
+    "check": {
+     "all": [
+      {
+       "key": "en",
+       "eq": 5
+      },
+      {
+       "key": "cevre",
+       "eq": 18
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 × (5 + boy) = 18 olmalı; 5 + boy = 9.",
+    "Kare yapmak için eni ve boyu eşitle."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Aynı çevre, farklı şekiller",
+   "govde": "Çevresi aynı olan şekiller birbirinden çok farklı görünebilir. 16 birim uzunluğundaki bir ipi kullanarak 1 × 7, 2 × 6, 3 × 5 ve 4 × 4'lük dikdörtgenler yapabiliriz. Hepsinin çevresi 16 birimdir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çevre sabit kalsın",
+   "aciklama": "Bu dikdörtgenin çevresi hep 16 birim. En değişince boy kendiliğinden ayarlanır.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "dikdortgen",
+    "cevre": 16,
+    "en": 1
+   },
+   "gorev": {
+    "metin": "Çevresi 16 birim olan kareyi bul.",
+    "check": {
+     "key": "en",
+     "eq": 4
+    }
+   },
+   "dene": [
+    "Her durumda en + boy = 8.",
+    "Çevre aynı kalırken alanın değiştiğine dikkat et."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kendi şeklini oluştur",
+   "aciklama": "Karelere dokunarak bir şekil oluştur. Yeşil çizgiler şeklin dış kenarlarıdır; çevre bu kenarların sayısıdır.",
+   "sim": {
+    "kind": "c-birimkare",
+    "mod": "serbest",
+    "cols": 8,
+    "rows": 5
+   },
+   "gorev": {
+    "metin": "Çevresi 14 birim olan bir şekil oluştur.",
+    "check": {
+     "key": "cevre",
+     "eq": 14
+    }
+   },
+   "dene": [
+    "2 × 5'lik bir dikdörtgen olabilir.",
+    "3 × 4'lük dikdörtgen yap, sonra bir köşe karesini kaldır: çevre yine 14 kalır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kenarı 7 cm olan karenin ve kenarları 12 m ile 5 m olan dikdörtgenin çevresini bulalım.",
+   "cozum": [
+    "Kare: 4 × 7 = 28 cm.",
+    "Dikdörtgen: 2 × (12 + 5) = 2 × 17 = 34 m."
+   ],
+   "sonuc": "Karenin çevresi 28 cm, dikdörtgenin çevresi 34 m."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "Kenarları 15 m ve 9 m olan dikdörtgen biçimindeki bir bahçenin çevresine 3 sıra tel çekilecek. Kaç metre tel gerekir? Çevresi 36 cm olan bir karenin bir kenarı kaç cm'dir?",
+   "cozum": [
+    "Bahçenin çevresi: 2 × (15 + 9) = 48 m.",
+    "3 sıra tel: 3 × 48 = 144 m.",
+    "Kare: 36 ÷ 4 = 9 cm."
+   ],
+   "sonuc": "144 m tel gerekir; karenin bir kenarı 9 cm'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Dikdörtgenin çevresini bulurken yalnız iki kenarı toplamak sık yapılır: kenarları 12 m ve 5 m olan dikdörtgenin çevresi 17 m değildir. Dört kenarın hepsi toplanmalıdır: **34 m**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir kenarı 8 cm olan karenin çevresi kaç cm'dir?",
+   "options": [
+    "16 cm",
+    "64 cm",
+    "32 cm",
+    "24 cm"
+   ],
+   "answer": 2,
+   "why": "4 × 8 = 32 cm.",
+   "hint": "Karenin kaç kenarı var?"
+  },
+  {
+   "prompt": "Kenarları 11 cm ve 4 cm olan dikdörtgenin çevresi kaç cm'dir?",
+   "options": [
+    "30 cm",
+    "15 cm",
+    "44 cm",
+    "26 cm"
+   ],
+   "answer": 0,
+   "why": "2 × (11 + 4) = 30 cm.",
+   "hint": "Dört kenarı da topla."
+  },
+  {
+   "prompt": "Çevresi 20 cm olan bir karenin bir kenarı kaç cm'dir?",
+   "options": [
+    "4 cm",
+    "10 cm",
+    "80 cm",
+    "5 cm"
+   ],
+   "answer": 3,
+   "why": "20 ÷ 4 = 5 cm.",
+   "hint": "Çevre dört eşit kenarın toplamıdır."
+  },
+  {
+   "prompt": "Çevresi 24 cm olan bir dikdörtgenin uzun kenarı 8 cm'dir. Kısa kenarı kaç cm'dir?",
+   "options": [
+    "16 cm",
+    "4 cm",
+    "3 cm",
+    "8 cm"
+   ],
+   "answer": 1,
+   "why": "Kısa + uzun = 24 ÷ 2 = 12; kısa = 12 − 8 = 4 cm.",
+   "hint": "Çevrenin yarısı bir kısa ve bir uzun kenarın toplamıdır."
+  }
+ ]
+}

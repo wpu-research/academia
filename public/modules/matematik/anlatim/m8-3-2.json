@@ -1,0 +1,81 @@
+{
+ "id": "m8-3-2",
+ "baslik": "Dönüşüm Geometrisi",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.3.2.1", "M.8.3.2.2", "M.8.3.2.3"],
+ "sure": 15,
+ "ders": "geometrik-donusumler",
+ "ozet": "Nokta ve şekilleri koordinat düzleminde öteleyecek, eksenlere göre yansıtacak ve ardışık dönüşümlerde sıranın önemini göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Öteleme",
+   "govde": "**Öteleme**de şeklin her noktası aynı yönde, aynı miktarda kayar. Şekil dönmez, büyüyüp küçülmez.\n\nKoordinatlarla: a birim sağa (a < 0 ise sola) ve b birim yukarı (b < 0 ise aşağı) öteleme\n\n**(x, y) → (x + a, y + b)**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ötele ve hedefe oturt",
+   "aciklama": "Ok düğmeleri şekli bir birim kaydırır. Kesikli çizgili şekil hedeftir. Bu adımda yalnız öteleme yeterli.",
+   "sim": { "kind": "donusum", "target": [[-3, -2], [-1, -2], [-1, -1], [-2, -1], [-2, 1], [-3, 1]] },
+   "gorev": { "metin": "Şekli hedefin üzerine getir.", "check": { "key": "match", "eq": 1 } },
+   "dene": ["Kaç birim sola, kaç birim aşağı öteledin? Bir köşenin koordinatlarının nasıl değiştiğine bak: (1, 1) → (−3, −2)."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eksenlere göre yansıma",
+   "govde": "Yansımada şekil bir doğruya göre ayna görüntüsüne dönüşür. Her nokta ile görüntüsü aynaya eşit uzaklıktadır.\n\n- x eksenine göre: **(x, y) → (x, −y)**\n- y eksenine göre: **(x, y) → (−x, y)**\n\nYansımada şeklin boyutu ve açıları korunur, ama yönü ters döner (sağ el sol el olur)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yansıt ve ötele",
+   "aciklama": "Bu hedefe ulaşmak için öteleme tek başına yetmez; şekil ters dönmüş.",
+   "sim": { "kind": "donusum", "target": [[3, -1], [5, -1], [5, -2], [4, -2], [4, -4], [3, -4]] },
+   "gorev": { "metin": "Bir yansıma ve öteleme kullanarak şekli hedefe oturt.", "check": { "key": "match", "eq": 1 } },
+   "dene": ["Önce x eksenine göre yansıt; sonra kaç birim kaydırman gerektiğine bak.", "Döndürme düğmesi bu adım için gerekli değil."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "A(2, −3) noktasını 4 birim sola, 5 birim yukarı öteleyelim. Sonra B(−3, 5) noktasının eksenlere göre yansımalarını bulalım.",
+   "cozum": [
+    "Öteleme: (2 − 4, −3 + 5) = (−2, 2).",
+    "B'nin x eksenine göre yansıması: (−3, −5).",
+    "B'nin y eksenine göre yansıması: (3, 5)."
+   ],
+   "sonuc": "A'nın görüntüsü (−2, 2); B'nin görüntüleri (−3, −5) ve (3, 5)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sıra önemli mi?",
+   "soru": "P(1, 2) noktasına iki dönüşüm uygulanacak: 3 birim sağa öteleme ve y eksenine göre yansıma. Sıra sonucu değiştirir mi?",
+   "cozum": [
+    "Önce öteleme: (4, 2). Sonra y eksenine göre yansıma: (−4, 2).",
+    "Önce yansıma: (−1, 2). Sonra öteleme: (2, 2).",
+    "İki sonuç farklı."
+   ],
+   "sonuc": "Evet; ardışık dönüşümlerde sıra sonucu değiştirebilir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: ardışık dönüşüm",
+   "soru": "K(4, −1) noktası önce y eksenine göre yansıtılıyor, sonra 2 birim aşağı öteleniyor. Son görüntü hangi bölgededir?",
+   "cozum": [
+    "y eksenine göre yansıma: (−4, −1).",
+    "2 birim aşağı: (−4, −3).",
+    "x < 0 ve y < 0."
+   ],
+   "sonuc": "(−4, −3) noktası; üçüncü bölgede."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- x eksenine göre yansımada x koordinatını değiştirmek. x eksenine göre yansımada nokta yukarı-aşağı gider; değişen y'dir.\n- Ötelemede şeklin yalnız bir köşesini kaydırmak. Bütün köşeler aynı miktarda kayar.\n- Bir şeklin yansımasının, ötelenmiş hâliyle aynı olduğunu sanmak; yansımada yön ters döner."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "(3, −2) noktasının x eksenine göre yansıması hangisidir?", "options": ["(−3, −2)", "(3, 2)", "(−3, 2)", "(−2, 3)"], "answer": 1, "why": "x eksenine göre yansımada (x, y) → (x, −y).", "hint": "Nokta x ekseninin hangi tarafına geçer?" },
+  { "prompt": "(−1, 4) noktası 3 birim sağa ve 2 birim aşağı ötelenirse görüntüsü ne olur?", "options": ["(−4, 6)", "(2, 6)", "(−4, 2)", "(2, 2)"], "answer": 3, "why": "(−1 + 3, 4 − 2) = (2, 2).", "hint": "Sağa x'i, aşağı y'yi değiştirir." },
+  { "prompt": "Öteleme ve yansıma için hangisi doğrudur?", "options": ["İkisi de şeklin boyutunu küçültür.", "Yalnız öteleme boyutu korur.", "İkisi de boyutu ve açıları korur.", "Yalnız yansıma boyutu korur."], "answer": 2, "why": "İki dönüşümde de görüntü, asıl şekle eştir.", "hint": "Aynadaki görüntün senden küçük mü?" },
+  { "prompt": "(5, 1) noktası y eksenine göre yansıtılıp sonra 3 birim yukarı ötelenirse görüntüsü ne olur?", "options": ["(−5, 4)", "(5, −2)", "(−5, −2)", "(5, 4)"], "answer": 0, "why": "Yansıma: (−5, 1). Öteleme: (−5, 4).", "hint": "Önce yansıt, sonra ötele." }
+ ]
+}

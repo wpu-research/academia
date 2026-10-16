@@ -1,0 +1,178 @@
+{
+ "id": "m4-2-3",
+ "baslik": "Geometride Temel Kavramlar",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.2.3.1",
+  "M.4.2.3.2",
+  "M.4.2.3.3",
+  "M.4.2.3.4",
+  "M.4.2.3.5"
+ ],
+ "sure": 14,
+ "ozet": "Düzlemi tanıyacak, açının kollarını ve köşesini belirleyecek, açıları adlandırıp ölçecek ve dar, dik, geniş, doğru açı olarak sınıflayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Düzlem",
+   "govde": "Masanın üstü, defter sayfası ya da durgun bir gölün yüzeyi bize **düzlemi** hatırlatır. Düzlem, her yönde sınırsızca uzayan, kalınlığı olmayan düz bir yüzeydir. Gördüğümüz yüzeyler düzlemin yalnız küçük bir parçasıdır."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Açı",
+   "govde": "Başlangıç noktaları ortak olan iki ışının oluşturduğu şekle **açı** denir. Ortak başlangıç noktası açının **köşesi**, ışınlar açının **kollarıdır**.\n\nKöşesi B olan, kolları [BA ve [BC ışınları olan açıyı ABC açısı ya da CBA açısı diye okuruz ve ∠ABC diye yazarız. **Köşe harfi her zaman ortada** yazılır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açıyı ölçmek",
+   "govde": "Açıları karış ya da kâğıt köşesi gibi **standart olmayan** birimlerle de ölçebiliriz; ama herkesin karışı farklı olduğu için sonuçlar farklı çıkar. Bu yüzden standart birim olan **derece** (°) kullanılır. Açılar **açıölçerle** ölçülür.\n\nAçıölçerin merkezini açının köşesine, sıfır çizgisini bir kola yerleştiririz; öteki kolun gösterdiği sayı açının ölçüsüdür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açı oluştur",
+   "aciklama": "Turuncu kolu sürükle ya da ok tuşlarıyla döndür. Açının ölçüsü ve türü sol üstte yazar.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 40
+   },
+   "gorev": {
+    "metin": "Ölçüsü 90° olan bir dik açı oluştur.",
+    "check": {
+     "key": "angle",
+     "eq": 90
+    }
+   },
+   "dene": [
+    "Dik açı, kâğıdın köşesindeki açı gibidir.",
+    "Shift ile ok tuşu 10'ar derece ilerletir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açı türleri",
+   "govde": "- **Dar açı:** 0° ile 90° arasında.\n- **Dik açı:** Tam 90°.\n- **Geniş açı:** 90° ile 180° arasında.\n- **Doğru açı:** Tam 180°; iki kol bir doğru oluşturur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ölçüsü verilen açıyı çiz",
+   "aciklama": "Bu kez açıyı sen oluştur.",
+   "sim": {
+    "kind": "aci-olcer",
+    "angle": 30
+   },
+   "gorev": {
+    "metin": "Ölçüsü 135° olan geniş açıyı oluştur.",
+    "check": {
+     "key": "angle",
+     "eq": 135
+    }
+   },
+   "dene": [
+    "135°, dik açıdan 45° fazladır.",
+    "Kolu 180°'ye getir: doğru açı oluşur."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgenin açıları",
+   "aciklama": "Üçgenin köşelerini sürükle. Her köşede o köşedeki açının ölçüsü yazar.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "angles": true
+   },
+   "dene": [
+    "Bir köşeyi öyle taşı ki üçgenin bir açısı 90° olsun.",
+    "Bir açıyı 90°'den büyük yapmayı dene: geniş açı."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Açıyı adlandırma",
+   "soru": "Köşesi L olan ve kolları [LK ile [LM ışınları olan açıyı adlandıralım.",
+   "cozum": [
+    "Köşe harfi ortada yazılır.",
+    "Kollardaki noktalar köşenin iki yanına gelir."
+   ],
+   "sonuc": "∠KLM ya da ∠MLK."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Saatte açılar",
+   "soru": "Saat tam 3'te ve tam 6'da akrep ile yelkovan arasındaki açının türünü bulalım.",
+   "cozum": [
+    "Saat 3'te yelkovan 12'de, akrep 3'te: çeyrek tur, 90°.",
+    "Saat 6'da yelkovan 12'de, akrep 6'da: yarım tur, 180°."
+   ],
+   "sonuc": "Saat 3'te dik açı, saat 6'da doğru açı oluşur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kolları uzun çizilmiş bir açının daha büyük olduğunu sanmak yanlıştır. Açının ölçüsü **kolların ne kadar açıldığına** bağlıdır, kolların uzunluğuna değil.\n\nAçıölçerde iki sıra sayı vardır. Sıfır çizgisini hangi kola koyduysan **o sıfırdan başlayan** sırayı okumalısın; yoksa 40° yerine 140° okursun."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Ölçüsü 120° olan açı hangisidir?",
+   "options": [
+    "Dar açı",
+    "Dik açı",
+    "Geniş açı",
+    "Doğru açı"
+   ],
+   "answer": 2,
+   "why": "120°, 90° ile 180° arasındadır: geniş açı.",
+   "hint": "90° ile karşılaştır."
+  },
+  {
+   "prompt": "∠ABC açısının köşesi hangisidir?",
+   "options": [
+    "B",
+    "A",
+    "C",
+    "AC"
+   ],
+   "answer": 0,
+   "why": "Köşe harfi her zaman ortada yazılır: B.",
+   "hint": "Ortadaki harfe bak."
+  },
+  {
+   "prompt": "Hangisi bir dar açının ölçüsü olabilir?",
+   "options": [
+    "90°",
+    "145°",
+    "180°",
+    "35°"
+   ],
+   "answer": 3,
+   "why": "Dar açı 0° ile 90° arasındadır: 35°.",
+   "hint": "90°'den küçük olanı ara."
+  },
+  {
+   "prompt": "Kolları zıt yönlere uzanan ve bir doğru oluşturan açının ölçüsü kaç derecedir?",
+   "options": [
+    "90°",
+    "180°",
+    "45°",
+    "360°"
+   ],
+   "answer": 1,
+   "why": "Doğru açı 180°'dir.",
+   "hint": "Saat 6'da akrep ile yelkovanı düşün."
+  }
+ ]
+}

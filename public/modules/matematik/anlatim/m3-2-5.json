@@ -1,0 +1,208 @@
+{
+ "id": "m3-2-5",
+ "baslik": "Zaman Ölçü Birimleri",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.13"
+ ],
+ "sure": 12,
+ "ders": "saat-ve-para",
+ "ozet": "Saniye, dakika, saat, gün, hafta, ay, mevsim ve yıl arasındaki ilişkileri öğrenip bir süreyi farklı birimlerle ifade edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Zamanı ölçen birimler",
+   "govde": "Kısa süreleri **saniye** ve **dakika** ile, daha uzun süreleri **saat** ve **gün** ile, çok uzun süreleri **hafta, ay, mevsim** ve **yıl** ile ölçeriz.\n\nKüçük birimler biriktikçe büyük birimi oluşturur: 60 saniye birikince 1 dakika, 60 dakika birikince 1 saat olur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birimler arasındaki ilişkiler",
+   "govde": "- 1 dakika = 60 saniye\n- 1 saat = 60 dakika\n- 1 gün = 24 saat\n- 1 hafta = 7 gün\n- 1 yıl = 12 ay = 4 mevsim (1 mevsim = 3 ay)\n- 1 yıl 365 gündür; bazı yıllar 366 gün çeker.\n\nAylar 28, 29, 30 ya da 31 gün çeker."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Günleri haftalara topla",
+   "aciklama": "Her düğmeye basışta gün ekle. 7 gün dolunca bir hafta oluşur.",
+   "sim": {
+    "kind": "b-gruplama",
+    "kucuk": "gün",
+    "buyuk": "hafta",
+    "grup": 7,
+    "n": 0,
+    "max": 35,
+    "adimlar": [
+     1,
+     7
+    ]
+   },
+   "gorev": {
+    "metin": "2 hafta 3 gün kadar gün biriktir.",
+    "check": {
+     "all": [
+      {
+       "key": "buyuk",
+       "eq": 2
+      },
+      {
+       "key": "kalan",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 hafta 3 gün = 7 + 7 + 3 = 17 gün."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dakikaları saate çevir",
+   "aciklama": "Dakika ekle; 60 dakika dolunca 1 saat oluşur.",
+   "sim": {
+    "kind": "b-gruplama",
+    "kucuk": "dakika",
+    "buyuk": "saat",
+    "grup": 60,
+    "n": 0,
+    "max": 240,
+    "adimlar": [
+     5,
+     15,
+     60
+    ]
+   },
+   "gorev": {
+    "metin": "1 saat 45 dakika biriktir.",
+    "check": {
+     "all": [
+      {
+       "key": "buyuk",
+       "eq": 1
+      },
+      {
+       "key": "kalan",
+       "eq": 45
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1 saat 45 dakika = 60 + 45 = 105 dakika.",
+    "+60 ile bir saat, sonra +15 ile üç çeyrek ekleyebilirsin."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir tur bir saat",
+   "aciklama": "Saat 2.00'ı gösteriyor. Yelkovanı saat yönünde bir tam tur döndür.",
+   "sim": {
+    "kind": "saat",
+    "h": 2,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Yelkovan bir tam tur dönünce saati 3.00'a getir.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 3
+      },
+      {
+       "key": "m",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yelkovanın bir turu 60 dakikadır; bu sürede akrep 2'den 3'e gelir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "2 saat kaç dakikadır?",
+   "cozum": [
+    "1 saat = 60 dakika.",
+    "2 saat = 60 + 60 = 120 dakika."
+   ],
+   "sonuc": "2 saat **120 dakika**dır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Hafta ve gün",
+   "soru": "Bir tatil 3 hafta 2 gün sürdü. Tatil kaç gün sürdü?",
+   "cozum": [
+    "1 hafta 7 gün: 3 hafta = 7 + 7 + 7 = 21 gün.",
+    "21 + 2 = 23."
+   ],
+   "sonuc": "Tatil **23 gün** sürdü."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Dakikadan saate",
+   "soru": "Bir film 90 dakika sürüyor. Bu kaç saat kaç dakikadır?",
+   "cozum": [
+    "90 dakikanın içinde bir tane 60 dakika var: 1 saat.",
+    "90 − 60 = 30 dakika kalır."
+   ],
+   "sonuc": "90 dakika = **1 saat 30 dakika**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "1 saati 100 dakika sanmak yanlıştır; 1 saat **60 dakika**dır. Bu yüzden 1 saat 30 dakika ile 45 dakikayı toplarken 75 dakika eder ve 75 dakika = 1 saat 15 dakikadır; sonuç 2 saat 15 dakika olur, \"1 saat 75 dakika\" diye bırakılmaz."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "3 dakika kaç saniyedir?",
+   "options": [
+    "300",
+    "120",
+    "30",
+    "180"
+   ],
+   "answer": 3,
+   "why": "1 dakika 60 saniye: 60 + 60 + 60 = 180.",
+   "hint": "Bir dakikada kaç saniye var?"
+  },
+  {
+   "prompt": "28 gün kaç haftadır?",
+   "options": [
+    "7",
+    "2",
+    "4",
+    "3"
+   ],
+   "answer": 2,
+   "why": "7 + 7 + 7 + 7 = 28; 4 hafta.",
+   "hint": "7'şer sayarak 28'e kaç adımda ulaşırsın?"
+  },
+  {
+   "prompt": "150 dakika kaç saat kaç dakikadır?",
+   "options": [
+    "1 saat 30 dakika",
+    "2 saat 30 dakika",
+    "1 saat 50 dakika",
+    "2 saat 50 dakika"
+   ],
+   "answer": 1,
+   "why": "150 = 60 + 60 + 30: 2 saat 30 dakika.",
+   "hint": "150'nin içinde kaç tane 60 var?"
+  },
+  {
+   "prompt": "2 yıl kaç aydır?",
+   "options": [
+    "24",
+    "36",
+    "12",
+    "20"
+   ],
+   "answer": 0,
+   "why": "1 yıl 12 ay: 12 + 12 = 24 ay.",
+   "hint": "Bir yılda kaç ay var?"
+  }
+ ]
+}

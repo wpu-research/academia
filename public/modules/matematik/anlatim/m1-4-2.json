@@ -1,0 +1,157 @@
+{
+ "id": "m1-4-2",
+ "baslik": "Toplama ve Çıkarma İşlemlerinin Sonuçlarını Tahmin Etme ve Zihinden İşlem",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.2.2"
+ ],
+ "sure": 14,
+ "ozet": "10'a tamamlama ve ikiz sayılar gibi kısa yollarla zihinden toplayıp çıkaracak, sonucu önceden tahmin edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kafadan hesap",
+   "govde": "Parmakla tek tek saymak yerine **kısa yollar** kullanabiliriz. En kullanışlısı **10'a tamamlamaktır**: 10 kolay bir duraktır.\n\n8 + 5 işleminde 8'i 10'a tamamlamak için 2 gerekir. 5'i 2 ve 3 diye ayırırız: 8 + 2 = 10, 10 + 3 = 13."
+  },
+  {
+   "tur": "sim",
+   "baslik": "10'da mola ver",
+   "aciklama": "Nokta 8'de. Adımı seçerek ileri sek; önce 10'a git, sonra kalanı ekle.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 20,
+    "start": 8,
+    "adimlar": [
+     1,
+     2,
+     5
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "8 + 5'i sayı doğrusunda yap.",
+    "check": {
+     "key": "pos",
+     "eq": 13
+    }
+   },
+   "dene": [
+    "Önce 2'lik bir sekme, sonra üç tane 1'lik sekme dene.",
+    "Toplam kaç ilerledin? 5 olmalı."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kısa yollar",
+   "govde": "- **10'a tamamla**: 9 + 4 = 10 + 3 = 13\n- **İkiz sayılar**: 6 + 6 = 12 olduğunu biliyorsan 6 + 7 = 13'tür (bir fazlası).\n- **10'a kadar geri say**: 15 − 6: önce 5 çıkar (10), sonra 1 daha (9)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Geriye 10'a in",
+   "aciklama": "Nokta 15'te. Geri sekerek 6 çıkar.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 20,
+    "start": 15,
+    "adimlar": [
+     1,
+     5
+    ],
+    "ileri": false
+   },
+   "gorev": {
+    "metin": "15 − 6'yı yap.",
+    "check": {
+     "key": "pos",
+     "eq": 9
+    }
+   },
+   "dene": [
+    "5'lik sekme seni 10'a götürür. Kaç tane daha çıkarmalısın?"
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Sonucu tahmin et",
+   "govde": "İşlemi yapmadan önce sonucun **yaklaşık** ne olacağını düşün. 9 + 8 işleminde 9, 10'a çok yakındır. 10 + 8 = 18, demek ki sonuç 18'den biraz azdır.\n\nTahmin, bulduğun cevabın mantıklı olup olmadığını kontrol etmeye yarar."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "9 + 6 işlemini zihinden yapalım.",
+   "cozum": [
+    "9'u 10'a tamamlamak için 1 gerekir.",
+    "6'yı 1 ve 5 diye ayır.",
+    "9 + 1 = 10, 10 + 5 = 15."
+   ],
+   "sonuc": "9 + 6 = **15**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "7 + 8 işleminin sonucu 10'dan büyük mü küçük mü? Sonucu bul.",
+   "cozum": [
+    "7 + 3 = 10, demek ki 7'ye 3'ten fazla eklersek 10'u geçeriz. 8, 3'ten büyük.",
+    "İkiz sayı yolu: 7 + 7 = 14, 7 + 8 bir fazlası: 15."
+   ],
+   "sonuc": "Sonuç 10'dan büyüktür: 7 + 8 = **15**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Tahmin ile işlemi karıştırmamak gerekir. 9 + 8 ≈ 18 bir tahmindir; tam sonuç 17'dir. Tahminden sonra işlemi yapmayı unutma."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "8 + 4 işleminde 8'i 10'a tamamlamak için 4'ü nasıl ayırırız?",
+   "options": [
+    "1 ve 3",
+    "2 ve 2",
+    "3 ve 1",
+    "4 ve 0"
+   ],
+   "answer": 1,
+   "why": "8 + 2 = 10, kalan 2 ile 12 olur.",
+   "hint": "8'e kaç eklersen 10 olur?"
+  },
+  {
+   "prompt": "5 + 5 = 10 ise 5 + 6 kaçtır?",
+   "options": [
+    "10",
+    "12",
+    "9",
+    "11"
+   ],
+   "answer": 3,
+   "why": "6, 5'ten 1 fazla; sonuç da 1 fazla: 11.",
+   "hint": "İkiz sayıları kullan."
+  },
+  {
+   "prompt": "14 − 5 = ?",
+   "options": [
+    "9",
+    "19",
+    "10",
+    "8"
+   ],
+   "answer": 0,
+   "why": "14'ten 4 çıkar: 10; 1 daha çıkar: 9.",
+   "hint": "Önce 10'a in."
+  },
+  {
+   "prompt": "9 + 9 işleminin sonucu için hangisi en iyi tahmindir?",
+   "options": [
+    "10'dan az",
+    "Yaklaşık 18",
+    "Yaklaşık 30",
+    "Yaklaşık 9"
+   ],
+   "answer": 1,
+   "why": "9 ve 9, 10'a yakın: 10 + 10 = 20'den biraz az, 18.",
+   "hint": "Her sayıyı 10 gibi düşün."
+  }
+ ]
+}

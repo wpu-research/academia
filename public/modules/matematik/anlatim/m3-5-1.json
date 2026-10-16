@@ -1,0 +1,165 @@
+{
+ "id": "m3-5-1",
+ "baslik": "Simetri Doğrusu",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.6"
+ ],
+ "sure": 12,
+ "ozet": "Bir şekli iki eş parçaya ayıran, katlayınca parçaları üst üste getiren doğruları arayacağız. Bazı şekillerin birden fazla simetri doğrusu olduğunu göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Katla ve bak",
+   "govde": "Bir kâğıt şekli bir çizgi boyunca katladığında iki parça **tam olarak üst üste geliyorsa** o çizgi şeklin **simetri doğrusu**dur. Simetri doğrusunun iki yanındaki parçalar birbirinin ayna görüntüsüdür.\n\nBir şeklin hiç, bir ya da birden fazla simetri doğrusu olabilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Karenin simetri doğruları",
+   "aciklama": "Karenin üzerinde 4 aday doğru var. Bir doğruya dokununca şeklin o doğruya göre katlanmış hâli kesikli çizgiyle görünür. Yeşil: parçalar çakışıyor; kırmızı: çakışmıyor.",
+   "sim": {
+    "kind": "b-simetri-dogrusu",
+    "sekil": "kare"
+   },
+   "gorev": {
+    "metin": "Karenin bütün simetri doğrularını bul.",
+    "check": {
+     "all": [
+      {
+       "key": "bulunan",
+       "eq": 4
+      },
+      {
+       "key": "yanlis",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yalnız dikey ve yatay doğrular mı? Köşeden köşeye giden doğruları da dene."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Simetri doğrusu sayıları",
+   "govde": "- **Kare:** 4 simetri doğrusu (dikey, yatay ve iki köşegen)\n- **Dikdörtgen:** 2 simetri doğrusu (dikey ve yatay); köşegenleri simetri doğrusu **değildir**\n- **Eşkenar üçgen:** 3 simetri doğrusu\n- **Düzgün altıgen:** 6 simetri doğrusu\n- **Paralelkenar** (dikdörtgen olmayan): simetri doğrusu yok\n- **Daire:** merkezinden geçen her doğru bir simetri doğrusudur"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Başka şekiller",
+   "aciklama": "Şekil seç ve aday doğruları dene. Her şeklin kaç simetri doğrusu olduğunu say.",
+   "sim": {
+    "kind": "b-simetri-dogrusu",
+    "sekil": "dikdortgen",
+    "sekiller": [
+     "dikdortgen",
+     "eskenar",
+     "altigen",
+     "T",
+     "paralelkenar"
+    ]
+   },
+   "gorev": {
+    "metin": "Dikdörtgenin bütün simetri doğrularını, yanlış seçim yapmadan bul.",
+    "check": {
+     "all": [
+      {
+       "key": "sekil",
+       "eq": 0
+      },
+      {
+       "key": "bulunan",
+       "eq": 2
+      },
+      {
+       "key": "yanlis",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Dikdörtgenin köşegenine dokun: katlanmış şekil neden çakışmıyor?",
+    "Altıgende bütün aday doğrular simetri doğrusudur.",
+    "T harfinde yalnız bir simetri doğrusu var."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Dikdörtgen bir kâğıdı bir köşegeni boyunca katlarsak iki parça üst üste gelir mi?",
+   "cozum": [
+    "Köşegen dikdörtgeni iki eş üçgene ayırır.",
+    "Ama katlayınca köşeler birbirinin üzerine gelmez; üçgenler çakışmaz, taşar."
+   ],
+   "sonuc": "Hayır; köşegen dikdörtgenin simetri doğrusu değildir. Dikdörtgenin 2 simetri doğrusu vardır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çok simetri doğrusu olan şekil",
+   "soru": "Düzgün altıgenin kaç simetri doğrusu vardır?",
+   "cozum": [
+    "Karşılıklı köşeleri birleştiren doğrular: 3 tane.",
+    "Karşılıklı kenarların orta noktalarını birleştiren doğrular: 3 tane.",
+    "3 + 3 = 6."
+   ],
+   "sonuc": "Düzgün altıgenin **6** simetri doğrusu vardır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bir şekli iki eş parçaya bölen her doğruyu simetri doğrusu sanmak yanlıştır. Dikdörtgenin köşegeni onu iki eş üçgene böler ama katlayınca parçalar üst üste gelmez. Simetri doğrusunu **katlama** ile kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Karenin kaç simetri doğrusu vardır?",
+   "options": [
+    "8",
+    "2",
+    "4",
+    "1"
+   ],
+   "answer": 2,
+   "why": "Dikey, yatay ve iki köşegen: 4.",
+   "hint": "Köşegenleri de unutma."
+  },
+  {
+   "prompt": "Hangisinin simetri doğrusu yoktur?",
+   "options": [
+    "Dikdörtgen",
+    "Kare",
+    "Eşkenar üçgen",
+    "Dikdörtgen olmayan paralelkenar"
+   ],
+   "answer": 3,
+   "why": "Paralelkenarı hangi doğrudan katlarsan katla parçalar çakışmaz.",
+   "hint": "Katlama denemesini düşün."
+  },
+  {
+   "prompt": "Eşkenar üçgenin kaç simetri doğrusu vardır?",
+   "options": [
+    "3",
+    "1",
+    "2",
+    "6"
+   ],
+   "answer": 0,
+   "why": "Her köşeden karşı kenarın ortasına giden doğru: 3.",
+   "hint": "Her köşeden bir doğru düşün."
+  },
+  {
+   "prompt": "Hangisi dikdörtgenin bir simetri doğrusudur?",
+   "options": [
+    "Hiçbiri",
+    "Karşılıklı iki kenarın orta noktalarını birleştiren doğru",
+    "Köşegenlerinden biri",
+    "Kenarlarından biri"
+   ],
+   "answer": 1,
+   "why": "Dikdörtgenin simetri doğruları karşılıklı kenarların orta noktalarından geçer.",
+   "hint": "Köşegen boyunca katlanınca parçalar çakışıyor mu?"
+  }
+ ]
+}

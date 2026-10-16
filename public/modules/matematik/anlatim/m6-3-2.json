@@ -1,0 +1,178 @@
+{
+ "id": "m6-3-2",
+ "baslik": "Örüntü",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.2.2"
+ ],
+ "sure": 13,
+ "ders": "oruntuler",
+ "ozet": "Sabit miktarda artan sayı ve şekil örüntülerinin kuralını harfle yazacak, kuralı kullanarak istenen adımı ya da bir değerin kaçıncı adımda çıkacağını bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örüntü ve terim",
+   "govde": "5, 9, 13, 17, … dizisinde her sayı bir öncekinden 4 fazladır. Belli bir kurala göre devam eden bu tür dizilere **örüntü**, her bir sayıya **terim** denir.\n\nKuralı bulursak 100. terimi tek tek yazmadan hesaplayabiliriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Şekil örüntüsü",
+   "aciklama": "Her adımda 3 kahverengi nokta ekleniyor; gri nokta hep aynı kalıyor.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 3,
+    "b": 1,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "5. adımı göster.",
+    "check": {
+     "key": "count",
+     "eq": 16
+    }
+   },
+   "dene": [
+    "n. adımda 3 tane n'li sütun ve 1 gri nokta var: 3n + 1.",
+    "8. adımı hesapla, sonra kaydırıcıyla kontrol et."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kural nasıl bulunur?",
+   "govde": "Ardışık terimler arasındaki fark sabitse:\n\n1. Farkı bul: d.\n2. Kural **d · n + (ilk terim − d)** biçimindedir.\n\n5, 9, 13, 17: d = 4, ilk terim − d = 5 − 4 = 1 → kural **4n + 1**.\nKontrol: n = 3 için 4 · 3 + 1 = 13."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "5, 9, 13, 17, … örüntüsünün 20. terimi kaçtır? Hangi adımdaki terim 97'dir?",
+   "cozum": [
+    "Kural 4n + 1.",
+    "20. terim: 4 · 20 + 1 = 81.",
+    "4n + 1 = 97 → 4n = 96 → n = 24."
+   ],
+   "sonuc": "20. terim 81'dir; 97, 24. terimdir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Farklı bir kural",
+   "aciklama": "Bu örüntüde her adımda 2 nokta ekleniyor ve 3 sabit nokta var.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 2,
+    "b": 3,
+    "n": 1,
+    "max": 12
+   },
+   "gorev": {
+    "metin": "23 noktalı adımı bul.",
+    "check": {
+     "key": "count",
+     "eq": 23
+    }
+   },
+   "dene": [
+    "Kural 2n + 3. 2n + 3 = 23 eşitliğini düşün."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kural makinesi",
+   "aciklama": "Adım numarasını gir; makine 3n + 1 kuralıyla terimi hesaplasın. Birkaç adımı tabloya ekle.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      3
+     ],
+     [
+      "+",
+      1
+     ]
+    ],
+    "x": 1,
+    "min": 1,
+    "max": 20,
+    "etiket": "Adım n",
+    "ifade": "3n + 1"
+   },
+   "gorev": {
+    "metin": "31 kibritin kullanıldığı adımı bul.",
+    "check": {
+     "key": "y",
+     "eq": 31
+    }
+   },
+   "dene": [
+    "Tabloda n bir artınca terim kaç artıyor?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Kibrit kareler",
+   "soru": "Yan yana kareler kibritle yapılıyor: 1 kare için 4, 2 kare için 7, 3 kare için 10 kibrit gerekiyor. 15 kare için kaç kibrit gerekir?",
+   "cozum": [
+    "Her yeni kare 3 kibrit ekliyor (ortak kenar paylaşılıyor): d = 3.",
+    "İlk terim − d = 4 − 3 = 1 → kural 3n + 1.",
+    "n = 15: 3 · 15 + 1 = 46."
+   ],
+   "sonuc": "46 kibrit gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Her adımda 4 artıyor, o hâlde kural n + 4\" demek yanlıştır. n + 4 kuralı 5, 6, 7, … verir; her adımda yalnız 1 artar. Sabit fark **n'nin katsayısı** olur: 4n + …"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "7, 12, 17, 22, … örüntüsünün kuralı hangisidir?",
+   "options": [
+    "n + 5",
+    "5n + 2",
+    "5n + 7",
+    "7n + 5"
+   ],
+   "answer": 1,
+   "why": "Fark 5; 7 − 5 = 2 → 5n + 2. n = 1 için 7.",
+   "hint": "Önce ardışık terimlerin farkını bul."
+  },
+  {
+   "prompt": "Kuralı 3n − 1 olan örüntünün 10. terimi kaçtır?",
+   "options": [
+    "30",
+    "27",
+    "31",
+    "29"
+   ],
+   "answer": 3,
+   "why": "3 · 10 − 1 = 29.",
+   "hint": "n yerine 10 koy."
+  },
+  {
+   "prompt": "2, 6, 10, 14, … örüntüsünün 25. terimi kaçtır?",
+   "options": [
+    "98",
+    "100",
+    "102",
+    "96"
+   ],
+   "answer": 0,
+   "why": "Kural 4n − 2; 4 · 25 − 2 = 98.",
+   "hint": "Fark 4, ilk terim − fark = −2."
+  },
+  {
+   "prompt": "Kuralı 3n + 1 olan kibrit örüntüsünün kaçıncı adımında 61 kibrit vardır?",
+   "options": [
+    "21",
+    "19",
+    "20",
+    "61/3"
+   ],
+   "answer": 2,
+   "why": "3n + 1 = 61 → 3n = 60 → n = 20.",
+   "hint": "Kuralı 61'e eşitle."
+  }
+ ]
+}

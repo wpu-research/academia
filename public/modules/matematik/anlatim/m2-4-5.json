@@ -1,0 +1,154 @@
+{
+ "id": "m2-4-5",
+ "baslik": "Sıvı Miktarını Tahmin Etme",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.5"
+ ],
+ "sure": 10,
+ "ozet": "Bardak gibi standart olmayan araçlarla bir kaba kaç ölçek sıvı sığacağını tahmin edip dökerek kontrol edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sıvıyı ölçmek",
+   "govde": "Sıvılar bulundukları kabın biçimini alır. Bir kaba ne kadar sıvı sığdığını bulmak için küçük bir **ölçek** (bardak, fincan, kepçe) kullanırız: Kabı doldurana kadar kaç ölçek döktüğümüzü sayarız.\n\nÖnce **tahmin** eder, sonra **dökerek kontrol** ederiz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sürahiyi doldur",
+   "aciklama": "Önce sürahiye kaç bardak su sığacağını tahmin et, sonra bardak bardak dök.",
+   "sim": {
+    "kind": "a-sivi",
+    "kap": "Sürahi",
+    "kapasite": 6,
+    "olcekler": [
+     {
+      "ad": "bardak",
+      "v": 1
+     }
+    ],
+    "tahmin": true
+   },
+   "gorev": {
+    "metin": "Sürahiyi tam dolana kadar doldur.",
+    "check": {
+     "key": "dolu",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Taşırırsan “Boşalt” ile baştan başla.",
+    "Tahminin ile sonuç arasında kaç bardak fark var?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ölçek küçülünce sayı büyür",
+   "govde": "Aynı kabı **küçük** bir ölçekle doldurursak daha **çok** ölçek gerekir. **Büyük** bir ölçekle daha **az** ölçek gerekir.\n\nBu yüzden “kaç ölçek” derken hangi ölçeği kullandığımızı da söylemeliyiz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki farklı ölçek",
+   "aciklama": "Bu kez iki ölçek var: büyük bardak ve çay bardağı. Ölçeği değiştirince sürahi boşalır.",
+   "sim": {
+    "kind": "a-sivi",
+    "kap": "Sürahi",
+    "kapasite": 8,
+    "olcekler": [
+     {
+      "ad": "büyük bardak",
+      "v": 2
+     },
+     {
+      "ad": "çay bardağı",
+      "v": 1
+     }
+    ],
+    "tahmin": true
+   },
+   "gorev": {
+    "metin": "Sürahiyi çay bardağıyla doldur.",
+    "check": {
+     "all": [
+      {
+       "key": "olcek",
+       "eq": 1
+      },
+      {
+       "key": "dolu",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce büyük bardakla doldur: kaç bardak?",
+    "Bir büyük bardak kaç çay bardağı ediyor?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir tencere 10 kepçe çorba alıyor. Kepçeden iki kat büyük bir kase ile kaç kase çorba alır?",
+   "cozum": [
+    "Bir kase, iki kepçe eder.",
+    "10 kepçeyi 2'şer say: 2, 4, 6, 8, 10. Beş kez saydık."
+   ],
+   "sonuc": "Tencere **5** kase çorba alır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ali bir kovaya 8 bardak, Ece aynı kovaya 12 bardak su sığdığını buldu. İkisi de doğru ölçtüyse neden farklı sonuç çıktı?",
+   "cozum": [
+    "Kova aynı kova.",
+    "Farklı sonuç, bardakların büyüklüklerinin farklı olmasından olabilir.",
+    "Ali'nin bardağı daha büyük; daha az bardak gerekti."
+   ],
+   "sonuc": "**Bardaklar farklı büyüklükte**; Ali daha büyük bardak kullanmış."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Ölçeği tam doldurmadan dökmek ölçümü bozar: Yarım bardakları tam bardak gibi sayarsan kap olduğundan büyük görünür. Her seferinde ölçeği **ağzına kadar** doldur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir şişeyi fincanla doldurmak için 6 fincan, bardakla doldurmak için 3 bardak gerekiyor. Hangisi daha büyük?",
+   "options": [
+    "Fincan",
+    "Bardak",
+    "İkisi eşit",
+    "Şişe"
+   ],
+   "answer": 1,
+   "why": "Daha az sayıda bardak yetti; bardak daha büyük.",
+   "hint": "Büyük ölçek daha az mı, çok mu gerekir?"
+  },
+  {
+   "prompt": "Bir kaba sıvı ölçerken hangisi doğrudur?",
+   "options": [
+    "Ölçeği yarım doldurmak",
+    "Her seferinde başka ölçek kullanmak",
+    "Kabı taşırmak",
+    "Ölçeği her seferinde ağzına kadar doldurmak"
+   ],
+   "answer": 3,
+   "why": "Ölçümler eşit olsun diye ölçek hep tam doldurulur.",
+   "hint": "Her ölçek aynı miktar olmalı."
+  },
+  {
+   "prompt": "Bir kova 4 sürahi su alıyor. 2 kova kaç sürahi su alır?",
+   "options": [
+    "8",
+    "6",
+    "4",
+    "2"
+   ],
+   "answer": 0,
+   "why": "4 + 4 = 8.",
+   "hint": "İki kova için toplama yap."
+  }
+ ]
+}

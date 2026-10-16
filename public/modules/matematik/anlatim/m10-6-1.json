@@ -1,0 +1,90 @@
+{
+ "id": "m10-6-1",
+ "baslik": "Dik Koordinat Sisteminde Noktanın Analitik İncelenmesi",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.6.1"],
+ "sure": 16,
+ "ozet": "İki nokta arasındaki uzaklığı Pisagor bağıntısından çıkaracak, bir doğru parçasının orta noktasını ve onu belli bir oranda bölen noktayı koordinatlarla bulacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "İki nokta arası uzaklık",
+   "govde": "A(x₁, y₁) ve B(x₂, y₂) noktaları için yatay fark Δx = x₂ − x₁, dikey fark Δy = y₂ − y₁'dir. AB doğru parçası, dik kenarları |Δx| ve |Δy| olan bir dik üçgenin hipotenüsüdür:\n\n|AB| = √((x₂ − x₁)² + (y₂ − y₁)²)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Uzaklık bir hipotenüstür",
+   "aciklama": "A ve B'yi sürükle. Kahverengi parça |Δx|, yeşil parça |Δy|.",
+   "sim": { "kind": "f-uzaklik", "A": [-3, -2], "B": [3, 2] },
+   "gorev": { "metin": "Noktaları, |AB| tam olarak 5 birim olacak şekilde yerleştir.", "check": { "key": "d", "eq": 5, "tol": 1e-9 } },
+   "dene": ["3-4-5 üçgeni: Δx = 3, Δy = 4 ya da tersi.", "Δx = 5, Δy = 0 da olur: aynı yatay doğru üzerindeki noktalar."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "A(1, 2) ve B(7, 10) noktaları arasındaki uzaklığı ve AB'nin orta noktasını bulalım.",
+   "cozum": [
+    "Δx = 6, Δy = 8.",
+    "|AB| = √(36 + 64) = √100 = 10.",
+    "Orta nokta: ((1 + 7)/2, (2 + 10)/2) = (4, 6)."
+   ],
+   "sonuc": "|AB| = 10, orta nokta M(4, 6)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Orta nokta ve bölen nokta",
+   "govde": "- AB'nin orta noktası: M((x₁ + x₂)/2, (y₁ + y₂)/2).\n- P noktası AB üzerinde ve |AP| : |PB| = m : n ise\n  P = ((n·x₁ + m·x₂)/(m + n), (n·y₁ + m·y₂)/(m + n)).\n\nDikkat: A'nın koordinatı n ile, B'nin koordinatı m ile çarpılır. P hangi noktaya yakınsa o noktanın ağırlığı büyüktür. m = n alınırsa orta nokta formülü çıkar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölen noktayı bul",
+   "aciklama": "A(−2, −1) ve B(4, 5). Kaydırıcılarla |AP| : |PB| oranını seç.",
+   "sim": { "kind": "f-uzaklik", "A": [-2, -1], "B": [4, 5], "bolen": true, "m": 1, "n": 1 },
+   "gorev": { "metin": "P'yi AB'yi A'dan itibaren 2 : 1 oranında bölecek şekilde yerleştir; P = (2, 3) olmalı.", "check": { "all": [{ "key": "px", "eq": 2 }, { "key": "py", "eq": 3 }] } },
+   "dene": ["Oran 1 : 1 iken P orta noktadır: (1, 2).", "Oran 1 : 2 iken P, A'ya daha yakındır: (0, 1)."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "A(−2, 3) ve B(4, −3) olmak üzere AB üzerinde |AP| : |PB| = 1 : 2 olan P noktasını bulalım.",
+   "cozum": [
+    "m = 1, n = 2.",
+    "x = (2 · (−2) + 1 · 4)/3 = 0/3 = 0.",
+    "y = (2 · 3 + 1 · (−3))/3 = 3/3 = 1."
+   ],
+   "sonuc": "P(0, 1)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: ağırlık merkezi",
+   "soru": "Köşeleri A(1, 1), B(5, 1), C(3, 7) olan üçgenin ağırlık merkezini bulalım.",
+   "cozum": [
+    "AB'nin orta noktası D(3, 1). Ağırlık merkezi CD kenarortayını C'den itibaren 2 : 1 böler.",
+    "G = ((1 · 3 + 2 · 3)/3, (1 · 7 + 2 · 1)/3) = (3, 3).",
+    "Kısa yol: G = ((x₁ + x₂ + x₃)/3, (y₁ + y₂ + y₃)/3) = (9/3, 9/3)."
+   ],
+   "sonuc": "G(3, 3)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "A(2, 1) ve B(a, 5) noktaları arasındaki uzaklık 5 birimdir. a'nın alabileceği değerler nelerdir?",
+   "cozum": [
+    "(a − 2)² + (5 − 1)² = 25.",
+    "(a − 2)² = 9 → a − 2 = 3 ya da a − 2 = −3."
+   ],
+   "sonuc": "a = 5 ya da a = −1."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Bölen nokta formülünde ağırlıkları ters koymak: |AP| : |PB| = 2 : 1 ise P, B'ye daha yakındır; bu yüzden B'nin koordinatı 2 ile, A'nınki 1 ile çarpılır. Bir de uzaklıkta farkların karesini almadan toplamak: √(Δx + Δy) yanlış, √(Δx² + Δy²) doğrudur."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "A(−1, 2) ve B(2, 6) noktaları arasındaki uzaklık kaçtır?", "options": ["5", "7", "√7", "25"], "answer": 0, "why": "√(3² + 4²) = 5.", "hint": "Δx ve Δy'yi bul." },
+  { "prompt": "A(3, −4) ve B(−1, 8) noktalarının orta noktası hangisidir?", "options": ["(2, 4)", "(1, 2)", "(4, −12)", "(−2, 6)"], "answer": 1, "why": "((3 − 1)/2, (−4 + 8)/2) = (1, 2).", "hint": "Koordinatların ortalamasını al." },
+  { "prompt": "A(0, 0), B(9, 6) ve |AP| : |PB| = 2 : 1 ise P hangisidir?", "options": ["(3, 2)", "(4, 6)", "(6, 4)", "(9/2, 3)"], "answer": 2, "why": "P = ((1 · 0 + 2 · 9)/3, (1 · 0 + 2 · 6)/3) = (6, 4).", "hint": "P, B'ye daha yakın." },
+  { "prompt": "A(1, 1), B(k, 5) ve |AB| = 5 ise k > 1 için k kaçtır?", "options": ["3", "5", "6", "4"], "answer": 3, "why": "(k − 1)² + 16 = 25 → k − 1 = 3 → k = 4.", "hint": "Uzaklık formülünü kur." }
+ ]
+}

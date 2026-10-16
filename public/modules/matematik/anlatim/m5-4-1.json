@@ -1,0 +1,209 @@
+{
+ "id": "m5-4-1",
+ "baslik": "Temel Geometrik Çizimler ve İnşalar",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.3.1",
+  "MAT.5.3.2",
+  "MAT.5.3.3",
+  "MAT.5.3.4",
+  "MAT.5.3.5",
+  "MAT.5.3.6",
+  "MAT.5.3.7"
+ ],
+ "sure": 16,
+ "ozet": "Nokta, doğru, doğru parçası ve ışını çizecek; paralel ve dik doğruları tanıyacak; pergel ile iki çember çizip kesişim noktasından üçgen inşa ederek üçgenin kenarları hakkında çıkarım yapacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Temel kavramlar",
+   "govde": "- **Nokta:** Konum belirtir, boyutu yoktur. Büyük harfle adlandırılır: A noktası.\n- **Doğru:** İki yönde sınırsız uzanır. A ve B noktalarından geçen doğru AB doğrusudur.\n- **Doğru parçası:** Doğrunun iki noktası arasında kalan sınırlı parçasıdır: [AB]. Uzunluğu ölçülebilir: |AB|.\n- **Işın:** Bir başlangıç noktası vardır, tek yönde sınırsız uzanır: [AB.\n\nÇizimlerde cetvel, gönye, pergel, açıölçer ve dinamik geometri yazılımları kullanılır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Paralel ve dik doğrular",
+   "govde": "Aynı düzlemdeki iki doğru:\n\n- Hiç kesişmiyorsa **paraleldir** (d ∥ k). Aralarındaki uzaklık her yerde aynıdır; tren rayları gibi.\n- Kesişiyorsa **kesişen doğrulardır**. Kesişme noktasında dört açı oluşur.\n- Kesişip dik açı oluşturuyorsa **dik doğrulardır** (d ⟂ k). Gönyenin dik kenarlarıyla çizilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Doğruyu döndür",
+   "aciklama": "d doğrusu sabit. Turuncu k doğrusunu düğmesinden sürükle, kaydırıcıyı kullan ya da düğmeye odaklanıp ok tuşlarına bas.",
+   "sim": {
+    "kind": "c-dogrular",
+    "aci": 60
+   },
+   "gorev": {
+    "metin": "k doğrusunu d'ye dik yap.",
+    "check": {
+     "key": "dik",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Dik olunca oluşan dört açının hepsi 90° olur.",
+    "k'yi d'ye paralel yapmayı da dene: kesişme noktası kaybolur."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paralel doğrular",
+   "aciklama": "Bu kez k doğrusu d ile 45° açı yapıyor.",
+   "sim": {
+    "kind": "c-dogrular",
+    "aci": 45
+   },
+   "gorev": {
+    "metin": "k doğrusunu d'ye paralel yap.",
+    "check": {
+     "key": "paralel",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Açı küçüldükçe kesişme noktası uzaklaşır; açı 0° olunca doğrular hiç kesişmez."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Pergelle üçgen inşası",
+   "govde": "Pergel, merkezden aynı uzaklıktaki bütün noktaları çizer: bir **çember**.\n\n1. Bir [AB] doğru parçası çiz.\n2. Pergeli A'ya koy, bir açıklıkla çember çiz.\n3. Pergeli B'ye koy, bir açıklıkla ikinci çemberi çiz.\n4. Çemberlerin kesiştiği noktalardan birine C de. ABC üçgenini çiz.\n\n|AC| birinci çemberin yarıçapı, |BC| ikinci çemberin yarıçapıdır; çünkü C iki çemberin de üzerindedir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki çember, bir üçgen",
+   "aciklama": "A ve B merkezli iki çember var. Kaydırıcılarla [AB]'yi ve pergel açıklıklarını değiştir.",
+   "sim": {
+    "kind": "c-pergel-ucgen",
+    "ab": 6,
+    "ac": 4,
+    "bc": 5,
+    "cember": true,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "İki pergel açıklığını da |AB|'ye eşitleyerek eşkenar üçgen inşa et.",
+    "check": {
+     "key": "tur",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Pergel açıklıkları eşit ama |AB|'den farklı olursa ikizkenar üçgen oluşur.",
+    "Açıklıklar ve |AB| birbirinden farklıysa çeşitkenar üçgen oluşur."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çemberler kesişmezse",
+   "aciklama": "Şu an çemberler kesişmiyor, üçgen oluşmuyor.",
+   "sim": {
+    "kind": "c-pergel-ucgen",
+    "ab": 8,
+    "ac": 3,
+    "bc": 3,
+    "cember": true,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "Pergel açıklıklarını eşit tutarak bir ikizkenar üçgen oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "ucgen",
+       "eq": 1
+      },
+      {
+       "key": "ac",
+       "eq": 5
+      },
+      {
+       "key": "bc",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "İki açıklık 5 olunca çemberler kesişir: 5 + 5 > 8.",
+    "Açıklıkların toplamı |AB|'den büyük olmazsa çemberler kesişmez."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Eşkenar üçgen",
+   "soru": "|AB| = 5 cm olan doğru parçasının iki ucuna pergel 5 cm açıkken çemberler çizilirse nasıl bir üçgen oluşur?",
+   "cozum": [
+    "C, A merkezli çemberin üzerinde: |AC| = 5 cm.",
+    "C, B merkezli çemberin üzerinde: |BC| = 5 cm.",
+    "|AB| = 5 cm."
+   ],
+   "sonuc": "Üç kenarı 5 cm olan eşkenar üçgen oluşur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · İkizkenar üçgen",
+   "soru": "|AB| = 6 cm. A ve B merkezli çemberlerin ikisinin de yarıçapı 4 cm. Oluşan ABC üçgeninin kenarları nedir?",
+   "cozum": [
+    "|AC| = 4 cm ve |BC| = 4 cm (yarıçaplar).",
+    "|AB| = 6 cm.",
+    "4 + 4 > 6 olduğu için çemberler kesişir."
+   ],
+   "sonuc": "Kenarları 4, 4 ve 6 cm: ikizkenar üçgen."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Işın ile doğruyu karıştırmak sık yapılır: [AB ışını A'dan başlar, yalnız B yönünde uzar; AB doğrusu iki yönde de uzar.\n\nPergelle çizerken açıklığın kayması da hatadır: açıklık değişirse yarıçap ve dolayısıyla üçgenin kenarı değişir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "İki yönde sınırsız uzanan çizgiye ne denir?",
+   "options": [
+    "Işın",
+    "Doğru parçası",
+    "Doğru",
+    "Nokta"
+   ],
+   "answer": 2,
+   "why": "Doğru iki yönde de sınırsızdır; ışın tek yönde, doğru parçası iki ucu sınırlı.",
+   "hint": "Başlangıç ve bitiş noktası var mı?"
+  },
+  {
+   "prompt": "|AB| uzunluğunda bir doğru parçasının uçlarına, yarıçapı |AB| olan iki çember çiziliyor. Kesişim noktası C ile oluşan ABC üçgeni nasıldır?",
+   "options": [
+    "Çeşitkenar",
+    "Eşkenar",
+    "Dik üçgen",
+    "Üçgen oluşmaz"
+   ],
+   "answer": 1,
+   "why": "|AC| = |BC| = |AB|: üç kenar eşit.",
+   "hint": "C, iki çemberin de üzerinde."
+  },
+  {
+   "prompt": "Dik kesişen iki doğrunun oluşturduğu dört açı için hangisi doğrudur?",
+   "options": [
+    "Hepsi 90°",
+    "İkisi 45°",
+    "Hepsi 180°",
+    "İkisi dar, ikisi geniş"
+   ],
+   "answer": 0,
+   "why": "Dik kesişen doğrular dört dik açı oluşturur.",
+   "hint": "Dik açı kaç derece?"
+  },
+  {
+   "prompt": "|AB| = 7 cm. A merkezli 2 cm, B merkezli 3 cm yarıçaplı çemberler çiziliyor. Ne olur?",
+   "options": [
+    "Eşkenar üçgen oluşur",
+    "İkizkenar üçgen oluşur",
+    "Çeşitkenar üçgen oluşur",
+    "Çemberler kesişmez, üçgen oluşmaz"
+   ],
+   "answer": 3,
+   "why": "2 + 3 = 5 < 7; çemberler birbirine ulaşmaz.",
+   "hint": "Yarıçapların toplamını |AB| ile karşılaştır."
+  }
+ ]
+}

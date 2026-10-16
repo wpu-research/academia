@@ -1,0 +1,100 @@
+{
+ "id": "m10-6-2",
+ "baslik": "Dik Koordinat Sisteminde Doğrunun Analitik İncelenmesi",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.6.2"],
+ "sure": 18,
+ "ders": "dogrunun-egimi",
+ "ozet": "Doğrunun eğimini, denklemini ve iki doğrunun birbirine göre durumunu koordinat düzleminde inceleyeceğiz: paralellik, diklik, kesişim noktası ve bir noktanın doğruya uzaklığı.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Eğim",
+   "govde": "A(x₁, y₁) ve B(x₂, y₂) noktalarından geçen doğrunun eğimi\n\nm = (y₂ − y₁) / (x₂ − x₁) (x₁ ≠ x₂)\n\nEğim, x 1 birim artınca y'nin ne kadar değiştiğidir. Doğrunun x ekseniyle pozitif yönde yaptığı açı α ise m = tan α.\n- m > 0: doğru sağa doğru yükselir; m < 0: alçalır.\n- m = 0: yatay doğru (y = n).\n- Dikey doğrunun (x = a) eğimi tanımsızdır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Doğru denklemleri",
+   "govde": "- Eğimi m, y eksenini kestiği nokta (0, n): **y = mx + n**.\n- Eğimi m, (x₁, y₁) noktasından geçen: **y − y₁ = m(x − x₁)**.\n- Genel biçim: **ax + by + c = 0**; b ≠ 0 ise eğim m = −a/b.\n- Eksenleri (a, 0) ve (0, b) noktalarında kesen: **x/a + y/b = 1**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki noktadan geçen doğru",
+   "aciklama": "Kaydırıcılarla eğimi ve y eksenini kestiği noktayı ayarla. Doğru bir noktadan geçince nokta yeşil olur.",
+   "sim": { "kind": "koordinat-duzlemi", "m": 1, "n": 0, "points": [[1, 3], [3, 7]] },
+   "gorev": { "metin": "Doğruyu iki noktadan da geçir.", "check": { "all": [{ "key": "m", "eq": 2 }, { "key": "n", "eq": 1 }] } },
+   "dene": ["Eğim (7 − 3)/(3 − 1) = 2.", "n'yi bulmak için (1, 3)'ü yerine koy: 3 = 2 · 1 + n."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "3x − 4y + 12 = 0 doğrusunun eğimini ve eksenleri kestiği noktaları bulalım.",
+   "cozum": [
+    "4y = 3x + 12 → y = (3/4)x + 3: eğim 3/4.",
+    "x = 0 → y = 3: (0, 3).",
+    "y = 0 → 3x = −12 → x = −4: (−4, 0)."
+   ],
+   "sonuc": "m = 3/4; eksenleri (−4, 0) ve (0, 3) noktalarında keser."
+  },
+  {
+   "tur": "kural",
+   "baslik": "İki doğrunun durumu",
+   "govde": "d₁: y = m₁x + n₁, d₂: y = m₂x + n₂ için\n- m₁ = m₂ ve n₁ ≠ n₂: **paralel** (kesişmez).\n- m₁ = m₂ ve n₁ = n₂: **çakışık**.\n- m₁ ≠ m₂: tek noktada **kesişir**; nokta denklemler ortak çözülerek bulunur.\n- m₁ · m₂ = −1: **diktir**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paralel ve dik doğrular",
+   "aciklama": "Kahverengi d₁, yeşil d₂. Kesikli küçük üçgen d₁'in eğimini gösteriyor.",
+   "sim": { "kind": "f-dogrular", "m1": 2, "n1": 1, "m2": 1, "n2": -2 },
+   "gorev": { "metin": "d₂'nin eğimini değiştirerek iki doğruyu birbirine dik yap.", "check": { "key": "perp", "eq": 1 } },
+   "dene": ["m₂ = −0,5 seç: 2 · (−0,5) = −1.", "Sonra m₂ = 2 yap: doğrular paralel olur; n₂ = 1 yaparsan çakışırlar."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "y = 2x + 1 doğrusuna dik olan ve (2, 3) noktasından geçen doğrunun denklemini bulalım.",
+   "cozum": [
+    "Dik doğrunun eğimi: 2 · m = −1 → m = −1/2.",
+    "y − 3 = −(1/2)(x − 2).",
+    "y = −x/2 + 1 + 3."
+   ],
+   "sonuc": "y = −x/2 + 4."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Noktanın doğruya uzaklığı",
+   "govde": "P(x₀, y₀) noktasının ax + by + c = 0 doğrusuna uzaklığı\n\nd = |a·x₀ + b·y₀ + c| / √(a² + b²)\n\nParalel iki doğru ax + by + c₁ = 0 ve ax + by + c₂ = 0 arasındaki uzaklık |c₁ − c₂| / √(a² + b²)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3",
+   "soru": "P(1, 2) noktasının 3x + 4y − 1 = 0 doğrusuna uzaklığını bulalım.",
+   "cozum": [
+    "Pay: |3 · 1 + 4 · 2 − 1| = |10| = 10.",
+    "Payda: √(9 + 16) = 5."
+   ],
+   "sonuc": "d = 10/5 = 2."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "ax + 2y − 3 = 0 ve 3x − y + 5 = 0 doğruları paralel ise a kaçtır?",
+   "cozum": [
+    "Birinci doğrunun eğimi −a/2, ikincinin eğimi −3/(−1) = 3.",
+    "Paralel: −a/2 = 3."
+   ],
+   "sonuc": "a = −6."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Genel biçimden eğimi okurken işareti kaçırmak: 3x − 4y + 12 = 0 doğrusunun eğimi −3/4 değil, −a/b = −3/(−4) = 3/4'tür. Ayrıca dikliği m₁ = −m₂ sanmak; doğru koşul m₁ · m₂ = −1'dir (eğimler hem ters işaretli hem çarpmaya göre tersidir)."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "(−1, 2) ve (3, 10) noktalarından geçen doğrunun eğimi kaçtır?", "options": ["4", "1/2", "2", "8"], "answer": 2, "why": "(10 − 2)/(3 − (−1)) = 8/4 = 2.", "hint": "Δy / Δx." },
+  { "prompt": "y = 3x − 1 doğrusuna paralel olan ve (0, 4) noktasından geçen doğru hangisidir?", "options": ["y = 3x + 4", "y = −x/3 + 4", "y = 4x + 3", "y = −3x + 4"], "answer": 0, "why": "Paralel doğrunun eğimi 3; y eksenini (0, 4)'te kesiyor.", "hint": "Paralel doğruların eğimleri eşittir." },
+  { "prompt": "y = −2x + 5 doğrusuna dik olan bir doğrunun eğimi kaçtır?", "options": ["−2", "2", "−1/2", "1/2"], "answer": 3, "why": "−2 · m = −1 → m = 1/2.", "hint": "m₁ · m₂ = −1." },
+  { "prompt": "Orijinin 3x + 4y − 10 = 0 doğrusuna uzaklığı kaçtır?", "options": ["10", "2", "5/2", "1"], "answer": 1, "why": "|0 + 0 − 10| / √(9 + 16) = 10/5 = 2.", "hint": "Uzaklık formülünde (x₀, y₀) = (0, 0)." }
+ ]
+}

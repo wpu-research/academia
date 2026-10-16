@@ -1,0 +1,165 @@
+{
+ "id": "m3-3-6",
+ "baslik": "Dört İşlem Gerektiren Problemleri Çözme",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.2.6"
+ ],
+ "sure": 14,
+ "ozet": "Günlük hayattan problemleri dört adımda çözeceğiz: anla, planla, çöz, kontrol et. Hangi işlemin gerektiğine modellerle karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Problem çözmenin dört adımı",
+   "govde": "1. **Anla:** Problemi dikkatle oku. Neler verilmiş, ne soruluyor?\n2. **Planla:** Hangi işlem ya da işlemler gerekiyor? Bir şekil, tablo ya da model çizmek yardımcı olur.\n3. **Çöz:** İşlemleri sırayla yap.\n4. **Kontrol et:** Cevap soruya uygun mu, mantıklı mı? Tahminle karşılaştır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Hangi işlem?",
+   "govde": "- Birleştirme, ekleme, \"toplam kaç\": **toplama**\n- Ayırma, eksiltme, \"kaç kaldı\", \"kaç fazla\": **çıkarma**\n- Eşit grupların toplamı, \"her birinde … olan … tane\": **çarpma**\n- Eşit paylaştırma, eşit gruplara ayırma: **bölme**\n\nBazı problemler birden çok adım ister."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paylaştırma problemi",
+   "aciklama": "\"Öğretmen 28 kalemi 4 masaya eşit dağıtacak. Her masaya kaç kalem düşer?\" Problemi modelle: nesne sayısını ve tabak (masa) sayısını ayarla, sonra dağıt.",
+   "sim": {
+    "kind": "b-paylastir",
+    "toplam": 12,
+    "grup": 3,
+    "max": 30,
+    "maxGrup": 6
+   },
+   "gorev": {
+    "metin": "Problemi modelle ve dağıtmayı bitir.",
+    "check": {
+     "all": [
+      {
+       "key": "toplam",
+       "eq": 28
+      },
+      {
+       "key": "grup",
+       "eq": 4
+      },
+      {
+       "key": "bitti",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Eşit paylaştırma bölme işlemidir: 28 ÷ 4.",
+    "Kontrol: 7 × 4 = 28."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alışveriş problemi",
+   "aciklama": "\"Can 18 lira 50 kuruşluk bir defter ve 7 liralık bir kalem alacak. Kasaya ne kadar ödemeli?\" Tutarı paralarla oluştur.",
+   "sim": {
+    "kind": "para"
+   },
+   "gorev": {
+    "metin": "Can'ın ödeyeceği tutarı oluştur.",
+    "check": {
+     "key": "total",
+     "eq": 25.5,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "Toplam: 18 lira 50 kuruş + 7 lira.",
+    "Önce liraları, sonra kuruşları topla."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir kolide 6 sıra yumurta var, her sırada 8 yumurta var. Taşırken 15 yumurta kırıldı. Kaç sağlam yumurta kaldı?",
+   "cozum": [
+    "Anla: 6 sıra, her sırada 8; 15 kırık. Soru: sağlam kaç?",
+    "Planla: önce toplam (çarpma), sonra kırıkları çıkar.",
+    "Çöz: 6 × 8 = 48, 48 − 15 = 33.",
+    "Kontrol: 33 + 15 = 48 ✓"
+   ],
+   "sonuc": "**33** sağlam yumurta kaldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "İki adımlı problem",
+   "soru": "Bir sinema salonunda 9 sıra, her sırada 12 koltuk var. Filme 80 kişi geldi. Kaç koltuk boş kaldı?",
+   "cozum": [
+    "Toplam koltuk: 9 × 12 = 108.",
+    "Boş koltuk: 108 − 80 = 28.",
+    "Kontrol: 80 + 28 = 108 ✓"
+   ],
+   "sonuc": "**28** koltuk boş kaldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Para üstü",
+   "soru": "Ece tanesi 15 lira olan 3 kitap aldı ve kasaya 50 lira verdi. Kaç lira para üstü alır?",
+   "cozum": [
+    "Kitapların tutarı: 3 × 15 = 45 lira.",
+    "Para üstü: 50 − 45 = 5 lira."
+   ],
+   "sonuc": "Ece **5 lira** para üstü alır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Problemi okumadan sayıları rastgele toplamak sık yapılan bir hatadır. \"Kaç tane kaldı?\" diye soran bir problemde sayıları toplamak sonucu büyütür. Cevabı bulunca soruyu yeniden oku ve cevabın mantıklı olup olmadığını kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir çiftçi 96 yumurtayı 6'lık kutulara yerleştiriyor. Kaç kutu gerekir?",
+   "options": [
+    "102",
+    "15",
+    "16",
+    "90"
+   ],
+   "answer": 2,
+   "why": "96 ÷ 6 = 16. Kontrol: 16 × 6 = 96.",
+   "hint": "Eşit gruplara ayırma hangi işlemdir?"
+  },
+  {
+   "prompt": "Bir otobüste 34 yolcu vardı. Durakta 12 kişi indi, 9 kişi bindi. Otobüste kaç yolcu var?",
+   "options": [
+    "31",
+    "37",
+    "55",
+    "13"
+   ],
+   "answer": 0,
+   "why": "34 − 12 = 22, 22 + 9 = 31.",
+   "hint": "İnenler azaltır, binenler artırır."
+  },
+  {
+   "prompt": "5 arkadaş 40 liralık bir pizzanın parasını eşit ödüyor. Kişi başı kaç lira öder?",
+   "options": [
+    "45",
+    "5",
+    "35",
+    "8"
+   ],
+   "answer": 3,
+   "why": "40 ÷ 5 = 8 lira.",
+   "hint": "40 lirayı 5 kişiye eşit paylaştır."
+  },
+  {
+   "prompt": "Elif her gün 15 sayfa kitap okuyor. 1 haftada kaç sayfa okur?",
+   "options": [
+    "90",
+    "105",
+    "22",
+    "75"
+   ],
+   "answer": 1,
+   "why": "1 hafta 7 gün: 15 × 7 = 105.",
+   "hint": "Bir haftada kaç gün var?"
+  }
+ ]
+}

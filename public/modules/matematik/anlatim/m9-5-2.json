@@ -1,0 +1,85 @@
+{
+ "id": "m9-5-2",
+ "baslik": "Mantık Bağlaçları ve Niceleyiciler",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.5.2"],
+ "sure": 17,
+ "ders": "kumeler-ve-mantik",
+ "ozet": "Önermeleri \"değil, ve, veya, ise, ancak ve ancak\" bağlaçlarıyla birleştirecek, doğruluk tablolarını dolduracak; \"her\" ve \"bazı\" niceleyicileriyle kurulan önermelerin doğruluğunu ve değillerini inceleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Önerme ve bağlaçlar",
+   "govde": "Doğru (D) ya da yanlış (Y) olduğu kesin olarak söylenebilen ifadelere **önerme** denir. \"7 asaldır\" bir önermedir; \"Bu soru zor mu?\" değildir.\n\n- **Değil** (¬p ya da p′): p'nin doğruluk değerini tersine çevirir.\n- **Ve** (p ∧ q): yalnız ikisi de doğruysa doğru.\n- **Veya** (p ∨ q): en az biri doğruysa doğru.\n- **İse** (p ⇒ q): yalnız p doğru, q yanlışken yanlış.\n- **Ancak ve ancak** (p ⇔ q): ikisinin doğruluk değeri aynıysa doğru."
+  },
+  {
+   "tur": "sim",
+   "baslik": "\"Ve\" bağlacının doğruluk tablosu",
+   "aciklama": "Sonuç sütunundaki hücrelere dokunarak D ya da Y yaz.",
+   "sim": { "kind": "mantik-tablosu", "op": "ve" },
+   "gorev": { "metin": "p ∧ q sütununu doğru doldur.", "check": { "key": "ok", "eq": 1 } },
+   "dene": ["\"Ve\" ile kurulan bir koşul, algoritmada iki şartın birlikte sağlanmasını ister."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "\"İse\" bağlacının doğruluk tablosu",
+   "aciklama": "p ⇒ q bir söz gibidir: \"Yağmur yağarsa (p) şemsiye alırım (q).\" Söz yalnız yağmur yağıp şemsiye alınmadığında bozulur.",
+   "sim": { "kind": "mantik-tablosu", "op": "ise" },
+   "gorev": { "metin": "p ⇒ q sütununu doğru doldur.", "check": { "key": "ok", "eq": 1 } },
+   "dene": ["p yanlışken p ⇒ q her zaman doğrudur: yağmur yağmadıysa söz bozulmamıştır."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "De Morgan kuralları",
+   "govde": "- **¬(p ∧ q) ≡ ¬p ∨ ¬q**\n- **¬(p ∨ q) ≡ ¬p ∧ ¬q**\n\nÖrnek: \"x > 0 ve x < 10\" koşulunun değili \"x ≤ 0 veya x ≥ 10\"dur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Niceleyiciler",
+   "govde": "- **Evrensel niceleyici ∀** (\"her\"): ∀x ∈ A, P(x) önermesi A'nın **bütün** elemanları P'yi sağlıyorsa doğrudur. Yanlış olduğunu göstermek için tek bir **karşı örnek** yeter.\n- **Varlıksal niceleyici ∃** (\"bazı\", \"en az bir\"): ∃x ∈ A, P(x) önermesi **en az bir** eleman P'yi sağlıyorsa doğrudur.\n\nDeğilleri:\n\n- ¬(∀x, P(x)) ≡ ∃x, ¬P(x)\n- ¬(∃x, P(x)) ≡ ∀x, ¬P(x)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Her ve bazı",
+   "aciklama": "Bir özellik seç ve A kümesinin sınırlarını değiştir. Yeşil kutular özelliği sağlayan elemanlar; kırmızı kenarlı kutu karşı örnek.",
+   "sim": { "kind": "e-niceleyici", "ozellikler": ["cift", "asal", "pozitif", "kare"], "lo": 1, "hi": 10, "aralik": [-10, 20] },
+   "gorev": { "metin": "\"∀x ∈ A, x asal sayıdır\" önermesini doğru yapan, en az iki elemanlı bir A oluştur.", "check": { "all": [ { "key": "ozellik", "eq": 1 }, { "key": "her", "eq": 1 }, { "key": "n", "gte": 2 } ] } },
+   "dene": ["x² ≥ x özelliğini seç ve sınırları istediğin gibi değiştir: tam sayılarda hiç karşı örnek bulamazsın. Ama x = 0,5 için 0,25 < 0,5; gerçek sayılarda önerme yanlış.", "Hiçbir elemanın sağlamadığı bir A kur: ∃ önermesi yanlış olur."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "p: \"7 asaldır\", q: \"4 tek sayıdır\". p ∧ q, p ∨ q, p ⇒ q ve q ⇒ p önermelerinin doğruluk değerlerini bulalım.",
+   "cozum": [
+    "p doğru (D), q yanlış (Y).",
+    "p ∧ q: D ve Y ⇒ Y.",
+    "p ∨ q: D veya Y ⇒ D.",
+    "p ⇒ q: D ⇒ Y ⇒ Y (tek yanlış durum).",
+    "q ⇒ p: Y ⇒ D ⇒ D."
+   ],
+   "sonuc": "Y, D, Y, D"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Niceleyicili önermeler",
+   "soru": "\"∀x ∈ ℝ, x² ≥ 0\" ve \"∃x ∈ ℕ, x + 3 = 1\" önermelerinin doğruluğunu ve birincinin değilini bulalım.",
+   "cozum": [
+    "Her gerçek sayının karesi negatif değildir: birinci önerme doğru.",
+    "x + 3 = 1 ⇒ x = −2 ∉ ℕ: ikinci önerme yanlış.",
+    "Birincinin değili: ∃x ∈ ℝ, x² < 0 (yanlış)."
+   ],
+   "sonuc": "D, Y; değil: ∃x ∈ ℝ, x² < 0."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- \"Her öğrenci gözlüklüdür\" önermesinin değilini \"Hiçbir öğrenci gözlüklü değildir\" sanmak. Doğrusu: \"En az bir öğrenci gözlüklü değildir.\"\n- p ⇒ q'yu neden-sonuç ilişkisi gibi okumak; yalnız doğruluk değerlerine bakılır.\n- \"Veya\"yı \"ya … ya da\" (yalnız biri) gibi anlamak; matematikte ikisi birden doğru olabilir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "p doğru, q yanlış ise p ⇒ q önermesinin doğruluk değeri nedir?", "options": ["Yanlış", "Doğru", "Belirlenemez", "p'ye bağlı değildir"], "answer": 0, "why": "\"İse\" yalnız D ⇒ Y durumunda yanlıştır.", "hint": "Söz ne zaman bozulur?" },
+  { "prompt": "¬(p ∨ q) önermesinin denki hangisidir?", "options": ["¬p ∨ ¬q", "p ∧ q", "¬p ∧ ¬q", "¬p ∧ q"], "answer": 2, "why": "De Morgan: \"veya\"nın değili, değillerin \"ve\"sidir.", "hint": "Değil alınca bağlaç da değişir." },
+  { "prompt": "\"Her öğrenci gözlüklüdür.\" önermesinin değili hangisidir?", "options": ["Hiçbir öğrenci gözlüklü değildir.", "En az bir öğrenci gözlüklü değildir.", "Her öğrenci gözlüksüzdür.", "Bazı öğrenciler gözlüklüdür."], "answer": 1, "why": "¬(∀x P(x)) ≡ ∃x ¬P(x).", "hint": "Önermeyi yanlış yapmak için kaç karşı örnek yeter?" },
+  { "prompt": "\"∃x ∈ ℤ, 2x = 5\" önermesi için hangisi doğrudur?", "options": ["Doğru; x = 2,5 için sağlanır.", "Doğru; çünkü 5 tektir.", "Doğru; x = 3 için sağlanır.", "Yanlış"], "answer": 3, "why": "2x = 5 ⇒ x = 2,5 bir tam sayı değildir; hiçbir tam sayı sağlamaz.", "hint": "x'in hangi kümeden seçildiğine dikkat et." }
+ ]
+}

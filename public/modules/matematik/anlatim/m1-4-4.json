@@ -1,0 +1,133 @@
+{
+ "id": "m1-4-4",
+ "baslik": "Toplama ve Çıkarma İşlemlerinin İlişkisi",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.2.4"
+ ],
+ "sure": 12,
+ "ozet": "Toplama ile çıkarmanın birbirinin tersi olduğunu, aynı üç sayıdan dört işlem yazılabildiğini göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bir aile, dört işlem",
+   "govde": "4, 5 ve 9 sayıları bir **işlem ailesidir**:\n\n- 4 + 5 = 9\n- 5 + 4 = 9\n- 9 − 5 = 4\n- 9 − 4 = 5\n\nToplamada parçaları birleştirip bütünü buluruz. Çıkarmada bütünden bir parçayı ayırırız. Bu yüzden **çıkarma, toplamanın tersidir**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İşlem ailesi",
+   "aciklama": "Çubuk 12 parçalık bir bütün. Birinci parçayı değiştirince alttaki dört işlem birlikte değişir.",
+   "sim": {
+    "kind": "a-parca-butun",
+    "butun": 12,
+    "a": 3,
+    "maxButun": 15
+   },
+   "gorev": {
+    "metin": "12 − 7 işleminin cevabını görmek için birinci parçayı 7 yap.",
+    "check": {
+     "key": "a",
+     "eq": 7
+    }
+   },
+   "dene": [
+    "Yeşil parça kaç oldu? 12 − 7 işleminin cevabı odur.",
+    "Aynı çubukta 7 + 5 = 12 de yazıyor."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çıkarmayı toplamayla kontrol et",
+   "govde": "Bir çıkarma işleminin sonucunu, toplamayla **kontrol** edebiliriz:\n\n13 − 5 = 8 doğru mu? **8 + 5 = 13** olduğuna göre doğru.\n\nEksik sayıyı bulmak için de toplamayı kullanırız: 13 − 5 = ? sorusu “5'e kaç eklersem 13 olur?” sorusuyla aynıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İleri sayarak çıkar",
+   "aciklama": "13 − 5'i bulmak için 5'ten 13'e kadar ileri sek ve kaç kez sektiğini say.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 20,
+    "start": 5,
+    "adim": 1,
+    "geri": false
+   },
+   "gorev": {
+    "metin": "5'ten 13'e ileri sek.",
+    "check": {
+     "key": "pos",
+     "eq": 13
+    }
+   },
+   "dene": [
+    "Kaç kez sektin? O sayı 13 − 5'in cevabıdır.",
+    "Sekme sayısını saymak için alttaki sayılara bak."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "6, 8 ve 14 sayılarıyla bir işlem ailesi yazalım.",
+   "cozum": [
+    "En büyük sayı bütündür: 14.",
+    "6 + 8 = 14 ve 8 + 6 = 14.",
+    "14 − 8 = 6 ve 14 − 6 = 8."
+   ],
+   "sonuc": "Dört işlem: **6 + 8 = 14, 8 + 6 = 14, 14 − 8 = 6, 14 − 6 = 8**."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Can 11 − 4 = 6 buldu. Toplamayla kontrol edelim.",
+   "cozum": [
+    "Sonucu çıkardığımız sayıyla topla: 6 + 4 = 10.",
+    "10, 11'e eşit değil. İşlem yanlış.",
+    "Doğrusu 11 − 4 = 7, çünkü 7 + 4 = 11."
+   ],
+   "sonuc": "Can'ın cevabı **yanlış**; doğru cevap **7**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Toplamada sayıların yerini değiştirmek sonucu değiştirmez: 3 + 5 = 5 + 3. Ama çıkarmada yer değiştirilemez: 9 − 4 ile 4 − 9 aynı değildir. Çıkarmada **bütün** her zaman en başta yazılır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "7 + 3 = 10 ise hangisi doğrudur?",
+   "options": [
+    "10 − 3 = 7",
+    "3 − 10 = 7",
+    "10 + 3 = 7",
+    "7 − 3 = 10"
+   ],
+   "answer": 0,
+   "why": "Bütün 10'dan 3'ü çıkarınca 7 kalır.",
+   "hint": "Bütün hangisi?"
+  },
+  {
+   "prompt": "15 − 6 = 9 işlemini hangi toplama kontrol eder?",
+   "options": [
+    "15 + 6 = 21",
+    "9 + 6 = 15",
+    "9 + 15 = 24",
+    "6 + 6 = 12"
+   ],
+   "answer": 1,
+   "why": "Sonuç ile çıkarılan sayı toplanınca bütün bulunur: 9 + 6 = 15.",
+   "hint": "Kalan ile çıkanı birleştir."
+  },
+  {
+   "prompt": "“4'e kaç eklersek 11 olur?” sorusu hangi işlemle aynıdır?",
+   "options": [
+    "4 + 11",
+    "11 + 4",
+    "4 − 11",
+    "11 − 4"
+   ],
+   "answer": 3,
+   "why": "Eksik parça, bütünden bilinen parça çıkarılarak bulunur: 11 − 4.",
+   "hint": "Bütün 11, bir parça 4."
+  }
+ ]
+}

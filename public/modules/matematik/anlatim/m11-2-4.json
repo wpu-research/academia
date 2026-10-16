@@ -1,0 +1,90 @@
+{
+ "id": "m11-2-4",
+ "baslik": "Dışbükey Çokgenlerin Özellikleri",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.2.4"],
+ "sure": 16,
+ "ozet": "Dışbükey n-genin iç açılar toplamını, dış açılar toplamını ve köşegen sayısını bir köşeden üçgenlere ayırarak bulacağız; düzgün çokgenlerde bir açıyı, simetri eksenlerini ve alanı hesaplayacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Açılar ve köşegenler",
+   "govde": "Dışbükey bir n-gende bir köşeden çizilen n − 3 köşegen, çokgeni n − 2 üçgene ayırır. Buradan:\n- **İç açılar toplamı = (n − 2) · 180°**\n- **Dış açılar toplamı = 360°** (her köşede iç + dış = 180°).\n- **Köşegen sayısı = n(n − 3)/2** (her köşeden n − 3 köşegen; her köşegen iki kez sayıldığı için 2'ye bölünür)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Düzgün çokgeni üçgenlere böl",
+   "aciklama": "Kenar sayısını değiştir ve düğmelerle köşegenleri, simetri eksenlerini, dış açıları göster.",
+   "sim": { "kind": "f-duzgun", "n": 5, "show": ["ucgen"] },
+   "gorev": { "metin": "Bir iç açısı 140° olan düzgün çokgeni bul.", "check": { "key": "ic", "eq": 140, "tol": 1e-9 } },
+   "dene": ["Dış açı 180° − 140° = 40°; 360° / 40° = 9 kenar.", "n büyüdükçe bir iç açı 180°'ye yaklaşıyor ama hiç ulaşmıyor."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Düzgün çokgen",
+   "govde": "Bütün kenarları ve bütün açıları eşit dışbükey çokgene **düzgün çokgen** denir. Düzgün n-gende:\n- Bir dış açı = 360° / n\n- Bir iç açı = (n − 2) · 180° / n = 180° − 360° / n\n- n tane simetri ekseni vardır.\n- Köşeler bir çember üzerindedir; merkezden köşelere çizilen doğrular çokgeni n eş ikizkenar üçgene ayırır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "İç açıları toplamı 1440° olan bir dışbükey çokgenin kaç kenarı ve kaç köşegeni vardır?",
+   "cozum": [
+    "(n − 2) · 180° = 1440° → n − 2 = 8 → n = 10.",
+    "Köşegen sayısı: 10 · 7 / 2 = 35."
+   ],
+   "sonuc": "10 kenar, 35 köşegen."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşegenleri say",
+   "aciklama": "\"Tüm köşegenler\" düğmesiyle köşegenleri göster.",
+   "sim": { "kind": "f-duzgun", "n": 4, "show": ["kosegen"] },
+   "gorev": { "metin": "Tam 20 köşegeni olan düzgün çokgeni bul.", "check": { "key": "kosegen", "eq": 20 } },
+   "dene": ["n(n − 3)/2 = 20 → n(n − 3) = 40 → n = 8.", "Her n artışında köşegen sayısı n − 2 artıyor: 2, 5, 9, 14, 20, ..."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Düzgün onikigenin bir iç açısını ve bir dış açısını bulalım.",
+   "cozum": [
+    "Dış açı: 360° / 12 = 30°.",
+    "İç açı: 180° − 30° = 150°.",
+    "Kontrol: 12 · 150° = 1800° = (12 − 2) · 180°."
+   ],
+   "sonuc": "İç açı 150°, dış açı 30°."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: düzgün altıgenin alanı",
+   "soru": "Bir kenarı 4 cm olan düzgün altıgenin alanını bulalım.",
+   "cozum": [
+    "Merkezden köşelere çizilen doğrular altıgeni 6 eş üçgene ayırır.",
+    "Merkez açı 360° / 6 = 60°, üçgenler ikizkenar → eşkenar üçgen, kenarı 4.",
+    "Bir eşkenar üçgenin alanı: (√3/4) · 4² = 4√3.",
+    "Altıgen: 6 · 4√3 = 24√3."
+   ],
+   "sonuc": "24√3 cm² (yaklaşık 41,6 cm²)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Bir düzgün çokgenin bir iç açısı, bir dış açısının 4 katıdır. Bu çokgenin kenar sayısı kaçtır?",
+   "cozum": [
+    "Dış açı x ise iç açı 4x; iç + dış = 180° → 5x = 180° → x = 36°.",
+    "n = 360° / 36° = 10."
+   ],
+   "sonuc": "10 kenar (düzgün ongen)."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Köşegen sayısını n(n − 3) diye bırakmak: her köşegen iki uç köşesinden de sayıldığı için 2'ye bölmek gerekir. Bir de \"dış açılar toplamı da kenar sayısıyla artar\" sanmak; dış açılar toplamı her dışbükey çokgende 360°'dir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Düzgün sekizgenin bir iç açısı kaç derecedir?", "options": ["120°", "144°", "135°", "150°"], "answer": 2, "why": "Dış açı 360°/8 = 45°, iç açı 135°.", "hint": "Önce dış açıyı bul." },
+  { "prompt": "Yedigenin kaç köşegeni vardır?", "options": ["14", "21", "35", "7"], "answer": 0, "why": "7 · 4 / 2 = 14.", "hint": "n(n − 3)/2." },
+  { "prompt": "Bir dış açısı 24° olan düzgün çokgenin kaç kenarı vardır?", "options": ["12", "24", "18", "15"], "answer": 3, "why": "360° / 24° = 15.", "hint": "Dış açılar toplamı 360°." },
+  { "prompt": "İç açıları toplamı 1080° olan dışbükey çokgen kaç kenarlıdır?", "options": ["6", "8", "10", "9"], "answer": 1, "why": "(n − 2) · 180° = 1080° → n = 8.", "hint": "1080'i 180'e böl." }
+ ]
+}

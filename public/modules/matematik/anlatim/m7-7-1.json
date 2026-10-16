@@ -1,0 +1,192 @@
+{
+ "id": "m7-7-1",
+ "baslik": "Üçgenlerde Kenarortay ve İnşası",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.5.1",
+  "MAT.7.5.2"
+ ],
+ "sure": 14,
+ "ozet": "Üçgende kenarortayı tanıyacak, orta dikme inşası deneyimimizle kenarortayı pergel ve cetvelle inşa edecek ve üç kenarortayın bir noktada kesiştiğini göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kenarortay",
+   "govde": "Bir üçgende bir köşeyi karşı kenarın **orta noktasına** birleştiren doğru parçasına **kenarortay** denir. Her üçgenin üç kenarortayı vardır.\n\nABC üçgeninde A'dan çizilen kenarortay [AD] ise D, [BC]'nin orta noktasıdır: |BD| = |DC|."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenarortayı izle",
+   "aciklama": "C köşesinden çizilen kenarortay görünüyor. Köşeleri sürükle.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "kenarortay",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      3,
+      5
+     ]
+    ],
+    "kose": 2
+   },
+   "gorev": {
+    "metin": "C'den çizilen kenarortay aynı zamanda yükseklik olsun.",
+    "check": {
+     "key": "medDik",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "C'yi [AB]'nin orta noktasının tam üstüne götür.",
+    "Bu durumda |CA| = |CB|: üçgen ikizkenar olur."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kenarortay inşası",
+   "govde": "1. Karşı kenarın (örneğin [BC]) **orta dikmesini** pergel ve cetvelle inşa et.\n2. Orta dikmenin [BC]'yi kestiği nokta D, [BC]'nin orta noktasıdır.\n3. A ile D'yi cetvelle birleştir: [AD] kenarortaydır.\n\nYani kenarortay inşası, orta dikme inşasıyla bulunan orta noktayı kullanır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Orta noktayı bul",
+   "aciklama": "Kenarortay inşasının ilk adımı: [AB]'nin orta dikmesi. Pergeli aç.",
+   "sim": {
+    "kind": "d-esit-uzaklik",
+    "mod": "ortadikme",
+    "r": 2,
+    "p": [
+     3,
+     3
+    ]
+   },
+   "gorev": {
+    "metin": "Yayları kesiştirerek orta dikmeyi çiz.",
+    "check": {
+     "key": "kesisir",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Orta dikme [AB]'yi tam ortasından keser: kenarortayın ayağı bu noktadır."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üç kenarortay",
+   "aciklama": "Üç kenarortayı birden çiz ve köşeleri sürükle.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "kenarortay",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      9,
+      2
+     ],
+     [
+      4,
+      6
+     ]
+    ],
+    "kose": 0
+   },
+   "gorev": {
+    "metin": "Üç kenarortayı birden çiz.",
+    "check": {
+     "key": "hepsi",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Üç kenarortay her zaman tek bir noktada (G) kesişiyor; buna ağırlık merkezi denir.",
+    "Üçgeni kartondan kesip G noktasından parmağının ucunda dengeleyebilirsin."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "ABC üçgeninde [AD] kenarortaydır ve |BC| = 14 cm'dir. |BD| ve |DC| kaç cm'dir?",
+   "cozum": [
+    "Kenarortay karşı kenarı iki eş parçaya böler.",
+    "|BD| = |DC| = 14 ÷ 2 = 7 cm."
+   ],
+   "sonuc": "7 cm ve 7 cm."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: İkizkenar çatı",
+   "soru": "İkizkenar üçgen biçimindeki bir çatı makasında |AB| = |AC|'dir ve tabanı |BC| = 8 m'dir. Tepeden tabanın orta noktasına bir dikme konacak. Bu dikme tabanı nerede keser, tabanla kaç derecelik açı yapar?",
+   "cozum": [
+    "Tepeden tabanın orta noktasına giden parça kenarortaydır: tabanı 4 m + 4 m olarak böler.",
+    "İkizkenar üçgende tepe köşesinden çizilen kenarortay aynı zamanda yüksekliktir: tabana diktir."
+   ],
+   "sonuc": "Tabanın orta noktasında keser ve 90° yapar."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kenarortayı açıortayla karıştırmak sık yapılan bir hatadır. Kenarortay karşı **kenarı** ikiye böler; açıortay **açıyı** ikiye böler. İkisi yalnız bazı özel durumlarda (ikizkenar üçgenin tepe köşesinde) çakışır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "ABC üçgeninde [AD] kenarortay ve |BC| = 18 cm ise |DC| kaç cm'dir?",
+   "options": [
+    "18",
+    "6",
+    "9",
+    "36"
+   ],
+   "answer": 2,
+   "why": "D orta nokta: 18 ÷ 2 = 9.",
+   "hint": "Kenarortay karşı kenarı nasıl böler?"
+  },
+  {
+   "prompt": "Bir üçgenin kaç kenarortayı vardır?",
+   "options": [
+    "1",
+    "3",
+    "2",
+    "6"
+   ],
+   "answer": 1,
+   "why": "Her köşeden bir kenarortay çizilir.",
+   "hint": "Kaç köşe var?"
+  },
+  {
+   "prompt": "Kenarortay inşasında ilk yapılan iş hangisidir?",
+   "options": [
+    "Karşı kenarın orta noktası orta dikme inşasıyla bulunur.",
+    "Köşedeki açı ikiye bölünür.",
+    "Köşeden karşı kenara dik inilir.",
+    "Kenar iki katına uzatılır."
+   ],
+   "answer": 0,
+   "why": "Kenarortayın ayağı karşı kenarın orta noktasıdır; bu nokta orta dikmeyle bulunur.",
+   "hint": "Kenarortay hangi noktaya gider?"
+  },
+  {
+   "prompt": "Hangi üçgende bir köşeden çizilen kenarortay aynı zamanda yüksekliktir?",
+   "options": [
+    "Her üçgende",
+    "Geniş açılı üçgende",
+    "Çeşitkenar üçgende",
+    "İkizkenar üçgende, tepe köşesinden"
+   ],
+   "answer": 3,
+   "why": "Tepe, tabanın orta noktasının tam üstündeyse kenarortay tabana dik iner.",
+   "hint": "Simülasyonda görevi nasıl tamamladın?"
+  }
+ ]
+}

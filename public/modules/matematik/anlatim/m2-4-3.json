@@ -1,0 +1,529 @@
+{
+ "id": "m2-4-3",
+ "baslik": "Geometrik Şekil Modelleri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.3"
+ ],
+ "sure": 12,
+ "ozet": "Üçgen, kare ve dikdörtgenleri birleştirerek yeni şekiller ve resimler oluşturacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Şekillerden yeni şekiller",
+   "govde": "Geometrik şekilleri yan yana koyarak **yeni şekiller** ve **resimler** oluşturabiliriz.\n\n- İki eş üçgen birleşince bir **kare** ya da **daha büyük bir üçgen** oluşabilir.\n- İki eş kare yan yana gelince bir **dikdörtgen** oluşur.\n\nNeyin oluşacağı, parçaları **nasıl yerleştirdiğimize** bağlıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki üçgen",
+   "aciklama": "Kahverengi üçgen sabit. Yeşil üçgeni farklı yerlere koy, oluşan şekle bak.",
+   "sim": {
+    "kind": "a-birlestir",
+    "izgara": [
+     6,
+     3
+    ],
+    "ox": 2,
+    "oy": 0,
+    "sabit": [
+     [
+      [
+       0,
+       0
+      ],
+      [
+       2,
+       0
+      ],
+      [
+       0,
+       2
+      ]
+     ]
+    ],
+    "secenekler": [
+     {
+      "etiket": "Sağ üste",
+      "pts": [
+       [
+        2,
+        0
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        0,
+        2
+       ]
+      ],
+      "ad": "Kare",
+      "dis": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        0,
+        2
+       ]
+      ]
+     },
+     {
+      "etiket": "Sola",
+      "pts": [
+       [
+        0,
+        0
+       ],
+       [
+        0,
+        2
+       ],
+       [
+        -2,
+        0
+       ]
+      ],
+      "ad": "Büyük bir üçgen",
+      "dis": [
+       [
+        -2,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        0,
+        2
+       ]
+      ]
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "İki üçgenden bir kare oluştur.",
+    "check": {
+     "key": "secim",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Üçgenlerin uzun kenarlarını birleştirmeyi dene.",
+    "Öbür yerleşimde hangi şekil oluşuyor?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki kare",
+   "aciklama": "Kahverengi kare sabit. Yeşil kareyi yerleştir.",
+   "sim": {
+    "kind": "a-birlestir",
+    "izgara": [
+     5,
+     4
+    ],
+    "ox": 0,
+    "oy": 0,
+    "sabit": [
+     [
+      [
+       0,
+       0
+      ],
+      [
+       2,
+       0
+      ],
+      [
+       2,
+       2
+      ],
+      [
+       0,
+       2
+      ]
+     ]
+    ],
+    "secenekler": [
+     {
+      "etiket": "Sağa",
+      "pts": [
+       [
+        2,
+        0
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        2,
+        2
+       ]
+      ],
+      "ad": "Yatay bir dikdörtgen",
+      "dis": [
+       [
+        0,
+        0
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        0,
+        2
+       ]
+      ]
+     },
+     {
+      "etiket": "Üste",
+      "pts": [
+       [
+        0,
+        2
+       ],
+       [
+        2,
+        2
+       ],
+       [
+        2,
+        4
+       ],
+       [
+        0,
+        4
+       ]
+      ],
+      "ad": "Dik duran bir dikdörtgen",
+      "dis": [
+       [
+        0,
+        0
+       ],
+       [
+        2,
+        0
+       ],
+       [
+        2,
+        4
+       ],
+       [
+        0,
+        4
+       ]
+      ]
+     },
+     {
+      "etiket": "Köşeye",
+      "pts": [
+       [
+        2,
+        2
+       ],
+       [
+        4,
+        2
+       ],
+       [
+        4,
+        4
+       ],
+       [
+        2,
+        4
+       ]
+      ],
+      "ad": "Yeni bir kare ya da dikdörtgen oluşmadı; kareler yalnız bir köşeden değiyor"
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "İki kareyle dik duran bir dikdörtgen oluştur.",
+    "check": {
+     "key": "secim",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Kareler bir kenarı boyunca tam değmeli."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birleştirirken dikkat",
+   "govde": "Yeni bir şekil elde etmek için parçalar **kenar kenara**, boşluk ve üst üste binme olmadan yerleşmelidir. Yalnız bir köşeden değen parçalar tek bir şekil oluşturmaz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Trendeki şekiller",
+   "aciklama": "Bu tren şekillerden yapıldı. Parçalara dokun.",
+   "sim": {
+    "kind": "a-sec",
+    "resim": [
+     400,
+     240
+    ],
+    "hedef": "daire",
+    "items": [
+     {
+      "k": "dikdortgen",
+      "pts": [
+       [
+        40,
+        120
+       ],
+       [
+        170,
+        120
+       ],
+       [
+        170,
+        200
+       ],
+       [
+        40,
+        200
+       ]
+      ],
+      "c": 1,
+      "ad": "Vagon"
+     },
+     {
+      "k": "dikdortgen",
+      "pts": [
+       [
+        210,
+        50
+       ],
+       [
+        235,
+        50
+       ],
+       [
+        235,
+        90
+       ],
+       [
+        210,
+        90
+       ]
+      ],
+      "c": 3,
+      "ad": "Baca"
+     },
+     {
+      "k": "dikdortgen",
+      "pts": [
+       [
+        190,
+        90
+       ],
+       [
+        330,
+        90
+       ],
+       [
+        330,
+        200
+       ],
+       [
+        190,
+        200
+       ]
+      ],
+      "c": 0,
+      "ad": "Lokomotif"
+     },
+     {
+      "k": "kare",
+      "pts": [
+       [
+        290,
+        105
+       ],
+       [
+        320,
+        105
+       ],
+       [
+        320,
+        135
+       ],
+       [
+        290,
+        135
+       ]
+      ],
+      "c": 2,
+      "ad": "Pencere"
+     },
+     {
+      "k": "ucgen",
+      "pts": [
+       [
+        330,
+        165
+       ],
+       [
+        330,
+        200
+       ],
+       [
+        365,
+        200
+       ]
+      ],
+      "c": 3,
+      "ad": "Ön tampon"
+     },
+     {
+      "k": "daire",
+      "daire": [
+       222,
+       30,
+       12
+      ],
+      "c": 2,
+      "ad": "Duman"
+     },
+     {
+      "k": "daire",
+      "daire": [
+       75,
+       210,
+       18
+      ],
+      "c": 2,
+      "ad": "Tekerlek 1"
+     },
+     {
+      "k": "daire",
+      "daire": [
+       135,
+       210,
+       18
+      ],
+      "c": 2,
+      "ad": "Tekerlek 2"
+     },
+     {
+      "k": "daire",
+      "daire": [
+       225,
+       210,
+       18
+      ],
+      "c": 2,
+      "ad": "Tekerlek 3"
+     },
+     {
+      "k": "daire",
+      "daire": [
+       295,
+       210,
+       18
+      ],
+      "c": 2,
+      "ad": "Tekerlek 4"
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Trendeki bütün daireleri bul.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Tekerlekleri ve bacadan çıkan dumanı unutma."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir ev resmi için 1 kare, 1 üçgen ve 2 küçük kare kullanıldı. Toplam kaç şekil kullanıldı?",
+   "cozum": [
+    "1 + 1 + 2 = 4."
+   ],
+   "sonuc": "**4** şekil kullanıldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "4 eş kareyi 2 sıra ve 2 sütun olacak biçimde yerleştirirsek ne oluşur?",
+   "cozum": [
+    "Her kenarda 2 kare yan yana gelir.",
+    "Dört kenarı eşit olan büyük bir şekil oluşur."
+   ],
+   "sonuc": "**Daha büyük bir kare** oluşur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İki üçgen her birleştirildiğinde kare oluşmaz. Üçgenleri farklı kenarlarından birleştirince büyük bir üçgen ya da başka bir dörtgen de oluşabilir. Yeni şeklin kenar ve köşelerini say."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "İki eş kare kenar kenara konunca hangi şekil oluşur?",
+   "options": [
+    "Üçgen",
+    "Dikdörtgen",
+    "Daire",
+    "Beşgen"
+   ],
+   "answer": 1,
+   "why": "Uzun kenarı iki kat olan dörtgen: dikdörtgen.",
+   "hint": "Yeni şeklin kenarlarını karşılaştır."
+  },
+  {
+   "prompt": "Bir trenin tekerlekleri çoğunlukla hangi şekille çizilir?",
+   "options": [
+    "Kare",
+    "Üçgen",
+    "Dikdörtgen",
+    "Daire"
+   ],
+   "answer": 3,
+   "why": "Tekerlekler yuvarlaktır: daire.",
+   "hint": "Tekerleğin köşesi var mı?"
+  },
+  {
+   "prompt": "Bir resimde 3 üçgen ve 4 daire kullanıldı. Toplam kaç şekil var?",
+   "options": [
+    "7",
+    "12",
+    "1",
+    "34"
+   ],
+   "answer": 0,
+   "why": "3 + 4 = 7.",
+   "hint": "Şekil sayılarını topla."
+  }
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "id": "m10-1-1",
+ "baslik": "Dik Üçgende Trigonometrik Oranlar ve Trigonometrik Özdeşlikler",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.1.1"],
+ "sure": 18,
+ "ders": "birim-cember",
+ "ozet": "Bir dik üçgende kenarların birbirine oranı yalnız açıya bağlıdır. Bu oranlara sinüs, kosinüs, tanjant ve kotanjant diyeceğiz; ardından aralarındaki özdeşlikleri Pisagor bağıntısından çıkaracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Aynı açı, aynı oran",
+   "govde": "Dar açılarından biri α olan iki dik üçgen düşün. Biri ötekinin büyütülmüş hâliyse üçgenler **benzerdir** ve karşılıklı kenarların oranı eşittir. Demek ki \"α'nın karşısındaki kenar / hipotenüs\" oranı üçgenin büyüklüğüne değil, yalnız α'ya bağlıdır.\n\nKenarları açıya göre adlandırırız:\n- **Hipotenüs**: dik açının karşısındaki en uzun kenar.\n- **Karşı dik kenar**: α'nın karşısındaki dik kenar.\n- **Komşu dik kenar**: α'nın yanındaki dik kenar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgeni büyüt, oranlara bak",
+   "aciklama": "Önce yalnız hipotenüs kaydırıcısını oynat: kenarlar değişir ama oranlar aynı kalır. Sonra açıyı değiştir.",
+   "sim": { "kind": "f-dik-ucgen", "deg": 30, "hyp": 4 },
+   "gorev": { "metin": "Açıyı, karşı ve komşu dik kenarlar eşit olacak (tan α = 1) şekilde ayarla.", "check": { "key": "deg", "eq": 45 } },
+   "dene": ["Hipotenüs 4 iken de 8 iken de sin 30° = 0,5 kalıyor mu?", "Açı büyüdükçe sinüs artıyor, kosinüs azalıyor."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tanımlar",
+   "govde": "Dar açısı α olan bir dik üçgende:\n- sin α = karşı dik kenar / hipotenüs\n- cos α = komşu dik kenar / hipotenüs\n- tan α = karşı dik kenar / komşu dik kenar\n- cot α = komşu dik kenar / karşı dik kenar\n\nHipotenüs en uzun kenar olduğu için dar açılarda 0 < sin α < 1 ve 0 < cos α < 1 olur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Dik kenarları 3 ve 4 birim olan bir dik üçgende, 3 birimlik kenarın karşısındaki açı α olsun. α'nın dört trigonometrik oranını bulalım.",
+   "cozum": [
+    "Hipotenüs: √(3² + 4²) = √25 = 5.",
+    "α'nın karşısı 3, komşusu 4.",
+    "sin α = 3/5, cos α = 4/5.",
+    "tan α = 3/4, cot α = 4/3."
+   ],
+   "sonuc": "sin α = 3/5, cos α = 4/5, tan α = 3/4, cot α = 4/3."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Özel açılar",
+   "govde": "Eşkenar üçgeni ve ikizkenar dik üçgeni ikiye bölerek bulunur:\n- 30°: sin = 1/2, cos = √3/2, tan = √3/3\n- 45°: sin = √2/2, cos = √2/2, tan = 1\n- 60°: sin = √3/2, cos = 1/2, tan = √3"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Özel açıyı bul",
+   "aciklama": "Kosinüs değerini izleyerek açıyı ayarla.",
+   "sim": { "kind": "f-dik-ucgen", "deg": 20, "hyp": 6 },
+   "gorev": { "metin": "cos α = 0,5 olacak açıyı bul.", "check": { "key": "deg", "eq": 60 } },
+   "dene": ["60° bulunca sinüse bak: √3/2 ≈ 0,866.", "30°'ye git: bu kez sinüs 0,5 oluyor. Neden yer değiştirdiler?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Temel özdeşlikler",
+   "govde": "Karşı a, komşu b, hipotenüs c olsun. Pisagor'dan a² + b² = c²; iki tarafı c²'ye bölersek:\n- **sin²α + cos²α = 1**\n- tan α = sin α / cos α, cot α = cos α / sin α\n- tan α · cot α = 1\n\nBir dik üçgende iki dar açının toplamı 90°'dir. α'nın karşı kenarı, (90° − α)'nın komşu kenarıdır:\n- **sin α = cos(90° − α)**, tan α = cot(90° − α)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birim çemberde tümler açılar",
+   "aciklama": "Birim çemberde hipotenüs 1'dir; kahverengi parça kosinüs, yeşil parça sinüstür. Önce 40°'ye git ve sinüsü not et.",
+   "sim": { "kind": "birim-cember", "deg": 40 },
+   "gorev": { "metin": "Noktayı 50°'ye getir ve cos 50° değerinin sin 40° ile aynı olduğunu gör.", "check": { "key": "deg", "eq": 50 } },
+   "dene": ["Hangi açıda olursan ol sin² + cos² satırı 1 gösteriyor.", "sin 40° ≈ 0,643 ve cos 50° ≈ 0,643."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "α dar açı ve sin α = 5/13 ise cos α, tan α ve cot α kaçtır?",
+   "cozum": [
+    "Karşı 5, hipotenüs 13 olan bir dik üçgen çiz.",
+    "Komşu kenar: √(13² − 5²) = √144 = 12.",
+    "cos α = 12/13, tan α = 5/12, cot α = 12/5.",
+    "Kontrol: (5/13)² + (12/13)² = (25 + 144)/169 = 1."
+   ],
+   "sonuc": "cos α = 12/13, tan α = 5/12, cot α = 12/5."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "α dar açı olmak üzere (1 − cos²α) / sin α · cot α ifadesinin en sade hâli nedir?",
+   "cozum": [
+    "1 − cos²α = sin²α (temel özdeşlik).",
+    "sin²α / sin α = sin α.",
+    "sin α · cot α = sin α · (cos α / sin α) = cos α."
+   ],
+   "sonuc": "İfade cos α'ya eşittir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Karşı\" ve \"komşu\" kenarlar sabit değildir, hangi açıya bakıldığına göre değişir. α'ya göre karşı olan kenar, öteki dar açıya göre komşudur. Ayrıca sin α bir çarpım değildir: sin α'yı \"sin · α\" diye sadeleştirmeye çalışmak yanlıştır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Dik kenarları 8 ve 15 olan bir dik üçgende 8'in karşısındaki açı α ise sin α kaçtır?", "options": ["15/17", "8/15", "8/17", "17/8"], "answer": 2, "why": "Hipotenüs √(64 + 225) = 17; sin α = karşı/hipotenüs = 8/17.", "hint": "Önce hipotenüsü Pisagor ile bul." },
+  { "prompt": "tan α = 2 ise cot α kaçtır?", "options": ["2", "1/2", "−2", "4"], "answer": 1, "why": "tan α · cot α = 1 olduğundan cot α = 1/2.", "hint": "tan ve cot birbirinin çarpmaya göre tersidir." },
+  { "prompt": "sin 20° aşağıdakilerden hangisine eşittir?", "options": ["cos 70°", "cos 20°", "sin 70°", "tan 70°"], "answer": 0, "why": "Tümler açılarda sin α = cos(90° − α); 90° − 20° = 70°.", "hint": "Toplamı 90° olan açıları düşün." },
+  { "prompt": "α dar açı ve cos α = 0,6 ise tan α kaçtır?", "options": ["3/4", "4/5", "3/5", "4/3"], "answer": 3, "why": "Komşu 3, hipotenüs 5 alınırsa karşı 4 olur; tan α = 4/3.", "hint": "cos α = 3/5 olan bir dik üçgen çiz." }
+ ]
+}

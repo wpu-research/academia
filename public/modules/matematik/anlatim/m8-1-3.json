@@ -1,0 +1,94 @@
+{
+ "id": "m8-1-3",
+ "baslik": "Kareköklü İfadeler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.1.3.1", "M.8.1.3.2", "M.8.1.3.3", "M.8.1.3.4", "M.8.1.3.5", "M.8.1.3.6", "M.8.1.3.7", "M.8.1.3.8"],
+ "sure": 18,
+ "ozet": "Karekökü bir karenin alanı ile kenarı arasındaki ilişki olarak göreceğiz; tam kare olmayan sayıların kareköklerini tahmin edecek, a√b biçimine çevirecek, kareköklü ifadelerle işlem yapacak ve gerçek sayıları tanıyacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Alan ve kenar",
+   "govde": "Alanı 49 birimkare olan bir karenin kenarı 7 birimdir, çünkü 7 · 7 = 49. Bunu **√49 = 7** diye yazarız ve \"49'un karekökü 7\" diye okuruz.\n\n1, 4, 9, 16, 25, 36, 49, 64, 81, 100 gibi bir doğal sayının karesi olan sayılara **tam kare** sayılar denir. Tam karelerin karekökleri doğal sayıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alanı değiştir, kenara bak",
+   "aciklama": "Kaydırıcı karenin alanını değiştirir. Kenar uzunluğu (√n) sayı doğrusunda gösterilir. Kesikli kareler, n'ye en yakın iki tam karedir.",
+   "sim": { "kind": "e-karekok", "n": 49, "max": 100 },
+   "gorev": { "metin": "50'den büyük ilk tam kare sayıyı bul.", "check": { "key": "n", "eq": 64 } },
+   "dene": ["n tam kare olduğunda kare, ızgaranın birim karelerini tam olarak kaplar."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tam kare olmayan sayıların karekökü",
+   "govde": "n tam kare değilse √n bir doğal sayı değildir; iki ardışık doğal sayı arasındadır. Bunu bulmak için n'yi iki tam karenin arasına yerleştiririz:\n\n25 < 31 < 36 ⇒ √25 < √31 < √36 ⇒ **5 < √31 < 6**\n\nHangisine daha yakın olduğunu, ortadaki değerin karesiyle karar verebiliriz: 5,5² = 30,25 < 31 olduğundan √31 > 5,5; yani √31, 6'ya daha yakındır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki doğal sayı arasında",
+   "aciklama": "Sayı doğrusundaki kısa kesikli çizgi, iki doğal sayının tam ortasıdır.",
+   "sim": { "kind": "e-karekok", "n": 31, "max": 100 },
+   "gorev": { "metin": "Karekökü 7 ile 8 arasında olan ve 8'e daha yakın olan bir n seç.", "check": { "all": [ { "key": "n", "gte": 57 }, { "key": "n", "lt": 64 } ] } },
+   "dene": ["7,5² = 56,25. n = 56 için √n hâlâ 7'ye yakın, n = 57 için 8'e yakın."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "a√b biçimi",
+   "govde": "Kök içindeki sayının tam kare çarpanı kök dışına çıkarılır: √(a² · b) = a√b.\n\n- √72 = √(36 · 2) = 6√2\n- √50 = √(25 · 2) = 5√2\n\nTersine, katsayı kök içine karesi alınarak girer: 3√5 = √(9 · 5) = √45. Bu, kareköklü sayıları karşılaştırmayı kolaylaştırır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kareköklü ifadelerle işlemler",
+   "govde": "a, b ≥ 0 için:\n\n- Çarpma: √a · √b = √(a · b)\n- Bölme: √a ÷ √b = √(a ÷ b) (b ≠ 0)\n- Toplama ve çıkarma yalnız kök içleri aynı olan terimlerde yapılır: 4√3 + 2√3 = 6√3. √2 + √3 daha sade yazılamaz.\n\nBir kareköklü ifadeyi doğal sayı yapan çarpan: √18 = 3√2 olduğundan √18 · √2 = √36 = 6."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "√12 + √27 − √3 ve √18 · √8 işlemlerini yapalım.",
+   "cozum": [
+    "√12 = √(4 · 3) = 2√3 ve √27 = √(9 · 3) = 3√3.",
+    "2√3 + 3√3 − √3 = (2 + 3 − 1)√3 = 4√3.",
+    "√18 · √8 = √(18 · 8) = √144 = 12."
+   ],
+   "sonuc": "Sonuçlar 4√3 ve 12."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Ondalık sayıların karekökü",
+   "soru": "√0,49 ve √1,21 değerlerini bulalım.",
+   "cozum": [
+    "0,49 = 49/100, pay ve payda tam kare: √(49/100) = 7/10 = 0,7.",
+    "1,21 = 121/100: √(121/100) = 11/10 = 1,1."
+   ],
+   "sonuc": "√0,49 = 0,7 ve √1,21 = 1,1."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Gerçek sayılar",
+   "govde": "İki tam sayının oranı (a/b, b ≠ 0) olarak yazılabilen sayılar **rasyonel**dir: 3, −2, 0,25, 2/7.\n\nTam kare olmayan doğal sayıların karekökleri (√2, √5, …) iki tam sayının oranı olarak yazılamaz; bunlar **irrasyonel** sayılardır. π da irrasyoneldir; işlemlerde kolaylık için yerine 3, 3,14 ya da 22/7 alınabilir ama bunlar yalnız yaklaşık değerlerdir.\n\nRasyonel ve irrasyonel sayılar birlikte **gerçek sayıları** oluşturur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: kare bahçe",
+   "soru": "Alanı 75 m² olan kare biçimindeki bir bahçenin çevresine tel çekilecek. Kaç metre tel gerekir? (√3 ≈ 1,73 alın.)",
+   "cozum": [
+    "Kenar = √75 = √(25 · 3) = 5√3 m.",
+    "Çevre = 4 · 5√3 = 20√3 m.",
+    "20 · 1,73 = 34,6."
+   ],
+   "sonuc": "Yaklaşık 34,6 m tel gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- √9 + √16 = √25 sanmak. Doğrusu 3 + 4 = 7, oysa √25 = 5. Kök içleri toplanmaz.\n- √2 + √3 = √5 yazmak. Kök içleri farklı terimler toplanamaz.\n- √31'in hangi tam sayıya yakın olduğuna 31'in 25'e ve 36'ya uzaklığına bakarak değil, ortadaki değerin karesiyle karar ver.\n- 22/7'nin π'ye eşit olduğunu sanmak; yalnız yaklaşık değeridir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "√50 hangi iki ardışık doğal sayı arasındadır?", "options": ["6 ile 7", "7 ile 8", "8 ile 9", "5 ile 6"], "answer": 1, "why": "49 < 50 < 64 olduğundan 7 < √50 < 8.", "hint": "50'den küçük ve büyük en yakın tam kareleri bul." },
+  { "prompt": "√48 ifadesinin a√b biçimi hangisidir?", "options": ["3√4", "16√3", "4√3", "6√2"], "answer": 2, "why": "48 = 16 · 3 olduğundan √48 = 4√3.", "hint": "48'in en büyük tam kare çarpanını bul." },
+  { "prompt": "2√5 + 3√20 işleminin sonucu hangisidir?", "options": ["5√5", "6√5", "8√10", "8√5"], "answer": 3, "why": "√20 = 2√5, yani 3√20 = 6√5. 2√5 + 6√5 = 8√5.", "hint": "Önce √20'yi a√5 biçimine getir." },
+  { "prompt": "Hangisi irrasyonel bir sayıdır?", "options": ["√12", "√0,36", "√(9/4)", "−√25"], "answer": 0, "why": "12 tam kare değildir; √12 = 2√3 irrasyoneldir. Diğerleri 0,6; 3/2 ve −5.", "hint": "Kök içinin (ya da kesrin pay ve paydasının) tam kare olup olmadığına bak." }
+ ]
+}

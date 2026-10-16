@@ -1,0 +1,152 @@
+{
+ "id": "m5-1-2",
+ "baslik": "Basamak Değerlerini Çözümleme",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.1.1",
+  "MAT.5.1.2"
+ ],
+ "sure": 12,
+ "ders": "basamak-degeri",
+ "ozet": "Çok basamaklı sayılarda her rakamın basamak adını ve basamak değerini belirleyecek, sayıları basamak değerlerinin toplamı olarak çözümleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sayı değeri ve basamak değeri",
+   "govde": "Bir rakamın **sayı değeri** kendisidir. **Basamak değeri** ise rakamın bulunduğu basamağa göre aldığı değerdir: rakam × basamağın değeri.\n\n5 555 sayısındaki dört 5'in sayı değeri aynıdır (5), ama basamak değerleri farklıdır: 5 000, 500, 50 ve 5."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bloklarla basamak",
+   "aciklama": "Yüzlük, onluk ve birlik blokları ekle ya da çıkar.",
+   "sim": {
+    "kind": "onluk-bloklar",
+    "h": 1,
+    "t": 2,
+    "o": 3
+   },
+   "gorev": {
+    "metin": "305 sayısını bloklarla göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 305
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Onlar basamağı 0: hiç onluk blok yok ama basamak yine de vardır.",
+    "305 = 3 × 100 + 0 × 10 + 5 × 1."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çözümleme",
+   "govde": "Bir sayıyı **çözümlemek**, onu basamak değerlerinin toplamı olarak yazmaktır.\n\n4 708 213 = 4 × 1 000 000 + 7 × 100 000 + 8 × 1 000 + 2 × 100 + 1 × 10 + 3 × 1\n\nDeğeri 0 olan basamaklar çözümlemede yazılmayabilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bir rakamı değiştir",
+   "aciklama": "Tabloda 4 708 213 var. Yüz binler basamağındaki 7 turuncu. Çözümleme altta yazar.",
+   "sim": {
+    "kind": "c-basamak",
+    "basamak": 9,
+    "value": 4708213,
+    "vurgu": 5
+   },
+   "gorev": {
+    "metin": "Yüz binler basamağındaki rakamı 0 yap.",
+    "check": {
+     "key": "value",
+     "eq": 4008213
+    }
+   },
+   "dene": [
+    "Sayı 700 000 azaldı: 7'nin basamak değeri buydu.",
+    "Çözümlemede 7 × 100 000 terimi kayboldu."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Çözümleme",
+   "soru": "60 040 900 sayısını çözümleyelim.",
+   "cozum": [
+    "6 on milyonlar basamağında: 6 × 10 000 000.",
+    "4 on binler basamağında: 4 × 10 000.",
+    "9 yüzler basamağında: 9 × 100."
+   ],
+   "sonuc": "60 040 900 = 6 × 10 000 000 + 4 × 10 000 + 9 × 100."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Çözümlenmiş sayıyı yazma",
+   "soru": "2 × 1 000 000 + 3 × 10 000 + 7 × 10 ifadesinin gösterdiği sayıyı yazalım.",
+   "cozum": [
+    "Milyonlar: 2. Yüz binler: 0, on binler: 3, binler: 0.",
+    "Yüzler: 0, onlar: 7, birler: 0."
+   ],
+   "sonuc": "2 030 070."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Sayı değeri ile basamak değerini karıştırmak sık yapılır. 9 384 120 sayısında 3'ün basamak değeri 3 değil, **300 000**'dir; çünkü 3 yüz binler basamağındadır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "9 384 120 sayısında 3 rakamının basamak değeri kaçtır?",
+   "options": [
+    "3",
+    "300 000",
+    "30 000",
+    "3 000 000"
+   ],
+   "answer": 1,
+   "why": "3 yüz binler basamağındadır: 3 × 100 000 = 300 000.",
+   "hint": "Sağdan sola basamakları say."
+  },
+  {
+   "prompt": "5 × 1 000 000 + 4 × 1 000 + 6 ifadesinin gösterdiği sayı hangisidir?",
+   "options": [
+    "5 400 006",
+    "5 040 006",
+    "5 004 006",
+    "546"
+   ],
+   "answer": 2,
+   "why": "Milyonlar 5, binler 4, birler 6; diğer basamaklar 0: 5 004 006.",
+   "hint": "Boş kalan basamaklara 0 yaz."
+  },
+  {
+   "prompt": "72 058 sayısının on binler basamağındaki rakam hangisidir?",
+   "options": [
+    "7",
+    "2",
+    "0",
+    "5"
+   ],
+   "answer": 0,
+   "why": "7 on binler, 2 binler, 0 yüzler, 5 onlar, 8 birler basamağındadır.",
+   "hint": "Birlerden başlayıp sola doğru say."
+  },
+  {
+   "prompt": "Bir sayının yüz binler basamağındaki rakam 1 artırılırsa sayı kaç artar?",
+   "options": [
+    "1",
+    "1 000",
+    "10 000",
+    "100 000"
+   ],
+   "answer": 3,
+   "why": "Yüz binler basamağındaki 1'in basamak değeri 100 000'dir.",
+   "hint": "O basamaktaki 1'in basamak değeri nedir?"
+  }
+ ]
+}

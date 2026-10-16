@@ -1,0 +1,169 @@
+{
+ "id": "m7-6-2",
+ "baslik": "Daire ve Daire Diliminin Alanı",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.4.7",
+  "MAT.7.4.8",
+  "MAT.7.4.10"
+ ],
+ "sure": 15,
+ "ozet": "Daireyi dilimleyip yeniden dizerek alan bağıntısına (π · r²) ulaşacak, merkez açı ile daire dilimi alanı arasındaki ilişkiyi kuracak ve problemlerde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çember ve daire",
+   "govde": "**Çember** bir eğridir; uzunluğu (çevresi) vardır. Çemberin iç bölgesiyle birlikte oluşturduğu düzlem parçasına **daire** denir; dairenin **alanı** vardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dilimle ve diz",
+   "aciklama": "Daire eş dilimlere bölünüp dilimler ters yüz edilerek yan yana dizildi. Dilim sayısını artır.",
+   "sim": {
+    "kind": "d-daire-dizme",
+    "n": 8
+   },
+   "gorev": {
+    "metin": "Daireyi en az 24 dilime böl.",
+    "check": {
+     "key": "n",
+     "gte": 24
+    }
+   },
+   "dene": [
+    "Dilim sayısı arttıkça kenarlar düzleşiyor: şekil bir dikdörtgene yaklaşıyor.",
+    "Kahverengi dilimler çevrenin yarısını, yeşil dilimler öbür yarısını oluşturuyor."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dairenin alanı",
+   "govde": "Dizilen dilimlerin oluşturduğu şeklin tabanı çevrenin yarısı (**π · r**), yüksekliği yarıçap (**r**) kadardır. Dikdörtgenin alanı taban · yükseklik olduğundan:\n\n**Daire alanı = π · r · r = π · r²**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Daire diliminin alanı",
+   "govde": "İki yarıçap ve bir yayla sınırlı bölgeye **daire dilimi** denir. Merkez açı tam açının ne kadarıysa dilim de dairenin o kadarıdır:\n\n**Dilim alanı = π · r² · α / 360**\n\n(Çember ve yay uzunluğu arasındaki ilişkinin aynısı.)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dilim alanı",
+   "aciklama": "Yarıçapı ve merkez açıyı değiştir. (π = 3)",
+   "sim": {
+    "kind": "d-daire-dilimi",
+    "mod": "alan",
+    "r": 4,
+    "aci": 60,
+    "pi": 3,
+    "adim": 15
+   },
+   "gorev": {
+    "metin": "Yarıçapı 6 yap ve dilim alanını 27 birimkare yap.",
+    "check": {
+     "all": [
+      {
+       "key": "r",
+       "eq": 6
+      },
+      {
+       "key": "alan",
+       "eq": 27,
+       "tol": 0.01
+      }
+     ]
+    }
+   },
+   "dene": [
+    "r = 6 için daire alanı 3 · 36 = 108. 27 bunun kaçta kaçı?",
+    "Açı iki katına çıkınca dilim alanı da iki katına çıkıyor."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Yarıçapı 5 cm olan dairenin alanını bulalım. (π = 3,14)",
+   "cozum": [
+    "Alan = π · r² = 3,14 · 5 · 5.",
+    "= 3,14 · 25 = 78,5."
+   ],
+   "sonuc": "78,5 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Yarıçapı 6 cm, merkez açısı 60° olan daire diliminin alanını bulalım. (π = 3)",
+   "cozum": [
+    "Daire alanı = 3 · 6² = 108 cm².",
+    "60/360 = 1/6.",
+    "Dilim alanı = 108 · 1/6 = 18 cm²."
+   ],
+   "sonuc": "18 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Pizza",
+   "soru": "Yarıçapı 20 cm olan bir pizza 8 eş dilime bölünüyor. Bir dilimin alanı kaç cm²'dir? Bir dilimin merkez açısı kaç derecedir? (π = 3)",
+   "cozum": [
+    "Pizza alanı = 3 · 20² = 1200 cm².",
+    "Bir dilim: 1200 ÷ 8 = 150 cm².",
+    "Merkez açı: 360 ÷ 8 = 45°."
+   ],
+   "sonuc": "150 cm²; 45°."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Daire alanı yerine çevre formülünü (2 · π · r) kullanmak ya da **çapı yarıçap** yerine koymak sık yapılan hatalardır. Çapı 10 cm olan dairenin alanı π · 10² değil, π · 5² = 25π'dir. Alanın birimi cm², çevreninki cm'dir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Yarıçapı 4 cm olan dairenin alanı kaç cm²'dir? (π = 3)",
+   "options": [
+    "24",
+    "48",
+    "12",
+    "144"
+   ],
+   "answer": 1,
+   "why": "3 · 4² = 48.",
+   "hint": "Alan = π · r²."
+  },
+  {
+   "prompt": "Çapı 10 cm olan dairenin alanı kaç cm²'dir? (π = 3)",
+   "options": [
+    "300",
+    "30",
+    "75",
+    "100"
+   ],
+   "answer": 2,
+   "why": "r = 5; 3 · 25 = 75.",
+   "hint": "Önce yarıçapı bul."
+  },
+  {
+   "prompt": "Yarıçapı 6 cm, merkez açısı 90° olan daire diliminin alanı kaç cm²'dir? (π = 3)",
+   "options": [
+    "27",
+    "108",
+    "54",
+    "9"
+   ],
+   "answer": 0,
+   "why": "108 · 90/360 = 27.",
+   "hint": "90° tam açının dörtte biri."
+  },
+  {
+   "prompt": "Bir daire diliminin alanı dairenin alanının 1/6'sı ise merkez açısı kaç derecedir?",
+   "options": [
+    "30°",
+    "45°",
+    "90°",
+    "60°"
+   ],
+   "answer": 3,
+   "why": "360 ÷ 6 = 60.",
+   "hint": "Dilim alanı da merkez açı da aynı oranda."
+  }
+ ]
+}

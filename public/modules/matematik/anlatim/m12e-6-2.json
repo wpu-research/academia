@@ -1,0 +1,256 @@
+{
+ "id": "m12e-6-2",
+ "baslik": "Belirli İntegral ve Uygulamaları",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.6.2.1",
+  "12.6.2.2",
+  "12.6.2.3",
+  "12.6.2.4"
+ ],
+ "sure": 25,
+ "ders": "integral-alan",
+ "ozet": "Eğri altındaki alanı dikdörtgenlerle yaklaşık hesaplayıp (Riemann toplamı) belirli integrale geçeceğiz. Belirli ve belirsiz integral arasındaki bağı, belirli integralin özelliklerini ve alan hesabını öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dikdörtgenlerle alan",
+   "govde": "y = x² eğrisi, x ekseni ve x = 2 doğrusu arasındaki bölgenin alanı nedir? Bölge eğri ile sınırlı olduğu için alan formülü yok. Ama bölgeyi ince dikdörtgenlere bölüp alanlarını toplayabiliriz. Dikdörtgenler inceldikçe toplam gerçek alana yaklaşır.\n\nBu toplamlara **Riemann toplamı** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Riemann toplamı",
+   "aciklama": "[0, 2] aralığını n eşit parçaya böl; her dikdörtgenin yüksekliği seçtiğin noktadaki f değeri. Gerçek alan 8/3 ≈ 2,6667.",
+   "sim": {
+    "kind": "integral-alan",
+    "b": 2,
+    "n": 4,
+    "mode": "sag"
+   },
+   "gorev": {
+    "metin": "Toplam ile gerçek alan arasındaki farkı 0,01'in altına indir.",
+    "check": {
+     "key": "err",
+     "lt": 0.01
+    }
+   },
+   "dene": [
+    "Sağ uçla n = 100 bile yetmez (fark ≈ 0,04).",
+    "Orta nokta seçeneğiyle n = 10 yeterli: fark ≈ 0,0067."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Belirli integral ve temel teorem",
+   "govde": "f, [a, b] aralığında sürekli olsun. Aralık n eşit parçaya bölünür, Δx = (b − a)/n ve her parçadan bir xᵢ seçilirse\n\n**∫ₐᵇ f(x) dx = lim_(n→∞) Σ f(xᵢ) · Δx**\n\nBu limite f'nin a'dan b'ye **belirli integrali** denir. f ≥ 0 ise değeri eğri altındaki alandır.\n\n**Temel teorem:** F′ = f ise **∫ₐᵇ f(x) dx = F(b) − F(a)**. Bu fark kısaca [F(x)]ₐᵇ yazılır. Ayrıca (d/dx) ∫ₐˣ f(t) dt = f(x)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "∫₀² x² dx ve ∫₁³ (3x² − 2x) dx integrallerini hesaplayalım.",
+   "cozum": [
+    "x²'nin bir ilkeli x³/3: [x³/3]₀² = 8/3 − 0 = 8/3. (Simülasyondaki değer.)",
+    "3x² − 2x'in bir ilkeli x³ − x².",
+    "[x³ − x²]₁³ = (27 − 9) − (1 − 1) = 18."
+   ],
+   "sonuc": "8/3 ve 18."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Belirli integralin özellikleri",
+   "govde": "- ∫ₐᵃ f(x) dx = 0\n- ∫ₐᵇ f(x) dx = −∫ᵦₐ f(x) dx (sınırlar yer değiştirince işaret değişir)\n- ∫ₐᵇ k · f(x) dx = k · ∫ₐᵇ f(x) dx\n- ∫ₐᵇ [f(x) ± g(x)] dx = ∫ₐᵇ f(x) dx ± ∫ₐᵇ g(x) dx\n- ∫ₐᶜ f(x) dx + ∫ᶜᵇ f(x) dx = ∫ₐᵇ f(x) dx\n- **Parçalı fonksiyonlarda** aralık, kuralın değiştiği noktadan bölünür ve her parçada kendi kuralı kullanılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İşaretli alan",
+   "aciklama": "f(x) = x² − 2x. Yeşil bölge x ekseninin üstünde (+), kırmızı bölge altında (−) sayılır. Belirli integral bu ikisinin farkıdır; alan ise toplamıdır.",
+   "sim": {
+    "kind": "g-belirli",
+    "coef": [
+     1,
+     -2,
+     0
+    ],
+    "fLabel": "x² − 2x",
+    "FLabel": "x³/3 − x²",
+    "a": 0,
+    "b": 2,
+    "xr": [
+     -1,
+     4
+    ],
+    "yr": [
+     -2,
+     4
+    ],
+    "min": -1,
+    "max": 4,
+    "step": 0.5
+   },
+   "gorev": {
+    "metin": "a = 0 iken integrali 0 yapan (ama alanı 0 olmayan) b'yi bul.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 0
+      },
+      {
+       "key": "I",
+       "eq": 0,
+       "tol": 1e-06
+      },
+      {
+       "key": "A",
+       "gte": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "b = 3 iken yeşil ve kırmızı alanlar eşit (4/3), integral 0, toplam alan 8/3.",
+    "a'yı b'den büyük yap: integralin işareti değişir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2 · Parçalı fonksiyon",
+   "soru": "f(x) = x + 1 (x < 1), f(x) = 3 − x² (x ≥ 1) ise ∫₋₁² f(x) dx kaçtır?",
+   "cozum": [
+    "Aralığı x = 1'den böl: ∫₋₁¹ (x + 1) dx + ∫₁² (3 − x²) dx.",
+    "[x²/2 + x]₋₁¹ = (1/2 + 1) − (1/2 − 1) = 2.",
+    "[3x − x³/3]₁² = (6 − 8/3) − (3 − 1/3) = 10/3 − 8/3 = 2/3."
+   ],
+   "sonuc": "∫₋₁² f(x) dx = 2 + 2/3 = 8/3."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Alan hesabı",
+   "govde": "- f(x) ≥ 0 ise [a, b]'de eğri ile x ekseni arasındaki alan **∫ₐᵇ f(x) dx**.\n- f(x) ≤ 0 ise alan **−∫ₐᵇ f(x) dx**.\n- f işaret değiştiriyorsa aralık köklerden bölünür; genel olarak **A = ∫ₐᵇ |f(x)| dx**.\n- İki eğri arasındaki alan: **A = ∫ₐᵇ |f(x) − g(x)| dx** (üstteki eksi alttaki)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bölgenin tamamı",
+   "aciklama": "f(x) = 4 − x². Eğri x eksenini −2 ve 2'de keser.",
+   "sim": {
+    "kind": "g-belirli",
+    "coef": [
+     -1,
+     0,
+     4
+    ],
+    "fLabel": "4 − x²",
+    "FLabel": "4x − x³/3",
+    "a": -1,
+    "b": 1,
+    "xr": [
+     -3,
+     3
+    ],
+    "yr": [
+     -5,
+     5
+    ],
+    "min": -3,
+    "max": 3,
+    "step": 0.5
+   },
+   "gorev": {
+    "metin": "Eğri ile x ekseni arasında kalan sınırlı bölgenin tamamını tara.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": -2
+      },
+      {
+       "key": "b",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Alan 32/3 ≈ 10,667 olmalı.",
+    "b'yi 3'e çek: kırmızı parça eklenir, integral ve alan birbirinden ayrılır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3 · İki eğri arası",
+   "soru": "y = x² ve y = 2x eğrileri arasında kalan bölgenin alanını bulalım.",
+   "cozum": [
+    "Kesişim: x² = 2x ⇒ x = 0 ya da x = 2.",
+    "0 < x < 2'de 2x ≥ x² (örneğin x = 1'de 2 > 1); üstteki eğri y = 2x.",
+    "A = ∫₀² (2x − x²) dx = [x² − x³/3]₀² = 4 − 8/3."
+   ],
+   "sonuc": "A = 4/3."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "y = x² − 4 eğrisi ile x ekseni arasında kalan sınırlı bölgenin alanı kaçtır?",
+   "cozum": [
+    "Kökler: x = −2 ve x = 2. Bu aralıkta x² − 4 ≤ 0.",
+    "A = ∫₋₂² (4 − x²) dx = [4x − x³/3]₋₂².",
+    "= (8 − 8/3) − (−8 + 8/3) = 16 − 16/3."
+   ],
+   "sonuc": "A = 32/3."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Alan sorusunda doğrudan ∫ f dx almak. x ekseninin altındaki parçalar eksi sayılır, birbirini götürebilir (simülasyonda b = 3).\n- F(a) − F(b) yazmak; doğrusu **üst sınır eksi alt sınır**: F(b) − F(a).\n- Parçalı fonksiyonda aralığı bölmeden tek kuralla integral almak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "∫₀¹ (3x² + 2x) dx kaçtır?",
+   "options": [
+    "1",
+    "3",
+    "2",
+    "5/2"
+   ],
+   "answer": 2,
+   "why": "[x³ + x²]₀¹ = 2.",
+   "hint": "İlkel x³ + x²; üst sınırdan alt sınırı çıkar."
+  },
+  {
+   "prompt": "∫₁⁴ f(x) dx = 7 ve ∫₄⁶ f(x) dx = −2 ise ∫₁⁶ f(x) dx kaçtır?",
+   "options": [
+    "9",
+    "5",
+    "−5",
+    "14"
+   ],
+   "answer": 1,
+   "why": "Ardışık aralıklar toplanır: 7 + (−2) = 5.",
+   "hint": "∫ₐᶜ + ∫ᶜᵇ = ∫ₐᵇ."
+  },
+  {
+   "prompt": "y = x³ eğrisi, x ekseni, x = −1 ve x = 1 doğruları arasındaki bölgenin alanı kaçtır?",
+   "options": [
+    "0",
+    "1/4",
+    "1",
+    "1/2"
+   ],
+   "answer": 3,
+   "why": "İki parçanın her biri 1/4; alan 1/2. (İntegral 0 olur ama alan 0 değildir.)",
+   "hint": "[−1, 0] aralığında x³ negatif; parçaları ayrı hesapla."
+  },
+  {
+   "prompt": "(d/dx) ∫₀ˣ (t² + 1) dt ifadesinin x = 2 için değeri kaçtır?",
+   "options": [
+    "5",
+    "3",
+    "4",
+    "9"
+   ],
+   "answer": 0,
+   "why": "Temel teoreme göre türev x² + 1; x = 2 için 5.",
+   "hint": "İntegralin üst sınıra göre türevi, integrandın o noktadaki değeridir."
+  }
+ ]
+}

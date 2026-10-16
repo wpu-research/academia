@@ -1,0 +1,231 @@
+{
+ "id": "m3-5-2",
+ "baslik": "Simetrik Şekli Tamamlama",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.7"
+ ],
+ "sure": 12,
+ "ozet": "Yarısı verilen bir şekli simetri doğrusuna göre tamamlayacağız: her parçanın doğruya uzaklığını koruyarak karşı tarafa aktaracağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ayna gibi",
+   "govde": "Simetrik bir şeklin iki yarısı, simetri doğrusuna konan bir aynadaki görüntü gibidir. Yarısı verilen bir şekli tamamlarken her noktanın **simetri doğrusuna olan uzaklığını** koruruz.\n\nKareli kâğıtta bu iş kolaydır: kareleri sayarak uzaklığı ölçeriz."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tamamlama adımları",
+   "govde": "1. Boyalı bir kare seç. Simetri doğrusuna kaç kare uzakta?\n2. Doğrunun öbür yanında, **aynı satırda** (yatay doğruda aynı sütunda) ve doğruya **aynı uzaklıkta** olan kareyi boya.\n3. Bütün kareler için tekrarla.\n4. Kontrol: Doğruya yapışık kareler karşı tarafta da doğruya yapışık olmalı."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dikey doğruya göre tamamla",
+   "aciklama": "Kırmızı kesikli çizgi simetri doğrusu. Yeşil kareler şeklin sol yarısı. Sağ taraftaki karelere dokunarak boya.",
+   "sim": {
+    "kind": "b-simetri-izgara",
+    "cols": 10,
+    "rows": 8,
+    "eksen": "dikey",
+    "mod": "tamamla",
+    "verilen": [
+     [
+      4,
+      1
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      4,
+      3
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      4,
+      4
+     ],
+     [
+      3,
+      5
+     ],
+     [
+      4,
+      5
+     ],
+     [
+      3,
+      6
+     ],
+     [
+      4,
+      6
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Şeklin simetriğini tamamla.",
+    "check": {
+     "key": "dogru",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Doğruya yapışık yeşil kareler sağda da doğruya yapışık olmalı.",
+    "Altta yazan eksik ve fazla kare sayılarına bak."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yatay doğruya göre tamamla",
+   "aciklama": "Bu kez simetri doğrusu yatay. Yeşil kareler şeklin üst yarısı; alt yarıyı sen boya.",
+   "sim": {
+    "kind": "b-simetri-izgara",
+    "cols": 8,
+    "rows": 8,
+    "eksen": "yatay",
+    "mod": "tamamla",
+    "verilen": [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      4,
+      0
+     ],
+     [
+      4,
+      3
+     ],
+     [
+      5,
+      3
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Şeklin simetriğini tamamla.",
+    "check": {
+     "key": "dogru",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Yatay doğruda kareler aynı sütunda kalır; yalnız yukarı-aşağı yer değiştirir.",
+    "Doğrunun 4 kare yukarısındaki kare, simetrikte 4 kare aşağıda olur."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Dikey simetri doğrusunun solunda, doğruya 3 kare uzakta bir kare boyalı. Simetriği nereye boyanır?",
+   "cozum": [
+    "Aynı satırda kalırız.",
+    "Doğrunun sağına geçer, 3 kare sayarız."
+   ],
+   "sonuc": "Doğrunun sağında, aynı satırda, doğruya 3 kare uzaktaki kare boyanır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Kelebek",
+   "soru": "Bir kelebeğin sol kanadında 7 kare boyalı. Kanatlar simetrik olacaksa kelebekte toplam kaç kare boyalı olur?",
+   "cozum": [
+    "Sağ kanatta da 7 kare olmalı.",
+    "7 + 7 = 14."
+   ],
+   "sonuc": "Toplam **14** kare boyalı olur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Şekli doğrunun öbür yanına **kaydırarak kopyalamak** yanlıştır. Kaydırılan şekilde doğruya en uzak kare yine doğrudan uzaklaşır; ayna görüntüsünde ise doğruya yakın kare doğruya yakın, uzak kare uzak kalır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Dikey simetri doğrusunun solunda, doğruya 3 kare uzakta bir kare boyalı. Simetriği nerededir?",
+   "options": [
+    "Solda, 3 kare aşağıda",
+    "Sağda, doğruya 1 kare uzakta",
+    "Sağda, 3 satır yukarıda",
+    "Sağda, aynı satırda, doğruya 3 kare uzakta"
+   ],
+   "answer": 3,
+   "why": "Simetrik kare aynı satırda ve doğruya aynı uzaklıktadır.",
+   "hint": "Doğruya olan uzaklık değişir mi?"
+  },
+  {
+   "prompt": "Bir şeklin bir yarısında 7 kare boyalı. Simetrisi tamamlanınca toplam kaç kare boyalı olur?",
+   "options": [
+    "15",
+    "7",
+    "14",
+    "21"
+   ],
+   "answer": 2,
+   "why": "Öbür yarıda da 7 kare olur: 7 + 7 = 14.",
+   "hint": "İki yarı eşit mi?"
+  },
+  {
+   "prompt": "Aynanın karşısında sağ elini kaldıran bir çocuğun görüntüsü hangi elini kaldırmış gibi görünür?",
+   "options": [
+    "İki elini",
+    "Sol elini",
+    "Hiçbirini",
+    "Sağ elini"
+   ],
+   "answer": 1,
+   "why": "Ayna görüntüsünde sağ ve sol yer değiştirir.",
+   "hint": "Simetride sağ ve sol ne olur?"
+  },
+  {
+   "prompt": "Yatay simetri doğrusunun 2 kare yukarısındaki bir karenin simetriği nerededir?",
+   "options": [
+    "Doğrunun 2 kare aşağısında",
+    "2 kare yukarıda",
+    "Doğrunun üzerinde",
+    "4 kare aşağıda"
+   ],
+   "answer": 0,
+   "why": "Simetrik kare aynı sütunda, doğrunun 2 kare aşağısındadır.",
+   "hint": "Uzaklık korunur, yön değişir."
+  }
+ ]
+}

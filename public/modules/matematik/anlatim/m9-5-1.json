@@ -1,0 +1,81 @@
+{
+ "id": "m9-5-1",
+ "baslik": "Algoritma Temelli Problemler",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.5.1"],
+ "sure": 17,
+ "ozet": "Algoritmanın ne olduğunu, değişken, atama, koşul ve döngü kavramlarını öğrenecek; Öklid algoritmasını ve basamak toplamı algoritmasını adım adım izleyerek problem çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Algoritma nedir?",
+   "govde": "Bir problemi çözmek için izlenen, **sonlu sayıda**, **açık ve kesin** adımlardan oluşan yönergeler dizisine **algoritma** denir. Her algoritmanın **girdisi**, **işlem adımları** ve **çıktısı** vardır.\n\nAlgoritmalar adım adım yazılabilir (sözde kod) ya da akış şemasıyla çizilebilir. Temel yapı taşları:\n\n- **Değişken ve atama:** `a ← 5`, a'ya 5 değerini verir. `a ← a + 1` bir denklem değildir; \"a'nın şimdiki değerine 1 ekle ve a'ya yaz\" demektir.\n- **Koşul:** `eğer … ise … değilse …`\n- **Döngü:** `… olduğu sürece tekrarla`"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Öklid algoritması",
+   "govde": "İki pozitif tam sayının EBOB'u için: a sayısı b'ye bölündüğünde kalan k ise **EBOB(a, b) = EBOB(b, k)**. Kalan 0 olunca son bölen EBOB'dur.\n\nNeden? a = b · q + k ise a ve b'yi bölen her sayı k'yi de böler; b ve k'yi bölen her sayı a'yı da böler. Ortak bölenler aynı kaldığı için EBOB da değişmez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Öklid algoritmasını izle",
+   "aciklama": "Girdileri seç ve \"Sonraki adım\" ile algoritmayı satır satır çalıştır. Sarı satır o an çalışan satırdır; değişkenler sağda.",
+   "sim": { "kind": "e-algoritma", "alg": "oklid", "A": 48, "B": 18 },
+   "gorev": { "metin": "EBOB(84, 36)'yı algoritmayı sonuna kadar çalıştırarak bul.", "check": { "all": [ { "key": "A", "eq": 84 }, { "key": "B", "eq": 36 }, { "key": "bitti", "eq": 1 } ] } },
+   "dene": ["Kaç döngü turu gerekti? Büyük sayılarda bile döngü sayısı az kalır.", "A < B girersen ilk adımda ne olur? (a mod b = a, sayılar yer değiştirir.)"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Öklid algoritmasıyla EBOB(84, 36)'yı elle bulalım.",
+   "cozum": [
+    "84 = 36 · 2 + 12 ⇒ EBOB(84, 36) = EBOB(36, 12).",
+    "36 = 12 · 3 + 0 ⇒ kalan 0.",
+    "Son bölen 12."
+   ],
+   "sonuc": "EBOB(84, 36) = 12"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Basamak toplamı",
+   "aciklama": "Bu algoritma n'nin son basamağını (n mod 10) toplama ekler, sonra son basamağı atar (n div 10).",
+   "sim": { "kind": "e-algoritma", "alg": "basamak", "n": 2026 },
+   "gorev": { "metin": "Basamak toplamı 27 olan bir sayı gir ve algoritmayı sonuna kadar çalıştır.", "check": { "all": [ { "key": "bitti", "eq": 1 }, { "key": "sonuc", "eq": 27 } ] } },
+   "dene": ["999 dene. Basamak toplamı 9'un katı olan sayılar 9'a bölünür.", "Döngü kaç kez döndü? Sayının basamak sayısı kadar."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Algoritma tasarlamak ve karşılaştırmak",
+   "soru": "1'den n'ye kadar olan sayıların toplamını bulan iki algoritma düşünelim. n = 100 için hangisi daha az adımda sonuç verir?",
+   "cozum": [
+    "Algoritma 1: s ← 0; i ← 1; i ≤ n olduğu sürece s ← s + i, i ← i + 1. n = 100 için döngü 100 kez döner.",
+    "Algoritma 2: s ← n · (n + 1) / 2. Tek adımda 100 · 101 / 2 = 5050.",
+    "İki algoritma da doğru sonucu verir; ikincisi n büyüdükçe çok daha az işlem yapar."
+   ],
+   "sonuc": "Aynı problemi çözen algoritmalar adım sayısına göre karşılaştırılabilir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: sayı makinesi",
+   "soru": "Bir makineye girilen sayı tekse 3 ile çarpılıp 1 eklenir, çiftse 2'ye bölünür. Her çıktı yeniden makineye giriliyor. 6 ile başlanırsa 4. çıktı kaçtır?",
+   "cozum": [
+    "6 çift: 1. çıktı 3.",
+    "3 tek: 2. çıktı 3 · 3 + 1 = 10.",
+    "10 çift: 3. çıktı 5.",
+    "5 tek: 4. çıktı 16."
+   ],
+   "sonuc": "16"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Döngüde koşulu değiştiren değişkeni güncellemeyi unutmak: döngü hiç bitmez (sonsuz döngü).\n- Atamayı denklem gibi okumak: `x ← x · 2` \"x = 2x, demek ki x = 0\" değildir.\n- Adımların sırasını değiştirmek: Öklid'de önce `a ← b`, sonra `b ← k`; ters sırada b'nin eski değeri kaybolur."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Öklid algoritmasıyla EBOB(60, 22) kaçtır?", "options": ["4", "2", "6", "22"], "answer": 1, "why": "60 = 22 · 2 + 16; 22 = 16 + 6; 16 = 6 · 2 + 4; 6 = 4 + 2; 4 = 2 · 2 + 0. Son bölen 2.", "hint": "Kalan 0 olana kadar böl." },
+  { "prompt": "x ← 5; x ← x · 2; x ← x − 3 adımlarından sonra x kaçtır?", "options": ["7", "10", "5", "−1"], "answer": 0, "why": "5 → 10 → 7.", "hint": "Her satırda x'in yeni değerini yaz." },
+  { "prompt": "Hangisi bir algoritmanın özelliği değildir?", "options": ["Sonlu sayıda adımda biter.", "Her adım açık ve kesindir.", "Adımları kişiden kişiye farklı yorumlanabilir.", "Girdi alıp çıktı üretir."], "answer": 2, "why": "Algoritmanın adımları belirsizlik taşımamalıdır; herkes aynı adımları aynı biçimde uygular.", "hint": "Bir algoritmayı iki kişi uygularsa sonuç farklı olmalı mı?" },
+  { "prompt": "\"Tekse 3 ile çarp 1 ekle, çiftse 2'ye böl\" makinesine 6 girilip her çıktı yeniden girilirse 4. çıktı kaçtır?", "options": ["5", "8", "10", "16"], "answer": 3, "why": "6 → 3 → 10 → 5 → 16.", "hint": "Her adımda önce tek mi çift mi olduğuna bak." }
+ ]
+}

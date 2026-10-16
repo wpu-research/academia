@@ -1,0 +1,91 @@
+{
+ "id": "m8-3-1",
+ "baslik": "Üçgenler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.3.1.1", "M.8.3.1.2", "M.8.3.1.3", "M.8.3.1.4", "M.8.3.1.5"],
+ "sure": 18,
+ "ozet": "Üçgenin yardımcı elemanlarını tanıyacak, hangi uzunluklarla üçgen çizilebileceğini, kenarlar ile açılar arasındaki ilişkiyi ve Pisagor bağıntısını keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kenarortay, açıortay, yükseklik",
+   "govde": "ABC üçgeninde A köşesinden karşı kenara çizilebilecek üç önemli doğru parçası vardır:\n\n- **Kenarortay:** A'yı karşı kenarın (BC'nin) orta noktasına birleştirir.\n- **Açıortay:** A açısını iki eş açıya böler.\n- **Yükseklik:** A'dan BC'ye (gerekirse uzantısına) dik olarak iner.\n\nBunlar pergel ve cetvelle inşa edilir: orta nokta için BC'nin orta dikmesi, açıortay için köşeden eşit yaylar, yükseklik için köşeden karşı kenara dikme çizilir. İkizkenar üçgende tepe köşesinden çizilen üçü çakışır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üçgen eşitsizliği",
+   "govde": "Kenar uzunlukları a, b, c olan bir üçgende her kenar, diğer iki kenarın **farkından büyük, toplamından küçük**tür:\n\n**|b − c| < a < b + c**\n\nNeden? A'dan B'ye en kısa yol doğrudan gitmektir; C üzerinden gitmek her zaman daha uzundur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çubuklardan üçgen kur",
+   "aciklama": "b = 4 ve c = 9 sabit. a çubuğunun uzunluğunu değiştir. Üçgen oluşmazsa kısa çubukların neden birleşemediği gösterilir.",
+   "sim": { "kind": "e-ucgen-kenar", "a": 3, "b": 4, "c": 9, "sabit": ["b", "c"], "max": 12 },
+   "gorev": { "metin": "Üçgen oluşturan en küçük tam sayı a değerini bul.", "check": { "all": [ { "key": "a", "eq": 6 }, { "key": "olur", "eq": 1 } ] } },
+   "dene": ["a = 5'te çubuklar ancak düz bir çizgi olur: 4 + 5 = 9.", "En büyük değer nedir? a < 4 + 9 = 13, yani 12."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir üçgenin iki kenarı 5 cm ve 8 cm'dir. Üçüncü kenar x bir tam sayıysa x kaç farklı değer alabilir?",
+   "cozum": [
+    "8 − 5 < x < 8 + 5 ⇒ 3 < x < 13.",
+    "Tam sayılar: 4, 5, 6, …, 12."
+   ],
+   "sonuc": "x, 9 farklı değer alabilir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kenar ve açı ilişkisi",
+   "govde": "Bir üçgende **büyük kenarın karşısında büyük açı**, küçük kenarın karşısında küçük açı bulunur. Eşit kenarların karşısındaki açılar da eşittir.\n\nÖrnek: m(A) = 70°, m(B) = 50° ise m(C) = 60°. Açılar A > C > B olduğundan kenarlar a > c > b."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenarları değiştir, açıları izle",
+   "aciklama": "Üç kenarı da değiştirebilirsin. En uzun kenar kırmızıdır; karşısındaki açıya bak.",
+   "sim": { "kind": "e-ucgen-kenar", "a": 5, "b": 7, "c": 4, "max": 12 },
+   "gorev": { "metin": "Bir dik üçgen oluştur (bir açı tam 90° olsun).", "check": { "key": "dik", "eq": 1 } },
+   "dene": ["3, 4, 5 kenarlı üçgeni dene. 6, 8, 10 da olur mu?", "Dik üçgende en uzun kenar hangi açının karşısında?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üçgen çizimi",
+   "govde": "Bir üçgeni tek biçimde çizebilmek için şunlardan biri yeterlidir:\n\n- Üç kenar uzunluğu (üçgen eşitsizliğini sağlamalı)\n- İki kenar ve aralarındaki açı\n- Bir kenar ve o kenara komşu iki açı (açıların toplamı 180°'den küçük olmalı)"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Pisagor bağıntısı",
+   "govde": "Dik üçgende dik açıyı oluşturan kenarlar a ve b, dik açının karşısındaki en uzun kenar (hipotenüs) c ise:\n\n**a² + b² = c²**\n\nAlan olarak: dik kenarlar üzerine çizilen karelerin alanları toplamı, hipotenüs üzerine çizilen karenin alanına eşittir. Bağıntı yalnız dik üçgenlerde geçerlidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kareleri karşılaştır",
+   "aciklama": "Dik kenarları değiştir. Turuncu karenin alanı her zaman diğer iki karenin alanları toplamıdır.",
+   "sim": { "kind": "e-pisagor", "a": 3, "b": 4, "max": 8 },
+   "gorev": { "metin": "a = 6 iken hipotenüsü tam sayı yap.", "check": { "all": [ { "key": "a", "eq": 6 }, { "key": "tam", "eq": 1 } ] } },
+   "dene": ["6, 8, 10 üçlüsü 3, 4, 5'in iki katıdır.", "a = b = 1 için c = √2: hipotenüs her zaman tam sayı çıkmaz."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: merdiven",
+   "soru": "Duvara dayalı bir merdivenin alt ucu duvardan 5 m uzakta, üst ucu yerden 12 m yükseklikte duvara değiyor. Merdiven kaç metredir?",
+   "cozum": [
+    "Duvar, zemin ve merdiven bir dik üçgen oluşturur; merdiven hipotenüstür.",
+    "c² = 5² + 12² = 25 + 144 = 169.",
+    "c = √169 = 13."
+   ],
+   "sonuc": "Merdiven 13 m'dir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Yalnız toplam koşuluna bakmak: 2, 3 ve 9 için 2 + 9 > 3 doğru ama 2 + 3 < 9; üçgen oluşmaz. En uzun kenarı diğer ikisinin toplamıyla karşılaştırmak yeterlidir.\n- Pisagor'da hipotenüsü yanlış seçmek: c her zaman dik açının karşısındaki, en uzun kenardır.\n- Pisagor bağıntısını dik olmayan üçgenlerde kullanmak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "İki kenarı 4 cm ve 9 cm olan bir üçgenin üçüncü kenarı hangisi olabilir?", "options": ["5", "13", "4", "11"], "answer": 3, "why": "9 − 4 < x < 9 + 4, yani 5 < x < 13. Yalnız 11 uygun.", "hint": "Üçüncü kenar farktan büyük, toplamdan küçük olmalı." },
+  { "prompt": "ABC üçgeninde m(A) = 40°, m(B) = 75° ise en uzun kenar hangisidir?", "options": ["a", "b", "c", "Hepsi eşit"], "answer": 1, "why": "m(C) = 65°. En büyük açı B, karşısındaki kenar b.", "hint": "Önce üçüncü açıyı bul." },
+  { "prompt": "Dik kenarları 9 cm ve 12 cm olan dik üçgenin hipotenüsü kaç cm'dir?", "options": ["21", "√21", "15", "18"], "answer": 2, "why": "81 + 144 = 225 = 15².", "hint": "a² + b² = c²." },
+  { "prompt": "Bir köşeden karşı kenara dik olarak inen doğru parçasına ne denir?", "options": ["Yükseklik", "Kenarortay", "Açıortay", "Orta taban"], "answer": 0, "why": "Yükseklik karşı kenara diktir. Kenarortay orta noktaya gider, açıortay açıyı ikiye böler.", "hint": "Hangisinin tanımında \"dik\" kelimesi var?" }
+ ]
+}

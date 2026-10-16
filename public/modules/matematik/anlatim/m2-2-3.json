@@ -1,0 +1,161 @@
+{
+ "id": "m2-2-3",
+ "baslik": "Zaman Ölçme",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.9"
+ ],
+ "sure": 14,
+ "ders": "saat-ve-para",
+ "ozet": "Saati tam ve yarım saat olarak okuyup yazacak; dakika, saat, gün, hafta, ay ve yıl arasındaki ilişkiyi öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Akrep ve yelkovan",
+   "govde": "Saatte iki ibre vardır:\n\n- **Kısa ibre (akrep)** saati gösterir.\n- **Uzun ibre (yelkovan)** dakikayı gösterir.\n\nYelkovan 12'nin üstündeyse saat **tam**dır. Akrep 7'yi, yelkovan 12'yi gösteriyorsa saat **7.00**'dir: “saat yedi”."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tam saat",
+   "aciklama": "Yelkovanı sürükle ya da saate dokunup ok tuşlarını kullan. Akrep kendiliğinden ilerler.",
+   "sim": {
+    "kind": "saat",
+    "h": 3,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saati 7.00'ye ayarla.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 7
+      },
+      {
+       "key": "m",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yelkovan bir tam tur dönünce akrep bir sayı ilerler.",
+    "Kaç tur döndürmen gerekiyor?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yarım saat",
+   "govde": "Yelkovan 12'den başlayıp **6**'ya geldiğinde yarım tur döner. Bu **30 dakika**, yani **yarım saat**tir.\n\nAkrep 9 ile 10'un **ortasında**, yelkovan 6'da ise saat **9.30**'dur: “dokuz buçuk”."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yarım saat",
+   "aciklama": "Saat 9.00'u gösteriyor.",
+   "sim": {
+    "kind": "saat",
+    "h": 9,
+    "m": 0
+   },
+   "gorev": {
+    "metin": "Saati 9.30'a ayarla.",
+    "check": {
+     "all": [
+      {
+       "key": "h",
+       "eq": 9
+      },
+      {
+       "key": "m",
+       "eq": 30
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yelkovanı 6'ya getir.",
+    "Akrep 9'dan biraz uzaklaştı mı? Neden?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Zaman birimleri",
+   "govde": "- 1 saat = **60 dakika**; yarım saat = **30 dakika**\n- 1 gün = **24 saat**\n- 1 hafta = **7 gün**: pazartesi, salı, çarşamba, perşembe, cuma, cumartesi, pazar\n- 1 yıl = **12 ay**: ocak, şubat, mart, nisan, mayıs, haziran, temmuz, ağustos, eylül, ekim, kasım, aralık"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ders saat 10.00'da başladı ve yarım saat sürdü. Ders kaçta bitti?",
+   "cozum": [
+    "Yarım saat = 30 dakika.",
+    "10.00'dan 30 dakika sonra yelkovan 6'ya gelir."
+   ],
+   "sonuc": "Ders **10.30**'da bitti."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bugün çarşamba. 2 gün sonra hangi gün olur?",
+   "cozum": [
+    "Çarşambadan sonra perşembe gelir (1 gün).",
+    "Perşembeden sonra cuma gelir (2 gün)."
+   ],
+   "sonuc": "**Cuma** olur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Akrep ile yelkovanı karıştırmak en sık hatadır. 9.30'da akrep 6'yı değil, 9 ile 10'un arasını gösterir. Saati okurken önce **kısa ibreye** (akrep), sonra **uzun ibreye** (yelkovan) bak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Akrep 4'ü, yelkovan 12'yi gösteriyor. Saat kaçtır?",
+   "options": [
+    "12.04",
+    "4.00",
+    "4.30",
+    "12.20"
+   ],
+   "answer": 1,
+   "why": "Yelkovan 12'de: tam saat. Akrep 4'te: saat 4.00.",
+   "hint": "Kısa ibre saati gösterir."
+  },
+  {
+   "prompt": "Bir hafta kaç gündür?",
+   "options": [
+    "5",
+    "12",
+    "30",
+    "7"
+   ],
+   "answer": 3,
+   "why": "Pazartesiden pazara 7 gün vardır.",
+   "hint": "Haftanın günlerini say."
+  },
+  {
+   "prompt": "Yarım saat kaç dakikadır?",
+   "options": [
+    "30",
+    "50",
+    "15",
+    "60"
+   ],
+   "answer": 0,
+   "why": "1 saat 60 dakika; yarısı 30 dakika.",
+   "hint": "60'ın yarısını bul."
+  },
+  {
+   "prompt": "Bir yılda kaç ay vardır?",
+   "options": [
+    "7",
+    "24",
+    "12",
+    "30"
+   ],
+   "answer": 2,
+   "why": "Ocaktan aralığa 12 ay vardır.",
+   "hint": "Ayları sırayla say."
+  }
+ ]
+}

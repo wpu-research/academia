@@ -1,0 +1,89 @@
+{
+ "id": "m11-3-2",
+ "baslik": "Trigonometrik Fonksiyonlarla İfade Edilebilen Denklemler İçeren Problemler",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.2"],
+ "sure": 18,
+ "ozet": "sin x = a, cos x = a ve tan x = a denklemlerini birim çemberle ve grafikle çözecek, verilen bir aralıktaki tüm çözümleri bulacak ve dönme dolap gibi periyodik olayları modelleyen problemlere uygulayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çözüm neden birden çok?",
+   "govde": "sin x = 1/2 denklemini düşün. Birim çemberde ordinatı 1/2 olan iki nokta vardır (30° ve 150°), ve her tam turda (360°) aynı noktalara yeniden gelinir. Bu yüzden trigonometrik denklemlerin genelde **sonsuz** çözümü vardır; problemler çoğu zaman bir aralıktaki çözümleri ister."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Temel denklemler (k ∈ ℤ)",
+   "govde": "- **sin x = a** (−1 ≤ a ≤ 1), sin α = a ise: x = α + 2kπ ya da x = π − α + 2kπ.\n- **cos x = a** (−1 ≤ a ≤ 1), cos α = a ise: x = α + 2kπ ya da x = −α + 2kπ.\n- **tan x = a** (her a), tan α = a ise: x = α + kπ.\n- |a| > 1 ise sin x = a ve cos x = a denklemlerinin çözümü yoktur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Birim çemberde iki nokta",
+   "aciklama": "Sinüs negatif olunca nokta x ekseninin altına iner.",
+   "sim": { "kind": "birim-cember", "deg": 30 },
+   "gorev": { "metin": "sin x = −1/2 denkleminin 180° ile 270° arasındaki çözümünü bul.", "check": { "key": "deg", "eq": 210 } },
+   "dene": ["İkinci çözüm 330°: 210° ve 330° noktaları y eksenine göre simetrik, ordinatları aynı.", "Kosinüs için simetri x eksenine göredir: cos x = a çözümleri α ve 360° − α."]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafikle çözüm sayısı",
+   "aciklama": "y = a · f(bx) + k grafiği ile y = c doğrusu. Turuncu noktalar [0°, 360°) aralığındaki çözümler.",
+   "sim": { "kind": "f-trig", "fn": 0, "line": true, "c": 0.5, "sliders": ["b", "c"] },
+   "gorev": { "metin": "sin(2x) = 1/2 denklemini kur (b = 2, c = 0,5) ve [0°, 360°) aralığındaki dört çözümü oku.", "check": { "all": [{ "key": "fn", "eq": 0 }, { "key": "b", "eq": 2 }, { "key": "c", "eq": 0.5 }] } },
+   "dene": ["b = 2 iken periyot 180°: aralığa iki periyot sığar, çözüm sayısı ikiye katlanır.", "c'yi 1'e getir: doğru grafiğe tepe noktalarında değer, her periyotta tek çözüm kalır.", "c'yi 1,1 yap: çözüm yok."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "[0, 2π) aralığında (a) 2 sin x − 1 = 0, (b) cos x = −√2/2, (c) tan x = √3 denklemlerini çözelim.",
+   "cozum": [
+    "(a) sin x = 1/2: α = π/6 → x = π/6 ya da x = π − π/6 = 5π/6.",
+    "(b) cos x = −√2/2: kosinüs II. ve III. bölgede negatif, referans açı π/4 → x = 3π/4 ya da x = 5π/4.",
+    "(c) tan x = √3: α = π/3, periyot π → x = π/3 ya da x = 4π/3."
+   ],
+   "sonuc": "(a) {π/6, 5π/6}, (b) {3π/4, 5π/4}, (c) {π/3, 4π/3}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: ikinci dereceden",
+   "soru": "[0, 2π) aralığında 2cos²x − cos x − 1 = 0 denklemini çözelim.",
+   "cozum": [
+    "cos x = t: 2t² − t − 1 = 0 → (2t + 1)(t − 1) = 0.",
+    "t = 1 → cos x = 1 → x = 0.",
+    "t = −1/2 → cos x = −1/2 → x = 2π/3 ya da x = 4π/3."
+   ],
+   "sonuc": "Çözüm kümesi {0, 2π/3, 4π/3}."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kosinüs denklemi",
+   "aciklama": "y = cos x ve y = c.",
+   "sim": { "kind": "f-trig", "fn": 1, "fns": [1], "line": true, "c": 0, "sliders": ["c"] },
+   "gorev": { "metin": "c'yi −0,5 yap ve cos x = −1/2 denkleminin çözümlerini oku.", "check": { "key": "c", "eq": -0.5 } },
+   "dene": ["Çözümler 120° ve 240°: x = 180° doğrusuna göre simetrik.", "c = 1 iken tek çözüm 0°."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: dönme dolap",
+   "soru": "Bir dönme dolabın kabinlerinden birinin yerden yüksekliği, binişten t dakika sonra h(t) = 11 − 9 · cos(12t°) metredir. Bir tur kaç dakika sürer? İlk turda kabin hangi anlarda 15,5 m yüksekliktedir?",
+   "cozum": [
+    "Periyot: 12t = 360 → t = 30 dakika.",
+    "11 − 9 cos(12t°) = 15,5 → cos(12t°) = −0,5.",
+    "12t = 120° ya da 12t = 240° (ilk tur: 0 ≤ 12t < 360).",
+    "t = 10 ya da t = 20 dakika."
+   ],
+   "sonuc": "Bir tur 30 dakika; kabin 10. ve 20. dakikalarda 15,5 m yüksekliktedir. (En alçak 2 m, en yüksek 20 m.)"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız hesap makinesinin verdiği tek açıyı yazmak. sin x = 1/2 için yalnız 30° yazarsan 150°'yi kaybedersin. sin(2x) gibi denklemlerde ise önce 2x için tüm çözümleri bul, sonra 2'ye böl: aralıktaki çözüm sayısı artar."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "[0, 2π) aralığında sin x = √3/2 denkleminin çözümleri nelerdir?", "options": ["π/3 ve 2π/3", "π/6 ve 5π/6", "π/3 ve 5π/3", "π/6 ve 11π/6"], "answer": 0, "why": "α = π/3 ve π − π/3 = 2π/3.", "hint": "Sinüs I. ve II. bölgede pozitiftir." },
+  { "prompt": "[0, 2π) aralığında cos x = 0 denkleminin kaç çözümü vardır?", "options": ["1", "3", "2", "4"], "answer": 2, "why": "x = π/2 ve x = 3π/2.", "hint": "Birim çemberde apsisi 0 olan noktalar." },
+  { "prompt": "[0°, 360°) aralığında tan x = −1 denkleminin çözümleri nelerdir?", "options": ["45° ve 225°", "135° ve 315°", "135° ve 225°", "45° ve 315°"], "answer": 1, "why": "tan negatif: II. ve IV. bölge; α = 135°, 135° + 180° = 315°.", "hint": "Tanjantın periyodu 180°." },
+  { "prompt": "sin x = 2 denkleminin çözüm kümesi nedir?", "options": ["{π/2}", "{2π}", "Sonsuz çözüm", "Boş küme"], "answer": 3, "why": "sin x yalnız [−1, 1] aralığında değer alır.", "hint": "Sinüsün görüntü kümesi." }
+ ]
+}

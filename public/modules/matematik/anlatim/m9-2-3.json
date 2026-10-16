@@ -1,0 +1,79 @@
+{
+ "id": "m9-2-3",
+ "baslik": "Doğrusal Fonksiyonlarla İfade Edilebilen Denklem ve Eşitsizlikler İçeren Problemler",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.2.3"],
+ "sure": 20,
+ "ozet": "Gerçek hayat durumlarını doğrusal fonksiyonlarla modelleyecek; iki modeli karşılaştırırken denklemin kesişim noktası, eşitsizliğin ise bir grafiğin diğerinin altında kaldığı aralık olduğunu göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Modelleme adımları",
+   "govde": "1. Değişkeni seç ve birimini yaz (x: kullanılan GB, kilometre, ay…).\n2. Sabit kısmı ve birim başına değişimi bul; fonksiyonu yaz: f(x) = (birim değişim) · x + (sabit).\n3. Soruyu denklem (f(x) = g(x), f(x) = 120) ya da eşitsizlik (f(x) ≤ g(x), f(x) ≥ 300) olarak kur.\n4. Çöz.\n5. Sonucu bağlamda yorumla: x tam sayı mı olmalı, negatif olabilir mi?"
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki internet paketi",
+   "aciklama": "A paketi: aylık 100 TL + GB başına 2 TL. B paketi: aylık 40 TL + GB başına 5 TL. Kullanımı değiştir ya da grafiğe dokun.",
+   "sim": { "kind": "e-iki-dogru", "dogrular": [ { "ad": "A paketi", "m": 2, "n": 100 }, { "ad": "B paketi", "m": 5, "n": 40 } ], "xmax": 40, "ymax": 300, "xtick": 10, "ytick": 50, "x": 5, "birim": "TL", "xad": "Kullanım (GB)" },
+   "gorev": { "metin": "İki paketin ücretinin eşit olduğu kullanımı bul.", "check": { "key": "esit", "eq": 1 } },
+   "dene": ["20 GB'tan az kullanan için hangisi ucuz? Çok kullanan için?", "Kesişimden sonra A doğrusu B'nin altında kalıyor: A daha ucuz."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Denklem ve eşitsizliğin grafikteki anlamı",
+   "govde": "- **f(x) = g(x)** denkleminin çözümü, iki grafiğin **kesiştiği** noktanın x koordinatıdır.\n- **f(x) < g(x)** eşitsizliğinin çözümü, f'nin grafiğinin g'ninkinin **altında** kaldığı x değerleridir.\n- **f(x) ≥ c** eşitsizliği, f'nin grafiğinin y = c yatay doğrusunun üstünde ya da üzerinde olduğu x'lerdir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Simülasyondaki paketler için A(x) = 2x + 100 ve B(x) = 5x + 40. Ücretler hangi kullanımda eşittir; A hangi kullanımlarda daha ucuzdur?",
+   "cozum": [
+    "Eşitlik: 2x + 100 = 5x + 40 ⇒ 60 = 3x ⇒ x = 20. Ücret: 2 · 20 + 100 = 140 TL.",
+    "A daha ucuz: 2x + 100 < 5x + 40 ⇒ 60 < 3x ⇒ x > 20."
+   ],
+   "sonuc": "20 GB'ta ikisi de 140 TL; 20 GB'tan fazla kullanımda A daha ucuz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Taksi karşılaştırması",
+   "aciklama": "Taksi A: açılış 30 TL + km başına 12 TL. Taksi B: açılış 50 TL + km başına 8 TL.",
+   "sim": { "kind": "e-iki-dogru", "dogrular": [ { "ad": "Taksi A", "m": 12, "n": 30 }, { "ad": "Taksi B", "m": 8, "n": 50 } ], "xmax": 15, "ymax": 250, "xtick": 5, "ytick": 50, "x": 2, "birim": "TL", "xad": "Yol (km)" },
+   "gorev": { "metin": "B'nin daha ucuz olduğu en kısa tam kilometreyi bul.", "check": { "all": [ { "key": "x", "eq": 6 }, { "key": "fark", "gte": 0.5 } ] } },
+   "dene": ["Kesişim: 30 + 12x = 50 + 8x ⇒ x = 5. 5 km'de ücretler eşit; 6 km'de B 4 TL daha ucuz."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Eşitsizlik problemi: havuz",
+   "soru": "Bir havuzda 1200 L su var ve saatte 150 L boşaltılıyor. Havuzda en az 300 L su kalması gerekiyorsa boşaltma en fazla kaç saat sürebilir?",
+   "cozum": [
+    "t saat sonra su miktarı: S(t) = 1200 − 150t.",
+    "Koşul: S(t) ≥ 300 ⇒ 1200 − 150t ≥ 300 ⇒ 900 ≥ 150t ⇒ t ≤ 6.",
+    "Zaman negatif olamaz: 0 ≤ t ≤ 6."
+   ],
+   "sonuc": "En fazla 6 saat."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: indirimli alışveriş",
+   "soru": "Bir kitapçıda bütün kitaplar %20 indirimli. Aynı fiyatlı 3 kitap alan bir müşteri 15 TL kargo ücretiyle birlikte 255 TL ödüyor. Bir kitabın indirimsiz fiyatı kaç TL'dir?",
+   "cozum": [
+    "İndirimsiz fiyat x olsun; indirimli fiyat 0,8x.",
+    "3 · 0,8x + 15 = 255 ⇒ 2,4x = 240.",
+    "x = 100."
+   ],
+   "sonuc": "100 TL"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- \"En az\" ve \"en fazla\"yı ters çevirmek: \"en az 300 L kalmalı\" ⇒ ≥ 300.\n- Bağlamın sınırlarını unutmak: süre, adet, uzunluk negatif olamaz; adet tam sayı olmalıdır.\n- Eşitsizliği çözüp sonucu yorumlamamak: x > 13 çıkıyorsa \"en az 14 dakika\" demek gerekir.\n- Sabit ücreti birim ücretle karıştırmak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir hat aylık 50 TL sabit ücret ve dakika başına 0,5 TL alıyor. Fatura 120 TL geldiyse kaç dakika konuşulmuştur?", "options": ["140", "240", "70", "170"], "answer": 0, "why": "50 + 0,5x = 120 ⇒ 0,5x = 70 ⇒ x = 140.", "hint": "Önce sabit ücreti çıkar." },
+  { "prompt": "f(x) = 3x + 10 ve g(x) = 5x − 6 için f(x) > g(x) eşitsizliğinin çözümü nedir?", "options": ["x > 8", "x < 8", "x > 2", "x < 2"], "answer": 1, "why": "3x + 10 > 5x − 6 ⇒ 16 > 2x ⇒ x < 8.", "hint": "x'li terimleri bir tarafta topla." },
+  { "prompt": "Spor salonu A: 300 TL kayıt + ayda 150 TL. Salon B: 450 TL kayıt + ayda 100 TL. Kaç ayda iki salona toplam ödeme eşit olur?", "options": ["2", "4", "3", "5"], "answer": 2, "why": "300 + 150m = 450 + 100m ⇒ 50m = 150 ⇒ m = 3.", "hint": "İki toplam ödeme fonksiyonunu eşitle." },
+  { "prompt": "Bir depoda 140 L su var ve dakikada 20 L su ekleniyor. Su miktarı en az kaç tam dakika sonra 400 L'yi geçer?", "options": ["13", "15", "12", "14"], "answer": 3, "why": "140 + 20t > 400 ⇒ t > 13. 13. dakikada tam 400 L; geçmesi için 14 dakika.", "hint": "\"Geçmek\" kesin büyüktür (>) demektir." }
+ ]
+}

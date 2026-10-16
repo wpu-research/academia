@@ -1,0 +1,218 @@
+{
+ "id": "m1-5-1",
+ "baslik": "Uzamsal İlişkiler",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.3.1"
+ ],
+ "sure": 12,
+ "ozet": "Sağ, sol, yukarı, aşağı, ön, arka gibi sözcüklerle yön tarif edecek; adım sayarak hedefe gideceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yer ve yön sözcükleri",
+   "govde": "Bir nesnenin yerini söylerken şu sözcükleri kullanırız:\n\n- **sağında / solunda**\n- **önünde / arkasında**\n- **üstünde / altında**\n- **yanında, arasında, içinde, dışında**\n\n“Top, masanın **altında**.” “Kalem, silgi ile defterin **arasında**.”\n\nBir yere gitmeyi tarif ederken **yön** ve **mesafe** (kaç adım) birlikte söylenir: “3 adım sağa, 2 adım yukarı.”"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Okula git",
+   "aciklama": "Kahverengi yüz sensin, yeşil çerçeve okul. Yeşil bloklar ağaç; üstlerinden geçemezsin. Düğmelerle ya da ok tuşlarıyla yürü.",
+   "sim": {
+    "kind": "a-yon",
+    "w": 6,
+    "h": 5,
+    "start": [
+     0,
+     0
+    ],
+    "hedef": [
+     4,
+     3
+    ],
+    "engeller": [
+     [
+      2,
+      0
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      2,
+      2
+     ]
+    ],
+    "yerler": [
+     [
+      0,
+      0,
+      "Ev"
+     ],
+     [
+      4,
+      3,
+      "Okul"
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Okula en kısa yoldan, 7 adımda git.",
+    "check": {
+     "all": [
+      {
+       "key": "ulasti",
+       "eq": 1
+      },
+      {
+       "key": "adim",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Ağaçların üstünden dolaşman gerekiyor.",
+    "Yanlış adımı “Geri al” ile sil. Altta yönergen yazılıyor."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yönerge nasıl yazılır?",
+   "govde": "Bir yönergede **kaç adım** ve **hangi yöne** gidileceği sırayla yazılır.\n\n“2 adım sağa, 3 adım yukarı” ile “3 adım yukarı, 2 adım sağa” aynı yere götürebilir; ama yol üstünde engel varsa biri işe yaramaz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Engelli yol",
+   "aciklama": "Bu kez hedef sağ üst köşedeki park.",
+   "sim": {
+    "kind": "a-yon",
+    "w": 6,
+    "h": 5,
+    "start": [
+     0,
+     0
+    ],
+    "hedef": [
+     5,
+     4
+    ],
+    "engeller": [
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      3,
+      1
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      1,
+      3
+     ]
+    ],
+    "yerler": [
+     [
+      0,
+      0,
+      "Ev"
+     ],
+     [
+      5,
+      4,
+      "Park"
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Parka 9 adımda git.",
+    "check": {
+     "all": [
+      {
+       "key": "ulasti",
+       "eq": 1
+      },
+      {
+       "key": "adim",
+       "eq": 9
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce hangi yöne gitmek daha kolay? Birkaç yol dene."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kedi, kutunun üstünde. Köpek kutunun solunda. Kutunun sağında ne olabilir?",
+   "cozum": [
+    "Üstünde ve solunda ne olduğunu biliyoruz.",
+    "Sağ taraf için bilgi verilmedi."
+   ],
+   "sonuc": "Bilgi verilmediği için **bilemeyiz**; sağında bir şey olmayabilir de."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ali 2 adım ileri, sonra 2 adım geri gitti. Nerede durdu?",
+   "cozum": [
+    "İleri 2 adım attı.",
+    "Geri 2 adım geldi; attığı adımları geri aldı."
+   ],
+   "sonuc": "Ali **başladığı yerde** durdu."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Karşındaki birinin sağı, senin solun olur. Yön tarif ederken **kimin** sağından söz ettiğini belirt: “Senin sağında” ya da “ağacın sağında”."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kitap, kalem ile silginin arasında. Kalem solda. Silgi nerededir?",
+   "options": [
+    "Kitabın sağında",
+    "Kitabın solunda",
+    "Kitabın üstünde",
+    "Kalemin solunda"
+   ],
+   "answer": 0,
+   "why": "Kalem solda, kitap ortada; silgi sağda kalır.",
+   "hint": "Üçünü soldan sağa diz."
+  },
+  {
+   "prompt": "“3 adım sağa” giden çocuk, başladığı yere dönmek için ne yapmalı?",
+   "options": [
+    "3 adım sağa",
+    "3 adım yukarı",
+    "3 adım sola",
+    "6 adım sola"
+   ],
+   "answer": 2,
+   "why": "Ters yönde aynı sayıda adım atınca başa dönülür.",
+   "hint": "Sağın tersi hangi yön?"
+  },
+  {
+   "prompt": "Hangisi bir mesafe bildirir?",
+   "options": [
+    "sağa",
+    "4 adım",
+    "yukarı",
+    "arkasında"
+   ],
+   "answer": 1,
+   "why": "Mesafe “ne kadar” sorusunun cevabıdır: 4 adım.",
+   "hint": "Hangisi kaç adım olduğunu söylüyor?"
+  }
+ ]
+}

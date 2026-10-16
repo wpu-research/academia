@@ -1,0 +1,156 @@
+{
+ "id": "m4-3-1",
+ "baslik": "Uzunluk Ölçme",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.3.1.1",
+  "M.4.3.1.2",
+  "M.4.3.1.3",
+  "M.4.3.1.4"
+ ],
+ "sure": 13,
+ "ders": "olcme-ve-hacim",
+ "ozet": "Milimetrenin nerede kullanıldığını görecek, km, m, cm ve mm arasındaki ilişkileri kurup birbirine çevirecek, uzunlukları tahmin edip ölçecek ve problemler çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Milimetre",
+   "govde": "Cetvelde iki santimetre çizgisi arasında 10 küçük aralık vardır. Bu aralıkların her biri **1 milimetre** (mm) uzunluğundadır.\n\nMilimetreyi çok küçük uzunlukları ölçerken kullanırız: kalem ucunun kalınlığı, bir karıncanın boyu, vida ya da düğme çapı, yağmur miktarı gibi."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Doğru ölçme",
+   "aciklama": "Çubuğu cetvel üzerinde sürükle. Üstte başlangıç ve bitiş çizgileri yazar.",
+   "sim": {
+    "kind": "olcme",
+    "length": 7,
+    "start": 2
+   },
+   "gorev": {
+    "metin": "Çubuğun ucunu cetvelin 0 çizgisine getir.",
+    "check": {
+     "key": "start",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "0'dan başlayınca bitiş çizgisi doğrudan uzunluğu gösterir: 7 cm.",
+    "2'den başlasaydık uzunluk bitiş − başlangıç = 9 − 2 = 7 cm olurdu."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Uzunluk birimleri arasındaki ilişki",
+   "govde": "- 1 cm = 10 mm\n- 1 m = 100 cm\n- 1 m = 1 000 mm\n- 1 km = 1 000 m\n\nBüyük birimden küçük birime geçerken **çarparız**, küçük birimden büyük birime geçerken **böleriz**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Milimetreyle ölç",
+   "aciklama": "Bu çubuğun uzunluğu tam santimetre değil. Çubuğu sürükleyip milimetre çizgilerini say.",
+   "sim": {
+    "kind": "olcme",
+    "length": 4.5,
+    "start": 1.5
+   },
+   "gorev": {
+    "metin": "Çubuğun ucunu 3 cm çizgisine getir.",
+    "check": {
+     "key": "start",
+     "eq": 3
+    }
+   },
+   "dene": [
+    "Bitiş 7,5 cm'yi, yani 7 cm 5 mm'yi gösterir.",
+    "Uzunluk = 7 cm 5 mm − 3 cm = 4 cm 5 mm = 45 mm."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Birim çevirme",
+   "soru": "3 m 25 cm, 4 cm 7 mm ve 2 km 300 m uzunluklarını küçük birim cinsinden yazalım.",
+   "cozum": [
+    "3 m = 300 cm; 300 + 25 = 325 cm.",
+    "4 cm = 40 mm; 40 + 7 = 47 mm.",
+    "2 km = 2 000 m; 2 000 + 300 = 2 300 m."
+   ],
+   "sonuc": "325 cm, 47 mm ve 2 300 m."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "5 m uzunluğundaki bir kumaştan her biri 125 cm olan 3 parça kesildi. Geriye kaç metre kaç santimetre kumaş kaldı?",
+   "cozum": [
+    "5 m = 500 cm.",
+    "Kesilen: 3 × 125 = 375 cm.",
+    "Kalan: 500 − 375 = 125 cm = 1 m 25 cm."
+   ],
+   "sonuc": "1 m 25 cm kumaş kaldı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Tahmin",
+   "soru": "Sınıf kapısının yüksekliği, bir silginin boyu ve iki şehir arasındaki yol hangi birimle ölçülür?",
+   "cozum": [
+    "Kapı yüksekliği: metre (yaklaşık 2 m).",
+    "Silgi: santimetre (yaklaşık 4 cm).",
+    "Şehirler arası yol: kilometre."
+   ],
+   "sonuc": "Ölçülen şeyin büyüklüğüne uygun birim seçilir; sonra ölçerek tahmin kontrol edilir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Cetvelin kenarından ya da 1 çizgisinden ölçmeye başlayıp bitiş çizgisini uzunluk diye okumak yanlıştır. Ölçmeye **0'dan** başlanmalı ya da bitişten başlangıç çıkarılmalıdır.\n\nBirim çevirirken 10, 100 ve 1 000'i karıştırmak da sık görülür: 3 m = 30 cm değil, **300 cm**'dir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "6 cm 4 mm kaç milimetredir?",
+   "options": [
+    "604 mm",
+    "64 mm",
+    "6 400 mm",
+    "10 mm"
+   ],
+   "answer": 1,
+   "why": "6 cm = 60 mm; 60 + 4 = 64 mm.",
+   "hint": "1 cm kaç mm?"
+  },
+  {
+   "prompt": "2 km 50 m kaç metredir?",
+   "options": [
+    "2 500 m",
+    "250 m",
+    "2 050 m",
+    "2 005 m"
+   ],
+   "answer": 2,
+   "why": "2 km = 2 000 m; 2 000 + 50 = 2 050 m.",
+   "hint": "1 km = 1 000 m."
+  },
+  {
+   "prompt": "Bir karıncanın boyunu ölçmek için en uygun birim hangisidir?",
+   "options": [
+    "mm",
+    "km",
+    "m",
+    "cm"
+   ],
+   "answer": 0,
+   "why": "Karınca çok küçüktür; birkaç milimetre uzunluğundadır.",
+   "hint": "En küçük birimi düşün."
+  },
+  {
+   "prompt": "4 m uzunluğundaki bir ipten 135 cm kesildi. Kalan ip ne kadardır?",
+   "options": [
+    "3 m 65 cm",
+    "2 m 35 cm",
+    "265 m",
+    "2 m 65 cm"
+   ],
+   "answer": 3,
+   "why": "400 cm − 135 cm = 265 cm = 2 m 65 cm.",
+   "hint": "4 m'yi önce santimetreye çevir."
+  }
+ ]
+}

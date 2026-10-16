@@ -1,0 +1,84 @@
+{
+ "id": "m11-2-2",
+ "baslik": "Özel Dörtgenler Arasındaki İlişkiler",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.2.2"],
+ "sure": 17,
+ "ozet": "Yamuk, paralelkenar, dikdörtgen, eşkenar dörtgen, kare ve deltoidi kenar, açı ve köşegen özellikleriyle tanımlayacak; hangisinin hangisinin özel bir hâli olduğunu bir şekli adım adım değiştirerek göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Tanımlar",
+   "govde": "- **Yamuk**: en az bir çift karşılıklı kenarı paralel dörtgen.\n- **Paralelkenar**: iki çift karşılıklı kenarı paralel dörtgen.\n- **Dikdörtgen**: açıları dik olan paralelkenar.\n- **Eşkenar dörtgen**: dört kenarı eşit paralelkenar.\n- **Kare**: hem dikdörtgen hem eşkenar dörtgen olan dörtgen.\n- **Deltoid**: iki çift komşu kenarı kendi aralarında eşit dışbükey dörtgen.\n\nNot: Bu derste yamuğu \"en az bir çift\" paralel kenarla tanımlıyoruz; böylece her paralelkenar aynı zamanda bir yamuktur. Bazı kaynaklar yamuğu \"yalnız bir çift\" paralel kenarlı dörtgen olarak tanımlar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Şekli değiştir, adları izle",
+   "aciklama": "Sağdaki etiketler o anda şeklin taşıdığı tüm adları yeşil gösteriyor. Köşegenlerin özellikleri de altta yazıyor.",
+   "sim": { "kind": "f-cokgen", "points": [[1, 1], [6, 1], [8, 4], [3, 4]], "angles": true },
+   "gorev": { "metin": "Şekli dikdörtgen yap ama kare olmasın.", "check": { "all": [{ "key": "dikdortgen", "eq": 1 }, { "key": "kare", "eq": 0 }] } },
+   "dene": ["Başlangıçtaki şekil bir paralelkenar: aynı anda yamuk etiketi de yeşil.", "Dikdörtgenden kareye geçince eşkenar dörtgen ve deltoid etiketleri de yanar."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Köşegen özellikleri",
+   "govde": "- Paralelkenar: köşegenler **birbirini ortalar**.\n- Dikdörtgen: köşegenler birbirini ortalar ve **eşit uzunluktadır**.\n- Eşkenar dörtgen: köşegenler birbirini ortalar, **diktir** ve köşe açılarını ortalar.\n- Kare: köşegenler birbirini ortalar, eşittir ve diktir.\n- Deltoid: köşegenler diktir; simetri eksenindeki köşegen diğerini ortalar.\n\nTersi de doğrudur: köşegenleri birbirini ortalayan dörtgen paralelkenardır; köşegenleri hem eşit hem birbirini ortalayan dörtgen dikdörtgendir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşkenar dörtgen ama kare değil",
+   "aciklama": "Köşegenlerin dikliğine ve eşitliğine dikkat et.",
+   "sim": { "kind": "f-cokgen", "points": [[2, 1], [6, 1], [7, 4], [3, 4]] },
+   "gorev": { "metin": "Bir eşkenar dörtgen oluştur, ama kare olmasın.", "check": { "all": [{ "key": "eskenar", "eq": 1 }, { "key": "kare", "eq": 0 }] } },
+   "dene": ["Örneğin (1, 3), (4, 1), (7, 3), (4, 5): köşegenleri 6 ve 4, kenarlar √13.", "Eşkenar dörtgende köşegenler dik ama eşit değil; eşit olurlarsa şekil kare olur."]
+  },
+  {
+   "tur": "metin",
+   "baslik": "İlişki şeması",
+   "govde": "Bir şeklin özel hâlleri, genel hâlin bütün özelliklerini taşır:\n- Kare ⊂ Dikdörtgen ⊂ Paralelkenar ⊂ Yamuk\n- Kare ⊂ Eşkenar dörtgen ⊂ Paralelkenar\n- Eşkenar dörtgen ⊂ Deltoid\n\nÖrneğin \"her kare bir dikdörtgendir\" doğru, \"her dikdörtgen bir karedir\" yanlıştır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Köşegen uzunlukları 12 ve 16 cm olan eşkenar dörtgenin bir kenarını ve alanını bulalım.",
+   "cozum": [
+    "Köşegenler dik ve birbirini ortalar: yarıları 6 ve 8.",
+    "Kenar, dik kenarları 6 ve 8 olan dik üçgenin hipotenüsü: √(36 + 64) = 10.",
+    "Alan = e · f / 2 = 12 · 16 / 2 = 96."
+   ],
+   "sonuc": "Kenar 10 cm, alan 96 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Kenarları 6 ve 8 cm olan dikdörtgenin köşegeni kaç cm'dir? Köşegenler kesim noktasında kaçar cm'lik parçalara ayrılır?",
+   "cozum": [
+    "Köşegen: √(36 + 64) = 10 cm.",
+    "Dikdörtgende köşegenler eşittir ve birbirini ortalar."
+   ],
+   "sonuc": "Köşegen 10 cm; her biri 5'er cm'lik parçalara ayrılır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Bir ABCD dörtgeninde köşegenler birbirini ortalıyor ve birbirine dik. Bu dörtgen için hangisi kesinlikle doğrudur: kare, dikdörtgen, eşkenar dörtgen?",
+   "cozum": [
+    "Köşegenler birbirini ortalıyor → paralelkenar.",
+    "Paralelkenarda köşegenler dikse dört kenar eşittir → eşkenar dörtgen.",
+    "Köşegenlerin eşit olduğu bilinmediğinden kare ya da dikdörtgen olduğu kesin değildir."
+   ],
+   "sonuc": "Kesinlikle eşkenar dörtgendir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Özel dörtgenleri birbirini dışlayan sınıflar sanmak. Kare, dikdörtgenin \"dışında\" bir şekil değil, onun özel bir hâlidir. \"Dört açısı dik olan dörtgen\" dendiğinde kare de bu tanıma girer."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Aşağıdakilerden hangisi her zaman doğrudur?", "options": ["Her dikdörtgen bir karedir", "Her eşkenar dörtgen bir paralelkenardır", "Her paralelkenar bir dikdörtgendir", "Her yamuk bir paralelkenardır"], "answer": 1, "why": "Eşkenar dörtgen, dört kenarı eşit bir paralelkenar olarak tanımlanır.", "hint": "Hangisi tanım gereği diğerinin özel hâli?" },
+  { "prompt": "Köşegenleri eşit uzunlukta ve birbirini ortalayan dörtgen kesinlikle hangisidir?", "options": ["Eşkenar dörtgen", "Deltoid", "Dikdörtgen", "Yalnız yamuk"], "answer": 2, "why": "Birbirini ortalayan köşegenler paralelkenar verir; eşitlerse açılar dik olur.", "hint": "Önce paralelkenar olduğunu gör." },
+  { "prompt": "Köşegenleri 10 ve 24 olan eşkenar dörtgenin bir kenarı kaçtır?", "options": ["17", "26", "12", "13"], "answer": 3, "why": "Yarı köşegenler 5 ve 12; √(25 + 144) = 13.", "hint": "Köşegenler dik ve birbirini ortalar." },
+  { "prompt": "Bir karenin kaç simetri ekseni vardır?", "options": ["4", "2", "8", "1"], "answer": 0, "why": "İki köşegen ve karşılıklı kenarların orta noktalarını birleştiren iki doğru.", "hint": "Köşegenleri ve orta doğruları say." }
+ ]
+}

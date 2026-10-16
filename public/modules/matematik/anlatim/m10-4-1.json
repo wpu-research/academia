@@ -1,0 +1,90 @@
+{
+ "id": "m10-4-1",
+ "baslik": "Gerçek Sayılarda Fonksiyon Olma Şartları",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.4.1"],
+ "sure": 16,
+ "ozet": "Bir bağıntının fonksiyon olması için tanım kümesindeki her elemanın tam bir görüntüsü olmalıdır. Bunu grafikte dikey doğru testiyle göreceğiz; sonra tanım kümesi, sıfırlar, artan-azalan aralıklar gibi nitel özellikleri grafikten okuyacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Fonksiyon tanımı",
+   "govde": "A ve B boş olmayan iki küme olsun. A'nın **her** elemanını B'nin **yalnız bir** elemanına eşleyen bağıntıya A'dan B'ye bir fonksiyon denir ve f: A → B ile gösterilir.\n- A: tanım kümesi, B: değer kümesi.\n- f(A) = {f(x) : x ∈ A}: görüntü kümesi (değer kümesinin bir alt kümesi).\n\nİki şart vardır: tanım kümesinde **açıkta eleman kalmamalı** ve hiçbir eleman **iki farklı elemana** gitmemelidir."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Grafikte görmek: dikey doğru testi",
+   "govde": "Gerçek sayılarda tanımlı bir bağıntının grafiğinde x = c dikey doğrusu, x = c için bulunan y değerlerini gösterir. Bir dikey doğru grafiği **iki ya da daha fazla noktada** kesiyorsa o x değerine birden çok y karşılık gelir; bu grafik y'yi x'in fonksiyonu olarak vermez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dikey doğruyu gezdir",
+   "aciklama": "Üstteki düğmelerle bir eğri seç, kaydırıcıyla x = c doğrusunu sağa sola taşı.",
+   "sim": { "kind": "f-dikey", "egriler": ["parabol", "cember", "yatik", "mutlak", "dikey"], "c": -4 },
+   "gorev": { "metin": "Çemberi seç ve dikey doğrunun onu iki noktada kestiği bir yer bul.", "check": { "all": [{ "key": "curve", "eq": 1 }, { "key": "hits", "gte": 2 }] } },
+   "dene": ["Parabol ve |x| grafiğinde doğru hiçbir yerde iki kez kesmiyor: ikisi de fonksiyon.", "x = y² − 2 eğrisinde x > −2 olan her doğru iki noktada kesiyor.", "x = 1 doğrusu kendisi dikey: c = 1'de sonsuz kesişim var."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "A = {1, 2, 3}, B = {2, 3, 4} olmak üzere β = {(1, 2), (2, 3), (1, 4)} bağıntısı A'dan B'ye bir fonksiyon mudur?",
+   "cozum": [
+    "1 elemanı hem 2'ye hem 4'e eşlenmiş: bir eleman iki görüntüye gidiyor.",
+    "Ayrıca 3 elemanı hiçbir elemana eşlenmemiş: açıkta eleman var."
+   ],
+   "sonuc": "Her iki şart da bozulduğu için β fonksiyon değildir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Gerçek sayılarda en geniş tanım kümesi",
+   "govde": "Kural verilip tanım kümesi söylenmemişse, ifadeyi gerçek sayı yapan tüm x değerleri alınır:\n- Paydayı sıfır yapan x değerleri çıkarılır.\n- Karekök içi negatif olamaz: √(ifade) için ifade ≥ 0.\n- Polinomlar her x için tanımlıdır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "f(x) = √(x − 2) / (x − 5) fonksiyonunun en geniş tanım kümesini bulalım.",
+   "cozum": [
+    "Kök içi: x − 2 ≥ 0 → x ≥ 2.",
+    "Payda: x − 5 ≠ 0 → x ≠ 5.",
+    "İkisini birleştir."
+   ],
+   "sonuc": "Tanım kümesi [2, 5) ∪ (5, ∞)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Grafikten okunan nitel özellikler",
+   "govde": "- **Sıfırlar**: grafiğin x eksenini kestiği x değerleri (f(x) = 0).\n- **Pozitif / negatif** olduğu aralıklar: grafiğin x ekseninin üstünde / altında kaldığı x'ler.\n- **Artan**: x büyüdükçe f(x) büyüyorsa; **azalan**: x büyüdükçe f(x) küçülüyorsa.\n- **En büyük / en küçük değer**: grafiğin en yüksek / en alçak noktasının y değeri."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıfırları ve işaret aralıklarını oku",
+   "aciklama": "f(x) = x² + k grafiği. Kesikli turuncu doğru y = 0 (x ekseni) üzerinde; yeşil bölgeler f(x) > 0 olan x değerleri.",
+   "sim": { "kind": "f-fonk", "f": "kare", "k": -4, "c": 0, "sliders": ["k"], "tools": ["cizgi"], "parent": false },
+   "gorev": { "metin": "k'yi, fonksiyonun sıfırları x = −1 ve x = 1 olacak şekilde ayarla.", "check": { "key": "k", "eq": -1 } },
+   "dene": ["k = −4 iken sıfırlar −2 ve 2; f(x) bu ikisi arasında negatif.", "k = 0 iken tek sıfır var; k > 0 iken hiç sıfır yok, f(x) her yerde pozitif."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = x² − 4 fonksiyonunun sıfırlarını, negatif olduğu aralığı, en küçük değerini ve artan olduğu aralığı bulalım.",
+   "cozum": [
+    "x² − 4 = 0 → x = −2 ya da x = 2.",
+    "Grafik bu iki sıfır arasında x ekseninin altında: f(x) < 0 ⇔ −2 < x < 2.",
+    "x² ≥ 0 olduğundan en küçük değer x = 0'da: f(0) = −4.",
+    "x ≤ 0 iken azalan, x ≥ 0 iken artan."
+   ],
+   "sonuc": "Sıfırlar −2 ve 2; negatif aralık (−2, 2); en küçük değer −4; [0, ∞)'da artan."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Bir y değerine iki x gidiyorsa fonksiyon değildir\" demek. f(x) = x² için f(−2) = f(2) = 4 olur ve bu tamamen serbesttir. Yasak olan, **bir x'in** iki farklı y'ye gitmesidir. Yatay doğru testi fonksiyon olmayı değil, bire bir olmayı sınar."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Aşağıdakilerden hangisi y'yi x'in fonksiyonu olarak veren bir grafik değildir?", "options": ["y = x²", "x² + y² = 4", "y = |x|", "y = 2x − 1"], "answer": 1, "why": "Çemberde örneğin x = 0 için y = 2 ve y = −2 bulunur; dikey doğru iki noktada keser.", "hint": "Dikey doğru testini uygula." },
+  { "prompt": "f(x) = 1 / (x + 3) fonksiyonunun en geniş tanım kümesi nedir?", "options": ["ℝ", "ℝ − {3}", "ℝ − {−3}", "[−3, ∞)"], "answer": 2, "why": "Payda x + 3 = 0 iken x = −3; bu değer çıkarılır.", "hint": "Paydayı sıfır yapan x'i bul." },
+  { "prompt": "f(x) = x² − 9 fonksiyonu hangi aralıkta negatiftir?", "options": ["(−∞, −3)", "(3, ∞)", "(−9, 9)", "(−3, 3)"], "answer": 3, "why": "Sıfırlar −3 ve 3; parabol kolları yukarı olduğundan arada x ekseninin altındadır.", "hint": "Önce sıfırları bul." },
+  { "prompt": "x = y² bağıntısı neden y'yi x'in fonksiyonu olarak vermez?", "options": ["x = 4 için iki y değeri var", "Tanım kümesi boş", "Grafiği doğrusal değil", "y negatif olamaz"], "answer": 0, "why": "x = 4 için y = 2 ve y = −2; bir x iki y'ye gidiyor.", "hint": "Bir x değeri seç ve y'leri bul." }
+ ]
+}

@@ -1,0 +1,133 @@
+{
+ "id": "m1-1-6",
+ "baslik": "Sayı ve Şekil Örüntüleri",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.1.6"
+ ],
+ "sure": 12,
+ "ders": "oruntuler",
+ "ozet": "Artan ve azalan örüntülerin kuralını bulup sıradaki terimi söyleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örüntü nedir?",
+   "govde": "Belli bir **kurala** göre devam eden dizilere **örüntü** denir.\n\n- **Artan örüntü**: Her adımda aynı sayı kadar artar. 2, 4, 6, 8… (kural: 2 artır)\n- **Azalan örüntü**: Her adımda aynı sayı kadar azalır. 10, 9, 8, 7… (kural: 1 azalt)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Büyüyen şekil",
+   "aciklama": "Her adımda kahverengi noktalardan bir sütun eklenir. Kaydırıcıyla adımları değiştir.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 2,
+    "b": 1,
+    "n": 1,
+    "max": 6
+   },
+   "gorev": {
+    "metin": "Dördüncü adıma gel ve noktaları say.",
+    "check": {
+     "key": "n",
+     "eq": 4
+    }
+   },
+   "dene": [
+    "1. adımda 3, 2. adımda 5 nokta var. Her adımda kaç nokta ekleniyor?",
+    "Bu şekil örüntüsü 3, 5, 7, 9… sayı örüntüsüne dönüşüyor."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kuralı bulmak",
+   "govde": "Ardışık iki terime bak: Aradaki fark **kuraldır**.\n\n3, 5, 7, 9 → her adımda **2 artıyor**. Sıradaki terim 9 + 2 = 11.\n\nŞekillerde de aynı: Her adımda kaç şekil eklendiğini say."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Azalan örüntü",
+   "aciklama": "20'den başlayan, her adımda 3 azalan bir örüntü. Geri sekerek terimleri bul.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 20,
+    "start": 20,
+    "adim": 3,
+    "ileri": false
+   },
+   "gorev": {
+    "metin": "Örüntünün 5. terimine (8'e) in.",
+    "check": {
+     "key": "pos",
+     "eq": 8
+    }
+   },
+   "dene": [
+    "Terimler: 20, 17, 14, …",
+    "Altta yazan sayılar örüntünün terimleridir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "3, 6, 9, __, __ örüntüsünde boşluklara hangi sayılar gelir?",
+   "cozum": [
+    "6 − 3 = 3, 9 − 6 = 3. Kural: 3 artır.",
+    "9 + 3 = 12, 12 + 3 = 15."
+   ],
+   "sonuc": "Boşluklara **12** ve **15** gelir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "İlk adımda 1 kare, ikinci adımda 2 kare, üçüncü adımda 3 kare var. Beşinci adımda kaç kare olur?",
+   "cozum": [
+    "Her adımda 1 kare ekleniyor.",
+    "4. adımda 4, 5. adımda 5 kare olur."
+   ],
+   "sonuc": "Beşinci adımda **5** kare olur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Örüntünün kuralını yalnız ilk iki terime bakarak söylemek hata olabilir. Kuralın **her** ardışık terim için doğru olduğunu kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "12, 10, 8, 6, ? örüntüsünde sıradaki sayı nedir?",
+   "options": [
+    "5",
+    "4",
+    "8",
+    "2"
+   ],
+   "answer": 1,
+   "why": "Kural 2 azaltmak: 6 − 2 = 4.",
+   "hint": "Ardışık iki sayının farkına bak."
+  },
+  {
+   "prompt": "5, 10, 15, 20 örüntüsünün kuralı nedir?",
+   "options": [
+    "1 artır",
+    "10 artır",
+    "5 azalt",
+    "5 artır"
+   ],
+   "answer": 3,
+   "why": "Her terim bir öncekinden 5 fazladır.",
+   "hint": "10 − 5 kaç eder?"
+  },
+  {
+   "prompt": "1, 3, 5, 7, ? örüntüsünde sıradaki sayı nedir?",
+   "options": [
+    "9",
+    "8",
+    "10",
+    "11"
+   ],
+   "answer": 0,
+   "why": "Kural 2 artırmak: 7 + 2 = 9.",
+   "hint": "Her adımda kaç artıyor?"
+  }
+ ]
+}

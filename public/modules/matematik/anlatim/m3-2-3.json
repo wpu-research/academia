@@ -1,0 +1,157 @@
+{
+ "id": "m3-2-3",
+ "baslik": "Bir Kesrin Payı İle Paydası Arasındaki İlişki",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.11"
+ ],
+ "sure": 12,
+ "ozet": "Bir kesirde payın ve paydanın neyi anlattığını modellerle inceleyeceğiz. Pay paydaya eşit olunca neden bir bütün elde ettiğimizi göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Pay ve payda ne anlatır?",
+   "govde": "**3/5** kesrine bakalım:\n\n- **Payda (5):** Bütün 5 eş parçaya bölündü.\n- **Pay (3):** Bu parçalardan 3'ü alındı (boyandı).\n\nBoyanmayan parçalar da bir kesirle gösterilir: 5 parçadan 2'si boyanmadı, bu da 2/5'tir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Payı değiştir",
+   "aciklama": "Daire 4 eş parçayla başlıyor ve 1 parçası boyalı. Kaydırıcıyla paydayı, dokunarak payı değiştir.",
+   "sim": {
+    "kind": "b-pasta",
+    "n": 4,
+    "shaded": 1,
+    "slider": {
+     "min": 2,
+     "max": 12,
+     "label": "Payda (eş parça sayısı)"
+    }
+   },
+   "gorev": {
+    "metin": "3/8 kesrini göster.",
+    "check": {
+     "all": [
+      {
+       "key": "n",
+       "eq": 8
+      },
+      {
+       "key": "shaded",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce paydayı 8 yap, sonra 3 parça boya.",
+    "Payda büyüdükçe her bir parçanın küçüldüğüne dikkat et."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Pay ile payda arasındaki ilişki",
+   "govde": "- Pay paydadan **küçük**se, bütünün bir kısmı alınmıştır: 3/5 bir bütünden azdır.\n- Pay paydaya **eşit**se, bütünün tamamı alınmıştır: 5/5 = 1 bütün.\n- Payda aynı kalıp pay büyüdükçe daha çok parça alınır: 4/5, 3/5'ten fazladır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Pay paydaya eşit olunca",
+   "aciklama": "Çubuk 6 eş parçaya bölündü. Dokunarak boya ve sağdaki kesri izle.",
+   "sim": {
+    "kind": "kesir-cubugu",
+    "bars": [
+     {
+      "n": 6,
+      "shaded": 0,
+      "interactive": true
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Payı paydaya eşit yap.",
+    "check": {
+     "key": "shaded0",
+     "eq": 6
+    }
+   },
+   "dene": [
+    "6/6 kesrinde bütünün tamamı boyalıdır: 6/6 = 1."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir bahçe 8 eş parçaya ayrıldı; 5 parçaya domates ekildi. Domates ekilen ve ekilmeyen kısmı kesirle gösterelim.",
+   "cozum": [
+    "Payda 8 (eş parça sayısı).",
+    "Domates ekilen: 5 parça → 5/8.",
+    "Ekilmeyen: 8 − 5 = 3 parça → 3/8."
+   ],
+   "sonuc": "Domates ekilen kısım 5/8, ekilmeyen kısım 3/8."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Pay paydaya eşit",
+   "soru": "4/4 kesrini bir modelle gösterelim.",
+   "cozum": [
+    "Bir bütünü 4 eş parçaya böl.",
+    "4 parçanın hepsini boya."
+   ],
+   "sonuc": "Bütünün tamamı boyandı: **4/4 = 1 bütün**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Payı ve paydayı karıştırmak sık yapılır. 5 eş parçadan 2'si boyalıysa kesir **2/5**'tir, 5/2 değil. Payda her zaman bütünün kaç eş parçaya bölündüğünü gösterir ve çizginin altına yazılır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "6 eş parçadan 4'ü boyandı. Boyalı kısmı gösteren kesir hangisidir?",
+   "options": [
+    "2/6",
+    "4/6",
+    "6/4",
+    "4/10"
+   ],
+   "answer": 1,
+   "why": "Payda 6 (eş parça sayısı), pay 4 (boyalı parça).",
+   "hint": "Çizginin altına bütünün parça sayısı yazılır."
+  },
+  {
+   "prompt": "3/5 kesrinde payda kaçtır ve neyi anlatır?",
+   "options": [
+    "5; boyalı parça sayısını",
+    "3; bütünün parça sayısını",
+    "5; bütünün bölündüğü eş parça sayısını",
+    "3; boyalı parça sayısını"
+   ],
+   "answer": 2,
+   "why": "Payda 5'tir; bütün 5 eş parçaya bölünmüştür.",
+   "hint": "Payda çizginin altındaki sayıdır."
+  },
+  {
+   "prompt": "Hangisi 1 bütüne eşittir?",
+   "options": [
+    "6/7",
+    "5/6",
+    "1/6",
+    "6/6"
+   ],
+   "answer": 3,
+   "why": "Pay paydaya eşit olduğunda kesir bir bütündür.",
+   "hint": "Pay ile paydası aynı olanı ara."
+  },
+  {
+   "prompt": "Bir pizza 8 eş dilime bölündü, 3 dilim yendi. Kalan kısım pizzanın ne kadarıdır?",
+   "options": [
+    "5/8",
+    "8/5",
+    "5/3",
+    "3/8"
+   ],
+   "answer": 0,
+   "why": "8 − 3 = 5 dilim kaldı: 5/8.",
+   "hint": "Kalan dilim sayısını bul, payda değişmez."
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "id": "m7-6-1",
+ "baslik": "Eşkenar Dörtgen ve Yamuk",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.4.9",
+  "MAT.7.4.10"
+ ],
+ "sure": 15,
+ "ozet": "Eşkenar dörtgenin alanını köşegenleriyle, yamuğun alanını tabanları ve yüksekliğiyle bulmayı paralelkenar ve dikdörtgen deneyimlerimizden çıkaracak ve problemlerde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşkenar dörtgen bir dikdörtgenin yarısıdır",
+   "govde": "Eşkenar dörtgenin köşegenleri birbirini dik keser ve ortalar. Eşkenar dörtgeni, kenarları köşegenlere paralel bir dikdörtgenin içine yerleştirirsek dikdörtgenin tam **yarısını** kapladığını görürüz. Dikdörtgenin kenarları köşegen uzunlukları (e ve f) kadardır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşkenar dörtgenin alanı",
+   "govde": "**Alan = e · f ÷ 2** (e ve f köşegen uzunlukları)\n\nEşkenar dörtgen bir paralelkenar olduğu için **taban · yükseklik** ile de bulunabilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşegenlerle alan",
+   "aciklama": "Köşegenler dik ve birbirini ortalıyor; uzunluklarını değiştir.",
+   "sim": {
+    "kind": "d-kosegen",
+    "e": 8,
+    "f": 6,
+    "aci": 90,
+    "k": 5,
+    "kaydir": false
+   },
+   "gorev": {
+    "metin": "Alanı 30 birimkare olan bir eşkenar dörtgen yap.",
+    "check": {
+     "all": [
+      {
+       "key": "tur",
+       "eq": 3
+      },
+      {
+       "key": "alan",
+       "eq": 30,
+       "tol": 0.001
+      }
+     ]
+    }
+   },
+   "dene": [
+    "e · f = 60 olmalı: 10 ve 6, ya da 12 ve 5.",
+    "Köşegenleri eşit yaparsan kare olur; karenin alanı da e · e ÷ 2'dir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yamuğun alanı",
+   "govde": "Bir yamuğu kendisinin ters çevrilmiş kopyasıyla birleştirirsek tabanı (a + c), yüksekliği h olan bir **paralelkenar** elde ederiz. Yamuk bunun yarısıdır:\n\n**Alan = (a + c) · h ÷ 2**\n\na ve c paralel kenarlar (tabanlar), h aralarındaki dik uzaklıktır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yamuğun alanı",
+   "aciklama": "Yamuğun köşelerini sürükle; alt ve üst kenarları paralel tut.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      5,
+      4
+     ],
+     [
+      2,
+      4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Alanı 15 birimkare olan bir yamuk yap.",
+    "check": {
+     "key": "area",
+     "eq": 15
+    }
+   },
+   "dene": [
+    "Şimdiki alan (6 + 3) · 3 ÷ 2 = 13,5. Üst tabanı 1 birim uzat.",
+    "Üst tabanı sağa sola kaydırmak alanı değiştirmez."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Köşegen uzunlukları 10 cm ve 16 cm olan eşkenar dörtgenin alanını bulalım.",
+   "cozum": [
+    "Alan = e · f ÷ 2 = 10 · 16 ÷ 2.",
+    "= 160 ÷ 2 = 80."
+   ],
+   "sonuc": "80 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Tabanları 7 cm ve 13 cm, yüksekliği 6 cm olan yamuğun alanını bulalım.",
+   "cozum": [
+    "Alan = (7 + 13) · 6 ÷ 2.",
+    "= 20 · 6 ÷ 2 = 60."
+   ],
+   "sonuc": "60 cm²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Çim bahçe",
+   "soru": "Yamuk biçimindeki bir bahçenin paralel kenarları 12 m ve 18 m, aralarındaki uzaklık 10 m'dir. Bahçenin tamamı metrekaresi 40 TL olan çimle kaplanacak. Kaç TL ödenir?",
+   "cozum": [
+    "Alan = (12 + 18) · 10 ÷ 2 = 150 m².",
+    "Ücret = 150 · 40 = 6000 TL."
+   ],
+   "sonuc": "6000 TL."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yamukta **yan kenarı** yükseklik sanmak yanlıştır; yükseklik iki taban arasındaki **dik** uzaklıktır. Eşkenar dörtgende de köşegenleri çarpıp **2'ye bölmeyi** unutmak sık yapılır: e · f, eşkenar dörtgeni çevreleyen dikdörtgenin alanıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Köşegenleri 12 cm ve 9 cm olan eşkenar dörtgenin alanı kaç cm²'dir?",
+   "options": [
+    "108",
+    "54",
+    "21",
+    "42"
+   ],
+   "answer": 1,
+   "why": "12 · 9 ÷ 2 = 54.",
+   "hint": "Köşegenleri çarp, 2'ye böl."
+  },
+  {
+   "prompt": "Tabanları 5 cm ve 11 cm, yüksekliği 4 cm olan yamuğun alanı kaç cm²'dir?",
+   "options": [
+    "64",
+    "20",
+    "32",
+    "16"
+   ],
+   "answer": 2,
+   "why": "(5 + 11) · 4 ÷ 2 = 32.",
+   "hint": "Tabanları topla, yükseklikle çarp, 2'ye böl."
+  },
+  {
+   "prompt": "Alanı 60 cm² olan eşkenar dörtgenin bir köşegeni 10 cm ise diğer köşegeni kaç cm'dir?",
+   "options": [
+    "12",
+    "6",
+    "50",
+    "120"
+   ],
+   "answer": 0,
+   "why": "10 · f ÷ 2 = 60 → f = 12.",
+   "hint": "e · f = 2 · alan."
+  },
+  {
+   "prompt": "Alanı 45 cm², tabanları 8 cm ve 10 cm olan yamuğun yüksekliği kaç cm'dir?",
+   "options": [
+    "9",
+    "4,5",
+    "2,5",
+    "5"
+   ],
+   "answer": 3,
+   "why": "(8 + 10) · h ÷ 2 = 45 → 9h = 45 → h = 5.",
+   "hint": "Tabanların ortalaması 9."
+  }
+ ]
+}

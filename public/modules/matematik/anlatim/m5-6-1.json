@@ -1,0 +1,165 @@
+{
+ "id": "m5-6-1",
+ "baslik": "Kategorik Veri Dağılımları",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.5.1",
+  "MAT.5.5.2"
+ ],
+ "sure": 14,
+ "ozet": "Kategorik veriyle istatistiksel araştırma sürecini yürütecek: soru soracak, veri toplayıp sıklık tablosu ve sütun grafiğiyle düzenleyecek, tepe değeri bulup veriye dayalı karar verecek ve başkalarının yorumlarını tartışacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kategorik veri",
+   "govde": "\"En sevdiğin spor hangisi?\", \"Okula nasıl geliyorsun?\" gibi soruların cevapları sayı değil, **kategoridir** (futbol, otobüs gibi). Bu tür verilere **kategorik veri** denir. Boy, yaş, kütle gibi ölçülerek ya da sayılarak elde edilen sayılar ise kategorik değildir.\n\n**İstatistiksel araştırma süreci:**\n1. Araştırma sorusunu belirle.\n2. Veri topla (anket, gözlem).\n3. Veriyi düzenle (çetele, sıklık tablosu).\n4. Göster (sütun grafiği).\n5. Yorumla ve karar ver."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Grafiği oluştur",
+   "aciklama": "26 öğrenciye en sevdikleri spor soruldu. Sıklık tablosu: **Futbol 9, Basketbol 6, Voleybol 7, Yüzme 4.**",
+   "sim": {
+    "kind": "c-sutun-grafigi",
+    "etiketler": [
+     "Futbol",
+     "Basketbol",
+     "Voleybol",
+     "Yüzme"
+    ],
+    "hedef": [
+     9,
+     6,
+     7,
+     4
+    ],
+    "max": 10,
+    "birim": "Öğrenci sayısı"
+   },
+   "gorev": {
+    "metin": "Sıklık tablosundaki verilerle sütun grafiğini oluştur.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "En uzun sütun en çok seçilen kategoridir: tepe değer.",
+    "Toplamın 26 olduğunu kontrol et."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tepe değer",
+   "govde": "Kategorik veride **en çok tekrar eden kategoriye tepe değer (mod)** denir. Sütun grafiğinde en uzun sütundur. İki kategori aynı en yüksek sayıya sahipse iki tepe değer vardır.\n\nKategorik veride ortalama hesaplanamaz; \"ortalama spor\" diye bir şey yoktur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Veriye dayalı karar",
+   "aciklama": "Bir sınıfta öğrencilerin okula geliş biçimleri gösteriliyor. Sütunları değiştirerek dağılımın kararı nasıl etkilediğini gör.",
+   "sim": {
+    "kind": "c-sutun-grafigi",
+    "etiketler": [
+     "Yürüyerek",
+     "Otobüs",
+     "Servis",
+     "Bisiklet"
+    ],
+    "degerler": [
+     8,
+     5,
+     5,
+     2
+    ],
+    "max": 12,
+    "birim": "Öğrenci sayısı"
+   },
+   "gorev": {
+    "metin": "Servisi tek başına tepe değer yap.",
+    "check": {
+     "key": "enCok",
+     "eq": 2
+    }
+   },
+   "dene": [
+    "Servisin Yürüyerek'ten en az 1 fazla olması gerekir.",
+    "Okul, bisiklet parkı mı yoksa servis durağı mı yaptırmalı? Karar veriye göre değişir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Karar verme",
+   "soru": "Kantin, en çok tercih edilen meyve suyundan daha fazla almak istiyor. Anket sonuçları: elma 12, portakal 18, vişne 9, şeftali 18. Kantin ne yapmalı?",
+   "cozum": [
+    "En yüksek sayı 18; portakal ve şeftalinin ikisi de 18.",
+    "İki tepe değer var: portakal ve şeftali."
+   ],
+   "sonuc": "Kantin portakal ve şeftali suyundan daha çok almalı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Bir yorumu tartışma",
+   "soru": "Spor anketini (26 öğrenci; futbol 9) yorumlayan biri \"Sınıftaki öğrencilerin çoğu futbolu seviyor\" diyor. Bu yorum doğru mu?",
+   "cozum": [
+    "\"Çoğu\" yarıdan fazlası demektir; 26'nın yarısı 13.",
+    "Futbolu seçenler 9 kişi: 9 < 13.",
+    "Futbol en çok seçilen spor, ama öğrencilerin çoğu futbolu seçmemiş."
+   ],
+   "sonuc": "Yorum yanlış; doğrusu \"En çok seçilen spor futbol\" demektir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"En çok seçilen\" ile \"çoğunluğun seçtiği\" aynı şey değildir. Bir kategori tepe değer olabilir ama toplamın yarısından azsa çoğunluk değildir.\n\nGrafiği okurken dikey eksenin ölçeğine (birer mi, ikişer mi arttığına) dikkat etmek gerekir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi kategorik veridir?",
+   "options": [
+    "En sevilen renk",
+    "Boy uzunluğu (cm)",
+    "Yaş",
+    "Kütle (kg)"
+   ],
+   "answer": 0,
+   "why": "Renk bir kategoridir; diğerleri ölçülen ya da sayılan sayılardır.",
+   "hint": "Cevabı sayı olmayanı ara."
+  },
+  {
+   "prompt": "Anket sonuçları: elma 7, armut 3, kiraz 7, muz 5. Tepe değer nedir?",
+   "options": [
+    "Elma",
+    "Kiraz",
+    "Elma ve kiraz",
+    "Muz"
+   ],
+   "answer": 2,
+   "why": "En yüksek sayı 7; elma ve kirazın ikisi de 7.",
+   "hint": "En büyük sayıya sahip kaç kategori var?"
+  },
+  {
+   "prompt": "30 öğrencinin 12'si kırmızıyı seçti; diğer renkler daha az seçildi. \"Öğrencilerin çoğu kırmızıyı seçti\" yorumu için ne söylenebilir?",
+   "options": [
+    "Doğru, çünkü en çok kırmızı seçildi",
+    "Yanlış, çünkü 12, 30'un yarısından az",
+    "Doğru, çünkü 12 > 10",
+    "Karar verilemez"
+   ],
+   "answer": 1,
+   "why": "Çoğunluk için 15'ten fazla öğrenci gerekir; kırmızı yalnızca en çok seçilen renktir.",
+   "hint": "30'un yarısı kaç?"
+  },
+  {
+   "prompt": "Bir sütun grafiğinde dikey eksen 0, 2, 4, 6, 8 diye ilerliyor. Bir sütunun ucu 6 ile 8'in tam ortasında. Bu sütun kaç kişiyi gösterir?",
+   "options": [
+    "6",
+    "8",
+    "3",
+    "7"
+   ],
+   "answer": 3,
+   "why": "6 ile 8'in ortası 7'dir.",
+   "hint": "Eksen kaçar kaçar artıyor?"
+  }
+ ]
+}

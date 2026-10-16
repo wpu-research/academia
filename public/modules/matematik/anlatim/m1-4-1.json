@@ -1,0 +1,166 @@
+{
+ "id": "m1-4-1",
+ "baslik": "Toplama ve Çıkarma İşlemlerini Çözümleme",
+ "sinif": "1. sınıf",
+ "kazanim": [
+  "MAT.1.2.1"
+ ],
+ "sure": 14,
+ "ders": "basamak-degeri",
+ "ozet": "Günlük olayları toplama (ekleme, birleştirme) ve çıkarma (eksilme, ayırma) işlemine çevireceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ne zaman toplarız?",
+   "govde": "İki grup **birleşirse** ya da bir gruba **ekleme** yapılırsa toplama yaparız. İşareti **+** (artı) dır.\n\nAğaçta 5 kuş vardı, 3 kuş daha geldi: **5 + 3 = 8**.\n\n“=” işareti iki yanın **eşit** olduğunu gösterir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kuşlar geliyor",
+   "aciklama": "Kahverengi sayaçlar ağaçtaki kuşlar, yeşiller sonradan gelenler olsun.",
+   "sim": {
+    "kind": "a-cerceve",
+    "renk2": true,
+    "a": 0,
+    "b": 0,
+    "max": 10,
+    "adlar": [
+     "Ağaçtaki",
+     "Gelen"
+    ]
+   },
+   "gorev": {
+    "metin": "Ağaçta 5 kuş var, 3 kuş daha geliyor. Bu durumu göster.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 5
+      },
+      {
+       "key": "b",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Toplam kaç kuş oldu? Altta toplama işlemini oku."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Ne zaman çıkarırız?",
+   "govde": "Bir gruptan bir kısmı **giderse**, **eksilirse** ya da **ayrılırsa** çıkarma yaparız. İşareti **−** (eksi) dir.\n\n8 kuştan 3'ü uçtu: **8 − 3 = 5**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kuşlar uçuyor",
+   "aciklama": "Çerçevede 8 kuş var. Uçan kuşları − ile çıkar.",
+   "sim": {
+    "kind": "a-cerceve",
+    "n": 8,
+    "max": 10
+   },
+   "gorev": {
+    "metin": "3 kuş uçtu. Kalanları göster.",
+    "check": {
+     "key": "n",
+     "eq": 5
+    }
+   },
+   "dene": [
+    "Her basışta bir kuş uçar. Üç kez bas."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Parça ve bütün",
+   "govde": "Toplamada **parçaları** birleştirip **bütünü** buluruz. Çıkarmada bütünden bir parçayı ayırır, **kalan parçayı** buluruz.\n\nBütün 9, bir parça 6 ise öbür parça 9 − 6 = 3'tür."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bütünü ayır",
+   "aciklama": "Çubuk 9 eş parçadan oluşuyor. Kaydırıcıyla birinci parçayı değiştir.",
+   "sim": {
+    "kind": "a-parca-butun",
+    "butun": 9,
+    "a": 4,
+    "maxButun": 10
+   },
+   "gorev": {
+    "metin": "Birinci parça 6 olsun. Öbür parça kaç oldu?",
+    "check": {
+     "key": "a",
+     "eq": 6
+    }
+   },
+   "dene": [
+    "Altta yazan dört işleme bak; hepsi aynı üç sayıyı kullanıyor."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Sınıfta 7 kız ve 6 erkek öğrenci var. Sınıfta kaç öğrenci var?",
+   "cozum": [
+    "İki grup birleşiyor: toplama.",
+    "7 + 6: 7'ye 3 eklersen 10, kalan 3'ü de eklersen 13."
+   ],
+   "sonuc": "7 + 6 = **13** öğrenci var."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Ayşe'nin 12 balonu vardı. 4 balonu patladı. Kaç balonu kaldı?",
+   "cozum": [
+    "Balonlar eksiliyor: çıkarma.",
+    "12'den geriye 4 say: 11, 10, 9, 8."
+   ],
+   "sonuc": "12 − 4 = **8** balon kaldı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Problemi okumadan sayıları toplamak sık yapılan bir hatadır. “Kaç tane kaldı?”, “Kaç tane uçtu?” gibi sorular çoğunlukla **çıkarma** ister. Önce olayı gözünde canlandır: grup büyüyor mu, küçülüyor mu?"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bahçede 9 tavuk vardı. 4'ü kümese girdi. Bahçede kaç tavuk kaldı?",
+   "options": [
+    "13",
+    "5",
+    "4",
+    "9"
+   ],
+   "answer": 1,
+   "why": "9 − 4 = 5.",
+   "hint": "Tavuklar azaldı mı, çoğaldı mı?"
+  },
+  {
+   "prompt": "Bir kutuda 6 kırmızı ve 5 mavi kalem var. Kutuda kaç kalem var?",
+   "options": [
+    "1",
+    "10",
+    "12",
+    "11"
+   ],
+   "answer": 3,
+   "why": "6 + 5 = 11.",
+   "hint": "İki grubu birleştir."
+  },
+  {
+   "prompt": "“Bütün 10, bir parça 7” ise öbür parça kaçtır?",
+   "options": [
+    "3",
+    "17",
+    "7",
+    "10"
+   ],
+   "answer": 0,
+   "why": "10 − 7 = 3.",
+   "hint": "7'ye kaç eklersen 10 olur?"
+  }
+ ]
+}

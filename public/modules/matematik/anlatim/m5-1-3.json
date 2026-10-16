@@ -1,0 +1,142 @@
+{
+ "id": "m5-1-3",
+ "baslik": "Doğal Sayılarla Dört İşlem İçeren Problem Çözme",
+ "sinif": "5. sınıf",
+ "kazanim": [
+  "MAT.5.1.1",
+  "MAT.5.1.2"
+ ],
+ "sure": 15,
+ "ozet": "Doğal sayılarla dört işlem gerektiren gerçek yaşam problemlerini adım adım çözecek, sonucu tahminle kontrol edecek ve kalanı yoruma katacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Problem çözme adımları",
+   "govde": "1. **Anla:** Ne verilmiş, ne isteniyor? Önemli sayıların altını çiz.\n2. **Plan yap:** Hangi işlemler, hangi sırayla? Gerekirse şekil ya da tablo çiz.\n3. **Uygula:** İşlemleri dikkatle yap.\n4. **Kontrol et:** Sonuç mantıklı mı? Tahminle karşılaştır, ters işlemle sağla."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Parayla düşün",
+   "aciklama": "Ayşe tanesi 45 TL olan 3 kitap alacak. Kasaya ödeyeceği tutarı banknot ve madeni paralarla oluştur.",
+   "sim": {
+    "kind": "para"
+   },
+   "gorev": {
+    "metin": "135 TL'yi oluştur.",
+    "check": {
+     "key": "total",
+     "eq": 135
+    }
+   },
+   "dene": [
+    "3 × 45 = 135. Önce 100 TL, sonra 20, 10 ve 5 TL kullanabilirsin.",
+    "Aynı tutarı daha az parçayla oluşturmayı dene."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpma adımları",
+   "aciklama": "Bir fabrika günde 245 oyuncak üretiyor. 18 günde kaç oyuncak üretir? İşlemi adım adım izle.",
+   "sim": {
+    "kind": "c-alt-alta",
+    "op": "×",
+    "a": 245,
+    "b": 18
+   },
+   "gorev": {
+    "metin": "İşlemi sonuna kadar izle.",
+    "check": {
+     "key": "bitti",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Tahmin: 250 × 20 = 5 000; sonuç bundan biraz az olmalı.",
+    "Sağlama: 4 410 ÷ 18 = 245."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kalanı yorumlamak",
+   "govde": "Bölme içeren problemlerde kalanı **soruya göre** yorumlarız:\n\n- \"Kaç kutu **dolar**?\" sorusunda kalan dikkate alınmaz.\n- \"Herkes için kaç otobüs **gerekir**?\" sorusunda kalan için bir otobüs daha eklenir.\n- \"Kaç tane **artar**?\" sorusunun cevabı kalanın kendisidir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Çok adımlı problem",
+   "soru": "Bir kırtasiye 1 250 defter aldı. Defterlerin 750'sini tanesi 12 TL'den, kalanını tanesi 15 TL'den sattı. Kırtasiye toplam kaç TL kazandı?",
+   "cozum": [
+    "İlk satış: 750 × 12 = 9 000 TL.",
+    "Kalan defter: 1 250 − 750 = 500.",
+    "İkinci satış: 500 × 15 = 7 500 TL.",
+    "Toplam: 9 000 + 7 500 = 16 500 TL."
+   ],
+   "sonuc": "16 500 TL."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Kalanı yorumlama",
+   "soru": "Bir okul gezisine 156 öğrenci ve 12 öğretmen katılacak. Her otobüs 45 kişi alıyor. Kaç otobüs gerekir?",
+   "cozum": [
+    "Kişi sayısı: 156 + 12 = 168.",
+    "168 ÷ 45: bölüm 3, kalan 33.",
+    "3 otobüs 135 kişi alır; 33 kişi açıkta kalır, onlar için bir otobüs daha gerekir."
+   ],
+   "sonuc": "4 otobüs gerekir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kalanı düşünmeden bölümü cevap olarak yazmak sık yapılır. Otobüs probleminde \"3 otobüs\" demek 33 kişiyi geride bırakır. Cevabı yazmadan önce soruya dönüp sonucun **mantıklı olup olmadığını** kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kilogramı 35 TL olan peynirden 4 kg alan biri kasaya 200 TL verirse kaç TL para üstü alır?",
+   "options": [
+    "60 TL",
+    "140 TL",
+    "165 TL",
+    "40 TL"
+   ],
+   "answer": 0,
+   "why": "4 × 35 = 140 TL; 200 − 140 = 60 TL.",
+   "hint": "Önce peynirin tutarını bul."
+  },
+  {
+   "prompt": "250 kitap 8 rafa eşit sayıda yerleştiriliyor. Kaç kitap artar?",
+   "options": [
+    "31",
+    "2",
+    "6",
+    "0"
+   ],
+   "answer": 1,
+   "why": "250 = 8 × 31 + 2; 2 kitap artar.",
+   "hint": "Soru bölümü değil, kalanı soruyor."
+  },
+  {
+   "prompt": "Bir çiftçi 1 450 kg domatesi 25 kg'lık kasalara koyuyor. Kaç kasa dolar?",
+   "options": [
+    "48",
+    "580",
+    "58",
+    "62"
+   ],
+   "answer": 2,
+   "why": "1 450 ÷ 25 = 58.",
+   "hint": "Tahmin: 1 500 ÷ 25 = 60; sonuç buna yakın olmalı."
+  },
+  {
+   "prompt": "Ali'nin 3 400 TL'si var. 1 250 TL'lik bir bisiklet ve tanesi 375 TL olan 2 kask alırsa kaç TL'si kalır?",
+   "options": [
+    "1 775 TL",
+    "2 150 TL",
+    "1 025 TL",
+    "1 400 TL"
+   ],
+   "answer": 3,
+   "why": "Kasklar: 2 × 375 = 750 TL; harcanan 1 250 + 750 = 2 000 TL; kalan 1 400 TL.",
+   "hint": "Önce kaskların tutarını bul."
+  }
+ ]
+}

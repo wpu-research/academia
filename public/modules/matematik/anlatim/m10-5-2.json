@@ -1,0 +1,97 @@
+{
+ "id": "m10-5-2",
+ "baslik": "Cebirsel ve Fonksiyonel İşlemlerin Algoritmik Yapısı",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.5.2"],
+ "sure": 16,
+ "ozet": "Bir cebirsel işlemi ya da fonksiyonu, bir bilgisayarın da izleyebileceği açık adımlara dönüştüreceğiz: girdi, atama, karar ve döngü. Algoritmaları adım adım çalıştırıp değişkenlerin nasıl değiştiğini izleyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Algoritma nedir?",
+   "govde": "**Algoritma**, bir problemi çözmek için sırası belli, sonlu ve açık adımlar dizisidir. Yapı taşları:\n- **Girdi / çıktı**: algoritmanın aldığı ve verdiği değerler.\n- **Değişken ve atama**: \"k ← 3·x\" ifadesi \"3·x'i hesapla, sonucu k'ye yaz\" demektir. Eşitlik değil, bir **işlemdir**: \"i ← i + 1\" i'yi bir artırır.\n- **Karar (eğer)**: bir koşula göre farklı adımlara gitme.\n- **Döngü (olduğu sürece)**: bir koşul sağlandıkça adımları tekrarlama.\n\nAlgoritmalar adım listesi ya da **akış şeması** ile gösterilir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bileşkeyi adım adım hesapla",
+   "aciklama": "Bu algoritma önce f(x) = 3x − 5'i, sonra sonucun karesini hesaplıyor. \"Sonraki adım\" ile ilerle; sağda değişkenler görünür.",
+   "sim": { "kind": "f-akis", "alg": "bileske", "x": 2 },
+   "gorev": { "metin": "Girdiyi x = 3 yap ve algoritmayı sonuna kadar çalıştır.", "check": { "all": [{ "key": "x", "eq": 3 }, { "key": "done", "eq": 1 }] } },
+   "dene": ["x = 3 için y = 4, z = 16 olur.", "Algoritma g(f(x)) = (3x − 5)² bileşkesini hesaplıyor: önce iç fonksiyon."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: polinomu adımlara ayır",
+   "soru": "f(x) = 2x² − 3x + 1 değerini hesaplayan bir algoritma yazıp x = 3 için çalıştıralım.",
+   "cozum": [
+    "1. x'i al. 2. k ← x · x. 3. k ← 2 · k. 4. m ← 3 · x. 5. y ← k − m + 1. 6. y'yi yaz.",
+    "x = 3: k = 9, sonra k = 18.",
+    "m = 9, y = 18 − 9 + 1 = 10."
+   ],
+   "sonuc": "Çıktı 10; gerçekten f(3) = 18 − 9 + 1 = 10."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Karar yapısı: mutlak değer",
+   "aciklama": "Parçalı tanımlı |x| fonksiyonu bir \"eğer\" adımıyla hesaplanır.",
+   "sim": { "kind": "f-akis", "alg": "parcali", "x": -3 },
+   "gorev": { "metin": "Girdiyi x = 4 yap ve algoritmayı sonuna kadar çalıştır. Hangi satırlar atlandı?", "check": { "all": [{ "key": "x", "eq": 4 }, { "key": "done", "eq": 1 }] } },
+   "dene": ["Negatif girdide 3. satır, pozitifte 4–5. satırlar çalışıyor.", "x = 0 hangi kola gidiyor?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Döngü ve sayaç",
+   "govde": "Bir döngüde mutlaka:\n1. Başlangıç değerleri verilir (T ← 0, i ← 1).\n2. Bir **durma koşulu** sınanır (i ≤ n).\n3. Her turda koşulu etkileyen bir değişken güncellenir (i ← i + 1).\n\nGüncelleme unutulursa döngü hiç bitmez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Toplam döngüsü",
+   "aciklama": "1 + 2 + ... + n toplamını hesaplayan döngü.",
+   "sim": { "kind": "f-akis", "alg": "toplam", "n": 4 },
+   "gorev": { "metin": "n = 10 için algoritmayı sonuna kadar çalıştır.", "check": { "all": [{ "key": "n", "eq": 10 }, { "key": "done", "eq": 1 }] } },
+   "dene": ["n = 10 çıktısı 55; formül n(n + 1)/2 ile karşılaştır.", "\"Sona git\" yerine adım adım ilerle: i her turda 1 artıyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: Öklid algoritması",
+   "soru": "EBOB(84, 36)'yı \"b ≠ 0 olduğu sürece: k ← a mod b, a ← b, b ← k\" algoritmasıyla bulalım.",
+   "cozum": [
+    "a = 84, b = 36: k = 84 mod 36 = 12; a = 36, b = 12.",
+    "a = 36, b = 12: k = 0; a = 12, b = 0.",
+    "b = 0 olduğundan döngü biter; EBOB = a = 12."
+   ],
+   "sonuc": "EBOB(84, 36) = 12."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Öklid algoritmasını izle",
+   "aciklama": "Girdileri değiştir ve tablodaki a, b, k değişimini izle.",
+   "sim": { "kind": "f-akis", "alg": "oklid", "a": 84, "b": 36 },
+   "gorev": { "metin": "Algoritmayı sonuna kadar çalıştır ve EBOB'u oku.", "check": { "key": "done", "eq": 1 } },
+   "dene": ["a = 89, b = 55 dene: ardışık Fibonacci sayılarında adım sayısı çok uzar.", "a < b girersen ilk tur ikisinin yerini değiştirir."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Aşağıdaki algoritma çalıştırıldığında çıktı ne olur? 1. a ← 5 2. b ← a + 2 3. a ← b · 2 4. b ← a − b 5. a ile b'yi yaz.",
+   "cozum": [
+    "a = 5.",
+    "b = 7.",
+    "a = 14.",
+    "b = 14 − 7 = 7."
+   ],
+   "sonuc": "Çıktı: a = 14, b = 7."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Atamayı denklem gibi okumak. \"a ← b · 2\" satırından sonra a'nın eski değeri kaybolur; sonraki satırlar **yeni** değeri kullanır. Bir de adımların sırasını değiştirmek: önce f sonra g uygulamak, önce g sonra f uygulamakla genelde aynı sonucu vermez."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "\"a ← 5, b ← a + 2, a ← b · 2\" adımlarından sonra a kaçtır?", "options": ["14", "10", "7", "12"], "answer": 0, "why": "b = 7, sonra a = 7 · 2 = 14.", "hint": "Adımları sırayla uygula." },
+  { "prompt": "Bir algoritmada \"Eğer x < 0 ise ... değilse ...\" yapısının görevi nedir?", "options": ["Adımları tekrarlamak", "Bir koşula göre farklı adımlara yönlendirmek", "Değişken tanımlamak", "Çıktıyı yazdırmak"], "answer": 1, "why": "Karar yapısı koşul doğruysa bir kola, yanlışsa diğer kola gider.", "hint": "Parçalı fonksiyonu hatırla." },
+  { "prompt": "Toplam döngüsü (T ← 0, i ← 1, i ≤ n iken T ← T + i, i ← i + 1) n = 6 için hangi çıktıyı verir?", "options": ["15", "28", "21", "36"], "answer": 2, "why": "1 + 2 + 3 + 4 + 5 + 6 = 21.", "hint": "1'den 6'ya kadar topla." },
+  { "prompt": "Öklid algoritmasıyla EBOB(45, 20) kaçtır?", "options": ["10", "20", "15", "5"], "answer": 3, "why": "45 mod 20 = 5; 20 mod 5 = 0 → EBOB = 5.", "hint": "Kalan 0 olana kadar böl." }
+ ]
+}

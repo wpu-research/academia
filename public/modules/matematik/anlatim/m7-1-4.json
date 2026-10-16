@@ -1,0 +1,196 @@
+{
+ "id": "m7-1-4",
+ "baslik": "Rasyonel Sayılarla İşlemler ve Problem Çözme",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.4"
+ ],
+ "sure": 18,
+ "ozet": "Rasyonel sayılarla toplama, çıkarma, çarpma ve bölme yapacak; işaret kurallarını modellerle açıklayacak ve gerçek yaşam problemlerinde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kesir ve tam sayı kuralları birleşiyor",
+   "govde": "Rasyonel sayılarla işlem yaparken iki bildiğimiz şeyi birlikte kullanırız: **kesirlerle işlem** kuralları ve **tam sayılarda işaret** kuralları."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Toplama ve çıkarma",
+   "govde": "- Paydaları eşitle, sonra payları tam sayı kurallarıyla topla ya da çıkar.\n- Aynı işaretliler: mutlak değerleri topla, ortak işareti yaz.\n- Farklı işaretliler: büyük mutlak değerden küçüğü çıkar, mutlak değeri büyük olanın işaretini yaz.\n- Çıkarma, tersini eklemektir: a − b = a + (−b).\n\n−2/3 + 5/6 = −4/6 + 5/6 = 1/6"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda toplama",
+   "aciklama": "−3/4'ten başla ve 5/4 kadar sağa git.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": -2,
+    "max": 2,
+    "den": 4,
+    "value": -0.75
+   },
+   "gorev": {
+    "metin": "(−3/4) + (5/4) sonucunu göster.",
+    "check": {
+     "key": "value",
+     "eq": 0.5,
+     "tol": 0.001
+    }
+   },
+   "dene": [
+    "Pozitif bir sayı eklemek sağa, negatif bir sayı eklemek sola gitmektir.",
+    "5 çeyrek sağa git: −3/4 → 2/4 = 1/2."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çarpma ve bölme",
+   "govde": "- Kesirlerde payları ve paydaları çarp; bölmede ikinci kesri ters çevirip çarp.\n- **İşaret kuralı:** aynı işaretli iki sayının çarpımı ya da bölümü **pozitif**, farklı işaretlilerin **negatif**tir.\n\n(−3/4) · (8/9) = −24/36 = −2/3\n(−1,2) ÷ (0,4) = −3"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kesrin kesri",
+   "aciklama": "Önce işareti bir kenara bırakıp büyüklüğü bulalım.",
+   "sim": {
+    "kind": "d-kesir-carpim",
+    "a": 1,
+    "b": 2,
+    "c": 1,
+    "d": 3
+   },
+   "gorev": {
+    "metin": "3/5 × 2/3 çarpımını göster.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 3
+      },
+      {
+       "key": "b",
+       "eq": 5
+      },
+      {
+       "key": "c",
+       "eq": 2
+      },
+      {
+       "key": "d",
+       "eq": 3
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Koyu bölge 6 parça, bütün 15 parça: 6/15 = 2/5.",
+    "(−3/5) · (2/3) için büyüklük aynı, işaret negatif: −2/5."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Negatif bir sayıyı tekrar tekrar eklemek",
+   "aciklama": "3 · (−2), üç tane −2'nin toplamıdır.",
+   "sim": {
+    "kind": "d-sayma-pullari",
+    "arti": 0,
+    "eksi": 0
+   },
+   "gorev": {
+    "metin": "3 · (−2) çarpımını pullarla göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": -6
+      },
+      {
+       "key": "arti",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Masaya ikişerli üç grup negatif pul koy.",
+    "Pozitif × negatif = negatif."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "(−3/4) · (8/9) ÷ (−1/3) işlemini yapalım.",
+   "cozum": [
+    "(−3/4) · (8/9) = −24/36 = −2/3.",
+    "(−2/3) ÷ (−1/3) = (−2/3) · (−3/1) = 6/3 = 2.",
+    "İki negatifin bölümü pozitif."
+   ],
+   "sonuc": "Sonuç 2."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Dalgıç",
+   "soru": "Bir dalgıç deniz seviyesinin 12,5 m altındadır. Önce 4,75 m yukarı çıkıyor, sonra bu derinliğin yarısı kadar daha yukarı çıkıyor. Son konumu kaç metredir?",
+   "cozum": [
+    "İlk konum: −12,5 m. 4,75 m yukarı: −12,5 + 4,75 = −7,75 m.",
+    "Bu derinliğin yarısı: 7,75 ÷ 2 = 3,875 m daha yukarı.",
+    "Son konum: −7,75 + 3,875 = −3,875 m."
+   ],
+   "sonuc": "Deniz seviyesinin 3,875 m altında."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İşaret kurallarını toplamaya taşımak yanlıştır: \"iki negatifin toplamı pozitiftir\" diye bir kural yoktur. (−2) + (−5) = −7'dir. \"Eksi çarpı eksi artı\" yalnız **çarpma ve bölme** için geçerlidir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "(−2/5) + (3/10) işleminin sonucu hangisidir?",
+   "options": [
+    "1/10",
+    "−1/10",
+    "−1/5",
+    "1/5"
+   ],
+   "answer": 1,
+   "why": "−4/10 + 3/10 = −1/10.",
+   "hint": "Paydaları 10'da eşitle."
+  },
+  {
+   "prompt": "(−6) · (−1/3) işleminin sonucu kaçtır?",
+   "options": [
+    "−2",
+    "18",
+    "2",
+    "−18"
+   ],
+   "answer": 2,
+   "why": "Aynı işaretliler: pozitif; 6 · 1/3 = 2.",
+   "hint": "İşaret kuralını uygula, sonra büyüklüğü hesapla."
+  },
+  {
+   "prompt": "(−4,5) ÷ 1,5 işleminin sonucu kaçtır?",
+   "options": [
+    "−3",
+    "3",
+    "−0,3",
+    "−6"
+   ],
+   "answer": 0,
+   "why": "4,5 ÷ 1,5 = 3; farklı işaretler: −3.",
+   "hint": "Önce virgülden kurtul: 45 ÷ 15."
+  },
+  {
+   "prompt": "Hava sıcaklığı −3,5 °C iken 6 saat boyunca her saat 1,5 °C düştü. Son sıcaklık kaç °C'dir?",
+   "options": [
+    "5,5",
+    "−9",
+    "−5,5",
+    "−12,5"
+   ],
+   "answer": 3,
+   "why": "Toplam düşüş 6 · 1,5 = 9; −3,5 − 9 = −12,5.",
+   "hint": "Önce toplam düşüşü bul."
+  }
+ ]
+}

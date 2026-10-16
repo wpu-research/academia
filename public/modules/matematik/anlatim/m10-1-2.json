@@ -1,0 +1,97 @@
+{
+ "id": "m10-1-2",
+ "baslik": "Üçgende Yardımcı Elemanlar",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.1.2"],
+ "sure": 18,
+ "ozet": "Kenarortay, açıortay, yükseklik ve kenar orta dikme: her üçlü tek bir noktada kesişir. Bu dört özel noktayı canlı bir üçgende izleyecek, açıortay ve kenarortay bağıntılarını kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dört yardımcı eleman",
+   "govde": "ABC üçgeninde A köşesinin karşısındaki kenar a = |BC|, B'nin karşısındaki b = |AC|, C'nin karşısındaki c = |AB| ile gösterilir.\n- **Kenarortay**: bir köşeyi karşı kenarın orta noktasına birleştiren doğru parçası.\n- **Açıortay**: bir iç açıyı iki eş parçaya bölen doğru parçası.\n- **Yükseklik**: bir köşeden karşı kenara (ya da uzantısına) indirilen dikme.\n- **Kenar orta dikme**: bir kenarın orta noktasından o kenara dik çizilen doğru."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenarortaylar ve ağırlık merkezi",
+   "aciklama": "Üç kenarortay hep tek noktada, G'de kesişir. Köşeleri sürükle ve sağdaki AG : GD oranını izle.",
+   "sim": { "kind": "f-ucgen", "points": [[1, 1], [7, 1], [2, 5]], "show": ["kenarortay", "aci"], "toggles": ["kenarortay"] },
+   "gorev": { "metin": "C köşesini, C açısı 90° olacak şekilde taşı.", "check": { "key": "C", "eq": 90, "tol": 0.01 } },
+   "dene": ["Dik açı C'deyken C'den çıkan kenarortayın uzunluğu, hipotenüs AB'nin yarısıdır (bu üçgende 3).", "Hangi üçgeni kurarsan kur AG : GD = 2 : 1 kalıyor."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kenarortay bağıntıları",
+   "govde": "- Kenarortaylar **ağırlık merkezi** G'de kesişir. G her kenarortayı köşeden itibaren 2 : 1 oranında böler: |AG| = 2|GD|.\n- Dik üçgende hipotenüse ait kenarortay hipotenüsün yarısıdır.\n- a kenarına ait kenarortay uzunluğu Vₐ için: 4Vₐ² = 2b² + 2c² − a²."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir üçgende AD kenarortayının uzunluğu 12 cm'dir. G ağırlık merkezi ise |AG| ve |GD| kaçtır?",
+   "cozum": [
+    "G kenarortayı 2 : 1 böler; kenarortay 3 eş parçaya ayrılır.",
+    "Bir parça: 12 / 3 = 4 cm.",
+    "|AG| = 2 · 4 = 8 cm, |GD| = 4 cm."
+   ],
+   "sonuc": "|AG| = 8 cm, |GD| = 4 cm."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yükseklikler ve orta dikmeler",
+   "aciklama": "Turuncu doğrular yükseklikler, H diklik merkezi. \"Orta dikmeler\" düğmesiyle çevrel çemberi (merkez O) de açabilirsin.",
+   "sim": { "kind": "f-ucgen", "points": [[1, 1], [7, 1], [3, 5]], "show": ["yukseklik"], "toggles": ["yukseklik", "ortadikme"] },
+   "gorev": { "metin": "Üçgeni geniş açılı yap ve H'nin üçgenin dışına çıktığını gör.", "check": { "key": "obtuse", "eq": 1 } },
+   "dene": ["Geniş açılı üçgende iki yükseklik karşı kenarın uzantısına iner (gri kesikli çizgiler).", "Orta dikmeleri aç: O köşelerin üçüne de eşit uzaklıkta, bu yüzden çevrel çemberin merkezi."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dört özel nokta",
+   "govde": "- Kenarortaylar → **ağırlık merkezi** (G), her zaman üçgenin içinde.\n- Açıortaylar → **iç teğet çemberin merkezi** (I), kenarlara eşit uzaklıkta.\n- Kenar orta dikmeler → **çevrel çemberin merkezi** (O), köşelere eşit uzaklıkta.\n- Yükseklikler → **diklik merkezi** (H). Dar açılı üçgende içeride, dik üçgende dik açının köşesinde, geniş açılı üçgende dışarıda."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açıortaylar ve iç teğet çember",
+   "aciklama": "Açıortaylar I noktasında kesişir; I merkezli çember üç kenara da teğettir.",
+   "sim": { "kind": "f-ucgen", "points": [[1, 1], [9, 1], [3, 6]], "show": ["aciortay", "kenar"], "toggles": ["aciortay", "kenarortay"] },
+   "dene": ["Kenarortayı da aç: açıortay ile kenarortay ancak iki kenar eşitse (b = c) çakışır.", "İç teğet çember yarıçapı sağda yazıyor: r = Alan / (yarı çevre)."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açıortay teoremi",
+   "govde": "A açısının açıortayı BC kenarını D noktasında kesiyorsa D, karşı kenarı komşu kenarlar oranında böler:\n|BD| / |DC| = |AB| / |AC| = c / b."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "ABC üçgeninde |AB| = 6, |AC| = 9 ve |BC| = 10'dur. A açısının açıortayı BC'yi D'de kesiyor. |BD| ve |DC| kaçtır?",
+   "cozum": [
+    "|BD| / |DC| = 6 / 9 = 2 / 3.",
+    "BC'yi 2 + 3 = 5 eş parçaya böl: bir parça 10 / 5 = 2.",
+    "|BD| = 2 · 2 = 4, |DC| = 3 · 2 = 6."
+   ],
+   "sonuc": "|BD| = 4, |DC| = 6."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Dik kenarları |AB| = 6 ve |AC| = 8 olan ABC dik üçgeninde (dik açı A'da) BC kenarına ait kenarortayın uzunluğu kaçtır? Sonucu kenarortay formülüyle de doğrula.",
+   "cozum": [
+    "Hipotenüs: a = |BC| = √(36 + 64) = 10.",
+    "Hipotenüse ait kenarortay hipotenüsün yarısı: 10 / 2 = 5.",
+    "Formülle: 4Vₐ² = 2 · 8² + 2 · 6² − 10² = 128 + 72 − 100 = 100, Vₐ² = 25, Vₐ = 5."
+   ],
+   "sonuc": "Kenarortay 5 birimdir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Açıortayın karşı kenarı tam ortadan böldüğünü sanmak. Açıortay karşı kenarı **komşu kenarlar oranında** böler; orta noktaya yalnız b = c iken (ikizkenar üçgende) ulaşır. Orta noktaya giden doğru parçası kenarortaydır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Bir üçgende bir kenarortay 15 cm ve G ağırlık merkezidir. G ile kenarın orta noktası arasındaki uzaklık kaç cm'dir?", "options": ["10", "7,5", "5", "3"], "answer": 2, "why": "G kenarortayı köşeden itibaren 2 : 1 böler; kısa parça 15 / 3 = 5.", "hint": "Kenarortayı 3 eş parçaya böl." },
+  { "prompt": "Üçgenin üç köşesine eşit uzaklıktaki nokta hangisidir?", "options": ["Kenarortayların kesişimi", "Kenar orta dikmelerin kesişimi", "Açıortayların kesişimi", "Yüksekliklerin kesişimi"], "answer": 1, "why": "Bir kenarın orta dikmesindeki her nokta o kenarın uçlarına eşit uzaklıktadır; üç orta dikmenin kesişimi üç köşeye eşit uzaklıktadır.", "hint": "Çevrel çemberin merkezini düşün." },
+  { "prompt": "|AB| = 4, |AC| = 6, |BC| = 5 olan üçgende A açısının açıortayı BC'yi D'de kesiyor. |BD| kaçtır?", "options": ["2", "3", "2,5", "4"], "answer": 0, "why": "|BD| / |DC| = 4 / 6 = 2 / 3; 5 birim 5 parçaya ayrılır, |BD| = 2.", "hint": "Açıortay teoremi: BD / DC = AB / AC." },
+  { "prompt": "Dik kenarları 6 ve 8 olan dik üçgende hipotenüse ait kenarortay kaçtır?", "options": ["7", "4", "10", "5"], "answer": 3, "why": "Hipotenüs 10; hipotenüse ait kenarortay bunun yarısı, 5.", "hint": "Dik üçgende hipotenüse ait kenarortay neye eşittir?" }
+ ]
+}

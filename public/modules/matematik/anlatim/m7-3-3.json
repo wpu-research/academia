@@ -1,0 +1,183 @@
+{
+ "id": "m7-3-3",
+ "baslik": "İspat",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.2.3"
+ ],
+ "sure": 14,
+ "ozet": "Bir ifadenin bütün sayılar için doğru olduğunu birkaç örnekle değil, harflerle genel olarak göstermeyi (ispatı) öğreneceğiz. Yanlış bir iddiayı tek bir karşı örnekle çürüteceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örnek yetmez",
+   "govde": "\"İki tek sayının toplamı çifttir.\" 3 + 5 = 8, 7 + 9 = 16, 11 + 1 = 12… Kaç örnek denersek deneyelim, **sonsuz** tane tek sayı vardır; hepsini deneyemeyiz.\n\nBir iddianın **her durumda** doğru olduğunu mantıkla göstermeye **ispat** denir. İspatta sayılar yerine harfler kullanırız; böylece söylediğimiz her sayı için geçerli olur."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Genel gösterimler",
+   "govde": "k bir tam sayı olmak üzere:\n\n- Her **çift** sayı **2k** biçimindedir (2'ye tam bölünür).\n- Her **tek** sayı **2k + 1** biçimindedir (2'ye bölümünden kalan 1).\n- Ardışık üç tam sayı: **n, n + 1, n + 2**.\n\nİki farklı sayı için farklı harfler kullanılır: 2a + 1 ve 2b + 1."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Noktaları eşle",
+   "aciklama": "Her sayı ikişerli sütunlara dizilmiş noktalarla gösteriliyor. Eşi olmayan nokta kırmızı. Alttaki satır toplamı gösteriyor.",
+   "sim": {
+    "kind": "d-cift-tek",
+    "a": 4,
+    "b": 6
+   },
+   "gorev": {
+    "metin": "İki sayıyı da tek sayı yap ve toplama bak.",
+    "check": {
+     "all": [
+      {
+       "key": "aTek",
+       "eq": 1
+      },
+      {
+       "key": "bTek",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "İki tek sayının artan iki noktası birleşip yeni bir ikili oluşturuyor; toplamda artan nokta kalmıyor.",
+    "Bir tek, bir çift sayı seç: toplamda bir nokta artıyor mu?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "İspat 1: İki tek sayının toplamı çifttir",
+   "soru": "a ve b tam sayı olmak üzere iki tek sayı 2a + 1 ve 2b + 1 olsun.",
+   "cozum": [
+    "Toplam: (2a + 1) + (2b + 1) = 2a + 2b + 2.",
+    "2 parantezine al: 2(a + b + 1).",
+    "a + b + 1 bir tam sayıdır; demek ki toplam 2 ile çarpılmış bir tam sayıdır."
+   ],
+   "sonuc": "Toplam 2'nin katıdır, yani çifttir. Bu, bütün tek sayılar için geçerlidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ardışık üç sayı",
+   "aciklama": "Makine x, x + 1 ve x + 2'yi topluyor: toplam 3x + 3. Farklı x değerleri dene ve tabloya ekle.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      3
+     ],
+     [
+      "+",
+      3
+     ]
+    ],
+    "x": 1,
+    "min": 0,
+    "max": 20,
+    "etiket": "İlk sayı x",
+    "ifade": "x + (x + 1) + (x + 2)"
+   },
+   "gorev": {
+    "metin": "Toplamı 36 olan ardışık üç sayının ilkini bul.",
+    "check": {
+     "key": "y",
+     "eq": 36
+    }
+   },
+   "dene": [
+    "Tablodaki her toplam 3'e tam bölünüyor mu?",
+    "3x + 3 = 3(x + 1): toplam her zaman 3'ün katı ve ortadaki sayının 3 katı."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "İspat 2: Ardışık üç tam sayının toplamı 3'ün katıdır",
+   "soru": "Ardışık üç tam sayı n, n + 1, n + 2 olsun.",
+   "cozum": [
+    "Toplam: n + (n + 1) + (n + 2) = 3n + 3.",
+    "3 parantezine al: 3(n + 1).",
+    "n + 1 bir tam sayı olduğu için toplam 3'ün katıdır."
+   ],
+   "sonuc": "İddia her n için doğrudur. Üstelik toplam, ortadaki sayının (n + 1) 3 katıdır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Karşı örnek",
+   "soru": "\"Bütün asal sayılar tektir.\" iddiası doğru mu?",
+   "cozum": [
+    "Bir iddiayı çürütmek için **tek bir** karşı örnek yeter.",
+    "2 asaldır (yalnız 1'e ve kendisine bölünür) ama çifttir."
+   ],
+   "sonuc": "İddia yanlıştır; karşı örnek 2."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Çift sayıların çarpımı",
+   "soru": "Bir öğrenci \"İki çift sayının çarpımı her zaman 4'ün katıdır\" diyor. Bu iddiayı ispatlayalım.",
+   "cozum": [
+    "İki çift sayı 2a ve 2b olsun (a, b tam sayı).",
+    "Çarpım: 2a · 2b = 4ab.",
+    "ab bir tam sayı olduğu için çarpım 4'ün katıdır."
+   ],
+   "sonuc": "İddia doğrudur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Birkaç örnekle \"ispatladım\" demek yanlıştır; örnekler bir iddiayı yalnız **destekler**. Bir başka hata iki farklı sayı için aynı harfi kullanmaktır: iki tek sayıyı 2k + 1 ve 2k + 1 diye yazarsan yalnız **aynı** iki sayıyı toplamış olursun."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Herhangi bir tek sayının genel gösterimi hangisidir? (k tam sayı)",
+   "options": [
+    "2k",
+    "k + 1",
+    "2k + 1",
+    "k²"
+   ],
+   "answer": 2,
+   "why": "2'ye bölümünden kalan 1 olan sayılar 2k + 1 biçimindedir.",
+   "hint": "Tek sayı, bir çift sayının 1 fazlasıdır."
+  },
+  {
+   "prompt": "\"Her tek sayı asaldır.\" iddiasını çürüten karşı örnek hangisidir?",
+   "options": [
+    "3",
+    "9",
+    "7",
+    "11"
+   ],
+   "answer": 1,
+   "why": "9 tek ama 3 · 3 olduğu için asal değil.",
+   "hint": "Tek olup asal olmayan bir sayı ara."
+  },
+  {
+   "prompt": "Bir tek sayı ile bir çift sayının toplamı için hangisi doğrudur?",
+   "options": [
+    "Her zaman tektir.",
+    "Her zaman çifttir.",
+    "Bazen tek, bazen çifttir.",
+    "Her zaman 0'dır."
+   ],
+   "answer": 0,
+   "why": "(2a + 1) + 2b = 2(a + b) + 1: tek.",
+   "hint": "Genel gösterimlerle topla."
+  },
+  {
+   "prompt": "2a + 2b = 2(a + b) eşitliği aşağıdaki iddialardan hangisinin ispatıdır?",
+   "options": [
+    "İki tek sayının toplamı çifttir.",
+    "Her sayı çifttir.",
+    "Çift sayılar sonsuzdur.",
+    "İki çift sayının toplamı çifttir."
+   ],
+   "answer": 3,
+   "why": "2a ve 2b çift sayılardır; toplamları 2 ile çarpılmış bir tam sayı.",
+   "hint": "2a ve 2b nasıl sayılardır?"
+  }
+ ]
+}

@@ -1,0 +1,170 @@
+{
+ "id": "m12e-5-2",
+ "baslik": "Anlık Değişim Oranı ve Türev",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.5.2.1",
+  "12.5.2.2",
+  "12.5.2.3",
+  "12.5.2.4"
+ ],
+ "sure": 22,
+ "ders": "turev-kesenden-tegete",
+ "ozet": "Ortalama değişim hızından anlık değişim hızına geçerek türevi tanımlayacağız; türevin teğet eğimi olduğunu görecek, türevlenebilirliği ve türev alma kurallarını (çarpım, bölüm, zincir) öğreneceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ortalama hızdan anlık hıza",
+   "govde": "Bir taş serbest bırakılıyor; t saniyede aldığı yol yaklaşık s(t) = 5t² metre. 1. ile 3. saniye arasındaki **ortalama hız**:\n\n(s(3) − s(1)) / (3 − 1) = (45 − 5)/2 = 20 m/s.\n\nPeki tam t = 2 anındaki hız? Aralığı küçültürüz: [2, 2 + h] aralığındaki ortalama hız (s(2 + h) − s(2))/h = 20 + 5h. h → 0 iken bu değer **20 m/s**'ye yaklaşır. Bu, **anlık değişim oranıdır**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kesenden teğete",
+   "aciklama": "f(x) = x² eğrisinde P(1, 1) ve x = 1 + h'deki ikinci nokta. İkisinden geçen doğru **kesen**dir; eğimi ortalama değişim oranıdır. h'yi küçült.",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x2",
+    "mode": "secant",
+    "a": 1,
+    "h": 2
+   },
+   "gorev": {
+    "metin": "h'yi 0,01'in altına indir.",
+    "check": {
+     "key": "h",
+     "lt": 0.01
+    }
+   },
+   "dene": [
+    "Kesenin eğimi ((1 + h)² − 1)/h = 2 + h; h küçüldükçe 2'ye yaklaşır.",
+    "Limitte kesen, P'deki **teğete** dönüşür: f′(1) = 2."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Türevin tanımı",
+   "govde": "f fonksiyonunun x = a'daki türevi\n\n**f′(a) = lim_(h→0) [f(a + h) − f(a)] / h**\n\nlimiti (varsa) ile tanımlanır.\n\n- Geometrik anlam: f′(a), grafiğe (a, f(a)) noktasında çizilen **teğetin eğimidir**.\n- Teğet doğrusunun denklemi: **y − f(a) = f′(a) · (x − a)**"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1 · Tanımla türev",
+   "soru": "f(x) = x² için f′(3)'ü tanımla bulalım ve x = 3'teki teğetin denklemini yazalım.",
+   "cozum": [
+    "f(3 + h) − f(3) = 9 + 6h + h² − 9 = 6h + h².",
+    "(6h + h²)/h = 6 + h ⇒ h → 0 iken 6. Demek ki f′(3) = 6.",
+    "Teğet: y − 9 = 6(x − 3) ⇒ y = 6x − 9."
+   ],
+   "sonuc": "f′(3) = 6, teğet y = 6x − 9."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Teğetin eğimini oku",
+   "aciklama": "Bu kez teğet doğrusu çiziliyor. Noktayı kaydır ve eğimin 2x kuralına uyduğuna bak.",
+   "sim": {
+    "kind": "turev-teget",
+    "f": "x2",
+    "mode": "tangent",
+    "a": 1.5
+   },
+   "gorev": {
+    "metin": "Teğetin eğimi 4 olacak noktayı bul.",
+    "check": {
+     "key": "a",
+     "eq": 2,
+     "tol": 1e-06
+    }
+   },
+   "dene": [
+    "f(x) = x² için f′(x) = 2x: eğim 4 ⇒ x = 2.",
+    "x = 0'da teğet yatay (yeşil), eğim 0."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Türevlenebilirlik",
+   "govde": "- f, a'da türevli ⇔ **soldan türev = sağdan türev**.\n- f, a'da türevli ise a'da süreklidir. Tersi doğru değildir.\n- **Örnek:** f(x) = |x| fonksiyonu x = 0'da süreklidir ama soldan türev −1, sağdan türev 1 olduğundan türevli değildir (grafikte **köşe** vardır).\n- Süreksiz olduğu, köşe yaptığı ya da dikey teğeti olan noktalarda fonksiyon türevlenemez.\n- Bir açık aralığın her noktasında türevli olan fonksiyona o aralıkta türevlidir denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Türev alma kuralları",
+   "govde": "- (c)′ = 0, (xⁿ)′ = n · xⁿ⁻¹, (c · f)′ = c · f′\n- (f ± g)′ = f′ ± g′\n- **Çarpım:** (f · g)′ = f′ · g + f · g′\n- **Bölüm:** (f / g)′ = (f′ · g − f · g′) / g² (g ≠ 0)\n- **Zincir kuralı:** (f ∘ g)′(x) = f′(g(x)) · g′(x). Özel olarak [u(x)]ⁿ ifadesinin türevi n · uⁿ⁻¹ · u′."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2 · Çarpım ve bölüm",
+   "soru": "f(x) = (x² + 1)(3x − 2) için f′(1)'i ve g(x) = (2x + 1)/(x − 3) için g′(4)'ü bulalım.",
+   "cozum": [
+    "Çarpım kuralı: f′(x) = 2x(3x − 2) + 3(x² + 1) = 9x² − 4x + 3 ⇒ f′(1) = 8.",
+    "Bölüm kuralı: g′(x) = [2(x − 3) − (2x + 1) · 1] / (x − 3)² = −7/(x − 3)².",
+    "g′(4) = −7/1 = −7."
+   ],
+   "sonuc": "f′(1) = 8, g′(4) = −7."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek · Zincir kuralı",
+   "soru": "f(x) = (x² − 3x)⁵ ise f′(1) kaçtır?",
+   "cozum": [
+    "İç fonksiyon u = x² − 3x, u′ = 2x − 3.",
+    "f′(x) = 5(x² − 3x)⁴ · (2x − 3).",
+    "x = 1: u = −2, u⁴ = 16, u′ = −1 ⇒ f′(1) = 5 · 16 · (−1)."
+   ],
+   "sonuc": "f′(1) = −80."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- (f · g)′ = f′ · g′ sanmak. Örnek: (x · x)′ = 2x, ama x′ · x′ = 1.\n- Zincir kuralında içteki fonksiyonun türevini çarpmayı unutmak: [(2x + 1)³]′ = 3(2x + 1)² · **2**.\n- Bölüm kuralında paydaki sırayı ters yazmak: f′g − fg′ (önce payın türevi)."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "f(x) = 4x³ − 2x + 7 ise f′(1) kaçtır?",
+   "options": [
+    "10",
+    "12",
+    "14",
+    "9"
+   ],
+   "answer": 0,
+   "why": "f′(x) = 12x² − 2 ⇒ f′(1) = 10.",
+   "hint": "Her terimin türevini ayrı al; sabitin türevi 0."
+  },
+  {
+   "prompt": "f(x) = √(x² + 9) ise f′(4) kaçtır?",
+   "options": [
+    "1/5",
+    "4/5",
+    "8/5",
+    "4/25"
+   ],
+   "answer": 1,
+   "why": "f′(x) = 2x / (2√(x² + 9)) = x/√(x² + 9) ⇒ 4/5.",
+   "hint": "√u = u^(1/2); zincir kuralını kullan."
+  },
+  {
+   "prompt": "f(x) = x² eğrisine x = −1 noktasında çizilen teğetin denklemi nedir?",
+   "options": [
+    "y = 2x + 3",
+    "y = −2x + 1",
+    "y = −2x − 1",
+    "y = −x"
+   ],
+   "answer": 2,
+   "why": "f(−1) = 1, f′(−1) = −2 ⇒ y − 1 = −2(x + 1) ⇒ y = −2x − 1.",
+   "hint": "Nokta (−1, 1), eğim f′(−1)."
+  },
+  {
+   "prompt": "f(x) = |x − 2| fonksiyonu hangi noktada türevli değildir?",
+   "options": [
+    "x = 0",
+    "x = −2",
+    "x = 1",
+    "x = 2"
+   ],
+   "answer": 3,
+   "why": "x = 2'de grafik köşe yapar: soldan türev −1, sağdan türev 1.",
+   "hint": "Mutlak değerin içini sıfır yapan nokta."
+  }
+ ]
+}

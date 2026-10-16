@@ -1,0 +1,149 @@
+{
+ "id": "m3-1-6",
+ "baslik": "Tek ve Çift Sayıların Toplamı",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.6"
+ ],
+ "sure": 12,
+ "ozet": "Birçok örneğe bakıp bir kural bulacağız: iki sayının toplamı ne zaman tek, ne zaman çift olur? Kuralın nedenini eşsiz kalan nesnelerle göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Örneklerden kurala",
+   "govde": "Önce birkaç toplam hesaplayalım:\n\n- 4 + 6 = 10, 8 + 2 = 10 (çift + çift)\n- 3 + 5 = 8, 7 + 9 = 16 (tek + tek)\n- 3 + 4 = 7, 6 + 5 = 11 (tek + çift)\n\nHer grupta sonuçların tek mi çift mi olduğuna bak. Aynı durum başka örneklerde de oluyor mu? Örneklerden genel bir kural çıkarmaya **tümevarım** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki grubu birleştir",
+   "aciklama": "Kaydırıcılarla iki grubun nesne sayısını değiştir. En alttaki satırda iki grup birleşir: önce çiftler, en sonda eşsiz kalanlar.",
+   "sim": {
+    "kind": "b-ciftler",
+    "a": 4,
+    "b": 6,
+    "max": 15
+   },
+   "gorev": {
+    "metin": "İki grubu da tek sayı yap ve toplamın ne olduğuna bak.",
+    "check": {
+     "all": [
+      {
+       "key": "aTek",
+       "eq": 1
+      },
+      {
+       "key": "bTek",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "İki grupta da birer eşsiz nesne kalır. Birleşince bu iki nesne ne yapar?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Toplama kuralı",
+   "govde": "- çift + çift = **çift**\n- tek + tek = **çift**\n- tek + çift = **tek** (çift + tek de tek)\n\n**Neden?** Tek sayıda bir nesne eşsiz kalır. İki tek sayı toplanınca iki eşsiz nesne birbiriyle eş olur, eşsiz kalmaz. Tek ile çift toplanınca yalnız bir eşsiz nesne vardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Toplamı tek yap",
+   "aciklama": "Gruplar yine 4 ve 6 nesneyle başlıyor.",
+   "sim": {
+    "kind": "b-ciftler",
+    "a": 4,
+    "b": 6,
+    "max": 15
+   },
+   "gorev": {
+    "metin": "Toplamda eşsiz bir nesne kalacak biçimde grupları değiştir.",
+    "check": {
+     "key": "tek",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Yalnız bir grubun sayısını 1 artırmayı dene."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "27 + 35 toplamının tek mi çift mi olduğunu hesaplamadan bulalım.",
+   "cozum": [
+    "27 tek (birler 7).",
+    "35 tek (birler 5).",
+    "tek + tek = çift."
+   ],
+   "sonuc": "Toplam çifttir. Kontrol: 27 + 35 = 62."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Bir adım ileri",
+   "soru": "Üç tek sayının toplamı tek mi, çift mi? 3 + 5 + 7 ile deneyelim.",
+   "cozum": [
+    "3 + 5: tek + tek = çift (8).",
+    "8 + 7: çift + tek = tek (15).",
+    "Başka üç tek sayıyla dene: 1 + 1 + 1 = 3, yine tek."
+   ],
+   "sonuc": "Üç tek sayının toplamı tektir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Tek + tek = tek\" sanmak çok yaygındır. 3 + 5 = 8 örneğinde olduğu gibi iki tek sayının toplamı **çift**tir: iki eşsiz nesne birbirine eş olur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "45 + 38 toplamı tek midir, çift midir?",
+   "options": [
+    "Hem tek hem çift",
+    "Bilinemez",
+    "Çift",
+    "Tek"
+   ],
+   "answer": 3,
+   "why": "45 tek, 38 çift; tek + çift = tek. (45 + 38 = 83)",
+   "hint": "Önce iki sayının tek mi çift mi olduğunu bul."
+  },
+  {
+   "prompt": "Hangi toplam çifttir?",
+   "options": [
+    "40 + 31",
+    "22 + 9",
+    "17 + 29",
+    "13 + 24"
+   ],
+   "answer": 2,
+   "why": "17 ve 29 tektir; tek + tek = çift (46).",
+   "hint": "İki sayı da tek ya da ikisi de çift olmalı."
+  },
+  {
+   "prompt": "İki sayının toplamı tek ise aşağıdakilerden hangisi doğrudur?",
+   "options": [
+    "İkisi de çifttir",
+    "Biri tek, diğeri çifttir",
+    "Biri sıfırdır",
+    "İkisi de tektir"
+   ],
+   "answer": 1,
+   "why": "Toplamın tek olması için tam bir eşsiz nesne kalmalı: biri tek, diğeri çift.",
+   "hint": "Kuraldaki üç durumdan hangisinde toplam tek çıkıyordu?"
+  },
+  {
+   "prompt": "Ali bir tek sayıyı kendisiyle topladı. Sonuç için ne söylenebilir?",
+   "options": [
+    "Her zaman çifttir",
+    "Her zaman tektir",
+    "Bazen tek bazen çifttir",
+    "Her zaman sıfırdır"
+   ],
+   "answer": 0,
+   "why": "Tek + tek her zaman çifttir; örneğin 7 + 7 = 14.",
+   "hint": "7 + 7 ile dene."
+  }
+ ]
+}

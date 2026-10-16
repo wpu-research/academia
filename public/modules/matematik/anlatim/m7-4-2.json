@@ -1,0 +1,179 @@
+{
+ "id": "m7-4-2",
+ "baslik": "Orta Dikme ve Açıortay İnşası",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.3.2"
+ ],
+ "sure": 15,
+ "ozet": "Yansıma deneyimimizden yola çıkarak bir doğru parçasının orta dikmesini ve bir açının açıortayını pergel ve cetvelle inşa edecek; bu çizgiler üzerindeki noktaların eşit uzaklık özelliğini keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yansımadan inşaya",
+   "govde": "[AB] doğru parçasını öyle bir doğruya göre yansıtalım ki A, B'ye; B de A'ya gitsin. Bu yansıma doğrusu [AB]'ye diktir ve [AB]'yi ortalar. Bu doğruya [AB]'nin **orta dikmesi** denir.\n\nBenzer biçimde bir açının iki kolunu birbirine taşıyan yansıma doğrusu, açıyı iki eş açıya böler. Bu ışına **açıortay** denir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Orta dikme inşası",
+   "govde": "1. Pergeli [AB]'nin **yarısından daha geniş** aç.\n2. A merkezli bir yay çiz.\n3. Pergelin açıklığını bozmadan B merkezli bir yay çiz.\n4. Yayların kesiştiği iki noktayı cetvelle birleştir.\n\n**Özellik:** Orta dikme üzerindeki her nokta A ve B'ye **eşit uzaklıktadır**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Orta dikmeyi inşa et",
+   "aciklama": "A ve B arası 6 birim. Pergel açıklığını ayarla; P noktasını sürükleyip uzaklıklara bak.",
+   "sim": {
+    "kind": "d-esit-uzaklik",
+    "mod": "ortadikme",
+    "r": 2,
+    "p": [
+     2,
+     2.5
+    ]
+   },
+   "gorev": {
+    "metin": "Yayları kesiştir ve P'yi A ile B'ye eşit uzaklıkta bir yere (orta noktadan en az 1 birim uzakta) koy.",
+    "check": {
+     "all": [
+      {
+       "key": "kesisir",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 0.01
+      },
+      {
+       "key": "uzak",
+       "gte": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Pergel 3 birim ya da daha az açılırsa yaylar kesişmez.",
+    "Orta dikmenin dışında A ve B'ye eşit uzaklıkta bir nokta bulabilir misin?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Açıortay inşası",
+   "govde": "1. Açının köşesi O merkezli bir yay çiz; yay kolları K ve L'de kessin.\n2. K merkezli bir yay çiz (açıklık |KL|'nin yarısından fazla).\n3. Açıklığı bozmadan L merkezli bir yay çiz; iki yay M'de kesişsin.\n4. O ile M'yi birleştir: [OM ışını açıortaydır.\n\n**Özellik:** Açıortay üzerindeki her nokta açının **kollarına eşit uzaklıktadır**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açıortayı inşa et",
+   "aciklama": "Açı 70°. İki yayın yarıçapını ayarla. P'yi sürükle; kesikli çizgiler P'nin kollara uzaklığı.",
+   "sim": {
+    "kind": "d-esit-uzaklik",
+    "mod": "aciortay",
+    "aci": 70,
+    "r": 2,
+    "r2": 1,
+    "p": [
+     1,
+     3
+    ]
+   },
+   "gorev": {
+    "metin": "Açıortayı oluştur ve P'yi kollara eşit uzaklıkta, O'dan en az 2 birim uzağa koy.",
+    "check": {
+     "all": [
+      {
+       "key": "kesisir",
+       "eq": 1
+      },
+      {
+       "key": "fark",
+       "lt": 0.1
+      },
+      {
+       "key": "uzak",
+       "gte": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "P'yi yeşil ışının üzerine götür.",
+    "1. yayın yarıçapını değiştir: açıortay değişiyor mu?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "|AB| = 10 cm'dir. P noktası [AB]'nin orta dikmesi üzerindedir ve |PA| = 13 cm'dir. |PB| kaç cm'dir? Orta dikmenin [AB]'yi kestiği nokta H ise |AH| kaç cm'dir?",
+   "cozum": [
+    "Orta dikme üzerindeki noktalar uçlara eşit uzaklıktadır: |PB| = |PA| = 13 cm.",
+    "Orta dikme [AB]'yi ortalar: |AH| = 10 ÷ 2 = 5 cm."
+   ],
+   "sonuc": "|PB| = 13 cm, |AH| = 5 cm."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Ortak çeşme",
+   "soru": "İki köy A ve B arasında düz bir yol değil, köylerin güneyinden geçen düz bir anayol var. Anayol üzerine, iki köye eşit uzaklıkta bir çeşme yapılacak. Çeşmenin yeri nasıl bulunur?",
+   "cozum": [
+    "Köylere eşit uzaklıktaki bütün noktalar [AB]'nin orta dikmesi üzerindedir.",
+    "Pergel ve cetvelle [AB]'nin orta dikmesi inşa edilir.",
+    "Orta dikmenin anayolu kestiği nokta hem yol üzerindedir hem de köylere eşit uzaklıktadır."
+   ],
+   "sonuc": "Çeşme, [AB]'nin orta dikmesinin anayolu kestiği noktaya yapılır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Orta dikme inşasında pergeli [AB]'nin yarısından **küçük** ya da tam yarısı kadar açmak yanlıştır: yaylar kesişmez ya da yalnız tek noktada değer, doğru çizilemez. İkinci yayı çizerken pergelin açıklığını değiştirmek de hatalıdır; iki yay **aynı yarıçapla** çizilmelidir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "P noktası [AB]'nin orta dikmesi üzerindedir ve |PA| = 7 cm'dir. |PB| kaç cm'dir?",
+   "options": [
+    "3,5",
+    "14",
+    "7",
+    "Bilinemez"
+   ],
+   "answer": 2,
+   "why": "Orta dikme üzerindeki noktalar A ve B'ye eşit uzaklıktadır.",
+   "hint": "Orta dikmenin özelliğini hatırla."
+  },
+  {
+   "prompt": "130°'lik bir açının açıortayı açıyı hangi ölçülerde iki açıya ayırır?",
+   "options": [
+    "65° ve 65°",
+    "130° ve 130°",
+    "50° ve 80°",
+    "25° ve 105°"
+   ],
+   "answer": 0,
+   "why": "Açıortay açıyı iki eş parçaya böler: 130 ÷ 2 = 65.",
+   "hint": "Açıortay \"açıyı ortalayan\" ışındır."
+  },
+  {
+   "prompt": "Orta dikme inşasında pergelin açıklığı nasıl olmalıdır?",
+   "options": [
+    "[AB]'nin yarısından küçük",
+    "[AB]'nin yarısından büyük",
+    "Tam [AB]'nin yarısı kadar",
+    "Sıfır"
+   ],
+   "answer": 1,
+   "why": "Ancak bu durumda A ve B merkezli yaylar iki noktada kesişir.",
+   "hint": "Simülasyonda yaylar ne zaman kesişti?"
+  },
+  {
+   "prompt": "Bir açının açıortayı üzerindeki her nokta için hangisi doğrudur?",
+   "options": [
+    "Açının köşesine eşit uzaklıktadır.",
+    "Kolların uç noktalarına eşit uzaklıktadır.",
+    "Hiçbir şeye eşit uzaklıkta değildir.",
+    "Açının kollarına eşit uzaklıktadır."
+   ],
+   "answer": 3,
+   "why": "Açıortay, kollara eşit uzaklıktaki noktaların oluşturduğu ışındır.",
+   "hint": "Simülasyondaki kesikli çizgileri hatırla."
+  }
+ ]
+}

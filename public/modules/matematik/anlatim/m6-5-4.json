@@ -1,0 +1,165 @@
+{
+ "id": "m6-5-4",
+ "baslik": "Çemberde Merkez Açı ve Gördüğü Yay Uzunluğu",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.4.6"
+ ],
+ "sure": 13,
+ "ozet": "Köşesi çemberin merkezinde olan açıları tanıyacak, merkez açı büyüdükçe gördüğü yayın aynı oranda uzadığını keşfedecek ve yay uzunluğunu hesaplayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Merkez açı ve yay",
+   "govde": "Köşesi çemberin merkezinde, kolları yarıçap olan açıya **merkez açı** denir. Merkez açının kolları arasında kalan çember parçasına bu açının **gördüğü yay** denir.\n\nTam çember 360°'lik merkez açıya karşılık gelir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açıyı büyüt, yayı izle",
+   "aciklama": "Noktayı çember üzerinde sürükle ya da kaydırıcıyı kullan. Kalın yay, merkez açının gördüğü yay.",
+   "sim": {
+    "kind": "d-daire-dilimi",
+    "mod": "yay",
+    "r": 5,
+    "aci": 90,
+    "pi": 3,
+    "adim": 15
+   },
+   "gorev": {
+    "metin": "Yay uzunluğu çevrenin 1/3'ü olsun.",
+    "check": {
+     "key": "aci",
+     "eq": 120
+    }
+   },
+   "dene": [
+    "90° tam açının 1/4'ü: yay da çevrenin 1/4'ü.",
+    "Açıyı 2 katına çıkar: yay da 2 katına çıkıyor mu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kural",
+   "govde": "Merkez açı tam açının ne kadarıysa, gördüğü yay da çevrenin o kadarıdır:\n\n**Yay uzunluğu = 2 × π × r × α / 360**\n\nα merkez açının ölçüsüdür. Örnek: r = 6 cm, α = 60°, π = 3 → 2 × 3 × 6 × 60/360 = 36 × 1/6 = 6 cm."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yarıçap da değişirse",
+   "aciklama": "Yarıçap ve açıyı birlikte değiştir.",
+   "sim": {
+    "kind": "d-daire-dilimi",
+    "mod": "yay",
+    "r": 4,
+    "aci": 60,
+    "pi": 3,
+    "adim": 15
+   },
+   "gorev": {
+    "metin": "Yarıçapı 6 yap ve yay uzunluğunu 9 birim yap.",
+    "check": {
+     "all": [
+      {
+       "key": "r",
+       "eq": 6
+      },
+      {
+       "key": "yay",
+       "eq": 9,
+       "tol": 0.01
+      }
+     ]
+    }
+   },
+   "dene": [
+    "r = 6 için çevre 2 × 3 × 6 = 36. 9, 36'nın kaçta kaçı?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Yarıçapı 10 cm olan bir çemberde 72°'lik merkez açının gördüğü yayın uzunluğu kaç cm'dir? (π = 3,14)",
+   "cozum": [
+    "Çevre = 2 × 3,14 × 10 = 62,8 cm.",
+    "72/360 = 1/5.",
+    "Yay = 62,8 × 1/5 = 12,56 cm."
+   ],
+   "sonuc": "12,56 cm."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "Çevresi 60 cm olan bir çemberde uzunluğu 15 cm olan yayı gören merkez açı kaç derecedir?",
+   "cozum": [
+    "Yay çevrenin 15/60 = 1/4'ü.",
+    "Merkez açı da 360°'nin 1/4'ü: 90°."
+   ],
+   "sonuc": "90°."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Saat",
+   "soru": "Bir duvar saatinin yelkovanı 12 cm uzunluğundadır. Yelkovanın ucu 20 dakikada kaç cm yol alır? (π = 3)",
+   "cozum": [
+    "Yelkovan 60 dakikada tam tur (360°) döner; 20 dakika 1/3 tur = 120°.",
+    "Ucun çizdiği çemberin çevresi: 2 × 3 × 12 = 72 cm.",
+    "Yol = 72 × 1/3 = 24 cm."
+   ],
+   "sonuc": "24 cm."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Merkez açıları aynı olan iki yayın uzunluklarını eşit sanmak yanlıştır. 90°'lik açı küçük bir çemberde kısa, büyük bir çemberde uzun bir yay görür. Yay uzunluğu hem **açıya** hem **yarıçapa** bağlıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Çevresi 48 cm olan bir çemberde 90°'lik merkez açının gördüğü yay kaç cm'dir?",
+   "options": [
+    "12",
+    "24",
+    "16",
+    "36"
+   ],
+   "answer": 0,
+   "why": "90/360 = 1/4; 48 ÷ 4 = 12.",
+   "hint": "90° tam açının kaçta kaçı?"
+  },
+  {
+   "prompt": "Yarıçapı 4 cm olan çemberde 45°'lik merkez açının gördüğü yay kaç cm'dir? (π = 3)",
+   "options": [
+    "6",
+    "3",
+    "4",
+    "12"
+   ],
+   "answer": 1,
+   "why": "Çevre 24 cm; 45/360 = 1/8; 24 ÷ 8 = 3.",
+   "hint": "Önce çevreyi bul."
+  },
+  {
+   "prompt": "Bir yay, çemberin çevresinin 1/6'sı kadardır. Bu yayı gören merkez açı kaç derecedir?",
+   "options": [
+    "30°",
+    "45°",
+    "90°",
+    "60°"
+   ],
+   "answer": 3,
+   "why": "360 ÷ 6 = 60.",
+   "hint": "Açı da 360°'nin 1/6'sı olmalı."
+  },
+  {
+   "prompt": "Aynı çemberde merkez açı iki katına çıkarsa gördüğü yay ne olur?",
+   "options": [
+    "Değişmez.",
+    "Yarıya iner.",
+    "İki katına çıkar.",
+    "Dört katına çıkar."
+   ],
+   "answer": 2,
+   "why": "Yay uzunluğu merkez açıyla doğru orantılıdır.",
+   "hint": "Yay = çevre × α/360."
+  }
+ ]
+}

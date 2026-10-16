@@ -1,0 +1,83 @@
+{
+ "id": "m9-3-1",
+ "baslik": "Üçgende Açı ve Kenarla İlgili Özellikler ve Bu Özellikler Arasındaki İlişkiler",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.3.1"],
+ "sure": 20,
+ "ozet": "Üçgenin iç ve dış açılarıyla ilgili özellikleri ispatlayacak, üçgen eşitsizliğini ve kenar-açı ilişkisini doğrulayacak, kenar uzunluklarından üçgenin dar, dik ya da geniş açılı olduğuna karar vereceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "İç ve dış açılar",
+   "govde": "- Üçgenin iç açılarının ölçüleri toplamı **180°**'dir.\n- Bir dış açının ölçüsü, kendisine komşu olmayan iki iç açının ölçüleri toplamına eşittir.\n- Dış açıların ölçüleri toplamı 360°'dir.\n\n**İspat fikri:** A köşesinden BC'ye paralel bir doğru çiz. Paralel doğrularda iç ters açılar eşit olduğundan B ve C açıları A'nın iki yanına taşınır; A'daki üç açı bir doğru açı (180°) oluşturur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Köşeleri sürükle, toplamı izle",
+   "aciklama": "Üçgenin köşelerini sürükle. Açılar değişse de toplam hep 180°.",
+   "sim": { "kind": "geometri-tahtasi", "points": [[1, 1], [6, 1], [3, 5]], "angles": true },
+   "dene": ["Bir açıyı büyütünce diğer ikisinin toplamı aynı miktarda küçülür.", "Bir köşeyi diğer ikisini birleştiren doğruya çok yaklaştır: açılardan biri 180°'ye yaklaşır, diğer ikisi 0°'ye."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Dış açı",
+   "soru": "ABC üçgeninde m(A) = 50°, m(B) = 70° ise C köşesindeki dış açı kaç derecedir?",
+   "cozum": [
+    "Dış açı = komşu olmayan iç açıların toplamı = 50° + 70°.",
+    "Kontrol: m(C) = 180° − 120° = 60°, dış açı 180° − 60° = 120°."
+   ],
+   "sonuc": "120°"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kenarlar arasındaki ilişki",
+   "govde": "**Üçgen eşitsizliği:** |b − c| < a < b + c (her kenar için).\n\n**Kenar-açı ilişkisi:** Büyük açının karşısında büyük kenar vardır; tersine büyük kenarın karşısında büyük açı vardır. Eş açıların karşısındaki kenarlar eştir (ikizkenar üçgen).\n\nUyarı: ilişki sıralamayı korur ama orantılı değildir; bir açıyı iki katına çıkarmak karşısındaki kenarı iki katına çıkarmaz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kenar sınırlarını doğrula",
+   "aciklama": "Kenarları değiştir; her kenar için üçgen eşitsizliği kontrol edilir. Üçgen oluşunca açılar gösterilir; en uzun kenar kırmızıdır.",
+   "sim": { "kind": "e-ucgen-kenar", "a": 5, "b": 7, "c": 4, "max": 12 },
+   "gorev": { "metin": "a = 8 ve b = 5 iken c'nin alabileceği en büyük tam sayı değeriyle bir üçgen kur.", "check": { "all": [ { "key": "a", "eq": 8 }, { "key": "b", "eq": 5 }, { "key": "c", "eq": 12 }, { "key": "olur", "eq": 1 } ] } },
+   "dene": ["c = 12 iken en büyük açı hangisi? C açısı geniş mi?", "c = 13 olsaydı 5 + 8 = 13: üçgen oluşmazdı."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dar, dik, geniş: kenarlardan karar",
+   "govde": "En uzun kenar c olsun:\n\n- c² < a² + b² ⇒ dar açılı üçgen\n- c² = a² + b² ⇒ dik üçgen (Pisagor)\n- c² > a² + b² ⇒ geniş açılı üçgen\n\nÖrnek: 7, 8, 10 için 10² = 100 < 49 + 64 = 113 ⇒ dar açılı."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "ABC üçgeninde m(A) = 70° ve m(B) = 50°. Kenarları büyükten küçüğe sırala.",
+   "cozum": [
+    "m(C) = 180° − 70° − 50° = 60°.",
+    "Açılar: A (70°) > C (60°) > B (50°).",
+    "Karşılarındaki kenarlar aynı sırayla: a > c > b."
+   ],
+   "sonuc": "a > c > b"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam",
+   "soru": "Bir üçgenin iki kenarı 6 cm ve 10 cm'dir. Üçüncü kenar x bir tam sayıdır ve x'in karşısındaki açı üçgenin en büyük açısıdır. x kaç farklı değer alabilir?",
+   "cozum": [
+    "Üçgen eşitsizliği: 4 < x < 16.",
+    "x'in karşısındaki açı en büyük ⇒ x en uzun kenar ⇒ x > 10.",
+    "10 < x < 16 ⇒ x ∈ {11, 12, 13, 14, 15}."
+   ],
+   "sonuc": "5 farklı değer."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Üçgen eşitsizliğinde yalnız toplamı kontrol edip farkı unutmak.\n- Kenar-açı ilişkisini orantı sanmak.\n- Dar/geniş kararını en uzun kenar yerine rastgele bir kenarla vermek.\n- Dış açıyı, komşu iç açıyla karıştırmak; ikisinin toplamı 180°'dir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "ABC üçgeninde m(A) = 3x, m(B) = 2x + 10°, m(C) = 50° ise m(A) kaç derecedir?", "options": ["24", "72", "58", "70"], "answer": 1, "why": "5x + 60 = 180 ⇒ x = 24 ⇒ m(A) = 72°.", "hint": "İç açıların toplamı 180°." },
+  { "prompt": "Kenarları 5, 12 ve x olan bir üçgende x tam sayısı kaç farklı değer alabilir?", "options": ["10", "8", "9", "11"], "answer": 2, "why": "7 < x < 17 ⇒ 8, 9, …, 16: 9 değer.", "hint": "Farktan büyük, toplamdan küçük." },
+  { "prompt": "ABC üçgeninde m(A) = 80°, m(B) = 60° ise kenarların sıralaması hangisidir?", "options": ["c > b > a", "b > a > c", "a = b > c", "a > b > c"], "answer": 3, "why": "m(C) = 40°. A > B > C ⇒ a > b > c.", "hint": "Büyük açının karşısında büyük kenar." },
+  { "prompt": "Kenarları 5, 6 ve 8 olan üçgen nasıl bir üçgendir?", "options": ["Geniş açılı", "Dar açılı", "Dik", "Eşkenar"], "answer": 0, "why": "8² = 64 > 25 + 36 = 61 ⇒ en büyük açı geniş.", "hint": "En uzun kenarın karesini diğer ikisinin kareleri toplamıyla karşılaştır." }
+ ]
+}

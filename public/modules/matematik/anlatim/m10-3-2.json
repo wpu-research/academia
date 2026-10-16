@@ -1,0 +1,91 @@
+{
+ "id": "m10-3-2",
+ "baslik": "En Büyük Ortak Bölen, En Küçük Ortak Kat",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.3.2"],
+ "sure": 16,
+ "ozet": "EBOB'u bir dikdörtgeni artık bırakmadan döşeyen en büyük kare, EKOK'u iki katlar dizisinin ilk buluştuğu yer olarak göreceğiz; asal çarpanlarla hesaplayıp günlük problemlerde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ortak bölen ve ortak kat",
+   "govde": "İki sayının ikisini birden bölen sayılara **ortak bölen**, en büyüğüne **EBOB** denir. İki sayının ikisinin de katı olan sayılara **ortak kat**, pozitif olanların en küçüğüne **EKOK** denir.\n\n12'nin bölenleri: 1, 2, 3, 4, 6, 12. 18'in bölenleri: 1, 2, 3, 6, 9, 18. Ortak bölenler 1, 2, 3, 6; EBOB(12, 18) = 6."
+  },
+  {
+   "tur": "sim",
+   "baslik": "En büyük kare",
+   "aciklama": "12 × 18'lik dikdörtgeni eş karelerle döşemek istiyoruz. Kare kenarını değiştir; kırmızı alan artık kalan kısımdır.",
+   "sim": { "kind": "f-ebob", "a": 18, "b": 12, "s": 1, "fixed": true },
+   "gorev": { "metin": "Dikdörtgeni artık bırakmadan döşeyen en büyük kareyi bul.", "check": { "key": "isEbob", "eq": 1 } },
+   "dene": ["Artık bırakmayan her kare kenarı bir ortak bölendir: 1, 2, 3, 6.", "Katlar satırında ilk ortak sayı 36: EKOK(12, 18)."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Asal çarpanlarla hesap",
+   "govde": "Sayıları asal çarpanlarına ayır.\n- **EBOB**: ortak asal çarpanların **en küçük** üslüleri çarpılır.\n- **EKOK**: tüm asal çarpanların **en büyük** üslüleri çarpılır.\n\nÖzellikler:\n- Ortak bölenler EBOB'un bölenleridir; ortak katlar EKOK'un katlarıdır.\n- İki sayı için **EBOB(a, b) · EKOK(a, b) = a · b**.\n- EBOB(a, b) = 1 ise a ile b **aralarında asaldır**; bu durumda EKOK(a, b) = a · b."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "24 ve 36 sayılarının EBOB ve EKOK'unu bulalım.",
+   "cozum": [
+    "24 = 2³ · 3, 36 = 2² · 3².",
+    "EBOB = 2² · 3 = 12 (küçük üsler).",
+    "EKOK = 2³ · 3² = 72 (büyük üsler).",
+    "Kontrol: 12 · 72 = 864 = 24 · 36."
+   ],
+   "sonuc": "EBOB(24, 36) = 12, EKOK(24, 36) = 72."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Aralarında asal sayılar",
+   "aciklama": "Bu kez kenarları da değiştirebilirsin.",
+   "sim": { "kind": "f-ebob", "a": 12, "b": 18, "s": 1 },
+   "gorev": { "metin": "EBOB'u 1 olan (aralarında asal) iki kenar seç.", "check": { "key": "ebob", "eq": 1 } },
+   "dene": ["Aralarında asal sayılarda tek ortak bölen 1, EKOK ise iki sayının çarpımı.", "8 ve 9 asal değil ama aralarında asal."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: EBOB problemi",
+   "soru": "30 m × 42 m boyutlarındaki bir bahçe, kenarları tam sayı metre olan eş ve olabildiğince büyük kare parsellere bölünecek. Kaç parsel olur?",
+   "cozum": [
+    "Kare kenarı hem 30'u hem 42'yi bölmeli ve en büyük olmalı: EBOB(30, 42).",
+    "30 = 2 · 3 · 5, 42 = 2 · 3 · 7 → EBOB = 6.",
+    "Parsel sayısı: (30 / 6) · (42 / 6) = 5 · 7 = 35."
+   ],
+   "sonuc": "Kenarı 6 m olan 35 parsel."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: EKOK problemi",
+   "soru": "İki otobüs aynı duraktan 12 ve 18 dakikada bir kalkıyor. Saat 08.00'de birlikte kalktılarsa ilk kez saat kaçta yine birlikte kalkarlar?",
+   "cozum": [
+    "Birlikte kalkış anları her ikisinin de katı olan sürelerdir.",
+    "EKOK(12, 18) = 2² · 3² = 36 dakika."
+   ],
+   "sonuc": "Saat 08.36'da."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "İki pozitif tam sayının EBOB'u 6, EKOK'u 90'dır. Sayılardan biri 18 ise diğeri kaçtır?",
+   "cozum": [
+    "EBOB · EKOK = a · b → 6 · 90 = 18 · b.",
+    "b = 540 / 18 = 30.",
+    "Kontrol: EBOB(18, 30) = 6, EKOK(18, 30) = 90."
+   ],
+   "sonuc": "Diğer sayı 30'dur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "EBOB ile EKOK'u karıştırmak. Bir şeyi **parçalara bölüyorsan** (en büyük kare, en uzun ip parçası) EBOB'u, olayların **yeniden buluşmasını** arıyorsan (birlikte kalkış, aynı anda yanma) EKOK'u ararsın. EBOB · EKOK = a · b eşitliği de yalnız iki sayı için geçerlidir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "EBOB(48, 60) kaçtır?", "options": ["6", "12", "24", "240"], "answer": 1, "why": "48 = 2⁴ · 3, 60 = 2² · 3 · 5; EBOB = 2² · 3 = 12.", "hint": "Ortak asal çarpanların küçük üslerini al." },
+  { "prompt": "EKOK(8, 12) kaçtır?", "options": ["96", "4", "48", "24"], "answer": 3, "why": "8 = 2³, 12 = 2² · 3; EKOK = 2³ · 3 = 24.", "hint": "Tüm asal çarpanların büyük üslerini al." },
+  { "prompt": "EBOB'u 4, EKOK'u 120 olan iki sayıdan biri 20 ise diğeri kaçtır?", "options": ["24", "30", "16", "40"], "answer": 0, "why": "4 · 120 = 20 · b → b = 24. EBOB(20, 24) = 4, EKOK = 120.", "hint": "EBOB · EKOK = a · b." },
+  { "prompt": "Hangi sayı çifti aralarında asaldır?", "options": ["(14, 21)", "(15, 25)", "(8, 15)", "(12, 18)"], "answer": 2, "why": "8 = 2³ ve 15 = 3 · 5'in ortak asal çarpanı yok; EBOB = 1.", "hint": "EBOB'u 1 olan çifti bul." }
+ ]
+}

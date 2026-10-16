@@ -1,0 +1,222 @@
+{
+ "id": "m6-1-1",
+ "baslik": "Bir Doğal Sayının Çarpanları ve Katları",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.1.1",
+  "MAT.6.1.4"
+ ],
+ "sure": 15,
+ "ozet": "Bir sayıyı tam bölen sayılara çarpan (bölen), o sayının doğal sayılarla çarpımlarına kat diyoruz. Dikdörtgen kurarak çarpanları, kurbağa sıçratarak katları bulacak; ortak kat ve ortak bölenle günlük problemleri çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Çarpan ve kat ne demek?",
+   "govde": "12 sayısı 3 × 4 biçiminde yazılabilir. Bu yüzden **3 ve 4, 12'nin çarpanlarıdır**; 12 de **3'ün ve 4'ün katıdır**.\n\nBir sayının çarpanları o sayıyı **kalansız** böler. Çarpanlara bu yüzden **bölen** de denir. Katlar ise sayıyı 1, 2, 3, … ile çarparak bulunur: 4'ün katları 4, 8, 12, 16, …"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çarpanları dikdörtgenle bul",
+   "aciklama": "Her kare 1 birimkare. 12 birimkareyi eksiksiz bir dikdörtgen biçiminde dizmenin her yolu, 12'nin bir **çarpan çiftini** verir.",
+   "sim": {
+    "kind": "alan-modeli",
+    "rows": 2,
+    "cols": 5
+   },
+   "gorev": {
+    "metin": "12 birimkarelik bir dikdörtgen kur.",
+    "check": {
+     "key": "area",
+     "eq": 12
+    }
+   },
+   "dene": [
+    "1 × 12, 2 × 6, 3 × 4 dikdörtgenlerinin hepsini dene.",
+    "5 satırla 12 birimkarelik bir dikdörtgen kurabilir misin? Neden kuramadın?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Çarpan çiftleri",
+   "govde": "Bir sayının çarpanlarını **çiftler hâlinde** ararız: 1'den başlayarak sayıyı tam bölen her sayı, bölümüyle birlikte bir çift oluşturur.\n\n12 → 1 × 12, 2 × 6, 3 × 4. Çarpanlar: **1, 2, 3, 4, 6, 12**.\n\n1 her sayının çarpanıdır; her sayı kendisinin de çarpanıdır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "36'nın bütün çarpanlarını yazalım.",
+   "cozum": [
+    "1 × 36 = 36",
+    "2 × 18 = 36",
+    "3 × 12 = 36",
+    "4 × 9 = 36",
+    "5, 36'yı tam bölmez. 6 × 6 = 36: çarpan kendisiyle eşleşti, aramayı bitirebiliriz."
+   ],
+   "sonuc": "36'nın çarpanları: 1, 2, 3, 4, 6, 9, 12, 18, 36 (9 tane)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Katları sırayla say",
+   "aciklama": "Her adımda 4 nokta ekleniyor (b = 0, yani sabit nokta yok). n. adımdaki nokta sayısı 4'ün n. katıdır.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 4,
+    "b": 0,
+    "n": 1,
+    "max": 8
+   },
+   "gorev": {
+    "metin": "4'ün 6. katını göster.",
+    "check": {
+     "key": "count",
+     "eq": 24
+    }
+   },
+   "dene": [
+    "Katlar hep 4'er artar.",
+    "Katlar sonsuza kadar sürer; çarpanların ise bir sonu vardır."
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Ortak kat ve ortak bölen",
+   "govde": "İki sayının ikisinin de katı olan sayılara **ortak kat**, ikisini de tam bölen sayılara **ortak bölen** denir.\n\n- 4 ve 6'nın ortak katları: 12, 24, 36, … En küçüğü **12**: en küçük ortak kat (EKOK).\n- 12 ve 18'in ortak bölenleri: 1, 2, 3, 6. En büyüğü **6**: en büyük ortak bölen (EBOB)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki kurbağa, ortak kat",
+   "aciklama": "Kahverengi kurbağa ilk sayının, yeşil kurbağa ikinci sayının adımlarıyla sıçrıyor. İkisinin de bastığı yerler (yeşil daireler) ortak katlardır.",
+   "sim": {
+    "kind": "d-kat-sicrama",
+    "a": 4,
+    "b": 6,
+    "max": 36
+   },
+   "gorev": {
+    "metin": "1. kurbağanın adımı 3 olsun ve iki kurbağanın ilk buluştuğu yer 12 olsun.",
+    "check": {
+     "all": [
+      {
+       "key": "a",
+       "eq": 3
+      },
+      {
+       "key": "ekok",
+       "eq": 12
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Adımları 2 ve 4 yap: ilk buluşma noktası 4'tür, çünkü 4 zaten 2'nin katı.",
+    "Adımları 3 ve 5 yap: ilk buluşma 15'te. Ortak çarpanı olmayan sayılarda EKOK çarpımlarıdır."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kare karolarla döşe, ortak bölen",
+   "aciklama": "18 birime 12 birimlik bir zemini eş kare karolarla **boşluksuz** döşemek istiyoruz. Karonun kenarı hem 18'i hem 12'yi tam bölmeli.",
+   "sim": {
+    "kind": "d-kare-doseme",
+    "yatay": 18,
+    "dikey": 12,
+    "k": 1
+   },
+   "gorev": {
+    "metin": "Zemini boşluksuz döşeyen en büyük kare karoyu bul.",
+    "check": {
+     "all": [
+      {
+       "key": "fits",
+       "eq": 1
+      },
+      {
+       "key": "k",
+       "gte": 6
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Boşluksuz döşeyen kenarlar: 1, 2, 3 ve 6. Bunlar 12 ile 18'in ortak bölenleridir.",
+    "Karo büyüdükçe gereken karo sayısı azalır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Otobüsler",
+   "soru": "Bir duraktan A otobüsü 12 dakikada bir, B otobüsü 18 dakikada bir kalkıyor. İkisi saat 08.00'de birlikte kalktı. İkisi **en erken** saat kaçta yeniden birlikte kalkar?",
+   "cozum": [
+    "A'nın kalkışları (dakika): 12, 24, 36, 48, …",
+    "B'nin kalkışları: 18, 36, 54, …",
+    "İlk ortak kat 36: EKOK(12, 18) = 36."
+   ],
+   "sonuc": "36 dakika sonra, saat 08.36'da birlikte kalkarlar."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Demetler",
+   "soru": "Bir çiçekçide 24 kırmızı ve 36 beyaz gül var. Bütün güller kullanılarak, her demette aynı sayıda kırmızı ve aynı sayıda beyaz gül olacak biçimde **en çok** kaç demet yapılabilir?",
+   "cozum": [
+    "Demet sayısı hem 24'ü hem 36'yı tam bölmeli: ortak bölen arıyoruz.",
+    "24'ün bölenleri: 1, 2, 3, 4, 6, 8, 12, 24. 36'nın bölenleri: 1, 2, 3, 4, 6, 9, 12, 18, 36.",
+    "En büyük ortak bölen 12."
+   ],
+   "sonuc": "En çok 12 demet yapılır; her demette 2 kırmızı ve 3 beyaz gül olur."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Çarpan ile katı karıştırmak: \"12, 4'ün çarpanıdır\" demek yanlıştır. Doğrusu: **4, 12'nin çarpanıdır; 12, 4'ün katıdır.** Bir sayının çarpanları o sayıdan büyük olamaz, katları ise o sayıdan küçük olamaz (0 hariç).\n\nProblemlerde ipucu: \"birlikte ne zaman, yeniden ne zaman\" diye sorulursa genellikle **ortak kat**; \"eş parçalara bölme, en büyük, en çok demet\" sorulursa genellikle **ortak bölen** aranır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi 18'in çarpanı **değildir**?",
+   "options": [
+    "6",
+    "9",
+    "4",
+    "3"
+   ],
+   "answer": 2,
+   "why": "18 ÷ 4 = 4 kalan 2. 4, 18'i tam bölmez.",
+   "hint": "Her şıkkı 18'e böl; kalan veren hangisi?"
+  },
+  {
+   "prompt": "Hangisi 7'nin katıdır?",
+   "options": [
+    "27",
+    "42",
+    "57",
+    "17"
+   ],
+   "answer": 1,
+   "why": "42 = 7 × 6.",
+   "hint": "7'nin katları: 7, 14, 21, 28, 35, 42, …"
+  },
+  {
+   "prompt": "8 ile 12'nin en küçük ortak katı kaçtır?",
+   "options": [
+    "24",
+    "48",
+    "96",
+    "4"
+   ],
+   "answer": 0,
+   "why": "8'in katları 8, 16, 24; 12'nin katları 12, 24. İlk ortak kat 24.",
+   "hint": "İki sayının katlarını yan yana yaz, ilk ortak olanı bul."
+  },
+  {
+   "prompt": "20 ve 30'un en büyük ortak böleni kaçtır?",
+   "options": [
+    "5",
+    "2",
+    "60",
+    "10"
+   ],
+   "answer": 3,
+   "why": "Ortak bölenler 1, 2, 5, 10; en büyüğü 10.",
+   "hint": "Hem 20'yi hem 30'u tam bölen en büyük sayıyı ara."
+  }
+ ]
+}

@@ -1,0 +1,154 @@
+{
+ "id": "m3-1-1",
+ "baslik": "Sayılar",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.1"
+ ],
+ "sure": 12,
+ "ozet": "1000'e kadar olan sayıları bloklarla, sayı doğrusunda, rakamla ve sözcükle göstereceğiz. Hepsinin aynı büyüklüğü anlattığını göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Bir sayıyı göstermenin yolları",
+   "govde": "Bir sayı bir **büyüklüğü** anlatır: sınıftaki sıra sayısı, bir kitabın sayfa sayısı, bir yolun metre olarak uzunluğu…\n\nAynı sayıyı farklı biçimlerde gösterebiliriz:\n\n- **Rakamla:** 352\n- **Sözcükle:** üç yüz elli iki\n- **Bloklarla:** 3 yüzlük, 5 onluk, 2 birlik\n- **Sayı doğrusunda:** 300 ile 400 arasında, 350'nin hemen sağında bir nokta"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Birlik, onluk, yüzlük",
+   "govde": "10 birlik = 1 onluk\n10 onluk = 1 yüzlük\n10 yüzlük = 1 binlik, yani **1000**\n\nÜç basamaklı bir sayının en solundaki rakam kaç yüzlük, ortadaki kaç onluk, sağdaki kaç birlik olduğunu söyler."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayıyı bloklarla kur",
+   "aciklama": "Yüzlük, onluk ve birlik ekleyip çıkar. Alttaki satır, kurduğun sayıyı hem rakamla hem de bloklarla gösterir.",
+   "sim": {
+    "kind": "onluk-bloklar"
+   },
+   "gorev": {
+    "metin": "Bloklarla 352 sayısını kur.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 352
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce 3 yüzlük ekle; sonra onlukları, en son birlikleri.",
+    "10 birlik biriktirirsen \"10 birlik → 1 onluk\" düğmesiyle değiştirebilirsin."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda yüzer ve onar ilerle",
+   "aciklama": "Sayı doğrusu 0'dan 1000'e kadar. Nokta 0'da duruyor. +100 ve +10 düğmeleriyle sıçra; her sıçrama üstte bir yay olarak görünür.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 1000,
+    "tick": 50,
+    "label": 100,
+    "start": 0,
+    "hops": [
+     100,
+     10
+    ]
+   },
+   "gorev": {
+    "metin": "0'dan başlayıp sıçrayarak 470'e ulaş.",
+    "check": {
+     "key": "value",
+     "eq": 470
+    }
+   },
+   "dene": [
+    "470 = 4 yüzlük + 7 onluk. Kaç kez +100, kaç kez +10 gerekir?",
+    "Fazla gidersen −10 ya da −100 ile geri dön."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "\"Dört yüz beş\" sayısını rakamla yazalım ve bloklarla gösterelim.",
+   "cozum": [
+    "Dört yüz → 4 yüzlük.",
+    "Onluk söylenmedi → 0 onluk. Onlar basamağına 0 yazılır.",
+    "Beş → 5 birlik."
+   ],
+   "sonuc": "Sayı **405**'tir: 4 yüzlük, 0 onluk, 5 birlik."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Bloklar fazla olunca",
+   "soru": "7 yüzlük, 12 onluk ve 3 birlik hangi sayıyı gösterir?",
+   "cozum": [
+    "12 onluğun 10'u bir yüzlük eder: 12 onluk = 1 yüzlük + 2 onluk.",
+    "Yüzlükler: 7 + 1 = 8 yüzlük.",
+    "Şimdi 8 yüzlük, 2 onluk, 3 birlik var."
+   ],
+   "sonuc": "Sayı **823**'tür."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"Dört yüz beş\"i **4005** ya da **45** diye yazmak yanlıştır. Üç basamaklı bir sayıda yüzler, onlar ve birler basamağı vardır; boş kalan basamağa **0** yazılır: 405."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "3 yüzlük, 0 onluk ve 8 birlikten oluşan sayı hangisidir?",
+   "options": [
+    "3008",
+    "38",
+    "308",
+    "380"
+   ],
+   "answer": 2,
+   "why": "3 yüzlük 300, 8 birlik 8 eder: 300 + 8 = 308.",
+   "hint": "Onlar basamağına kaç yazılmalı?"
+  },
+  {
+   "prompt": "Sayı doğrusunda 500 ile 600'ün tam ortasındaki sayı hangisidir?",
+   "options": [
+    "550",
+    "650",
+    "505",
+    "560"
+   ],
+   "answer": 0,
+   "why": "500'den 600'e 100 adım vardır; yarısı 50'dir. 500 + 50 = 550.",
+   "hint": "500 ile 600 arası kaç? Bunun yarısını 500'e ekle."
+  },
+  {
+   "prompt": "\"Yedi yüz on\" sayısının rakamla yazılışı hangisidir?",
+   "options": [
+    "770",
+    "710",
+    "7010",
+    "701"
+   ],
+   "answer": 1,
+   "why": "Yedi yüz 7 yüzlük, on 1 onluk demektir; birlik yok: 710.",
+   "hint": "Kaç yüzlük, kaç onluk, kaç birlik var?"
+  },
+  {
+   "prompt": "10 tane yüzlük kaç eder?",
+   "options": [
+    "100",
+    "110",
+    "10 000",
+    "1000"
+   ],
+   "answer": 3,
+   "why": "10 yüzlük 1 binlik eder: 1000.",
+   "hint": "10 onluk 1 yüzlük ediyordu. 10 yüzlük?"
+  }
+ ]
+}

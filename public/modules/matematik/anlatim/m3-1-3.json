@@ -1,0 +1,181 @@
+{
+ "id": "m3-1-3",
+ "baslik": "Sayıları Sıralama",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.3"
+ ],
+ "sure": 12,
+ "ozet": "İki sayıdan hangisinin büyük olduğunu basamaklara bakarak bulacak, sayıları küçükten büyüğe ve büyükten küçüğe sıralayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Hangisi daha büyük?",
+   "govde": "Sayıları karşılaştırırken **<** (küçüktür), **>** (büyüktür) ve **=** (eşittir) işaretlerini kullanırız. İşaretin açık ağzı her zaman büyük sayıya bakar: 581 > 518.\n\nSayı doğrusunda **sağda kalan sayı daha büyüktür**."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Karşılaştırma adımları",
+   "govde": "1. Önce basamak sayısına bak: basamak sayısı çok olan büyüktür (94 < 409).\n2. Basamak sayıları eşitse **en soldaki** basamaktan başla: yüzler basamağı büyük olan büyüktür.\n3. Yüzler eşitse onlara, onlar da eşitse birlere bak."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Arada bir sayı bul",
+   "aciklama": "Sayı doğrusunda 346 ve 364 işaretli. Noktayı sürükle ya da seçip ok tuşlarıyla 1'er ilerlet.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 300,
+    "max": 400,
+    "tick": 1,
+    "label": 10,
+    "start": 300,
+    "hops": [
+     10,
+     1
+    ],
+    "marks": [
+     [
+      346,
+      "346"
+     ],
+     [
+      364,
+      "364"
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Noktayı 346'dan büyük, 364'ten küçük bir sayıya getir.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "gte": 347
+      },
+      {
+       "key": "value",
+       "lt": 364
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Yüzler ikisinde de 3; onlar basamağı 4 ile 6 arasında olan sayılara bak.",
+    "Örneğin 355: 346 < 355 < 364."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sıralamayı sayı doğrusunda gör",
+   "aciklama": "Dört sayı sayı doğrusunda işaretlendi. Soldan sağa okuyunca sayılar küçükten büyüğe sıralanır.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 450,
+    "max": 600,
+    "tick": 10,
+    "label": 50,
+    "nokta": false,
+    "hops": [],
+    "marks": [
+     [
+      485,
+      "485"
+     ],
+     [
+      508,
+      "508"
+     ],
+     [
+      558,
+      "558"
+     ],
+     [
+      580,
+      "580"
+     ]
+    ]
+   },
+   "dene": [
+    "Küçükten büyüğe: 485 < 508 < 558 < 580.",
+    "508 ile 580'in yüzler basamağı aynı; onlar basamağında 0 < 8."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "627 ile 672'yi karşılaştıralım.",
+   "cozum": [
+    "İkisi de üç basamaklı.",
+    "Yüzler basamağı: 6 ve 6, eşit.",
+    "Onlar basamağı: 2 < 7."
+   ],
+   "sonuc": "627 < 672."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "409, 490, 94 ve 940 sayılarını küçükten büyüğe sıralayalım.",
+   "cozum": [
+    "94 iki basamaklı, diğerleri üç basamaklı: en küçük 94.",
+    "409, 490 ve 940'ın yüzlerine bak: 4, 4, 9. En büyük 940.",
+    "409 ile 490'ın onlarına bak: 0 < 9."
+   ],
+   "sonuc": "94 < 409 < 490 < 940."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "94'ü 409'dan büyük sanmak sık yapılır, çünkü 9 > 4. Önce **basamak sayısına** bakılır: iki basamaklı bir sayı, üç basamaklı bir sayıdan her zaman küçüktür."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi doğrudur?",
+   "options": [
+    "518 < 581",
+    "518 = 581",
+    "581 < 518",
+    "518 > 581"
+   ],
+   "answer": 0,
+   "why": "Yüzler eşit (5); onlarda 1 < 8 olduğu için 518 < 581.",
+   "hint": "Yüzler eşitse hangi basamağa bakarsın?"
+  },
+  {
+   "prompt": "Hangisi en büyük sayıdır?",
+   "options": [
+    "799",
+    "890",
+    "908",
+    "98"
+   ],
+   "answer": 2,
+   "why": "Yüzler basamağı en büyük olan 908'dir (9 yüzlük).",
+   "hint": "Önce basamak sayısına, sonra yüzlere bak."
+  },
+  {
+   "prompt": "Küçükten büyüğe doğru sıralama hangisidir?",
+   "options": [
+    "630 < 603 < 360 < 306",
+    "306 < 360 < 603 < 630",
+    "360 < 306 < 603 < 630",
+    "306 < 603 < 360 < 630"
+   ],
+   "answer": 1,
+   "why": "Yüzleri 3 olanlar önce gelir (306 < 360), sonra yüzleri 6 olanlar (603 < 630).",
+   "hint": "Önce yüzlere, eşitse onlara bak."
+  },
+  {
+   "prompt": "4□7 > 467 olması için □ yerine hangisi yazılabilir?",
+   "options": [
+    "5",
+    "3",
+    "6",
+    "8"
+   ],
+   "answer": 3,
+   "why": "Yüzler eşit (4). Onlar basamağı 6'dan büyük olmalı; 6 olursa 467 = 467 olur. 487 > 467.",
+   "hint": "□ = 6 olursa iki sayı eşit olur; daha büyük bir rakam gerekir."
+  }
+ ]
+}

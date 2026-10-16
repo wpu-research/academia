@@ -1,0 +1,182 @@
+{
+ "id": "m7-3-4",
+ "baslik": "Cebirsel İfadelerle İşlemler ve Algoritma",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.2.4"
+ ],
+ "sure": 14,
+ "ozet": "Aritmetik ve cebirsel işlemlerin adımlarını algoritma ve akış şemasıyla yazacak; bir algoritmayı cebirsel ifadeye, ifadeyi algoritmaya çevirecek ve çıktıdan girdiye geri gideceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Algoritma",
+   "govde": "Bir problemi çözmek için izlenen, **sırası belli ve sonlu** adımlar dizisine **algoritma** denir. Algoritmalar sözel adımlarla ya da **akış şemasıyla** gösterilir.\n\nAkış şemasında: başla/bitir (oval), girdi/çıktı (paralelkenar), işlem (dikdörtgen), karar (eşkenar dörtgen) kutuları kullanılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Algoritma makinesi",
+   "aciklama": "Bu algoritma girdiyi 2 ile çarpıp 3 çıkarıyor. Negatif girdiler de deneyebilirsin.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      2
+     ],
+     [
+      "−",
+      3
+     ]
+    ],
+    "x": 1,
+    "min": -5,
+    "max": 10,
+    "ifade": "2x − 3"
+   },
+   "gorev": {
+    "metin": "Çıktı −7 olsun.",
+    "check": {
+     "key": "y",
+     "eq": -7
+    }
+   },
+   "dene": [
+    "Geri git: −7 + 3 = −4, −4 ÷ 2 = −2.",
+    "Adımların sırasını değiştirseydik (önce 3 çıkar, sonra 2 ile çarp) ifade 2(x − 3) olurdu."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Algoritmadan ifadeye, ifadeden algoritmaya",
+   "govde": "- Algoritmanın adımlarını **sırayla** uygula; son işlem ifadenin en dışında kalır.\n\"x'i 5 ile çarp, 2 çıkar\" → 5x − 2\n\"x'ten 4 çıkar, 3 ile çarp\" → 3(x − 4)\n- Çıktıdan girdiyi bulmak için adımları **sondan başa**, her işlemin **tersini** uygula (toplama ↔ çıkarma, çarpma ↔ bölme)."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Ters algoritma",
+   "aciklama": "Bu kez önce 5 ekleniyor, sonra −2 ile çarpılıyor.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "+",
+      5
+     ],
+     [
+      "×",
+      -2
+     ]
+    ],
+    "x": 1,
+    "min": -10,
+    "max": 10,
+    "ifade": "−2(x + 5)"
+   },
+   "gorev": {
+    "metin": "Çıktı 0 olsun.",
+    "check": {
+     "all": [
+      {
+       "key": "y",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Bir çarpım ne zaman 0 olur?",
+    "En az dört farklı girdiyi tabloya ekle: girdi 1 artınca çıktı kaç değişiyor?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "\"Başla → x'i al → 4 ile çarp → 2 ekle → yaz → bitir\" algoritmasının çıktısı 26 ise girdi kaçtır?",
+   "cozum": [
+    "İfade: 4x + 2.",
+    "Sondan başa: 26'dan 2 çıkar → 24.",
+    "4'e böl → 6.",
+    "Kontrol: 4 · 6 + 2 = 26."
+   ],
+   "sonuc": "Girdi 6'dır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: Karar adımı",
+   "soru": "Aşağıdaki algoritma neyi hesaplar?\n1. Başla, sayıyı (a) al.\n2. a < 0 ise a'yı −1 ile çarp.\n3. a'yı yaz, bitir.",
+   "cozum": [
+    "a = 5: koşul yanlış, 5 yazılır.",
+    "a = −8: koşul doğru, −8 · (−1) = 8 yazılır.",
+    "a = 0: 0 yazılır."
+   ],
+   "sonuc": "Algoritma sayının mutlak değerini hesaplar."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Otopark",
+   "soru": "Bir otopark ilk saat için 40 TL, sonraki her saat için 25 TL alıyor (park süresi en az 1 saat). Ücreti hesaplayan algoritmayı ve ifadeyi yazalım; 5 saat için ücret kaçtır?",
+   "cozum": [
+    "Başla, saat sayısını (s) al.",
+    "Ek saat: s − 1. Ek ücret: 25(s − 1).",
+    "İlk saati ekle: 25(s − 1) + 40 = 25s + 15. Yaz, bitir.",
+    "s = 5: 25 · 5 + 15 = 140."
+   ],
+   "sonuc": "Ücret 25s + 15; 5 saat için 140 TL."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Adımların sırasını karıştırmak farklı bir ifade verir: \"3 ekle, sonra 2 ile çarp\" algoritması 2x + 3 değil, **2(x + 3)**'tür. Geri giderken de ters işlemleri **ters sırayla** uygula: önce son yapılan işlemin tersi."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "\"x'i 5 ile çarp, 2 çıkar\" algoritmasında girdi −3 ise çıktı kaçtır?",
+   "options": [
+    "13",
+    "−17",
+    "−13",
+    "17"
+   ],
+   "answer": 1,
+   "why": "5 · (−3) − 2 = −15 − 2 = −17.",
+   "hint": "Önce çarp, sonra çıkar."
+  },
+  {
+   "prompt": "\"Sayıdan 4 çıkar, sonucu 3 ile çarp.\" algoritmasının ifadesi hangisidir?",
+   "options": [
+    "3x − 4",
+    "x − 12",
+    "3(x − 4)",
+    "3x + 12"
+   ],
+   "answer": 2,
+   "why": "Önce çıkarma yapıldığı için parantez gerekir: 3(x − 4).",
+   "hint": "İlk işlem parantezin içine yazılır."
+  },
+  {
+   "prompt": "Bir algoritma girdiyi 2 ile çarpıyor, 6 ekliyor ve sonucu 2'ye bölüyor. Girdi 10 ise çıktı kaçtır?",
+   "options": [
+    "16",
+    "26",
+    "8",
+    "13"
+   ],
+   "answer": 3,
+   "why": "(2 · 10 + 6) ÷ 2 = 26 ÷ 2 = 13.",
+   "hint": "Adımları sırayla uygula."
+  },
+  {
+   "prompt": "\"3 ile çarp, 5 ekle\" algoritmasının çıktısı 23'tür. Girdi kaçtır?",
+   "options": [
+    "6",
+    "18",
+    "84",
+    "9"
+   ],
+   "answer": 0,
+   "why": "23 − 5 = 18, 18 ÷ 3 = 6.",
+   "hint": "Sondan başa ters işlemleri uygula."
+  }
+ ]
+}

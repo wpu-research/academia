@@ -1,0 +1,198 @@
+{
+ "id": "m2-4-4",
+ "baslik": "Geometrik Şekil ve Cisimlerin Biçimsel Özellikleri",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.3.4"
+ ],
+ "sure": 12,
+ "ozet": "Bir şekli ya da cismi döndürmenin, yerini değiştirmenin ya da büyütmenin onun kenar, köşe ve yüz sayısını değiştirmediğini göreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Değişen ve değişmeyen",
+   "govde": "Bir şekli **döndürünce**, **başka yere koyunca** ya da **büyütüp küçültünce** görünüşü değişir. Ama şunlar **değişmez**:\n\n- Kenar sayısı ve köşe sayısı\n- Cisimlerin yüz sayısı\n- Şeklin ya da cismin **adı**\n\nKöşesi üstte duran kare yine karedir. Yan yatırılan silindir yine silindirdir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Döndür ve büyüt",
+   "aciklama": "Cismi seç; döndür ve büyüt. Sağdaki yüz, köşe ve ayrıt sayılarını izle.",
+   "sim": {
+    "kind": "a-cisim",
+    "cisim": "kup",
+    "secenek": [
+     "kup",
+     "prizma",
+     "ucgen-prizma",
+     "silindir",
+     "koni"
+    ]
+   },
+   "gorev": {
+    "metin": "Küpü en az 90° döndür ve 1,5 katına büyüt.",
+    "check": {
+     "all": [
+      {
+       "key": "cisim",
+       "eq": 0
+      },
+      {
+       "key": "aci",
+       "gte": 90
+      },
+      {
+       "key": "boyut",
+       "gte": 1.5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Döndürürken yüz sayısı değişti mi?",
+    "Başka bir cisim seçip aynı şeyi dene."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Adı belirleyen özellikler",
+   "govde": "Bir şeklin adını **kenar ve köşe sayısı** ile **kenarların uzunlukları** belirler; duruşu belirlemez.\n\n- Kare: 4 eşit kenar, 4 köşe; nasıl durursa dursun kare.\n- Üçgen: 3 kenar, 3 köşe; ucu aşağıda olsa da üçgen."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bütün kareler",
+   "aciklama": "Kareler farklı yönlerde ve büyüklüklerde duruyor.",
+   "sim": {
+    "kind": "a-sec",
+    "cols": 4,
+    "hedef": "y",
+    "items": [
+     {
+      "k": "y",
+      "s": "kare",
+      "c": 0
+     },
+     {
+      "k": "y",
+      "s": "kare",
+      "r": 45,
+      "b": 0.85,
+      "c": 1
+     },
+     {
+      "k": "n",
+      "s": "dikdortgen",
+      "w": 84,
+      "h": 44,
+      "c": 2
+     },
+     {
+      "k": "y",
+      "s": "kare",
+      "b": 0.55,
+      "r": 20,
+      "c": 2
+     },
+     {
+      "k": "n",
+      "s": "ucgen",
+      "c": 3
+     },
+     {
+      "k": "n",
+      "s": "dikdortgen",
+      "w": 40,
+      "h": 84,
+      "r": 30,
+      "c": 0
+     },
+     {
+      "k": "y",
+      "s": "kare",
+      "b": 1.05,
+      "r": 70,
+      "c": 3
+     },
+     {
+      "k": "n",
+      "s": "besgen",
+      "c": 1
+     }
+    ]
+   },
+   "gorev": {
+    "metin": "Bütün kareleri seç.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Köşesi üstte duran kareyi gözden kaçırma.",
+    "Kenarları eşit değilse kare değildir."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir üçgen kâğıdı çevirip ucunu aşağı getirdik. Şimdi kaç köşesi var?",
+   "cozum": [
+    "Döndürmek köşe sayısını değiştirmez.",
+    "Üçgenin 3 köşesi vardır."
+   ],
+   "sonuc": "Yine **3** köşesi var; hâlâ bir üçgen."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Küçük bir küp ile büyük bir küpün yüz sayıları aynı mı?",
+   "cozum": [
+    "Büyütmek yüz sayısını değiştirmez.",
+    "Her küpün 6 yüzü vardır."
+   ],
+   "sonuc": "Evet, ikisinin de **6** yüzü var."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Köşesi üstte duran bir kareye “baklava” deyip başka bir şekil sanmak çok yapılan bir hatadır. Kenarlarına bak: 4 kenarı eşit ve köşeleri dikse yine **karedir**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir dikdörtgeni döndürürsek kenar sayısı ne olur?",
+   "options": [
+    "Artar",
+    "Azalır",
+    "Değişmez, 4 kalır",
+    "Sıfır olur"
+   ],
+   "answer": 2,
+   "why": "Döndürmek kenar sayısını değiştirmez.",
+   "hint": "Döndürünce kenar eklenir mi?"
+  },
+  {
+   "prompt": "Büyük bir silindir ile küçük bir silindir için hangisi doğrudur?",
+   "options": [
+    "İkisi de silindirdir.",
+    "Küçüğü koni olur.",
+    "Büyüğü küre olur.",
+    "Hiçbiri silindir değildir."
+   ],
+   "answer": 0,
+   "why": "Büyüklük cismin adını değiştirmez.",
+   "hint": "Büyütmek biçimi değiştirir mi?"
+  },
+  {
+   "prompt": "Köşesi üstte duran bir karenin kaç köşesi vardır?",
+   "options": [
+    "2",
+    "3",
+    "5",
+    "4"
+   ],
+   "answer": 3,
+   "why": "Duruşu değişse de kare 4 köşelidir.",
+   "hint": "Köşeleri say."
+  }
+ ]
+}

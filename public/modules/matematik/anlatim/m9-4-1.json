@@ -1,0 +1,71 @@
+{
+ "id": "m9-4-1",
+ "baslik": "Geometrik Dönüşümler",
+ "sinif": "9. sınıf",
+ "kazanim": ["MAT.9.4.1"],
+ "sure": 16,
+ "ders": "geometrik-donusumler",
+ "ozet": "Öteleme, yansıma ve orijin etrafında dönmeyi koordinat kurallarıyla ifade edecek, dönüşümlerin neyi koruduğunu inceleyecek ve ardışık dönüşümlerle ilgili çıkarımlar yapacağız.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Koordinat kuralları",
+   "govde": "- **Öteleme** (a sağa, b yukarı): (x, y) → (x + a, y + b)\n- **x eksenine göre yansıma:** (x, y) → (x, −y)\n- **y eksenine göre yansıma:** (x, y) → (−x, y)\n- **y = x doğrusuna göre yansıma:** (x, y) → (y, x)\n- **Orijin etrafında 90° dönme** (saat yönünün tersine, pozitif yön): (x, y) → (−y, x)\n- **Orijin etrafında 180° dönme:** (x, y) → (−x, −y)"
+  },
+  {
+   "tur": "sim",
+   "baslik": "180° dönme",
+   "aciklama": "Kesikli şekil, asıl şeklin orijin etrafında 180° döndürülmüş hâli. Ona ulaşmanın birden çok yolu var.",
+   "sim": { "kind": "donusum", "target": [[-1, -1], [-3, -1], [-3, -2], [-2, -2], [-2, -4], [-1, -4]] },
+   "gorev": { "metin": "Şekli hedefe oturt.", "check": { "key": "match", "eq": 1 } },
+   "dene": ["İki kez 90° döndür.", "\"Baştan\" de; sonra önce x eksenine, sonra y eksenine göre yansıt. Aynı sonuca ulaştın mı?"]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dönüşümler neyi korur?",
+   "govde": "Öteleme, yansıma ve dönme **izometridir**: uzunlukları ve açı ölçülerini korur, şekil kendisine eş bir görüntüye dönüşür.\n\n- Öteleme ve dönme şeklin yönünü (köşelerin saat yönündeki sırasını) korur.\n- Yansıma yönü **ters çevirir**.\n- Kesişen iki doğruya göre ardışık iki yansıma bir dönmeye eşittir: x eksenine sonra y eksenine göre yansıma, orijin etrafında 180° dönmedir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dönme ve öteleme",
+   "aciklama": "Bu hedef için bir dönme ve bir öteleme gerekiyor.",
+   "sim": { "kind": "donusum", "target": [[2, 1], [2, 3], [1, 3], [1, 2], [-1, 2], [-1, 1]] },
+   "gorev": { "metin": "Şekli hedefe oturt.", "check": { "key": "match", "eq": 1 } },
+   "dene": ["Önce 90° döndür, sonra kaç birim kaydırman gerektiğine bak.", "Sırayı değiştirince (önce öteleme, sonra dönme) aynı ötelemeyle hedefe ulaşılıyor mu?"]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "P(3, −2) noktasının orijin etrafında 90° ve 180° döndürülmüş görüntülerini ve A(1, 4) noktasının y = x doğrusuna göre yansımasını bulalım.",
+   "cozum": [
+    "90°: (x, y) → (−y, x) ⇒ (2, 3).",
+    "180°: (x, y) → (−x, −y) ⇒ (−3, 2).",
+    "y = x'e göre: (x, y) → (y, x) ⇒ A′(4, 1)."
+   ],
+   "sonuc": "(2, 3), (−3, 2) ve (4, 1)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "TYT tarzı bağlam: ardışık dönüşüm",
+   "soru": "A(2, 5) noktası önce x eksenine göre yansıtılıyor, sonra orijin etrafında 180° döndürülüyor. Son görüntü nedir? Bu iki dönüşüm tek bir dönüşüme eşit midir?",
+   "cozum": [
+    "x eksenine göre yansıma: (2, −5).",
+    "180° dönme: (−2, 5).",
+    "(2, 5) → (−2, 5) dönüşümü y eksenine göre yansımadır.",
+    "Genel olarak: (x, y) → (x, −y) → (−x, y)."
+   ],
+   "sonuc": "(−2, 5); iki dönüşüm birlikte y eksenine göre yansımaya eşittir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- 90° dönmede (x, y) → (y, −x) ile (−y, x)'i karıştırmak. (y, −x) saat yönünde 90°'dir. Kontrol: (1, 0) saat yönünün tersine 90° dönünce (0, 1) olmalı.\n- Yansımayı dönmeyle karıştırmak: yansıma yönü ters çevirir, dönme çevirmez.\n- Ardışık dönüşümlerde sırayı önemsiz sanmak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "(4, 1) noktasının orijin etrafında 180° döndürülmüş görüntüsü hangisidir?", "options": ["(−4, 1)", "(−4, −1)", "(1, 4)", "(−1, 4)"], "answer": 1, "why": "(x, y) → (−x, −y).", "hint": "180° dönmede iki koordinatın da işareti değişir." },
+  { "prompt": "(−2, 5) noktasının orijin etrafında pozitif yönde 90° döndürülmüş görüntüsü hangisidir?", "options": ["(5, −2)", "(−5, 2)", "(2, 5)", "(−5, −2)"], "answer": 3, "why": "(x, y) → (−y, x) = (−5, −2).", "hint": "Kural (−y, x)." },
+  { "prompt": "Öteleme, yansıma ve dönmeden hangisi uzunlukları korumaz?", "options": ["Hiçbiri; üçü de korur.", "Öteleme", "Yansıma", "Dönme"], "answer": 0, "why": "Üçü de izometridir; görüntü asıl şekle eştir.", "hint": "Bu dönüşümlerde şekil büyür ya da küçülür mü?" },
+  { "prompt": "x eksenine göre yansımanın ardından y eksenine göre yansıma hangi tek dönüşüme eşittir?", "options": ["90° dönme", "Öteleme", "Orijin etrafında 180° dönme", "y = x doğrusuna göre yansıma"], "answer": 2, "why": "(x, y) → (x, −y) → (−x, −y).", "hint": "Bir noktaya iki yansımayı sırayla uygula." }
+ ]
+}

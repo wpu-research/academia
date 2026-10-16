@@ -1,0 +1,190 @@
+{
+ "id": "m2-2-2",
+ "baslik": "Paralarımız",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.8"
+ ],
+ "sure": 12,
+ "ders": "saat-ve-para",
+ "ozet": "Paraları birbirine çevirecek, bir tutarı farklı paralarla ve en az sayıda parayla oluşturacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Paralar arasındaki ilişki",
+   "govde": "Bir parayı, değeri daha küçük paralarla da oluşturabiliriz:\n\n- 10 TL = 5 TL + 5 TL\n- 20 TL = 10 TL + 10 TL\n- 50 TL = 20 TL + 20 TL + 10 TL\n- 100 TL = 50 TL + 50 TL\n- 200 TL = 100 TL + 100 TL\n\nBir tutarı oluşturmanın **birden çok yolu** vardır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "50 TL'yi 5 parayla",
+   "aciklama": "Paralara dokunarak tepsiye ekle; yanlış eklediğini − ile çıkar.",
+   "sim": {
+    "kind": "para",
+    "only": [
+     5,
+     10,
+     20,
+     50
+    ]
+   },
+   "gorev": {
+    "metin": "50 TL'yi tam 5 parayla oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 50,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Beş tane eş para dene.",
+    "Başka bir yol: 20 + 10 + 10 + 5 + 5."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "En az parayla ödemek",
+   "govde": "Bir tutarı **en az sayıda** parayla ödemek için önce sığabilen **en büyük** parayı al, kalan tutar için aynı şeyi tekrarla.\n\n37 TL: 20 TL (kalan 17) → 10 TL (kalan 7) → 5 TL (kalan 2) → 1 TL → 1 TL. Toplam **5 para**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "En az parayla 37 TL",
+   "aciklama": "Bu kez bütün paralar var.",
+   "sim": {
+    "kind": "para",
+    "only": [
+     1,
+     5,
+     10,
+     20,
+     50,
+     100,
+     200
+    ]
+   },
+   "gorev": {
+    "metin": "37 TL'yi en az sayıda parayla oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 37,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Önce en büyük uygun parayı seç.",
+    "50 TL, 37 TL'den büyük olduğu için kullanılamaz."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "100 TL'yi iki parayla",
+   "aciklama": "Bütün paralar var.",
+   "sim": {
+    "kind": "para",
+    "only": [
+     1,
+     5,
+     10,
+     20,
+     50,
+     100,
+     200
+    ]
+   },
+   "gorev": {
+    "metin": "100 TL'yi tam iki parayla oluştur.",
+    "check": {
+     "all": [
+      {
+       "key": "total",
+       "eq": 100,
+       "tol": 0.001
+      },
+      {
+       "key": "count",
+       "eq": 2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Elif'in 2 tane 20 TL'si ve 1 tane 10 TL'si var. 50 TL'lik bir kitap alabilir mi?",
+   "cozum": [
+    "20 + 20 = 40.",
+    "40 + 10 = 50."
+   ],
+   "sonuc": "Evet, Elif'in parası tam **50 TL** eder."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Bir 100 TL kaç tane 10 TL eder?",
+   "cozum": [
+    "10'ar say: 10, 20, 30, …, 100.",
+    "On sayı söyledik."
+   ],
+   "sonuc": "100 TL = **10 tane** 10 TL."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Para sayısı ile tutarı karıştırmak sık yapılan bir hatadır. 6 tane 5 TL (30 TL), 1 tane 50 TL'den azdır. Tutarı bulmak için paraların **değerlerini** topla."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi 20 TL'ye eşit değildir?",
+   "options": [
+    "10 TL + 10 TL",
+    "4 tane 5 TL",
+    "10 TL + 5 TL",
+    "20 tane 1 TL"
+   ],
+   "answer": 2,
+   "why": "10 + 5 = 15 eder.",
+   "hint": "Her seçeneğin toplamını bul."
+  },
+  {
+   "prompt": "45 TL'yi en az kaç parayla öderiz?",
+   "options": [
+    "3",
+    "4",
+    "5",
+    "9"
+   ],
+   "answer": 0,
+   "why": "20 + 20 + 5 = 45: 3 para.",
+   "hint": "Önce sığan en büyük paraları al."
+  },
+  {
+   "prompt": "200 TL kaç tane 50 TL eder?",
+   "options": [
+    "2",
+    "5",
+    "40",
+    "4"
+   ],
+   "answer": 3,
+   "why": "50 + 50 + 50 + 50 = 200.",
+   "hint": "50'şer say."
+  }
+ ]
+}

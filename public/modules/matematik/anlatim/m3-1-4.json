@@ -1,0 +1,172 @@
+{
+ "id": "m3-1-4",
+ "baslik": "Ritmik Sayma",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.1.4"
+ ],
+ "sure": 10,
+ "ozet": "Bir sayıdan başlayıp hep aynı miktarda ileri ya da geri sayacağız. Sayı doğrusunda eşit sıçramalar bu saymanın resmidir.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşit adımlarla saymak",
+   "govde": "**Ritmik sayma**, her adımda aynı sayıyı ekleyerek (ileri) ya da çıkararak (geri) saymaktır.\n\n- 4'er ileri: 0, 4, 8, 12, 16…\n- 10'ar geri: 93, 83, 73, 63…\n- 100'er ileri: 200, 300, 400…\n\nRitmik sayma, çarpım tablosunu ezberlemeden önce de işimize yarar: 4'er sayarken söylediğin 8. sayı 32'dir, yani 8 × 4 = 32."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ritmik saymanın kuralı",
+   "govde": "Başlangıç sayısını ve adımı belirle.\n\n- İleri sayarken her adımda **ekle**.\n- Geri sayarken her adımda **çıkar**.\n\nAdım hiç değişmez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "4'er ileri say",
+   "aciklama": "Nokta 0'da. +4 düğmesine her bastığında nokta 4 birim ileri sıçrar. +3 düğmesi de var; hangisini kullanman gerektiğine dikkat et.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 40,
+    "tick": 1,
+    "label": 5,
+    "start": 0,
+    "hops": [
+     4,
+     3
+    ]
+   },
+   "gorev": {
+    "metin": "0'dan 4'er ileri sayarak tam 8 sıçramada 32'ye ulaş.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 32
+      },
+      {
+       "key": "hops",
+       "eq": 8
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Her sıçramada içinden say: 4, 8, 12, 16…",
+    "Yanlış düğmeye bastıysan Baştan düğmesiyle yeniden başla."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "100'er geri say",
+   "aciklama": "Nokta 1000'de. Geriye doğru 100'er sıçra.",
+   "sim": {
+    "kind": "b-sicrama",
+    "min": 0,
+    "max": 1000,
+    "tick": 50,
+    "label": 100,
+    "start": 1000,
+    "hops": [
+     100
+    ]
+   },
+   "gorev": {
+    "metin": "1000'den 100'er geri sayarak 300'e in.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 300
+      },
+      {
+       "key": "hops",
+       "eq": 7
+      }
+     ]
+    }
+   },
+   "dene": [
+    "1000, 900, 800… Her sıçramada yüzler basamağı 1 azalır."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "6'şar ileri sayalım: 6'dan başlayıp 5 sayı söyleyelim.",
+   "cozum": [
+    "6",
+    "6 + 6 = 12",
+    "12 + 6 = 18",
+    "18 + 6 = 24",
+    "24 + 6 = 30"
+   ],
+   "sonuc": "6, 12, 18, 24, 30."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "85'ten başlayarak 5'er geri sayalım.",
+   "cozum": [
+    "85 − 5 = 80",
+    "80 − 5 = 75",
+    "75 − 5 = 70",
+    "70 − 5 = 65"
+   ],
+   "sonuc": "85, 80, 75, 70, 65."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Geri sayarken ekleme yapmak ya da adımı yolda değiştirmek ritmi bozar. 48'den 4'er geri sayarken 48, 44, 40, 36… diye gidilir; 48, 44, 42 gibi bir dizi ritmik değildir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "7'şer ileri sayıyoruz: 7, 14, 21, ? Sıradaki sayı hangisidir?",
+   "options": [
+    "27",
+    "28",
+    "29",
+    "35"
+   ],
+   "answer": 1,
+   "why": "21 + 7 = 28.",
+   "hint": "Son sayıya kaç eklemelisin?"
+  },
+  {
+   "prompt": "93, 83, 73, ? Sıradaki sayı hangisidir?",
+   "options": [
+    "70",
+    "72",
+    "63",
+    "53"
+   ],
+   "answer": 2,
+   "why": "10'ar geri sayılıyor: 73 − 10 = 63.",
+   "hint": "Sayılar her adımda ne kadar azalıyor?"
+  },
+  {
+   "prompt": "200, 300, 400… diye devam eden saymada 6. sayı kaçtır?",
+   "options": [
+    "1000",
+    "600",
+    "800",
+    "700"
+   ],
+   "answer": 3,
+   "why": "200, 300, 400, 500, 600, 700: 6. sayı 700.",
+   "hint": "Sayıları tek tek yazarak 6. sıraya kadar git."
+  },
+  {
+   "prompt": "48'den başlayıp 4'er geri sayıyoruz. 48'den sonra söylenen 3. sayı hangisidir?",
+   "options": [
+    "36",
+    "40",
+    "32",
+    "44"
+   ],
+   "answer": 0,
+   "why": "48'den sonra 44, 40, 36 gelir.",
+   "hint": "48'den 4 çıkar, sonra yine 4 çıkar…"
+  }
+ ]
+}

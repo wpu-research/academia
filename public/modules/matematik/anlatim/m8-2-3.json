@@ -1,0 +1,82 @@
+{
+ "id": "m8-2-3",
+ "baslik": "Eşitsizlikler",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.2.3.1", "M.8.2.3.2", "M.8.2.3.3"],
+ "sure": 15,
+ "ozet": "Günlük hayattaki \"en az\", \"en fazla\" gibi ifadeleri eşitsizlikle yazacak, eşitsizlikleri sayı doğrusunda gösterecek ve birinci dereceden eşitsizlikleri çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eşitsizlik cümleleri",
+   "govde": "Bir anaokulu \"en az 3 yaşında\" çocukları kabul ediyorsa çocuğun yaşı x için **x ≥ 3** yazarız. Benzer biçimde:\n\n- \"Hız sınırı en fazla 50 km/sa\": x ≤ 50\n- \"18 yaşından küçükler\": x < 18\n- \"100 TL'den fazla alışveriş\": x > 100\n\nBir eşitsizliği sağlayan sayılar genellikle tek bir sayı değil, bir sayı kümesidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Eşitsizliği sayı doğrusunda göster",
+   "aciklama": "İşareti seç, sınır değerini kaydır. Alttaki üçgen bir test noktasıdır: sayı doğrusunda bir yere dokun, o sayının eşitsizliği sağlayıp sağlamadığını gör.",
+   "sim": { "kind": "e-esitsizlik", "min": -6, "max": 6, "a": 1, "op": 0, "t": 3 },
+   "gorev": { "metin": "x ≥ −1 eşitsizliğini göster.", "check": { "all": [ { "key": "a", "eq": -1 }, { "key": "op", "eq": 3 } ] } },
+   "dene": ["Test noktasını −1'e getir. ≥ seçiliyken sağlıyor, > seçiliyken sağlamıyor."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sayı doğrusunda gösterim",
+   "govde": "- **Dolu daire:** sınır sayısı çözüme dahil (≤, ≥).\n- **Boş daire:** sınır sayısı çözüme dahil değil (<, >).\n- x < a ve x ≤ a için ışın sola, x > a ve x ≥ a için sağa uzanır.\n\nİki sınırlı eşitsizliklerde (örneğin −3 ≤ t < 7) iki ucun arası taranır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "İki sınırlı eşitsizlik",
+   "aciklama": "Sol ve sağ uç için işareti seç, sınırları kaydır. Altta tam sayı çözümleri listelenir.",
+   "sim": { "kind": "e-esitsizlik", "iki": true, "min": -5, "max": 8, "a": -1, "b": 2, "opA": 0, "opB": 0, "degisken": "t", "t": 0 },
+   "gorev": { "metin": "−3 ≤ t < 7 eşitsizliğini göster.", "check": { "all": [ { "key": "a", "eq": -3 }, { "key": "opA", "eq": 1 }, { "key": "b", "eq": 7 }, { "key": "opB", "eq": 0 } ] } },
+   "dene": ["Bu eşitsizliği kaç tam sayı sağlıyor? −3'ten 6'ya kadar 10 tane.", "Sağ ucu ≤ yapınca 7 de eklenir."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Eşitsizlik çözme",
+   "govde": "Eşitsizlikler denklemler gibi çözülür; tek bir farkla:\n\n- İki tarafa aynı sayıyı eklemek ya da çıkarmak yönü değiştirmez.\n- İki tarafı **pozitif** bir sayıyla çarpmak ya da bölmek yönü değiştirmez.\n- İki tarafı **negatif** bir sayıyla çarpınca ya da bölünce **yön değişir**: −x > 2 ⇒ x < −2.\n\nNeden? 2 < 5 doğru, ama iki tarafı −1 ile çarpınca −2 > −5 olur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "3x − 5 < 7 ve −2x + 1 ≥ 9 eşitsizliklerini çözelim.",
+   "cozum": [
+    "3x − 5 < 7 ⇒ iki tarafa 5 ekle: 3x < 12 ⇒ 3'e böl (pozitif): x < 4.",
+    "−2x + 1 ≥ 9 ⇒ iki taraftan 1 çıkar: −2x ≥ 8.",
+    "−2'ye böl (negatif, yön değişir): x ≤ −4."
+   ],
+   "sonuc": "x < 4 ve x ≤ −4"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Çözümü göster ve test et",
+   "aciklama": "Az önceki ikinci eşitsizliğin, −2x + 1 ≥ 9'un çözümünü sayı doğrusunda göster.",
+   "sim": { "kind": "e-esitsizlik", "min": -6, "max": 6, "a": 0, "op": 0, "t": 0 },
+   "gorev": { "metin": "−2x + 1 ≥ 9 eşitsizliğinin çözüm kümesini göster.", "check": { "all": [ { "key": "a", "eq": -4 }, { "key": "op", "eq": 1 } ] } },
+   "dene": ["Test noktasını −5'e götür ve asıl eşitsizlikte dene: −2 · (−5) + 1 = 11 ≥ 9.", "Test noktasını 0'a götür: −2 · 0 + 1 = 1, 9'dan küçük; 0 çözüm değil."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: defter almak",
+   "soru": "Elif'in 250 TL'si var. 35 TL'lik bir sinema bileti aldıktan sonra kalan parasıyla tanesi 15 TL olan defterlerden en çok kaç tane alabilir?",
+   "cozum": [
+    "Defter sayısı x olsun. Harcama paradan fazla olamaz: 35 + 15x ≤ 250.",
+    "15x ≤ 215 ⇒ x ≤ 215/15 ≈ 14,3.",
+    "Defter sayısı doğal sayıdır; bu koşulu sağlayan en büyük doğal sayı 14."
+   ],
+   "sonuc": "En çok 14 defter alabilir (35 + 15 · 14 = 245 TL)."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Negatif sayıya bölerken yönü çevirmeyi unutmak: −3x < 12 ⇒ x > −4 (x < −4 değil).\n- \"En az\" ile \"en fazla\"yı karıştırmak: \"en az 3\" ⇒ ≥ 3.\n- Boş ve dolu daireyi karıştırmak: x < 2'de 2 çözüm değildir, boş daire kullanılır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "\"Bu asansör en fazla 8 kişi taşır.\" Kişi sayısı x ise hangisi doğrudur?", "options": ["x < 8", "x ≥ 8", "x > 8", "x ≤ 8"], "answer": 3, "why": "En fazla 8: 8 de olabilir, 8'den fazlası olamaz.", "hint": "8 kişi binebilir mi?" },
+  { "prompt": "5 − 3x > 11 eşitsizliğinin çözümü hangisidir?", "options": ["x < −2", "x > −2", "x < 2", "x > 2"], "answer": 0, "why": "−3x > 6; −3'e bölünce yön değişir: x < −2.", "hint": "Negatif bir sayıya bölerken ne yapman gerekiyor?" },
+  { "prompt": "−2 < x ≤ 3 eşitsizliğini kaç tam sayı sağlar?", "options": ["6", "4", "5", "3"], "answer": 2, "why": "−1, 0, 1, 2, 3: beş tam sayı. −2 dahil değil, 3 dahil.", "hint": "Uçların dahil olup olmadığına dikkat et." },
+  { "prompt": "Sayı doğrusunda 1 üzerinde boş daire var ve ışın sağa uzanıyor. Bu hangi eşitsizliktir?", "options": ["x ≥ 1", "x > 1", "x < 1", "x ≤ 1"], "answer": 1, "why": "Boş daire 1'in dahil olmadığını, sağa uzanan ışın 1'den büyük sayıları gösterir.", "hint": "Boş daire hangi işaretleri anlatır?" }
+ ]
+}

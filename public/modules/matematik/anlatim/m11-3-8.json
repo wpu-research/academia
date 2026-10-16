@@ -1,0 +1,86 @@
+{
+ "id": "m11-3-8",
+ "baslik": "Fonksiyonlarda Dört İşlem",
+ "sinif": "11. sınıf",
+ "kazanim": ["MAT.11.3.8"],
+ "sure": 15,
+ "ozet": "İki fonksiyonu toplamak, çıkarmak, çarpmak ve bölmek her x için değerleri toplamak, çıkarmak, çarpmak ve bölmektir. İşlemi grafikte nokta nokta izleyecek ve sonucun tanım kümesine dikkat edeceğiz.",
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Tanımlar",
+   "govde": "f ve g fonksiyonlarının tanım kümeleri A ve B olsun. Her x ∈ A ∩ B için:\n- (f + g)(x) = f(x) + g(x)\n- (f − g)(x) = f(x) − g(x)\n- (f · g)(x) = f(x) · g(x)\n- (f / g)(x) = f(x) / g(x), **g(x) ≠ 0** olmak şartıyla.\n\nSonucun tanım kümesi A ∩ B'dir; bölmede ayrıca g(x) = 0 yapan x'ler çıkarılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Değerleri nokta nokta işle",
+   "aciklama": "Turuncu f(x) = x + 1, yeşil g(x) = x − 1, kahverengi seçili işlemin sonucu. Dikey kesikli çizgi seçtiğin x.",
+   "sim": { "kind": "f-islem", "f": "x+1", "g": "x-1", "op": 0, "x": 2, "texts": ["2x", "2", "x² − 1", "(x + 1)/(x − 1), x ≠ 1"] },
+   "gorev": { "metin": "f / g işlemini seç ve x'i f / g'nin tanımsız olduğu noktaya getir.", "check": { "all": [{ "key": "op", "eq": 3 }, { "key": "undef", "eq": 1 }] } },
+   "dene": ["f − g her x için 2: iki doğru paralel, aralarındaki dikey uzaklık sabit.", "f · g bir parabol: iki doğrusal fonksiyonun çarpımı ikinci derecedendir."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "f(x) = x² − 4 ve g(x) = x + 2 için f + g, f · g ve f / g fonksiyonlarını tanım kümeleriyle yazalım.",
+   "cozum": [
+    "(f + g)(x) = x² + x − 2, tanım kümesi ℝ.",
+    "(f · g)(x) = (x² − 4)(x + 2) = x³ + 2x² − 4x − 8, tanım kümesi ℝ.",
+    "(f / g)(x) = (x² − 4)/(x + 2) = (x − 2)(x + 2)/(x + 2) = x − 2, ama x ≠ −2.",
+    "f / g'nin grafiği y = x − 2 doğrusudur; (−2, −4) noktası boş bırakılır."
+   ],
+   "sonuc": "f / g = x − 2, tanım kümesi ℝ − {−2}. Sadeleştirme tanım kümesini değiştirmez."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Farkın sıfırları",
+   "aciklama": "Turuncu f(x) = x², yeşil g(x) = 2x.",
+   "sim": { "kind": "f-islem", "f": "x2", "g": "2x", "op": 0, "x": 1, "texts": ["x² + 2x", "x² − 2x", "2x³", "x/2, x ≠ 0"] },
+   "gorev": { "metin": "f − g işlemini seç ve (f − g)(x) = 0 olan bir x bul.", "check": { "all": [{ "key": "op", "eq": 1 }, { "key": "val", "eq": 0 }] } },
+   "dene": ["(f − g)(x) = 0 ⇔ f(x) = g(x): iki grafiğin kesiştiği yerler, x = 0 ve x = 2.", "f / g'yi seç: x/2 doğrusu ama x = 0'da tanımsız."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: tanım kümesi",
+   "soru": "f(x) = √(x − 1) ve g(x) = √(5 − x) için f + g'nin en geniş tanım kümesini bulalım.",
+   "cozum": [
+    "f için x ≥ 1, g için x ≤ 5.",
+    "Kesişim: 1 ≤ x ≤ 5."
+   ],
+   "sonuc": "[1, 5]."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3: değerle işlem",
+   "soru": "f(2) = 3 ve g(2) = −4 ise (f · g)(2), (f − g)(2) ve (f / g)(2) kaçtır?",
+   "cozum": [
+    "(f · g)(2) = 3 · (−4) = −12.",
+    "(f − g)(2) = 3 − (−4) = 7.",
+    "(f / g)(2) = 3 / (−4) = −3/4."
+   ],
+   "sonuc": "−12, 7, −3/4."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "f(x) = 2x + 1 ve (f + g)(x) = x² + 3x ise g(x) nedir? g(1) kaçtır?",
+   "cozum": [
+    "g(x) = (f + g)(x) − f(x) = x² + 3x − 2x − 1.",
+    "g(x) = x² + x − 1.",
+    "g(1) = 1 + 1 − 1 = 1."
+   ],
+   "sonuc": "g(x) = x² + x − 1, g(1) = 1."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "f / g'yi sadeleştirdikten sonra tanım kümesini sadeleşmiş ifadeden okumak. (x² − 4)/(x + 2) = x − 2 görünse de x = −2 başta tanımsızdı ve tanımsız kalır. Bir de f · g'yi f∘g (bileşke) ile karıştırmak: çarpımda değerler çarpılır, bileşkede biri diğerinin içine yazılır."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "f(x) = 3x ve g(x) = x − 2 için (f − g)(x) nedir?", "options": ["2x − 2", "4x − 2", "2x + 2", "3x² − 6x"], "answer": 2, "why": "3x − (x − 2) = 2x + 2.", "hint": "Parantezin önündeki eksiye dikkat." },
+  { "prompt": "f(x) = x² ve g(x) = x − 4 için (f / g)(x)'in en geniş tanım kümesi nedir?", "options": ["ℝ − {4}", "ℝ", "ℝ − {0}", "ℝ − {−4}"], "answer": 0, "why": "g(x) = 0 ⇔ x = 4; bu değer çıkarılır.", "hint": "Paydanın sıfır olduğu yer." },
+  { "prompt": "f(1) = 5 ve g(1) = −2 ise (f · g)(1) kaçtır?", "options": ["3", "7", "−3", "−10"], "answer": 3, "why": "5 · (−2) = −10.", "hint": "Değerleri çarp." },
+  { "prompt": "f(x) = √x ve g(x) = √(2 − x) için f + g'nin en geniş tanım kümesi nedir?", "options": ["[0, ∞)", "[0, 2]", "(−∞, 2]", "(0, 2)"], "answer": 1, "why": "x ≥ 0 ve x ≤ 2 şartlarının kesişimi.", "hint": "İki tanım kümesinin kesişimi." }
+ ]
+}

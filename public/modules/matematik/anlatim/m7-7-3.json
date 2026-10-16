@@ -1,0 +1,168 @@
+{
+ "id": "m7-7-3",
+ "baslik": "Yükseklik",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.5.1"
+ ],
+ "sure": 13,
+ "ozet": "Üçgende yüksekliği tanıyacak; dar, dik ve geniş açılı üçgenlerde yüksekliklerin nerede olduğunu görecek ve farklı taban-yükseklik çiftleriyle aynı alanı bulacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yükseklik",
+   "govde": "Bir üçgende bir köşeden karşı kenara (ya da karşı kenarın **uzantısına**) çizilen **dik** doğru parçasına o kenara ait **yükseklik** denir. Dikmenin kenarı kestiği noktaya **dikme ayağı** denir.\n\nHer üçgenin üç yüksekliği vardır; her biri bir kenara aittir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yüksekliği izle",
+   "aciklama": "C köşesinden [AB]'ye inen yükseklik çizili. C'yi sürükle.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "yukseklik",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      9,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "kose": 2
+   },
+   "gorev": {
+    "metin": "Dikme ayağı [AB] kenarının dışına düşsün.",
+    "check": {
+     "key": "ic",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "A ya da B açısı geniş olunca dikme kenarın uzantısına iner (kesikli çizgi).",
+    "C'yi yatay olarak kaydırınca yükseklik değişiyor mu? Alan değişiyor mu?"
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üçgen türüne göre yükseklikler",
+   "govde": "- **Dar açılı üçgen:** üç yükseklik de üçgenin **içindedir**.\n- **Dik üçgen:** dik kenarlar birbirinin yüksekliğidir; üçüncü yükseklik içtedir.\n- **Geniş açılı üçgen:** geniş açıya komşu iki kenara ait yükseklikler üçgenin **dışına** (kenarların uzantılarına) düşer.\n\nHangi taban seçilirse seçilsin: **Alan = taban · yükseklik ÷ 2** aynı sonucu verir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dik üçgende yükseklikler",
+   "aciklama": "Üç yüksekliği birden çiz ve bir dik üçgen oluştur.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "yukseklik",
+    "points": [
+     [
+      2,
+      1
+     ],
+     [
+      8,
+      1
+     ],
+     [
+      5,
+      5
+     ]
+    ],
+    "kose": 0,
+    "hepsi": true
+   },
+   "gorev": {
+    "metin": "Bir dik üçgen oluştur.",
+    "check": {
+     "key": "tip",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Dik üçgende iki yükseklik dik kenarlarla çakışır; üç yükseklik dik açının köşesinde buluşur."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Alanı 30 cm² olan bir üçgenin bir kenarı 12 cm, başka bir kenarı 10 cm'dir. Bu kenarlara ait yükseklikleri bulalım.",
+   "cozum": [
+    "12 · h₁ ÷ 2 = 30 → h₁ = 5 cm.",
+    "10 · h₂ ÷ 2 = 30 → h₂ = 6 cm."
+   ],
+   "sonuc": "5 cm ve 6 cm. Kısa kenara ait yükseklik daha uzundur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Rampa",
+   "soru": "Dik kenarları 6 m ve 8 m, hipotenüsü 10 m olan dik üçgen biçiminde bir rampa var. Dik açının köşesinden hipotenüse inen destek direğinin uzunluğu kaç metredir?",
+   "cozum": [
+    "Dik kenarlar birbirinin yüksekliği: alan = 6 · 8 ÷ 2 = 24 m².",
+    "Hipotenüse ait yükseklik h: 10 · h ÷ 2 = 24.",
+    "h = 48 ÷ 10 = 4,8."
+   ],
+   "sonuc": "4,8 m."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yüksekliği hep üçgenin içinde aramak yanlıştır; geniş açılı üçgende iki yükseklik dışarıdadır ve kenarın **uzantısına** iner. Bir de üçgenin yan kenarını yükseklik sanmak sık yapılır: yükseklik tabana **dik** olmalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Tabanı 9 cm, bu tabana ait yüksekliği 4 cm olan üçgenin alanı kaç cm²'dir?",
+   "options": [
+    "36",
+    "13",
+    "18",
+    "9"
+   ],
+   "answer": 2,
+   "why": "9 · 4 ÷ 2 = 18.",
+   "hint": "Alan = taban · yükseklik ÷ 2."
+  },
+  {
+   "prompt": "Geniş açılı bir üçgenin kaç yüksekliği üçgenin dışında kalır?",
+   "options": [
+    "0",
+    "2",
+    "1",
+    "3"
+   ],
+   "answer": 1,
+   "why": "Geniş açıya komşu iki kenara ait yükseklikler dışarıda kalır.",
+   "hint": "Simülasyonda geniş açılı bir üçgen yapıp üç yüksekliği çiz."
+  },
+  {
+   "prompt": "Alanı 24 cm² olan bir üçgende 6 cm'lik yüksekliğin ait olduğu kenar kaç cm'dir?",
+   "options": [
+    "8",
+    "4",
+    "12",
+    "144"
+   ],
+   "answer": 0,
+   "why": "taban · 6 ÷ 2 = 24 → taban = 8.",
+   "hint": "2 · alan = taban · yükseklik."
+  },
+  {
+   "prompt": "Bir dik üçgende dik kenarlara ait yükseklikler için hangisi doğrudur?",
+   "options": [
+    "Hep dışarıdadır.",
+    "Hipotenüse diktir.",
+    "Yoktur.",
+    "Dik kenarların kendisidir."
+   ],
+   "answer": 3,
+   "why": "Dik kenarlar birbirine dik olduğu için biri öbürünün yüksekliğidir.",
+   "hint": "Dik açının kolları birbirine göre nasıl?"
+  }
+ ]
+}

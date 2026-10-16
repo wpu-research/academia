@@ -1,0 +1,159 @@
+{
+ "id": "m4-3-5",
+ "baslik": "Tartma",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.3.5.1",
+  "M.4.3.5.2",
+  "M.4.3.5.3",
+  "M.4.3.5.4",
+  "M.4.3.5.5"
+ ],
+ "sure": 13,
+ "ozet": "Yarım ve çeyrek kilogramı gram olarak ifade edecek, kilogram ve gramı birlikte kullanacak, ton ve miligramın kullanıldığı yerleri belirleyecek ve kütle birimlerini birbirine dönüştüreceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Kilogram ve gram",
+   "govde": "Nesnelerin kütlesini eşit kollu terazi ya da baskül ile ölçeriz. Günlük hayatta en çok **kilogram** (kg) ve **gram** (g) kullanılır.\n\n1 kg = 1 000 g. Bu yüzden **yarım kilogram** = 500 g, **çeyrek kilogram** = 250 g'dır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Teraziyi dengele",
+   "aciklama": "Sol kefede bir karpuz var. Sağ kefeye ağırlık ekleyerek teraziyi dengeye getir. Fazla eklediğin ağırlığı − ile çıkarabilirsin.",
+   "sim": {
+    "kind": "c-tarti",
+    "kutle": 1250,
+    "ad": "Karpuz"
+   },
+   "gorev": {
+    "metin": "Teraziyi dengeye getir.",
+    "check": {
+     "key": "denge",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Önce büyük ağırlıklarla başla: 1 kg koyunca terazi hâlâ sola eğik mi?",
+    "Karpuz 1 kg 250 g = 1 250 g."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ton ve miligram",
+   "govde": "- **Ton** (t): Çok ağır şeyler için: kamyon yükü, fil, gemi. 1 t = 1 000 kg.\n- **Miligram** (mg): Çok hafif şeyler için: ilaç etken maddesi, vitamin. 1 g = 1 000 mg.\n\nBüyük birimden küçüğe geçerken 1 000 ile çarpar, küçükten büyüğe geçerken 1 000'e böleriz."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yarım ve çeyrek",
+   "aciklama": "Bu kez elinde 500 g, 250 g, 100 g ve 50 g'lık ağırlıklar var.",
+   "sim": {
+    "kind": "c-tarti",
+    "kutle": 750,
+    "ad": "Un",
+    "agirliklar": [
+     500,
+     250,
+     100,
+     50
+    ]
+   },
+   "gorev": {
+    "metin": "Teraziyi yalnız 2 ağırlıkla dengele.",
+    "check": {
+     "all": [
+      {
+       "key": "denge",
+       "eq": 1
+      },
+      {
+       "key": "parca",
+       "eq": 2
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Un 750 g: yarım kilogram ile çeyrek kilogramın toplamı.",
+    "500 g + 250 g = 750 g."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Dönüştürme",
+   "soru": "3 kg 400 g'ı grama, 2 t'yi kilograma ve 5 g'ı miligrama çevirelim.",
+   "cozum": [
+    "3 kg = 3 000 g; 3 000 + 400 = 3 400 g.",
+    "2 t = 2 × 1 000 = 2 000 kg.",
+    "5 g = 5 × 1 000 = 5 000 mg."
+   ],
+   "sonuc": "3 400 g, 2 000 kg ve 5 000 mg."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Problem",
+   "soru": "Bir bakkal 4 kg pirincin 1 kg 750 g'ını sattı. Geriye kaç kg kaç g pirinç kaldı?",
+   "cozum": [
+    "4 kg = 4 000 g; 1 kg 750 g = 1 750 g.",
+    "4 000 − 1 750 = 2 250 g.",
+    "2 250 g = 2 kg 250 g."
+   ],
+   "sonuc": "2 kg 250 g pirinç kaldı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kilogram ile gramı aynı birimmiş gibi toplamak yanlıştır: 2 kg + 300 g = 302 g değildir. Önce aynı birime çevirmeliyiz: 2 000 g + 300 g = **2 300 g = 2 kg 300 g**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Çeyrek kilogram kaç gramdır?",
+   "options": [
+    "25 g",
+    "250 g",
+    "500 g",
+    "750 g"
+   ],
+   "answer": 1,
+   "why": "1 kg = 1 000 g; çeyreği 1 000 ÷ 4 = 250 g.",
+   "hint": "1 kg'ı 4 eş parçaya böl."
+  },
+  {
+   "prompt": "6 kg 80 g kaç gramdır?",
+   "options": [
+    "680 g",
+    "6 800 g",
+    "6 080 g",
+    "6 008 g"
+   ],
+   "answer": 2,
+   "why": "6 kg = 6 000 g; 6 000 + 80 = 6 080 g.",
+   "hint": "Önce 6 kg'ı grama çevir."
+  },
+  {
+   "prompt": "Bir kamyonun yükünü belirtmek için en uygun birim hangisidir?",
+   "options": [
+    "mg",
+    "g",
+    "litre",
+    "ton"
+   ],
+   "answer": 3,
+   "why": "Çok ağır yükler ton ile ifade edilir.",
+   "hint": "En büyük kütle birimini düşün."
+  },
+  {
+   "prompt": "3 ton kaç kilogramdır?",
+   "options": [
+    "3 000 kg",
+    "300 kg",
+    "30 kg",
+    "30 000 kg"
+   ],
+   "answer": 0,
+   "why": "1 t = 1 000 kg; 3 × 1 000 = 3 000 kg.",
+   "hint": "1 ton kaç kg?"
+  }
+ ]
+}

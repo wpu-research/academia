@@ -1,0 +1,182 @@
+{
+ "id": "m12e-3-2",
+ "baslik": "Trigonometrik Denklemler",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.3.2.1"
+ ],
+ "sure": 18,
+ "ozet": "sin x = c ve cos x = c denklemlerinin neden sonsuz çözümü olduğunu birim çember ve grafik üzerinde göreceğiz; genel çözümü yazıp verilen aralıktaki kökleri seçeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden sonsuz çözüm?",
+   "govde": "sin x = 1/2 denklemini sağlayan bir açı 30°'dir. Ama 150° de sağlar; üstelik 30° + 360°, 150° − 360° … gibi sonsuz açı daha vardır. Trigonometrik fonksiyonlar **periyodik** olduğu için denklemlerinin genellikle sonsuz çözümü olur.\n\nBu yüzden önce **genel çözümü** yazar, sonra istenen aralıktakileri seçeriz."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Temel denklemlerin genel çözümü",
+   "govde": "k ∈ ℤ olmak üzere:\n\n- **sin x = c** (−1 ≤ c ≤ 1), α bir çözüm ise: x = α + k · 360° **veya** x = (180° − α) + k · 360°\n- **cos x = c** (−1 ≤ c ≤ 1), α bir çözüm ise: x = ±α + k · 360°\n- **tan x = c** (her c için), α bir çözüm ise: x = α + k · 180° (cot x = c için de aynı)\n- |c| > 1 ise sin x = c ve cos x = c denklemlerinin **çözümü yoktur**.\n\nRadyan cinsinden 360° yerine 2π, 180° yerine π yazılır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "sin x = c",
+   "aciklama": "Solda birim çember, sağda sin x'in [0°, 360°] grafiği. Turuncu doğru y = c. Çembere değdiği noktalar (ve grafikteki kesişimler) denklemin bir turdaki çözümleri.",
+   "sim": {
+    "kind": "g-trig-denklem",
+    "fn": "sin",
+    "c": 0.5
+   },
+   "gorev": {
+    "metin": "sin x = −1/2 denklemini göster.",
+    "check": {
+     "all": [
+      {
+       "key": "fn",
+       "eq": 0
+      },
+      {
+       "key": "c",
+       "eq": -0.5,
+       "tol": 1e-09
+      }
+     ]
+    }
+   },
+   "dene": [
+    "sin x = −1/2 için çözümler 210° ve 330°: biri 180° + 30°, diğeri 360° − 30°.",
+    "c = 1,2 yap: doğru çemberin dışında kalır, çözüm yoktur."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "cos x = c",
+   "aciklama": "Kosinüste turuncu doğru dikeydir (x = c). Çözümler x eksenine göre simetrik iki açıdır: α ve 360° − α.",
+   "sim": {
+    "kind": "g-trig-denklem",
+    "fn": "cos",
+    "c": 0.5
+   },
+   "gorev": {
+    "metin": "cos x = c denkleminin [0°, 360°) aralığında tek çözümü olsun.",
+    "check": {
+     "all": [
+      {
+       "key": "fn",
+       "eq": 1
+      },
+      {
+       "key": "count",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "c = 1 ya da c = −1 iken iki çözüm üst üste biner.",
+    "cos x = √3/2 için çözümler 30° ve 330°: x = ±30° + k · 360°."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "2 sin x − √3 = 0 denkleminin [0°, 360°) aralığındaki çözümlerini bulalım.",
+   "cozum": [
+    "sin x = √3/2.",
+    "Bir çözüm α = 60°; diğeri 180° − 60° = 120°.",
+    "Genel çözüm: x = 60° + k · 360° veya x = 120° + k · 360°."
+   ],
+   "sonuc": "Çözüm kümesi {60°, 120°}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "tan x = √3 denkleminin [0°, 360°) aralığındaki çözümlerini bulalım.",
+   "cozum": [
+    "tan 60° = √3.",
+    "Tanjantın periyodu 180°: x = 60° + k · 180°.",
+    "k = 0 ⇒ 60°, k = 1 ⇒ 240°."
+   ],
+   "sonuc": "Çözüm kümesi {60°, 240°}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3 · İki kat açıyla",
+   "soru": "cos 2x = cos x denkleminin [0°, 360°) aralığındaki çözümlerini bulalım.",
+   "cozum": [
+    "cos 2x = 2cos²x − 1 yaz: 2cos²x − cos x − 1 = 0.",
+    "Çarpanlara ayır: (2cos x + 1)(cos x − 1) = 0.",
+    "cos x = 1 ⇒ x = 0°.",
+    "cos x = −1/2 ⇒ x = 120° ya da x = 240°."
+   ],
+   "sonuc": "Çözüm kümesi {0°, 120°, 240°}."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "[0, 2π) aralığında sin 2x = sin x denkleminin kaç kökü vardır?",
+   "cozum": [
+    "sin 2x = 2 sin x cos x yaz: 2 sin x cos x − sin x = 0.",
+    "sin x ortak çarpan: sin x · (2cos x − 1) = 0.",
+    "sin x = 0 ⇒ x = 0 ya da x = π.",
+    "cos x = 1/2 ⇒ x = π/3 ya da x = 5π/3."
+   ],
+   "sonuc": "4 kök vardır: 0, π/3, π, 5π/3."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- Denklemin iki tarafını sin x'e **bölmek**: sin 2x = sin x örneğinde bölseydik sin x = 0'dan gelen 0 ve π köklerini kaybederdik. Bölmek yerine ortak çarpan parantezine al.\n- sin x = c için yalnız α'yı yazıp 180° − α ailesini unutmak.\n- tan x için periyodu 360° almak; tanjantın periyodu 180°'dir."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "sin x = −1 denkleminin [0°, 360°) aralığındaki çözümü nedir?",
+   "options": [
+    "90°",
+    "180°",
+    "270°",
+    "0°"
+   ],
+   "answer": 2,
+   "why": "Birim çemberde y = −1 olan tek nokta (0, −1); açısı 270°.",
+   "hint": "Çemberin en alt noktası hangi açıda?"
+  },
+  {
+   "prompt": "cos x = √2/2 denkleminin genel çözümü hangisidir? (k ∈ ℤ)",
+   "options": [
+    "x = 45° + k · 180°",
+    "x = ±45° + k · 360°",
+    "x = 45° + k · 360° veya x = 135° + k · 360°",
+    "x = ±135° + k · 360°"
+   ],
+   "answer": 1,
+   "why": "cos 45° = √2/2 ve kosinüste çözümler ±α + k · 360° biçimindedir.",
+   "hint": "Kosinüs için genel çözüm kalıbını hatırla."
+  },
+  {
+   "prompt": "2cos x + 3 = 0 denkleminin çözüm kümesi nedir?",
+   "options": [
+    "Boş küme",
+    "{150°}",
+    "{210°}",
+    "{120°, 240°}"
+   ],
+   "answer": 0,
+   "why": "cos x = −3/2 olurdu; ama −1 ≤ cos x ≤ 1.",
+   "hint": "cos x'i yalnız bırak; değer [−1, 1] aralığında mı?"
+  },
+  {
+   "prompt": "tan x = −1 denkleminin [0°, 360°) aralığındaki çözümleri nelerdir?",
+   "options": [
+    "135° ve 225°",
+    "45° ve 225°",
+    "225° ve 315°",
+    "135° ve 315°"
+   ],
+   "answer": 3,
+   "why": "tan 135° = −1 ve periyot 180°: 135° + 180° = 315°.",
+   "hint": "Önce bir çözüm bul, sonra 180° ekle."
+  }
+ ]
+}

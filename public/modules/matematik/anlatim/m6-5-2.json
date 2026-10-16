@@ -1,0 +1,209 @@
+{
+ "id": "m6-5-2",
+ "baslik": "Paralelkenar ve Üçgenin Alanı",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.4.2",
+  "MAT.6.4.3"
+ ],
+ "sure": 15,
+ "ders": "ucgen-paralelkenar-alan",
+ "ozet": "Dikdörtgenin alan bağıntısından yola çıkarak paralelkenarın ve üçgenin alanını bulacak, taban ile yüksekliği doğru seçerek alan problemlerini çözeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Dikdörtgenden paralelkenara",
+   "govde": "Bir paralelkenarın bir ucundan dik bir üçgen kesip öbür uca taşırsak bir **dikdörtgen** elde ederiz. Alan değişmez. Dikdörtgenin kenarları, paralelkenarın **tabanı** ve **yüksekliği**dir.\n\n**Yükseklik**, taban ile karşı kenar arasındaki **dik** uzaklıktır; yan kenar değildir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Paralelkenarın alanı",
+   "govde": "**Alan = taban × yükseklik**\n\nTabanı 8 cm, bu tabana ait yüksekliği 5 cm olan paralelkenarın alanı 8 × 5 = 40 cm²'dir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Paralelkenarı değiştir",
+   "aciklama": "Köşeleri noktalara sürükle; alan canlı hesaplanıyor.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      5,
+      1
+     ],
+     [
+      6,
+      3
+     ],
+     [
+      2,
+      3
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Alanı 12 birimkare olan bir paralelkenar yap.",
+    "check": {
+     "key": "area",
+     "eq": 12
+    }
+   },
+   "dene": [
+    "Taban 4, yükseklik 3 olsun. Üst kenarı sağa sola kaydır: alan değişiyor mu?",
+    "Taban 6, yükseklik 2 de 12 verir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Üçgenin alanı",
+   "govde": "Bir üçgeni kendisinin bir kopyasıyla birleştirirsek paralelkenar elde ederiz. Bu yüzden üçgenin alanı aynı taban ve yükseklikteki paralelkenarın **yarısı**dır:\n\n**Alan = taban × yükseklik ÷ 2**"
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgenin alanı",
+   "aciklama": "Üçgenin köşelerini sürükle.",
+   "sim": {
+    "kind": "geometri-tahtasi",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      3,
+      4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Alanı 12 birimkare olan bir üçgen yap.",
+    "check": {
+     "key": "area",
+     "eq": 12
+    }
+   },
+   "dene": [
+    "Şimdiki alan 6 × 3 ÷ 2 = 9. Tabanı ya da yüksekliği değiştir.",
+    "Tepe noktasını tabana paralel kaydır: alan aynı kalır, çünkü taban ve yükseklik değişmez."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yükseklik dışarıda olabilir",
+   "aciklama": "C köşesinden inen yükseklik çizili. C'yi sürükle.",
+   "sim": {
+    "kind": "d-ucgen-yardimci",
+    "mod": "yukseklik",
+    "points": [
+     [
+      1,
+      1
+     ],
+     [
+      7,
+      1
+     ],
+     [
+      4,
+      5
+     ]
+    ],
+    "kose": 2
+   },
+   "gorev": {
+    "metin": "Yüksekliğin ayağı tabanın dışına düşsün.",
+    "check": {
+     "key": "ic",
+     "eq": 0
+    }
+   },
+   "dene": [
+    "Geniş açılı üçgende yükseklik tabanın uzantısına iner; alan formülü yine taban × yükseklik ÷ 2."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Alanı 36 cm² olan bir üçgenin tabanı 9 cm'dir. Bu tabana ait yükseklik kaç cm'dir?",
+   "cozum": [
+    "9 × h ÷ 2 = 36",
+    "9 × h = 72",
+    "h = 8"
+   ],
+   "sonuc": "Yükseklik 8 cm'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Çim",
+   "soru": "Paralelkenar biçimindeki bir bahçenin tabanı 12 m, bu tabana ait yüksekliği 7 m'dir. Bahçenin tamamı metrekaresi 15 TL olan çimle kaplanacak. Kaç TL ödenir?",
+   "cozum": [
+    "Alan = 12 × 7 = 84 m².",
+    "Ücret = 84 × 15 = 1260 TL."
+   ],
+   "sonuc": "1260 TL ödenir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Paralelkenarda **yan kenarı yükseklik** olarak almak yanlıştır. Yükseklik tabana **dik** olan uzaklıktır ve eğik kenardan kısadır. Üçgende de alanı bulduktan sonra **2'ye bölmeyi** unutma."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Tabanı 9 cm, yüksekliği 6 cm olan paralelkenarın alanı kaç cm²'dir?",
+   "options": [
+    "54",
+    "27",
+    "30",
+    "15"
+   ],
+   "answer": 0,
+   "why": "9 × 6 = 54.",
+   "hint": "Paralelkenarda 2'ye bölme yok."
+  },
+  {
+   "prompt": "Tabanı 10 cm, yüksekliği 7 cm olan üçgenin alanı kaç cm²'dir?",
+   "options": [
+    "70",
+    "17",
+    "35",
+    "34"
+   ],
+   "answer": 2,
+   "why": "10 × 7 ÷ 2 = 35.",
+   "hint": "Üçgen, paralelkenarın yarısıdır."
+  },
+  {
+   "prompt": "Alanı 48 cm² ve tabanı 8 cm olan paralelkenarın bu tabana ait yüksekliği kaç cm'dir?",
+   "options": [
+    "40",
+    "384",
+    "5",
+    "6"
+   ],
+   "answer": 3,
+   "why": "8 × h = 48 → h = 6.",
+   "hint": "Alanı tabana böl."
+  },
+  {
+   "prompt": "Tabanları ve yükseklikleri eşit bir üçgen ile bir paralelkenar için hangisi doğrudur?",
+   "options": [
+    "Alanları eşittir.",
+    "Üçgenin alanı paralelkenarın yarısıdır.",
+    "Üçgenin alanı iki katıdır.",
+    "Karşılaştırılamaz."
+   ],
+   "answer": 1,
+   "why": "Üçgen alanı = taban × yükseklik ÷ 2.",
+   "hint": "İki eş üçgen bir paralelkenar oluşturur."
+  }
+ ]
+}

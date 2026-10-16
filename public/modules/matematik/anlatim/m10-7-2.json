@@ -1,0 +1,84 @@
+{
+ "id": "m10-7-2",
+ "baslik": "Bayes Teoremi",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.7.2"],
+ "sure": 18,
+ "ozet": "Elimizdeki bir sonuçtan (pozitif test, kusurlu ürün) geriye, nedenin olasılığına gideceğiz. Bayes teoremini alan modeliyle görecek ve taban oranının sonucu ne kadar değiştirdiğini keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Tersine soru",
+   "govde": "Çoğu zaman P(B | A)'yı biliriz: \"Hasta birinde test %90 olasılıkla pozitif çıkar.\" Oysa merak ettiğimiz tersidir: \"Testi pozitif çıkan biri gerçekten hasta mı?\" yani P(A | B).\n\nİkisi genelde **eşit değildir**. Aradaki köprü Bayes teoremidir."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Toplam olasılık ve Bayes teoremi",
+   "govde": "A ve A′ (A'nın tümleyeni) örnek uzayı ikiye ayırır. Önce B'nin toplam olasılığı:\n\nP(B) = P(A) · P(B | A) + P(A′) · P(B | A′)\n\nSonra koşullu olasılık tanımı:\n\nP(A | B) = P(A ∩ B) / P(B) = P(A) · P(B | A) / [P(A) · P(B | A) + P(A′) · P(B | A′)]\n\nP(A) değerine **taban oranı** (ön olasılık), P(A | B) değerine de güncellenmiş (son) olasılık denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Alan modeli: nadir bir hastalık",
+   "aciklama": "Kare tüm toplumu gösteriyor. Sol şerit hastalar (genişliği P(Hasta)), renkli alanlar testi pozitif çıkanlar. P(Hasta | Pozitif) = koyu kahverengi alan / tüm renkli alan.",
+   "sim": { "kind": "f-bayes", "names": { "A": "Hasta", "nA": "Sağlıklı", "B": "Pozitif", "nB": "Negatif" }, "pA": 1, "pBA": 90, "pBnA": 5, "N": 10000 },
+   "gorev": { "metin": "Hastalığın yaygınlığını (taban oranı) %10'a çıkar ve P(Hasta | Pozitif) değerinin nasıl değiştiğine bak.", "check": { "key": "pA", "eq": 0.1, "tol": 1e-9 } },
+   "dene": ["Yaygınlık %1 iken P(Hasta | Pozitif) ≈ 0,154: pozitiflerin çoğu aslında sağlıklı!", "Yaygınlık %10 iken ≈ 0,667 oluyor. Test aynı, sonuç çok farklı."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1: sıklıklarla düşün",
+   "soru": "Bir hastalık toplumda %1 oranında görülüyor. Test, hastaların %90'ında pozitif; sağlıklıların %5'inde yanlışlıkla pozitif çıkıyor. Testi pozitif çıkan birinin hasta olma olasılığı kaçtır?",
+   "cozum": [
+    "10 000 kişi düşün: 100 hasta, 9900 sağlıklı.",
+    "Hastalardan pozitif: 100 · 0,90 = 90 kişi.",
+    "Sağlıklılardan pozitif: 9900 · 0,05 = 495 kişi.",
+    "Toplam pozitif: 585 kişi; bunların 90'ı hasta.",
+    "P(Hasta | Pozitif) = 90 / 585 ≈ 0,154."
+   ],
+   "sonuc": "Yaklaşık %15. Hastalık nadir olduğu için yanlış pozitifler doğru pozitifleri sayıca geçiyor."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Daha iyi bir test",
+   "aciklama": "Yaygınlık %2, duyarlılık %90. Yanlış pozitif oranını değiştir.",
+   "sim": { "kind": "f-bayes", "names": { "A": "Hasta", "nA": "Sağlıklı", "B": "Pozitif", "nB": "Negatif" }, "pA": 2, "pBA": 90, "pBnA": 5, "N": 10000 },
+   "gorev": { "metin": "Yanlış pozitif oranını düşürerek P(Hasta | Pozitif) ≥ 0,5 yap.", "check": { "key": "post", "gte": 0.5 } },
+   "dene": ["Yanlış pozitif %1'e inince sonuç ≈ 0,647.", "Duyarlılığı %100'e çıkarmak tek başına yetmiyor; sorun sağlıklı kalabalıktan gelen yanlış pozitifler."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2: fabrika",
+   "soru": "Bir fabrikada ürünlerin %60'ını A makinesi, %40'ını B makinesi üretiyor. A'nın ürünlerinin %2'si, B'ninkilerin %5'i kusurlu. Rastgele seçilen bir ürün kusurlu ise A makinesinde üretilmiş olma olasılığı kaçtır?",
+   "cozum": [
+    "P(A ∩ K) = 0,6 · 0,02 = 0,012.",
+    "P(B ∩ K) = 0,4 · 0,05 = 0,020.",
+    "P(K) = 0,012 + 0,020 = 0,032.",
+    "P(A | K) = 0,012 / 0,032 = 0,375."
+   ],
+   "sonuc": "0,375. Ürünlerin çoğunu A üretse de kusurlu ürünlerin çoğu B'den geliyor."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Bir zar atılıyor; 1 ya da 2 gelirse I. torbadan (3 kırmızı, 2 mavi), aksi hâlde II. torbadan (1 kırmızı, 4 mavi) bir bilye çekiliyor. Çekilen bilye kırmızı ise I. torbadan çekilmiş olma olasılığı kaçtır?",
+   "cozum": [
+    "P(I) = 2/6 = 1/3, P(II) = 2/3.",
+    "P(I ∩ K) = 1/3 · 3/5 = 1/5 = 3/15.",
+    "P(II ∩ K) = 2/3 · 1/5 = 2/15.",
+    "P(K) = 5/15 = 1/3; P(I | K) = (3/15) / (5/15)."
+   ],
+   "sonuc": "3/5."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Taban oranını görmezden gelmek: \"Test %90 doğru, o hâlde pozitif çıkan kişi %90 hastadır\" demek. Bu, P(Pozitif | Hasta) ile P(Hasta | Pozitif)'i karıştırmaktır. Hastalık nadirse sağlıklı kalabalıktaki küçük bir hata oranı bile çok sayıda yanlış pozitif üretir."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Ürünlerin %70'ini A (kusur oranı %1), %30'unu B (kusur oranı %4) üretiyor. Kusurlu bir ürünün B'den gelme olasılığı kaçtır?", "options": ["12/19", "7/19", "0,04", "0,3"], "answer": 0, "why": "P(B ∩ K) = 0,012, P(A ∩ K) = 0,007; 0,012 / 0,019 = 12/19.", "hint": "Önce iki makineden gelen kusurlu oranlarını bul." },
+  { "prompt": "Bayes formülünün paydası olan P(A)·P(B | A) + P(A′)·P(B | A′) neyi verir?", "options": ["P(A | B)", "P(A ∩ B)", "P(B)", "P(A′)"], "answer": 2, "why": "B'nin A ile ve A′ ile birlikte gerçekleşme olasılıklarının toplamı, B'nin toplam olasılığıdır.", "hint": "B iki ayrık yoldan gerçekleşebilir." },
+  { "prompt": "Testin duyarlılığı ve yanlış pozitif oranı sabitken hastalığın yaygınlığı artarsa P(Hasta | Pozitif) nasıl değişir?", "options": ["Azalır", "Artar", "Değişmez", "0 olur"], "answer": 1, "why": "Hasta-pozitif kesimi büyür, sağlıklı-pozitif kesimi küçülür; oran artar.", "hint": "Alan modelinde sol şerit genişlerse ne olur?" },
+  { "prompt": "P(A) = 0,5, P(B | A) = 0,6 ve P(B | A′) = 0,2 ise P(A | B) kaçtır?", "options": ["0,6", "0,3", "0,4", "0,75"], "answer": 3, "why": "P(A ∩ B) = 0,3, P(B) = 0,3 + 0,1 = 0,4; 0,3 / 0,4 = 0,75.", "hint": "Önce P(B)'yi toplam olasılıkla bul." }
+ ]
+}

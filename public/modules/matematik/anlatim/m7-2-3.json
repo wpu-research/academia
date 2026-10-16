@@ -1,0 +1,202 @@
+{
+ "id": "m7-2-3",
+ "baslik": "Doğru Orantılı Durumlara İlişkin Problem Çözme",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.7"
+ ],
+ "sure": 15,
+ "ders": "oran-oranti",
+ "ozet": "Doğru orantılı durumları birim yöntemi, orantı kurma ve tablo ile çözecek; harita ölçeği, tarif ve yakıt tüketimi gibi problemlerde kullanacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Üç yol, aynı sonuç",
+   "govde": "\"5 kg elma 120 TL ise 8 kg elma kaç TL?\" sorusunu üç yolla çözebiliriz:\n\n1. **Birim yöntemi:** 1 kg = 120 ÷ 5 = 24 TL; 8 kg = 8 · 24 = 192 TL.\n2. **Orantı:** 5/120 = 8/x → 5x = 960 → x = 192.\n3. **Kat yöntemi / tablo:** 5 kg → 120 TL; 1 kg → 24 TL; 8 kg → 192 TL."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yakıt makinesi",
+   "aciklama": "Benzinin litresi 45 TL. Litreyi değiştir, ödenecek tutarı izle.",
+   "sim": {
+    "kind": "d-islem-makinesi",
+    "adimlar": [
+     [
+      "×",
+      45
+     ]
+    ],
+    "x": 1,
+    "min": 0,
+    "max": 20,
+    "etiket": "Litre",
+    "ifade": "45 · L"
+   },
+   "gorev": {
+    "metin": "540 TL'lik yakıt al.",
+    "check": {
+     "key": "y",
+     "eq": 540
+    }
+   },
+   "dene": [
+    "Tabloya birkaç değer ekle: tutar ÷ litre her satırda 45 mi?",
+    "Litre 2 katına çıkınca tutar da 2 katına çıkıyor."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ölçek",
+   "govde": "Harita ve planlarda **ölçek = çizimdeki uzunluk ÷ gerçek uzunluk**'tur. İkisi de aynı birimde yazılır.\n\n1 : 200 000 ölçeği, haritadaki 1 cm'nin gerçekte 200 000 cm = 2 km olduğunu söyler. Haritadaki ve gerçek uzunluklar doğru orantılıdır."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Doğrunun eğimi orantı sabiti",
+   "aciklama": "Noktalar (2, 1), (4, 2), (6, 3): her 2 birim yol için 1 birim yakıt.",
+   "sim": {
+    "kind": "koordinat-duzlemi",
+    "m": 1,
+    "n": 0,
+    "points": [
+     [
+      2,
+      1
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      6,
+      3
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Noktalardan geçen doğru orantı doğrusunu bul.",
+    "check": {
+     "all": [
+      {
+       "key": "m",
+       "eq": 0.5
+      },
+      {
+       "key": "n",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Orantı sabiti 1/2 = 0,5."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Tarifi büyüt",
+   "aciklama": "Bir tarifte un ile şekerin oranı 2 : 5 olsun (kırmızı = un, beyaz = şeker ölçeği).",
+   "sim": {
+    "kind": "oran-karistirma",
+    "r": 1,
+    "w": 1,
+    "target": [
+     2,
+     5
+    ]
+   },
+   "gorev": {
+    "metin": "Aynı oranda toplam 14 ölçeklik karışım hazırla.",
+    "check": {
+     "all": [
+      {
+       "key": "ratio",
+       "eq": 0.4
+      },
+      {
+       "key": "total",
+       "eq": 14
+      }
+     ]
+    }
+   },
+   "dene": [
+    "2 + 5 = 7 ölçeklik bir porsiyon; 14 ölçek kaç porsiyon?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Ölçeği 1 : 200 000 olan bir haritada iki şehir arası 3,5 cm'dir. Gerçek uzaklık kaç km'dir?",
+   "cozum": [
+    "Gerçek uzaklık = 3,5 · 200 000 = 700 000 cm.",
+    "700 000 cm = 7000 m = 7 km."
+   ],
+   "sonuc": "7 km."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Kek tarifi",
+   "soru": "4 kişilik bir kek tarifinde 300 g un kullanılıyor. 6 kişilik kek için kaç gram un gerekir? Bir araç 90 km'de 6 L yakıt harcıyorsa 150 km'de kaç L harcar?",
+   "cozum": [
+    "Kişi başı un: 300 ÷ 4 = 75 g; 6 kişi: 6 · 75 = 450 g.",
+    "1 km'de 6 ÷ 90 = 1/15 L; 150 km'de 150 · 1/15 = 10 L."
+   ],
+   "sonuc": "450 g un; 10 L yakıt."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Orantıyı ters kurmak sık yapılan bir hatadır. \"5 kg 120 TL ise 8 kg?\" için 5/120 = x/8 yazmak yanlıştır; aynı türden çokluklar aynı yerde olmalı: 5/120 = 8/x (kg/TL = kg/TL). Sonucu mantıkla kontrol et: daha çok elma, daha çok para."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "3 defter 75 TL ise aynı defterlerden 7 tanesi kaç TL'dir?",
+   "options": [
+    "105",
+    "225",
+    "175",
+    "25"
+   ],
+   "answer": 2,
+   "why": "1 defter 25 TL; 7 · 25 = 175.",
+   "hint": "Önce bir defterin fiyatını bul."
+  },
+  {
+   "prompt": "Ölçeği 1 : 50 000 olan haritada 4 cm'lik yol gerçekte kaç km'dir?",
+   "options": [
+    "2 km",
+    "20 km",
+    "200 m",
+    "0,2 km"
+   ],
+   "answer": 0,
+   "why": "4 · 50 000 = 200 000 cm = 2 km.",
+   "hint": "Önce cm olarak bul, sonra km'ye çevir."
+  },
+  {
+   "prompt": "Bir makine 8 dakikada 120 parça üretiyor. 300 parçayı kaç dakikada üretir?",
+   "options": [
+    "25",
+    "20",
+    "12",
+    "45"
+   ],
+   "answer": 1,
+   "why": "1 dakikada 15 parça; 300 ÷ 15 = 20.",
+   "hint": "Dakikada kaç parça üretiyor?"
+  },
+  {
+   "prompt": "2,5 kg peynir 450 TL ise peynirin kilogramı kaç TL'dir?",
+   "options": [
+    "112,5",
+    "175",
+    "200",
+    "180"
+   ],
+   "answer": 3,
+   "why": "450 ÷ 2,5 = 180.",
+   "hint": "Birim oranı bul: TL ÷ kg."
+  }
+ ]
+}

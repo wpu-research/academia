@@ -1,0 +1,158 @@
+{
+ "id": "m6-1-2",
+ "baslik": "Bölünebilme Kriterleri",
+ "sinif": "6. sınıf",
+ "kazanim": [
+  "MAT.6.1.2"
+ ],
+ "sure": 14,
+ "ozet": "Bir sayının 2, 3, 4, 5, 6, 9 ve 10 ile kalansız bölünüp bölünmediğini, bölme işlemi yapmadan rakamlarına bakarak anlayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden kısa yol?",
+   "govde": "4 basamaklı 3 852 sayısı 9 ile tam bölünür mü? Uzun bölme yapmak yerine sayının **rakamlarına** bakarak hızlıca karar verebiliriz. Bu kısa yollara **bölünebilme kuralları** denir.\n\nBir sayı başka bir sayıya **kalansız** bölünüyorsa \"tam bölünür\" deriz."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Son basamaklara bakılanlar",
+   "govde": "- **2 ile:** birler basamağı 0, 2, 4, 6 ya da 8 (sayı çift).\n- **5 ile:** birler basamağı 0 ya da 5.\n- **10 ile:** birler basamağı 0.\n- **4 ile:** son iki basamağın oluşturduğu sayı 4'ün katı (00 da olur)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Rakamlar toplamına bakılanlar",
+   "govde": "- **3 ile:** rakamların toplamı 3'ün katı.\n- **9 ile:** rakamların toplamı 9'un katı.\n- **6 ile:** sayı hem 2 hem 3 ile tam bölünüyor.\n\n3 ve 9 için bölümden kalan, rakamlar toplamının kalanına eşittir: 1 237 → 1 + 2 + 3 + 7 = 13; 13'ün 9 ile bölümünden kalan 4, demek ki 1 237'nin de kalanı 4."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Rakamları değiştir, kuralları izle",
+   "aciklama": "Okları kullanarak rakamları değiştir. Tablo, her bölen için neye bakıldığını ve sonucu canlı gösteriyor.",
+   "sim": {
+    "kind": "d-bolunebilme",
+    "n": 1236,
+    "basamak": 4
+   },
+   "gorev": {
+    "metin": "Sayıyı 9 ile tam bölünür yap.",
+    "check": {
+     "key": "d9",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "9 ile bölünen her sayı 3 ile de bölünür. Tersi doğru mu? 3 ile bölünüp 9 ile bölünmeyen bir sayı bul.",
+    "Birler basamağını 0 yap: 2, 5 ve 10 satırlarına ne oldu?"
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "2 ile bölünüp 6 ile bölünmeyen",
+   "aciklama": "Yalnız 2, 3 ve 6'ya bakıyoruz.",
+   "sim": {
+    "kind": "d-bolunebilme",
+    "n": 2340,
+    "basamak": 4,
+    "bolenler": [
+     2,
+     3,
+     6
+    ]
+   },
+   "gorev": {
+    "metin": "2 ile tam bölünen ama 6 ile tam bölünmeyen bir sayı yap.",
+    "check": {
+     "all": [
+      {
+       "key": "d2",
+       "eq": 1
+      },
+      {
+       "key": "d6",
+       "eq": 0
+      }
+     ]
+    }
+   },
+   "dene": [
+    "6 ile bölünmek için iki koşul birden gerekir: çift olmak ve rakamlar toplamının 3'ün katı olması."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Dört basamaklı 3A52 sayısı 9 ile tam bölünüyor. A yerine hangi rakam gelmelidir?",
+   "cozum": [
+    "Rakamlar toplamı: 3 + A + 5 + 2 = 10 + A.",
+    "10 + A, 9'un katı olmalı. A bir rakam (0–9) olduğundan 10 + A = 18.",
+    "A = 8. Kontrol: 3 852 ÷ 9 = 428."
+   ],
+   "sonuc": "A = 8."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: Sıralar",
+   "soru": "Bir okulda öğrenciler törende 6'şar kişilik sıralara eksiksiz diziliyor. Öğrenci sayısı üç basamaklı 7A4 sayısıdır. A'nın alabileceği değerler nelerdir?",
+   "cozum": [
+    "7A4 çift (birler basamağı 4), demek ki 2 ile bölünüyor.",
+    "3 ile bölünmesi için 7 + A + 4 = 11 + A, 3'ün katı olmalı: 12, 15 ya da 18.",
+    "A = 1, 4 ya da 7."
+   ],
+   "sonuc": "Öğrenci sayısı 714, 744 ya da 774 olabilir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "4 ile bölünebilmede yalnız birler basamağına bakmak yanlıştır. 214 çifttir ama 4 ile tam bölünmez, çünkü son iki basamak 14, 4'ün katı değildir (214 ÷ 4 = 53 kalan 2).\n\nBenzer biçimde 6 için yalnız \"çift mi?\" diye bakmak yetmez; 3 ile bölünmeyi de kontrol et."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi 5 ile tam bölünür?",
+   "options": [
+    "4105",
+    "2354",
+    "7012",
+    "3333"
+   ],
+   "answer": 0,
+   "why": "Birler basamağı 5 olduğu için 4105, 5 ile tam bölünür.",
+   "hint": "5 ile bölünmede birler basamağına bak."
+  },
+  {
+   "prompt": "Üç basamaklı 52A sayısı 3 ile tam bölünüyor. A en çok kaçtır?",
+   "options": [
+    "9",
+    "8",
+    "5",
+    "2"
+   ],
+   "answer": 1,
+   "why": "5 + 2 + A = 7 + A; 3'ün katı olması için A = 2, 5 ya da 8. En büyüğü 8.",
+   "hint": "Rakamlar toplamının 3'ün katı olmasını sağla."
+  },
+  {
+   "prompt": "Hangisi 4 ile tam bölünmez?",
+   "options": [
+    "3116",
+    "2524",
+    "1318",
+    "5000"
+   ],
+   "answer": 2,
+   "why": "Son iki basamak 18; 18, 4'ün katı değil.",
+   "hint": "Her sayının son iki basamağına bak."
+  },
+  {
+   "prompt": "Hangisi 6 ile tam bölünür?",
+   "options": [
+    "1234",
+    "3345",
+    "2222",
+    "4008"
+   ],
+   "answer": 3,
+   "why": "4008 çift ve 4 + 0 + 0 + 8 = 12, 3'ün katı.",
+   "hint": "Hem çift olmalı hem de rakamlar toplamı 3'ün katı olmalı."
+  }
+ ]
+}

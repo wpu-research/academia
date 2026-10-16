@@ -1,0 +1,139 @@
+{
+ "id": "m2-1-1",
+ "baslik": "Sayılar",
+ "sinif": "2. sınıf",
+ "kazanim": [
+  "MAT.2.1.1"
+ ],
+ "sure": 12,
+ "ozet": "100'e kadar sayıları onluk ve birliklerle gösterecek, okuyup yazacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Onluk ve birlik",
+   "govde": "10 birlik bir araya gelince **1 onluk** olur. 100'e kadar her sayıyı onluk ve birliklerle gösterebiliriz.\n\n**47** = 4 onluk ve 7 birlik. Okunuşu: **kırk yedi**.\n\n10 onluk bir araya gelince **100 (yüz)** olur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Bloklarla sayı kur",
+   "aciklama": "Onluk çubuklarını ve birlik küplerini ekle. Altta sayının değeri yazar.",
+   "sim": {
+    "kind": "onluk-bloklar"
+   },
+   "gorev": {
+    "metin": "47 sayısını onluk ve birliklerle göster.",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "eq": 47
+      },
+      {
+       "key": "canonical",
+       "eq": 1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Kaç onluk, kaç birlik gerekir?",
+    "Birlik sayısı 9'u geçerse 10 birliği 1 onluğa çevir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Onluklar",
+   "govde": "10, 20, 30, 40, 50, 60, 70, 80, 90 sayıları **onluklardır**: on, yirmi, otuz, kırk, elli, altmış, yetmiş, seksen, doksan.\n\nİki basamaklı bir sayıyı okurken önce onluğu, sonra birliği söyleriz: 63 → **altmış üç**."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sayı doğrusunda 100'e kadar",
+   "aciklama": "0'dan başla. 10'ar ve 1'er sekerek ilerle.",
+   "sim": {
+    "kind": "a-sekme",
+    "min": 0,
+    "max": 100,
+    "adimlar": [
+     10,
+     1
+    ],
+    "geri": false
+   },
+   "gorev": {
+    "metin": "0'dan 63'e sek.",
+    "check": {
+     "key": "pos",
+     "eq": 63
+    }
+   },
+   "dene": [
+    "Önce 10'ar sekmelerle 60'a git.",
+    "En az kaç sekmeyle 63'e varabilirsin?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "5 onluk ve 8 birlik hangi sayıdır? Nasıl okunur?",
+   "cozum": [
+    "5 onluk = 50.",
+    "50 ve 8 = 58."
+   ],
+   "sonuc": "**58**, “elli sekiz” diye okunur."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“Seksen dört” sayısını rakamlarla yazalım.",
+   "cozum": [
+    "Seksen = 8 onluk.",
+    "Dört = 4 birlik.",
+    "Önce onlar, sonra birler basamağı yazılır."
+   ],
+   "sonuc": "**84**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "“Altmış dört”ü **604** diye yazmak yanlıştır. Altmış 6 onluktur; onlar basamağına 6, birler basamağına 4 yazılır: **64**. 604 çok daha büyük bir sayıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "7 onluk ve 2 birlik hangi sayıdır?",
+   "options": [
+    "27",
+    "72",
+    "702",
+    "9"
+   ],
+   "answer": 1,
+   "why": "7 onluk 70 eder, 2 birlikle 72 olur.",
+   "hint": "Önce onluk sayısını yaz."
+  },
+  {
+   "prompt": "“Doksan bir” nasıl yazılır?",
+   "options": [
+    "901",
+    "19",
+    "91",
+    "910"
+   ],
+   "answer": 2,
+   "why": "Doksan 9 onluk, bir 1 birlik: 91.",
+   "hint": "Doksan kaç onluk eder?"
+  },
+  {
+   "prompt": "10 onluk kaçtır?",
+   "options": [
+    "100",
+    "10",
+    "1000",
+    "110"
+   ],
+   "answer": 0,
+   "why": "10 tane 10, 100 eder.",
+   "hint": "10, 20, 30… diye onar say."
+  }
+ ]
+}

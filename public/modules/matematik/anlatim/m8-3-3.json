@@ -1,0 +1,80 @@
+{
+ "id": "m8-3-3",
+ "baslik": "Eşlik ve Benzerlik",
+ "sinif": "8. sınıf",
+ "kazanim": ["M.8.3.3.1", "M.8.3.3.2"],
+ "sure": 13,
+ "ozet": "Eş ve benzer şekillerin kenar ve açı ilişkilerini inceleyecek, benzerlik oranını bulacak ve bir şekle benzer çokgenler oluşturacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Eş mi, benzer mi?",
+   "govde": "**Eş** şekiller aynı biçim ve aynı büyüklüktedir; biri diğerinin üzerine tam oturur. Karşılıklı kenarları ve açıları eşittir.\n\n**Benzer** şekiller aynı biçimdedir ama büyüklükleri farklı olabilir: karşılıklı açıları eşit, karşılıklı kenarları **orantılıdır**. Bir fotoğrafın büyütülmüş baskısı asıl fotoğrafa benzerdir.\n\nEş şekiller, benzerlik oranı 1 olan benzer şekillerdir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üçgeni ölçekle",
+   "aciklama": "Soldaki üçgen asıl şekil. Sağdaki kopyanın yatay ve dikey ölçeğini ayrı ayrı değiştirebilirsin. Kopya benzer olunca yeşile döner.",
+   "sim": { "kind": "e-benzerlik", "sekil": [[0, 0], [4, 0], [0, 3]], "kx": 1, "ky": 1.5, "kmin": 0.5, "kmax": 3, "adim": 0.5, "acilar": true },
+   "gorev": { "metin": "Asıl üçgene benzer ve kenarları 2 katı olan bir kopya oluştur.", "check": { "all": [ { "key": "benzer", "eq": 1 }, { "key": "kx", "eq": 2 } ] } },
+   "dene": ["Yalnız yatay ölçeği değiştirince açılar da değişir.", "Benzer kopyada alan kaç katına çıktı? Kenarlar 2 katı ise alan 4 katı."]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Benzerlik oranı",
+   "govde": "İki çokgen benzerse karşılıklı kenar uzunluklarının oranı sabittir. Bu sabite **benzerlik oranı** (k) denir.\n\n- Karşılıklı açılar eşittir.\n- Çevrelerin oranı da k'dir.\n- Bir şekle benzer bir şekil çizmek için bütün kenarlar aynı sayıyla çarpılır, açılar korunur."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Açılar aynı ama benzer değil",
+   "aciklama": "Asıl şekil 4 × 2'lik bir dikdörtgen. Kopyanın da bütün açıları 90°. Kenar oranlarına bak.",
+   "sim": { "kind": "e-benzerlik", "sekil": [[0, 0], [4, 0], [4, 2], [0, 2]], "kx": 2, "ky": 1, "kmin": 0.5, "kmax": 3, "adim": 0.5, "acilar": true },
+   "gorev": { "metin": "Kopyayı asıl dikdörtgene benzer yap.", "check": { "key": "benzer", "eq": 1 } },
+   "dene": ["İki ölçek eşit olunca kenar oranları eşitlenir.", "Açıların eşit olması tek başına benzerlik için yetmez; kenarlar da orantılı olmalı."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "ABC ve DEF üçgenleri benzer. |AB| = 6, |BC| = 8, |AC| = 10 ve AB'ye karşılık gelen |DE| = 9 ise DEF'in diğer kenarlarını bulalım.",
+   "cozum": [
+    "Benzerlik oranı: k = 9 ÷ 6 = 1,5.",
+    "|EF| = 8 · 1,5 = 12.",
+    "|DF| = 10 · 1,5 = 15."
+   ],
+   "sonuc": "DEF'in kenarları 9, 12 ve 15'tir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Benzer mi değil mi?",
+   "soru": "Kenarları 4 cm ve 6 cm olan dikdörtgen ile kenarları 6 cm ve 8 cm olan dikdörtgen benzer midir?",
+   "cozum": [
+    "Kısa kenarların oranı: 6 ÷ 4 = 1,5.",
+    "Uzun kenarların oranı: 8 ÷ 6 ≈ 1,33.",
+    "Oranlar farklı."
+   ],
+   "sonuc": "Benzer değildir; açıları eşit olsa da kenarlar orantılı değil."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "LGS tarzı bağlam: fotoğraf büyütme",
+   "soru": "10 cm × 15 cm boyutlarındaki bir fotoğraf, kısa kenarı 25 cm olacak şekilde biçimi bozulmadan büyütülüyor. Yeni baskının uzun kenarı kaç cm olur?",
+   "cozum": [
+    "Biçimin bozulmaması benzerlik demektir.",
+    "k = 25 ÷ 10 = 2,5.",
+    "Uzun kenar: 15 · 2,5 = 37,5 cm."
+   ],
+   "sonuc": "37,5 cm"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- \"Bütün dikdörtgenler benzerdir\" sanmak. Açıları eşit ama kenarları orantılı olmayabilir. Kareler ise her zaman benzerdir.\n- Kenarlara aynı sayıyı **eklemek**: 4 × 6'ya 2 ekleyince 6 × 8 olur, benzer değildir. Benzerlikte kenarlar aynı sayıyla **çarpılır**.\n- Karşılık gelmeyen kenarları oranlamak."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "Benzerlik oranı 3 olan iki üçgenden küçüğünün bir kenarı 5 cm ise büyüğünde bu kenara karşılık gelen kenar kaç cm'dir?", "options": ["8", "5/3", "45", "15"], "answer": 3, "why": "5 · 3 = 15 cm.", "hint": "Benzerlik oranıyla çarp." },
+  { "prompt": "Hangisi her zaman benzerdir?", "options": ["İki eşkenar üçgen", "İki dikdörtgen", "İki ikizkenar üçgen", "İki dik üçgen"], "answer": 0, "why": "Eşkenar üçgenlerin bütün açıları 60°, kenarları kendi içinde eşit; kenar oranları her zaman sabittir.", "hint": "Hangi şekillerde hem açılar hem kenar oranları sabittir?" },
+  { "prompt": "4 cm × 6 cm'lik dikdörtgene benzer olan hangisidir?", "options": ["5 × 7", "8 × 10", "6 × 9", "6 × 8"], "answer": 2, "why": "6 ÷ 4 = 9 ÷ 6 = 1,5.", "hint": "Kısa kenarların oranı uzun kenarların oranına eşit olmalı." },
+  { "prompt": "Eş iki şeklin benzerlik oranı kaçtır?", "options": ["0", "1", "2", "Belirlenemez"], "answer": 1, "why": "Eş şekillerde karşılıklı kenarlar eşittir; oran 1'dir.", "hint": "Eşit iki uzunluğun oranı nedir?" }
+ ]
+}

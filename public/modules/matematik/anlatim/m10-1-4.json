@@ -1,0 +1,96 @@
+{
+ "id": "m10-1-4",
+ "baslik": "Sinüs ve Kosinüs Teoremleri",
+ "sinif": "10. sınıf",
+ "kazanim": ["MAT.10.1.4"],
+ "sure": 18,
+ "ozet": "Dik olmayan üçgenlerde de kenarlarla açılar arasında kesin bağıntılar vardır. Sinüs teoremini yükseklikten, kosinüs teoremini Pisagor'dan çıkaracak ve ikisini canlı bir üçgende doğrulayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden yeni bir teorem?",
+   "govde": "Pisagor bağıntısı yalnız dik üçgende çalışır. Genel bir üçgende iki kenar ve bir açı ya da iki açı ve bir kenar bilindiğinde kalan elemanları bulmak için iki araç kullanırız: **sinüs teoremi** ve **kosinüs teoremi**.\n\nGösterim: a, A köşesinin karşısındaki kenar; A da o köşedeki iç açı."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sinüs teoremi",
+   "govde": "Her ABC üçgeninde, R çevrel çemberin yarıçapı olmak üzere:\n\na / sin A = b / sin B = c / sin C = 2R\n\n**Neden?** C'den AB'ye yükseklik h olsun. ACH dik üçgeninde h = b · sin A, BCH dik üçgeninde h = a · sin B. İkisi eşit: b · sin A = a · sin B, yani a / sin A = b / sin B."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Üç oran hep eşit",
+   "aciklama": "Sağdaki üç oran (a/sin A, b/sin B, c/sin C) ve çevrel çemberin çapı 2R canlı hesaplanıyor. Köşeleri sürükle.",
+   "sim": { "kind": "f-ucgen", "points": [[1, 1], [7, 1], [2, 5]], "show": ["ortadikme"], "info": ["sinus"], "toggles": ["ortadikme"] },
+   "gorev": { "metin": "Üçgeni dik üçgen yap: 2R hipotenüse eşit olacak.", "check": { "key": "right", "eq": 1 } },
+   "dene": ["Dik açının karşısındaki kenar için sin 90° = 1 olduğundan oran doğrudan kenarın kendisidir.", "Üçgen ne kadar sivri olursa olsun üç oran aynı kalıyor."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "Bir ABC üçgeninde A = 30°, a = 6 ve B = 45°'dir. Çevrel çemberin yarıçapını ve b kenarını bulalım.",
+   "cozum": [
+    "2R = a / sin A = 6 / (1/2) = 12, yani R = 6.",
+    "b = 2R · sin B = 12 · (√2/2) = 6√2."
+   ],
+   "sonuc": "R = 6, b = 6√2."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kosinüs teoremi",
+   "govde": "Her ABC üçgeninde:\n- a² = b² + c² − 2bc · cos A\n- b² = a² + c² − 2ac · cos B\n- c² = a² + b² − 2ab · cos C\n\nA = 90° iken cos A = 0 olur ve teorem Pisagor bağıntısına dönüşür. A geniş açıysa cos A < 0, dolayısıyla a² > b² + c²; A dar açıysa a² < b² + c²."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kosinüs teoremini doğrula",
+   "aciklama": "Sağda a² ile b² + c² − 2bc · cos A değerleri karşılaştırılıyor; ayrıca yalnız b² + c² de gösteriliyor.",
+   "sim": { "kind": "f-ucgen", "points": [[1, 1], [7, 1], [3, 5]], "show": ["kenar", "aci"], "info": ["kosinus"] },
+   "gorev": { "metin": "C köşesini, A açısı 90° olacak şekilde taşı: o anda a² = b² + c² olur.", "check": { "key": "A", "eq": 90, "tol": 0.01 } },
+   "dene": ["A geniş açı olunca a², b² + c²'den büyük oluyor mu?", "Hangi üçgende olursan ol ilk iki satır hep eşit."]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "b = 5, c = 8 ve A = 60° olan üçgende a kenarı kaçtır?",
+   "cozum": [
+    "a² = 5² + 8² − 2 · 5 · 8 · cos 60°.",
+    "a² = 25 + 64 − 80 · (1/2) = 89 − 40 = 49.",
+    "a = 7."
+   ],
+   "sonuc": "a = 7."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 3",
+   "soru": "Kenarları 3, 5 ve 7 olan üçgenin en büyük açısı kaç derecedir?",
+   "cozum": [
+    "En büyük açı en uzun kenarın (7) karşısındadır.",
+    "49 = 9 + 25 − 2 · 3 · 5 · cos θ → 49 = 34 − 30 cos θ.",
+    "cos θ = −15 / 30 = −1/2.",
+    "θ = 120°."
+   ],
+   "sonuc": "En büyük açı 120°'dir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Sınav tarzı",
+   "soru": "Bir ABC üçgeninde sin A : sin B : sin C = 3 : 5 : 7 ise üçgenin en büyük açısı kaç derecedir?",
+   "cozum": [
+    "Sinüs teoreminden a = 2R sin A, b = 2R sin B, c = 2R sin C; kenarlar sinüslerle orantılıdır.",
+    "a : b : c = 3 : 5 : 7, kenarları 3k, 5k, 7k alalım.",
+    "En büyük açı C: 49k² = 9k² + 25k² − 30k² cos C → cos C = −1/2."
+   ],
+   "sonuc": "C = 120°."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Sinüs teoreminde kenarı yanlış açıyla eşlemek: a kenarı yalnız **karşısındaki** A açısıyla oran kurar. Kosinüs teoreminde ise geniş açının kosinüsünün negatif olduğunu unutup −2bc · cos A terimini yanlış işaretle almak sık görülür."
+  }
+ ],
+ "kontrol": [
+  { "prompt": "b = 3, c = 5 ve A = 60° ise a kaçtır?", "options": ["√19", "7", "√34", "4"], "answer": 0, "why": "a² = 9 + 25 − 2 · 3 · 5 · (1/2) = 34 − 15 = 19.", "hint": "Kosinüs teoremini A açısı için yaz." },
+  { "prompt": "a = 10 ve A = 30° olan üçgenin çevrel çemberinin yarıçapı kaçtır?", "options": ["5", "20", "10", "10√3"], "answer": 2, "why": "2R = 10 / sin 30° = 20, R = 10.", "hint": "a / sin A = 2R." },
+  { "prompt": "Kenarları 5, 7 ve 8 olan üçgende 7 birimlik kenarın karşısındaki açı kaç derecedir?", "options": ["30°", "45°", "90°", "60°"], "answer": 3, "why": "49 = 25 + 64 − 80 cos θ → cos θ = 40/80 = 1/2 → θ = 60°.", "hint": "7² = 5² + 8² − 2 · 5 · 8 · cos θ." },
+  { "prompt": "Bir üçgende a² > b² + c² ise A açısı için ne söylenir?", "options": ["Dar açıdır", "Geniş açıdır", "Dik açıdır", "Belirlenemez"], "answer": 1, "why": "a² = b² + c² − 2bc cos A; a² büyükse −2bc cos A > 0, yani cos A < 0.", "hint": "cos A'nın işaretini düşün." }
+ ]
+}

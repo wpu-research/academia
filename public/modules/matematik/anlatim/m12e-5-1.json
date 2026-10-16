@@ -1,0 +1,172 @@
+{
+ "id": "m12e-5-1",
+ "baslik": "Limit ve Süreklilik",
+ "sinif": "12. sınıf",
+ "kazanim": [
+  "12.5.1.1",
+  "12.5.1.2",
+  "12.5.1.3"
+ ],
+ "sure": 20,
+ "ders": "limit-kavrami",
+ "ozet": "Bir fonksiyonun bir noktaya yaklaşırken hangi değere yaklaştığını soldan ve sağdan inceleyeceğiz; limit özelliklerini kullanacak ve sürekliliğin üç şartını parçalı bir fonksiyon üzerinde deneyeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Yaklaşmak ile ulaşmak",
+   "govde": "f(x) = (x² − 1)/(x − 1) fonksiyonu x = 1'de tanımsızdır, çünkü payda 0 olur. Ama x'i 1'e çok yaklaştırınca f(x) değerleri 2'ye yaklaşır: x = 0,99 için 1,99; x = 1,01 için 2,01.\n\nLimit, fonksiyonun **o noktadaki değerini** değil, **o noktaya yaklaşırken** aldığı değerlerin neye yaklaştığını sorar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "1'e yaklaş",
+   "aciklama": "Kaydırıcının uçlarında x, 1'den uzak; ortaya doğru ilerledikçe x 1'e yaklaşır. Tam ortada x = 1'dir ve fonksiyon tanımsızdır.",
+   "sim": {
+    "kind": "limit-yaklasim",
+    "s": -100
+   },
+   "gorev": {
+    "metin": "x'i 1'e soldan 0,01'den daha çok yaklaştır.",
+    "check": {
+     "all": [
+      {
+       "key": "dist",
+       "lt": 0.01
+      },
+      {
+       "key": "side",
+       "eq": -1
+      }
+     ]
+    }
+   },
+   "dene": [
+    "Sağdan da yaklaş: değerler yine 2'ye gider.",
+    "x ≠ 1 için f(x) = x + 1 olduğu için yaklaşılan değer 1 + 1 = 2'dir."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Soldan limit, sağdan limit",
+   "govde": "- x, a'ya **a'dan küçük** değerlerle yaklaşırken f(x) L₁'e yaklaşıyorsa: **lim_(x→a⁻) f(x) = L₁** (soldan limit).\n- x, a'ya **a'dan büyük** değerlerle yaklaşırken f(x) L₂'ye yaklaşıyorsa: **lim_(x→a⁺) f(x) = L₂** (sağdan limit).\n- **lim_(x→a) f(x) vardır ⇔ L₁ = L₂** (ve bu ortak değer bir gerçek sayıdır).\n\nLimitin var olması için f'nin a'da tanımlı olması gerekmez."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Limit özellikleri",
+   "govde": "lim_(x→a) f(x) = L ve lim_(x→a) g(x) = M ise:\n\n- lim (f ± g) = L ± M\n- lim (k · f) = k · L\n- lim (f · g) = L · M\n- lim (f / g) = L / M (M ≠ 0)\n- lim fⁿ = Lⁿ\n- Polinom fonksiyonlar için lim_(x→a) p(x) = p(a).\n\nYerine koyunca **0/0** belirsizliği çıkarsa ifade sadeleştirilir (çarpanlara ayırma, eşlenikle çarpma)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "lim_(x→2) (x² + 3x − 1) ve lim_(x→3) (x² − 9)/(x − 3) limitlerini bulalım.",
+   "cozum": [
+    "Polinomda yerine koy: 4 + 6 − 1 = 9.",
+    "İkincisinde yerine koyunca 0/0. Payı çarpanlara ayır: (x − 3)(x + 3)/(x − 3).",
+    "x ≠ 3 iken sadeleşir: x + 3 ⇒ limit 3 + 3 = 6."
+   ],
+   "sonuc": "Limitler 9 ve 6."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2 · Parçalı fonksiyon",
+   "soru": "f(x) = 2x + 1 (x < 1), f(x) = x² + k (x ≥ 1) fonksiyonunun x = 1'de limiti varsa k kaçtır?",
+   "cozum": [
+    "Soldan limit: 2 · 1 + 1 = 3.",
+    "Sağdan limit: 1 + k.",
+    "Limit var ⇒ 3 = 1 + k ⇒ k = 2."
+   ],
+   "sonuc": "k = 2."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Süreklilik",
+   "govde": "f fonksiyonu x = a'da **süreklidir** ⇔ şu üç şart birlikte sağlanır:\n\n1. f(a) tanımlıdır.\n2. lim_(x→a) f(x) vardır.\n3. lim_(x→a) f(x) = f(a).\n\nPolinomlar her yerde süreklidir. Rasyonel fonksiyonlar paydayı sıfır yapmayan her noktada süreklidir. Grafiği kalemi kaldırmadan çizilebiliyorsa fonksiyon o aralıkta süreklidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Sürekli yap",
+   "aciklama": "Sol parça x + a, sağ parça (x − 1)² + 3. Boş daire o noktada değer alınmadığını, dolu daire f(1)'i gösterir. Tablo, 1'e iki yandan yaklaşan değerleri veriyor.",
+   "sim": {
+    "kind": "g-sureklilik",
+    "a": 0,
+    "p": 1
+   },
+   "gorev": {
+    "metin": "f'yi x = 1'de sürekli yap.",
+    "check": {
+     "key": "surekli",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Önce soldan limiti sağdan limite (3) eşitle: 1 + a = 3.",
+    "Sonra f(1)'i 3 yap. Kutucuğu kaldırırsan limit var olsa bile f süreksiz olur."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "AYT tarzı örnek",
+   "soru": "f(x) = (x² − 4)/(x − 2) (x ≠ 2), f(2) = m fonksiyonu x = 2'de sürekli ise m kaçtır?",
+   "cozum": [
+    "x ≠ 2 için (x² − 4)/(x − 2) = x + 2.",
+    "lim_(x→2) f(x) = 4.",
+    "Süreklilik için f(2) = 4 olmalı."
+   ],
+   "sonuc": "m = 4."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hatalar",
+   "govde": "- \"f(a) tanımsızsa limit yoktur\" demek. İlk simülasyonda f(1) tanımsız ama limit 2.\n- \"Limit varsa fonksiyon süreklidir\" demek. Limit f(a)'ya eşit değilse ya da f(a) tanımsızsa süreksizlik vardır.\n- 0/0 çıkınca \"limit 0'dır\" ya da \"limit yoktur\" demek. 0/0 bir **belirsizliktir**; ifade sadeleştirilmeden karar verilmez."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "lim_(x→−1) (x³ + 2x) kaçtır?",
+   "options": [
+    "3",
+    "−1",
+    "1",
+    "−3"
+   ],
+   "answer": 3,
+   "why": "(−1)³ + 2(−1) = −1 − 2 = −3.",
+   "hint": "Polinomda yerine koyman yeterli."
+  },
+  {
+   "prompt": "lim_(x→4) (x − 4)/(√x − 2) kaçtır?",
+   "options": [
+    "2",
+    "4",
+    "0",
+    "Limit yoktur."
+   ],
+   "answer": 1,
+   "why": "x − 4 = (√x − 2)(√x + 2); sadeleşince √x + 2 → 4.",
+   "hint": "x − 4'ü iki kare farkı gibi düşün."
+  },
+  {
+   "prompt": "Soldan ve sağdan limiti 5, f(a) = 3 olan bir fonksiyon için hangisi doğrudur?",
+   "options": [
+    "Limit yok, f süreksiz.",
+    "Limit 5, f sürekli.",
+    "Limit 5, f süreksiz.",
+    "Limit 3, f sürekli."
+   ],
+   "answer": 2,
+   "why": "Limit var (5) ama f(a) = 3 ≠ 5; üçüncü şart sağlanmaz.",
+   "hint": "Sürekliliğin üç şartını sırayla kontrol et."
+  },
+  {
+   "prompt": "f(x) = x + a (x < 2), f(x) = 3x − 1 (x ≥ 2) fonksiyonu her yerde sürekli ise a kaçtır?",
+   "options": [
+    "3",
+    "5",
+    "1",
+    "−3"
+   ],
+   "answer": 0,
+   "why": "Sağdan limit ve f(2) = 5; soldan limit 2 + a = 5 ⇒ a = 3.",
+   "hint": "x = 2'de iki parçanın değerlerini eşitle."
+  }
+ ]
+}

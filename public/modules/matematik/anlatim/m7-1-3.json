@@ -1,0 +1,173 @@
+{
+ "id": "m7-1-3",
+ "baslik": "Rasyonel Sayılarda Karşılaştırma ve Sıralama",
+ "sinif": "7. sınıf",
+ "kazanim": [
+  "MAT.7.1.3"
+ ],
+ "sure": 13,
+ "ozet": "Pozitif ve negatif rasyonel sayıları sayı doğrusu, ortak payda ve ondalık gösterim yardımıyla karşılaştırıp sıralayacağız.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Sayı doğrusu her zaman haklıdır",
+   "govde": "İki rasyonel sayıdan sayı doğrusunda **sağda olan büyüktür**. Bu kural pozitif, negatif, kesir, ondalık her sayı için geçerlidir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dört sayı",
+   "aciklama": "Dört rasyonel sayı sayı doğrusunda işaretli.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": -2,
+    "max": 2,
+    "den": 4,
+    "marks": [
+     [
+      -1.5,
+      "−1,5"
+     ],
+     [
+      -0.75,
+      "−3/4"
+     ],
+     [
+      0.5,
+      "1/2"
+     ],
+     [
+      1.25,
+      "5/4"
+     ]
+    ],
+    "fixed": true
+   },
+   "dene": [
+    "Soldan sağa: −1,5 < −3/4 < 1/2 < 5/4.",
+    "−3/4, −1,5'ten büyük; çünkü sıfıra daha yakın."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Karşılaştırma yolları",
+   "govde": "1. **İşaretlere bak:** pozitif > 0 > negatif.\n2. **Aynı biçime getir:** kesirleri ortak paydaya genişlet ya da hepsini ondalık gösterime çevir.\n3. **Negatiflerde ters düşün:** iki negatif sayıdan mutlak değeri büyük olan daha küçüktür. 3/4 > 2/3 olduğu için −3/4 < −2/3."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Arada bir sayı bul",
+   "aciklama": "Her birim 12 eş parçaya bölündü.",
+   "sim": {
+    "kind": "sayi-dogrusu",
+    "min": -1,
+    "max": 1,
+    "den": 12,
+    "value": 0
+   },
+   "gorev": {
+    "metin": "−2/3 ile −1/2 arasında bir sayı göster (uçlar hariç).",
+    "check": {
+     "all": [
+      {
+       "key": "value",
+       "gte": -0.66
+      },
+      {
+       "key": "value",
+       "lt": -0.5
+      }
+     ]
+    }
+   },
+   "dene": [
+    "−2/3 = −8/12 ve −1/2 = −6/12. Aralarında hangi on ikide bir var?",
+    "İki rasyonel sayı arasında her zaman başka bir rasyonel sayı bulunur."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 1",
+   "soru": "−3/4 ile −2/3'ü karşılaştıralım.",
+   "cozum": [
+    "Ortak payda 12: −3/4 = −9/12, −2/3 = −8/12.",
+    "−9/12, sıfıra daha uzak (daha solda)."
+   ],
+   "sonuc": "−3/4 < −2/3."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek 2",
+   "soru": "0,6; −1/2; 2/3; −0,55 sayılarını küçükten büyüğe sıralayalım.",
+   "cozum": [
+    "Ondalığa çevir: −1/2 = −0,5; 2/3 = 0,666…",
+    "Negatifler: −0,55 < −0,5 (−0,55 sıfıra daha uzak).",
+    "Pozitifler: 0,6 < 0,666…"
+   ],
+   "sonuc": "−0,55 < −1/2 < 0,6 < 2/3."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yeni nesil örnek: En soğuk şehir",
+   "soru": "Bir sabah dört şehrin sıcaklıkları: Kars −3,1 °C, Ardahan −2,5 °C, Sivas −0,8 °C, Bolu 0,4 °C. En soğuk ve en sıcak şehri bulalım.",
+   "cozum": [
+    "En soğuk = en küçük sayı. Negatiflerden mutlak değeri en büyük olan −3,1.",
+    "En sıcak = en büyük sayı: 0,4."
+   ],
+   "sonuc": "En soğuk Kars, en sıcak Bolu."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "\"3, 2'den büyük; o hâlde −1/3 < −1/2\" demek yanlıştır. 1/3 < 1/2 olduğu için −1/3 sıfıra daha yakındır, yani **−1/3 > −1/2**. Negatiflerde sıralama pozitiflerin tersine döner."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "−0,7 ile −0,65 sayılarından hangisi büyüktür?",
+   "options": [
+    "−0,7",
+    "−0,65",
+    "Eşittirler",
+    "Karşılaştırılamaz"
+   ],
+   "answer": 1,
+   "why": "−0,65 sıfıra daha yakındır: −0,65 > −0,7.",
+   "hint": "Sayı doğrusunda hangisi daha sağda?"
+  },
+  {
+   "prompt": "Hangi sıralama doğrudur?",
+   "options": [
+    "−0,5 < −3/4 < −1 < 0,2",
+    "0,2 < −0,5 < −3/4 < −1",
+    "−3/4 < −1 < −0,5 < 0,2",
+    "−1 < −3/4 < −0,5 < 0,2"
+   ],
+   "answer": 3,
+   "why": "−1 = −1,00 < −0,75 < −0,5 < 0,2.",
+   "hint": "Hepsini ondalık gösterime çevir."
+  },
+  {
+   "prompt": "−5/6 ile −4/5 için hangisi doğrudur?",
+   "options": [
+    "−5/6 > −4/5",
+    "−5/6 = −4/5",
+    "−5/6 < −4/5",
+    "Karşılaştırılamaz"
+   ],
+   "answer": 2,
+   "why": "−5/6 = −25/30, −4/5 = −24/30; −25/30 daha küçük.",
+   "hint": "Ortak payda 30."
+  },
+  {
+   "prompt": "Hangisi −1 ile 0 arasındadır?",
+   "options": [
+    "−0,25",
+    "−3/2",
+    "1/4",
+    "−1,1"
+   ],
+   "answer": 0,
+   "why": "−0,25, −1'den büyük ve 0'dan küçüktür.",
+   "hint": "Hem negatif hem de −1'den büyük olmalı."
+  }
+ ]
+}

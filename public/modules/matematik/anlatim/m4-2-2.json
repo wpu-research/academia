@@ -1,0 +1,248 @@
+{
+ "id": "m4-2-2",
+ "baslik": "Uzamsal İlişkiler",
+ "sinif": "4. sınıf",
+ "kazanim": [
+  "M.4.2.2.1",
+  "M.4.2.2.2"
+ ],
+ "sure": 12,
+ "ozet": "Ayna simetrisini tanıyacak, şekiller üzerinde simetri doğrusunu belirleyecek ve verilen bir şeklin bir doğruya göre simetriğini çizeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ayna simetrisi",
+   "govde": "Bir kelebeğin kanatlarına, bir yaprağa ya da bir kilim desenine bakınca iki yarının birbirinin aynası olduğunu görürüz. Şeklin ortasına bir ayna koyarsak aynadaki görüntü öteki yarıyı tamamlar.\n\nŞekli iki **eş** parçaya ayıran ve parçaların birbirinin aynadaki görüntüsü olmasını sağlayan doğruya **simetri doğrusu** denir. Şekli simetri doğrusu boyunca katlarsak iki parça üst üste tam oturur. Bu simetriye **ayna simetrisi** ya da **doğruya göre simetri** denir."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Simetriğini boya",
+   "aciklama": "Yeşil kesikli çizgi simetri doğrusu, yani ayna. Soldaki koyu kareler şeklin yarısı. Sağdaki karelere dokunarak öteki yarıyı boya.",
+   "sim": {
+    "kind": "c-simetri",
+    "cols": 8,
+    "rows": 6,
+    "eksen": "v",
+    "sekil": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      2
+     ],
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      3
+     ],
+     [
+      4,
+      3
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Şeklin simetriğini tamamla.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Doğruya bitişik kare, simetrisinde de doğruya bitişiktir.",
+    "Doğrudan 3 kare uzaktaki karenin simetriği öteki tarafta yine 3 kare uzaktadır."
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Simetrik çizim kuralı",
+   "govde": "Bir noktanın simetriğini bulmak için:\n\n1. Noktadan simetri doğrusuna **dik** olarak git.\n2. Doğruya kaç birim uzaksa, doğrunun öteki tarafında **aynı uzaklıkta** işaretle.\n\nSimetrik şekiller eştir ama **ters yöne bakar**: sağa bakan bir ok, aynada sola bakar."
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yatay simetri doğrusu",
+   "aciklama": "Bu kez simetri doğrusu yatay. Üst yarı verildi, alt yarıyı boya.",
+   "sim": {
+    "kind": "c-simetri",
+    "cols": 6,
+    "rows": 8,
+    "eksen": "h",
+    "sekil": [
+     [
+      1,
+      1
+     ],
+     [
+      1,
+      4
+     ],
+     [
+      2,
+      2
+     ],
+     [
+      2,
+      3
+     ],
+     [
+      3,
+      2
+     ],
+     [
+      3,
+      3
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "Şeklin simetriğini tamamla.",
+    "check": {
+     "key": "tamam",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Doğrunun hemen üstündeki kareler, hemen altına yansır.",
+    "En üstteki satır, en alttaki satıra karşılık gelir."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Şekli aynada yansıt",
+   "aciklama": "Dikey eksen bir ayna gibi davranır. Düğmelerle L şeklini taşıyabilir ya da yansıtabilirsin. Hedef kesikli çizgiyle gösterildi.",
+   "sim": {
+    "kind": "donusum",
+    "target": [
+     [
+      -1,
+      1
+     ],
+     [
+      -3,
+      1
+     ],
+     [
+      -3,
+      2
+     ],
+     [
+      -2,
+      2
+     ],
+     [
+      -2,
+      4
+     ],
+     [
+      -1,
+      4
+     ]
+    ]
+   },
+   "gorev": {
+    "metin": "L şeklini dikey eksene göre yansıtarak hedefe oturt.",
+    "check": {
+     "key": "match",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "\"y eksenine göre yansıt\" düğmesi şekli dikey eksenin öbür tarafına aynalar.",
+    "Sağa/sola kaydırarak da hedefe gitmeyi dene: şekil hedefe oturmaz, çünkü kaydırmak şeklin yönünü değiştirmez."
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Harflerde simetri",
+   "soru": "A, F, M ve L harflerinden hangilerinin dikey bir simetri doğrusu vardır?",
+   "cozum": [
+    "A'yı ortadan dikey katla: iki yarı üst üste gelir.",
+    "M'yi ortadan dikey katla: iki yarı üst üste gelir.",
+    "F ve L'de sol ve sağ taraf birbirinin aynası değildir."
+   ],
+   "sonuc": "A ve M harflerinin dikey simetri doğrusu vardır."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek · Noktanın simetriği",
+   "soru": "Kareli kâğıtta dikey bir simetri doğrusu var. Bir nokta doğrunun 3 kare solunda. Simetriği nerededir?",
+   "cozum": [
+    "Noktadan doğruya dik git: 3 kare.",
+    "Doğrunun öbür tarafında aynı uzaklığı ölç."
+   ],
+   "sonuc": "Simetriği doğrunun 3 kare sağında, aynı satırdadır."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Simetrik çizim yerine şekli öteki tarafa **kaydırmak** sık yapılan bir hatadır. Kaydırılmış şekil aynı yöne bakar; simetrik şekil ise ters yöne bakar. Doğruya yakın olan kısımlar simetrisinde de doğruya yakın olmalıdır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangi harfin dikey simetri doğrusu vardır?",
+   "options": [
+    "F",
+    "L",
+    "T",
+    "G"
+   ],
+   "answer": 2,
+   "why": "T'yi ortadan dikey katlarsak iki yarı üst üste gelir.",
+   "hint": "Harfi ortadan dikey katladığını düşün."
+  },
+  {
+   "prompt": "Simetri doğrusunun 2 birim solundaki bir noktanın simetriği nerededir?",
+   "options": [
+    "Doğrunun 2 birim sağında",
+    "Doğrunun 4 birim sağında",
+    "Doğrunun 2 birim solunda",
+    "Doğrunun üzerinde"
+   ],
+   "answer": 0,
+   "why": "Simetrik nokta doğrunun öbür tarafında, aynı uzaklıktadır.",
+   "hint": "Uzaklık değişir mi?"
+  },
+  {
+   "prompt": "Karenin kaç simetri doğrusu vardır?",
+   "options": [
+    "2",
+    "4",
+    "1",
+    "8"
+   ],
+   "answer": 1,
+   "why": "İki tanesi karşılıklı kenarların orta noktalarından, iki tanesi köşegenlerden geçer.",
+   "hint": "Kâğıttan bir kareyi kaç farklı şekilde ikiye katlayıp üst üste getirebilirsin?"
+  },
+  {
+   "prompt": "Bir şekli simetri doğrusu boyunca katlarsak ne olur?",
+   "options": [
+    "Parçalardan biri büyür",
+    "Şekil yarım tur döner",
+    "Hiçbir parça örtüşmez",
+    "İki parça üst üste tam oturur"
+   ],
+   "answer": 3,
+   "why": "Simetri doğrusu şekli iki eş parçaya ayırır; katlayınca parçalar çakışır.",
+   "hint": "Simetri doğrusunun tanımını hatırla."
+  }
+ ]
+}

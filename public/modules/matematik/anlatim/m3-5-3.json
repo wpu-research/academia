@@ -1,0 +1,179 @@
+{
+ "id": "m3-5-3",
+ "baslik": "Simetrik Şekil Oluşturma",
+ "sinif": "3. sınıf",
+ "kazanim": [
+  "MAT.3.3.8"
+ ],
+ "sure": 14,
+ "ozet": "Yön oklarıyla yazılmış bir kodla çizilen şeklin simetriğini, kodu dönüştürerek oluşturacağız. Hangi okların değiştiğini, hangilerinin aynı kaldığını keşfedeceğiz.",
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Şekli kodla çizmek",
+   "govde": "Kareli zeminde bir şekli **yön kodu** ile çizebiliriz: başlangıç karesinden sonra her ok bir kare ilerlemeyi gösterir.\n\n\"Başla, ↑ ↑ →\" kodu: başlangıç karesinden iki kare yukarı, sonra bir kare sağa git; geçtiğin kareleri boya.\n\nSimetrik şekli oluşturmak için başlangıç karesinin simetriğinden başlayıp kodu **simetri doğrusuna göre dönüştürürüz**."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kodun simetriği",
+   "govde": "**Dikey simetri doğrusu:** → ile ← yer değiştirir; ↑ ve ↓ aynı kalır.\n\"Başla, → → ↑\" kodunun simetriği: \"Başla, ← ← ↑\"\n\n**Yatay simetri doğrusu:** ↑ ile ↓ yer değiştirir; → ve ← aynı kalır.\n\"Başla, ↑ → ↑\" kodunun simetriği: \"Başla, ↓ → ↓\""
+  },
+  {
+   "tur": "sim",
+   "baslik": "Dikey doğruya göre kodla",
+   "aciklama": "Yeşil kareler sol parçanın kodla çizilmiş hâli; kod üstte yazıyor. Siyah çerçeveli kare, başlangıç karesinin simetriği. Ok düğmeleriyle kendi kodunu yaz.",
+   "sim": {
+    "kind": "b-simetri-izgara",
+    "cols": 10,
+    "rows": 8,
+    "eksen": "dikey",
+    "mod": "kod",
+    "kod": {
+     "bas": [
+      3,
+      6
+     ],
+     "yol": "↑↑←↑→→"
+    }
+   },
+   "gorev": {
+    "metin": "Sol parçanın simetriğini kodla oluştur.",
+    "check": {
+     "key": "dogru",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Sol koddaki her ← yerine →, her → yerine ← bas; ↑ okları aynı kalır.",
+    "Yanlış bastıysan \"Geri al\" düğmesini kullan."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Yatay doğruya göre kodla",
+   "aciklama": "Simetri doğrusu yatay. Üstteki parçanın simetriğini alt tarafa kodla.",
+   "sim": {
+    "kind": "b-simetri-izgara",
+    "cols": 8,
+    "rows": 8,
+    "eksen": "yatay",
+    "mod": "kod",
+    "kod": {
+     "bas": [
+      2,
+      3
+     ],
+     "yol": "↑→→↑→"
+    }
+   },
+   "gorev": {
+    "metin": "Üst parçanın simetriğini kodla oluştur.",
+    "check": {
+     "key": "dogru",
+     "eq": 1
+    }
+   },
+   "dene": [
+    "Bu kez ↑ ile ↓ yer değiştirir; sağa giden oklar aynı kalır."
+   ]
+  },
+  {
+   "tur": "sim",
+   "baslik": "Kendi simetrik şeklin",
+   "aciklama": "Sol tarafa dokunarak istediğin kareleri boya; sağ taraf kendiliğinden ayna görüntüsünü oluşturur.",
+   "sim": {
+    "kind": "b-simetri-izgara",
+    "cols": 10,
+    "rows": 8,
+    "eksen": "dikey",
+    "mod": "ayna"
+   },
+   "gorev": {
+    "metin": "En az 5 kare boyayarak simetrik bir şekil tasarla.",
+    "check": {
+     "key": "boyanan",
+     "gte": 5
+    }
+   },
+   "dene": [
+    "Bir harf, bir kalp ya da bir uzay gemisi dene.",
+    "Tasarladığın şekli kodla anlatabilir misin?"
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Dikey simetri doğrusunun solundaki bir şekil \"Başla, → → ↑\" koduyla çizildi. Simetriğinin kodu nedir?",
+   "cozum": [
+    "Dikey doğruda sağ ve sol yer değiştirir: → → yerine ← ←.",
+    "↑ aynı kalır."
+   ],
+   "sonuc": "Simetriğin kodu: **Başla, ← ← ↑** (başlangıç karesinin simetriğinden)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Yatay simetri",
+   "soru": "Yatay simetri doğrusunun üstündeki bir şekil \"Başla, ↑ → ↑\" koduyla çizildi. Simetriğinin kodu nedir?",
+   "cozum": [
+    "Yatay doğruda yukarı ve aşağı yer değiştirir: ↑ yerine ↓.",
+    "→ aynı kalır."
+   ],
+   "sonuc": "Simetriğin kodu: **Başla, ↓ → ↓**."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Kodu olduğu gibi kopyalamak simetrik şekil oluşturmaz; şekli yalnız öbür tarafa **kaydırır**. Dikey doğruya göre simetride → ve ← oklarını değiştirmeyi, ayrıca başlangıç karesini de simetrik kareden seçmeyi unutma."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Dikey simetri doğrusuna göre \"→ → ↑\" kodunun simetriği hangisidir?",
+   "options": [
+    "→ → ↑",
+    "← ← ↑",
+    "← ← ↓",
+    "→ → ↓"
+   ],
+   "answer": 1,
+   "why": "Dikey doğruda → ile ← yer değiştirir, ↑ aynı kalır.",
+   "hint": "Hangi oklar değişir?"
+  },
+  {
+   "prompt": "Yatay simetri doğrusuna göre \"↑ ← ↑\" kodunun simetriği hangisidir?",
+   "options": [
+    "↓ ← ↓",
+    "↑ → ↑",
+    "↓ → ↓",
+    "↑ ← ↑"
+   ],
+   "answer": 0,
+   "why": "Yatay doğruda ↑ ile ↓ yer değiştirir, ← aynı kalır.",
+   "hint": "Yatay doğruda sağa-sola giden oklar değişir mi?"
+  },
+  {
+   "prompt": "Dikey simetri doğrusuna göre simetri alırken hangi oklar değişmez?",
+   "options": [
+    "← ve →",
+    "Hepsi değişir",
+    "↑ ve ↓",
+    "Hiçbiri değişmez"
+   ],
+   "answer": 2,
+   "why": "Dikey doğruda yalnız sağ ve sol yer değiştirir.",
+   "hint": "Aynada yukarı-aşağı değişir mi?"
+  },
+  {
+   "prompt": "Başlangıç karesi dikey simetri doğrusunun 2 kare solunda. Simetrik şeklin başlangıç karesi nerededir?",
+   "options": [
+    "Doğrunun 2 kare solunda",
+    "Doğrunun üzerinde",
+    "Doğrunun 4 kare sağında",
+    "Doğrunun 2 kare sağında, aynı satırda"
+   ],
+   "answer": 3,
+   "why": "Simetrik kare aynı satırda, doğruya aynı uzaklıkta, öbür taraftadır.",
+   "hint": "Uzaklık korunur."
+  }
+ ]
+}
