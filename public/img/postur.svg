@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><rect width="800" height="500" fill="#2a1a12"/>
+<g fill="none" stroke="#e0aa76" stroke-width="6" stroke-linecap="round"><path d="M60 40 h70 M60 40 v70"/><path d="M740 40 h-70 M740 40 v70"/><path d="M60 460 h70 M60 460 v-70"/><path d="M740 460 h-70 M740 460 v-70"/></g>
+<line x1="270" y1="60" x2="270" y2="440" stroke="#d2c2b2" stroke-width="2" stroke-dasharray="8 8"/><line x1="530" y1="60" x2="530" y2="440" stroke="#d2c2b2" stroke-width="2" stroke-dasharray="8 8"/>
+<g stroke="#f07468" stroke-width="10" stroke-linecap="round" fill="none"><path d="M318 128 Q300 170 285 205 Q262 260 270 300 L262 420 M282 215 L318 290"/></g>
+<circle cx="322" cy="104" r="24" fill="none" stroke="#f07468" stroke-width="8"/>
+<g fill="#f07468"><circle cx="322" cy="104" r="7"/><circle cx="292" cy="190" r="9"/><circle cx="270" cy="300" r="9"/><circle cx="262" cy="420" r="9"/></g>
+<g stroke="#3f7d3a" stroke-width="10" stroke-linecap="round" fill="none"><path d="M530 130 L530 300 L530 420 M530 215 L548 295"/></g>
+<circle cx="530" cy="104" r="24" fill="none" stroke="#3f7d3a" stroke-width="8"/>
+<g fill="#7fbf6a"><circle cx="530" cy="104" r="7"/><circle cx="530" cy="190" r="9"/><circle cx="530" cy="300" r="9"/><circle cx="530" cy="420" r="9"/></g>
+<text x="290" y="470" fill="#f07468" font-family="Poppins, sans-serif" font-size="22" text-anchor="middle">Öne eğik</text><text x="530" y="470" fill="#7fbf6a" font-family="Poppins, sans-serif" font-size="22" text-anchor="middle">Hizalı</text></svg>

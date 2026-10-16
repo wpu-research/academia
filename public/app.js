@@ -11,7 +11,7 @@
   const pct = (x) => Math.round(x * 100);
   const ACTIVE = A.programs.filter((p) => p.active !== false);
   const PASSIVE = A.programs.filter((p) => p.active === false);
-  const bySlug = Object.fromEntries(ACTIVE.map((p) => [p.slug, p]));
+  const bySlug = Object.fromEntries(ACTIVE.filter((p) => !p.soon).map((p) => [p.slug, p]));
   const MODULES = ["matematik", "kodlama", "muzik"];
   const examOn = (id) => !!A.exams[id] && A.exams[id].active !== false;
   const groupLabel = Object.fromEntries(A.groups.map((g) => [g.id, g.label]));
@@ -180,9 +180,10 @@
         <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
           <p>Her programda seviye tespiti, kişisel plan ve ilerleme takibi. Kodlama ve Matematik'te her seviye oyunlu.</p></div>
         <div class="cards cards-3">${ACTIVE.filter((p) => !p.featured).map(card).join("")}</div>
-        ${ACTIVE.filter((p) => p.featured).map((p) => `<div class="feature-banner"><img src="${p.image}" alt="" width="800" height="500">
-          <div class="fb-body"><span class="chip chip-brand">Yeni · Prototip</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#studyo">Stüdyoyu aç</a><a class="btn btn-outline" href="#p-${p.slug}">Derslere bak</a></div></div></div>`).join("")}
+        <div class="soon-head"><h3>Yeni Deneyimler</h3><p class="muted">Kamerayla hareket ve tarayıcıda müzik.</p></div>
+        <div class="cards cards-3">${ACTIVE.filter((p) => p.featured).map((p) => p.soon
+          ? `<div class="card card-soon" aria-disabled="true"><div class="card-img"><img src="${p.image}" alt="" loading="lazy" width="800" height="500"></div><div class="card-body"><h3>${esc(p.title)}</h3><div class="card-meta"><span>${esc(p.fact)}</span></div><p>${esc(p.summary)}</p><span class="chip chip-soon soon">Yakında</span></div></div>`
+          : card(p)).join("")}</div>
         <div class="soon-head"><h3>Yakında</h3><p class="muted">Bu programlar hazırlanıyor.</p></div>
         <div class="cards cards-passive">
           ${PASSIVE.map(passiveCard).join("")}
@@ -246,7 +247,7 @@
         <form class="panel" id="contact-form" novalidate>
           <label class="field">Ad soyad<input id="c-name" name="name" autocomplete="name" required></label>
           <label class="field">Telefon veya e-posta<input id="c-reach" name="reach" required></label>
-          <label class="field full">İlgilendiğiniz program<select id="c-prog" name="prog">${ACTIVE.map((p) => `<option>${esc(p.title)}</option>`).join("")}<option>Kurumsal eğitim</option></select></label>
+          <label class="field full">İlgilendiğiniz program<select id="c-prog" name="prog">${ACTIVE.filter((p) => !p.soon).map((p) => `<option>${esc(p.title)}</option>`).join("")}<option>Kurumsal eğitim</option></select></label>
           <label class="field full">Mesajınız<textarea id="c-msg" name="msg"></textarea></label>
           <div class="full"><button class="btn btn-primary" type="submit">Gönder</button></div>
           <p class="form-note full" id="c-note" hidden></p>
@@ -280,6 +281,7 @@
     const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
     if (p.engine) cta = `<div class="box accent"><h3>Seviyeni ölç</h3><p class="note">${DIAG_SIZE} soruluk seviye tespitiyle alan alan durumunu gör. Ardından 14 günlük planın hazır.</p><a class="btn btn-primary" href="#ogren-${p.engine}">Seviye tespitine başla</a></div>`;
+    else if (p.slug === "muzik") cta = `<div class="box accent"><h3>Stüdyoyu aç</h3><p class="note">Ritim makinesi ve DJ mikseriyle serbestçe çalış.</p><a class="btn btn-primary" href="#studyo">Stüdyoya git</a></div>`;
     else if (p.link) cta = `<div class="box accent"><h3>Programı dene</h3><p class="note">Robotik dersleri kendi sanal laboratuvarında çalışır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div>`;
     else cta = `<div class="box accent"><h3>Ücretsiz seviye tespiti</h3><p class="note">Bilgilerini bırak, programa uygun seviye tespiti için seninle iletişime geçelim.</p><a class="btn btn-primary" href="#iletisim">Bilgi bırak</a></div>`;
 
@@ -679,7 +681,9 @@
   const mega = document.getElementById("mega"), dropBtn = document.getElementById("drop-btn");
   const nav = document.getElementById("main-nav"), toggle = document.getElementById("menu-toggle");
   mega.innerHTML = A.groups.map((g) => {
-    const links = g.id === "dijital"
+    const links = g.id === "deneyim"
+      ? A.programs.filter((p) => p.group === g.id).map((p) => p.soon ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("")
+      : g.id === "dijital"
       ? `<a href="#p-robotik">Genel bakış</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
       : A.programs.filter((p) => p.group === g.id).map((p) => p.active === false ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("");
     return `<div><h4>${g.label}</h4>${links}</div>`;
@@ -839,7 +843,7 @@
       }
       return { page: "Öğrenme alanı", context };
     }
-    return { page: "Ana sayfa", context: `Programlar: ${ACTIVE.map((p) => p.title).join(", ")}. Yakında: ${PASSIVE.map((p) => p.title).join(", ")}.` };
+    return { page: "Ana sayfa", context: `Programlar: ${ACTIVE.filter((p) => !p.soon).map((p) => p.title).join(", ")}. Yakında: ${PASSIVE.map((p) => p.title).join(", ")}.` };
   });
 
   // ---------- Fotoğraf kaynakları ----------

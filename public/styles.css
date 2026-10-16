@@ -770,3 +770,7 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 .mt-cell.d { background: var(--good-soft); border-color: var(--good); color: var(--good); }
 .mt-cell.y { background: var(--bad-soft); border-color: var(--bad); color: var(--bad); }
 .li-hole { fill: var(--surface); stroke: var(--ink); stroke-width: 3; }
+
+.card-soon { cursor: default; }
+.card-soon:hover { transform: none; box-shadow: none; }
+.card-soon .card-img img { transform: none !important; }

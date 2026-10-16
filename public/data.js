@@ -5,7 +5,8 @@ window.ACADEMIA = {};
 
 ACADEMIA.groups = [
   { id: "dijital", label: "Robotik" },
-  { id: "oyunlu", label: "Kodlama, Matematik ve Müzik" },
+  { id: "oyunlu", label: "Kodlama ve Matematik" },
+  { id: "deneyim", label: "Yeni Deneyimler" },
   { id: "sinav", label: "Sınava Hazırlık" },
   { id: "ingilizce", label: "Genel İngilizce" },
 ];
@@ -72,7 +73,7 @@ ACADEMIA.programs = [
     game: ["Doğru cevap 10 puan; çok emin olup doğru bilirsen 15 puan", "Her 100 puanda seviye atlarsın", "Arka arkaya doğrular seriyi büyütür", "Yanlış cevap puan götürmez; açıklamasıyla geri gelir"],
   },
   {
-    slug: "muzik", group: "oyunlu", title: "DJ ve Prodüksiyon", featured: true, image: "img/muzik.svg",
+    slug: "muzik", group: "deneyim", title: "DJ ve Prodüksiyon", featured: true, image: "img/muzik.svg",
     fact: "Yeni · prototip",
     summary: "Tarayıcıda ritim kur, iki desteyle beatmatching yap, EQ ve crossfader ile geçiş öğren.",
     body: [
@@ -80,6 +81,16 @@ ACADEMIA.programs = [
       "Bütün sesler tarayıcıda sentezlenir; telifli müzik ya da ses dosyası kullanılmaz. Ses gecikmesi telefonlarda daha fazla olabileceği için tempo alıştırmaları en iyi bilgisayarda çalışır.",
     ],
     status: "Prototip: iki ders ve serbest stüdyo hazır.",
+  },
+  {
+    slug: "dans", group: "deneyim", title: "Dans", featured: true, soon: true, image: "img/dans.svg",
+    fact: "Kamera ile hareket eşleştirme",
+    summary: "Kamera açılır, ekranda yapman gereken hareket gösterilir; sen yaparsın, hareketin eşleşince yeşile döner.",
+  },
+  {
+    slug: "postur", group: "deneyim", title: "Postür Analizi ve Antrenman", featured: true, soon: true, image: "img/postur.svg",
+    fact: "Duruş analizi · düzeltici egzersiz",
+    summary: "Kamerayla duruşun analiz edilir; tespit edilen bozukluğa göre düzeltici egzersiz programı hazırlanır, egzersizi doğru yapınca yeşile döner.",
   },
   {
     slug: "tus", group: "sinav", title: "TUS Hazırlık",
