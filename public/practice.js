@@ -56,7 +56,7 @@ window.PRACTICE = (() => {
 
   function mount(el, practice, k, h) {
     root = el; P = practice; kind = k; hooks = h || {};
-    if (st.kind !== k) st = { kind: k, set: null, i: 0, res: null, heard: "", text: {} };
+    if (st.kind !== k) st = { kind: k, set: null, i: 0, res: null, heard: "", text: {}, mode: null };
     draw();
   }
   function stopRec() { if (rec) { try { rec.abort(); } catch (_) {} rec = null; } listening = false; }
@@ -212,10 +212,93 @@ window.PRACTICE = (() => {
     return { checks, ok: checks.every((c) => c.ok) };
   }
 
+
+  // ---------- Kelime (aralıklı tekrar) ----------
+  // Leitner kutuları: bilinen kelime bir üst kutuya geçer ve kutunun aralığı kadar gün sonra tekrar gelir;
+  // bilinmeyen 0. kutuya döner ve aynı oturumda yeniden sorulur. Günde en çok NEW_PER_DAY yeni kelime.
+  const DAY_MS = 86400000, INTERVAL = [0, 1, 3, 7, 14, 30], NEW_PER_DAY = 10, LEARNED_BOX = 2;
+  const ART = ["der", "die", "das"];
+  const today = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d.getTime(); };
+  const allWords = () => P.kelime.flatMap((t) => t.kelimeler.map(([de, tr, pl]) => ({ id: norm(de), de, tr, pl: pl === "pl", tema: t.id })));
+  const vs = () => { const s = hooks.vocab(); s.cards ||= {}; if (s.day !== today()) { s.day = today(); s.yeni = 0; } return s; };
+  const nounOf = (w) => { const [a, ...rest] = w.de.split(" "); return !w.pl && ART.includes(a) && rest.length ? { art: a, noun: rest.join(" ") } : null; };
+  function artHint(w) {
+    const n = nounOf(w); if (!n) return "";
+    if (/(ung|heit|keit|ion)$/.test(n.noun)) return "-ung, -heit, -keit, -ion ile biten isimler die alır.";
+    if (/chen$/.test(n.noun)) return "-chen ile biten isimler das alır.";
+    if (w.tema === "zaman" || w.tema === "aylar") return "Günler, aylar ve mevsimler der alır.";
+    return "";
+  }
+
+  function vocabHome() {
+    const s = vs(), words = allWords(), now = Date.now();
+    const due = words.filter((w) => s.cards[w.id] && s.cards[w.id].d <= now).length;
+    const fresh = Math.max(0, NEW_PER_DAY - s.yeni);
+    const learned = words.filter((w) => (s.cards[w.id]?.b || 0) >= LEARNED_BOX).length;
+    return `<div class="pr-intro"><h2>Kelime</h2>
+      <p class="muted">A1 sınavında sık geçen ${words.length} kelime ve kalıp, ${P.kelime.length} temada. Kartlar aralıklı tekrarla gelir: bildiğin kelime 1, 3, 7, 14 ve 30 gün sonra yeniden sorulur.</p></div>
+      <div class="pr-vstats"><div><b class="num">${due}</b><span>bugün tekrar</span></div><div><b class="num">${fresh}</b><span>yeni kelime hakkı</span></div><div><b class="num">${learned}</b><span>öğrenilen</span></div></div>
+      <div class="q-actions"><button class="btn btn-primary" data-pr="vstart" data-tema="">Bugünün kartlarına başla</button><button class="btn btn-outline" data-pr="art">Artikel alıştırması (der, die, das)</button></div>
+      <h3 class="pr-h">Temalar</h3>
+      <div class="pr-sets">${P.kelime.map((t) => {
+        const ws = words.filter((w) => w.tema === t.id), k = ws.filter((w) => (s.cards[w.id]?.b || 0) >= LEARNED_BOX).length;
+        return `<button type="button" class="pr-set" data-pr="vstart" data-tema="${esc(t.id)}"><b>${esc(t.tema)}</b><span class="pr-bar"><i style="width:${(k / ws.length) * 100}%"></i></span><small class="num">${k} / ${ws.length} öğrenildi</small></button>`;
+      }).join("")}</div>`;
+  }
+  function vocabStart(tema) {
+    const s = vs(), now = Date.now(), words = allWords();
+    const due = words.filter((w) => s.cards[w.id] && s.cards[w.id].d <= now && (!tema || w.tema === tema)).sort((a, b) => s.cards[a.id].d - s.cards[b.id].d);
+    const fresh = words.filter((w) => !s.cards[w.id] && (!tema || w.tema === tema)).slice(0, Math.max(0, NEW_PER_DAY - s.yeni));
+    st.v = { queue: [...due, ...fresh.map((w) => ({ ...w, yeni: true }))], i: 0, show: false, ok: 0, miss: 0, tema };
+  }
+  function vocabCard() {
+    const v = st.v, w = v.queue[v.i];
+    if (!w) return `<div class="pr-done"><h3>${v.queue.length ? "Bugünlük bu kadar" : "Şu an tekrar edilecek kart yok"}</h3>
+      <p>${v.queue.length ? `${v.ok} kartı bildin, ${v.miss} kart tekrar edilecek.` : "Yeni kelime hakkın da doldu ya da bu temadaki kelimelerin hepsi sırada değil. Yarın tekrar gel ya da artikel alıştırması yap."}</p>
+      <div class="q-actions"><button class="btn btn-primary" data-pr="vhome">Kelime sayfasına dön</button><button class="btn btn-outline" data-pr="art">Artikel alıştırması</button></div></div>`;
+    return `<div class="pr-task pr-flash">
+      <div class="q-top"><div class="chips"><span class="chip chip-line">${esc(P.kelime.find((t) => t.id === w.tema).tema)}</span>${w.yeni ? `<span class="chip chip-brand">Yeni</span>` : ""}</div><span class="muted num">${v.i + 1} / ${v.queue.length}</span></div>
+      <div class="progress" aria-hidden="true"><i style="width:${(v.i / v.queue.length) * 100}%"></i></div>
+      <div class="pr-word"><span lang="de">${esc(w.de)}</span>${sayBtn({ lang: "de-DE", text: w.de })}</div>
+      ${v.show ? `<p class="pr-mean">${esc(w.tr)}${w.pl ? " <small>(çoğul)</small>" : ""}</p>
+        <div class="q-actions"><button class="btn btn-primary" data-pr="vknow" data-ok="1">Bildim</button><button class="btn btn-outline" data-pr="vknow" data-ok="0">Bilemedim</button></div>`
+        : `<div class="q-actions"><button class="btn btn-primary" data-pr="vshow">Anlamını göster</button><button class="btn btn-outline" data-pr="vhome">Bitir</button></div>`}
+    </div>`;
+  }
+  function vocabAnswer(ok) {
+    const s = vs(), v = st.v, w = v.queue[v.i], c = s.cards[w.id] || { b: 0, d: 0 };
+    if (!s.cards[w.id]) s.yeni++;
+    if (ok) { c.b = Math.min(c.b + 1, INTERVAL.length - 1); c.d = today() + INTERVAL[c.b] * DAY_MS; v.ok++; }
+    else { c.b = 0; c.d = Date.now(); v.miss++; if (!w.tekrar) v.queue.push({ ...w, yeni: false, tekrar: true }); }
+    s.cards[w.id] = c; hooks.save?.();
+    v.i++; v.show = false; draw();
+    const nx = v.queue[v.i]; if (nx) window.VOICE?.say("de-DE", nx.de);
+  }
+  function artStart() {
+    const ns = allWords().filter(nounOf);
+    for (let i = ns.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [ns[i], ns[j]] = [ns[j], ns[i]]; }
+    st.a = { list: ns.slice(0, 10), i: 0, pick: null, ok: 0 };
+  }
+  function artView() {
+    const a = st.a, w = a.list[a.i];
+    if (!w) return `<div class="pr-done"><h3>Artikel alıştırması bitti</h3><p>10 isimden <b>${a.ok}</b> tanesinin artikelini bildin.</p>
+      <div class="q-actions"><button class="btn btn-primary" data-pr="art">Yeni 10 isim</button><button class="btn btn-outline" data-pr="vhome">Kelime sayfasına dön</button></div></div>`;
+    const n = nounOf(w), done = a.pick !== null;
+    return `<div class="pr-task">
+      <div class="q-top"><div class="chips"><span class="chip chip-line">Artikel</span></div><span class="muted num">${a.i + 1} / ${a.list.length}</span></div>
+      <div class="progress" aria-hidden="true"><i style="width:${(a.i / a.list.length) * 100}%"></i></div>
+      <div class="pr-word"><span lang="de">${done ? esc(w.de) : `___ ${esc(n.noun)}`}</span><small>${esc(w.tr)}</small></div>
+      <div class="pr-arts">${ART.map((x) => `<button type="button" class="opt ${done ? (x === n.art ? "correct" : x === a.pick ? "wrong" : "") : ""}" data-pr="apick" data-a="${x}" ${done ? "disabled" : ""}>${x}</button>`).join("")}</div>
+      ${done ? `<div class="explain ${a.pick === n.art ? "ok" : "no"}"><strong>${a.pick === n.art ? "Doğru" : `Doğrusu: ${n.art}`}</strong>${artHint(w) ? `<span>${esc(artHint(w))}</span>` : ""}</div>
+        <div class="q-actions"><button class="btn btn-primary" data-pr="anext">${a.i + 1 >= a.list.length ? "Bitir" : "Sonraki"}</button>${sayBtn({ lang: "de-DE", text: w.de })}</div>` : ""}
+    </div>`;
+  }
+
   // ---------- Çizim ve olaylar ----------
   function draw() {
     if (!root) return;
-    if (kind === "konusma") root.innerHTML = st.set ? taskView() : setList();
+    if (kind === "kelime") root.innerHTML = st.mode === "art" ? artView() : st.mode === "kart" ? vocabCard() : vocabHome();
+    else if (kind === "konusma") root.innerHTML = st.set ? taskView() : setList();
     else { const w = P.yazma.find((x) => x.id === st.set); root.innerHTML = w ? writeView(w) : writeList(); }
   }
   function onClick(e) {
@@ -228,6 +311,13 @@ window.PRACTICE = (() => {
     if (a === "next") { stopRec(); st.i++; st.res = null; st.heard = ""; draw(); return; }
     if (a === "again") { stopRec(); st.res = null; st.heard = ""; draw(); return; }
     if (a === "mic") { listen(); return; }
+    if (a === "vstart") { vocabStart(el.dataset.tema || ""); st.mode = "kart"; draw(); const w = st.v.queue[0]; if (w) window.VOICE?.say("de-DE", w.de); return; }
+    if (a === "vshow") { st.v.show = true; draw(); return; }
+    if (a === "vknow") { vocabAnswer(el.dataset.ok === "1"); return; }
+    if (a === "vhome") { st.mode = null; draw(); return; }
+    if (a === "art") { artStart(); st.mode = "art"; draw(); return; }
+    if (a === "apick") { const w = st.a.list[st.a.i]; st.a.pick = el.dataset.a; if (st.a.pick === nounOf(w).art) st.a.ok++; draw(); window.VOICE?.say("de-DE", w.de); return; }
+    if (a === "anext") { st.a.i++; st.a.pick = null; draw(); return; }
     if (a === "self") { const g = tasks()[st.i]; finish(g, { mode: "oz", ok: el.dataset.ok === "1" }); return; }
     if (a === "mac") {
       const w = P.yazma.find((x) => x.id === st.set), msg = root.querySelector("textarea")?.value.trim();

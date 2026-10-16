@@ -193,7 +193,7 @@ ACADEMIA.programs = [
   },
   {
     slug: "aile-almanca", group: "aile", title: "Aile Birleşimi · Almanca", engine: "almanca", image: "img/aile-almanca.svg",
-    fact: "Ücretsiz · A1 · 14 konu · 200 soru",
+    fact: "Ücretsiz · A1 · 14 konu · 200 soru · 317 kelime",
     voiceCredit: "Seslendirme: ElevenLabs.",
     summary: "Almanya'ya aile birleşimi başvurusu için istenen A1 düzeyi Almanca sınavına (ör. Goethe-Zertifikat A1: Start Deutsch 1) hazırlık.",
     body: [

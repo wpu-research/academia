@@ -24,6 +24,11 @@ const BASE = process.env.ELEVENLABS_BASE_URL?.trim() || "https://api.elevenlabs.
 const DEFAULT_VOICE = { de: "EXAVITQu4vr4xnSDxMaL", en: "Xb7hH8MSUJpSbSDYk0k2" };
 const voiceFor = (lang) => { const l = lang.slice(0, 2); return process.env[`TTS_VOICE_${l.toUpperCase()}`]?.trim() || process.env.TTS_VOICE?.trim() || DEFAULT_VOICE[l] || DEFAULT_VOICE.en; };
 const MODEL = process.env.ELEVENLABS_MODEL?.trim() || "eleven_multilingual_v2";
+// Çok dilli model tek kelimelerde dili yanlış algılayabilir ("heute", "Ja."). En çok 3 kelimelik metinler dili
+// zorlanabilen flash modeliyle üretilir (language_code yalnız bu modelde geçerli).
+const SHORT_MODEL = process.env.ELEVENLABS_SHORT_MODEL?.trim() || "eleven_flash_v2_5";
+const isShort = (text) => text.split(" ").length <= 3;
+const modelFor = (text) => (isShort(text) ? SHORT_MODEL : MODEL);
 const SPEED = Number(process.env.TTS_SPEED) || 0.9; // öğrenenler için biraz yavaş
 const arg = (k) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null; };
 const ONLY = arg("--lang");
@@ -45,6 +50,7 @@ function collect() {
     if (g.tekrar) add("de-DE", g.tekrar);
     if (g.ornek) add("de-DE", g.ornek);
   }
+  for (const p of Object.values(sandbox.ACADEMIA.practice || {})) for (const t of p.kelime || []) for (const [de] of t.kelimeler) add("de-DE", de);
   const mods = path.join(ROOT, "modules");
   for (const m of fs.readdirSync(mods)) {
     const dir = path.join(mods, m, "anlatim");
@@ -59,20 +65,28 @@ function collect() {
 }
 
 const fileFor = ({ lang, text }) => {
-  const h = crypto.createHash("sha256").update(`${voiceFor(lang)}|${MODEL}|${SPEED}|${lang}|${text}`).digest("hex").slice(0, 16);
+  const h = crypto.createHash("sha256").update(`${voiceFor(lang)}|${modelFor(text)}|${SPEED}|${lang}|${text}`).digest("hex").slice(0, 16);
   return `audio/${lang.slice(0, 2)}/${h}.mp3`;
 };
 
 async function synth({ lang, text }) {
-  const body = { text, model_id: MODEL, voice_settings: { speed: SPEED } };
+  const body = { text, model_id: modelFor(text), voice_settings: { speed: SPEED } };
+  if (isShort(text)) body.language_code = lang.slice(0, 2);
   for (let attempt = 1; ; attempt++) {
     const used = keyIdx;
-    const res = await fetch(`${BASE}/v1/text-to-speech/${encodeURIComponent(voiceFor(lang))}?output_format=mp3_44100_64`, {
-      method: "POST",
-      headers: { "content-type": "application/json", "xi-api-key": KEYS[used], accept: "audio/mpeg" },
-      body: JSON.stringify(body),
-      signal: AbortSignal.timeout(30_000),
-    });
+    let res;
+    try {
+      res = await fetch(`${BASE}/v1/text-to-speech/${encodeURIComponent(voiceFor(lang))}?output_format=mp3_44100_64`, {
+        method: "POST",
+        headers: { "content-type": "application/json", "xi-api-key": KEYS[used], accept: "audio/mpeg" },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(30_000),
+      });
+    } catch (e) {
+      // Ağ hatası ya da zaman aşımı: kısa bekleyip yeniden dene.
+      if (attempt < 5) { await new Promise((r) => setTimeout(r, 2000 * attempt)); continue; }
+      throw e;
+    }
     if (res.ok) {
       const buf = Buffer.from(await res.arrayBuffer());
       if (!buf.length) throw new Error("boş ses");
@@ -106,7 +120,7 @@ if (ONLY) for (const [k, rel] of Object.entries(old)) if (!k.startsWith(`${ONLY}
 
 const chars = todo.reduce((n, x) => n + x.v.text.length, 0);
 const langs = [...new Set([...all.values()].map((v) => v.lang))];
-console.log(`${all.size} cümle · hazır ${all.size - todo.length} · eksik ${todo.length} (${chars} karakter) · ses ${langs.map((l) => `${l}=${voiceFor(l)}`).join(", ")} · model ${MODEL} · ${KEYS.length} anahtar`);
+console.log(`${all.size} cümle · hazır ${all.size - todo.length} · eksik ${todo.length} (${chars} karakter) · ses ${langs.map((l) => `${l}=${voiceFor(l)}`).join(", ")} · model ${MODEL} (kısa metin: ${SHORT_MODEL}) · ${KEYS.length} anahtar`);
 const writeManifest = () => {
   const sorted = Object.fromEntries(Object.entries(manifest).sort(([a], [b]) => (a < b ? -1 : 1)));
   fs.mkdirSync(OUT, { recursive: true });

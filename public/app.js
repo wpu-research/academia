@@ -546,10 +546,15 @@
 
   const TABS = [["panel", "Panel"], ["tani", "Seviye tespiti"], ["coz", "Soru çöz"], ["plan", "Çalışma planı"], ["deneme", "Kişisel deneme"], ["hata", "Hata defteri"], ["rapor", "Haftalık rapor"]];
   // Konuşma ve yazma pratiği yalnız içeriği olan sınavlarda (data-practice.js).
-  const PRACTICE_TABS = [["konus", "Konuşma"], ["yaz", "Yazma"]];
-  const tabsFor = (examId) => (A.practice?.[examId] ? [...TABS.slice(0, 3), ...PRACTICE_TABS, ...TABS.slice(3)] : TABS);
+  // [sekme, etiket, practice.js modu]; sekme yalnız o sınavın içeriğinde o bölüm varsa görünür.
+  const PRACTICE_TABS = [["konus", "Konuşma", "konusma"], ["yaz", "Yazma", "yazma"], ["kelime", "Kelime", "kelime"]];
+  const practiceTabs = (examId) => PRACTICE_TABS.filter(([, , k]) => A.practice?.[examId]?.[k]);
+  const tabsFor = (examId) => [...TABS.slice(0, 3), ...practiceTabs(examId), ...TABS.slice(3)];
+  const practiceMode = (tab) => PRACTICE_TABS.find(([id]) => id === tab)?.[2];
   const practiceHooks = (examId) => ({
     done: (id) => !!store.data[examId].pratik?.[id],
+    vocab: () => (store.data[examId].kelime ||= {}),
+    save,
     onResult(alan, id, ok) {
       if (store.data[examId].sample) store.data[examId] = emptyData();
       const dt = store.data[examId];
@@ -561,10 +566,10 @@
   });
 
   function renderApp() {
-    if (PRACTICE_TABS.some(([id]) => id === store.tab) && !A.practice?.[store.exam]) store.tab = "panel";
+    if (practiceMode(store.tab) && !practiceTabs(store.exam).some(([id]) => id === store.tab)) store.tab = "panel";
     const examId = store.exam, data = store.data[examId], d = derive(examId, data);
     let body = "";
-    if (store.tab === "konus" || store.tab === "yaz") body = `<div id="pr-root" class="pr"></div>`;
+    if (practiceMode(store.tab)) body = `<div id="pr-root" class="pr"></div>`;
     else if (store.tab === "panel") body = viewPanel(d, data);
     else if (store.tab === "tani") body = viewTani(d, data);
     else if (store.tab === "coz") body = viewCoz(d, data);
@@ -584,7 +589,7 @@
       ${body}
     </div>`;
     afterAppRender(examId, data, d);
-    if (store.tab === "konus" || store.tab === "yaz") PRACTICE.mount(document.getElementById("pr-root"), A.practice[examId], store.tab === "konus" ? "konusma" : "yazma", practiceHooks(examId));
+    if (practiceMode(store.tab)) PRACTICE.mount(document.getElementById("pr-root"), A.practice[examId], practiceMode(store.tab), practiceHooks(examId));
   }
 
   function viewPanel(d, data) {
@@ -1461,7 +1466,7 @@
 
   // Mac'in gördüğü sayfa bağlamı. Çözülmemiş sorunun doğru cevabı bağlama girmez.
   MAC.setContext(() => {
-    const lc = LESSONS.context() || LESSONS.anlatimContext() || (route().view === "app" && (store.tab === "konus" || store.tab === "yaz") ? PRACTICE.context() : null); if (lc) return lc;
+    const lc = LESSONS.context() || LESSONS.anlatimContext() || (route().view === "app" && practiceMode(store.tab) ? PRACTICE.context() : null); if (lc) return lc;
     const r = route();
     if (r.view === "program") { const p = bySlug[r.slug]; return { page: `Program sayfası: ${p.title}`, context: `${p.summary} ${p.body.join(" ")}` }; }
     if (r.view === "module") { const m = bySlug.robotik.modules.find((x) => x.slug === r.slug); return { page: `Robotik modülü: ${m.title}`, context: `${m.desc} Yaş: ${m.age}. Ders sayısı: ${m.lessons}.` }; }
