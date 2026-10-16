@@ -93,6 +93,21 @@ ACADEMIA.programs = [
     summary: "Kamerayla duruşun analiz edilir; tespit edilen bozukluğa göre düzeltici egzersiz programı hazırlanır, egzersizi doğru yapınca yeşile döner.",
   },
   {
+    slug: "fen-lab", group: "deneyim", title: "Sanal Fen Laboratuvarı", featured: true, soon: true, image: "img/fen-lab.svg",
+    fact: "Fizik ve kimya deneyleri",
+    summary: "Eğik atış, elektrik devresi, titrasyon, mercek: deneyleri tarayıcıda kur, değişkenleri değiştir, sonucu hemen gör.",
+  },
+  {
+    slug: "telaffuz", group: "deneyim", title: "Telaffuz Koçu", featured: true, soon: true, image: "img/telaffuz.svg",
+    fact: "Mikrofonla konuşma pratiği",
+    summary: "İngilizce cümleyi sesli söylersin; her kelimenin telaffuzu ayrı puanlanır, zorlandığın sesler tekrar karşına çıkar.",
+  },
+  {
+    slug: "isaret-dili", group: "deneyim", title: "İşaret Dili", featured: true, soon: true, image: "img/isaret-dili.svg",
+    fact: "Kamera ile el izleme",
+    summary: "Türk İşaret Dili'ni kamerayla öğren: ekranda gösterilen işareti yaparsın, elinin pozisyonu eşleşince yeşile döner.",
+  },
+  {
     slug: "tus", group: "sinav", title: "TUS Hazırlık",
     fact: "Temel + Klinik · 2 × 100 soru",
     summary: "Seviye tespitiyle başlayan, zayıf olduğun alanlara göre her gün yeniden kurulan bir tıpta uzmanlık hazırlığı.",

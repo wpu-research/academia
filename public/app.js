@@ -180,7 +180,7 @@
         <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
           <p>Her programda seviye tespiti, kişisel plan ve ilerleme takibi. Kodlama ve Matematik'te her seviye oyunlu.</p></div>
         <div class="cards cards-3">${ACTIVE.filter((p) => !p.featured).map(card).join("")}</div>
-        <div class="soon-head"><h3>Yeni Deneyimler</h3><p class="muted">Kamerayla hareket ve tarayıcıda müzik.</p></div>
+        <div class="soon-head"><h3>Yeni Deneyimler</h3><p class="muted">Kamerayla hareket, mikrofonla konuşma, tarayıcıda müzik ve deney.</p></div>
         <div class="cards cards-3">${ACTIVE.filter((p) => p.featured).map((p) => p.soon
           ? `<div class="card card-soon" aria-disabled="true"><div class="card-img"><img src="${p.image}" alt="" loading="lazy" width="800" height="500"></div><div class="card-body"><h3>${esc(p.title)}</h3><div class="card-meta"><span>${esc(p.fact)}</span></div><p>${esc(p.summary)}</p><span class="chip chip-soon soon">Yakında</span></div></div>`
           : card(p)).join("")}</div>

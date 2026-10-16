@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><rect width="800" height="500" fill="#2a1a12"/>
+<line x1="60" y1="420" x2="760" y2="420" stroke="#5a3a26" stroke-width="4"/>
+<path d="M110 410 Q330 40 560 410" fill="none" stroke="#e0aa76" stroke-width="4" stroke-dasharray="10 9"/>
+<g fill="#e0aa76"><circle cx="160" cy="330" r="9"/><circle cx="220" cy="245" r="9"/><circle cx="285" cy="195" r="9"/><circle cx="350" cy="180" r="9"/><circle cx="415" cy="200" r="9"/><circle cx="478" cy="258" r="9"/></g>
+<circle cx="535" cy="350" r="16" fill="#3f7d3a"/>
+<g transform="translate(110 410) rotate(-58)"><rect x="-6" y="-14" width="80" height="28" rx="6" fill="#c4824f"/></g><circle cx="110" cy="410" r="20" fill="#5a3a26"/>
+<path d="M640 270 h40 v70 l40 70 h-120 l40 -70 z" fill="none" stroke="#f6e3bf" stroke-width="5" stroke-linejoin="round"/>
+<path d="M613 380 l27 -40 h40 l27 40 l13 30 h-120 z" fill="#3f7d3a" opacity=".85"/>
+<circle cx="655" cy="360" r="6" fill="#7fbf6a"/><circle cx="672" cy="385" r="4" fill="#7fbf6a"/>
+<text x="350" y="140" fill="#d2c2b2" font-family="Poppins, sans-serif" font-size="22" text-anchor="middle">v₀ = 20 m/s · 58°</text></svg>
