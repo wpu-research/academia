@@ -674,6 +674,22 @@
       <div class="game-streak"><b class="num">${g.streak}</b><span>doğru seri</span></div></div>`;
   }
 
+  // Dinleme soruları: metin tarayıcının sesiyle okunur; ses yoksa döküm açık gelir.
+  const canSpeak = "speechSynthesis" in window;
+  function speak({ lang, text }) {
+    if (!canSpeak) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = lang; u.rate = 0.9;
+    const v = speechSynthesis.getVoices().find((x) => x.lang.replace("_", "-").startsWith(lang));
+    if (v) u.voice = v;
+    speechSynthesis.speak(u);
+  }
+  function sayBox(s) {
+    return `<div class="say">${canSpeak ? `<button type="button" class="btn btn-outline" data-act="say">▶ Dinle</button>` : ""}
+      <details ${canSpeak ? "" : "open"}><summary>Metni göster</summary><p lang="${esc(s.lang)}">${esc(s.text)}</p></details></div>`;
+  }
+
   function questionView(q, { mode, progress, showReason }) {
     const it = q.item;
     const ex = mode === "deneme";
@@ -699,7 +715,7 @@
     return `<div class="question">
       ${progress ? `<div class="progress" aria-hidden="true"><i style="width:${(progress[0] / progress[1]) * 100}%"></i></div>` : ""}
       <div class="q-top"><div class="chips">${chips}</div>${progress ? `<span class="muted num">Soru ${progress[0]} / ${progress[1]}</span>` : ""}</div>
-      <p class="q-text">${esc(it.q)}</p>${it.code ? `<pre class="q-code"><code>${esc(it.code)}</code></pre>` : ""}${conf}<div class="opts">${opts}</div>${after}<div class="q-actions">${actions}</div></div>`;
+      ${it.say ? sayBox(it.say) : ""}<p class="q-text">${esc(it.q)}</p>${it.code ? `<pre class="q-code"><code>${esc(it.code)}</code></pre>` : ""}${conf}<div class="opts">${opts}</div>${after}<div class="q-actions">${actions}</div></div>`;
   }
 
   function quotaTable(d, n) {
@@ -1151,6 +1167,7 @@
 
     if (!session) return;
     const q = session.q;
+    if (act === "say") { if (q.item.say) speak(q.item.say); return; }
     if (act === "conf") { q.conf = +el.dataset.v; renderApp(); return; }
     if (act === "choose") { q.chosen = +el.dataset.i; renderApp(); return; }
 
