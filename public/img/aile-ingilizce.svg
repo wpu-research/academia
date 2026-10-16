@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500"><rect width="800" height="500" fill="#2a1a12"/>
-<path d="M90 250 L230 130 L370 250" fill="none" stroke="#e0aa76" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
-<path d="M120 235 V400 H340 V235" fill="none" stroke="#e0aa76" stroke-width="12" stroke-linejoin="round"/>
-<g fill="#c4824f"><circle cx="190" cy="275" r="24"/><path d="M152 395 q0 -78 38 -78 q38 0 38 78 z"/><circle cx="272" cy="292" r="18"/><path d="M244 395 q0 -60 28 -60 q28 0 28 60 z"/></g>
-<path d="M430 120 h280 a30 30 0 0 1 30 30 v110 a30 30 0 0 1 -30 30 h-190 l-55 50 v-50 h-35 a30 30 0 0 1 -30 -30 v-110 a30 30 0 0 1 30 -30 z" fill="none" stroke="#e0aa76" stroke-width="10" stroke-linejoin="round"/>
-<text x="570" y="222" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="64" font-weight="700" fill="#fbf5ee">Hello!</text>
-<rect x="600" y="360" width="120" height="70" rx="35" fill="#3f7d3a"/><text x="660" y="408" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="38" font-weight="800" fill="#fbf5ee">A1</text>
-</svg>

@@ -194,7 +194,7 @@ ACADEMIA.programs = [
     body: ["Seviye tespitinden çıkan eksik listesi eğitmeninle paylaşılır. Dersler bu listeye göre planlanır, ders aralarındaki çalışmalar platformdan takip edilir."],
   },
   {
-    slug: "aile-almanca", group: "aile", title: "Aile Birleşimi · Almanca", engine: "almanca", image: "img/aile-almanca.svg",
+    slug: "aile-almanca", group: "aile", title: "Aile Birleşimi · Almanca", engine: "almanca",
     fact: "Ücretsiz · A1 · 14 konu · 200 soru · 317 kelime",
     voiceCredit: "Seslendirme: Piper, açık kaynak ses (Thorsten).",
     summary: "Almanya'ya aile birleşimi başvurusu için istenen A1 düzeyi Almanca sınavına (ör. Goethe-Zertifikat A1: Start Deutsch 1) hazırlık.",
@@ -223,7 +223,7 @@ ACADEMIA.programs = [
     ],
   },
   {
-    slug: "aile-ingilizce", group: "aile", title: "Aile Birleşimi · İngilizce", engine: "lifeskills", image: "img/aile-ingilizce.svg",
+    slug: "aile-ingilizce", group: "aile", title: "Aile Birleşimi · İngilizce", engine: "lifeskills",
     fact: "Ücretsiz · A1, A2, B1 · 26 konu · 180 soru",
     summary: "Birleşik Krallık aile (eş/partner) vizesi yolu için İngilizce konuşma ve dinleme hazırlığı: ilk başvuruda A1, uzatmada A2, kalıcı oturumda B1.",
     body: [

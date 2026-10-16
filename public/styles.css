@@ -7,6 +7,7 @@
   --on-brand: #ffffff;
   --deep: #2a1a12;
   --deep-2: #4a2e1f;
+  --deep-foot: #1a0f0a; /* alt bilgi: koyu bantlardan bir ton koyu */
   --on-deep: #fbf5ee;
   --on-deep-muted: #d2c2b2;
   --deep-ink: #2a1a12;
@@ -33,7 +34,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --brand: #c98a52; --brand-strong: #dda46f; --brand-soft: #3a2618; --on-brand: #1c120c;
-    --deep: #120b07; --deep-2: #5a3a26; --on-deep: #f3ebe2; --on-deep-muted: #b9a796; --deep-ink: #f3ebe2;
+    --deep: #120b07; --deep-2: #5a3a26; --deep-foot: #090504; --on-deep: #f3ebe2; --on-deep-muted: #b9a796; --deep-ink: #f3ebe2;
     --ink: #f1e8de; --muted: #b3a292; --line: #3b2c22;
     --bg: #16100c; --bg-soft: #1e1611; --surface: #261c16;
     --good: #7fbf6a; --good-soft: #1c2a17; --warn: #e3a648; --warn-soft: #33260f; --bad: #f07468; --bad-soft: #3a1a18;
@@ -43,7 +44,7 @@
 }
 :root[data-theme="dark"] {
   --brand: #c98a52; --brand-strong: #dda46f; --brand-soft: #3a2618; --on-brand: #1c120c;
-  --deep: #120b07; --deep-2: #5a3a26; --on-deep: #f3ebe2; --on-deep-muted: #b9a796; --deep-ink: #f3ebe2;
+  --deep: #120b07; --deep-2: #5a3a26; --deep-foot: #090504; --on-deep: #f3ebe2; --on-deep-muted: #b9a796; --deep-ink: #f3ebe2;
   --ink: #f1e8de; --muted: #b3a292; --line: #3b2c22;
   --bg: #16100c; --bg-soft: #1e1611; --surface: #261c16;
   --good: #7fbf6a; --good-soft: #1c2a17; --warn: #e3a648; --warn-soft: #33260f; --bad: #f07468; --bad-soft: #3a1a18;
@@ -200,7 +201,7 @@ label.field { display: grid; gap: 6px; font-size: 13px; font-weight: 500; }
 .form-note { font-size: 14px; padding: 12px 14px; border-radius: var(--radius); background: var(--good-soft); color: var(--good); }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--deep); color: var(--on-deep-muted); font-size: 14px; }
+.site-footer { background: var(--deep-foot); border-top: 1px solid rgba(255,255,255,.08); color: var(--on-deep-muted); font-size: 14px; }
 .site-footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; padding-block: 64px 40px; }
 .site-footer h4 { color: var(--on-deep); font-size: 16px; margin-bottom: 14px; }
 .site-footer a { color: var(--on-deep-muted); text-decoration: none; display: block; padding: 3px 0; }

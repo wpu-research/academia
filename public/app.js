@@ -188,7 +188,11 @@
       <div class="wrap">
         <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
           <p>Her programda seviye tespiti, kişisel plan ve ilerleme takibi. Kodlama ve Matematik'te her seviye oyunlu.</p></div>
-        <div class="cards cards-3">${ACTIVE.filter((p) => !p.featured).map(card).join("")}</div>
+        <div class="cards cards-3">${ACTIVE.filter((p) => !p.featured).map(card).join("")}
+          <a class="card" href="#basla">
+            <div class="card-img"><img src="img/seviye.jpg" alt="" loading="lazy" width="800" height="500"></div>
+            <div class="card-body"><h3>Seviyeni 15 dakikada ölç</h3><div class="card-meta"><span>Ücretsiz · her program için</span></div>
+              <p>Programını seç, kısa seviye tespitini çöz; alan alan durumunu ve 14 günlük çalışma planını hemen gör.</p></div></a></div>
         <details class="soon-fold">
         <summary class="soon-head"><h3>Yeni Deneyimler</h3><p class="muted">Kamerayla hareket, mikrofonla konuşma, tarayıcıda müzik ve deney.</p></summary>
         <div class="cards cards-3">${ACTIVE.filter((p) => p.featured).map((p) => p.soon
@@ -199,7 +203,6 @@
         <summary class="soon-head"><h3>Yakında</h3><p class="muted">Bu programlar hazırlanıyor.</p></summary>
         <div class="cards cards-passive">
           ${PASSIVE.map(passiveCard).join("")}
-          <div class="card card-cta is-passive" aria-disabled="true"><div><span class="eyebrow">Ücretsiz</span><h3>Seviyeni 15 dakikada ölç</h3></div><p>Seviye tespitini çöz, alan alan durumunu ve 14 günlük planını gör.</p><span class="chip chip-line soon">Yakında</span></div>
           <div class="card card-cta is-passive" aria-disabled="true"><div><span class="eyebrow">Kurumlar</span><h3>Okullar ve kurumlar için</h3></div><p>Sınıf yönetimi, ödev takvimi ve öğrenci ilerleme raporları.</p><span class="chip chip-line soon">Yakında</span></div>
         </div>
         </details>
