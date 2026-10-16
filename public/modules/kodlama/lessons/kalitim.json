@@ -1,0 +1,181 @@
+{
+ "id": "kalitim",
+ "title": "Kalıtım ve çok biçimlilik",
+ "level": "Seviye 4 · Orta-İleri",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "Kalıtım ve super(), metot ezme, isinstance ve soyut sınıflar.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Hayvan:\n    def ses(self):\n        return \"...\"\n\nclass Kedi(Hayvan):\n    def ses(self):\n        return \"miyav\"\n\nclass Balik(Hayvan):\n    pass\n\nprint(Kedi().ses(), Balik().ses())",
+   "options": [
+    "miyav ...",
+    "... ...",
+    "miyav miyav",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Kedi ses metodunu ezer (override). Balik ezmediği için üst sınıfınkini kullanır."
+  },
+  {
+   "id": "s2",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. super() ile üst sınıfın __init__'inin nasıl çağrıldığına bak.",
+   "code": "class Arac:\n    def __init__(self, tekerlek):\n        self.tekerlek = tekerlek\n\nclass Bisiklet(Arac):\n    def __init__(self, renk):\n        super().__init__(2)\n        self.renk = renk\n\nb = Bisiklet(\"mavi\")\nprint(b.tekerlek, b.renk)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "Arac": "sınıf Arac"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 9,
+     "vars": {
+      "Arac": "sınıf Arac",
+      "Bisiklet": "sınıf Bisiklet"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "self": "Bisiklet nesnesi",
+      "renk": "'mavi'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "self": "Bisiklet nesnesi",
+      "tekerlek": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "self": "Bisiklet nesnesi",
+      "renk": "'mavi'"
+     },
+     "out": ""
+    },
+    {
+     "line": 10,
+     "vars": {
+      "Arac": "sınıf Arac",
+      "Bisiklet": "sınıf Bisiklet",
+      "b": "Bisiklet nesnesi"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "Arac": "sınıf Arac",
+      "Bisiklet": "sınıf Bisiklet",
+      "b": "Bisiklet nesnesi"
+     },
+     "out": "2 mavi\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "super().__init__(2), üst sınıfın kurulumunu çalıştırır; böylece tekerlek ayarlanır, ardından renk eklenir."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Sekil:\n    def alan(self):\n        return 0\n\nclass Kare(Sekil):\n    def __init__(self, a):\n        self.a = a\n    def alan(self):\n        return self.a ** 2\n\nclass Daire(Sekil):\n    def __init__(self, r):\n        self.r = r\n    def alan(self):\n        return 3 * self.r ** 2\n\nprint(sum(s.alan() for s in [Kare(2), Daire(1)]))",
+   "options": [
+    "7",
+    "4",
+    "3",
+    "0"
+   ],
+   "answer": 0,
+   "why": "Çok biçimlilik: aynı alan() çağrısı her nesnede kendi sınıfının metodunu çalıştırır. 4 + 3 = 7."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class A:\n    pass\n\nclass B(A):\n    pass\n\nprint(isinstance(B(), A), issubclass(A, B))",
+   "options": [
+    "True False",
+    "False True",
+    "True True",
+    "False False"
+   ],
+   "answer": 0,
+   "why": "B, A'nın alt sınıfıdır: B nesnesi aynı zamanda bir A'dır. Ama A, B'nin alt sınıfı değildir."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "from abc import ABC, abstractmethod\n\nclass Odeme(ABC):\n    @abstractmethod\n    def ode(self, tutar):\n        pass\n\nOdeme()",
+   "options": [
+    "TypeError hatası verir",
+    "Bir Odeme nesnesi oluşur",
+    "None döner",
+    "AttributeError hatası verir"
+   ],
+   "answer": 0,
+   "why": "Soyut metodu olan sınıftan doğrudan nesne üretilemez; önce bir alt sınıf o metodu yazmalıdır."
+  },
+  {
+   "id": "s6",
+   "type": "parsons",
+   "prompt": "Üst sınıfın selamına ekleme yapan bir alt sınıf kur.",
+   "lines": [
+    "class Kisi:",
+    "    def selam(self):",
+    "        return \"Merhaba\"",
+    "class Ogrenci(Kisi):",
+    "    def selam(self):",
+    "        return super().selam() + \", ben öğrenciyim\"",
+    "print(Ogrenci().selam())"
+   ],
+   "why": "Alt sınıf super() ile üst sınıfın sonucunu alır ve üstüne ekler: Merhaba, ben öğrenciyim."
+  }
+ ]
+}

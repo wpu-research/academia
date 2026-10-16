@@ -1,0 +1,93 @@
+{
+ "id": "oruntuler",
+ "title": "Örüntüler",
+ "level": "İlkokul 3 · Ortaokul 6–7",
+ "alan": "Ortaokul",
+ "minutes": 6,
+ "summary": "Büyüyen bir şekil örüntüsünün kuralını bul ve istediğin adımı hesapla.",
+ "sims": [
+  "oruntu"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Kaydırıcıyla adımları ilerlet. Gri noktalar hep aynı kalıyor, kahverengi noktalar her adımda 3 artıyor.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 3,
+    "b": 1,
+    "n": 1
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Örüntünün **4. adımını** göster.",
+   "sim": {
+    "kind": "oruntu",
+    "a": 3,
+    "b": 1,
+    "n": 1
+   },
+   "goal": "4. adım",
+   "check": {
+    "key": "n",
+    "eq": 4
+   },
+   "why": "4. adımda 3 × 4 + 1 = 13 nokta var."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu örüntünün n. adımındaki nokta sayısı nedir?",
+   "options": [
+    "3n + 1",
+    "n + 3",
+    "3n",
+    "4n"
+   ],
+   "answer": 0,
+   "why": "Her adımda 3 nokta ekleniyor (3n) ve başta 1 sabit nokta var (+1)."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "10. adımda kaç nokta olur?",
+   "options": [
+    "31",
+    "30",
+    "13",
+    "40"
+   ],
+   "answer": 0,
+   "why": "3 × 10 + 1 = 31."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "2, 5, 8, 11, … örüntüsünün kuralı hangisidir?",
+   "options": [
+    "3n − 1",
+    "2n + 3",
+    "n + 3",
+    "3n + 2"
+   ],
+   "answer": 0,
+   "why": "Terimler 3'er artıyor; n = 1 için 3 · 1 − 1 = 2."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "1, 4, 9, 16, … örüntüsünde sıradaki terim nedir?",
+   "options": [
+    "25",
+    "20",
+    "24",
+    "32"
+   ],
+   "answer": 0,
+   "why": "Terimler kare sayılar: 1², 2², 3², 4², sırada 5² = 25."
+  }
+ ]
+}

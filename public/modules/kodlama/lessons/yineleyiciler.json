@@ -1,0 +1,252 @@
+{
+ "id": "yineleyiciler",
+ "title": "Yineleyiciler ve üreteçler",
+ "level": "Seviye 4 · Orta-İleri",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "iter ve next, kendi yineleyicin, yield ile üreteç, üreteç ifadeleri ve itertools.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "it = iter([10, 20, 30])\nprint(next(it), next(it))",
+   "options": [
+    "10 20",
+    "10 10",
+    "20 30",
+    "[10, 20, 30]"
+   ],
+   "answer": 0,
+   "why": "iter bir yineleyici üretir; her next bir sonraki elemanı verir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "it = iter([1])\nnext(it)\nnext(it)",
+   "options": [
+    "StopIteration hatası verir",
+    "None döner",
+    "1 döner",
+    "IndexError hatası verir"
+   ],
+   "answer": 0,
+   "why": "Elemanlar bitince next StopIteration fırlatır. for döngüsü bu hatayı kendisi yakalayıp durur."
+  },
+  {
+   "id": "s3",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. yield'in fonksiyonu nasıl duraklatıp devam ettirdiğine bak.",
+   "code": "def geri_say(n):\n    while n > 0:\n        yield n\n        n -= 1\n\nfor s in geri_say(3):\n    print(s)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "geri_say": "fonksiyon geri_say"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "n": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "3"
+     },
+     "out": "3\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "n": "3"
+     },
+     "out": "3\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "2"
+     },
+     "out": "3\n"
+    },
+    {
+     "line": 2,
+     "vars": {
+      "n": "2"
+     },
+     "out": "3\n"
+    },
+    {
+     "line": 6,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "2"
+     },
+     "out": "3\n"
+    },
+    {
+     "line": 5,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "2"
+     },
+     "out": "3\n2\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "n": "2"
+     },
+     "out": "3\n2\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "1"
+     },
+     "out": "3\n2\n"
+    },
+    {
+     "line": 2,
+     "vars": {
+      "n": "1"
+     },
+     "out": "3\n2\n"
+    },
+    {
+     "line": 6,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "1"
+     },
+     "out": "3\n2\n"
+    },
+    {
+     "line": 5,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "1"
+     },
+     "out": "3\n2\n1\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "n": "1"
+     },
+     "out": "3\n2\n1\n"
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "0"
+     },
+     "out": "3\n2\n1\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "geri_say": "fonksiyon geri_say",
+      "s": "1"
+     },
+     "out": "3\n2\n1\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "yield bir değer verir ve fonksiyonu olduğu yerde dondurur; sonraki turda kaldığı yerden devam eder."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kareler = (x * x for x in range(1_000_000))\nprint(next(kareler), next(kareler), next(kareler))",
+   "options": [
+    "0 1 4",
+    "1 4 9",
+    "0 1 2",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Üreteç ifadesi değerleri istendikçe tek tek üretir; bir milyonluk liste bellekte hiç kurulmaz."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class OnaKadar:\n    def __init__(self):\n        self.i = 0\n    def __iter__(self):\n        return self\n    def __next__(self):\n        self.i += 2\n        if self.i > 10:\n            raise StopIteration\n        return self.i\n\nprint(list(OnaKadar()))",
+   "options": [
+    "[2, 4, 6, 8, 10]",
+    "[0, 2, 4, 6, 8, 10]",
+    "[2, 4, 6, 8, 10, 12]",
+    "[1, 2, 3, 4, 5]"
+   ],
+   "answer": 0,
+   "why": "__iter__ ve __next__ yazan sınıf yineleyici olur. 12 > 10 olunca StopIteration ile durur."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import itertools\nprint(list(itertools.combinations(\"abc\", 2)))",
+   "options": [
+    "[('a', 'b'), ('a', 'c'), ('b', 'c')]",
+    "[('a', 'b'), ('b', 'a'), ('a', 'c'), ('c', 'a'), ('b', 'c'), ('c', 'b')]",
+    "[('a', 'b', 'c')]",
+    "['ab', 'ac', 'bc']"
+   ],
+   "answer": 0,
+   "why": "combinations sırası önemsiz ikilileri verir; (a, b) ile (b, a) aynı sayılır."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Çift sayıları üreten bir üreteç yazıp ilk dördünü toplayan programı kur.",
+   "lines": [
+    "def ciftler():",
+    "    n = 0",
+    "    while True:",
+    "        yield n",
+    "        n += 2",
+    "import itertools",
+    "ilk4 = itertools.islice(ciftler(), 4)",
+    "print(sum(ilk4))"
+   ],
+   "why": "Sonsuz üreteçten islice ile ilk dört değer alınır: 0 + 2 + 4 + 6 = 12."
+  }
+ ]
+}

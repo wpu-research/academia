@@ -1,0 +1,182 @@
+{
+ "id": "kavrama-ifadeleri",
+ "title": "Kavrama ifadeleri (comprehension)",
+ "level": "Seviye 3 · Orta",
+ "alan": "Orta",
+ "minutes": 8,
+ "summary": "Liste, sözlük ve küme kavramalarıyla tek satırda yeni koleksiyonlar üret.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Kavrama ifadesi, bir döngüyle liste kurmanın kısa yazımıdır: `[ifade for x in kaynak if koşul]`. Önce ne üretileceği, sonra nereden alınacağı, en sonda isteğe bağlı koşul yazılır."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print([x * 2 for x in range(4)])",
+   "options": [
+    "[0, 2, 4, 6]",
+    "[2, 4, 6, 8]",
+    "[0, 1, 2, 3]",
+    "[0, 2, 4, 6, 8]"
+   ],
+   "answer": 0,
+   "why": "x sırayla 0, 1, 2, 3 olur; her biri 2 ile çarpılır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print([x for x in range(10) if x % 3 == 0])",
+   "options": [
+    "[0, 3, 6, 9]",
+    "[3, 6, 9]",
+    "[0, 3, 6]",
+    "[1, 4, 7]"
+   ],
+   "answer": 0,
+   "why": "Yalnız 3'e tam bölünen değerler alınır: 0, 3, 6, 9."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kelimeler = [\"elma\", \"kiraz\"]\nprint({k: len(k) for k in kelimeler})",
+   "options": [
+    "{'elma': 4, 'kiraz': 5}",
+    "[4, 5]",
+    "{4: 'elma', 5: 'kiraz'}",
+    "{'elma', 'kiraz'}"
+   ],
+   "answer": 0,
+   "why": "Sözlük kavraması `{anahtar: değer for ...}` biçimindedir; her kelime kendi uzunluğuyla eşleşir."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print({x % 3 for x in range(10)})",
+   "options": [
+    "{0, 1, 2}",
+    "[0, 1, 2]",
+    "{0, 1, 2, 0, 1, 2}",
+    "{3}"
+   ],
+   "answer": 0,
+   "why": "Küme kavraması tekrar eden değerleri atar; kalanlar yalnız 0, 1, 2 olabilir."
+  },
+  {
+   "id": "s6",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. İç içe kavramanın satırları nasıl düzleştirdiğine bak.",
+   "code": "tablo = [[1, 2], [3, 4]]\nduz = [s for satir in tablo for s in satir]\nprint(duz)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "satir": "[1, 2]",
+      "s": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "satir": "None",
+      "s": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "satir": "None",
+      "s": "None"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "satir": "[3, 4]",
+      "s": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "satir": "None",
+      "s": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "satir": "None",
+      "s": "None"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "duz": "[1, 2, 3, 4]"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "tablo": "[[1, 2], [3, 4]]",
+      "duz": "[1, 2, 3, 4]"
+     },
+     "out": "[1, 2, 3, 4]\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Dış döngü satırları, iç döngü her satırdaki sayıları gezer; sonuç tek bir liste olur."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "1'den 5'e kadar sayıların karelerinden çift olanları yazdıran programı kur.",
+   "lines": [
+    "kareler = [n * n for n in range(1, 6)]",
+    "ciftler = [k for k in kareler if k % 2 == 0]",
+    "print(ciftler)"
+   ],
+   "why": "Kareler 1, 4, 9, 16, 25; bunlardan çift olanlar [4, 16]."
+  }
+ ]
+}

@@ -1,0 +1,178 @@
+{
+ "id": "dunder-metotlar",
+ "title": "Özel (dunder) metotlar",
+ "level": "Seviye 4 · Orta-İleri",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "__str__ ve __repr__, karşılaştırma, __len__ ve __getitem__, operatör aşırı yükleme ve dataclass.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Nokta:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __str__(self):\n        return f\"({self.x}, {self.y})\"\n\nprint(Nokta(2, 3))",
+   "options": [
+    "(2, 3)",
+    "Nokta(2, 3)",
+    "<__main__.Nokta object>",
+    "2 3"
+   ],
+   "answer": 0,
+   "why": "print bir nesneyi yazarken __str__ metodunu kullanır."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Para:\n    def __init__(self, tl):\n        self.tl = tl\n    def __eq__(self, diger):\n        return self.tl == diger.tl\n    def __lt__(self, diger):\n        return self.tl < diger.tl\n\nprint(Para(5) == Para(5), Para(3) < Para(1))",
+   "options": [
+    "True False",
+    "False False",
+    "True True",
+    "False True"
+   ],
+   "answer": 0,
+   "why": "__eq__ ve __lt__ tanımlanınca == ve < işleçleri bizim kuralımızla çalışır. Normalde iki ayrı nesne == ile eşit sayılmazdı."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Raf:\n    def __init__(self, kitaplar):\n        self.kitaplar = kitaplar\n    def __len__(self):\n        return len(self.kitaplar)\n    def __getitem__(self, i):\n        return self.kitaplar[i]\n\nr = Raf([\"Sefiller\", \"Martı\"])\nprint(len(r), r[1])",
+   "options": [
+    "2 Martı",
+    "2 Sefiller",
+    "1 Martı",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "__len__ len() için, __getitem__ köşeli parantez erişimi için çağrılır."
+  },
+  {
+   "id": "s4",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. + işlecinin __add__ metodunu nasıl çağırdığına bak.",
+   "code": "class Vektor:\n    def __init__(self, x, y):\n        self.x, self.y = x, y\n    def __add__(self, o):\n        return Vektor(self.x + o.x, self.y + o.y)\n\nv = Vektor(1, 2) + Vektor(3, 4)\nprint(v.x, v.y)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "Vektor": "sınıf Vektor"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "self": "Vektor nesnesi",
+      "x": "1",
+      "y": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "self": "Vektor nesnesi",
+      "x": "3",
+      "y": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "self": "Vektor nesnesi",
+      "o": "Vektor nesnesi"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "self": "Vektor nesnesi",
+      "x": "4",
+      "y": "6"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "Vektor": "sınıf Vektor",
+      "v": "Vektor nesnesi"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "Vektor": "sınıf Vektor",
+      "v": "Vektor nesnesi"
+     },
+     "out": "4 6\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "a + b yazınca Python a.__add__(b)'yi çağırır. Bu operatör aşırı yüklemedir; yeni vektörün bileşenleri 4 ve 6."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "from dataclasses import dataclass\n\n@dataclass\nclass Ogrenci:\n    ad: str\n    no: int\n\nprint(Ogrenci(\"Ece\", 7))",
+   "options": [
+    "Ogrenci(ad='Ece', no=7)",
+    "Ece 7",
+    "<__main__.Ogrenci object>",
+    "('Ece', 7)"
+   ],
+   "answer": 0,
+   "why": "@dataclass, __init__, __repr__ ve __eq__ metotlarını otomatik yazar."
+  },
+  {
+   "id": "s6",
+   "type": "parsons",
+   "prompt": "Sepetteki ürün sayısını len() ile verecek sınıfı kur.",
+   "lines": [
+    "class Sepet:",
+    "    def __init__(self):",
+    "        self.urunler = []",
+    "    def __len__(self):",
+    "        return len(self.urunler)",
+    "s = Sepet()",
+    "s.urunler.append(\"elma\")",
+    "print(len(s))"
+   ],
+   "why": "__len__ tanımlandığı için len(s) çalışır; sepette 1 ürün var."
+  }
+ ]
+}

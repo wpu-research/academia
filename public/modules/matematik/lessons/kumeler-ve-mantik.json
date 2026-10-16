@@ -1,0 +1,161 @@
+{
+ "id": "kumeler-ve-mantik",
+ "title": "Kümeler ve mantık",
+ "level": "Lise 9 · TYT",
+ "alan": "Lise",
+ "minutes": 8,
+ "summary": "Venn şemasında küme işlemlerini tara, doğruluk tablolarını doldur.",
+ "sims": [
+  "kume-venn",
+  "mantik-tablosu"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "sim",
+   "prompt": "A = {1, 2, 3}, B = {2, 4, 6}. Venn şemasında **A ∩ B** bölgesini tara (bölgeye dokun).",
+   "sim": {
+    "kind": "kume-venn",
+    "elements": {
+     "1": [
+      1,
+      3
+     ],
+     "2": [
+      2
+     ],
+     "4": [
+      4,
+      6
+     ],
+     "8": [
+      5
+     ]
+    }
+   },
+   "goal": "Yalnız kesişim taralı",
+   "check": {
+    "key": "mask",
+    "eq": 2
+   },
+   "why": "A ∩ B, hem A'da hem B'de olan elemanlardır: {2}."
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Şimdi **A ∪ B**'yi tara.",
+   "sim": {
+    "kind": "kume-venn",
+    "elements": {
+     "1": [
+      1,
+      3
+     ],
+     "2": [
+      2
+     ],
+     "4": [
+      4,
+      6
+     ],
+     "8": [
+      5
+     ]
+    }
+   },
+   "goal": "A ve B'nin tamamı taralı, dışarısı boş",
+   "check": {
+    "key": "mask",
+    "eq": 7
+   },
+   "why": "Birleşim, A'da ya da B'de olan bütün elemanlardır: {1, 2, 3, 4, 6}."
+  },
+  {
+   "id": "s3",
+   "type": "sim",
+   "prompt": "**A \\ B**'yi (A fark B) tara.",
+   "sim": {
+    "kind": "kume-venn",
+    "elements": {
+     "1": [
+      1,
+      3
+     ],
+     "2": [
+      2
+     ],
+     "4": [
+      4,
+      6
+     ],
+     "8": [
+      5
+     ]
+    }
+   },
+   "goal": "Yalnız A'nın B dışındaki kısmı taralı",
+   "check": {
+    "key": "mask",
+    "eq": 1
+   },
+   "why": "A \\ B, A'da olup B'de olmayan elemanlardır: {1, 3}."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "A = {1, 2, 3} ve B = {2, 4, 6} ise A ∪ B kaç elemanlıdır?",
+   "options": [
+    "5",
+    "6",
+    "3",
+    "1"
+   ],
+   "answer": 0,
+   "why": "s(A ∪ B) = s(A) + s(B) − s(A ∩ B) = 3 + 3 − 1 = 5."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "**p ∧ q** (p ve q) için doğruluk tablosunu doldur.",
+   "sim": {
+    "kind": "mantik-tablosu",
+    "op": "ve"
+   },
+   "goal": "Tablo doğru",
+   "check": {
+    "key": "ok",
+    "eq": 1
+   },
+   "why": "“ve” bağlacı yalnız iki önerme de doğruysa doğrudur."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "**p ⇒ q** (ise) için doğruluk tablosunu doldur.",
+   "sim": {
+    "kind": "mantik-tablosu",
+    "op": "ise"
+   },
+   "goal": "Tablo doğru",
+   "check": {
+    "key": "ok",
+    "eq": 1
+   },
+   "hint": "Koşullu önerme yalnız tek bir durumda yanlıştır.",
+   "why": "p ⇒ q, yalnız p doğru ve q yanlış iken yanlıştır."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "p ⇒ q önermesi ne zaman yanlıştır?",
+   "options": [
+    "p doğru, q yanlış iken",
+    "p yanlış, q doğru iken",
+    "İkisi de yanlış iken",
+    "İkisi de doğru iken"
+   ],
+   "answer": 0,
+   "why": "Bir söz verip (p) tutmamak (q yanlış) koşullu önermeyi bozar; diğer durumlarda önerme doğrudur."
+  }
+ ]
+}

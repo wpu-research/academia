@@ -530,6 +530,323 @@ window.LESSONS = (() => {
     return () => ({ n, sum: el._sum, err: Math.abs(el._sum - exact) });
   };
 
+  // Kaydırıcıları tek yerden bağlar: değerleri st nesnesine yazar, draw ve changed çağırır.
+  function bindSliders(el, st, draw, changed) {
+    el.querySelectorAll("input[data-k]").forEach((i) => i.addEventListener("input", () => { st[i.dataset.k] = +i.value; draw(); changed(); }));
+  }
+  const setVals = (el, st) => el.querySelectorAll("[data-v]").forEach((b) => { b.textContent = fmt(st[b.dataset.v]); });
+
+  // Ölçme: cetvel ve sürüklenen nesne; ölçmeye sıfırdan başlamayı öğretir.
+  SIMS["olcme"] = (el, cfg, changed) => {
+    let start = cfg.start ?? 2;
+    const len = cfg.length ?? 7, U = 38, L = 20;
+    const svg = svgEl("svg", { viewBox: `0 0 ${L * 2 + 15 * U} 150`, class: "sim-svg drag", role: "img", "aria-label": "Cetvel" });
+    el.replaceChildren(svg);
+    function draw() {
+      svg.replaceChildren();
+      svgEl("rect", { x: L - 10, y: 80, width: 15 * U + 20, height: 56, rx: 4, class: "ol-ruler" }, svg);
+      for (let mm = 0; mm <= 150; mm++) {
+        const x = L + (mm / 10) * U, h = mm % 10 === 0 ? 20 : mm % 5 === 0 ? 14 : 8;
+        svgEl("line", { x1: x, x2: x, y1: 80, y2: 80 + h, class: "ol-tick" }, svg);
+        if (mm % 10 === 0) { const t = svgEl("text", { x, y: 120, class: "ol-num" }, svg); t.textContent = mm / 10; }
+      }
+      const x0 = L + start * U;
+      svgEl("rect", { x: x0, y: 34, width: len * U, height: 30, rx: 6, class: "ol-obj", "data-drag": 1 }, svg);
+      svgEl("polygon", { points: `${x0 + len * U},34 ${x0 + len * U + 26},49 ${x0 + len * U},64`, class: "ol-tip" }, svg);
+      [x0, x0 + len * U].forEach((x) => svgEl("line", { x1: x, x2: x, y1: 30, y2: 84, class: "ol-guide" }, svg));
+      const t = svgEl("text", { x: L, y: 20, class: "ol-read" }, svg); t.textContent = `Başlangıç: ${fmt(start, 1)} cm · Bitiş: ${fmt(start + len, 1)} cm`;
+    }
+    let drag = null;
+    svg.addEventListener("pointerdown", (ev) => { if (!ev.target.dataset?.drag) return; drag = svgPoint(svg, ev).x - (L + start * U); svg.setPointerCapture(ev.pointerId); });
+    svg.addEventListener("pointermove", (ev) => { if (drag === null) return; start = Math.max(0, Math.min(15 - len, Math.round(((svgPoint(svg, ev).x - drag - L) / U) * 2) / 2)); draw(); changed(); });
+    svg.addEventListener("pointerup", () => { drag = null; });
+    draw();
+    return () => ({ start, end: start + len });
+  };
+
+  // Katı cisim: birim küplerden dikdörtgenler prizması; hacim, yüzey alanı ve açınım.
+  SIMS["kati-cisim"] = (el, cfg, changed) => {
+    const st = { a: cfg.a ?? 3, b: cfg.b ?? 2, c: cfg.c ?? 2 };
+    let net = false;
+    el.innerHTML = `<div class="plane-wrap"><div class="kc-host"></div><div class="plane-ctrl"><p class="eq kc-v"></p><p class="slope kc-s"></p>
+      ${slider("Uzunluk a", "a", 1, 6, 1, st.a)}${slider("Genişlik b", "b", 1, 6, 1, st.b)}${slider("Yükseklik c", "c", 1, 6, 1, st.c)}
+      <button type="button" class="btn btn-outline btn-small kc-net">Açınımı göster</button></div></div>`;
+    const host = el.querySelector(".kc-host");
+    const iso = (x, y, z, s) => [200 + (x - y) * s * 0.866, 230 + (x + y) * s * 0.5 - z * s];
+    function draw() {
+      const { a, b, c } = st, svg = svgEl("svg", { viewBox: "0 0 400 300", class: "sim-svg", role: "img", "aria-label": `${a} × ${b} × ${c} prizma` });
+      if (!net) {
+        const s = Math.min(30, 200 / (a + b + c));
+        const face = (pts, cls) => svgEl("polygon", { points: pts.map((p) => p.join(",")).join(" "), class: cls }, svg);
+        for (let z = 0; z < c; z++) for (let y = b - 1; y >= 0; y--) for (let x = a - 1; x >= 0; x--) {
+          if (x !== a - 1 && y !== b - 1 && z !== c - 1) continue;
+          face([iso(x, y, z + 1, s), iso(x + 1, y, z + 1, s), iso(x + 1, y + 1, z + 1, s), iso(x, y + 1, z + 1, s)], "kc-top");
+          face([iso(x + 1, y, z, s), iso(x + 1, y + 1, z, s), iso(x + 1, y + 1, z + 1, s), iso(x + 1, y, z + 1, s)], "kc-r");
+          face([iso(x, y + 1, z, s), iso(x + 1, y + 1, z, s), iso(x + 1, y + 1, z + 1, s), iso(x, y + 1, z + 1, s)], "kc-l");
+        }
+      } else {
+        const s = Math.min(22, 380 / (2 * a + 2 * b), 280 / (2 * b + c)), ox = (400 - (2 * a + 2 * b) * s) / 2, oy = (300 - (2 * b + c) * s) / 2;
+        const rect = (x, y, w, h, lab) => { svgEl("rect", { x: ox + x * s, y: oy + y * s, width: w * s, height: h * s, class: "kc-net-f" }, svg); const t = svgEl("text", { x: ox + (x + w / 2) * s, y: oy + (y + h / 2) * s + 4, class: "pl-num" }, svg); t.textContent = lab; };
+        rect(b, 0, a, b, `${a}×${b}`); rect(0, b, b, c, `${b}×${c}`); rect(b, b, a, c, `${a}×${c}`); rect(a + b, b, b, c, `${b}×${c}`); rect(2 * b + a, b, a, c, `${a}×${c}`); rect(b, b + c, a, b, `${a}×${b}`);
+      }
+      host.replaceChildren(svg);
+      el.querySelector(".kc-v").textContent = `Hacim = ${a} × ${b} × ${c} = ${a * b * c} birimküp`;
+      el.querySelector(".kc-s").textContent = `Yüzey alanı = 2 × (${a}×${b} + ${b}×${c} + ${a}×${c}) = ${2 * (a * b + b * c + a * c)} birimkare`;
+      el.querySelector(".kc-net").textContent = net ? "Prizmayı göster" : "Açınımı göster";
+      setVals(el, st);
+    }
+    el.querySelector(".kc-net").addEventListener("click", () => { net = !net; draw(); });
+    bindSliders(el, st, draw, changed); draw();
+    return () => ({ ...st, volume: st.a * st.b * st.c, surface: 2 * (st.a * st.b + st.b * st.c + st.a * st.c) });
+  };
+
+  // Örüntü: n. adımdaki şekil; kural a·n + b nokta (a sütun uzar, b sabit).
+  SIMS["oruntu"] = (el, cfg, changed) => {
+    const st = { n: cfg.n ?? 1 }, a = cfg.a ?? 3, b = cfg.b ?? 1;
+    el.innerHTML = `<div class="or-host"></div>${slider("Adım n", "n", 1, cfg.max ?? 8, 1, st.n)}<p class="slope or-t"></p>`;
+    function draw() {
+      const svg = svgEl("svg", { viewBox: "0 0 600 170", class: "sim-svg", role: "img", "aria-label": "Örüntü" });
+      const show = Math.min(st.n, 4), start = st.n - show + 1;
+      for (let k = 0; k < show; k++) {
+        const n = start + k, ox = 20 + k * 150;
+        for (let i = 0; i < b; i++) svgEl("circle", { cx: ox + 8, cy: 140 - i * 16, r: 6, class: "or-b" }, svg);
+        for (let col = 0; col < n; col++) for (let r = 0; r < a; r++) svgEl("circle", { cx: ox + 24 + col * (n > 6 ? 10 : 16), cy: 140 - r * 16, r: n > 6 ? 4 : 6, class: "or-a" }, svg);
+        const t = svgEl("text", { x: ox + 50, y: 18, class: "pl-ptl" }, svg); t.textContent = `${n}. adım: ${a * n + b}`;
+      }
+      el.querySelector(".or-host").replaceChildren(svg);
+      el.querySelector(".or-t").innerHTML = `${st.n}. adımda <b>${a * st.n + b}</b> nokta var. Gri noktalar her adımda aynı, kahverengi noktalar her adımda ${a} artıyor.`;
+      setVals(el, st);
+    }
+    bindSliders(el, st, draw, changed); draw();
+    return () => ({ n: st.n, count: a * st.n + b });
+  };
+
+  // Dönüşüm: L şeklini öteleme, yansıma ve döndürme ile hedefe oturt.
+  SIMS["donusum"] = (el, cfg, changed) => {
+    const base = cfg.shape || [[1, 1], [3, 1], [3, 2], [2, 2], [2, 4], [1, 4]];
+    let pts = base.map((p) => [...p]);
+    const target = cfg.target || null;
+    const S = 26, O = 182, X = (v) => O + v * S, Y = (v) => O - v * S;
+    el.innerHTML = `<div class="plane-wrap"><div class="plane"></div><div class="plane-ctrl">
+      <div class="bb-ex"><button type="button" class="btn btn-small btn-outline" data-t="L">← 1</button><button type="button" class="btn btn-small btn-outline" data-t="R">1 →</button><button type="button" class="btn btn-small btn-outline" data-t="U">↑ 1</button><button type="button" class="btn btn-small btn-outline" data-t="D">↓ 1</button></div>
+      <div class="bb-ex"><button type="button" class="btn btn-small btn-outline" data-t="mx">x eksenine göre yansıt</button><button type="button" class="btn btn-small btn-outline" data-t="my">y eksenine göre yansıt</button><button type="button" class="btn btn-small btn-outline" data-t="rot">Orijin etrafında 90° döndür</button><button type="button" class="btn btn-small btn-outline" data-t="0">Baştan</button></div>
+      <p class="slope dn-st"></p></div></div>`;
+    const key = (ps) => ps.map((p) => p.join(",")).sort().join(" ");
+    function draw() {
+      const svg = svgEl("svg", { viewBox: "0 0 364 364", class: "sim-svg plane-svg", role: "img", "aria-label": "Dönüşüm" });
+      for (let i = -7; i <= 7; i++) { svgEl("line", { x1: X(i), y1: 0, x2: X(i), y2: 364, class: i ? "pl-grid" : "pl-axis" }, svg); svgEl("line", { x1: 0, y1: Y(i), x2: 364, y2: Y(i), class: i ? "pl-grid" : "pl-axis" }, svg); }
+      if (target) svgEl("polygon", { points: target.map(([x, y]) => `${X(x)},${Y(y)}`).join(" "), class: "dn-target" }, svg);
+      svgEl("polygon", { points: pts.map(([x, y]) => `${X(x)},${Y(y)}`).join(" "), class: "gb-poly" }, svg);
+      el.querySelector(".plane").replaceChildren(svg);
+      el.querySelector(".dn-st").textContent = target ? (key(pts) === key(target) ? "Şekil hedefin üzerinde!" : "Kesikli çizgili hedefe oturt.") : "";
+    }
+    el.querySelectorAll("[data-t]").forEach((btn) => btn.addEventListener("click", () => {
+      const t = btn.dataset.t;
+      pts = t === "0" ? base.map((p) => [...p]) : pts.map(([x, y]) => ({ L: [x - 1, y], R: [x + 1, y], U: [x, y + 1], D: [x, y - 1], mx: [x, -y], my: [-x, y], rot: [-y, x] })[t]);
+      draw(); changed();
+    }));
+    draw();
+    return () => ({ match: target && key(pts) === key(target) ? 1 : 0 });
+  };
+
+  // Saat: yelkovanı sürükle (5 dakikalık adım); akrep onu izler.
+  SIMS["saat"] = (el, cfg, changed) => {
+    let total = (cfg.h ?? 3) * 60 + (cfg.m ?? 0);
+    const C = 150, R = 120;
+    const svg = svgEl("svg", { viewBox: "0 0 300 300", class: "sim-svg drag", tabindex: 0, role: "slider", "aria-label": "Saat" });
+    el.innerHTML = `<div class="plane-wrap"><div class="sa-host"></div><div class="plane-ctrl"><p class="eq sa-d"></p><p class="note">Uzun ibreyi (yelkovan) sürükle ya da ok tuşlarını kullan. Kısa ibre (akrep) kendiliğinden ilerler.</p></div></div>`;
+    el.querySelector(".sa-host").replaceChildren(svg);
+    let lastAng = null;
+    function draw() {
+      svg.replaceChildren();
+      svgEl("circle", { cx: C, cy: C, r: R + 12, class: "sa-face" }, svg);
+      for (let i = 0; i < 60; i++) { const r = (i * 6 * Math.PI) / 180, big = i % 5 === 0; svgEl("line", { x1: C + Math.sin(r) * (R + 2), y1: C - Math.cos(r) * (R + 2), x2: C + Math.sin(r) * (R - (big ? 12 : 5)), y2: C - Math.cos(r) * (R - (big ? 12 : 5)), class: "ao-tick" }, svg); }
+      for (let hh = 1; hh <= 12; hh++) { const r = (hh * 30 * Math.PI) / 180, t = svgEl("text", { x: C + Math.sin(r) * (R - 30), y: C - Math.cos(r) * (R - 30) + 7, class: "sa-num" }, svg); t.textContent = hh; }
+      const m = ((total % 60) + 60) % 60, h = (((total / 60) % 12) + 12) % 12;
+      const hr = (h * 30 * Math.PI) / 180, mr = (m * 6 * Math.PI) / 180;
+      svgEl("line", { x1: C, y1: C, x2: C + Math.sin(hr) * 62, y2: C - Math.cos(hr) * 62, class: "sa-h" }, svg);
+      svgEl("line", { x1: C, y1: C, x2: C + Math.sin(mr) * 100, y2: C - Math.cos(mr) * 100, class: "sa-m" }, svg);
+      svgEl("circle", { cx: C + Math.sin(mr) * 100, cy: C - Math.cos(mr) * 100, r: 10, class: "nl-knob" }, svg);
+      svgEl("circle", { cx: C, cy: C, r: 6, class: "ao-v" }, svg);
+      const hh = Math.floor(h) === 0 ? 12 : Math.floor(h);
+      el.querySelector(".sa-d").textContent = `${String(hh).padStart(2, "0")}.${String(m).padStart(2, "0")}`;
+    }
+    let drag = false;
+    const move = (ev) => {
+      const p = svgPoint(svg, ev); let ang = (Math.atan2(p.x - C, C - p.y) * 180) / Math.PI; if (ang < 0) ang += 360;
+      const mins = Math.round(ang / 30) * 5 % 60, cur = ((total % 60) + 60) % 60;
+      let d = mins - cur; if (d > 30) d -= 60; if (d < -30) d += 60;
+      total += d; draw(); changed();
+    };
+    svg.addEventListener("pointerdown", (ev) => { drag = true; svg.setPointerCapture(ev.pointerId); move(ev); });
+    svg.addEventListener("pointermove", (ev) => { if (drag) move(ev); });
+    svg.addEventListener("pointerup", () => { drag = false; });
+    svg.addEventListener("keydown", (e) => { const d = e.key === "ArrowRight" || e.key === "ArrowUp" ? 5 : e.key === "ArrowLeft" || e.key === "ArrowDown" ? -5 : 0; if (d) { e.preventDefault(); total += d; draw(); changed(); } });
+    draw();
+    return () => { const m = ((total % 60) + 60) % 60, h = Math.floor((((total / 60) % 12) + 12) % 12); return { h: h === 0 ? 12 : h, m }; };
+  };
+
+  // Para: Türk lirası madeni para ve banknotlarla tutar oluştur.
+  SIMS["para"] = (el, cfg, changed) => {
+    const D = [[200, "200 TL", "n"], [100, "100 TL", "n"], [50, "50 TL", "n"], [20, "20 TL", "n"], [10, "10 TL", "n"], [5, "5 TL", "n"], [1, "1 TL", "c"], [0.5, "50 kr", "c"], [0.25, "25 kr", "c"]].filter((d) => !cfg.only || cfg.only.includes(d[0]));
+    const cnt = Object.fromEntries(D.map((d) => [d[0], 0]));
+    function draw() {
+      const total = Math.round(D.reduce((s, [v]) => s + v * cnt[v], 0) * 100) / 100, count = Object.values(cnt).reduce((a, b) => a + b, 0);
+      el.innerHTML = `<div class="pa-pick">${D.map(([v, l, k]) => `<button type="button" class="pa-${k}" data-add="${v}">${l}</button>`).join("")}</div>
+        <div class="pa-tray">${D.filter(([v]) => cnt[v]).map(([v, l, k]) => `<span class="pa-${k} pa-in">${l} × ${cnt[v]}<button type="button" data-rem="${v}" aria-label="${l} çıkar">−</button></span>`).join("") || `<span class="muted">Para eklemek için yukarıdakilere dokun.</span>`}</div>
+        <p class="bb-val"><b class="num">${total.toLocaleString("tr-TR", { minimumFractionDigits: 2 })} TL</b> · ${count} parça</p>`;
+      el.querySelectorAll("[data-add]").forEach((b) => b.addEventListener("click", () => { cnt[b.dataset.add]++; draw(); changed(); }));
+      el.querySelectorAll("[data-rem]").forEach((b) => b.addEventListener("click", () => { cnt[b.dataset.rem]--; draw(); changed(); }));
+    }
+    draw();
+    return () => ({ total: Math.round(D.reduce((s, [v]) => s + v * cnt[v], 0) * 100) / 100, count: Object.values(cnt).reduce((a, b) => a + b, 0) });
+  };
+
+  // Oran karıştırma: kırmızı ve beyaz boya ölçekleri; oluşan ton ve oran.
+  SIMS["oran-karistirma"] = (el, cfg, changed) => {
+    const st = { r: cfg.r ?? 1, w: cfg.w ?? 1 };
+    el.innerHTML = `<div class="plane-wrap"><div class="ok-host"></div><div class="plane-ctrl"><p class="eq ok-t"></p>${slider("Kırmızı ölçek", "r", 0, 12, 1, st.r)}${slider("Beyaz ölçek", "w", 0, 12, 1, st.w)}${cfg.target ? `<p class="slope">Hedef ton: kırmızı : beyaz = ${cfg.target[0]} : ${cfg.target[1]}</p>` : ""}</div></div>`;
+    const mix = (r, w) => { const t = r + w ? r / (r + w) : 0; const c = (a, b) => Math.round(a + (b - a) * t); return `rgb(${c(255, 200)},${c(255, 38)},${c(255, 45)})`; };
+    function draw() {
+      const svg = svgEl("svg", { viewBox: "0 0 320 220", class: "sim-svg", role: "img", "aria-label": "Boya karışımı" });
+      for (let i = 0; i < st.r; i++) svgEl("rect", { x: 14 + (i % 6) * 22, y: 14 + Math.floor(i / 6) * 22, width: 18, height: 18, rx: 4, class: "ok-r" }, svg);
+      for (let i = 0; i < st.w; i++) svgEl("rect", { x: 14 + (i % 6) * 22, y: 70 + Math.floor(i / 6) * 22, width: 18, height: 18, rx: 4, class: "ok-w" }, svg);
+      svgEl("circle", { cx: 230, cy: 110, r: 70, fill: mix(st.r, st.w), class: "ok-mix" }, svg);
+      if (cfg.target) { svgEl("circle", { cx: 230, cy: 110, r: 80, fill: "none", stroke: mix(...cfg.target), "stroke-width": 10, class: "ok-ring" }, svg); }
+      el.querySelector(".ok-host").replaceChildren(svg);
+      const g = gcd(st.r, st.w) || 1;
+      el.querySelector(".ok-t").textContent = `${st.r} : ${st.w}${g > 1 ? ` = ${st.r / g} : ${st.w / g}` : ""}`;
+      setVals(el, st);
+    }
+    bindSliders(el, st, draw, changed); draw();
+    return () => ({ r: st.r, w: st.w, ratio: st.w ? st.r / st.w : null, total: st.r + st.w });
+  };
+
+  // Venn şeması: bölgelere dokunarak tara. Bölge bitleri: yalnız A=1, A∩B=2, yalnız B=4, dışarısı=8.
+  SIMS["kume-venn"] = (el, cfg, changed) => {
+    let mask = 0;
+    const svg = svgEl("svg", { viewBox: "0 0 420 260", class: "sim-svg", role: "group", "aria-label": "Venn şeması" });
+    el.replaceChildren(svg);
+    const regions = [[8, "Dışarısı"], [1, "Yalnız A"], [4, "Yalnız B"], [2, "A ∩ B"]];
+    function draw() {
+      svg.replaceChildren();
+      const defs = svgEl("defs", {}, svg);
+      const ca = svgEl("clipPath", { id: "vA" }, defs); svgEl("circle", { cx: 160, cy: 130, r: 90 }, ca);
+      const cb = svgEl("clipPath", { id: "vB" }, defs); svgEl("circle", { cx: 260, cy: 130, r: 90 }, cb);
+      const mA = svgEl("mask", { id: "mNotB" }, defs); svgEl("rect", { width: 420, height: 260, fill: "#fff" }, mA); svgEl("circle", { cx: 260, cy: 130, r: 90, fill: "#000" }, mA);
+      const mB = svgEl("mask", { id: "mNotA" }, defs); svgEl("rect", { width: 420, height: 260, fill: "#fff" }, mB); svgEl("circle", { cx: 160, cy: 130, r: 90, fill: "#000" }, mB);
+      const mO = svgEl("mask", { id: "mOut" }, defs); svgEl("rect", { width: 420, height: 260, fill: "#fff" }, mO); svgEl("circle", { cx: 160, cy: 130, r: 90, fill: "#000" }, mO); svgEl("circle", { cx: 260, cy: 130, r: 90, fill: "#000" }, mO);
+      const reg = (bit, attrs) => { const r = svgEl("rect", { x: 4, y: 4, width: 412, height: 252, rx: 8, ...attrs, class: `vn-r${mask & bit ? " on" : ""}`, tabindex: 0, role: "checkbox", "aria-checked": !!(mask & bit), "aria-label": regions.find((x) => x[0] === bit)[1] }, svg);
+        const tog = () => { mask ^= bit; draw(); changed(); svg.querySelector(`[aria-label="${regions.find((x) => x[0] === bit)[1]}"]`)?.focus(); };
+        r.addEventListener("click", tog); r.addEventListener("keydown", (e) => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); tog(); } }); };
+      reg(8, { mask: "url(#mOut)" });
+      reg(1, { "clip-path": "url(#vA)", mask: "url(#mNotB)" });
+      reg(4, { "clip-path": "url(#vB)", mask: "url(#mNotA)" });
+      const g = svgEl("g", { "clip-path": "url(#vA)" }, svg); const inter = svgEl("rect", { x: 4, y: 4, width: 412, height: 252, class: `vn-r${mask & 2 ? " on" : ""}`, "clip-path": "url(#vB)", tabindex: 0, role: "checkbox", "aria-checked": !!(mask & 2), "aria-label": "A ∩ B" }, g);
+      const togI = () => { mask ^= 2; draw(); changed(); }; inter.addEventListener("click", togI); inter.addEventListener("keydown", (e) => { if (e.key === " " || e.key === "Enter") { e.preventDefault(); togI(); } });
+      svgEl("circle", { cx: 160, cy: 130, r: 90, class: "vn-c" }, svg); svgEl("circle", { cx: 260, cy: 130, r: 90, class: "vn-c" }, svg);
+      [["A", 90, 50], ["B", 330, 50]].forEach(([t, x, y]) => { const e = svgEl("text", { x, y, class: "vn-l" }, svg); e.textContent = t; });
+      const elems = cfg.elements || {};
+      [[1, 120, 130], [2, 210, 130], [4, 300, 130], [8, 40, 230]].forEach(([bit, x, y]) => { const e = svgEl("text", { x, y, class: "vn-e" }, svg); e.textContent = (elems[bit] || []).join(", "); });
+    }
+    draw();
+    return () => ({ mask });
+  };
+
+  // Doğruluk tablosu: sonuç sütununu D/Y diye doldur.
+  SIMS["mantik-tablosu"] = (el, cfg, changed) => {
+    const OPS = { ve: ["p ∧ q", (p, q) => p && q], veya: ["p ∨ q", (p, q) => p || q], ise: ["p ⇒ q", (p, q) => !p || q], ancak: ["p ⇔ q", (p, q) => p === q] };
+    const [label, fn] = OPS[cfg.op || "ve"];
+    const rows = [[true, true], [true, false], [false, true], [false, false]], ans = [null, null, null, null];
+    const T = (v) => (v ? "D" : "Y");
+    function draw() {
+      el.innerHTML = `<div class="table-wrap"><table class="mt"><thead><tr><th>p</th><th>q</th><th>${label}</th></tr></thead><tbody>${rows.map(([p, q], i) => `<tr><td>${T(p)}</td><td>${T(q)}</td><td><button type="button" class="mt-cell ${ans[i] === null ? "" : ans[i] ? "d" : "y"}" data-i="${i}" aria-label="${i + 1}. satırın sonucu">${ans[i] === null ? "?" : T(ans[i])}</button></td></tr>`).join("")}</tbody></table></div><p class="note">Hücreye dokundukça D (doğru) ve Y (yanlış) arasında değişir.</p>`;
+      el.querySelectorAll("[data-i]").forEach((b) => b.addEventListener("click", () => { const i = +b.dataset.i; ans[i] = ans[i] === null ? true : !ans[i]; draw(); changed(); el.querySelector(`[data-i="${i}"]`)?.focus(); }));
+    }
+    draw();
+    return () => ({ filled: ans.filter((v) => v !== null).length, ok: rows.every(([p, q], i) => ans[i] === fn(p, q)) ? 1 : 0 });
+  };
+
+  // Diziler: aritmetik ya da geometrik dizinin terimleri çubuk olarak; n. terim ve toplam.
+  SIMS["dizi-gorsel"] = (el, cfg, changed) => {
+    const geo = cfg.type === "geo";
+    const st = { a1: cfg.a1 ?? 2, d: cfg.d ?? (geo ? 2 : 3), n: cfg.n ?? 6 };
+    el.innerHTML = `<div class="dz-host"></div><div class="plane-ctrl">${slider("İlk terim a₁", "a1", 1, 10, 1, st.a1)}${slider(geo ? "Ortak çarpan r" : "Ortak fark d", "d", geo ? 1 : -3, geo ? 3 : 6, geo ? 0.5 : 1, st.d)}${slider("Terim sayısı n", "n", 1, 10, 1, st.n)}<p class="slope dz-t"></p></div>`;
+    const term = (k) => (geo ? st.a1 * st.d ** (k - 1) : st.a1 + (k - 1) * st.d);
+    function draw() {
+      const ts = [...Array(st.n)].map((_, i) => term(i + 1)), mx = Math.max(1, ...ts.map(Math.abs)), W = 600, H = 170, bw = W / 10;
+      const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H + 40}`, class: "sim-svg", role: "img", "aria-label": "Dizi" });
+      const zero = ts.some((v) => v < 0) ? H / 2 + 10 : H + 10;
+      svgEl("line", { x1: 0, x2: W, y1: zero, y2: zero, class: "pl-axis" }, svg);
+      ts.forEach((v, i) => {
+        const h = (Math.abs(v) / mx) * (zero - 20);
+        svgEl("rect", { x: i * bw + 8, y: v >= 0 ? zero - h : zero, width: bw - 16, height: Math.max(1, h), rx: 3, class: "dc-bar" }, svg);
+        const t = svgEl("text", { x: i * bw + bw / 2, y: v >= 0 ? zero - h - 6 : zero + h + 16, class: "dc-key" }, svg); t.textContent = fmt(v);
+        const k = svgEl("text", { x: i * bw + bw / 2, y: H + 34, class: "dc-ax vg-lab" }, svg); k.textContent = `a${i + 1}`;
+      });
+      el.querySelector(".dz-host").replaceChildren(svg);
+      const sum = ts.reduce((a, b) => a + b, 0);
+      el.querySelector(".dz-t").innerHTML = `${geo ? `aₙ = a₁ · r<sup>n−1</sup>` : `aₙ = a₁ + (n − 1) · d`} · a${st.n} = <b class="num">${fmt(term(st.n))}</b> · Toplam S${st.n} = <b class="num">${fmt(sum)}</b>`;
+      setVals(el, st);
+    }
+    bindSliders(el, st, draw, changed); draw();
+    return () => ({ ...st, an: term(st.n), sum: [...Array(st.n)].reduce((s, _, i) => s + term(i + 1), 0) });
+  };
+
+  // Limit: f(x) = (x² − 1)/(x − 1); x = 1'de tanımsız ama değerler 2'ye yaklaşır.
+  SIMS["limit-yaklasim"] = (el, cfg, changed) => {
+    let s = cfg.s ?? -100;
+    const f = (x) => (x * x - 1) / (x - 1), W = 480, H = 320;
+    const X = (v) => 40 + ((v + 0.5) / 3.5) * (W - 60), Y = (v) => H - 30 - ((v + 0.5) / 4.5) * (H - 50);
+    // Kaydırıcının uçları 1'den uzak (x = 0 ve x = 2), ortaya yaklaştıkça x 1'e yaklaşır; tam ortada x = 1 tanımsızdır.
+    const xFrom = (sv) => (sv === 0 ? null : 1 + Math.sign(sv) * 0.001 * 1000 ** ((Math.abs(sv) - 1) / 99));
+    el.innerHTML = `<div class="plane-wrap"><div class="plane"></div><div class="plane-ctrl"><p class="eq">f(x) = (x² − 1) / (x − 1)</p>
+      <label class="sim-slider"><span>x = <b class="lx"></b></span><input type="range" min="-100" max="100" step="1" value="${s}"></label><p class="slope li-t"></p></div></div>`;
+    function draw() {
+      const x = xFrom(s);
+      const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}`, class: "sim-svg plane-svg", role: "img", "aria-label": "Limit" });
+      svgEl("line", { x1: 20, y1: Y(0), x2: W, y2: Y(0), class: "pl-axis" }, svg); svgEl("line", { x1: X(0), y1: 0, x2: X(0), y2: H, class: "pl-axis" }, svg);
+      svgEl("line", { x1: X(-0.5), y1: Y(0.5), x2: X(3), y2: Y(4), class: "tg-curve" }, svg);
+      svgEl("circle", { cx: X(1), cy: Y(2), r: 7, class: "li-hole" }, svg);
+      [[1, "1"], [2, "2"]].forEach(([v, t]) => { const a = svgEl("text", { x: X(v), y: Y(0) + 18, class: "pl-num" }, svg); a.textContent = t; });
+      const b = svgEl("text", { x: X(0) - 10, y: Y(2) + 4, class: "pl-num pl-numy" }, svg); b.textContent = "2";
+      if (x !== null) {
+        svgEl("line", { x1: X(x), y1: Y(0), x2: X(x), y2: Y(f(x)), class: "ol-guide" }, svg);
+        svgEl("line", { x1: X(0), y1: Y(f(x)), x2: X(x), y2: Y(f(x)), class: "ol-guide" }, svg);
+        svgEl("circle", { cx: X(x), cy: Y(f(x)), r: 7, class: "tg-p" }, svg);
+      }
+      el.querySelector(".plane").replaceChildren(svg);
+      el.querySelector(".lx").textContent = x === null ? "1 (tanımsız)" : x.toFixed(4).replace(".", ",");
+      el.querySelector(".li-t").innerHTML = x === null ? "x = 1'de payda 0 olur; f(1) tanımsızdır. Boş daire bunu gösterir." : `f(x) = <b class="num">${f(x).toFixed(4).replace(".", ",")}</b><br><span class="muted">${x < 1 ? "1'e soldan" : "1'e sağdan"} yaklaşıyorsun.</span>`;
+    }
+    el.querySelector("input").addEventListener("input", (e) => { s = +e.target.value; draw(); changed(); });
+    draw();
+    return () => { const x = xFrom(s); return { x, dist: x === null ? 0 : Math.abs(x - 1), side: s < 0 ? -1 : s > 0 ? 1 : 0 }; };
+  };
+
+  // Karmaşık düzlem: z = a + bi vektörü; |z| ve i ile çarpma (90° dönme).
+  SIMS["karmasik-duzlem"] = (el, cfg, changed) => {
+    const st = { a: cfg.a ?? 2, b: cfg.b ?? 1 };
+    const S = 26, O = 182, X = (v) => O + v * S, Y = (v) => O - v * S;
+    el.innerHTML = `<div class="plane-wrap"><div class="plane"></div><div class="plane-ctrl"><p class="eq kd-z"></p><p class="slope kd-m"></p>${slider("Gerçel kısım a", "a", -6, 6, 1, st.a)}${slider("Sanal kısım b", "b", -6, 6, 1, st.b)}<button type="button" class="btn btn-outline btn-small kd-i">i ile çarp</button></div></div>`;
+    function draw() {
+      const svg = svgEl("svg", { viewBox: "0 0 364 364", class: "sim-svg plane-svg", role: "img", "aria-label": "Karmaşık düzlem" });
+      for (let i = -7; i <= 7; i++) { svgEl("line", { x1: X(i), y1: 0, x2: X(i), y2: 364, class: i ? "pl-grid" : "pl-axis" }, svg); svgEl("line", { x1: 0, y1: Y(i), x2: 364, y2: Y(i), class: i ? "pl-grid" : "pl-axis" }, svg); }
+      [["Re", 340, O - 8], ["Im", O + 8, 16]].forEach(([t, x, y]) => { const e = svgEl("text", { x, y, class: "pl-ptl" }, svg); e.textContent = t; });
+      svgEl("line", { x1: X(0), y1: Y(0), x2: X(st.a), y2: Y(st.b), class: "pl-line" }, svg);
+      svgEl("line", { x1: X(st.a), y1: Y(0), x2: X(st.a), y2: Y(st.b), class: "ol-guide" }, svg);
+      svgEl("circle", { cx: X(st.a), cy: Y(st.b), r: 7, class: "tg-p" }, svg);
+      el.querySelector(".plane").replaceChildren(svg);
+      el.querySelector(".kd-z").textContent = `z = ${st.a}${st.b < 0 ? " − " : " + "}${Math.abs(st.b) === 1 ? "" : Math.abs(st.b)}i`;
+      el.querySelector(".kd-m").innerHTML = `|z| = √(${st.a}² + ${st.b}²) = <b class="num">${fmt(Math.hypot(st.a, st.b), 3)}</b>`;
+      el.querySelectorAll("input[data-k]").forEach((i) => { i.value = st[i.dataset.k]; });
+      setVals(el, st);
+    }
+    el.querySelector(".kd-i").addEventListener("click", () => { [st.a, st.b] = [-st.b, st.a]; draw(); changed(); });
+    bindSliders(el, st, draw, changed); draw();
+    return () => ({ a: st.a, b: st.b, mod: Math.hypot(st.a, st.b) });
+  };
+
   // ---------- Kod izleyici ve satır dizme ----------
   function tracer(el, step, changed) {
     let i = 0;
@@ -581,6 +898,7 @@ window.LESSONS = (() => {
 
   function drawStep() {
     const c = cur, s = c.les.steps[c.idx];
+    window.AUDIO?.stopAll();
     if (!s) return drawEnd();
     c.tries = 0; c.phase = "ask"; c.chosen = null; c.showWhy = false;
     const pct = Math.round((c.idx / c.les.steps.length) * 100);
@@ -688,5 +1006,7 @@ window.LESSONS = (() => {
     return { page: `Ders: ${cur.les.title}`, context: ctx, question: true, hide };
   }
 
-  return { manifest, lesson, open, context };
+  window.addEventListener("hashchange", () => window.AUDIO?.stopAll());
+  const registerSim = (kind, fn) => { SIMS[kind] = fn; };
+  return { manifest, lesson, open, context, registerSim, sims: SIMS };
 })();

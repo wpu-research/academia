@@ -1,0 +1,172 @@
+{
+ "id": "ileri-hata-yonetimi",
+ "title": "İleri hata yönetimi",
+ "level": "Seviye 3 · Orta",
+ "alan": "Orta",
+ "minutes": 8,
+ "summary": "Kendi hata sınıfların, raise from ile zincirleme ve assert.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class BakiyeYetersiz(Exception):\n    pass\n\ntry:\n    raise BakiyeYetersiz(\"bakiye 0\")\nexcept BakiyeYetersiz as e:\n    print(\"hata:\", e)",
+   "options": [
+    "hata: bakiye 0",
+    "BakiyeYetersiz",
+    "hata:",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Exception'dan türeyen bir sınıf kendi hata türümüz olur; diğer hatalar gibi raise edilir ve yakalanır."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class UygulamaHatasi(Exception):\n    pass\n\nclass AgHatasi(UygulamaHatasi):\n    pass\n\ntry:\n    raise AgHatasi(\"bağlantı yok\")\nexcept UygulamaHatasi:\n    print(\"yakalandı\")",
+   "options": [
+    "yakalandı",
+    "bağlantı yok",
+    "Hiçbir şey; program çöker",
+    "AgHatasi"
+   ],
+   "answer": 0,
+   "why": "except bir üst sınıfı yakalayınca onun alt sınıflarını da yakalar."
+  },
+  {
+   "id": "s3",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Hatanın except bloğunda yeni bir hataya nasıl çevrildiğine bak.",
+   "code": "class AyarHatasi(Exception):\n    pass\n\ntry:\n    try:\n        int(\"x\")\n    except ValueError as e:\n        raise AyarHatasi(\"ayar okunamadı\") from e\nexcept AyarHatasi as h:\n    print(h, \"| sebep:\", type(h.__cause__).__name__)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi",
+      "e": "ValueError(\"invalid literal for int() with base 10: 'x'\")"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi"
+     },
+     "out": ""
+    },
+    {
+     "line": 9,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi",
+      "h": "AyarHatasi('ayar okunamadı')"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "AyarHatasi": "sınıf AyarHatasi"
+     },
+     "out": "ayar okunamadı | sebep: ValueError\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "raise ... from e, yeni hatanın sebebini (__cause__) asıl hata olarak saklar; hata ayıklarken iki hata da görünür."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "fiyat = -5\nassert fiyat >= 0, \"fiyat negatif olamaz\"",
+   "options": [
+    "AssertionError hatası verir",
+    "Hiçbir şey olmaz",
+    "fiyat 0 olur",
+    "ValueError hatası verir"
+   ],
+   "answer": 0,
+   "why": "assert koşul yanlışsa AssertionError fırlatır. Varsayımları kontrol etmek için kullanılır."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "assert neden kullanıcı girdisini doğrulamak için uygun değildir?",
+   "options": [
+    "Python -O seçeneğiyle çalışınca assert satırları tamamen atlanır",
+    "assert yavaş çalışır",
+    "assert yalnız sayılarla çalışır",
+    "assert hata mesajı alamaz"
+   ],
+   "answer": 0,
+   "why": "Optimizasyonla (-O) çalıştırılan programda assert'ler silinir. Kullanıcı girdisi için if ve raise kullanılmalı."
+  },
+  {
+   "id": "s6",
+   "type": "parsons",
+   "prompt": "Negatif yaşı kendi hata sınıfıyla reddeden ve hatayı yakalayan programı kur.",
+   "lines": [
+    "class GecersizYas(Exception):",
+    "    pass",
+    "try:",
+    "    yas = -3",
+    "    if yas < 0:",
+    "        raise GecersizYas(\"yaş negatif\")",
+    "except GecersizYas as e:",
+    "    print(e)"
+   ],
+   "why": "yas negatif olduğu için GecersizYas fırlatılır ve yakalanır; mesajı yaş negatif yazar."
+  }
+ ]
+}

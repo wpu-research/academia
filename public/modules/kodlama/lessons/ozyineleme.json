@@ -1,0 +1,188 @@
+{
+ "id": "ozyineleme",
+ "title": "Özyineleme ve geri izleme",
+ "level": "Seviye 6 · Algoritma ve Problem Çözme",
+ "alan": "İleri",
+ "minutes": 11,
+ "summary": "Kendini çağıran fonksiyonları adım adım izle; temel durum, ezberleme, Hanoi kuleleri ve alt küme üretimini gör.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "**Özyinelemeli** fonksiyon problemi kendisinin daha küçük bir hâline indirger. Her özyinelemede bir **temel durum** olmalıdır; yoksa fonksiyon kendini sonsuza kadar çağırır.",
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "faktoriyel(4)'ü adım adım çalıştır. Her çağrının kendi n değeri olduğuna dikkat et.",
+   "code": "def faktoriyel(n):\n    if n <= 1:\n        return 1\n    return n * faktoriyel(n - 1)\nprint(faktoriyel(4))",
+   "why": "faktoriyel(4) = 4 × faktoriyel(3) = 4 × 3 × 2 × faktoriyel(1). n = 1 temel durumdur; sonuç 24.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "n": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "n": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "n": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "n": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "n": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {},
+     "out": "24\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "say(3) çağrılınca ne olur?",
+   "options": [
+    "3 2 1 yazar ve durur",
+    "RecursionError ile durur",
+    "0'da durur",
+    "Hiçbir şey yazmaz"
+   ],
+   "answer": 1,
+   "why": "Temel durum olmadığı için fonksiyon kendini durmadan çağırır; Python yaklaşık 1000 çağrı derinliğinde RecursionError verir.",
+   "code": "def say(n):\n    print(n)\n    say(n - 1)\n\nsay(3)",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Ezberleme (memoization) kullanan bu program ne yazdırır?",
+   "options": [
+    "102334155",
+    "63245986",
+    "165580141",
+    "40"
+   ],
+   "answer": 0,
+   "why": "Her fib(n) bir kez hesaplanıp sözlükte saklanır, sonraki çağrılar oradan okunur. fib(40) = 102334155.",
+   "code": "hafiza = {}\n\ndef fib(n):\n    if n in hafiza:\n        return hafiza[n]\n    if n < 2:\n        sonuc = n\n    else:\n        sonuc = fib(n - 1) + fib(n - 2)\n    hafiza[n] = sonuc\n    return sonuc\n\nprint(fib(40))",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Ezberleme olmadan fib(n) kabaca kaç çağrı yapar?",
+   "options": [
+    "n",
+    "n²",
+    "log n",
+    "Üstel: yaklaşık 2ⁿ ile büyür"
+   ],
+   "answer": 3,
+   "why": "Her çağrı iki çağrıya ayrılır ve aynı değerler tekrar tekrar hesaplanır; çağrı sayısı üstel büyür. Ezberleme bunu n'e indirir.",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "4 diskli Hanoi kulesi kaç hamlede çözülür?",
+   "options": [
+    "16",
+    "8",
+    "15",
+    "7"
+   ],
+   "answer": 2,
+   "why": "n disk için hamle sayısı 2ⁿ − 1'dir: 2⁴ − 1 = 15. Fonksiyon n − 1 diski ara çubuğa taşır, en büyüğü taşır, sonra n − 1 diski üstüne taşır.",
+   "code": "def hanoi(n, kaynak, hedef, ara):\n    if n == 0:\n        return 0\n    adim = hanoi(n - 1, kaynak, ara, hedef)\n    adim += 1\n    adim += hanoi(n - 1, ara, hedef, kaynak)\n    return adim\n\nprint(hanoi(4, \"A\", \"C\", \"B\"))",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Geri izleme ile alt kümeleri üreten bu program ne yazdırır?",
+   "options": [
+    "[]\n[1]\n[2]\n[1, 2]",
+    "[1, 2]\n[1]\n[2]\n[]",
+    "[1]\n[2]\n[1, 2]",
+    "[1, 2]\n[2]\n[1]\n[]"
+   ],
+   "answer": 1,
+   "why": "Her elemanda önce “al”, sonra “alma” seçeneği denenir. Önce ikisi de alınır ([1, 2]), sonra yalnız 1, sonra yalnız 2, en son hiçbiri.",
+   "code": "def alt_kumeler(liste, i, secim):\n    if i == len(liste):\n        print(secim)\n        return\n    alt_kumeler(liste, i + 1, secim + [liste[i]])\n    alt_kumeler(liste, i + 1, secim)\n\nalt_kumeler([1, 2], 0, [])",
+   "codeOptions": true,
+   "id": "s7"
+  },
+  {
+   "type": "parsons",
+   "prompt": "Bir sayının basamaklarını özyinelemeyle toplayan fonksiyonu kur.",
+   "lines": [
+    "def basamak_topla(n):",
+    "    if n < 10:",
+    "        return n",
+    "    return n % 10 + basamak_topla(n // 10)",
+    "print(basamak_topla(1234))"
+   ],
+   "why": "Son basamak (n % 10) alınır, geri kalanı (n // 10) için fonksiyon yeniden çağrılır: 4 + 3 + 2 + 1 = 10.",
+   "id": "s8"
+  }
+ ]
+}

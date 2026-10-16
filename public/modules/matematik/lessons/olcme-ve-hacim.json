@@ -1,0 +1,135 @@
+{
+ "id": "olcme-ve-hacim",
+ "title": "Uzunluk ölçme ve hacim",
+ "level": "İlkokul 3 · Ortaokul 5–6",
+ "alan": "Ortaokul",
+ "minutes": 8,
+ "summary": "Cetvelde doğru ölçmeyi öğren; birim küplerle prizma kurup hacim ve yüzey alanını bul.",
+ "sims": [
+  "olcme",
+  "kati-cisim"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "sim",
+   "prompt": "Kalemi sürükleyerek ucunu cetvelin **0** çizgisine hizala.",
+   "sim": {
+    "kind": "olcme",
+    "length": 7,
+    "start": 2
+   },
+   "goal": "Kalem 0'dan başlıyor",
+   "check": {
+    "key": "start",
+    "eq": 0
+   },
+   "why": "Ölçmeye 0'dan başlarsak bitiş çizgisi doğrudan uzunluğu verir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bir kalem cetvelde 2 cm'den başlayıp 9 cm'de bitiyorsa boyu kaç cm'dir?",
+   "options": [
+    "7 cm",
+    "9 cm",
+    "11 cm",
+    "2 cm"
+   ],
+   "answer": 0,
+   "why": "Uzunluk = bitiş − başlangıç = 9 − 2 = 7 cm."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "1 metre kaç santimetredir?",
+   "options": [
+    "100",
+    "10",
+    "1000",
+    "60"
+   ],
+   "answer": 0,
+   "why": "1 m = 100 cm, 1 cm = 10 mm."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Kaydırıcılarla **4 × 3 × 2**'lik bir prizma kur.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 1,
+    "b": 1,
+    "c": 1
+   },
+   "goal": "a = 4, b = 3, c = 2",
+   "check": {
+    "all": [
+     {
+      "key": "a",
+      "eq": 4
+     },
+     {
+      "key": "b",
+      "eq": 3
+     },
+     {
+      "key": "c",
+      "eq": 2
+     }
+    ]
+   },
+   "why": "Prizma, 4 × 3 = 12 küplük katların 2 tanesidir."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "4 × 3 × 2'lik prizmanın hacmi kaçtır?",
+   "options": [
+    "24 birimküp",
+    "9 birimküp",
+    "52 birimküp",
+    "12 birimküp"
+   ],
+   "answer": 0,
+   "why": "Hacim = uzunluk × genişlik × yükseklik = 4 × 3 × 2 = 24."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "Hacmi **36 birimküp** olan bir prizma kur.",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 2,
+    "b": 2,
+    "c": 2
+   },
+   "goal": "Hacim 36",
+   "check": {
+    "key": "volume",
+    "eq": 36
+   },
+   "hint": "36'yı üç sayının çarpımı olarak yaz: örneğin 3 × 3 × 4.",
+   "why": "Aynı hacmi farklı boyutlarla elde edebilirsin: 3 × 3 × 4, 6 × 6 × 1, 2 × 3 × 6…"
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Açınımı göster düğmesiyle yüzeyleri incele. 3 × 3 × 3'lük küpün yüzey alanı kaçtır?",
+   "sim": {
+    "kind": "kati-cisim",
+    "a": 3,
+    "b": 3,
+    "c": 3
+   },
+   "options": [
+    "54",
+    "27",
+    "36",
+    "18"
+   ],
+   "answer": 0,
+   "why": "Küpün 6 yüzü var, her biri 3 × 3 = 9: 6 × 9 = 54 birimkare."
+  }
+ ]
+}

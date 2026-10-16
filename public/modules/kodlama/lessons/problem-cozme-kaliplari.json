@@ -1,0 +1,311 @@
+{
+ "id": "problem-cozme-kaliplari",
+ "title": "Problem çözme kalıpları",
+ "level": "Seviye 6 · Algoritma ve Problem Çözme",
+ "alan": "İleri",
+ "minutes": 12,
+ "summary": "İki işaretçi, kayan pencere, önek toplamı, açgözlü yaklaşım, dinamik programlama, sırt çantası ve bit işlemleri.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "Yarışma ve mülakat sorularının çoğu birkaç kalıpla çözülür. Doğru kalıbı tanımak, O(n²) bir çözümü çoğu zaman O(n)'e indirir.",
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "Sıralı listede toplamı 13 olan iki sayıyı **iki işaretçiyle** bul. i ve j'nin nasıl hareket ettiğine bak.",
+   "code": "liste = [1, 3, 4, 6, 9]\nhedef = 13\ni, j = 0, len(liste) - 1\nwhile i < j:\n    t = liste[i] + liste[j]\n    if t == hedef:\n        break\n    if t < hedef:\n        i += 1\n    else:\n        j -= 1\nprint(liste[i], liste[j])",
+   "why": "Toplam küçükse soldaki işaretçi sağa, büyükse sağdaki sola kayar. 1 + 9 ve 3 + 9 küçük kalır, 4 + 9 = 13 bulunur. Tek geçiş: O(n).",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "0",
+      "j": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "0",
+      "j": "4"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "0",
+      "j": "4",
+      "t": "10"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "0",
+      "j": "4",
+      "t": "10"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "0",
+      "j": "4",
+      "t": "10"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "1",
+      "j": "4",
+      "t": "10"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "1",
+      "j": "4",
+      "t": "10"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "1",
+      "j": "4",
+      "t": "12"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "1",
+      "j": "4",
+      "t": "12"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "1",
+      "j": "4",
+      "t": "12"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "2",
+      "j": "4",
+      "t": "12"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "2",
+      "j": "4",
+      "t": "12"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "2",
+      "j": "4",
+      "t": "13"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "2",
+      "j": "4",
+      "t": "13"
+     },
+     "out": ""
+    },
+    {
+     "line": 11,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "2",
+      "j": "4",
+      "t": "13"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "liste": "[1, 3, 4, 6, 9]",
+      "hedef": "13",
+      "i": "2",
+      "j": "4",
+      "t": "13"
+     },
+     "out": "4 9\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Kayan pencereyle ardışık 3 sayının en büyük toplamını bulan program ne yazdırır?",
+   "options": [
+    "8",
+    "9",
+    "7",
+    "14"
+   ],
+   "answer": 1,
+   "why": "Pencereler: 2+1+5 = 8, 1+5+1 = 7, 5+1+3 = 9, 1+3+2 = 6. Her kaymada bir sayı eklenip bir sayı çıkarılır; her pencere baştan toplanmaz.",
+   "code": "sayilar = [2, 1, 5, 1, 3, 2]\nk = 3\npencere = sum(sayilar[:k])\nen_iyi = pencere\nfor i in range(k, len(sayilar)):\n    pencere += sayilar[i] - sayilar[i - k]\n    en_iyi = max(en_iyi, pencere)\nprint(en_iyi)",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Önek toplamı kullanan bu program ne yazdırır?",
+   "options": [
+    "9",
+    "6",
+    "5",
+    "14"
+   ],
+   "answer": 1,
+   "why": "onek = [0, 3, 4, 8, 9, 14]. onek[4] − onek[1], 1. ile 3. indeks arasındaki sayıların toplamıdır: 1 + 4 + 1 = 6. Her aralık toplamı tek çıkarmayla bulunur.",
+   "code": "sayilar = [3, 1, 4, 1, 5]\nonek = [0]\nfor s in sayilar:\n    onek.append(onek[-1] + s)\nprint(onek[4] - onek[1])",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Açgözlü para üstü algoritması ne yazdırır?",
+   "options": [
+    "6 2",
+    "6 3",
+    "5 2",
+    "7 3"
+   ],
+   "answer": 1,
+   "why": "63 için 25 + 25 + 10 + 1 + 1 + 1 = 6 bozuk para. 6 için açgözlü önce 4'ü alır: 4 + 1 + 1 = 3 para. Oysa 3 + 3 ile 2 para yeterdi: açgözlü yaklaşım her zaman en iyiyi bulmaz.",
+   "code": "def para_ustu(miktar, bozuklar):\n    adet = 0\n    for b in sorted(bozuklar, reverse=True):\n        adet += miktar // b\n        miktar %= b\n    return adet\n\nprint(para_ustu(63, [1, 5, 10, 25]), para_ustu(6, [1, 3, 4]))",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "Dinamik programlamayla en az bozuk para sayısını bulan program ne yazdırır?",
+   "options": [
+    "3",
+    "2",
+    "6",
+    "1"
+   ],
+   "answer": 1,
+   "why": "dp[m], m lirayı veren en az para sayısıdır ve küçük m'lerden büyüğe doğru doldurulur. 6 = 3 + 3, yani 2 para.",
+   "code": "def en_az_bozuk(miktar, bozuklar):\n    dp = [0] + [float(\"inf\")] * miktar\n    for m in range(1, miktar + 1):\n        for b in bozuklar:\n            if b <= m:\n                dp[m] = min(dp[m], dp[m - b] + 1)\n    return dp[miktar]\n\nprint(en_az_bozuk(6, [1, 3, 4]))",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Kapasitesi 5 olan sırt çantası problemi (0/1 knapsack) ne yazdırır?",
+   "options": [
+    "35",
+    "50",
+    "45",
+    "65"
+   ],
+   "answer": 2,
+   "why": "Ağırlığı 1 (değer 15) ve 4 (değer 30) olan eşyalar birlikte 5 ağırlıkta 45 değer verir; diğer seçimlerden fazladır. Kapasite tersten gezildiği için her eşya en fazla bir kez kullanılır.",
+   "code": "def canta(kapasite, agirlik, deger):\n    dp = [0] * (kapasite + 1)\n    for a, d in zip(agirlik, deger):\n        for c in range(kapasite, a - 1, -1):\n            dp[c] = max(dp[c], dp[c - a] + d)\n    return dp[kapasite]\n\nprint(canta(5, [1, 3, 4], [15, 20, 30]))",
+   "id": "s7"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bit işlemleri yapan bu program ne yazdırır?",
+   "options": [
+    "0b1101 1 6 12",
+    "0b1101 0 6 12",
+    "0b1011 1 26 12",
+    "0b1101 1 6 13"
+   ],
+   "answer": 0,
+   "why": "13 ikilik tabanda 1101'dir. x & 1 son biti verir (1, yani tek). x >> 1 sağa kaydırıp 2'ye böler (6). x & (x − 1) en sağdaki 1 bitini siler: 1100 = 12.",
+   "code": "x = 13\nprint(bin(x), x & 1, x >> 1, x & (x - 1))",
+   "id": "s8"
+  }
+ ]
+}

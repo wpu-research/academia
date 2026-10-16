@@ -1,0 +1,163 @@
+{
+ "id": "siniflar",
+ "title": "Sınıflar ve nesneler",
+ "level": "Seviye 4 · Orta-İleri",
+ "alan": "Orta",
+ "minutes": 10,
+ "summary": "class ve __init__, sınıf ve örnek değişkenleri, property, classmethod ve staticmethod.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Sınıf bir kalıptır, nesne o kalıptan üretilen örnektir. `__init__` nesne oluşturulurken çalışır; `self` o anki nesneyi gösterir."
+  },
+  {
+   "id": "s2",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Nesne oluşturulurken __init__'in nasıl çalıştığına bak.",
+   "code": "class Kopek:\n    def __init__(self, ad):\n        self.ad = ad\n\n    def havla(self):\n        return self.ad + \" hav!\"\n\nk = Kopek(\"Karabaş\")\nprint(k.havla())",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "Kopek": "sınıf Kopek"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "self": "Kopek nesnesi",
+      "ad": "'Karabaş'"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "Kopek": "sınıf Kopek",
+      "k": "Kopek nesnesi"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "self": "Kopek nesnesi"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "Kopek": "sınıf Kopek",
+      "k": "Kopek nesnesi"
+     },
+     "out": "Karabaş hav!\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Kopek(\"Karabaş\") __init__'i çağırır ve ad'ı nesneye kaydeder; havla bu adı kullanır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Sayac:\n    toplam = 0\n    def __init__(self):\n        Sayac.toplam += 1\n\na = Sayac()\nb = Sayac()\nprint(Sayac.toplam)",
+   "options": [
+    "2",
+    "1",
+    "0",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "toplam sınıf değişkenidir; tüm nesneler aynı değeri paylaşır. İki nesne oluşturuldu: 2."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Hesap:\n    def __init__(self):\n        self._bakiye = 100\n\n    @property\n    def bakiye(self):\n        return self._bakiye\n\nh = Hesap()\nprint(h.bakiye)",
+   "options": [
+    "100",
+    "_bakiye",
+    "<bound method>",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "@property bir metodu nitelik gibi okutur; parantez yazmadan h.bakiye ile değere ulaşılır."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne olur?",
+   "code": "class Hesap:\n    def __init__(self):\n        self._bakiye = 100\n\n    @property\n    def bakiye(self):\n        return self._bakiye\n\nh = Hesap()\nh.bakiye = 500",
+   "options": [
+    "AttributeError hatası verir",
+    "bakiye 500 olur",
+    "_bakiye 500 olur",
+    "Hiçbir şey olmaz"
+   ],
+   "answer": 0,
+   "why": "Yalnız okuyucusu (getter) olan property'e değer atanamaz; böylece bakiye dışarıdan değiştirilemez."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "class Tarih:\n    def __init__(self, gun, ay):\n        self.gun, self.ay = gun, ay\n\n    @classmethod\n    def metinden(cls, metin):\n        g, a = metin.split(\".\")\n        return cls(int(g), int(a))\n\n    @staticmethod\n    def gecerli_ay(a):\n        return 1 <= a <= 12\n\nt = Tarih.metinden(\"29.10\")\nprint(t.ay, Tarih.gecerli_ay(13))",
+   "options": [
+    "10 False",
+    "29 True",
+    "10 True",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "classmethod sınıfı (cls) alır ve yeni nesne üretebilir. staticmethod ne nesneyi ne sınıfı alır; sıradan bir yardımcı fonksiyondur."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Bir dikdörtgen sınıfı yazıp alanını yazdıran programı kur.",
+   "lines": [
+    "class Dikdortgen:",
+    "    def __init__(self, en, boy):",
+    "        self.en = en",
+    "        self.boy = boy",
+    "    def alan(self):",
+    "        return self.en * self.boy",
+    "d = Dikdortgen(3, 4)",
+    "print(d.alan())"
+   ],
+   "why": "Nesne en = 3, boy = 4 ile oluşturulur; alan 3 × 4 = 12."
+  }
+ ]
+}

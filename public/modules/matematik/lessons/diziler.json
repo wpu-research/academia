@@ -1,0 +1,131 @@
+{
+ "id": "diziler",
+ "title": "Aritmetik ve geometrik diziler",
+ "level": "Lise 12 · AYT",
+ "alan": "İleri",
+ "minutes": 8,
+ "summary": "Dizinin terimlerini çubuklarla gör; genel terimi ve toplamı hesapla.",
+ "sims": [
+  "dizi-gorsel"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Aritmetik dizide her terim bir öncekine **sabit bir sayı (d)** eklenerek bulunur. Kaydırıcılarla dene.",
+   "sim": {
+    "kind": "dizi-gorsel",
+    "a1": 2,
+    "d": 3,
+    "n": 6
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "**a₁ = 5, d = 4** olan diziyi kur ve **8 terim** göster.",
+   "sim": {
+    "kind": "dizi-gorsel",
+    "a1": 2,
+    "d": 3,
+    "n": 6
+   },
+   "goal": "a₁ = 5, d = 4, n = 8",
+   "check": {
+    "all": [
+     {
+      "key": "a1",
+      "eq": 5
+     },
+     {
+      "key": "d",
+      "eq": 4
+     },
+     {
+      "key": "n",
+      "eq": 8
+     }
+    ]
+   },
+   "why": "Terimler 5, 9, 13, 17, … diye 4'er artar."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "a₁ = 5 ve d = 4 ise a₈ kaçtır?",
+   "options": [
+    "33",
+    "37",
+    "32",
+    "40"
+   ],
+   "answer": 0,
+   "why": "aₙ = a₁ + (n − 1)d = 5 + 7 · 4 = 33."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "1 + 2 + 3 + … + 100 toplamı kaçtır?",
+   "options": [
+    "5050",
+    "5000",
+    "10100",
+    "4950"
+   ],
+   "answer": 0,
+   "why": "Sn = n(a₁ + aₙ)/2 = 100 · 101 / 2 = 5050."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Şimdi **geometrik dizi**: her terim bir öncekinin **r katı**. a₁ = 3 ve r = 2 yap.",
+   "sim": {
+    "kind": "dizi-gorsel",
+    "type": "geo",
+    "a1": 1,
+    "d": 1.5,
+    "n": 5
+   },
+   "goal": "a₁ = 3, r = 2",
+   "check": {
+    "all": [
+     {
+      "key": "a1",
+      "eq": 3
+     },
+     {
+      "key": "d",
+      "eq": 2
+     }
+    ]
+   },
+   "why": "Terimler 3, 6, 12, 24, … diye ikiye katlanır."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "a₁ = 3 ve r = 2 ise a₅ kaçtır?",
+   "options": [
+    "48",
+    "24",
+    "96",
+    "30"
+   ],
+   "answer": 0,
+   "why": "aₙ = a₁ · rⁿ⁻¹ = 3 · 2⁴ = 48."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Aritmetik dizide ardışık terimlerin farkı sabittir. Geometrik dizide sabit olan nedir?",
+   "options": [
+    "Ardışık iki terimin oranı",
+    "Terimlerin toplamı",
+    "Ardışık terimlerin farkı",
+    "İlk terim"
+   ],
+   "answer": 0,
+   "why": "Geometrik dizide aₙ₊₁ / aₙ = r her zaman aynıdır."
+  }
+ ]
+}

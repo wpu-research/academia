@@ -23,6 +23,18 @@
    ]
   },
   {
+   "id": "saat-ve-para",
+   "title": "Saat ve para",
+   "level": "İlkokul 1–3",
+   "alan": "İlkokul",
+   "minutes": 7,
+   "summary": "Saatin ibrelerini sürükle, Türk lirasıyla tutar oluştur ve para üstü hesapla.",
+   "sims": [
+    "saat",
+    "para"
+   ]
+  },
+  {
    "id": "carpma-alan-modeli",
    "title": "Çarpma ve alan modeli",
    "level": "İlkokul 3–4 · Ortaokul 5",
@@ -46,6 +58,29 @@
    ]
   },
   {
+   "id": "olcme-ve-hacim",
+   "title": "Uzunluk ölçme ve hacim",
+   "level": "İlkokul 3 · Ortaokul 5–6",
+   "alan": "Ortaokul",
+   "minutes": 8,
+   "summary": "Cetvelde doğru ölçmeyi öğren; birim küplerle prizma kurup hacim ve yüzey alanını bul.",
+   "sims": [
+    "olcme",
+    "kati-cisim"
+   ]
+  },
+  {
+   "id": "oruntuler",
+   "title": "Örüntüler",
+   "level": "İlkokul 3 · Ortaokul 6–7",
+   "alan": "Ortaokul",
+   "minutes": 6,
+   "summary": "Büyüyen bir şekil örüntüsünün kuralını bul ve istediğin adımı hesapla.",
+   "sims": [
+    "oruntu"
+   ]
+  },
+  {
    "id": "denklem-terazisi",
    "title": "Denklemler ve terazi",
    "level": "Ortaokul 6–7",
@@ -54,6 +89,17 @@
    "summary": "Teraziyi dengede tutarak x'i yalnız bırak; denklem çözmenin mantığını gör.",
    "sims": [
     "denklem-terazisi"
+   ]
+  },
+  {
+   "id": "oran-oranti",
+   "title": "Oran ve orantı",
+   "level": "Ortaokul 6–7",
+   "alan": "Ortaokul",
+   "minutes": 6,
+   "summary": "Boya karıştırarak denk oranları gör, orantı problemlerini çöz.",
+   "sims": [
+    "oran-karistirma"
    ]
   },
   {
@@ -91,6 +137,17 @@
    ]
   },
   {
+   "id": "geometrik-donusumler",
+   "title": "Öteleme, yansıma, dönme",
+   "level": "Ortaokul 7–8 · Lise 9",
+   "alan": "Ortaokul",
+   "minutes": 8,
+   "summary": "Şekli koordinat düzleminde öteleyip yansıtarak ve döndürerek hedefe oturt.",
+   "sims": [
+    "donusum"
+   ]
+  },
+  {
    "id": "olasilik-zar",
    "title": "Olasılık: zarı yüzlerce kez at",
    "level": "Ortaokul 8 · LGS",
@@ -99,6 +156,18 @@
    "summary": "Zar atma simülasyonuyla deneysel olasılığın teorik olasılığa nasıl yaklaştığını gör.",
    "sims": [
     "olasilik-sim"
+   ]
+  },
+  {
+   "id": "kumeler-ve-mantik",
+   "title": "Kümeler ve mantık",
+   "level": "Lise 9 · TYT",
+   "alan": "Lise",
+   "minutes": 8,
+   "summary": "Venn şemasında küme işlemlerini tara, doğruluk tablolarını doldur.",
+   "sims": [
+    "kume-venn",
+    "mantik-tablosu"
    ]
   },
   {
@@ -132,6 +201,39 @@
    "summary": "Noktayı birim çember üzerinde gezdirerek sinüs ve kosinüsün ne olduğunu gör.",
    "sims": [
     "birim-cember"
+   ]
+  },
+  {
+   "id": "karmasik-sayilar",
+   "title": "Karmaşık sayılar düzlemde",
+   "level": "Lise 11–12 · AYT",
+   "alan": "İleri",
+   "minutes": 7,
+   "summary": "Karmaşık sayıyı bir vektör olarak gör; modülü ve i ile çarpmanın dönme olduğunu keşfet.",
+   "sims": [
+    "karmasik-duzlem"
+   ]
+  },
+  {
+   "id": "diziler",
+   "title": "Aritmetik ve geometrik diziler",
+   "level": "Lise 12 · AYT",
+   "alan": "İleri",
+   "minutes": 8,
+   "summary": "Dizinin terimlerini çubuklarla gör; genel terimi ve toplamı hesapla.",
+   "sims": [
+    "dizi-gorsel"
+   ]
+  },
+  {
+   "id": "limit-kavrami",
+   "title": "Limit: bir değere yaklaşmak",
+   "level": "Lise 12 · AYT",
+   "alan": "İleri",
+   "minutes": 8,
+   "summary": "Tanımsız bir noktaya iki yönden yaklaşarak limitin ne olduğunu gör.",
+   "sims": [
+    "limit-yaklasim"
    ]
   },
   {

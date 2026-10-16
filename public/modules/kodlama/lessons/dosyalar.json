@@ -1,0 +1,102 @@
+{
+ "id": "dosyalar",
+ "title": "Dosyalar ve veri biçimleri",
+ "level": "Seviye 3 · Orta",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "Dosyaya yazma ve okuma, satır satır okuma, CSV ve JSON.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "`with open(ad, kip) as f:` dosyayı açar ve blok bitince otomatik kapatır. Kip `\"w\"` yazmak (dosyayı sıfırlar), `\"a\"` sona eklemek, `\"r\"` okumak içindir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import os, tempfile\nyol = os.path.join(tempfile.mkdtemp(), \"not.txt\")\nwith open(yol, \"w\") as f:\n    f.write(\"merhaba\")\nwith open(yol) as f:\n    print(f.read())",
+   "options": [
+    "merhaba",
+    "not.txt",
+    "None",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Önce dosyaya yazılır, sonra aynı dosya okunur ve içeriği yazdırılır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import os, tempfile\nyol = os.path.join(tempfile.mkdtemp(), \"a.txt\")\nwith open(yol, \"w\") as f:\n    f.write(\"1\\n\")\nwith open(yol, \"a\") as f:\n    f.write(\"2\\n\")\nwith open(yol) as f:\n    print(len(f.readlines()))",
+   "options": [
+    "2",
+    "1",
+    "4",
+    "0"
+   ],
+   "answer": 0,
+   "why": "\"a\" kipi eskiyi silmeden sona ekler; dosyada iki satır olur."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import os, tempfile\nyol = os.path.join(tempfile.mkdtemp(), \"s.txt\")\nwith open(yol, \"w\") as f:\n    f.write(\"elma\\narmut\\n\")\nwith open(yol) as f:\n    for satir in f:\n        print(satir.strip().upper())",
+   "options": [
+    "ELMA\nARMUT",
+    "elma\narmut",
+    "ELMA ARMUT",
+    "ELMA\n\nARMUT\n"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "Dosya üzerinde döngü satır satır okur; strip() satır sonundaki \\n'yi atar."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import csv, io\nmetin = \"ad,not\\nAli,70\\nEce,90\\n\"\nsatirlar = list(csv.DictReader(io.StringIO(metin)))\nprint(satirlar[1][\"not\"])",
+   "options": [
+    "90",
+    "70",
+    "Ece",
+    "not"
+   ],
+   "answer": 0,
+   "why": "DictReader ilk satırı başlık kabul eder; her satır bir sözlük olur. İkinci kayıt Ece, notu \"90\"."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import json\nveri = {\"ad\": \"Ece\", \"notlar\": [90, 85]}\nmetin = json.dumps(veri)\ngeri = json.loads(metin)\nprint(geri[\"notlar\"][1])",
+   "options": [
+    "85",
+    "90",
+    "[90, 85]",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "dumps Python nesnesini JSON metnine, loads JSON metnini tekrar nesneye çevirir."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Bir sözlüğü JSON metnine çevirip ekrana yazan programı kur.",
+   "lines": [
+    "import json",
+    "ogrenci = {\"ad\": \"Ali\", \"yas\": 13}",
+    "metin = json.dumps(ogrenci)",
+    "print(metin)"
+   ],
+   "why": "json.dumps sözlüğü JSON metnine çevirir: {\"ad\": \"Ali\", \"yas\": 13}."
+  }
+ ]
+}

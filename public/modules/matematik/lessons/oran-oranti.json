@@ -1,0 +1,104 @@
+{
+ "id": "oran-oranti",
+ "title": "Oran ve orantı",
+ "level": "Ortaokul 6–7",
+ "alan": "Ortaokul",
+ "minutes": 6,
+ "summary": "Boya karıştırarak denk oranları gör, orantı problemlerini çöz.",
+ "sims": [
+  "oran-karistirma"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Kırmızı ve beyaz boyayı karıştırıyoruz. Aynı **oranda** karıştırırsan miktar değişse de ton aynı kalır. 1:1 ile 3:3'ü karşılaştır.",
+   "sim": {
+    "kind": "oran-karistirma",
+    "r": 1,
+    "w": 1
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Halkadaki hedef tonu (2:3) **toplam 10 ölçek** kullanarak yakala.",
+   "sim": {
+    "kind": "oran-karistirma",
+    "r": 1,
+    "w": 1,
+    "target": [
+     2,
+     3
+    ]
+   },
+   "goal": "Oran 2:3, toplam 10 ölçek",
+   "check": {
+    "all": [
+     {
+      "key": "r",
+      "eq": 4
+     },
+     {
+      "key": "w",
+      "eq": 6
+     }
+    ]
+   },
+   "hint": "2 + 3 = 5 ölçek bir “takım”. 10 ölçek için iki takım gerekir.",
+   "why": "4:6 oranı 2:3 ile denktir; ikisini de 2'ye bölünce aynı oran çıkar."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Hangisi 2:3 oranına denktir?",
+   "options": [
+    "6:9",
+    "3:2",
+    "4:5",
+    "2:5"
+   ],
+   "answer": 0,
+   "why": "6:9'un iki terimi de 3'e bölünürse 2:3 olur."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "3 kırmızıya 5 beyaz karıştırılıyor. Aynı ton için 12 kırmızıya kaç beyaz gerekir?",
+   "options": [
+    "20",
+    "15",
+    "17",
+    "10"
+   ],
+   "answer": 0,
+   "why": "Kırmızı 4 katına çıktı (3 → 12); beyaz da 4 katına çıkmalı: 5 × 4 = 20."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bir tarifte 2 bardak una 3 yumurta gidiyor. 8 bardak un için kaç yumurta gerekir?",
+   "options": [
+    "12",
+    "10",
+    "9",
+    "16"
+   ],
+   "answer": 0,
+   "why": "Un 4 katına çıktı; yumurta da 4 katı: 3 × 4 = 12."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "4/x = 6/9 ise x kaçtır?",
+   "options": [
+    "6",
+    "5",
+    "8",
+    "3"
+   ],
+   "answer": 0,
+   "why": "İçler dışlar çarpımı: 6x = 36, x = 6."
+  }
+ ]
+}

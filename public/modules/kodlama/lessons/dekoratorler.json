@@ -1,0 +1,188 @@
+{
+ "id": "dekoratorler",
+ "title": "Kapanışlar ve dekoratörler",
+ "level": "Seviye 5 · İleri",
+ "alan": "İleri",
+ "minutes": 11,
+ "summary": "İç fonksiyonların dış değişkenleri hatırlamasını gör, fonksiyonları saran dekoratörler yaz; lru_cache, reduce ve partial'ı kullan.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "Bir fonksiyon, içinde tanımlandığı yerdeki değişkenleri hatırlayabilir; buna **kapanış** (closure) denir. **Dekoratör** ise bir fonksiyonu alıp onu saran yeni bir fonksiyon döndüren fonksiyondur.",
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "Programı adım adım çalıştır. `say` her çağrıldığında `sayi` değişkeninin kaybolmadığına dikkat et.",
+   "code": "def sayac_yap():\n    sayi = 0\n    def artir():\n        nonlocal sayi\n        sayi += 1\n        return sayi\n    return artir\nsay = sayac_yap()\nprint(say(), say())",
+   "why": "artir fonksiyonu sayac_yap bittikten sonra da sayi değişkenine erişir. nonlocal, bu dış değişkenin güncelleneceğini söyler; iki çağrı 1 ve 2 döndürür.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayi": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "sayi": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "sayi": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "sayi": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "sayi": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "sayi": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {},
+     "out": "1 2\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "8",
+    "5",
+    "15",
+    "Hata verir"
+   ],
+   "answer": 2,
+   "why": "carpan(3), n = 3'ü hatırlayan bir fonksiyon döndürür. uc_kat(5) = 5 × 3 = 15.",
+   "code": "def carpan(n):\n    def carp(x):\n        return x * n\n    return carp\n\nuc_kat = carpan(3)\nprint(uc_kat(5))",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "çağrıldı: topla\n5",
+    "5\nçağrıldı: topla",
+    "5",
+    "çağrıldı: sarici\n5"
+   ],
+   "answer": 0,
+   "why": "@kaydet, topla'yı sarici ile değiştirir. sarici önce adı yazar, sonra asıl topla'yı çağırıp 5'i döndürür.",
+   "code": "def kaydet(f):\n    def sarici(*args):\n        print(\"çağrıldı:\", f.__name__)\n        return f(*args)\n    return sarici\n\n@kaydet\ndef topla(a, b):\n    return a + b\n\nprint(topla(2, 3))",
+   "codeOptions": true,
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "`@kaydet` satırı, fonksiyon tanımından sonra yazılan hangi satırla aynı işi yapar?",
+   "options": [
+    "topla = kaydet(topla)",
+    "kaydet = topla(kaydet)",
+    "topla()",
+    "kaydet(topla())"
+   ],
+   "answer": 0,
+   "why": "@ sözdizimi, fonksiyonu tanımladıktan hemen sonra onu dekoratörden geçirip aynı ada yeniden atamanın kısa yoludur.",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır? `lru_cache` hesaplanan sonuçları saklar.",
+   "options": [
+    "832040",
+    "514229",
+    "1346269",
+    "30"
+   ],
+   "answer": 0,
+   "why": "fib(30) = 832040. lru_cache her fib(n)'i bir kez hesaplar, bu yüzden özyineleme çok hızlı biter.",
+   "code": "from functools import lru_cache\n\n@lru_cache(maxsize=None)\ndef fib(n):\n    if n < 2:\n        return n\n    return fib(n - 1) + fib(n - 2)\n\nprint(fib(30))",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "10\n14",
+    "24\n9",
+    "24\n14",
+    "10\n9"
+   ],
+   "answer": 2,
+   "why": "reduce çarpmayı sırayla uygular: 1 × 2 × 3 × 4 = 24. partial(carp, 2) ilk argümanı 2'ye sabitler: 2 × 7 = 14.",
+   "code": "from functools import reduce, partial\n\ndef carp(a, b):\n    return a * b\n\nprint(reduce(carp, [1, 2, 3, 4]))\nikiyle = partial(carp, 2)\nprint(ikiyle(7))",
+   "codeOptions": true,
+   "id": "s7"
+  },
+  {
+   "type": "parsons",
+   "prompt": "Sonucu iki katına çıkaran bir dekoratör yazıp kullanan programı kur.",
+   "lines": [
+    "def iki_kat(f):",
+    "    def sarici(x):",
+    "        return f(x) * 2",
+    "    return sarici",
+    "@iki_kat",
+    "def artibir(x):",
+    "    return x + 1",
+    "print(artibir(4))"
+   ],
+   "why": "artibir(4) önce 5 hesaplar, dekoratör bunu 2 ile çarpar: program 10 yazdırır.",
+   "id": "s8"
+  }
+ ]
+}

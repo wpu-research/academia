@@ -1,0 +1,110 @@
+{
+ "id": "karmasik-sayilar",
+ "title": "Karmaşık sayılar düzlemde",
+ "level": "Lise 11–12 · AYT",
+ "alan": "İleri",
+ "minutes": 7,
+ "summary": "Karmaşık sayıyı bir vektör olarak gör; modülü ve i ile çarpmanın dönme olduğunu keşfet.",
+ "sims": [
+  "karmasik-duzlem"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "z = a + bi sayısı düzlemde **(a, b)** noktasıdır: yatay eksen gerçel, dikey eksen sanal kısım.",
+   "sim": {
+    "kind": "karmasik-duzlem",
+    "a": 2,
+    "b": 1
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "z'yi **3 + 4i** yap.",
+   "sim": {
+    "kind": "karmasik-duzlem",
+    "a": 2,
+    "b": 1
+   },
+   "goal": "z = 3 + 4i",
+   "check": {
+    "all": [
+     {
+      "key": "a",
+      "eq": 3
+     },
+     {
+      "key": "b",
+      "eq": 4
+     }
+    ]
+   },
+   "why": "Gerçel kısım 3, sanal kısım 4: nokta (3, 4)."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "|3 + 4i| kaçtır?",
+   "options": [
+    "5",
+    "7",
+    "25",
+    "1"
+   ],
+   "answer": 0,
+   "why": "|z| = √(a² + b²) = √(9 + 16) = 5. Orijinden uzaklıktır."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "z = 3 + 4i iken **i ile çarp** düğmesine bas. z ne olur?",
+   "sim": {
+    "kind": "karmasik-duzlem",
+    "a": 3,
+    "b": 4
+   },
+   "goal": "z = −4 + 3i",
+   "check": {
+    "all": [
+     {
+      "key": "a",
+      "eq": -4
+     },
+     {
+      "key": "b",
+      "eq": 3
+     }
+    ]
+   },
+   "why": "i(3 + 4i) = 3i + 4i² = −4 + 3i. Vektör 90° döndü, uzunluğu değişmedi."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "i² kaçtır?",
+   "options": [
+    "−1",
+    "1",
+    "i",
+    "0"
+   ],
+   "answer": 0,
+   "why": "i sanal birimdir ve tanımı gereği i² = −1."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "(2 + i)(2 − i) çarpımı kaçtır?",
+   "options": [
+    "5",
+    "3",
+    "4 − i",
+    "4"
+   ],
+   "answer": 0,
+   "why": "(2 + i)(2 − i) = 4 − i² = 4 + 1 = 5."
+  }
+ ]
+}

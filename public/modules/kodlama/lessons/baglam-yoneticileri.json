@@ -1,0 +1,184 @@
+{
+ "id": "baglam-yoneticileri",
+ "title": "Bağlam yöneticileri: with",
+ "level": "Seviye 5 · İleri",
+ "alan": "İleri",
+ "minutes": 9,
+ "summary": "with bloğunun __enter__ ve __exit__ ile nasıl çalıştığını gör; contextmanager ile kendi bağlam yöneticini yaz.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "`with` bloğu bir kaynağı (dosya, bağlantı, kilit) açar ve blok bittiğinde, **hata olsa bile**, kapatır. Bunu `__enter__` ve `__exit__` metotları sağlar.",
+   "id": "s1"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "iş yapılıyor\nbaşla\nbitti",
+    "başla\niş yapılıyor\nbitti",
+    "başla\nbitti\niş yapılıyor",
+    "iş yapılıyor"
+   ],
+   "answer": 1,
+   "why": "with önce __enter__'ı çağırır, sonra bloğu çalıştırır, en son __exit__'ı çağırır.",
+   "code": "class Zaman:\n    def __enter__(self):\n        print(\"başla\")\n        return self\n    def __exit__(self, tur, deger, iz):\n        print(\"bitti\")\n\nwith Zaman():\n    print(\"iş yapılıyor\")",
+   "codeOptions": true,
+   "id": "s2"
+  },
+  {
+   "type": "trace",
+   "prompt": "Programı adım adım çalıştır. `as yer` ifadesinin __enter__'ın döndürdüğü değeri aldığına dikkat et.",
+   "code": "class Kapi:\n    def __enter__(self):\n        print(\"aç\")\n        return \"oda\"\n    def __exit__(self, *hata):\n        print(\"kapat\")\nwith Kapi() as yer:\n    print(\"içerideyim:\", yer)",
+   "why": "__enter__ \"oda\" döndürür ve bu değer yer değişkenine atanır. Blok bitince __exit__ çalışır.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s3",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {},
+     "out": "aç\n"
+    },
+    {
+     "line": 7,
+     "vars": {
+      "yer": "'oda'"
+     },
+     "out": "aç\n"
+    },
+    {
+     "line": 6,
+     "vars": {
+      "yer": "'oda'"
+     },
+     "out": "aç\niçerideyim: oda\n"
+    },
+    {
+     "line": 5,
+     "vars": {
+      "hata": "(None, None, None)"
+     },
+     "out": "aç\niçerideyim: oda\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "yer": "'oda'"
+     },
+     "out": "aç\niçerideyim: oda\nkapat\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Blok içinde hata çıkıyor. Program ne yazdırır?",
+   "options": [
+    "hata yakalandı",
+    "kapı kapandı",
+    "kapı kapandı\nhata yakalandı",
+    "hata yakalandı\nkapı kapandı"
+   ],
+   "answer": 2,
+   "why": "Hata olsa bile __exit__ çalışır ve kapıyı kapatır. False döndürdüğü için hata dışarı çıkar ve except yakalar.",
+   "code": "class Kapi:\n    def __enter__(self):\n        return self\n    def __exit__(self, tur, deger, iz):\n        print(\"kapı kapandı\")\n        return False\n\ntry:\n    with Kapi():\n        print(1 / 0)\nexcept ZeroDivisionError:\n    print(\"hata yakalandı\")",
+   "codeOptions": true,
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "`__exit__` True döndürürse ne olur?",
+   "options": [
+    "Hata bastırılır ve program with bloğundan sonra devam eder",
+    "Hata iki kez fırlatılır",
+    "with bloğu yeniden çalışır",
+    "__enter__ tekrar çağrılır"
+   ],
+   "answer": 0,
+   "why": "__exit__'ın True döndürmesi “hatayı ben hallettim” demektir; hata dışarı çıkmaz.",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "kalın",
+    "<b>\nkalın\n</b>",
+    "<b>\n</b>\nkalın",
+    "<b>kalın</b>"
+   ],
+   "answer": 1,
+   "why": "contextmanager'da yield'den önceki kısım __enter__, sonraki kısım __exit__ gibi çalışır.",
+   "code": "from contextlib import contextmanager\n\n@contextmanager\ndef etiket(ad):\n    print(f\"<{ad}>\")\n    yield\n    print(f\"</{ad}>\")\n\nwith etiket(\"b\"):\n    print(\"kalın\")",
+   "codeOptions": true,
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "`with open(\"notlar.txt\") as f:` yazmanın en önemli faydası nedir?",
+   "options": [
+    "Blok bitince dosya kendiliğinden kapanır",
+    "Dosya daha hızlı okunur",
+    "Dosya yoksa otomatik oluşturulur",
+    "Dosya kilitlenir, başka program açamaz"
+   ],
+   "answer": 0,
+   "why": "Dosyayı kapatmayı unutmak veri kaybına yol açabilir; with bunu hata durumunda bile garanti eder.",
+   "id": "s7"
+  },
+  {
+   "type": "parsons",
+   "prompt": "Bir mesajı çizgilerle çerçeveleyen bağlam yöneticisini kur.",
+   "lines": [
+    "from contextlib import contextmanager",
+    "@contextmanager",
+    "def cerceve():",
+    "    print(\"---\")",
+    "    yield",
+    "    print(\"---\")",
+    "with cerceve():",
+    "    print(\"merhaba\")"
+   ],
+   "why": "Çıktı üç satırdır: yield'den önce ---, blokta merhaba, yield'den sonra yine ---.",
+   "id": "s8"
+  }
+ ]
+}

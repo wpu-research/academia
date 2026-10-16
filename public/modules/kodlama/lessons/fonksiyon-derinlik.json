@@ -1,0 +1,156 @@
+{
+ "id": "fonksiyon-derinlik",
+ "title": "Fonksiyonlarda derinlik",
+ "level": "Seviye 3 · Orta",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "*args ve **kwargs, lambda, map ve filter, sorted ile key ve fonksiyonların nesne olması.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def topla(*sayilar):\n    return sum(sayilar)\n\nprint(topla(1, 2, 3, 4))",
+   "options": [
+    "10",
+    "(1, 2, 3, 4)",
+    "4",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "*sayilar istenen sayıda argümanı bir demette toplar: (1, 2, 3, 4). Toplamı 10."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "def bilgi(**ozellik):\n    for k, v in ozellik.items():\n        print(k, v)\n\nbilgi(ad=\"Ece\", yas=12)",
+   "options": [
+    "ad Ece\nyas 12",
+    "Ece\n12",
+    "{'ad': 'Ece', 'yas': 12}",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "codeOptions": true,
+   "why": "**ozellik, isimli argümanları bir sözlükte toplar."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kare = lambda x: x * x\nprint(kare(5))",
+   "options": [
+    "25",
+    "10",
+    "x * x",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "lambda, tek satırlık isimsiz bir fonksiyondur. kare(5) = 25."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "sayilar = [1, 2, 3, 4, 5]\nprint(list(filter(lambda n: n > 2, sayilar)))",
+   "options": [
+    "[3, 4, 5]",
+    "[1, 2]",
+    "[True, True, True]",
+    "[False, False, True, True, True]"
+   ],
+   "answer": 0,
+   "why": "filter, fonksiyonun True döndürdüğü elemanları tutar."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(list(map(str.upper, ['a', 'b'])))",
+   "options": [
+    "['A', 'B']",
+    "['a', 'b']",
+    "AB",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "map, verilen fonksiyonu her elemana uygular."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "kelimeler = [\"kiraz\", \"elma\", \"üzüm\", \"ay\"]\nprint(sorted(kelimeler, key=len))",
+   "options": [
+    "['ay', 'elma', 'üzüm', 'kiraz']",
+    "['ay', 'elma', 'kiraz', 'üzüm']",
+    "['kiraz', 'elma', 'üzüm', 'ay']",
+    "[2, 4, 4, 5]"
+   ],
+   "answer": 0,
+   "why": "key=len, sıralamayı uzunluğa göre yapar. elma ve üzüm eşit uzunlukta; sorted kararlıdır ve ilk sıralarını korur."
+  },
+  {
+   "id": "s7",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Fonksiyonun bir değişkene atanıp başka bir fonksiyona verildiğine bak.",
+   "code": "def iki_kat(x):\n    return 2 * x\n\ndef uygula(f, deger):\n    return f(deger)\n\nprint(uygula(iki_kat, 7))",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "iki_kat": "fonksiyon iki_kat"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "iki_kat": "fonksiyon iki_kat",
+      "uygula": "fonksiyon uygula"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "f": "fonksiyon iki_kat",
+      "deger": "7"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "x": "7"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "iki_kat": "fonksiyon iki_kat",
+      "uygula": "fonksiyon uygula"
+     },
+     "out": "14\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Fonksiyonlar birer nesnedir: başka bir fonksiyona argüman olarak verilebilir. uygula, iki_kat(7) = 14 döndürür."
+  }
+ ]
+}

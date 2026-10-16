@@ -1,0 +1,455 @@
+{
+ "id": "graf-algoritmalari",
+ "title": "Graf algoritmaları",
+ "level": "Seviye 6 · Algoritma ve Problem Çözme",
+ "alan": "İleri",
+ "minutes": 12,
+ "summary": "Grafı sözlükle göster; BFS'yi adım adım izle, DFS, Dijkstra ve topolojik sıralamanın ne yaptığını gör.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "Bir graf düğümlerden ve onları bağlayan kenarlardan oluşur. Python'da en kolay gösterim **komşuluk listesidir**: her düğüm, komşularının listesine eşlenir. Örneğin `{\"A\": [\"B\", \"C\"], \"B\": [\"D\"]}`.",
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "Genişlik öncelikli aramayı (BFS) adım adım çalıştır. Kuyruğa giren düğümlerin sırasına bak.",
+   "code": "from collections import deque\ngraf = {\"A\": [\"B\", \"C\"], \"B\": [\"D\"], \"C\": [\"D\"], \"D\": []}\ngorulen = [\"A\"]\nkuyruk = deque([\"A\"])\nwhile kuyruk:\n    dugum = kuyruk.popleft()\n    for k in graf[dugum]:\n        if k not in gorulen:\n            gorulen.append(k)\n            kuyruk.append(k)\nprint(gorulen)",
+   "why": "BFS önce başlangıcın bütün komşularını (B, C), sonra onların komşularını (D) ziyaret eder; katman katman ilerler.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A']"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A']",
+      "kuyruk": "deque(['A'])"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A']",
+      "kuyruk": "deque(['A'])"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A']",
+      "kuyruk": "deque([])",
+      "dugum": "'A'"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A']",
+      "kuyruk": "deque([])",
+      "dugum": "'A'",
+      "k": "'B'"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A']",
+      "kuyruk": "deque([])",
+      "dugum": "'A'",
+      "k": "'B'"
+     },
+     "out": ""
+    },
+    {
+     "line": 9,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B']",
+      "kuyruk": "deque([])",
+      "dugum": "'A'",
+      "k": "'B'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B']",
+      "kuyruk": "deque(['B'])",
+      "dugum": "'A'",
+      "k": "'B'"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B']",
+      "kuyruk": "deque(['B'])",
+      "dugum": "'A'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B']",
+      "kuyruk": "deque(['B'])",
+      "dugum": "'A'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 9,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['B'])",
+      "dugum": "'A'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['B', 'C'])",
+      "dugum": "'A'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['B', 'C'])",
+      "dugum": "'A'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['B', 'C'])",
+      "dugum": "'A'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['C'])",
+      "dugum": "'B'",
+      "k": "'C'"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['C'])",
+      "dugum": "'B'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C']",
+      "kuyruk": "deque(['C'])",
+      "dugum": "'B'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 9,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['C'])",
+      "dugum": "'B'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['C', 'D'])",
+      "dugum": "'B'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['C', 'D'])",
+      "dugum": "'B'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['C', 'D'])",
+      "dugum": "'B'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['D'])",
+      "dugum": "'C'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['D'])",
+      "dugum": "'C'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['D'])",
+      "dugum": "'C'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['D'])",
+      "dugum": "'C'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque(['D'])",
+      "dugum": "'C'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque([])",
+      "dugum": "'D'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque([])",
+      "dugum": "'D'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": 10,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque([])",
+      "dugum": "'D'",
+      "k": "'D'"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "graf": "{'A': ['B', 'C'], 'B': ['D'], 'C': ['D'], 'D': []}",
+      "gorulen": "['A', 'B', 'C', 'D']",
+      "kuyruk": "deque([])",
+      "dugum": "'D'",
+      "k": "'D'"
+     },
+     "out": "['A', 'B', 'C', 'D']\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu derinlik öncelikli arama (DFS) programı ne yazdırır?",
+   "options": [
+    "['A', 'B', 'C', 'D']",
+    "['A', 'B', 'D', 'C']",
+    "['A', 'C', 'B', 'D']",
+    "['D', 'B', 'C', 'A']"
+   ],
+   "answer": 1,
+   "why": "DFS bir yolda gidebildiği kadar derine iner: A'dan B'ye, B'den D'ye; D'nin komşusu kalmayınca geri dönüp C'ye geçer.",
+   "code": "graf = {\"A\": [\"B\", \"C\"], \"B\": [\"D\"], \"C\": [], \"D\": []}\n\ndef dfs(d, gorulen):\n    gorulen.append(d)\n    for k in graf[d]:\n        if k not in gorulen:\n            dfs(k, gorulen)\n    return gorulen\n\nprint(dfs(\"A\", []))",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Ağırlıksız bir grafta en az kenardan oluşan yolu hangisi garanti bulur?",
+   "options": [
+    "DFS",
+    "BFS",
+    "İkisi de her zaman",
+    "Hiçbiri"
+   ],
+   "answer": 1,
+   "why": "BFS düğümleri başlangıca uzaklıklarına göre katman katman ziyaret eder; bir düğüme ilk ulaştığı yol en kısa yoldur.",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Dijkstra algoritmasına göre A'dan D'ye en kısa yolun uzunluğu kaçtır?",
+   "options": [
+    "6",
+    "5",
+    "4",
+    "1"
+   ],
+   "answer": 2,
+   "why": "En kısa yol A → C (1) → B (2) → D (1) = 4. A → C → D yolu 6, A → B → D yolu 5 tutar.",
+   "code": "import heapq\n\ngraf = {\"A\": {\"B\": 4, \"C\": 1}, \"C\": {\"B\": 2, \"D\": 5}, \"B\": {\"D\": 1}, \"D\": {}}\nuzak = {\"A\": 0}\nyigin = [(0, \"A\")]\nwhile yigin:\n    d, u = heapq.heappop(yigin)\n    if d > uzak[u]:\n        continue\n    for v, w in graf[u].items():\n        if d + w < uzak.get(v, float(\"inf\")):\n            uzak[v] = d + w\n            heapq.heappush(yigin, (d + w, v))\nprint(uzak[\"D\"])",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "Dijkstra algoritması negatif ağırlıklı kenarlarda neden güvenilir değildir?",
+   "options": [
+    "Bir düğümün uzaklığı kesinleştirildikten sonra daha kısa bir yol çıkabilir",
+    "Negatif sayılar sıralanamaz",
+    "Öncelik kuyruğu negatif sayı tutamaz",
+    "Graf mutlaka döngü içerir"
+   ],
+   "answer": 0,
+   "why": "Dijkstra, kuyruktan çıkan en yakın düğümün uzaklığını kesin kabul eder. Negatif bir kenar bu varsayımı bozar; bu durumda Bellman-Ford kullanılır.",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Önkoşul sırasına göre dersleri dizen bu topolojik sıralama ne yazdırır?",
+   "options": [
+    "['algoritma', 'veri', 'temel']",
+    "['temel', 'algoritma', 'veri']",
+    "['temel', 'veri', 'algoritma']",
+    "['veri', 'temel', 'algoritma']"
+   ],
+   "answer": 2,
+   "why": "Önce önkoşulu olmayan “temel” alınır. Onun bitmesiyle “veri”nin önkoşulu kalmaz; “algoritma” hem temel hem veriyi beklediği için en sona kalır.",
+   "code": "from collections import deque\n\nonkosul = {\"temel\": [], \"veri\": [\"temel\"], \"algoritma\": [\"temel\", \"veri\"]}\ngiris = {d: len(o) for d, o in onkosul.items()}\nsira = []\nkuyruk = deque([d for d in giris if giris[d] == 0])\nwhile kuyruk:\n    d = kuyruk.popleft()\n    sira.append(d)\n    for x, o in onkosul.items():\n        if d in o:\n            giris[x] -= 1\n            if giris[x] == 0:\n                kuyruk.append(x)\nprint(sira)",
+   "id": "s7"
+  },
+  {
+   "type": "parsons",
+   "prompt": "Kenar listesinden yönsüz bir graf oluşturan programı kur.",
+   "lines": [
+    "kenarlar = [(\"A\", \"B\"), (\"B\", \"C\")]",
+    "graf = {}",
+    "for a, b in kenarlar:",
+    "    graf.setdefault(a, []).append(b)",
+    "    graf.setdefault(b, []).append(a)",
+    "print(graf)"
+   ],
+   "why": "Yönsüz grafta her kenar iki yönde eklenir. Program {'A': ['B'], 'B': ['A', 'C'], 'C': ['B']} yazdırır.",
+   "id": "s8"
+  }
+ ]
+}

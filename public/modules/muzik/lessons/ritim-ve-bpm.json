@@ -1,0 +1,187 @@
+{
+ "id": "ritim-ve-bpm",
+ "title": "Ritim ve BPM",
+ "level": "Seviye 1 · Ritim",
+ "alan": "Ritim",
+ "minutes": 8,
+ "summary": "Ritim makinesinde bas davul, trampet ve zille temel ritmi kur; tempoyu ve BPM'i öğren.",
+ "sims": [
+  "ritim-makinesi"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "**Çal**'a bas ve dinle. Bu, pop ve elektronik müziğin en temel ritmi: bas davul her vuruşta, trampet 2. ve 4. vuruşta, zil aralarda.",
+   "sim": {
+    "kind": "ritim-makinesi",
+    "bpm": 100,
+    "pattern": {
+     "kick": [
+      0,
+      4,
+      8,
+      12
+     ],
+     "snare": [
+      4,
+      12
+     ],
+     "hat": [
+      2,
+      6,
+      10,
+      14
+     ]
+    }
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "Boş ızgarada **bas davulu dört vuruşun başına** koy (1, 2, 3, 4). Buna “four on the floor” denir.",
+   "sim": {
+    "kind": "ritim-makinesi",
+    "bpm": 110
+   },
+   "goal": "Bas davul yalnız 4 vuruş başında",
+   "check": {
+    "key": "fourFloor",
+    "eq": 1
+   },
+   "hint": "Bas davul satırında kalın çizgili kutulara dokun: 1., 5., 9. ve 13. kutular.",
+   "why": "Her vuruşta bir bas davul, house ve disko müziğin temelidir."
+  },
+  {
+   "id": "s3",
+   "type": "sim",
+   "prompt": "Şimdi **trampeti ya da el çırpmayı 2. ve 4. vuruşa** ekle. Buna “backbeat” denir.",
+   "sim": {
+    "kind": "ritim-makinesi",
+    "bpm": 110,
+    "pattern": {
+     "kick": [
+      0,
+      4,
+      8,
+      12
+     ]
+    }
+   },
+   "goal": "2. ve 4. vuruşta trampet ya da el çırpma",
+   "check": {
+    "key": "backbeat",
+    "eq": 1
+   },
+   "hint": "2. vuruş 5. kutu, 4. vuruş 13. kutu.",
+   "why": "Backbeat ritme ileri doğru bir itiş verir; dinleyenin el çırptığı yer burasıdır."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Zili **her yarım vuruşa** (8'lik notalara) koy: 1, 3, 5, … 15. kutular.",
+   "sim": {
+    "kind": "ritim-makinesi",
+    "bpm": 110,
+    "pattern": {
+     "kick": [
+      0,
+      4,
+      8,
+      12
+     ],
+     "snare": [
+      4,
+      12
+     ]
+    }
+   },
+   "goal": "Zil her yarım vuruşta",
+   "check": {
+    "key": "eighthHats",
+    "eq": 1
+   },
+   "why": "8'lik ziller ritmin iskeletini doldurur ve tempo hissini güçlendirir."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "BPM neyi ölçer?",
+   "options": [
+    "Dakikadaki vuruş sayısını",
+    "Sesin yüksekliğini",
+    "Şarkının uzunluğunu",
+    "Kaç nota çalındığını"
+   ],
+   "answer": 0,
+   "why": "BPM, İngilizce “beats per minute”, yani dakikadaki vuruş sayısıdır."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "120 BPM'de bir vuruş kaç saniye sürer?",
+   "options": [
+    "0,5 saniye",
+    "1,2 saniye",
+    "2 saniye",
+    "0,12 saniye"
+   ],
+   "answer": 0,
+   "why": "60 saniye ÷ 120 vuruş = 0,5 saniye."
+  },
+  {
+   "id": "s7",
+   "type": "sim",
+   "prompt": "Tempoyu **128 BPM** yap ve ritmi çal. House müziğin tipik temposu budur.",
+   "sim": {
+    "kind": "ritim-makinesi",
+    "bpm": 100,
+    "pattern": {
+     "kick": [
+      0,
+      4,
+      8,
+      12
+     ],
+     "clap": [
+      4,
+      12
+     ],
+     "hat": [
+      2,
+      6,
+      10,
+      14
+     ]
+    }
+   },
+   "goal": "128 BPM'de çalındı",
+   "check": {
+    "all": [
+     {
+      "key": "bpm",
+      "eq": 128
+     },
+     {
+      "key": "plays",
+      "gte": 1
+     }
+    ]
+   },
+   "why": "Tempo değişince ritmin deseni aynı kalır, yalnız hızı değişir."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "16 kutuluk bu ızgarada bir vuruş kaç kutudur?",
+   "options": [
+    "4",
+    "2",
+    "16",
+    "8"
+   ],
+   "answer": 0,
+   "why": "16 kutu bir ölçü, bir ölçüde 4 vuruş var: 16 ÷ 4 = 4 kutu. Her kutu bir 16'lık notadır."
+  }
+ ]
+}

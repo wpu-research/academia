@@ -1,0 +1,205 @@
+{
+ "id": "standart-kutuphane",
+ "title": "Standart kütüphaneden seçmeler",
+ "level": "Seviye 5 · İleri",
+ "alan": "İleri",
+ "minutes": 10,
+ "summary": "defaultdict, namedtuple, çok anahtarlı sıralama, pathlib, logging ve iş parçacıklarını tanı.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "trace",
+   "prompt": "defaultdict ile harf sayan programı adım adım çalıştır. Olmayan bir anahtara ilk erişimde değer otomatik 0 olur.",
+   "code": "from collections import defaultdict\nsayac = defaultdict(int)\nfor harf in \"kek\":\n    sayac[harf] += 1\nprint(dict(sayac))",
+   "why": "defaultdict(int) eksik anahtar için int() yani 0 üretir; bu yüzden += 1 hata vermez. Sonuç {'k': 2, 'e': 1}.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s1",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {})"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {})",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 1})",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 1})",
+      "harf": "'e'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 1, 'e': 1})",
+      "harf": "'e'"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 1, 'e': 1})",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 2, 'e': 1})",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 2, 'e': 1})",
+      "harf": "'k'"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "sayac": "defaultdict(<class 'int'>, {'k': 2, 'e': 1})",
+      "harf": "'k'"
+     },
+     "out": "{'k': 2, 'e': 1}\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "{'e': ['elma', 'erik'], 'a': ['armut', 'ayva']}",
+    "{'e': 2, 'a': 2}",
+    "{'elma': 'e', 'armut': 'a', 'erik': 'e', 'ayva': 'a'}",
+    "KeyError verir"
+   ],
+   "answer": 0,
+   "why": "defaultdict(list) eksik anahtar için boş liste oluşturur; kelimeler baş harflerine göre gruplanır.",
+   "code": "from collections import defaultdict\n\ngruplar = defaultdict(list)\nfor kelime in [\"elma\", \"armut\", \"erik\", \"ayva\"]:\n    gruplar[kelime[0]].append(kelime)\nprint(dict(gruplar))",
+   "id": "s2"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "7 3",
+    "34 3",
+    "7 4",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "namedtuple alanlara adla (p.x) ve sırayla (p[0]) erişim sağlar: 3 + 4 = 7 ve p[0] = 3.",
+   "code": "from collections import namedtuple\n\nNokta = namedtuple(\"Nokta\", [\"x\", \"y\"])\np = Nokta(3, 4)\nprint(p.x + p.y, p[0])",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Önce puana, eşitlikte ada göre ters sıralama yapılıyor. Program ne yazdırır?",
+   "options": [
+    "['Ece', 'Ali', 'Can']",
+    "['Ece', 'Can', 'Ali']",
+    "['Ali', 'Can', 'Ece']",
+    "['Can', 'Ali', 'Ece']"
+   ],
+   "answer": 1,
+   "why": "itemgetter(1, 0) anahtarı (puan, ad) yapar. Ters sırada 92 önce gelir; 85'te eşit olan Can ve Ali, adlarına göre ters sıralanır: Can, Ali.",
+   "code": "from operator import itemgetter\n\nogrenciler = [(\"Ali\", 85), (\"Ece\", 92), (\"Can\", 85)]\nsirali = sorted(ogrenciler, key=itemgetter(1, 0), reverse=True)\nprint([ad for ad, _ in sirali])",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "rapor.final.pdf pdf rapor belgeler",
+    "rapor.final.pdf .pdf rapor.final belgeler",
+    "rapor .pdf final belgeler/rapor",
+    "belgeler .pdf rapor.final rapor.final.pdf"
+   ],
+   "answer": 1,
+   "why": "name dosya adının tamamı, suffix son uzantı (.pdf), stem uzantısız ad (rapor.final), parent üst klasördür.",
+   "code": "from pathlib import Path\n\np = Path(\"belgeler/rapor.final.pdf\")\nprint(p.name, p.suffix, p.stem, p.parent)",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "logging ayarları değiştirilmezse `logging.info(\"bilgi\")` mesajı ekranda görünür mü?",
+   "options": [
+    "Hayır, varsayılan seviye WARNING olduğu için INFO mesajları gösterilmez",
+    "Evet, her mesaj görünür",
+    "Yalnız bir dosyaya yazılır",
+    "Program hata verir"
+   ],
+   "answer": 0,
+   "why": "logging seviyeleri DEBUG < INFO < WARNING < ERROR < CRITICAL. Varsayılan eşik WARNING'dir; seviye ayarıyla açılıp kapatılabilmesi logging'i print'ten üstün kılar.",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Python'da iş parçacıkları (threading) en çok hangi tür işte hız kazandırır?",
+   "options": [
+    "Ağ ya da dosya bekleyen (G/Ç ağırlıklı) işlerde",
+    "Yoğun hesaplama yapan işlerde",
+    "Her işte, çekirdek sayısı kadar",
+    "Hiçbir işte"
+   ],
+   "answer": 0,
+   "why": "CPython'daki GIL, aynı anda yalnız bir iş parçacığının Python kodu çalıştırmasına izin verir. Beklemeli işlerde bir parça beklerken diğeri çalışır; hesaplamada ise multiprocessing gerekir.",
+   "id": "s7"
+  },
+  {
+   "type": "parsons",
+   "prompt": "namedtuple ile bir alışveriş sepetinin toplamını bulan programı kur.",
+   "lines": [
+    "from collections import namedtuple",
+    "Urun = namedtuple(\"Urun\", [\"ad\", \"fiyat\"])",
+    "sepet = [Urun(\"kalem\", 10), Urun(\"defter\", 25)]",
+    "toplam = sum(u.fiyat for u in sepet)",
+    "print(toplam)"
+   ],
+   "why": "Fiyatlar 10 ve 25; toplam 35 yazdırılır.",
+   "id": "s8"
+  }
+ ]
+}

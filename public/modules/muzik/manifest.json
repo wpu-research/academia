@@ -1,0 +1,36 @@
+{
+ "id": "muzik",
+ "title": "DJ ve Prodüksiyon",
+ "version": "0.1.0",
+ "kind": "internal",
+ "levels": [
+  "Ritim",
+  "Ses tasarımı",
+  "DJ",
+  "Prodüksiyon"
+ ],
+ "lessons": [
+  {
+   "id": "ritim-ve-bpm",
+   "title": "Ritim ve BPM",
+   "level": "Seviye 1 · Ritim",
+   "alan": "Ritim",
+   "minutes": 8,
+   "summary": "Ritim makinesinde bas davul, trampet ve zille temel ritmi kur; tempoyu ve BPM'i öğren.",
+   "sims": [
+    "ritim-makinesi"
+   ]
+  },
+  {
+   "id": "beatmatching",
+   "title": "Beatmatching ve geçiş",
+   "level": "Seviye 3 · DJ",
+   "alan": "DJ",
+   "minutes": 10,
+   "summary": "İki destenin temposunu eşitle, vuruşları hizala, basları değiştir ve crossfader ile geç.",
+   "sims": [
+    "dj-mikser"
+   ]
+  }
+ ]
+}

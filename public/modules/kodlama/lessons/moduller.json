@@ -1,0 +1,143 @@
+{
+ "id": "moduller",
+ "title": "Modüller ve paketler",
+ "level": "Seviye 3 · Orta",
+ "alan": "Orta",
+ "minutes": 8,
+ "summary": "import, math, collections.Counter, __main__ kontrolü, pip ve sanal ortam.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import math\nprint(math.sqrt(16) + math.floor(2.7))",
+   "options": [
+    "6.0",
+    "6",
+    "6.7",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "math.sqrt(16) = 4.0, math.floor(2.7) = 2. Toplam 6.0; sqrt ondalıklı sayı döndürür."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "from math import pi\nprint(round(pi, 2))",
+   "options": [
+    "3.14",
+    "3.1416",
+    "3",
+    "pi"
+   ],
+   "answer": 0,
+   "why": "from ... import ile modüldeki bir adı doğrudan kullanırız. round(pi, 2) = 3.14."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "from collections import Counter\nc = Counter(\"mississippi\")\nprint(c.most_common(1))",
+   "options": [
+    "[('i', 4)]",
+    "[('s', 4)]",
+    "[('i', 4), ('s', 4)]",
+    "{'i': 4}"
+   ],
+   "answer": 0,
+   "why": "i ve s dörder kez geçer. Eşitlikte most_common ilk görülen sırayı korur; i, s'den önce görülür."
+  },
+  {
+   "id": "s4",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. Counter'ın nasıl sayım tuttuğuna bak.",
+   "code": "from collections import Counter\nsepet = Counter([\"elma\", \"armut\", \"elma\"])\nsepet[\"elma\"] += 1\nprint(sepet[\"elma\"], sepet[\"kiraz\"])",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "Counter": "sınıf Counter"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "Counter": "sınıf Counter",
+      "sepet": "Counter({'elma': 2, 'armut': 1})"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "Counter": "sınıf Counter",
+      "sepet": "Counter({'elma': 3, 'armut': 1})"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "Counter": "sınıf Counter",
+      "sepet": "Counter({'elma': 3, 'armut': 1})"
+     },
+     "out": "3 0\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Counter bir sayım sözlüğüdür; olmayan anahtar için 0 döner, hata vermez."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "`if __name__ == \"__main__\":` bloğundaki kod ne zaman çalışır?",
+   "options": [
+    "Dosya doğrudan çalıştırılınca; başka bir dosyadan import edilince çalışmaz",
+    "Her zaman çalışır",
+    "Yalnız import edilince çalışır",
+    "Hiçbir zaman çalışmaz"
+   ],
+   "answer": 0,
+   "why": "Dosya doğrudan çalışınca __name__ \"__main__\" olur. Import edilince modülün adı olur ve blok atlanır."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bir projeye dış paket kurarken neden sanal ortam (venv) kullanılır?",
+   "options": [
+    "Her projenin paketleri ve sürümleri birbirinden ayrı kalsın diye",
+    "Python daha hızlı çalışsın diye",
+    "pip'in yerine geçtiği için",
+    "İnternet olmadan paket kurmak için"
+   ],
+   "answer": 0,
+   "why": "Sanal ortam, projeye özel bir paket klasörü açar; bir projede kurulan sürüm diğerini bozmaz. Paketler pip install ile kurulur."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Bir metindeki en sık iki harfi yazdıran programı kur.",
+   "lines": [
+    "from collections import Counter",
+    "sayac = Counter(\"banana\")",
+    "print(sayac.most_common(2))"
+   ],
+   "why": "banana'da a 3, n 2 kez geçer: [('a', 3), ('n', 2)]."
+  }
+ ]
+}

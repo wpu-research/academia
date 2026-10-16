@@ -1,0 +1,108 @@
+{
+ "id": "limit-kavrami",
+ "title": "Limit: bir değere yaklaşmak",
+ "level": "Lise 12 · AYT",
+ "alan": "İleri",
+ "minutes": 8,
+ "summary": "Tanımsız bir noktaya iki yönden yaklaşarak limitin ne olduğunu gör.",
+ "sims": [
+  "limit-yaklasim"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "f(x) = (x² − 1)/(x − 1) fonksiyonu x = 1'de tanımsız; grafikteki **boş daire** bunu gösterir. Kaydırıcıyı uçlardan **ortaya** doğru çektikçe x 1'e yaklaşır.",
+   "sim": {
+    "kind": "limit-yaklasim",
+    "s": -100
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "x'i 1'e **soldan** yaklaştır: fark 0,01'den az olsun.",
+   "sim": {
+    "kind": "limit-yaklasim",
+    "s": -100
+   },
+   "goal": "x, 1'in solunda ve |x − 1| < 0,01",
+   "check": {
+    "all": [
+     {
+      "key": "dist",
+      "lt": 0.01
+     },
+     {
+      "key": "side",
+      "eq": -1
+     }
+    ]
+   },
+   "hint": "Kaydırıcıyı soldan ortaya doğru çek ama tam ortaya getirme.",
+   "why": "x 1'e soldan yaklaşırken f(x) değerleri 2'ye yaklaşır."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "x soldan 1'e yaklaşırken f(x) hangi değere yaklaşır?",
+   "options": [
+    "2",
+    "1",
+    "0",
+    "Tanımsızdır"
+   ],
+   "answer": 0,
+   "why": "Simülasyonda f(x) 1,99… diye 2'ye yaklaşıyor."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Şimdi x'i 1'e **sağdan** yaklaştır.",
+   "sim": {
+    "kind": "limit-yaklasim",
+    "s": 100
+   },
+   "goal": "x, 1'in sağında ve |x − 1| < 0,01",
+   "check": {
+    "all": [
+     {
+      "key": "dist",
+      "lt": 0.01
+     },
+     {
+      "key": "side",
+      "eq": 1
+     }
+    ]
+   },
+   "why": "Sağdan da 2'ye yaklaşır. İki yönden aynı değere yaklaşınca limit vardır."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "f(1) tanımsız olduğu hâlde lim (x → 1) f(x) kaçtır?",
+   "options": [
+    "2",
+    "Tanımsızdır",
+    "0",
+    "1"
+   ],
+   "answer": 0,
+   "why": "x ≠ 1 için (x² − 1)/(x − 1) = x + 1. x → 1 iken x + 1 → 2. Limit, fonksiyonun o noktadaki değerine değil, yaklaştığı değere bakar."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "lim (x → 3) (x² − 9)/(x − 3) kaçtır?",
+   "options": [
+    "6",
+    "0",
+    "3",
+    "9"
+   ],
+   "answer": 0,
+   "why": "(x² − 9)/(x − 3) = x + 3 (x ≠ 3). x → 3 iken 6."
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "id": "veri-yapilari",
+ "title": "Veri yapıları",
+ "level": "Seviye 6 · Algoritma ve Problem Çözme",
+ "alan": "İleri",
+ "minutes": 11,
+ "summary": "Yığın, kuyruk, bağlı liste, ikili arama ağacı, öncelik kuyruğu ve hash tablosunun nasıl çalıştığını gör.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "**Yığın** (stack) son giren ilk çıkar mantığıyla, **kuyruk** (queue) ilk giren ilk çıkar mantığıyla çalışır. Python'da yığın için liste, kuyruk için `collections.deque` kullanılır.",
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "Parantezlerin dengeli olup olmadığını yığınla kontrol eden programı adım adım çalıştır.",
+   "code": "yigin = []\nfor k in \"(()\":\n    if k == \"(\":\n        yigin.append(k)\n    else:\n        yigin.pop()\nprint(len(yigin) == 0)",
+   "why": "Her açılan parantez yığına eklenir, her kapanan bir tane çıkarır. Sonda bir açık parantez kalır; dengeli değildir: False.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "yigin": "[]"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "yigin": "[]",
+      "k": "'('"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "yigin": "[]",
+      "k": "'('"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "yigin": "['(']",
+      "k": "'('"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "yigin": "['(']",
+      "k": "'('"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "yigin": "['(']",
+      "k": "'('"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "yigin": "['(', '(']",
+      "k": "'('"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "yigin": "['(', '(']",
+      "k": "')'"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "yigin": "['(', '(']",
+      "k": "')'"
+     },
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "yigin": "['(']",
+      "k": "')'"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "yigin": "['(']",
+      "k": "')'"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "yigin": "['(']",
+      "k": "')'"
+     },
+     "out": "False\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "Can ['Ali', 'Ece']",
+    "Ali ['Ece', 'Can']",
+    "Ali ['Can', 'Ece']",
+    "Ece ['Ali', 'Can']"
+   ],
+   "answer": 1,
+   "why": "append sona ekler, popleft baştan çıkarır. İlk gelen Ali ilk çıkar; kuyrukta Ece ve Can kalır.",
+   "code": "from collections import deque\n\nkuyruk = deque([\"Ali\", \"Ece\"])\nkuyruk.append(\"Can\")\nilk = kuyruk.popleft()\nprint(ilk, list(kuyruk))",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu bağlı liste programı ne yazdırır?",
+   "options": [
+    "3 2 1",
+    "1",
+    "1 2 3",
+    "Hata verir"
+   ],
+   "answer": 2,
+   "why": "Her düğüm bir değer ve bir sonraki düğümü tutar. Baştan başlayıp sonraki None olana kadar ilerlenir.",
+   "code": "class Dugum:\n    def __init__(self, deger, sonraki=None):\n        self.deger = deger\n        self.sonraki = sonraki\n\nbas = Dugum(1, Dugum(2, Dugum(3)))\nd = bas\nwhile d:\n    print(d.deger, end=\" \")\n    d = d.sonraki",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu öncelik kuyruğu programı ne yazdırır?",
+   "options": [
+    "rapor acil",
+    "acil toplantı",
+    "toplantı rapor",
+    "acil rapor"
+   ],
+   "answer": 1,
+   "why": "heapq her zaman en küçük önceliği önce verir. Önce 1 (acil), sonra 2 (toplantı) çıkar.",
+   "code": "import heapq\n\ngorevler = [(3, \"rapor\"), (1, \"acil\"), (2, \"toplantı\")]\nheapq.heapify(gorevler)\nprint(heapq.heappop(gorevler)[1], heapq.heappop(gorevler)[1])",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "İkili arama ağacına 5, 2, 8, 1 eklenip ağaç soldan sağa (inorder) gezilirse ne yazdırılır?",
+   "options": [
+    "[5, 2, 8, 1]",
+    "[1, 2, 5, 8]",
+    "[8, 5, 2, 1]",
+    "[5, 2, 1, 8]"
+   ],
+   "answer": 1,
+   "why": "Ağaçta küçükler sola, büyükler sağa gider. Sol – kök – sağ sırasıyla gezmek değerleri sıralı verir.",
+   "code": "def ekle(agac, x):\n    if agac is None:\n        return [x, None, None]\n    if x < agac[0]:\n        agac[1] = ekle(agac[1], x)\n    else:\n        agac[2] = ekle(agac[2], x)\n    return agac\n\ndef sirala(agac):\n    if agac is None:\n        return []\n    return sirala(agac[1]) + [agac[0]] + sirala(agac[2])\n\nkok = None\nfor x in [5, 2, 8, 1]:\n    kok = ekle(kok, x)\nprint(sirala(kok))",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu satır çalışınca ne olur?",
+   "options": [
+    "{[1, 2]: 'x'} sözlüğünü oluşturur",
+    "KeyError verir",
+    "TypeError verir",
+    "Boş bir sözlük oluşturur"
+   ],
+   "answer": 2,
+   "why": "Sözlükler hash tablosudur; anahtarın hash değeri olmalıdır. Liste değiştirilebilir olduğu için hash'lenemez: TypeError. Demet (1, 2) ise anahtar olabilir.",
+   "code": "d = {[1, 2]: \"x\"}",
+   "id": "s7"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bir sözlükte anahtarla arama ortalama hangi karmaşıklıktadır?",
+   "options": [
+    "O(1)",
+    "O(log n)",
+    "O(n)",
+    "O(n²)"
+   ],
+   "answer": 0,
+   "why": "Hash fonksiyonu anahtarın tablodaki yerini doğrudan hesaplar; eleman sayısından bağımsız olarak ortalama sabit sürede bulunur.",
+   "id": "s8"
+  }
+ ]
+}

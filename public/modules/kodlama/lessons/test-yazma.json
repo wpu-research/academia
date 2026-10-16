@@ -1,0 +1,209 @@
+{
+ "id": "test-yazma",
+ "title": "Test yazma",
+ "level": "Seviye 5 · İleri",
+ "alan": "İleri",
+ "minutes": 9,
+ "summary": "assert ile basit testler yaz, unittest ile test sınıfı kur, doctest'in nasıl çalıştığını gör.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "Test, kodun beklediğin gibi çalıştığını otomatik kontrol eden koddur. En basit hâli `assert`: koşul yanlışsa program AssertionError ile durur.",
+   "id": "s1"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program çalışınca ne olur?",
+   "options": [
+    "tamam yazar",
+    "AssertionError verir",
+    "Hiçbir şey yazmaz",
+    "ZeroDivisionError verir"
+   ],
+   "answer": 1,
+   "why": "kare(0) = 0 ama test 1 bekliyor. Üçüncü assert başarısız olur ve AssertionError fırlatılır.",
+   "code": "def kare(x):\n    return x * x\n\nassert kare(3) == 9\nassert kare(-2) == 4\nassert kare(0) == 1\nprint(\"tamam\")",
+   "id": "s2"
+  },
+  {
+   "type": "trace",
+   "prompt": "Fonksiyonu ve testini adım adım çalıştır.",
+   "code": "def en_buyuk(liste):\n    sonuc = liste[0]\n    for x in liste:\n        if x > sonuc:\n            sonuc = x\n    return sonuc\nassert en_buyuk([3, 9, 2]) == 9\nprint(\"test geçti\")",
+   "why": "Fonksiyon 9 döndürür, assert koşulu doğru olduğu için program devam eder ve “test geçti” yazar.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s3",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "liste": "[3, 9, 2]"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "3",
+      "x": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "3",
+      "x": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "3",
+      "x": "9"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "3",
+      "x": "9"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "9",
+      "x": "9"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "9",
+      "x": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "9",
+      "x": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[3, 9, 2]",
+      "sonuc": "9",
+      "x": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {},
+     "out": "test geçti\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "İki testten biri başarısız. Program ne yazdırır? (testsRun: çalışan test sayısı, failures: başarısızlar)",
+   "options": [
+    "2 0",
+    "1 1",
+    "2 1",
+    "2 2"
+   ],
+   "answer": 2,
+   "why": "İki test çalışır. −2 + −3 = −5 olduğu için −6 bekleyen test başarısız olur: 2 test, 1 başarısız.",
+   "code": "import io\nimport unittest\n\nclass TestToplama(unittest.TestCase):\n    def test_pozitif(self):\n        self.assertEqual(2 + 3, 5)\n    def test_negatif(self):\n        self.assertEqual(-2 + -3, -6)\n\ntestler = unittest.defaultTestLoader.loadTestsFromTestCase(TestToplama)\nsonuc = unittest.TextTestRunner(stream=io.StringIO()).run(testler)\nprint(sonuc.testsRun, len(sonuc.failures))",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Docstring'de `>>> ikiye_bol(3)` satırının altında `1.5` yazıyor. doctest neyi kontrol eder?",
+   "options": [
+    "ikiye_bol(3) çağrısının çıktısının 1.5 olduğunu",
+    "Fonksiyonun 3 satır uzunluğunda olduğunu",
+    "Fonksiyonun hata vermediğini, sonucu önemsemeden",
+    "Docstring'in yazım kurallarını"
+   ],
+   "answer": 0,
+   "why": "doctest, docstring'deki >>> satırlarını çalıştırır ve çıktıyı altındaki satırla karşılaştırır.",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "Testleri neden küçük ve birbirinden bağımsız yazarız?",
+   "options": [
+    "Bir test başarısız olunca hatanın nerede olduğu hemen anlaşılsın diye",
+    "Daha az satır yazmak için",
+    "Python büyük testleri çalıştıramadığı için",
+    "Testler sırayla çalışmak zorunda olduğu için"
+   ],
+   "answer": 0,
+   "why": "Her test tek bir davranışı denerse, kırılan test doğrudan sorunlu davranışı gösterir.",
+   "id": "s6"
+  },
+  {
+   "type": "parsons",
+   "prompt": "Bir fonksiyonu ve onun test fonksiyonunu yazıp testi çalıştıran programı kur.",
+   "lines": [
+    "def topla(a, b):",
+    "    return a + b",
+    "def test_topla():",
+    "    assert topla(2, 2) == 4",
+    "test_topla()",
+    "print(\"test geçti\")"
+   ],
+   "why": "Test fonksiyonu çağrılır, assert geçer ve program “test geçti” yazar.",
+   "id": "s7"
+  }
+ ]
+}

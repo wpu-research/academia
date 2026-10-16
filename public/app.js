@@ -12,7 +12,7 @@
   const ACTIVE = A.programs.filter((p) => p.active !== false);
   const PASSIVE = A.programs.filter((p) => p.active === false);
   const bySlug = Object.fromEntries(ACTIVE.map((p) => [p.slug, p]));
-  const MODULES = ["matematik", "kodlama"];
+  const MODULES = ["matematik", "kodlama", "muzik"];
   const examOn = (id) => !!A.exams[id] && A.exams[id].active !== false;
   const groupLabel = Object.fromEntries(A.groups.map((g) => [g.id, g.label]));
 
@@ -76,7 +76,7 @@
 
   function card(p) {
     return `<a class="card" href="#p-${p.slug}">
-      <div class="card-img"><img src="img/${p.slug}.jpg" alt="" loading="lazy" width="800" height="500"></div>
+      <div class="card-img"><img src="${p.image || `img/${p.slug}.jpg`}" alt="" loading="lazy" width="800" height="500"></div>
       <div class="card-body">
         <h3>${esc(p.title)}</h3>
         <div class="card-meta"><span>${esc(p.fact)}</span></div>
@@ -179,7 +179,10 @@
       <div class="wrap">
         <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
           <p>Her programda seviye tespiti, kişisel plan ve ilerleme takibi. Kodlama ve Matematik'te her seviye oyunlu.</p></div>
-        <div class="cards cards-3">${ACTIVE.map(card).join("")}</div>
+        <div class="cards cards-3">${ACTIVE.filter((p) => !p.featured).map(card).join("")}</div>
+        ${ACTIVE.filter((p) => p.featured).map((p) => `<div class="feature-banner"><img src="${p.image}" alt="" width="800" height="500">
+          <div class="fb-body"><span class="chip chip-brand">Yeni · Prototip</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#studyo">Stüdyoyu aç</a><a class="btn btn-outline" href="#p-${p.slug}">Derslere bak</a></div></div></div>`).join("")}
         <div class="soon-head"><h3>Yakında</h3><p class="muted">Bu programlar hazırlanıyor.</p></div>
         <div class="cards cards-passive">
           ${PASSIVE.map(passiveCard).join("")}
@@ -289,7 +292,7 @@
           <p class="lead">${esc(p.summary)}</p>
           <div class="hero-actions"><span class="chip chip-brand">${esc(p.fact)}</span>${p.status ? `<span class="chip chip-soon">${esc(p.status.split(".")[0])}</span>` : ""}</div>
         </div>
-        <div class="card-img"><img src="img/${p.slug}.jpg" alt="" width="800" height="500"></div>
+        <div class="card-img"><img src="${p.image || `img/${p.slug}.jpg`}" alt="" width="800" height="500"></div>
       </div>
     </div>
     <div class="section soft" style="padding-block:0"><div class="wrap prog-grid">
@@ -333,6 +336,15 @@
       </div>
       <aside class="aside"><div class="box accent"><h3>Modülü başlat</h3><p class="note">Dersler Robotik'in sanal laboratuvarında açılır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div></aside>
     </div></div>`;
+  }
+
+  function renderStudio() {
+    $app.innerHTML = `<div class="wrap"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / <a href="#p-muzik">DJ ve Prodüksiyon</a> / Stüdyo</nav>
+      <div class="studio-head"><span class="eyebrow">Serbest stüdyo · prototip</span><h1>Stüdyo</h1><p class="lead muted">Ritim makinesinde ritim kur, mikserde iki desteyi birleştir. Ses için önce bir düğmeye bas; tarayıcılar ancak dokunuştan sonra ses çalmaya izin verir.</p></div>
+      <section class="studio-box"><h2>Ritim makinesi</h2><div id="st-rm"></div></section>
+      <section class="studio-box"><h2>DJ mikseri</h2><div id="st-dj"></div></section></div>`;
+    LESSONS.sims["ritim-makinesi"](document.getElementById("st-rm"), { bpm: 120, pattern: { kick: [0, 4, 8, 12], clap: [4, 12], hat: [2, 6, 10, 14] } }, () => {});
+    LESSONS.sims["dj-mikser"](document.getElementById("st-dj"), {}, () => {});
   }
 
   // ---------- Öğrenme alanı ----------
@@ -691,6 +703,7 @@
     if (h.startsWith("m-") && bySlug.robotik.modules.some((m) => m.slug === h.slice(2))) return { view: "module", slug: h.slice(2) };
     if (h === "ogren" || h.startsWith("ogren-")) return { view: "app", exam: h.slice(6) };
     if (h === "basla") return { view: "basla" };
+    if (h === "studyo") return { view: "studyo" };
     return { view: "home", section: SECTIONS.includes(h) ? h : null };
   }
   function render() {
@@ -704,6 +717,7 @@
     } else if (r.view === "program") renderProgram(bySlug[r.slug]);
     else if (r.view === "module") renderModule(r.slug);
     else if (r.view === "basla") MAC.renderOnboarding($app);
+    else if (r.view === "studyo") renderStudio();
     else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
     if (r.view === "program" && MODULES.includes(r.slug)) { fillLessons(r.slug); fillCurriculum(r.slug); }
@@ -740,8 +754,9 @@
     "kati-cisim": "Katı cisim", "olcme": "Ölçme", "saat": "Saat", "para": "Para", "oruntu": "Örüntü", "veri-grafigi": "Veri grafiği", "olasilik-sim": "Olasılık deneyi",
     "oran-karistirma": "Oran karıştırma", "birim-cember": "Birim çember", "limit-yaklasim": "Limit yaklaşımı", "turev-teget": "Teğet ve türev", "integral-alan": "İntegral alanı",
     "dizi-gorsel": "Dizi görseli", "kume-venn": "Venn şeması", "mantik-tablosu": "Doğruluk tablosu", "karmasik-duzlem": "Karmaşık düzlem",
+    "ritim-makinesi": "Ritim makinesi", "dj-mikser": "DJ mikseri", "synth": "Synthesizer", "aranjman": "Aranjman",
     "kod-izleyici": "Kod izleyici", "cikti-tahmin": "Çıktı tahmini", "parsons": "Satır dizme", "bosluk-doldur": "Boşluk doldurma", "hata-bul": "Hata bulma", "kod-yaz": "Kod yazma", "gorsel-veri-yapisi": "Veri yapısı görseli" };
-  const READY = new Set(["sayi-dogrusu", "kesir-cubugu", "olasilik-sim", "koordinat-duzlemi", "turev-teget", "onluk-bloklar", "alan-modeli", "denklem-terazisi", "aci-olcer", "geometri-tahtasi", "veri-grafigi", "fonksiyon-grafigi", "birim-cember", "integral-alan", "kod-izleyici", "cikti-tahmin", "parsons", "bosluk-doldur", "hata-bul", "gorsel-veri-yapisi"]);
+  const READY = new Set(["ritim-makinesi", "dj-mikser", "olcme", "kati-cisim", "oruntu", "donusum", "saat", "para", "oran-karistirma", "kume-venn", "mantik-tablosu", "dizi-gorsel", "limit-yaklasim", "karmasik-duzlem", "sayi-dogrusu", "kesir-cubugu", "olasilik-sim", "koordinat-duzlemi", "turev-teget", "onluk-bloklar", "alan-modeli", "denklem-terazisi", "aci-olcer", "geometri-tahtasi", "veri-grafigi", "fonksiyon-grafigi", "birim-cember", "integral-alan", "kod-izleyici", "cikti-tahmin", "parsons", "bosluk-doldur", "hata-bul", "gorsel-veri-yapisi"]);
   const simChip = (k) => k ? `<span class="chip ${READY.has(k) ? "chip-ready" : "chip-line"}" title="${READY.has(k) ? "Hazır" : "Planlandı"}">${READY.has(k) ? "● " : "○ "}${esc(SIM_LABEL[k] || k)}</span>` : "";
   const dersLink = (mod, id) => id ? `<a class="chip chip-brand" href="#ders-${mod}.${id}">Derse git →</a>` : "";
   const codeList = (k) => k.kod ? k.kod : (k.kazanim || []).filter((x) => /^[A-Z]+\.?\d/.test(x)).join(", ");
@@ -766,12 +781,12 @@
           <details class="cur-src"><summary>Kaynaklar ve program durumu</summary><ul>${Object.entries(c.program_durumu).filter(([k]) => k !== "not").map(([k, v]) => `<li>${/^\d+$/.test(k) ? `${k}. sınıf` : esc(k)}: ${esc(v)}</li>`).join("")}</ul><ul>${c.kaynaklar.map((u) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${esc(u)}</a></li>`).join("")}</ul></details>`;
       } else {
         const n = c.seviyeler.reduce((a, l) => a + l.uniteler.reduce((b, u) => b + u.konular.length, 0), 0);
-        host.innerHTML = `<p class="muted">Python: ilk programdan algoritma ve problem çözmeye <b>${n} konu</b>, 6 seviye. Her konunun örnek kodu çalıştırılarak doğrulandı.</p>${legend}
+        host.innerHTML = `<p class="muted">${c.intro ? esc(c.intro) : `Python: ilk programdan algoritma ve problem çözmeye <b>${n} konu</b>, 6 seviye. Her konunun örnek kodu çalıştırılarak doğrulandı.`}</p>${legend}
           ${c.seviyeler.map((lv) => `<details class="cur-stage" ${lv.seviye === 1 ? "open" : ""}><summary><b>Seviye ${lv.seviye} · ${esc(lv.ad)}</b><span>${esc(lv.yas || "")} · ${lv.uniteler.reduce((b, u) => b + u.konular.length, 0)} konu</span></summary>
             ${lv.uniteler.map((u) => `<div class="cur-theme"><h4>${esc(u.baslik)}</h4><ul>${u.konular.map((k) => `<li><span class="cur-t">${esc(k.baslik)}<small>${esc(k.hedef || "")}</small>
               ${k.ornek ? `<details class="cur-ex"><summary>Örnek</summary><pre class="q-code"><code>${esc(k.ornek)}</code></pre>${k.cikti !== undefined ? `<pre class="cur-out">${esc(k.cikti) || "(çıktı yok)"}</pre>` : ""}</details>` : ""}</span>
               <span class="cur-chips">${simChip(k.etkilesim)}${dersLink(mod, k.ders)}</span></li>`).join("")}</ul></div>`).join("")}</details>`).join("")}
-          <details class="cur-src"><summary>Kaynaklar</summary><ul>${(c.kaynaklar || []).map((u) => `<li><a href="${esc(typeof u === "string" ? u : u.url)}" target="_blank" rel="noopener">${esc(typeof u === "string" ? u : (u.ad || u.url))}</a></li>`).join("")}</ul></details>`;
+          <details class="cur-src" ${(c.kaynaklar || []).length ? "" : "hidden"}><summary>Kaynaklar</summary><ul>${(c.kaynaklar || []).map((u) => `<li><a href="${esc(typeof u === "string" ? u : u.url)}" target="_blank" rel="noopener">${esc(typeof u === "string" ? u : (u.ad || u.url))}</a></li>`).join("")}</ul></details>`;
       }
     }).catch(() => { const h = document.getElementById("curriculum"); if (h) h.innerHTML = `<p class="muted">Müfredat yüklenemedi.</p>`; });
   }

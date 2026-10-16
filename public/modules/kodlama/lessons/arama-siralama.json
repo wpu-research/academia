@@ -1,0 +1,429 @@
+{
+ "id": "arama-siralama",
+ "title": "Arama ve sıralama algoritmaları",
+ "level": "Seviye 6 · Algoritma ve Problem Çözme",
+ "alan": "İleri",
+ "minutes": 12,
+ "summary": "İkili aramayı ve kabarcık sıralamayı adım adım izle; bisect, birleştirerek sıralama ve hızlı sıralamayı tanı.",
+ "sims": [
+  "cikti-tahmin",
+  "gorsel-veri-yapisi",
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "**İkili arama** sıralı bir listede ortadaki elemana bakar; aranan değer küçükse sol yarıda, büyükse sağ yarıda aramaya devam eder. Her adımda arama alanı yarıya iner.",
+   "sim": {
+    "kind": "liste-gorsel",
+    "name": "liste",
+    "items": [
+     "2",
+     "5",
+     "8",
+     "12",
+     "16",
+     "23",
+     "38"
+    ]
+   },
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "23'ü ikili aramayla bul. `sol`, `sag` ve `orta` değişkenlerinin nasıl değiştiğine bak.",
+   "code": "liste = [2, 5, 8, 12, 16, 23, 38]\nhedef = 23\nsol, sag = 0, len(liste) - 1\nwhile sol <= sag:\n    orta = (sol + sag) // 2\n    if liste[orta] == hedef:\n        break\n    elif liste[orta] < hedef:\n        sol = orta + 1\n    else:\n        sag = orta - 1\nprint(orta)",
+   "why": "Önce ortadaki 12'ye bakılır; 23 daha büyük olduğu için sağ yarıya geçilir. Sonra 23 bulunur. İndeksi 5'tir.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "0",
+      "sag": "6"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "0",
+      "sag": "6"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "0",
+      "sag": "6",
+      "orta": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 7,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "0",
+      "sag": "6",
+      "orta": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 8,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "0",
+      "sag": "6",
+      "orta": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "4",
+      "sag": "6",
+      "orta": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "4",
+      "sag": "6",
+      "orta": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "4",
+      "sag": "6",
+      "orta": "5"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "4",
+      "sag": "6",
+      "orta": "5"
+     },
+     "out": ""
+    },
+    {
+     "line": 11,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "4",
+      "sag": "6",
+      "orta": "5"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "liste": "[2, 5, 8, 12, 16, 23, 38]",
+      "hedef": "23",
+      "sol": "4",
+      "sag": "6",
+      "orta": "5"
+     },
+     "out": "5\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "2 3",
+    "3 3",
+    "2 2",
+    "1 2"
+   ],
+   "answer": 2,
+   "why": "bisect_left, sıralı listeyi bozmadan değerin ekleneceği en soldaki konumu verir. 70, 60 ile 75 arasına (indeks 2), 75 ise mevcut 75'in önüne (indeks 2) girer.",
+   "code": "import bisect\n\nnotlar = [45, 60, 75, 90]\nprint(bisect.bisect_left(notlar, 70), bisect.bisect_left(notlar, 75))",
+   "id": "s3"
+  },
+  {
+   "type": "trace",
+   "prompt": "Kabarcık sıralamayı adım adım çalıştır. Yanyana iki eleman yanlış sıradaysa yer değiştirir.",
+   "code": "liste = [3, 1, 2]\nn = len(liste)\nfor i in range(n - 1):\n    for j in range(n - 1 - i):\n        if liste[j] > liste[j + 1]:\n            liste[j], liste[j + 1] = liste[j + 1], liste[j]\nprint(liste)",
+   "why": "Her turda en büyük eleman sona “kabarcık gibi” yükselir. Karşılaştırma sayısı n² ile büyür; kabarcık sıralama O(n²)'dir.",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s4",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "liste": "[3, 1, 2]"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[3, 1, 2]",
+      "n": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[3, 1, 2]",
+      "n": "3",
+      "i": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[3, 1, 2]",
+      "n": "3",
+      "i": "0",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[3, 1, 2]",
+      "n": "3",
+      "i": "0",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 3, 2]",
+      "n": "3",
+      "i": "0",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[1, 3, 2]",
+      "n": "3",
+      "i": "0",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "liste": "[1, 3, 2]",
+      "n": "3",
+      "i": "0",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "0",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "0",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "1",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 6,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "liste": "[1, 2, 3]",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": "[1, 2, 3]\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "[1, 4, 9, 2, 3, 10]",
+    "[1, 2, 3, 4, 9, 10]",
+    "[1, 2, 3, 4, 10, 9]",
+    "[10, 9, 4, 3, 2, 1]"
+   ],
+   "answer": 1,
+   "why": "İki sıralı liste baştan karşılaştırılarak birleştirilir; küçük olan önce eklenir. Birleştirerek sıralamanın (merge sort) temel adımı budur.",
+   "code": "def birlestir(a, b):\n    sonuc = []\n    i, j = 0, 0\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            sonuc.append(a[i])\n            i += 1\n        else:\n            sonuc.append(b[j])\n            j += 1\n    return sonuc + a[i:] + b[j:]\n\nprint(birlestir([1, 4, 9], [2, 3, 10]))",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu hızlı sıralama (quicksort) programı ne yazdırır?",
+   "options": [
+    "[5, 3, 8, 1]",
+    "[1, 3, 5, 8]",
+    "[8, 5, 3, 1]",
+    "[3, 1, 5, 8]"
+   ],
+   "answer": 1,
+   "why": "İlk eleman pivot seçilir; küçükler sola, büyükler sağa ayrılıp her iki taraf aynı şekilde sıralanır.",
+   "code": "def hizli(liste):\n    if len(liste) <= 1:\n        return liste\n    pivot = liste[0]\n    kucuk = [x for x in liste[1:] if x < pivot]\n    buyuk = [x for x in liste[1:] if x >= pivot]\n    return hizli(kucuk) + [pivot] + hizli(buyuk)\n\nprint(hizli([5, 3, 8, 1]))",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Birleştirerek sıralamanın (merge sort) zaman karmaşıklığı nedir?",
+   "options": [
+    "O(n²)",
+    "O(n)",
+    "O(n log n)",
+    "O(log n)"
+   ],
+   "answer": 2,
+   "why": "Liste log n kez ikiye bölünür ve her düzeyde toplam n eleman birleştirilir: n × log n.",
+   "id": "s7"
+  },
+  {
+   "type": "parsons",
+   "prompt": "Doğrusal arama yapan ve bulunan indeksi döndüren fonksiyonu kur.",
+   "lines": [
+    "def dogrusal_ara(liste, hedef):",
+    "    for i, x in enumerate(liste):",
+    "        if x == hedef:",
+    "            return i",
+    "    return -1",
+    "print(dogrusal_ara([7, 3, 9], 9))"
+   ],
+   "why": "9, listenin 2. indeksinde; program 2 yazdırır. Bulunamazsa döngü biter ve -1 döner.",
+   "id": "s8"
+  }
+ ]
+}

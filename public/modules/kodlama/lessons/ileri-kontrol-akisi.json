@@ -1,0 +1,182 @@
+{
+ "id": "ileri-kontrol-akisi",
+ "title": "İleri kontrol akışı",
+ "level": "Seviye 3 · Orta",
+ "alan": "Orta",
+ "minutes": 9,
+ "summary": "match-case, tek satırlık koşul, zip ile paralel döngü ve döngülerde else.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "komut = \"dur\"\nmatch komut:\n    case \"git\":\n        print(\"ilerle\")\n    case \"dur\":\n        print(\"bekle\")\n    case _:\n        print(\"bilinmiyor\")",
+   "options": [
+    "bekle",
+    "ilerle",
+    "bilinmiyor",
+    "dur"
+   ],
+   "answer": 0,
+   "why": "match, değeri case'lerle sırayla karşılaştırır; \"dur\" ikinci case'e uyar. `_` hiçbiri uymazsa çalışır."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "sayi = 7\nsonuc = \"çift\" if sayi % 2 == 0 else \"tek\"\nprint(sonuc)",
+   "options": [
+    "tek",
+    "çift",
+    "7",
+    "True"
+   ],
+   "answer": 0,
+   "why": "Koşullu ifade: koşul doğruysa ilk değer, değilse else'ten sonraki değer seçilir. 7 % 2 = 1, yani tek."
+  },
+  {
+   "id": "s3",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. zip'in iki listeden her turda birer eleman aldığına bak.",
+   "code": "isimler = [\"Ali\", \"Ece\"]\nnotlar = [70, 90]\nfor isim, notu in zip(isimler, notlar):\n    print(isim, notu)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "isimler": "['Ali', 'Ece']"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "isimler": "['Ali', 'Ece']",
+      "notlar": "[70, 90]"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "isimler": "['Ali', 'Ece']",
+      "notlar": "[70, 90]",
+      "isim": "'Ali'",
+      "notu": "70"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "isimler": "['Ali', 'Ece']",
+      "notlar": "[70, 90]",
+      "isim": "'Ali'",
+      "notu": "70"
+     },
+     "out": "Ali 70\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "isimler": "['Ali', 'Ece']",
+      "notlar": "[70, 90]",
+      "isim": "'Ece'",
+      "notu": "90"
+     },
+     "out": "Ali 70\n"
+    },
+    {
+     "line": 2,
+     "vars": {
+      "isimler": "['Ali', 'Ece']",
+      "notlar": "[70, 90]",
+      "isim": "'Ece'",
+      "notu": "90"
+     },
+     "out": "Ali 70\nEce 90\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "isimler": "['Ali', 'Ece']",
+      "notlar": "[70, 90]",
+      "isim": "'Ece'",
+      "notu": "90"
+     },
+     "out": "Ali 70\nEce 90\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "zip iki listeyi eşleştirir: (Ali, 70), (Ece, 90)."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "print(list(zip([1, 2, 3], ['a', 'b'])))",
+   "options": [
+    "[(1, 'a'), (2, 'b')]",
+    "[(1, 'a'), (2, 'b'), (3, None)]",
+    "[1, 'a', 2, 'b', 3]",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "zip en kısa liste bitince durur; 3 eşsiz kalır ve alınmaz."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "for n in [3, 5, 7]:\n    if n % 2 == 0:\n        print(\"çift bulundu\")\n        break\nelse:\n    print(\"çift yok\")",
+   "options": [
+    "çift yok",
+    "çift bulundu",
+    "Hiçbir şey",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Döngüdeki else, döngü break ile kesilmeden biterse çalışır. Hiç çift sayı yok, break olmadı."
+  },
+  {
+   "id": "s6",
+   "type": "parsons",
+   "prompt": "Bir listede 0 olup olmadığını arayan, yoksa \"sıfır yok\" yazan programı kur.",
+   "lines": [
+    "for x in [4, 2, 9]:",
+    "    if x == 0:",
+    "        print(\"sıfır var\")",
+    "        break",
+    "else:",
+    "    print(\"sıfır yok\")"
+   ],
+   "why": "Listede 0 yok, break hiç çalışmaz; döngü bitince else çalışır ve sıfır yok yazar."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "puan = 85\nmatch puan:\n    case p if p >= 90:\n        print('A')\n    case p if p >= 80:\n        print('B')\n    case _:\n        print('C')",
+   "options": [
+    "B",
+    "A",
+    "C",
+    "85"
+   ],
+   "answer": 0,
+   "why": "case'e eklenen if (koruma) koşulu da sağlanmalıdır. 85 ≥ 90 değil, 85 ≥ 80 doğru: B."
+  }
+ ]
+}

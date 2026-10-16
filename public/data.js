@@ -5,7 +5,7 @@ window.ACADEMIA = {};
 
 ACADEMIA.groups = [
   { id: "dijital", label: "Robotik" },
-  { id: "oyunlu", label: "Kodlama ve Matematik" },
+  { id: "oyunlu", label: "Kodlama, Matematik ve Müzik" },
   { id: "sinav", label: "Sınava Hazırlık" },
   { id: "ingilizce", label: "Genel İngilizce" },
 ];
@@ -70,6 +70,16 @@ ACADEMIA.programs = [
       ["İleri", "Üniversite", "Limit, türev, integral, diziler ve seriler"],
     ],
     game: ["Doğru cevap 10 puan; çok emin olup doğru bilirsen 15 puan", "Her 100 puanda seviye atlarsın", "Arka arkaya doğrular seriyi büyütür", "Yanlış cevap puan götürmez; açıklamasıyla geri gelir"],
+  },
+  {
+    slug: "muzik", group: "oyunlu", title: "DJ ve Prodüksiyon", featured: true, image: "img/muzik.svg",
+    fact: "Yeni · prototip",
+    summary: "Tarayıcıda ritim kur, iki desteyle beatmatching yap, EQ ve crossfader ile geçiş öğren.",
+    body: [
+      "Ritim makinesinde bas davul, trampet ve zille ritim kurarsın; iki desteli mikserde tempoyu eşitleyip vuruşları hizalar, EQ ve crossfader ile geçiş yaparsın.",
+      "Bütün sesler tarayıcıda sentezlenir; telifli müzik ya da ses dosyası kullanılmaz. Ses gecikmesi telefonlarda daha fazla olabileceği için tempo alıştırmaları en iyi bilgisayarda çalışır.",
+    ],
+    status: "Prototip: iki ders ve serbest stüdyo hazır.",
   },
   {
     slug: "tus", group: "sinav", title: "TUS Hazırlık",

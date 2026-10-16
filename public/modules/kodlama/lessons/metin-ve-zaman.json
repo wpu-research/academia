@@ -1,0 +1,143 @@
+{
+ "id": "metin-ve-zaman",
+ "title": "Metin ve zaman",
+ "level": "Seviye 4 · Orta-İleri",
+ "alan": "Orta",
+ "minutes": 8,
+ "summary": "Düzenli ifadeler (re), datetime ve ondalık sayıların sınırları.",
+ "sims": [
+  "kod-izleyici",
+  "parsons"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import re\nprint(re.findall(r\"\\d+\", \"3 elma, 12 armut\"))",
+   "options": [
+    "['3', '12']",
+    "[3, 12]",
+    "['3', '1', '2']",
+    "3 12"
+   ],
+   "answer": 0,
+   "why": "\\d+ bir veya daha fazla rakamdan oluşan parçaları bulur; findall bunları metin listesi olarak döndürür."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "import re\nprint(bool(re.fullmatch(r\"[a-z]+@[a-z]+\\.com\", \"ece@okul.com\")))",
+   "options": [
+    "True",
+    "False",
+    "ece@okul.com",
+    "None"
+   ],
+   "answer": 0,
+   "why": "fullmatch tüm metnin kalıba uyup uymadığına bakar: küçük harfler, @, küçük harfler, .com."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "from datetime import date\nfark = date(2026, 10, 29) - date(2026, 10, 16)\nprint(fark.days)",
+   "options": [
+    "13",
+    "12",
+    "14",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "İki tarihin farkı bir timedelta'dır; days alanı gün sayısını verir: 29 − 16 = 13."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "from datetime import datetime\nt = datetime(2026, 1, 5, 9, 30)\nprint(t.strftime(\"%d.%m.%Y %H:%M\"))",
+   "options": [
+    "05.01.2026 09:30",
+    "2026-01-05 09:30",
+    "5.1.2026 9:30",
+    "01.05.2026 09:30"
+   ],
+   "answer": 0,
+   "why": "strftime tarihi verilen biçime çevirir; %d gün, %m ay, %Y yıl, %H saat, %M dakikadır."
+  },
+  {
+   "id": "s5",
+   "type": "trace",
+   "prompt": "Programı **Sonraki adım** ile satır satır çalıştır. 0.1 + 0.2'nin neden tam 0.3 olmadığına bak.",
+   "code": "a = 0.1 + 0.2\nprint(a)\nprint(a == 0.3)\nprint(round(a, 2) == 0.3)",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "a": "0.30000000000000004"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "a": "0.30000000000000004"
+     },
+     "out": "0.30000000000000004\n"
+    },
+    {
+     "line": 3,
+     "vars": {
+      "a": "0.30000000000000004"
+     },
+     "out": "0.30000000000000004\nFalse\n"
+    },
+    {
+     "line": -1,
+     "vars": {
+      "a": "0.30000000000000004"
+     },
+     "out": "0.30000000000000004\nFalse\nTrue\n"
+    }
+   ],
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "why": "Ondalık sayılar bilgisayarda ikilik tabanda saklanır; 0.1 tam gösterilemez. Karşılaştırmadan önce yuvarlamak gerekir."
+  },
+  {
+   "id": "s6",
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "code": "from decimal import Decimal\nprint(Decimal(\"0.1\") + Decimal(\"0.2\"))",
+   "options": [
+    "0.3",
+    "0.30000000000000004",
+    "0.1 + 0.2",
+    "Hata verir"
+   ],
+   "answer": 0,
+   "why": "Decimal ondalık sayıları onluk tabanda tam tutar; para hesapları için tercih edilir."
+  },
+  {
+   "id": "s7",
+   "type": "parsons",
+   "prompt": "Bir metindeki bütün e-posta adreslerini bulan programı kur.",
+   "lines": [
+    "import re",
+    "metin = \"ali@a.com ile ece@b.com yazıştı\"",
+    "adresler = re.findall(r\"\\S+@\\S+\", metin)",
+    "print(len(adresler))"
+   ],
+   "why": "\\S+@\\S+ boşluk içermeyen, ortasında @ olan parçaları bulur: 2 adres."
+  }
+ ]
+}

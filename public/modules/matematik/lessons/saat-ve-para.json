@@ -1,0 +1,142 @@
+{
+ "id": "saat-ve-para",
+ "title": "Saat ve para",
+ "level": "İlkokul 1–3",
+ "alan": "İlkokul",
+ "minutes": 7,
+ "summary": "Saatin ibrelerini sürükle, Türk lirasıyla tutar oluştur ve para üstü hesapla.",
+ "sims": [
+  "saat",
+  "para"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "sim",
+   "prompt": "Saati **3.30**'a ayarla.",
+   "sim": {
+    "kind": "saat",
+    "h": 3,
+    "m": 0
+   },
+   "goal": "Saat 3.30",
+   "check": {
+    "all": [
+     {
+      "key": "h",
+      "eq": 3
+     },
+     {
+      "key": "m",
+      "eq": 30
+     }
+    ]
+   },
+   "hint": "Yarım saat geçince yelkovan 6'yı gösterir.",
+   "why": "Yelkovan 6'da olunca 30 dakika geçmiştir; akrep de 3 ile 4'ün arasına gelir."
+  },
+  {
+   "id": "s2",
+   "type": "choice",
+   "prompt": "Yelkovan 12'yi, akrep 7'yi gösteriyor. Saat kaçtır?",
+   "options": [
+    "7.00",
+    "12.07",
+    "12.35",
+    "6.00"
+   ],
+   "answer": 0,
+   "why": "Yelkovan 12'deyse tam saattir; akrep saati gösterir: 7.00."
+  },
+  {
+   "id": "s3",
+   "type": "sim",
+   "prompt": "Saati **8.45**'e ayarla.",
+   "sim": {
+    "kind": "saat",
+    "h": 8,
+    "m": 0
+   },
+   "goal": "Saat 8.45",
+   "check": {
+    "all": [
+     {
+      "key": "h",
+      "eq": 8
+     },
+     {
+      "key": "m",
+      "eq": 45
+     }
+    ]
+   },
+   "why": "45 dakikada yelkovan 9'dadır; akrep 9'a yaklaşmıştır ama saat hâlâ 8'dir."
+  },
+  {
+   "id": "s4",
+   "type": "choice",
+   "prompt": "Saat 10.40'tan 30 dakika sonra saat kaç olur?",
+   "options": [
+    "11.10",
+    "10.70",
+    "11.40",
+    "10.10"
+   ],
+   "answer": 0,
+   "why": "40 + 30 = 70 dakika = 1 saat 10 dakika. 10.40 + 30 dakika = 11.10."
+  },
+  {
+   "id": "s5",
+   "type": "sim",
+   "prompt": "Paralarla **37,50 TL** oluştur.",
+   "sim": {
+    "kind": "para"
+   },
+   "goal": "Toplam 37,50 TL",
+   "check": {
+    "key": "total",
+    "eq": 37.5,
+    "tol": 0.001
+   },
+   "hint": "20 + 10 + 5 + 1 + 1 + 50 kuruş.",
+   "why": "37,50 = 20 + 10 + 5 + 1 + 1 + 0,50."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "**25 TL**'yi **en az sayıda** parayla oluştur.",
+   "sim": {
+    "kind": "para"
+   },
+   "goal": "25 TL, 2 parça",
+   "check": {
+    "all": [
+     {
+      "key": "total",
+      "eq": 25,
+      "tol": 0.001
+     },
+     {
+      "key": "count",
+      "eq": 2
+     }
+    ]
+   },
+   "hint": "Önce en büyük banknottan başla.",
+   "why": "20 TL + 5 TL: iki parça yeter. Büyük paradan başlamak parça sayısını azaltır."
+  },
+  {
+   "id": "s7",
+   "type": "choice",
+   "prompt": "50 TL ile 18,75 TL'lik alışveriş yapılırsa para üstü ne kadar olur?",
+   "options": [
+    "31,25 TL",
+    "32,25 TL",
+    "31,75 TL",
+    "68,75 TL"
+   ],
+   "answer": 0,
+   "why": "50,00 − 18,75 = 31,25 TL."
+  }
+ ]
+}

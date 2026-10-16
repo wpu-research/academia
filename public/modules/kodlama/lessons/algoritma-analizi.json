@@ -1,0 +1,380 @@
+{
+ "id": "algoritma-analizi",
+ "title": "Algoritma analizi ve Big-O",
+ "level": "Seviye 6 · Algoritma ve Problem Çözme",
+ "alan": "İleri",
+ "minutes": 9,
+ "summary": "Adım sayarak bir algoritmanın büyüme hızını bul; sabit, logaritmik, doğrusal ve karesel karmaşıklığı ve bellek kullanımını karşılaştır.",
+ "sims": [
+  "cikti-tahmin",
+  "kod-izleyici"
+ ],
+ "steps": [
+  {
+   "type": "info",
+   "prompt": "Bir algoritmanın hızını saniyeyle değil, girdi büyüdükçe **adım sayısının nasıl büyüdüğüyle** ölçeriz. Bunu Big-O ile yazarız: O(1) sabit, O(log n) logaritmik, O(n) doğrusal, O(n²) karesel.",
+   "id": "s1"
+  },
+  {
+   "type": "trace",
+   "prompt": "İç içe iki döngüyü adım adım çalıştır ve `adim` değişkeninin kaça çıktığına bak.",
+   "code": "adim = 0\nn = 3\nfor i in range(n):\n    for j in range(n):\n        adim += 1\nprint(adim)",
+   "why": "Dış döngünün her turunda iç döngü n kez döner: 3 × 3 = 9 adım. Genel olarak n × n, yani O(n²).",
+   "goal": "Program sonuna kadar çalıştı",
+   "check": {
+    "key": "done",
+    "eq": 1
+   },
+   "id": "s2",
+   "trace": [
+    {
+     "line": 0,
+     "vars": {},
+     "out": ""
+    },
+    {
+     "line": 1,
+     "vars": {
+      "adim": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "adim": "0",
+      "n": "3"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "0",
+      "n": "3",
+      "i": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "0",
+      "n": "3",
+      "i": "0",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "1",
+      "n": "3",
+      "i": "0",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "1",
+      "n": "3",
+      "i": "0",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "2",
+      "n": "3",
+      "i": "0",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "2",
+      "n": "3",
+      "i": "0",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "3",
+      "n": "3",
+      "i": "0",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "adim": "3",
+      "n": "3",
+      "i": "0",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "3",
+      "n": "3",
+      "i": "1",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "3",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "4",
+      "n": "3",
+      "i": "1",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "4",
+      "n": "3",
+      "i": "1",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "5",
+      "n": "3",
+      "i": "1",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "5",
+      "n": "3",
+      "i": "1",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "6",
+      "n": "3",
+      "i": "1",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "adim": "6",
+      "n": "3",
+      "i": "1",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "6",
+      "n": "3",
+      "i": "2",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "6",
+      "n": "3",
+      "i": "2",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "7",
+      "n": "3",
+      "i": "2",
+      "j": "0"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "7",
+      "n": "3",
+      "i": "2",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "8",
+      "n": "3",
+      "i": "2",
+      "j": "1"
+     },
+     "out": ""
+    },
+    {
+     "line": 4,
+     "vars": {
+      "adim": "8",
+      "n": "3",
+      "i": "2",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 3,
+     "vars": {
+      "adim": "9",
+      "n": "3",
+      "i": "2",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 2,
+     "vars": {
+      "adim": "9",
+      "n": "3",
+      "i": "2",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": 5,
+     "vars": {
+      "adim": "9",
+      "n": "3",
+      "i": "2",
+      "j": "2"
+     },
+     "out": ""
+    },
+    {
+     "line": -1,
+     "vars": {
+      "adim": "9",
+      "n": "3",
+      "i": "2",
+      "j": "2"
+     },
+     "out": "9\n"
+    }
+   ]
+  },
+  {
+   "type": "choice",
+   "prompt": "Yukarıdaki iç içe döngüde n iki katına çıkarsa adım sayısı ne olur?",
+   "options": [
+    "2 katına çıkar",
+    "4 katına çıkar",
+    "8 katına çıkar",
+    "Değişmez"
+   ],
+   "answer": 1,
+   "why": "Adım sayısı n². (2n)² = 4n², yani 4 katı.",
+   "id": "s3"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu program ne yazdırır?",
+   "options": [
+    "32",
+    "64",
+    "6",
+    "8"
+   ],
+   "answer": 2,
+   "why": "n her turda yarıya iner: 64 → 32 → 16 → 8 → 4 → 2 → 1. 6 tur sürer; log₂ 64 = 6. Bu O(log n) büyümedir.",
+   "code": "n = 64\nadim = 0\nwhile n > 1:\n    n //= 2\n    adim += 1\nprint(adim)",
+   "id": "s4"
+  },
+  {
+   "type": "choice",
+   "prompt": "Listede bir değeri baştan sona tek tek arayan fonksiyon, en kötü durumda kaç karşılaştırma yapar?",
+   "options": [
+    "O(1)",
+    "O(log n)",
+    "O(n)",
+    "O(n²)"
+   ],
+   "answer": 2,
+   "why": "Aranan değer sonda ya da hiç yoksa her eleman bir kez kontrol edilir: n karşılaştırma.",
+   "code": "def bul(liste, hedef):\n    for x in liste:\n        if x == hedef:\n            return True\n    return False",
+   "id": "s5"
+  },
+  {
+   "type": "choice",
+   "prompt": "n çok büyüdüğünde hangisi en hızlı büyür?",
+   "options": [
+    "O(n log n)",
+    "O(n²)",
+    "O(n)",
+    "O(log n)"
+   ],
+   "answer": 1,
+   "why": "n = 1000 için yaklaşık: log n ≈ 10, n = 1000, n log n ≈ 10 000, n² = 1 000 000.",
+   "id": "s6"
+  },
+  {
+   "type": "choice",
+   "prompt": "Bu fonksiyonun kullandığı ek bellek, girdi boyutuna göre nasıl büyür?",
+   "options": [
+    "O(1)",
+    "O(log n)",
+    "O(n)",
+    "O(n²)"
+   ],
+   "answer": 2,
+   "why": "Girdideki her eleman için yeni listeye bir eleman eklenir; ek bellek n ile doğru orantılıdır.",
+   "code": "def kopya(liste):\n    yeni = []\n    for x in liste:\n        yeni.append(x)\n    return yeni",
+   "id": "s7"
+  }
+ ]
+}

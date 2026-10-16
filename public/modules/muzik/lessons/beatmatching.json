@@ -1,0 +1,117 @@
+{
+ "id": "beatmatching",
+ "title": "Beatmatching ve geçiş",
+ "level": "Seviye 3 · DJ",
+ "alan": "DJ",
+ "minutes": 10,
+ "summary": "İki destenin temposunu eşitle, vuruşları hizala, basları değiştir ve crossfader ile geç.",
+ "sims": [
+  "dj-mikser"
+ ],
+ "steps": [
+  {
+   "id": "s1",
+   "type": "info",
+   "prompt": "Deste A **120**, Deste B **126** BPM'de. İkisini de çal: vuruş ışıkları bir süre sonra birbirinden kayar. Ortadaki ölçer iki destenin vuruş farkını gösterir.",
+   "sim": {
+    "kind": "dj-mikser"
+   }
+  },
+  {
+   "id": "s2",
+   "type": "sim",
+   "prompt": "İki desteyi de **aynı anda** çal.",
+   "sim": {
+    "kind": "dj-mikser"
+   },
+   "goal": "İki deste de çaldı",
+   "check": {
+    "key": "bothPlayed",
+    "eq": 1
+   },
+   "why": "DJ geçişinde iki parça bir süre birlikte çalar."
+  },
+  {
+   "id": "s3",
+   "type": "choice",
+   "prompt": "İki parçanın vuruşları neden zamanla kayıyor?",
+   "options": [
+    "Tempoları farklı",
+    "Sesleri farklı",
+    "Crossfader ortada",
+    "EQ açık"
+   ],
+   "answer": 0,
+   "why": "B dakikada 6 vuruş daha hızlı; her vuruşta biraz daha öne geçer."
+  },
+  {
+   "id": "s4",
+   "type": "sim",
+   "prompt": "Deste B'nin tempo kaydırıcısıyla iki desteyi **aynı BPM'e** getir. Sonra **Geri it / İleri it** ile vuruşları üst üste getir. Ölçer yeşile dönmeli.",
+   "sim": {
+    "kind": "dj-mikser"
+   },
+   "goal": "Tempolar eşit ve vuruş farkı 30 ms'den az",
+   "check": {
+    "key": "synced",
+    "eq": 1
+   },
+   "hint": "126'dan 120'ye inmek için B'nin temposunu yaklaşık %−4,8'e getir. Sonra ölçere bakarak it.",
+   "why": "Önce tempo eşitlenir, sonra faz (vuruşların zamanı) hizalanır. İkisi birden olunca vuruşlar tek bir ritim gibi duyulur."
+  },
+  {
+   "id": "s5",
+   "type": "choice",
+   "prompt": "126 BPM'lik bir parçayı 120 BPM'e indirmek için tempo yaklaşık yüzde kaç değişmeli?",
+   "options": [
+    "−4,8%",
+    "−6%",
+    "+4,8%",
+    "−3%"
+   ],
+   "answer": 0,
+   "why": "120 ÷ 126 ≈ 0,952; yani yaklaşık %4,8 yavaşlatmak gerekir."
+  },
+  {
+   "id": "s6",
+   "type": "sim",
+   "prompt": "İki bas üst üste binince ses bulanıklaşır. **Deste B'nin basını −12 dB ya da daha aşağı** indir.",
+   "sim": {
+    "kind": "dj-mikser"
+   },
+   "goal": "Deste B bas ≤ −12 dB",
+   "check": {
+    "key": "lowB",
+    "lt": -11
+   },
+   "why": "Geçişte bir seferde tek bir parçanın bası çalsın: önce gelen parçanın bası kısılır, sonra baslar değiştirilir."
+  },
+  {
+   "id": "s7",
+   "type": "sim",
+   "prompt": "Şimdi geçişi bitir: **crossfader'ı tamamen B'ye** kaydır.",
+   "sim": {
+    "kind": "dj-mikser"
+   },
+   "goal": "Crossfader B'de",
+   "check": {
+    "key": "xf",
+    "gte": 0.95
+   },
+   "why": "Crossfader iki deste arasındaki ses dengesini ayarlar; uçta yalnız bir deste duyulur."
+  },
+  {
+   "id": "s8",
+   "type": "choice",
+   "prompt": "Bir DJ geçişinde doğru sıra hangisidir?",
+   "options": [
+    "Tempoyu eşitle, vuruşu hizala, basları değiştir, crossfader ile geç",
+    "Crossfader'ı çek, sonra tempoyu eşitle",
+    "Sesi kapat, yeni parçayı başlat",
+    "EQ'yu kapat, iki parçayı birlikte çal"
+   ],
+   "answer": 0,
+   "why": "Tempo ve faz eşitlenmeden yapılan geçişte vuruşlar çarpışır; basların aynı anda çalması da sesi bulandırır."
+  }
+ ]
+}
