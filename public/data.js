@@ -5,6 +5,7 @@ window.ACADEMIA = {};
 
 ACADEMIA.groups = [
   { id: "dijital", label: "Robotik" },
+  { id: "oyunlu", label: "Kodlama ve Matematik" },
   { id: "sinav", label: "Sınava Hazırlık" },
   { id: "ingilizce", label: "Genel İngilizce" },
 ];
@@ -29,6 +30,38 @@ ACADEMIA.programs = [
       { slug: "oyun-atolyesi", title: "Oyun Atölyesi", lessons: 30, age: "8+ yaş", desc: "Çarpışma ve skor, harita, düşman zekâsı, platform fiziği ve baştan sona tam oyun projeleri." },
     ],
     link: { href: "https://web-production-06ee9.up.railway.app", label: "Robotik laboratuvarını aç" },
+  },
+  {
+    slug: "kodlama", group: "oyunlu", title: "Kodlama", engine: "kodlama",
+    fact: "4 seviye · görev, puan ve seri",
+    summary: "Blok kodlamadan Python'a ve algoritmalara; her seviyede görev çözerek, puan toplayıp seviye atlayarak ilerleyen kodlama programı.",
+    body: [
+      "Her ders küçük bir görevdir: bir karakteri hedefe götür, bir hatayı bul, bir oyunu tamamla. Doğru çözüm puan kazandırır, arka arkaya doğrular seri oluşturur, puan biriktikçe seviye atlanır.",
+      "Seviye tespiti, hangi seviyeden başlayacağını belirler. Sonrasında sorular, zorlandığın konulardan gelir.",
+    ],
+    levelsTable: [
+      ["Başlangıç", "6–9 yaş", "Blok kodlama: sıralama, tekrar, koşul, olaylar"],
+      ["Temel", "9–12 yaş", "Python ile değişkenler, döngüler, girdi ve çıktı"],
+      ["Orta", "12–15 yaş", "Fonksiyonlar, listeler, küçük oyun projeleri"],
+      ["İleri", "15+ yaş", "Algoritmalar, veri yapıları, karmaşıklık, proje"],
+    ],
+    game: ["Doğru cevap 10 puan; çok emin olup doğru bilirsen 15 puan", "Her 100 puanda seviye atlarsın", "Arka arkaya doğrular seriyi büyütür", "Yanlış cevap puan götürmez; açıklamasıyla geri gelir"],
+  },
+  {
+    slug: "matematik", group: "oyunlu", title: "Matematik", engine: "matematik",
+    fact: "İlkokuldan üniversiteye · 4 seviye",
+    summary: "Sayılardan türeve kadar; her seviyede bulmaca, görev ve puanla oynayarak ilerleyen matematik programı.",
+    body: [
+      "Matematik burada bir oyun haritası gibi ilerler: her konu bir bölüm, her soru bir görevdir. Doğru cevaplar puan ve seri kazandırır, zorlandığın konular tekrar karşına çıkar.",
+      "İlkokuldan LGS'ye, TYT-AYT'den üniversite matematiğine kadar aynı ölçme ve takip sistemi kullanılır.",
+    ],
+    levelsTable: [
+      ["İlkokul", "1–4. sınıf", "Sayılar, dört işlem, kesirlere giriş, zaman ve ölçme"],
+      ["Ortaokul", "5–8. sınıf · LGS", "Tam sayılar, denklemler, oran ve yüzde, temel geometri"],
+      ["Lise", "9–12. sınıf · TYT-AYT", "Fonksiyonlar, polinomlar, logaritma, olasılık"],
+      ["İleri", "Üniversite", "Limit, türev, integral, diziler ve seriler"],
+    ],
+    game: ["Doğru cevap 10 puan; çok emin olup doğru bilirsen 15 puan", "Her 100 puanda seviye atlarsın", "Arka arkaya doğrular seriyi büyütür", "Yanlış cevap puan götürmez; açıklamasıyla geri gelir"],
   },
   {
     slug: "tus", group: "sinav", title: "TUS Hazırlık",
@@ -268,12 +301,60 @@ ACADEMIA.exams = {
       { id: "e-c1-4", alan: "C1", q: "The proposal, ---- merits are widely recognised, has yet to be approved.", o: ["which", "whose", "whom", "that", "what"], a: 1, e: "Teklifin “değerleri” sahiplik bildirir: whose merits." },
     ],
   },
+  matematik: {
+    name: "Matematik · Seviye Tespiti",
+    short: "Matematik",
+    levels: true, game: true,
+    blueprint: { "İlkokul": 1, "Ortaokul": 1, "Lise": 1, "İleri": 1 },
+    blueprintNote: "Tahmini seviye, %60 ve üzeri ustalığa ulaştığın en yüksek kesintisiz seviyedir.",
+    items: [
+      { id: "m-i1", alan: "İlkokul", q: "36 + 47 kaçtır?", o: ["73", "83", "81", "93", "713"], a: 1, e: "Birlikler: 6 + 7 = 13, 3 yazılır 1 elde. Onlar: 3 + 4 + 1 = 8. Sonuç 83." },
+      { id: "m-i2", alan: "İlkokul", q: "Bir sepette 5 sıra elma var, her sırada 6 elma bulunuyor. Sepette toplam kaç elma vardır?", o: ["11", "25", "30", "35", "56"], a: 2, e: "5 sıra × 6 elma = 30 elma." },
+      { id: "m-i3", alan: "İlkokul", q: "Aşağıdaki kesirlerden hangisi 1/2'ye eşittir?", o: ["2/3", "3/6", "1/3", "2/5", "4/6"], a: 1, e: "3/6 kesrinin pay ve paydası 3'e bölünürse 1/2 elde edilir." },
+      { id: "m-i4", alan: "İlkokul", q: "Saat 3.00'ten 45 dakika sonra saat kaç olur?", o: ["3.30", "3.45", "4.15", "3.15", "4.45"], a: 1, e: "Saat 3.00'e 45 dakika eklenince 3.45 olur." },
+      { id: "m-o1", alan: "Ortaokul", q: "(−3) × (−4) + 2 işleminin sonucu kaçtır?", o: ["−14", "−10", "10", "14", "12"], a: 3, e: "İki negatif sayının çarpımı pozitiftir: (−3) × (−4) = 12. 12 + 2 = 14." },
+      { id: "m-o2", alan: "Ortaokul", q: "2x + 5 = 17 ise x kaçtır?", o: ["5", "6", "7", "11", "12"], a: 1, e: "2x = 17 − 5 = 12, x = 12 ÷ 2 = 6." },
+      { id: "m-o3", alan: "Ortaokul", q: "Dik kenarları 6 cm ve 8 cm olan dik üçgenin hipotenüsü kaç cm'dir?", o: ["9", "10", "12", "14", "48"], a: 1, e: "Pisagor: 6² + 8² = 36 + 64 = 100, hipotenüs √100 = 10 cm." },
+      { id: "m-o4", alan: "Ortaokul", q: "%20 indirimle 80 TL'ye satılan bir ürünün indirimsiz fiyatı kaç TL'dir?", o: ["96", "100", "104", "120", "64"], a: 1, e: "İndirimli fiyat, indirimsiz fiyatın %80'idir: 0,8 × F = 80, F = 100 TL." },
+      { id: "m-l1", alan: "Lise", q: "x² − 5x + 6 = 0 denkleminin kökleri toplamı kaçtır?", o: ["−6", "−5", "5", "6", "1"], a: 2, e: "Kökler 2 ve 3'tür; toplamları 5. Genel kural: ax² + bx + c = 0 için kökler toplamı −b/a." },
+      { id: "m-l2", alan: "Lise", q: "log₂ 32 kaçtır?", o: ["4", "5", "6", "16", "8"], a: 1, e: "2⁵ = 32 olduğu için log₂ 32 = 5." },
+      { id: "m-l3", alan: "Lise", q: "f(x) = 3x − 2 ise f(4) kaçtır?", o: ["10", "12", "14", "6", "2"], a: 0, e: "f(4) = 3 · 4 − 2 = 12 − 2 = 10." },
+      { id: "m-l4", alan: "Lise", q: "Bir zar atıldığında üst yüze asal sayı gelme olasılığı kaçtır?", o: ["1/6", "1/3", "1/2", "2/3", "5/6"], a: 2, e: "1–6 arasındaki asal sayılar 2, 3 ve 5'tir. Olasılık 3/6 = 1/2." },
+      { id: "m-u1", alan: "İleri", q: "f(x) = x³ fonksiyonunun türevi nedir?", o: ["x²", "3x²", "3x", "x³/3", "3x³"], a: 1, e: "Kuvvet kuralı: (xⁿ)' = n·xⁿ⁻¹. (x³)' = 3x²." },
+      { id: "m-u2", alan: "İleri", q: "∫₀² 2x dx integralinin değeri kaçtır?", o: ["2", "4", "8", "1", "6"], a: 1, e: "2x'in ters türevi x²'dir. 2² − 0² = 4." },
+      { id: "m-u3", alan: "İleri", q: "x sıfıra yaklaşırken sin x / x ifadesinin limiti kaçtır?", o: ["0", "1", "Sonsuz", "Tanımsız", "π"], a: 1, e: "Bu temel limitin değeri 1'dir; türev ve trigonometrik limitlerin çoğu buna dayanır." },
+      { id: "m-u4", alan: "İleri", q: "1 + 2 + 3 + … + 100 toplamı kaçtır?", o: ["5000", "5050", "5100", "10100", "4950"], a: 1, e: "n(n + 1)/2 formülüyle: 100 · 101 / 2 = 5050." },
+    ],
+  },
+
+  kodlama: {
+    name: "Kodlama · Seviye Tespiti",
+    short: "Kodlama",
+    levels: true, game: true,
+    blueprint: { "Başlangıç": 1, "Temel": 1, "Orta": 1, "İleri": 1 },
+    blueprintNote: "Temel ve üstü seviyelerdeki kod soruları Python ile yazılmıştır.",
+    items: [
+      { id: "k-b1", alan: "Başlangıç", q: "Bir robot “2 adım ileri git” komutunu 4 kez tekrarlıyor. Robot toplam kaç adım ilerler?", o: ["4", "6", "8", "2", "16"], a: 2, e: "4 tekrar × 2 adım = 8 adım. Tekrar bloğu, aynı komutu birçok kez yazmaktan kurtarır." },
+      { id: "k-b2", alan: "Başlangıç", q: "“Eğer yağmur yağıyorsa şemsiye al” komutunda yağmur yağmıyorsa ne olur?", o: ["Şemsiye alınır", "Şemsiye alınmaz", "Program durur", "Hata verir", "Komut iki kez çalışır"], a: 1, e: "“Eğer” bloğundaki komut yalnız koşul doğruysa çalışır. Koşul yanlışsa atlanır." },
+      { id: "k-b3", alan: "Başlangıç", q: "Bir karakterin oyun boyunca hiç durmadan dönmesi için hangi blok kullanılır?", o: ["Eğer", "Bekle", "Sürekli tekrarla", "Dur", "Değişken oluştur"], a: 2, e: "“Sürekli tekrarla” içindeki komutlar program durana kadar tekrar tekrar çalışır." },
+      { id: "k-b4", alan: "Başlangıç", q: "Komutların sırası neden önemlidir?", o: ["Bilgisayar komutları rastgele seçer", "Bilgisayar komutları yazıldığı sırayla çalıştırır", "Sıra yalnız renkleri etkiler", "Önemli değildir", "Son komut her zaman ilk çalışır"], a: 1, e: "Program yukarıdan aşağıya, yazıldığı sırayla çalışır. Sırayı değiştirmek sonucu değiştirir." },
+      { id: "k-t1", alan: "Temel", q: "Bu programın çıktısı nedir?", code: "x = 5\nx = x + 3\nprint(x)", o: ["5", "3", "8", "x + 3", "53"], a: 2, e: "x önce 5'tir; x + 3 hesaplanıp yeniden x'e atanır, x = 8 olur." },
+      { id: "k-t2", alan: "Temel", q: "Bu programın çıktısı nedir?", code: "print(\"2\" + \"3\")", o: ["5", "23", "2 3", "Hata verir", "6"], a: 1, e: "Tırnak içindekiler metindir (string). Metinler + ile yan yana eklenir: \"23\"." },
+      { id: "k-t3", alan: "Temel", q: "Bu program hangi sayıları yazdırır?", code: "for i in range(3):\n    print(i)", o: ["1 2 3", "0 1 2", "0 1 2 3", "3", "1 2"], a: 1, e: "range(3) 0'dan başlar ve 3'e kadar (3 hariç) gider: 0, 1, 2." },
+      { id: "k-t4", alan: "Temel", q: "Bu programın çıktısı nedir?", code: "print(7 // 2)", o: ["3.5", "3", "4", "1", "2"], a: 1, e: "// tam sayı bölmesidir; ondalık kısım atılır. 7 // 2 = 3. Kalanı % verir: 7 % 2 = 1." },
+      { id: "k-o1", alan: "Orta", q: "Bu programın çıktısı nedir?", code: "def kare(n):\n    return n * n\n\nprint(kare(4) + 1)", o: ["16", "17", "9", "8", "25"], a: 1, e: "kare(4) = 16 döndürür, üzerine 1 eklenir: 17." },
+      { id: "k-o2", alan: "Orta", q: "Bu programın çıktısı nedir?", code: "liste = [3, 1, 2]\nliste.sort()\nprint(liste[0])", o: ["3", "1", "2", "[1, 2, 3]", "Hata verir"], a: 1, e: "sort() listeyi küçükten büyüğe sıralar: [1, 2, 3]. İlk eleman (indeks 0) 1'dir." },
+      { id: "k-o3", alan: "Orta", q: "Bu programın çıktısı nedir?", code: "s = 0\nfor i in range(1, 5):\n    s += i\nprint(s)", o: ["15", "10", "6", "4", "5"], a: 1, e: "range(1, 5) 1, 2, 3, 4 verir. Toplamları 10." },
+      { id: "k-o4", alan: "Orta", q: "Bu programın çıktısı nedir?", code: "kelime = \"kodlama\"\nprint(kelime[0] + kelime[-1])", o: ["ka", "ko", "kk", "am", "Hata verir"], a: 0, e: "kelime[0] ilk harf 'k', kelime[-1] son harf 'a'dır. Birleşince \"ka\"." },
+      { id: "k-i1", alan: "İleri", q: "Bu programın çıktısı nedir?", code: "def f(n):\n    if n <= 1:\n        return 1\n    return n * f(n - 1)\n\nprint(f(4))", o: ["10", "16", "24", "4", "120"], a: 2, e: "Özyinelemeli faktöriyel: 4 · 3 · 2 · 1 = 24." },
+      { id: "k-i2", alan: "İleri", q: "Sıralı n elemanlı bir dizide ikili arama (binary search) en kötü durumda kaç adımda biter?", o: ["O(1)", "O(log n)", "O(n)", "O(n log n)", "O(n²)"], a: 1, e: "Her adımda arama aralığı yarıya iner; adım sayısı log₂ n ile büyür." },
+      { id: "k-i3", alan: "İleri", q: "Yığın (stack) veri yapısı nasıl çalışır?", o: ["İlk giren ilk çıkar", "Son giren ilk çıkar", "En küçük eleman önce çıkar", "Rastgele çıkar", "Elemanlar çıkarılamaz"], a: 1, e: "Yığın LIFO'dur (son giren ilk çıkar), tabak yığını gibi. İlk giren ilk çıkar (FIFO) kuyruktur." },
+      { id: "k-i4", alan: "İleri", q: "İç içe iki döngünün her biri n kez dönüyorsa iç döngüdeki işlem toplam kaç kez çalışır?", o: ["n", "2n", "n²", "log n", "n + 1"], a: 2, e: "Dış döngünün her turunda iç döngü n kez döner: n × n = n² işlem." },
+    ],
+  },
 };
 
-// Pasif programlar ve sınavlar sitede gösterilmez; geri açmak için "active: false" satırını sil.
-ACADEMIA.programs = ACADEMIA.programs.filter((p) => p.active !== false);
-ACADEMIA.groups = ACADEMIA.groups.filter((g) => ACADEMIA.programs.some((p) => p.group === g.id));
-for (const [k, e] of Object.entries(ACADEMIA.exams)) if (e.active === false) delete ACADEMIA.exams[k];
+// Pasif program ve sınavlar ("active: false") sitede soluk ve tıklanamaz görünür.
 
 // Örnek öğrenci verisi (demo): [soru id, doğru mu, güven 1-3]
 ACADEMIA.sample = {
@@ -292,6 +373,12 @@ ACADEMIA.sample = {
   ingilizce: [
     ["e-a1-1",1,3],["e-a1-2",1,3],["e-a2-1",1,3],["e-a2-2",1,2],["e-b1-1",1,2],["e-b1-2",0,2],["e-b2-1",0,2],["e-b2-2",0,1],["e-c1-1",0,1],["e-c1-2",0,2],
     ["e-b1-3",1,2],["e-a2-3",1,2],
+  ],
+  matematik: [
+    ["m-i1",1,3],["m-i2",1,3],["m-o1",1,2],["m-o2",1,3],["m-l1",0,2],["m-l2",1,2],["m-u1",0,1],["m-u2",0,2],["m-o3",1,3],["m-l3",1,3],
+  ],
+  kodlama: [
+    ["k-b1",1,3],["k-b2",1,3],["k-t1",1,3],["k-t2",0,2],["k-o1",1,2],["k-o2",1,2],["k-i1",0,2],["k-i2",0,1],["k-t3",1,3],["k-t4",1,2],["k-o3",1,3],
   ],
   yds: [
     ["y-k1",1,2],["y-g1",1,3],["y-g2",0,3],["y-c1",1,2],["y-c2",1,2],["y-s1",0,2],["y-s2",1,1],["y-t1",1,2],

@@ -108,5 +108,25 @@
     "license_version": "1.0",
     "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
     "foreign_landing_url": "https://www.flickr.com/photos/43322816@N08/18394026761"
+  },
+  {
+    "slug": "matematik",
+    "title": "Abacus",
+    "creator": "Kinchan1",
+    "creator_url": "https://www.flickr.com/photos/43515091@N08",
+    "license": "by",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/43515091@N08/4316047169"
+  },
+  {
+    "slug": "kodlama",
+    "title": "Code Club at the Library",
+    "creator": "Blue Mountains Library",
+    "creator_url": "https://www.flickr.com/photos/44572512@N06",
+    "license": "by-sa",
+    "license_version": "2.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+    "foreign_landing_url": "https://www.flickr.com/photos/44572512@N06/33273819546"
   }
 ]

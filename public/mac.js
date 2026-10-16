@@ -29,9 +29,9 @@ window.MAC = (() => {
   }
 
   // ---------- Profil ve öneri ----------
-  const ROBOTICS = ["kodlama", "oyun", "elektronik", "robotik", "yz"];
+  const ROBOTICS = ["oyun", "elektronik", "robotik", "yz"];
   const INTERESTS = [
-    ["kodlama", "⌨️", "Kodlama"], ["oyun", "🎮", "Oyun yapmak"], ["elektronik", "💡", "Elektronik"], ["robotik", "🤖", "Robotik"], ["yz", "🧠", "Yapay zekâ"],
+    ["kodlama", "⌨️", "Kodlama"], ["matematik", "🔢", "Matematik"], ["oyun", "🎮", "Oyun yapmak"], ["elektronik", "💡", "Elektronik"], ["robotik", "🤖", "Robotik"], ["yz", "🧠", "Yapay zekâ"],
     ["yds", "🎓", "YDS"], ["tus", "🩺", "TUS", 18], ["hmgs", "⚖️", "HMGS", 18],
   ];
   function band(age) {
@@ -55,6 +55,8 @@ window.MAC = (() => {
     return ["arduino", "Arduino ile devre kurmayı ve kod yazmayı sıfırdan öğreneceksin."];
   }
   const EXAM = {
+    kodlama: ["kodlama", "Kodlama", "Kısa bir seviye tespitiyle hangi seviyeden başlayacağını bulup puan ve seriyle ilerleyeceksin."],
+    matematik: ["matematik", "Matematik", "Seviyeni bulup her konuyu bir oyun bölümü gibi, puan toplayarak geçeceksin."],
     tus: ["tus", "TUS Hazırlık", "Temel Tıp Bilimleri seviye tespitiyle hangi alanda ne kadar hazır olduğunu göreceksin."],
     hmgs: ["hmgs", "HMGS Hazırlık", "Sekiz hukuk alanında seviye tespiti, ardından zayıf alanlarına göre günlük plan."],
     yds: ["yds", "YDS Hazırlık", "Yedi soru tipinde nerede puan kaybettiğini bulup çalışma süreni oraya kaydıracağız."],
@@ -117,7 +119,7 @@ window.MAC = (() => {
       `<div class="ob-grid">${INTERESTS.filter((x) => !x[3] || p.age >= x[3]).map(([v, e, l]) => card(`data-ob="interest" data-v="${v}"`, `<span class="ob-emoji">${e}</span><b>${l}</b>`, p.interests.includes(v))).join("")}</div>
        <div class="ob-actions"><button class="btn btn-primary" data-ob="next" ${p.interests.length ? "" : "disabled"}>Devam</button></div>`);
     if (s === "level") {
-      const robo = p.interests.some((x) => ROBOTICS.includes(x));
+      const robo = p.interests.some((x) => ROBOTICS.includes(x) || x === "kodlama");
       const young = p.age < 12;
       const opts = robo
         ? (young

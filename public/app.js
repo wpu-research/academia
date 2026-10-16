@@ -9,7 +9,10 @@
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const pct = (x) => Math.round(x * 100);
-  const bySlug = Object.fromEntries(A.programs.map((p) => [p.slug, p]));
+  const ACTIVE = A.programs.filter((p) => p.active !== false);
+  const PASSIVE = A.programs.filter((p) => p.active === false);
+  const bySlug = Object.fromEntries(ACTIVE.map((p) => [p.slug, p]));
+  const examOn = (id) => !!A.exams[id] && A.exams[id].active !== false;
   const groupLabel = Object.fromEntries(A.groups.map((g) => [g.id, g.label]));
 
   // ---------- Kalıcı durum (yalnız bu tarayıcı) ----------
@@ -27,7 +30,7 @@
 
   let store = { exam: "tus", tab: "panel", data: {} };
   try { const raw = localStorage.getItem(KEY); if (raw) store = { ...store, ...JSON.parse(raw) }; } catch (_) {}
-  if (!A.exams[store.exam]) store.exam = "tus";
+  if (!examOn(store.exam)) store.exam = "tus";
   for (const id of Object.keys(A.exams)) if (!store.data[id]) store.data[id] = sampleData(id);
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (_) {} };
 
@@ -56,6 +59,18 @@
   }
 
   // ---------- Ortak parçalar ----------
+  function passiveCard(p) {
+    return `<div class="card is-passive" aria-disabled="true">
+      <div class="card-img"><img src="img/${p.slug}.jpg" alt="" loading="lazy" width="800" height="500"></div>
+      <div class="card-body"><h3>${esc(p.title)}</h3><div class="card-meta"><span>${esc(p.fact)}</span></div><p>${esc(p.summary)}</p><span class="chip chip-line soon">Yakında</span></div></div>`;
+  }
+
+  function gameStats(data) {
+    let xp = 0, run = 0;
+    for (const at of data.attempts) { if (at.correct) { xp += at.conf === 3 ? 15 : 10; run++; } else run = 0; }
+    return { xp, level: 1 + Math.floor(xp / 100), into: xp % 100, streak: run };
+  }
+
   function card(p) {
     return `<a class="card" href="#p-${p.slug}">
       <div class="card-img"><img src="img/${p.slug}.jpg" alt="" loading="lazy" width="800" height="500"></div>
@@ -112,7 +127,7 @@
     { eyebrow: "Kişisel çalışma planı", h: "Sınava <em>kendi eksiklerinden</em> başla.", p: "Kısa bir seviye tespitiyle hangi alanda ne kadar hazır olduğunu gör. Planın çözdüğün her soruyla yeniden hesaplanır." },
     { eyebrow: "Robotik", h: "Kodlamadan robota, <em>tarayıcıda</em> öğren.", p: "Blokla kodlamadan Arduino'ya ve yapay zekâya: 8 modül, 241 ders, donanım gerekmeden sanal laboratuvarda." },
   ];
-  let slideIdx = 0, slideTimer = null, filter = "all";
+  let slideIdx = 0, slideTimer = null;
 
   function renderHome() {
     const d = derive("tus", sampleData("tus"));
@@ -160,11 +175,13 @@
     <section class="section soft" id="egitimler">
       <div class="wrap">
         <div class="section-head"><div><span class="eyebrow">Eğitimler</span><h2>Programlarımız</h2></div>
-          <div class="filters" role="group" aria-label="Program filtresi">
-            ${[["all", "Tümü"], ...A.groups.map((g) => [g.id, g.label])].map(([id, l]) => `<button type="button" data-act="filter" data-f="${id}" aria-pressed="${filter === id}">${l}</button>`).join("")}
-          </div></div>
-        <div class="cards">
-          ${A.programs.filter((p) => filter === "all" || p.group === filter).map(card).join("")}
+          <p>Her programda seviye tespiti, kişisel plan ve ilerleme takibi. Kodlama ve Matematik'te her seviye oyunlu.</p></div>
+        <div class="cards cards-3">${ACTIVE.map(card).join("")}</div>
+        <div class="soon-head"><h3>Yakında</h3><p class="muted">Bu programlar hazırlanıyor.</p></div>
+        <div class="cards cards-passive">
+          ${PASSIVE.map(passiveCard).join("")}
+          <div class="card card-cta is-passive" aria-disabled="true"><div><span class="eyebrow">Ücretsiz</span><h3>Seviyeni 15 dakikada ölç</h3></div><p>Seviye tespitini çöz, alan alan durumunu ve 14 günlük planını gör.</p><span class="chip chip-line soon">Yakında</span></div>
+          <div class="card card-cta is-passive" aria-disabled="true"><div><span class="eyebrow">Kurumlar</span><h3>Okullar ve kurumlar için</h3></div><p>Sınıf yönetimi, ödev takvimi ve öğrenci ilerleme raporları.</p><span class="chip chip-line soon">Yakında</span></div>
         </div>
       </div>
     </section>
@@ -213,7 +230,7 @@
         <form class="panel" id="contact-form" novalidate>
           <label class="field">Ad soyad<input id="c-name" name="name" autocomplete="name" required></label>
           <label class="field">Telefon veya e-posta<input id="c-reach" name="reach" required></label>
-          <label class="field full">İlgilendiğiniz program<select id="c-prog" name="prog">${A.programs.map((p) => `<option>${esc(p.title)}</option>`).join("")}<option>Kurumsal eğitim</option></select></label>
+          <label class="field full">İlgilendiğiniz program<select id="c-prog" name="prog">${ACTIVE.map((p) => `<option>${esc(p.title)}</option>`).join("")}<option>Kurumsal eğitim</option></select></label>
           <label class="field full">Mesajınız<textarea id="c-msg" name="msg"></textarea></label>
           <div class="full"><button class="btn btn-primary" type="submit">Gönder</button></div>
           <p class="form-note full" id="c-note" hidden></p>
@@ -244,7 +261,7 @@
   // ---------- Program sayfası ----------
   function renderProgram(p) {
     const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^\d+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
-    const others = A.programs.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
+    const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
     if (p.engine) cta = `<div class="box accent"><h3>Seviyeni ölç</h3><p class="note">${DIAG_SIZE} soruluk seviye tespitiyle alan alan durumunu gör. Ardından 14 günlük planın hazır.</p><a class="btn btn-primary" href="#ogren-${p.engine}">Seviye tespitine başla</a></div>`;
     else if (p.link) cta = `<div class="box accent"><h3>Programı dene</h3><p class="note">Robotik dersleri kendi sanal laboratuvarında çalışır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div>`;
@@ -268,6 +285,8 @@
         ${p.status ? `<p class="note">${esc(p.status)}</p>` : ""}
         ${p.structure ? `<h2>Sınav yapısı</h2>
           <div class="table-wrap"><table><tbody>${rows(p.structure)}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}` : ""}
+        ${p.levelsTable ? `<h2>Seviyeler</h2><div class="table-wrap"><table><thead><tr><th>Seviye</th><th>Kimler için</th><th>Konular</th></tr></thead><tbody>${rows(p.levelsTable)}</tbody></table></div>` : ""}
+        ${p.game ? `<h2>Nasıl oynanır</h2><ul>${p.game.map((g) => `<li>${esc(g)}</li>`).join("")}</ul>` : ""}
         ${p.modules ? `<h2>Modüller</h2><div class="table-wrap"><table><tbody>${p.modules.map((m, i) => `<tr><td class="num">${i + 1}</td><td><a href="#m-${m.slug}">${esc(m.title)}</a><br><small class="muted">${esc(m.desc)}</small></td><td>${esc(m.age)}</td><td class="num">${m.lessons}</td></tr>`).join("")}</tbody></table></div>` : ""}
       </div>
       <aside class="aside">
@@ -319,7 +338,7 @@
     <div class="app-head"><div class="wrap">
       <div><span class="eyebrow">Öğrenme alanı</span><h1>${esc(d.exam.name)}</h1></div>
       <p>Bu alan HMGS için geliştirdiğimiz çalışma motorunun aynısıyla çalışır. İlerlemen yalnız bu tarayıcıda saklanır.</p>
-      <div class="seg" role="group" aria-label="Sınav seç">${Object.entries(A.exams).map(([id, x]) => `<button type="button" data-act="exam" data-id="${id}" aria-pressed="${id === examId}">${x.short}</button>`).join("")}</div>
+      <div class="seg" role="group" aria-label="Sınav seç">${Object.entries(A.exams).sort((x, y) => examOn(y[0]) - examOn(x[0])).map(([id, x]) => examOn(id) ? `<button type="button" data-act="exam" data-id="${id}" aria-pressed="${id === examId}">${x.short}</button>` : `<button type="button" class="is-off" disabled title="Yakında">${x.short}</button>`).join("")}</div>
       <div class="tabs" role="tablist">${TABS.map(([id, l]) => `<button type="button" role="tab" data-act="tab" data-id="${id}" aria-selected="${store.tab === id}">${l}</button>`).join("")}</div>
     </div></div>
     <div class="wrap app-body">
@@ -334,6 +353,7 @@
     return `
     <div class="next-card"><span class="eyebrow">Bugünün planı</span><h2>${esc(act.title)}</h2><p class="muted">${esc(act.text)}</p>
       <div><button class="btn btn-primary" data-act="tab" data-id="${act.tab}">${esc(act.btn)}</button></div></div>
+    ${d.exam.game ? gameStrip(gameStats(data)) : ""}
     <div class="tiles">
       <div class="tile"><b>${d.total}</b><span>Çözülen soru</span></div>
       <div class="tile"><b>${d.total ? "%" + pct(d.correct / d.total) : "–"}</b><span>Doğru oranı</span></div>
@@ -353,6 +373,13 @@
     ${data.sample ? "" : `<div><button class="btn btn-outline btn-small" data-act="reset">${resetArmed ? "Emin misin? Tüm ilerleme silinecek" : "İlerlememi sıfırla"}</button></div>`}`;
   }
 
+  function gameStrip(g) {
+    return `<div class="game-strip">
+      <div class="game-lvl"><span>Seviye</span><b class="num">${g.level}</b></div>
+      <div class="game-xp"><div class="game-xp-top"><b class="num">${g.xp} puan</b><span class="muted num">Sonraki seviyeye ${100 - g.into} puan</span></div><div class="progress"><i style="width:${g.into}%"></i></div></div>
+      <div class="game-streak"><b class="num">${g.streak}</b><span>doğru seri</span></div></div>`;
+  }
+
   function questionView(q, { mode, progress, showReason }) {
     const it = q.item;
     const ex = mode === "deneme";
@@ -366,7 +393,8 @@
     let after = "";
     if (q.done && !ex) {
       const ok = q.correct;
-      after = `<div class="explain ${ok ? "ok" : "no"}"><strong>${q.skipped ? "Boş bıraktın" : ok ? "Doğru" : "Yanlış"}. Doğru cevap ${LETTERS[it.a]}.</strong><span>${esc(it.e)}</span></div>
+      const reward = q.points ? `<span class="xp-pop">+${q.points} puan${q.streak >= 3 ? ` · ${q.streak} doğru seri` : ""}</span>` : "";
+      after = `<div class="explain ${ok ? "ok" : "no"}"><strong>${q.skipped ? "Boş bıraktın" : ok ? "Doğru" : "Yanlış"}. Doğru cevap ${LETTERS[it.a]}. ${reward}</strong><span>${esc(it.e)}</span></div>
         ${!ok ? `<div class="why"><span>Neden yanlış yaptın? Hata defterine kaydedilir.</span><div>${WHY.map((w) => `<button type="button" class="chip ${q.why === w ? "chip-brand" : "chip-line"}" data-act="why" data-w="${esc(w)}" style="cursor:pointer">${w}</button>`).join("")}</div></div>` : ""}`;
     }
     const actions = q.done && !ex
@@ -377,7 +405,7 @@
     return `<div class="question">
       ${progress ? `<div class="progress" aria-hidden="true"><i style="width:${(progress[0] / progress[1]) * 100}%"></i></div>` : ""}
       <div class="q-top"><div class="chips">${chips}</div>${progress ? `<span class="muted num">Soru ${progress[0]} / ${progress[1]}</span>` : ""}</div>
-      <p class="q-text">${esc(it.q)}</p>${conf}<div class="opts">${opts}</div>${after}<div class="q-actions">${actions}</div></div>`;
+      <p class="q-text">${esc(it.q)}</p>${it.code ? `<pre class="q-code"><code>${esc(it.code)}</code></pre>` : ""}${conf}<div class="opts">${opts}</div>${after}<div class="q-actions">${actions}</div></div>`;
   }
 
   function quotaTable(d, n) {
@@ -524,7 +552,6 @@
     const data = store.data[examId];
 
     if (act === "slide") { slideIdx = +el.dataset.i; updateSlide(); startSlides(); return; }
-    if (act === "filter") { filter = el.dataset.f; renderHome(); return; }
     if (act === "exam") { store.exam = el.dataset.id; session = null; resetArmed = false; save(); location.hash = "ogren-" + store.exam; return; }
     if (act === "tab") { store.tab = el.dataset.id; if (session && (session.kind !== store.tab || session.finished)) session = null; resetArmed = false; save(); renderApp(); window.scrollTo({ top: 0 }); return; }
     if (act === "own") { store.data[examId] = emptyData(); session = null; store.tab = "tani"; save(); renderApp(); return; }
@@ -571,6 +598,7 @@
       const skipped = act === "skip";
       q.done = true; q.skipped = skipped; q.correct = !skipped && q.chosen === q.item.a;
       q.t = record(q.item, q.correct, skipped ? null : q.conf, skipped, session.kind === "tani" ? "tani" : "pratik");
+      if (A.exams[examId].game && q.correct) { q.points = q.conf === 3 ? 15 : 10; q.streak = gameStats(data).streak; }
       if (session.kind === "tani") session.ids.push(q.t);
       renderApp(); return;
     }
@@ -626,7 +654,7 @@
   mega.innerHTML = A.groups.map((g) => {
     const links = g.id === "dijital"
       ? `<a href="#p-robotik">Genel bakış</a>${bySlug.robotik.modules.map((m) => `<a href="#m-${m.slug}">${esc(m.title)}</a>`).join("")}`
-      : A.programs.filter((p) => p.group === g.id).map((p) => `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("");
+      : A.programs.filter((p) => p.group === g.id).map((p) => p.active === false ? `<span class="mega-off" aria-disabled="true">${esc(p.title)} <small>Yakında</small></span>` : `<a href="#p-${p.slug}">${esc(p.title)}</a>`).join("");
     return `<div><h4>${g.label}</h4>${links}</div>`;
   }).join("");
   const setMega = (open) => { mega.hidden = !open; dropBtn.setAttribute("aria-expanded", open); };
@@ -654,8 +682,8 @@
     setMega(false); nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false");
     const key = r.view + (r.slug || "");
     if (r.view === "app") {
-      if (r.exam && A.exams[r.exam] && r.exam !== store.exam) { store.exam = r.exam; session = null; save(); }
-      if (r.exam && A.exams[r.exam] && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
+      if (r.exam && examOn(r.exam) && r.exam !== store.exam) { store.exam = r.exam; session = null; save(); }
+      if (r.exam && examOn(r.exam) && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
       renderApp();
     } else if (r.view === "program") renderProgram(bySlug[r.slug]);
     else if (r.view === "module") renderModule(r.slug);
@@ -698,14 +726,14 @@
       const q = session && !session.finished && session.q;
       if (q) {
         const it = q.item;
-        context += ` Öğrencinin ekranındaki soru (${it.alan}): ${it.q} Şıklar: ${it.o.map((o, i) => `${LETTERS[i]}) ${o}`).join(" ")}.`;
+        context += ` Öğrencinin ekranındaki soru (${it.alan}): ${it.q}${it.code ? ` Kod:\n${it.code}\n` : ""} Şıklar: ${it.o.map((o, i) => `${LETTERS[i]}) ${o}`).join(" ")}.`;
         context += q.done && session.kind !== "deneme" ? ` Öğrenci cevapladı (${q.correct ? "doğru" : "yanlış"}). Doğru cevap ${LETTERS[it.a]}. Açıklama: ${it.e}` : " Öğrenci henüz cevaplamadı: doğru cevabı söyleme, düşünmesini sağla.";
         const open = !(q.done && session.kind !== "deneme");
         return { page: "Soru çözme ekranı", context, question: true, hide: open ? [it.o[it.a], LETTERS[it.a]] : null };
       }
       return { page: "Öğrenme alanı", context };
     }
-    return { page: "Ana sayfa", context: `Programlar: ${A.programs.map((p) => p.title).join(", ")}.` };
+    return { page: "Ana sayfa", context: `Programlar: ${ACTIVE.map((p) => p.title).join(", ")}. Yakında: ${PASSIVE.map((p) => p.title).join(", ")}.` };
   });
 
   // ---------- Fotoğraf kaynakları ----------
