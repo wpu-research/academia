@@ -664,7 +664,7 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 .ao-ray.move { stroke: var(--brand); }
 .ao-fill { fill: var(--brand-soft); stroke: var(--brand); stroke-width: 1.5; }
 .ao-v { fill: var(--ink); }
-.ao-lab { font: 700 22px var(--font); fill: var(--ink); text-anchor: middle; }
+.ao-lab { font: 700 22px var(--font); fill: var(--ink); text-anchor: start; }
 .gb-peg { fill: var(--muted); opacity: .6; }
 .gb-poly { fill: var(--brand-soft); stroke: var(--brand); stroke-width: 3; stroke-linejoin: round; opacity: .9; }
 .gb-al { font: 700 13px var(--font); fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }

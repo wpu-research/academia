@@ -351,7 +351,7 @@ window.LESSONS = (() => {
     const ray = svgEl("line", { x1: CX, y1: CY, class: "ao-ray move" }, svg);
     const knob = svgEl("circle", { r: 12, class: "nl-knob" }, svg);
     svgEl("circle", { cx: CX, cy: CY, r: 5, class: "ao-v" }, svg);
-    const lab = svgEl("text", { x: CX, y: CY - 40, class: "ao-lab" }, svg);
+    const lab = svgEl("text", { x: 24, y: 34, class: "ao-lab" }, svg);
     function place() {
       const r = (ang * Math.PI) / 180, x = CX + Math.cos(r) * R, y = CY - Math.sin(r) * R;
       ray.setAttribute("x2", x); ray.setAttribute("y2", y); knob.setAttribute("cx", x); knob.setAttribute("cy", y);
@@ -444,7 +444,7 @@ window.LESSONS = (() => {
 
   // Fonksiyon grafiği: f(x) = a·g(x − h) + k; g ∈ {x², |x|, √x, sin x}.
   SIMS["fonksiyon-grafigi"] = (el, cfg, changed) => {
-    const G = { kare: [(x) => x * x, "(x − h)²"], mutlak: [(x) => Math.abs(x), "|x − h|"], kok: [(x) => (x >= 0 ? Math.sqrt(x) : NaN), "√(x − h)"], sin: [(x) => Math.sin(x), "sin(x − h)"] }[cfg.g || "kare"];
+    const G = { kare: [(x) => x * x, (u) => (u === "x" ? "x²" : `(${u})²`)], mutlak: [(x) => Math.abs(x), (u) => `|${u}|`], kok: [(x) => (x >= 0 ? Math.sqrt(x) : NaN), (u) => (u === "x" ? "√x" : `√(${u})`)], sin: [(x) => Math.sin(x), (u) => (u === "x" ? "sin x" : `sin(${u})`)] }[cfg.g || "kare"];
     let a = cfg.a ?? 1, h = cfg.h ?? 0, k = cfg.k ?? 0;
     const S = 28, O = 200, X = (v) => O + v * S, Y = (v) => O - v * S;
     el.innerHTML = `<div class="plane-wrap"><div class="plane"></div><div class="plane-ctrl"><p class="eq"></p>${slider("a", "a", -3, 3, 0.5, a)}${slider("h", "h", -4, 4, 1, h)}${slider("k", "k", -4, 4, 1, k)}</div></div>`;
@@ -457,7 +457,9 @@ window.LESSONS = (() => {
       if (cfg.target) { const [tx, ty] = cfg.target, hit = h === tx && k === ty; svgEl("circle", { cx: X(tx), cy: Y(ty), r: 8, class: hit ? "pl-pt hit" : "pl-pt" }, svg); const t = svgEl("text", { x: X(tx) + 10, y: Y(ty) - 10, class: "pl-ptl" }, svg); t.textContent = `(${tx}, ${ty})`; }
       el.querySelector(".plane").replaceChildren(svg);
       const sg = (v) => (v < 0 ? ` − ${fmt(-v)}` : ` + ${fmt(v)}`);
-      el.querySelector(".eq").textContent = `f(x) = ${a === 1 ? "" : a === -1 ? "−" : fmt(a)}${G[1].replace("h", h === 0 ? "0" : fmt(h)).replace("x − 0", "x").replace("− -", "+ ")}${k ? sg(k) : ""}`;
+      const inner = h === 0 ? "x" : h > 0 ? `x − ${fmt(h)}` : `x + ${fmt(-h)}`;
+      const coef = a === 1 ? "" : a === -1 ? "−" : `${a < 0 ? "−" : ""}${fmt(Math.abs(a))}`;
+      el.querySelector(".eq").textContent = `f(x) = ${coef}${G[1](inner)}${k ? sg(k) : ""}`;
       el.querySelectorAll("[data-v]").forEach((b) => { b.textContent = fmt({ a, h, k }[b.dataset.v]); });
     }
     el.querySelectorAll("input[data-k]").forEach((i) => i.addEventListener("input", () => { ({ a: () => (a = +i.value), h: () => (h = +i.value), k: () => (k = +i.value) })[i.dataset.k](); draw(); changed(); }));
