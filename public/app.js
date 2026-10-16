@@ -1330,7 +1330,6 @@
     if (h === "basla") return { view: "basla" };
     if (h === "studyo") return { view: "studyo" };
     if (h === "yontem") return { view: "yontem" };
-    if (h === "kaynaklar") return { view: "kaynaklar" };
     return { view: "home", section: SECTIONS.includes(h) ? h : null };
   }
   function render() {
@@ -1347,7 +1346,6 @@
     else if (r.view === "basla") MAC.renderOnboarding($app);
     else if (r.view === "studyo") renderStudio();
     else if (r.view === "yontem") renderMethod();
-    else if (r.view === "kaynaklar") renderCredits();
     else if (r.view === "anlatim") { $app.innerHTML = `<div class="wrap"><div id="la-root"></div></div>`; LESSONS.openAnlatim(document.getElementById("la-root"), r.mod, r.id, anlatimHooks); }
     else if (r.view === "lesson") { $app.innerHTML = `<div class="wrap"><div id="lp-root"></div></div>`; LESSONS.open(document.getElementById("lp-root"), r.mod, r.id, lessonHooks); }
     else if (current !== "home" || !$app.querySelector(".hero")) renderHome();
@@ -1497,18 +1495,6 @@
     return { page: "Ana sayfa", context: `Programlar: ${ACTIVE.filter((p) => !p.soon).map((p) => p.title).join(", ")}. Yakında: ${PASSIVE.map((p) => p.title).join(", ")}.` };
   });
 
-  // ---------- Görsel kaynakları (#kaynaklar) ----------
-  // CC BY ve CC BY-SA lisanslı fotoğraflar kaynak gösterilmesini şart koşar; liste img/credits.json'dan gelir.
-  const LIC = { by: "CC BY", "by-sa": "CC BY-SA", cc0: "CC0", pdm: "Kamu malı" };
-  function renderCredits() {
-    $app.innerHTML = `<div class="wrap prose credits-page"><nav class="crumbs" aria-label="Konum"><a href="#ana">Anasayfa</a> / Görsel kaynakları</nav>
-      <h1>Görsel kaynakları</h1><p class="muted">Sitede kullanılan fotoğraflar ve lisansları.</p><ul id="credit-list"><li class="muted">Yükleniyor…</li></ul></div>`;
-    fetch("img/credits.json").then((r) => r.json()).then((list) => {
-      const el = document.getElementById("credit-list"); if (!el) return;
-      el.innerHTML = list.map((c) =>
-        `<li><a href="${esc(c.foreign_landing_url)}" target="_blank" rel="noopener">${esc(c.title || "Adsız")}</a>, ${esc(c.creator || "bilinmiyor")} · <a href="${esc(c.license_url)}" target="_blank" rel="noopener">${LIC[c.license] || esc(c.license)} ${c.license === "cc0" || c.license === "pdm" ? "" : esc(c.license_version || "")}</a></li>`).join("");
-    }).catch(() => { const el = document.getElementById("credit-list"); if (el) el.innerHTML = `<li>Liste yüklenemedi.</li>`; });
-  }
   // İlk çizim en sonda: sayfa kancaları (ders, konu anlatımı) tanımlandıktan sonra.
   render();
 })();
