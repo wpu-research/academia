@@ -1080,3 +1080,5 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 .pr-mean small { font-size: 14px; color: var(--muted); font-weight: 400; }
 .pr-arts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .pr-arts .opt { grid-template-columns: 1fr; justify-items: center; font-size: 20px; font-weight: 700; padding: 16px; }
+.lv-links { display: grid; gap: 8px; }
+.lv-links .btn { justify-content: flex-start; }

@@ -1,0 +1,131 @@
+{
+ "id": "en-a1-03",
+ "baslik": "Kendini Tanıtma",
+ "sinif": "A1 · Temeller",
+ "sure": 12,
+ "ozet": "Adını, nereden geldiğini, nerede oturduğunu ve ne iş yaptığını söylemeyi; “to be” fiilini öğreneceğiz.",
+ "kazanim": [
+  "to be",
+  "Personal information"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "to be: am, is, are",
+   "govde": "- **I am** (I'm) → *I'm Ayşe.*\n- **you / we / they are** → *We're from Turkey.*\n- **he / she / it is** → *She's my wife.*\n\nOlumsuz: *I'm **not** married.* Soru: ***Are** you married?*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Kendini tanıt",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "My name is Ayşe Kaya.",
+     "tr": "Adım Ayşe Kaya."
+    },
+    {
+     "metin": "I'm from Turkey.",
+     "tr": "Türkiye'denim."
+    },
+    {
+     "metin": "I live in Izmir.",
+     "tr": "İzmir'de oturuyorum."
+    },
+    {
+     "metin": "I'm thirty-two years old.",
+     "tr": "Otuz iki yaşındayım."
+    },
+    {
+     "metin": "I'm a nurse.",
+     "tr": "Hemşireyim."
+    },
+    {
+     "metin": "I'm married and I've got two children.",
+     "tr": "Evliyim ve iki çocuğum var."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Meslek söylerken “a / an”",
+   "govde": "İngilizcede meslekten önce **a** ya da **an** gelir: *I'm **a** teacher. I'm **an** engineer.* (Sesli harfle başlayan kelimeden önce *an*.)\n\nÇalışmıyorsan: *I don't work at the moment.* / *I'm a housewife.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Görevlinin soruları",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "What's your name?",
+     "tr": "Adınız ne?"
+    },
+    {
+     "metin": "Where are you from?",
+     "tr": "Nerelisiniz?"
+    },
+    {
+     "metin": "Where do you live?",
+     "tr": "Nerede oturuyorsunuz?"
+    },
+    {
+     "metin": "What do you do?",
+     "tr": "Ne iş yapıyorsunuz?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “Where are you from and where do you live?” diye soruyor. Ankara'dansın, Bursa'da oturuyorsun.",
+   "cozum": [
+    "Nereli: I'm from …",
+    "Nerede oturuyor: I live in …"
+   ],
+   "sonuc": "**I'm from Ankara and I live in Bursa.**"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yaşı Türkçeden çevirip **“I have 30 years”** demek. Doğrusu: **I'm 30 (years old).** Mesleği söylerken *a*'yı unutmak da sık görülür: “I'm teacher” değil **I'm a teacher**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Otuz yaşındayım.”",
+   "options": [
+    "I have thirty old.",
+    "I have thirty years.",
+    "I'm thirty years old.",
+    "I'm thirty years."
+   ],
+   "answer": 2,
+   "why": "Yaş “to be” ile söylenir: I'm thirty (years old).",
+   "hint": "Türkçedeki gibi “have” değil."
+  },
+  {
+   "prompt": "Boşluğu doldur: “I'm ---- engineer.”",
+   "options": [
+    "the",
+    "—",
+    "a",
+    "an"
+   ],
+   "answer": 3,
+   "why": "Sesli harfle başlayan kelimeden önce “an”.",
+   "hint": "engineer sesli harfle başlıyor."
+  },
+  {
+   "prompt": "“Where are you from?” sorusunun cevabı hangisi?",
+   "options": [
+    "I'm from Turkey.",
+    "I live in London.",
+    "I'm fine.",
+    "I'm a cook."
+   ],
+   "answer": 0,
+   "why": "“Where … from?” nereli olduğunu sorar.",
+   "hint": "from = -den."
+  }
+ ],
+ "pratik": "lifeskills"
+}

@@ -8,8 +8,67 @@
   const RICA = { re: "(können sie|kannst du|könnten sie|kann ich|darf ich|haben sie|hast du)", ipucu: "Kibarca başla: “Können Sie …?”, “Kannst du …?” ya da “Kann ich …?”" };
   const BITTE = { re: "\\bbitte\\b", ipucu: "“bitte” demeyi unutma" };
   const kw = (re, ipucu) => ({ re, ipucu });
+  const sayEn = (text) => ({ lang: "en-GB", text });
+  // İngilizce soru cümlesi: soru kelimesi ya da yardımcı fiille başlar (metin norm() edilmiştir: "what's" → "what is").
+  const EN_SORU = { re: "^(what|where|when|who|how|why|which|do|does|did|are|is|have|has|can|could|would)\\b", ipucu: "Soru kelimesiyle (What, Where, How…) ya da yardımcı fiille (Do you…, Have you…) başla" };
 
   window.ACADEMIA.practice = {
+    // İngilizce (Birleşik Krallık aile vizesi). Life Skills yalnız konuşma ve dinleme olduğu için yazma yok.
+    lifeskills: {
+      lang: "en-GB", dil: "İngilizce", ad: "Life Skills A1", alanlar: { konusma: "Konuşma" },
+      konusma: [
+        {
+          id: "a1-t1", baslik: "Görevliyle konuş", aciklama: "1. bölüm: görevlinin kişisel sorularına tam cümleyle cevap ver.",
+          gorevler: [
+            { id: "a1-t1-1", gorev: "Görevli adını soruyor.", soru: sayEn("What's your name?"), kurallar: [kw("(my name is|i am|name is) \\p{L}+", "“My name is …” ya da “I'm …” ile cevap ver")], ornek: "My name is Ayşe Kaya." },
+            { id: "a1-t1-2", gorev: "Görevli nereli olduğunu soruyor.", soru: sayEn("Where are you from?"), kurallar: [kw("(i am from|i come from)", "“I'm from …” kalıbını kullan")], ornek: "I'm from Turkey." },
+            { id: "a1-t1-3", gorev: "Görevli nerede oturduğunu soruyor.", soru: sayEn("Where do you live?"), kurallar: [kw("i live in", "“I live in …” kalıbını kullan")], ornek: "I live in Izmir." },
+            { id: "a1-t1-4", gorev: "Görevli yaşını soruyor.", soru: sayEn("How old are you?"), kurallar: [kw("i am \\d+", "Yaşı “I'm …” ile söyle (have değil)")], ornek: "I'm thirty-two years old." },
+            { id: "a1-t1-5", gorev: "Görevli ne iş yaptığını soruyor.", soru: sayEn("What do you do?"), kurallar: [kw("(i am an? |i work|i do not work|i look after|i am a housewife|i am a student)", "“I'm a …”, “I work in …” ya da “I don't work at the moment.” de")], ornek: "I'm a nurse. I work in a hospital." },
+            { id: "a1-t1-6", gorev: "Görevli ailen hakkında soru soruyor.", soru: sayEn("Tell me about your family."), kurallar: [kw("(husband|wife|son|daughter|children|child|brother|sister|parents|mother|father)", "Aile üyelerini söyle (husband, son, daughter …)"), kw("(i have|my|there are)", "Tam cümle kur: “I've got …”, “My husband …”")], ornek: "I'm married and I've got two children, a son and a daughter." },
+            { id: "a1-t1-7", gorev: "Görevli boş zamanında ne yaptığını soruyor.", soru: sayEn("What do you do in your free time?"), kurallar: [kw("(i like|i love|i enjoy|i usually|i often|i sometimes|i go|i play|i watch|i read|i cook|i walk)", "Kendinden bahset: “I like …”, “I usually …”")], ornek: "I like cooking and I often go for a walk in the park." },
+            { id: "a1-t1-8", gorev: "Görevli evini anlatmanı istiyor.", soru: sayEn("Tell me about your home."), kurallar: [kw("(i live in|there is|there are|my house|my flat|my home)", "“I live in a …”, “There are … rooms” gibi cümleler kur")], ornek: "I live in a flat. There are two bedrooms and a small kitchen." },
+            { id: "a1-t1-9", gorev: "Görevli soyadını harf harf söylemeni istiyor.", soru: sayEn("Can you spell your surname, please?"), kurallar: [kw("(\\b\\p{L}\\b\\s*){3,}|double", "Harfleri tek tek söyle: K – A – Y – A")], ornek: "Yes. K – A – Y – A." },
+          ],
+        },
+        {
+          id: "a1-t2", baslik: "Diğer adayla konuş", aciklama: "Görevli bir konu verir; diğer adaya soru sorar ve onun sorularına cevap verirsin.",
+          gorevler: [
+            { id: "a1-t2-1", kart: "Food", gorev: "Konu yemek. Diğer adaya bir soru sor.", kurallar: [EN_SORU, kw("(eat|food|cook|breakfast|dinner|lunch)", "Yemekle ilgili sor (food, eat, cook)")], ornek: "What food do you like?" },
+            { id: "a1-t2-2", kart: "Family", gorev: "Konu aile. Diğer adaya bir soru sor.", kurallar: [EN_SORU, kw("(brother|sister|children|family|married|husband|wife)", "Aileyle ilgili sor (children, brothers, sisters)")], ornek: "Have you got any children?" },
+            { id: "a1-t2-3", kart: "Work", gorev: "Konu iş. Diğer adaya bir soru sor.", kurallar: [EN_SORU, kw("(work|job|do)", "İşle ilgili sor (work, job)")], ornek: "Where do you work?" },
+            { id: "a1-t2-4", kart: "The weekend", gorev: "Konu hafta sonu. Diğer adaya bir soru sor.", kurallar: [EN_SORU, kw("weekend", "“weekend” kelimesini kullan")], ornek: "What do you do at the weekend?" },
+            { id: "a1-t2-5", kart: "Home", gorev: "Konu ev. Diğer adaya bir soru sor.", kurallar: [EN_SORU, kw("(live|house|flat|home|room)", "Evle ilgili sor (live, house, flat)")], ornek: "Do you live in a house or a flat?" },
+            { id: "a1-t2-6", kart: "Transport", gorev: "Konu ulaşım. Diğer adaya bir soru sor.", kurallar: [EN_SORU, kw("(come|bus|car|train|travel|drive|walk)", "Ulaşımla ilgili sor (bus, car, come)")], ornek: "How do you come to the test centre?" },
+            { id: "a1-t2-7", gorev: "Diğer aday soruyor. Cevap ver ve bir ek cümle söyle.", soru: sayEn("Do you like cooking?"), kurallar: [kw("^(yes|no)", "“Yes, I do.” ya da “No, I don't.” ile başla"), kw("\\bi (like|love|cook|do|am|make|usually|often|sometimes|do not)\\b", "Bir cümle daha ekle: “I cook every day.”")], ornek: "Yes, I do. I cook every day for my family." },
+            { id: "a1-t2-8", gorev: "Diğer aday soruyor. Cevap ver.", soru: sayEn("What do you do at the weekend?"), kurallar: [kw("\\bi\\b", "Kendinden bahset: “I usually …”, “At the weekend I …”")], ornek: "At the weekend I usually visit my family." },
+            { id: "a1-t2-9", gorev: "Diğer aday soruyor. Cevap ver.", soru: sayEn("Have you got any children?"), kurallar: [kw("^(yes|no)", "“Yes, I have.” ya da “No, I haven't.” ile başla"), kw("(i have|i do|not|son|daughter|children)", "Kaç çocuğun olduğunu söyle")], ornek: "Yes, I have. I've got a son. He's six." },
+          ],
+        },
+        {
+          id: "a1-t3", alan: "Dinleme", baslik: "Dinle ve konuş", aciklama: "2. bölüm: kısa bir kaydı dinle, sonra soruyu tam cümleyle cevapla. Not alabilirsin.",
+          gorevler: [
+            { id: "a1-t3-1", gorev: "Kaydı dinle ve soruyu cevapla: When is the football match?", soru: sayEn("Hi, this is Sam. The football match is on Saturday at two o'clock in the park."), kurallar: [kw("saturday", "Günü söyle"), kw("\\b2\\b", "Saati söyle")], ornek: "It's on Saturday at two o'clock." },
+            { id: "a1-t3-2", gorev: "Kaydı dinle ve soruyu cevapla: When is the surgery closed?", soru: sayEn("The doctor's surgery is closed on Wednesday afternoon. It's open every morning from eight."), kurallar: [kw("wednesday", "Günü söyle"), kw("afternoon", "Günün hangi bölümü?")], ornek: "It's closed on Wednesday afternoon." },
+            { id: "a1-t3-3", gorev: "Kaydı dinle ve soruyu cevapla: What does her sister do?", soru: sayEn("My sister lives in Leeds. She's a teacher and she has got three children."), kurallar: [kw("teacher", "Mesleği söyle")], ornek: "She's a teacher." },
+            { id: "a1-t3-4", gorev: "Kaydı dinle ve soruyu cevapla: Where is the new shop?", soru: sayEn("The new shop sells bread, milk and fruit. It's next to the bus station."), kurallar: [kw("next to", "Yer edatını kullan (next to)"), kw("station", "Neyin yanında?")], ornek: "It's next to the bus station." },
+            { id: "a1-t3-5", gorev: "Kaydı dinle ve soruyu cevapla: How is Tom going to work today?", soru: sayEn("Tom usually walks to work, but today it's raining, so he's taking the bus."), kurallar: [kw("bus", "Bugün neyle gidiyor?")], ornek: "He's taking the bus today." },
+            { id: "a1-t3-6", gorev: "Kaydı dinle ve soruyu cevapla: What time does the class start?", soru: sayEn("The English class starts at quarter past six and finishes at eight."), kurallar: [kw("(quarter past 6|6 15)", "Başlangıç saatini söyle (quarter past six)")], ornek: "It starts at quarter past six." },
+          ],
+        },
+        {
+          id: "a1-tek", baslik: "Dinle ve tekrar et", aciklama: "Cümleyi dinle, aynısını söyle. Hangi kelimelerin anlaşıldığını görürsün.",
+          gorevler: [
+            ["My name is Ayşe Kaya.", "Adım Ayşe Kaya."], ["I'm from Turkey.", "Türkiye'denim."], ["I live in Izmir.", "İzmir'de oturuyorum."],
+            ["I'm married and I've got two children.", "Evliyim ve iki çocuğum var."], ["I get up at seven o'clock.", "Saat yedide kalkarım."],
+            ["My husband works in a restaurant.", "Kocam bir restoranda çalışıyor."], ["There are two bedrooms and a small kitchen.", "İki yatak odası ve küçük bir mutfak var."],
+            ["Can you spell that, please?", "Bunu harf harf söyler misiniz lütfen?"], ["Sorry, can you say that again, please?", "Pardon, tekrar söyler misiniz lütfen?"],
+            ["A return ticket to Leeds, please.", "Leeds'e bir gidiş-dönüş bilet, lütfen."], ["I'd like to make an appointment, please.", "Randevu almak istiyorum."],
+            ["The post office is next to the bank.", "Postane bankanın yanında."],
+          ].map(([tekrar, tr], i) => ({ id: `a1-tek-${i + 1}`, gorev: "Cümleyi dinle ve aynısını söyle.", tekrar, tr })),
+        },
+      ],
+    },
     almanca: {
       konusma: [
         {

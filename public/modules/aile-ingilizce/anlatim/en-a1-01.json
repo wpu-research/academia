@@ -1,0 +1,72 @@
+{
+ "id": "en-a1-01",
+ "baslik": "Sınavı Tanıyalım: Life Skills A1",
+ "sinif": "A1 · Başlangıç",
+ "sure": 8,
+ "ozet": "Aile vizesi için istenen İngilizce seviyelerini, A1 sınavının nasıl yapıldığını ve bu programda nasıl çalışacağını öğreneceğiz.",
+ "kazanim": [
+  "Sınav yapısı",
+  "Seviyeler"
+ ],
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Hangi seviye ne zaman?",
+   "govde": "Birleşik Krallık hükümetinin (GOV.UK) Ocak 2026 tarihli rehberine göre aile (eş/partner) vizesinde:\n\n- **İlk başvuruda A1**\n- **Süre uzatmada A2**\n\nKalıcı oturumda (settlement) genellikle **B1** istendiği belirtiliyor; bu seviyenin ileride değişebileceğine dair haberler var. Başvurmadan önce GOV.UK'deki güncel şartı ve onaylı sınav listesini kontrol et."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Life Skills A1 nasıl yapılır?",
+   "govde": "- Sınav **yalnız konuşma ve dinlemedir**; okuma ve yazma yoktur.\n- Yaklaşık **16–18 dakika** sürer.\n- Bir **görevli (examiner)** ve **bir başka aday** ile birlikte girersin.\n- Önce günlük konularda konuşursun; sonra kısa bir kaydı dinleyip onun hakkında konuşursun.\n- Not alabilirsin; notların puanlanmaz.\n- Sonuç not değil, **Pass (geçti)** ya da **Fail (kaldı)** olarak verilir."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Bu programda nasıl çalışacağız?",
+   "govde": "Her konu anlatımında kuralı görür, örnek cümleleri dinlersin (▶). Sonra **Soru çöz** ile sınav tipindeki sorulara, **Konuşma** sekmesiyle mikrofonla konuşma pratiğine geçersin. Life Skills dışında da onaylı İngilizce sınavları var; hangisine gireceğine GOV.UK listesine bakarak karar ver."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız kelime ezberlemek. Life Skills'te puanı **konuşarak** ve **dinlediğini anlayarak** alırsın. Her gün birkaç cümleyi sesli dinleyip tekrar etmek daha çok işe yarar."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Aile vizesi ilk başvurusunda hangi seviye istenir?",
+   "options": [
+    "A1",
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "answer": 0,
+   "why": "GOV.UK rehberine göre ilk başvuruda A1, uzatmada A2 istenir.",
+   "hint": "En temel seviye."
+  },
+  {
+   "prompt": "Life Skills sınavında hangi beceriler ölçülür?",
+   "options": [
+    "Okuma ve yazma",
+    "Konuşma ve dinleme",
+    "Yalnız yazma",
+    "Dört beceri"
+   ],
+   "answer": 1,
+   "why": "Life Skills yalnız konuşma ve dinlemeyi ölçer.",
+   "hint": "Okuma ve yazma yok."
+  },
+  {
+   "prompt": "Sınav sonucu nasıl verilir?",
+   "options": [
+    "Yüzde",
+    "0–9 arası puan",
+    "Pass ya da Fail",
+    "A, B, C notu"
+   ],
+   "answer": 2,
+   "why": "Sonuç geçti (Pass) ya da kaldı (Fail) olarak verilir.",
+   "hint": "Puan verilmez."
+  }
+ ],
+ "pratik": "lifeskills"
+}

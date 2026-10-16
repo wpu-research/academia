@@ -1,0 +1,109 @@
+{
+ "id": "en-a1-05",
+ "baslik": "Geniş Zaman ve Günlük Rutin",
+ "sinif": "A1 · Temeller",
+ "sure": 14,
+ "ozet": "Her gün yaptıklarını anlatmayı, he/she ile gelen -s ekini ve sıklık zarflarını öğreneceğiz.",
+ "kazanim": [
+  "Present simple",
+  "Daily routine",
+  "Adverbs of frequency"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Present simple",
+   "govde": "- *I / you / we / they* **work**\n- *he / she / it* **works** (fiile -s eklenir)\n\nOlumsuz: *I **don't** work. She **doesn't** work.*\nSoru: ***Do** you work? **Does** she work?*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sıklık zarfları",
+   "govde": "**always** (her zaman), **usually** (genellikle), **often** (sık sık), **sometimes** (bazen), **never** (asla). Fiilden önce gelir: *I **usually** get up at seven.* “be” fiilinden sonra gelir: *I'm **always** tired.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Günlük rutin",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I get up at seven o'clock.",
+     "tr": "Saat yedide kalkarım."
+    },
+    {
+     "metin": "I usually have breakfast with my children.",
+     "tr": "Genellikle çocuklarımla kahvaltı ederim."
+    },
+    {
+     "metin": "My husband works in a restaurant.",
+     "tr": "Kocam bir restoranda çalışıyor."
+    },
+    {
+     "metin": "He starts work at nine.",
+     "tr": "İşe dokuzda başlıyor."
+    },
+    {
+     "metin": "I sometimes go shopping in the afternoon.",
+     "tr": "Bazen öğleden sonra alışverişe giderim."
+    },
+    {
+     "metin": "We never watch TV at dinner.",
+     "tr": "Akşam yemeğinde asla televizyon izlemeyiz."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "“My wife ---- (work) in a hospital.”",
+   "cozum": [
+    "Özne “my wife” = she.",
+    "she ile fiile -s eklenir."
+   ],
+   "sonuc": "**My wife works in a hospital.**"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "he/she ile -s'yi unutmak: “He work in London.” Doğrusu: **He works in London.** Soru ve olumsuzda ise -s düşer: *Does he **work**? He doesn't **work**.*"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Boşluğu doldur: “She ---- English every day.” (study)",
+   "options": [
+    "studies",
+    "studys",
+    "studying",
+    "study"
+   ],
+   "answer": 0,
+   "why": "she ile -s; y harfi -ies olur: studies.",
+   "hint": "she ile fiil -s alır."
+  },
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "I get up usually at six.",
+    "I usually get up at six.",
+    "I get usually up at six.",
+    "Usually I am get up at six."
+   ],
+   "answer": 1,
+   "why": "Sıklık zarfı fiilden önce gelir.",
+   "hint": "usually nereye gelir?"
+  },
+  {
+   "prompt": "“Does he drive?” sorusuna kısa cevap:",
+   "options": [
+    "Yes, he is.",
+    "Yes, he do.",
+    "Yes, he does.",
+    "Yes, he drives does."
+   ],
+   "answer": 2,
+   "why": "“Does” ile sorulan soruya “Yes, he does.” denir.",
+   "hint": "Soru hangi yardımcı fiille?"
+  }
+ ],
+ "pratik": "lifeskills"
+}

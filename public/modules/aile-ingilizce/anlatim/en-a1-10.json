@@ -1,0 +1,106 @@
+{
+ "id": "en-a1-10",
+ "baslik": "Sınav Stratejileri: Dinleme ve Konuşma",
+ "sinif": "A1 · Sınav Stratejileri",
+ "sure": 12,
+ "ozet": "Anlamadığında ne diyeceğini, diğer adayla nasıl konuşacağını ve dinleme metinlerindeki tuzakları öğreneceğiz.",
+ "kazanim": [
+  "Clarification",
+  "Turn-taking",
+  "Listening traps"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Anlamadığında",
+   "govde": "Susmak yerine sor; bu iletişimin parçasıdır:\n\n- ***Sorry, can you say that again, please?***\n- ***Can you speak more slowly, please?***\n- ***Sorry, what does “…” mean?***"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle ve tekrar et",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Sorry, can you say that again, please?",
+     "tr": "Pardon, tekrar söyler misiniz lütfen?"
+    },
+    {
+     "metin": "Can you speak more slowly, please?",
+     "tr": "Daha yavaş konuşabilir misiniz lütfen?"
+    },
+    {
+     "metin": "Sorry, I don't understand.",
+     "tr": "Pardon, anlamıyorum."
+    },
+    {
+     "metin": "What about you?",
+     "tr": "Ya sen?"
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Dinleme tuzakları",
+   "govde": "- **Değişen bilgi:** *“It was on Tuesday, but now it's on Thursday.”* Son söylenen geçerli.\n- **Olumsuz:** *“Not the red one, the blue one.”*\n- **Benzer sayılar:** thirteen / thirty.\n\nDinlerken kısa not al: gün, saat, sayı, yer."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Diğer adayla konuşurken",
+   "govde": "Görevli ikinizden bir konu hakkında konuşmanızı isteyebilir. Kısa cevap verip susma; bir cümle ekle ve ona soru sor: *“I like cooking. I cook every day. **Do you like cooking?**”*"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kayıt: “The class is at ten. Oh, sorry — it's at eleven.” Ders saat kaçta?",
+   "cozum": [
+    "İlk söylenen: on.",
+    "“sorry” ile düzeltiliyor: on bir."
+   ],
+   "sonuc": "**11.00.** Düzeltmeden sonra söylenen geçerlidir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Tek kelimeyle cevap vermek: “Yes.” Görevli tam cümle bekler: **“Yes, I have. I've got two children.”**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Görevlinin dediğini duymadın. Ne dersin?",
+   "options": [
+    "No.",
+    "I don't know.",
+    "What?",
+    "Sorry, can you say that again, please?"
+   ],
+   "answer": 3,
+   "why": "Kibarca tekrar istemek beklenen bir beceridir.",
+   "hint": "Kibar bir rica."
+  },
+  {
+   "prompt": "Kayıt: “Not on Monday, on Wednesday.” Hangi gün?",
+   "options": [
+    "Wednesday",
+    "Tuesday",
+    "Her ikisi",
+    "Monday"
+   ],
+   "answer": 0,
+   "why": "“Not on Monday” olumsuzlanıyor; doğru gün Wednesday.",
+   "hint": "not'tan sonra gelen yanlış bilgi."
+  },
+  {
+   "prompt": "“Do you like sport?” sorusuna en iyi cevap:",
+   "options": [
+    "Yes.",
+    "Yes, I do. I play football at the weekend.",
+    "Sport.",
+    "Yes, I like."
+   ],
+   "answer": 1,
+   "why": "Kısa cevap + bir ek cümle en iyisidir.",
+   "hint": "Tam cümle ve bir ek bilgi."
+  }
+ ],
+ "pratik": "lifeskills"
+}

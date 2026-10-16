@@ -44,13 +44,16 @@ function collect() {
   vm.createContext(sandbox);
   for (const f of ["data.js", "data-practice.js"]) if (fs.existsSync(path.join(ROOT, f))) vm.runInContext(fs.readFileSync(path.join(ROOT, f), "utf8"), sandbox);
   for (const ex of Object.values(sandbox.ACADEMIA.exams)) for (const it of ex.items) if (it.say) add(it.say.lang, it.say.text);
-  // Konuşma pratiği: soru, tekrar cümlesi ve örnek cevap dinlenebilir (şimdilik yalnız Almanca içerik var).
-  for (const p of Object.values(sandbox.ACADEMIA.practice || {})) for (const s of p.konusma || []) for (const g of s.gorevler) {
-    if (g.soru) add(g.soru.lang, g.soru.text);
-    if (g.tekrar) add("de-DE", g.tekrar);
-    if (g.ornek) add("de-DE", g.ornek);
+  // Pratik içeriğinin dili practice.<sınav>.lang'dir (yoksa Almanca).
+  for (const p of Object.values(sandbox.ACADEMIA.practice || {})) {
+    const L = p.lang || "de-DE";
+    for (const s of p.konusma || []) for (const g of s.gorevler) {
+      if (g.soru) add(g.soru.lang, g.soru.text);
+      if (g.tekrar) add(L, g.tekrar);
+      if (g.ornek) add(L, g.ornek);
+    }
+    for (const t of p.kelime || []) for (const [w] of t.kelimeler) add(L, w);
   }
-  for (const p of Object.values(sandbox.ACADEMIA.practice || {})) for (const t of p.kelime || []) for (const [de] of t.kelimeler) add("de-DE", de);
   const mods = path.join(ROOT, "modules");
   for (const m of fs.readdirSync(mods)) {
     const dir = path.join(mods, m, "anlatim");

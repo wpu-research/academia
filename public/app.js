@@ -50,6 +50,7 @@
     const answered = new Set();
     let correct = 0;
     for (const at of data.attempts) {
+      if (!mastery[at.alan]) continue; // bu sınavın bölümü değil (eski ya da hatalı kayıt)
       mastery[at.alan] = E.updateMastery(mastery[at.alan], at.correct, at.skipped ? null : at.conf);
       attemptsByAlan[at.alan] = (attemptsByAlan[at.alan] || 0) + 1;
       answered.add(at.id);
@@ -312,7 +313,9 @@
     const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^\d+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
     const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
-    if (p.engine) cta = `<div class="box accent"><h3>Seviyeni ölç</h3><p class="note">${DIAG_SIZE} soruluk seviye tespitiyle alan alan durumunu gör. Ardından 14 günlük planın hazır.</p><a class="btn btn-primary" href="#ogren-${p.engine}">Seviye tespitine başla</a></div>`;
+    if (p.levels) cta = `<div class="box accent"><h3>Seviyeni seç</h3><p class="note">Her seviyenin kendi seviye tespiti, soru bankası ve konuşma pratiği var.</p>
+      <div class="lv-links">${p.levels.map((l) => `<a class="btn btn-primary" href="#ogren-${l.exam}"><b>${esc(l.ad)}</b> · ${esc(l.aciklama)}</a>`).join("")}</div></div>`;
+    else if (p.engine) cta = `<div class="box accent"><h3>Seviyeni ölç</h3><p class="note">${DIAG_SIZE} soruluk seviye tespitiyle alan alan durumunu gör. Ardından 14 günlük planın hazır.</p><a class="btn btn-primary" href="#ogren-${p.engine}">Seviye tespitine başla</a></div>`;
     else if (p.slug === "muzik") cta = `<div class="box accent"><h3>Stüdyoyu aç</h3><p class="note">Ritim makinesi ve DJ mikseriyle serbestçe çalış.</p><a class="btn btn-primary" href="#studyo">Stüdyoya git</a></div>`;
     else if (p.link) cta = `<div class="box accent"><h3>Programı dene</h3><p class="note">Robotik dersleri kendi sanal laboratuvarında çalışır. Bağlantı yeni sekmede açılır.</p><a class="btn btn-primary" href="${p.link.href}" target="_blank" rel="noopener">${esc(p.link.label)}</a></div>`;
     else cta = `<div class="box accent"><h3>Ücretsiz seviye tespiti</h3><p class="note">Bilgilerini bırak, programa uygun seviye tespiti için seninle iletişime geçelim.</p><a class="btn btn-primary" href="#iletisim">Bilgi bırak</a></div>`;
@@ -558,7 +561,7 @@
     onResult(alan, id, ok) {
       if (store.data[examId].sample) store.data[examId] = emptyData();
       const dt = store.data[examId];
-      dt.attempts.push({ id, alan, correct: ok, conf: 2, skipped: false, mode: alan === "Sprechen" ? "konusma" : "yazma", t: Date.now() + Math.random() });
+      dt.attempts.push({ id, alan, correct: ok, conf: 2, skipped: false, mode: id.startsWith("yaz:") ? "yazma" : "konusma", t: Date.now() + Math.random() });
       dt.pratik = dt.pratik || {};
       if (ok) dt.pratik[id.replace(/^(konus|yaz):/, "")] = Date.now();
       save();

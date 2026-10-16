@@ -1,0 +1,67 @@
+{
+ "program": "Aile Birleşimi · İngilizce",
+ "sesKredi": "Seslendirme: ElevenLabs.",
+ "aciklama": "Birleşik Krallık aile vizesi yolundaki üç seviye: A1 (ilk başvuru), A2 (uzatma), B1 (kalıcı oturum). Sınav yalnız konuşma ve dinlemedir; anlatımlarda örnek cümleleri dinleyebilirsin.",
+ "konular": [
+  {
+   "id": "en-a1-01",
+   "baslik": "Sınavı Tanıyalım: Life Skills A1",
+   "sinif": "A1 · Başlangıç",
+   "ozet": "Aile vizesi için istenen İngilizce seviyelerini, A1 sınavının nasıl yapıldığını ve bu programda nasıl çalışacağını öğreneceğiz."
+  },
+  {
+   "id": "en-a1-02",
+   "baslik": "Alfabe ve Harf Harf Söyleme",
+   "sinif": "A1 · Başlangıç",
+   "ozet": "İngilizce harflerin adlarını, adını ve adresini harf harf söylemeyi (spelling) öğreneceğiz."
+  },
+  {
+   "id": "en-a1-03",
+   "baslik": "Kendini Tanıtma",
+   "sinif": "A1 · Temeller",
+   "ozet": "Adını, nereden geldiğini, nerede oturduğunu ve ne iş yaptığını söylemeyi; “to be” fiilini öğreneceğiz."
+  },
+  {
+   "id": "en-a1-04",
+   "baslik": "Sayılar, Saat, Tarih ve Fiyat",
+   "sinif": "A1 · Temeller",
+   "ozet": "13 ile 30'u ayırt etmeyi, saati, tarihi ve sterlin fiyatlarını söylemeyi öğreneceğiz."
+  },
+  {
+   "id": "en-a1-05",
+   "baslik": "Geniş Zaman ve Günlük Rutin",
+   "sinif": "A1 · Temeller",
+   "ozet": "Her gün yaptıklarını anlatmayı, he/she ile gelen -s ekini ve sıklık zarflarını öğreneceğiz."
+  },
+  {
+   "id": "en-a1-06",
+   "baslik": "Soru Sormak",
+   "sinif": "A1 · Temeller",
+   "ozet": "Soru kelimelerini ve diğer adaya soru sormayı öğreneceğiz; sınavda karşılıklı konuşma bölümünde gerekir."
+  },
+  {
+   "id": "en-a1-07",
+   "baslik": "Aile, Ev ve İş",
+   "sinif": "A1 · Günlük Hayat",
+   "ozet": "Ailen, evin ve işin hakkında konuşmayı; “have got” ve “there is / there are” yapılarını öğreneceğiz."
+  },
+  {
+   "id": "en-a1-08",
+   "baslik": "Alışveriş, Ulaşım ve Doktor",
+   "sinif": "A1 · Günlük Hayat",
+   "ozet": "Mağazada, istasyonda ve doktorda en çok gereken kalıpları öğreneceğiz."
+  },
+  {
+   "id": "en-a1-09",
+   "baslik": "Yer Tarif Etme ve Resim Anlatma",
+   "sinif": "A1 · Günlük Hayat",
+   "ozet": "Bir yerin nerede olduğunu söylemeyi ve basit bir resmi anlatmayı öğreneceğiz."
+  },
+  {
+   "id": "en-a1-10",
+   "baslik": "Sınav Stratejileri: Dinleme ve Konuşma",
+   "sinif": "A1 · Sınav Stratejileri",
+   "ozet": "Anlamadığında ne diyeceğini, diğer adayla nasıl konuşacağını ve dinleme metinlerindeki tuzakları öğreneceğiz."
+  }
+ ]
+}

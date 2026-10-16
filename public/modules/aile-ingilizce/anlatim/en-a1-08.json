@@ -1,0 +1,147 @@
+{
+ "id": "en-a1-08",
+ "baslik": "Alışveriş, Ulaşım ve Doktor",
+ "sinif": "A1 · Günlük Hayat",
+ "sure": 14,
+ "ozet": "Mağazada, istasyonda ve doktorda en çok gereken kalıpları öğreneceğiz.",
+ "kazanim": [
+  "Shopping",
+  "Transport",
+  "Health"
+ ],
+ "bolumler": [
+  {
+   "tur": "ses",
+   "baslik": "Mağazada",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Can I have a loaf of bread, please?",
+     "tr": "Bir somun ekmek alabilir miyim lütfen?"
+    },
+    {
+     "metin": "How much is this?",
+     "tr": "Bu ne kadar?"
+    },
+    {
+     "metin": "Can I pay by card?",
+     "tr": "Kartla ödeyebilir miyim?"
+    },
+    {
+     "metin": "Have you got this in a smaller size?",
+     "tr": "Bunun daha küçük bedeni var mı?"
+    }
+   ]
+  },
+  {
+   "tur": "ses",
+   "baslik": "İstasyonda",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "A return ticket to Leeds, please.",
+     "tr": "Leeds'e bir gidiş-dönüş bilet, lütfen."
+    },
+    {
+     "metin": "What time is the next train?",
+     "tr": "Sonraki tren kaçta?"
+    },
+    {
+     "metin": "Which platform does it leave from?",
+     "tr": "Hangi perondan kalkıyor?"
+    },
+    {
+     "metin": "Does this bus go to the city centre?",
+     "tr": "Bu otobüs şehir merkezine gidiyor mu?"
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ulaşım kelimeleri",
+   "govde": "**single** (tek yön), **return** (gidiş-dönüş), **platform** (peron), **bus stop** (otobüs durağı), **delayed** (rötarlı), **cancelled** (iptal)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Doktorda",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I'd like to make an appointment, please.",
+     "tr": "Randevu almak istiyorum."
+    },
+    {
+     "metin": "I've got a headache.",
+     "tr": "Başım ağrıyor."
+    },
+    {
+     "metin": "My son has got a temperature.",
+     "tr": "Oğlumun ateşi var."
+    },
+    {
+     "metin": "I feel sick.",
+     "tr": "Midem bulanıyor."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Ağrı ve hastalık",
+   "govde": "**I've got a** + *headache* (baş ağrısı), *toothache* (diş ağrısı), *stomach ache* (karın ağrısı), *cold* (soğuk algınlığı), *cough* (öksürük), *temperature* (ateş)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Eczanede çocuğun için öksürük ilacı istiyorsun.",
+   "cozum": [
+    "Kibar istek: Can I have …, please?",
+    "Öksürük = cough; ilaç = medicine."
+   ],
+   "sonuc": "***Can I have some cough medicine for my son, please?***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İstekte “I want …” demek kaba duyulabilir. Mağazada ve resmî yerlerde **Can I have …, please?** ya da **I'd like …, please.** kullan."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Gidiş-dönüş bilet” İngilizcede nedir?",
+   "options": [
+    "single ticket",
+    "return ticket",
+    "double ticket",
+    "back ticket"
+   ],
+   "answer": 1,
+   "why": "return = gidiş-dönüş; single = tek yön.",
+   "hint": "Geri dönüyorsun."
+  },
+  {
+   "prompt": "“Başım ağrıyor.”",
+   "options": [
+    "I have head.",
+    "I am headache.",
+    "I've got a headache.",
+    "My head is pain."
+   ],
+   "answer": 2,
+   "why": "Ağrılar “I've got a …ache” ile söylenir.",
+   "hint": "have got + ache."
+  },
+  {
+   "prompt": "Mağazada en kibar istek hangisi?",
+   "options": [
+    "Bread!",
+    "Give me bread.",
+    "I want bread.",
+    "Can I have some bread, please?"
+   ],
+   "answer": 3,
+   "why": "“Can I have …, please?” kibar istektir.",
+   "hint": "please ve soru biçimi."
+  }
+ ],
+ "pratik": "lifeskills"
+}

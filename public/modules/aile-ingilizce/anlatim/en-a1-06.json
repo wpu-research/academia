@@ -1,0 +1,109 @@
+{
+ "id": "en-a1-06",
+ "baslik": "Soru Sormak",
+ "sinif": "A1 · Temeller",
+ "sure": 12,
+ "ozet": "Soru kelimelerini ve diğer adaya soru sormayı öğreneceğiz; sınavda karşılıklı konuşma bölümünde gerekir.",
+ "kazanim": [
+  "Wh- questions",
+  "Asking the other candidate"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Soru kelimeleri",
+   "govde": "**what** (ne), **where** (nerede), **when** (ne zaman), **who** (kim), **how** (nasıl), **how many** (kaç tane), **how much** (ne kadar), **how old** (kaç yaşında), **why** (neden), **what time** (saat kaçta)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Soru düzeni",
+   "govde": "Soru kelimesi + yardımcı fiil + özne + fiil:\n\n- *Where **do you** live?*\n- *What time **does she** start work?*\n- *How many children **have you** got?* / *How many children **do you** have?*\n\n“be” ile: *Where **are you** from? How old **is** your son?*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Diğer adaya sor",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "What do you do at the weekend?",
+     "tr": "Hafta sonu ne yaparsın?"
+    },
+    {
+     "metin": "How many brothers and sisters have you got?",
+     "tr": "Kaç kardeşin var?"
+    },
+    {
+     "metin": "What time do you get up?",
+     "tr": "Kaçta kalkarsın?"
+    },
+    {
+     "metin": "Do you like cooking?",
+     "tr": "Yemek yapmayı sever misin?"
+    },
+    {
+     "metin": "And you? What about you?",
+     "tr": "Ya sen?"
+    }
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Konuşmayı sürdürmek",
+   "govde": "Sınavda diğer adayla konuşurken yalnız cevap verip susma. Cevabından sonra **“And you?”** ya da **“What about you?”** diye sorarak konuşmayı ona geçir."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Diğer adaya ne iş yaptığını soracaksın.",
+   "cozum": [
+    "Soru kelimesi: what.",
+    "Yardımcı fiil do + özne you + fiil do."
+   ],
+   "sonuc": "***What do you do?*** (ya da *What's your job?*)"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yardımcı fiili unutmak: “Where you live?” Doğrusu: **Where do you live?**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "Where does you work?",
+    "Where you do work?",
+    "Where you work?",
+    "Where do you work?"
+   ],
+   "answer": 3,
+   "why": "Soru kelimesi + do + you + fiil.",
+   "hint": "Yardımcı fiil gerekli."
+  },
+  {
+   "prompt": "Diğer adayın yaşını sormak için:",
+   "options": [
+    "How old are you?",
+    "How many years you have?",
+    "What old are you?",
+    "How old do you?"
+   ],
+   "answer": 0,
+   "why": "Yaş “How old are you?” ile sorulur.",
+   "hint": "be fiili kullanılır."
+  },
+  {
+   "prompt": "Cevabını verdin; konuşmayı diğer adaya geçirmek için ne dersin?",
+   "options": [
+    "Goodbye.",
+    "And you?",
+    "I don't know.",
+    "Stop."
+   ],
+   "answer": 1,
+   "why": "“And you?” konuşmayı karşı tarafa geçirir.",
+   "hint": "Ona da sor."
+  }
+ ],
+ "pratik": "lifeskills"
+}

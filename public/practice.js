@@ -21,8 +21,27 @@ window.PRACTICE = (() => {
     if (m) return (m[1] === "ein" ? 1 : UNITS[m[1]]) + TENS[m[2]];
     return null;
   }
-  function norm(s) {
+  // İngilizce: "twenty one" iki kelime gelir (tire noktalama olarak silinir); onluk + birlik birleştirilir.
+  const EN_UNITS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+  const EN_TENS = { twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90, hundred: 100 };
+  function enNumbers(words) {
+    const out = [];
+    for (let i = 0; i < words.length; i++) {
+      const w = words[i], u = EN_UNITS.indexOf(w);
+      if (w in EN_TENS) {
+        const nu = EN_UNITS.indexOf(words[i + 1] || "");
+        if (EN_TENS[w] < 100 && nu > 0 && nu < 10) { out.push(String(EN_TENS[w] + nu)); i++; } else out.push(String(EN_TENS[w]));
+      } else out.push(u >= 0 ? String(u) : w);
+    }
+    return out;
+  }
+  // İngilizce kısaltmalar açılır: tanıma "I'm" yazar, kural "i am" bekler.
+  const enExpand = (s) => s.replace(/[’']/g, "'").replace(/\bcan't\b/g, "can not").replace(/\bwon't\b/g, "will not").replace(/n't\b/g, " not")
+    .replace(/'m\b/g, " am").replace(/'re\b/g, " are").replace(/'ve\b/g, " have").replace(/'ll\b/g, " will").replace(/'d\b/g, " would").replace(/'s\b/g, " is");
+  function norm(s, lang = LANG) {
+    if (lang.startsWith("en")) s = enExpand(String(s ?? "").toLowerCase());
     const words = String(s ?? "").toLowerCase().replace(/ß/g, "ss").replace(/[^\p{L}\p{N}\s]/gu, " ").split(/\s+/).filter(Boolean);
+    if (lang.startsWith("en")) return enNumbers(words).join(" ");
     return words.map((w) => { const n = numWord(w); return n === null ? w : String(n); }).join(" ");
   }
   const flat = (w) => w.replace(/ä/g, "a").replace(/ö/g, "o").replace(/ü/g, "u");
@@ -51,11 +70,11 @@ window.PRACTICE = (() => {
   const checkRules = (rules, text) => { const t = norm(text); return rules.map((r) => ({ ...r, ok: new RegExp(r.re, "u").test(t) })); };
 
   // ---------- Durum ----------
-  let root = null, hooks = {}, P = null, kind = "konusma", st = { set: null, i: 0 }, rec = null, listening = false;
+  let root = null, hooks = {}, P = null, LANG = "de-DE", kind = "konusma", st = { set: null, i: 0 }, rec = null, listening = false;
   const tasks = () => (P.konusma.find((s) => s.id === st.set) || {}).gorevler || [];
 
   function mount(el, practice, k, h) {
-    root = el; P = practice; kind = k; hooks = h || {};
+    root = el; P = practice; LANG = practice.lang || "de-DE"; kind = k; hooks = h || {};
     if (st.kind !== k) st = { kind: k, set: null, i: 0, res: null, heard: "", text: {}, mode: null };
     draw();
   }
@@ -65,7 +84,7 @@ window.PRACTICE = (() => {
   function setList() {
     const done = hooks.done || (() => false);
     return `<div class="pr-intro"><h2>Konuşma pratiği</h2>
-      <p class="muted">Görevi oku ya da dinle, sonra 🎤 düğmesine basıp Almanca söyle. Söylediğin metne çevrilir ve kontrol edilir.</p>
+      <p class="muted">Görevi oku ya da dinle, sonra 🎤 düğmesine basıp ${esc(P.dil || "Almanca")} söyle. Söylediğin metne çevrilir ve kontrol edilir.</p>
       ${SR ? `<p class="note">Konuşma tanıma tarayıcının hizmetiyle yapılır; Chrome'da sesin metne çevrilmek için Google'a gönderilir. Biz ses kaydı saklamayız.</p>`
         : `<p class="note">Bu tarayıcı konuşma tanımayı desteklemiyor (Chrome ya da Edge'de çalışır). Yine de görevleri yapabilirsin: cümleyi sesli söyle, örnek cevabı dinle ve kendini değerlendir.</p>`}</div>
       <div class="pr-sets">${P.konusma.map((s) => {
@@ -97,14 +116,14 @@ window.PRACTICE = (() => {
     return `<div class="pr-task">
       <div class="q-top"><div class="chips"><span class="chip chip-line">${esc(set.baslik)}</span></div><span class="muted num">Görev ${st.i + 1} / ${list.length}</span></div>
       <div class="progress" aria-hidden="true"><i style="width:${(st.i / list.length) * 100}%"></i></div>
-      ${g.kart ? `<div class="pr-card"><small>Kart</small><b lang="de">${esc(g.kart)}</b>${g.kelime ? `<span lang="de">${esc(g.kelime)}</span>` : ""}</div>` : ""}
+      ${g.kart ? `<div class="pr-card"><small>Kart</small><b lang="${LANG.slice(0, 2)}">${esc(g.kart)}</b>${g.kelime ? `<span lang="${LANG.slice(0, 2)}">${esc(g.kelime)}</span>` : ""}</div>` : ""}
       <p class="pr-q">${esc(g.gorev)}</p>
-      ${g.soru ? `<div class="pr-prompt"><span lang="de">${esc(g.soru.text)}</span>${sayBtn(g.soru)}</div>` : ""}
-      ${g.tekrar ? `<div class="pr-prompt"><span lang="de" class="pr-big">${esc(g.tekrar)}</span>${sayBtn({ lang: "de-DE", text: g.tekrar })}${g.tr ? `<small>${esc(g.tr)}</small>` : ""}</div>` : ""}
+      ${g.soru ? `<div class="pr-prompt"><span lang="${LANG.slice(0, 2)}">${esc(g.soru.text)}</span>${sayBtn(g.soru)}</div>` : ""}
+      ${g.tekrar ? `<div class="pr-prompt"><span lang="${LANG.slice(0, 2)}" class="pr-big">${esc(g.tekrar)}</span>${sayBtn({ lang: LANG, text: g.tekrar })}${g.tr ? `<small>${esc(g.tr)}</small>` : ""}</div>` : ""}
       ${mic}
-      ${st.heard ? `<p class="pr-heard"><small>Anlaşılan:</small> <span lang="de">${esc(st.heard)}</span></p>` : ""}
+      ${st.heard ? `<p class="pr-heard"><small>Anlaşılan:</small> <span lang="${LANG.slice(0, 2)}">${esc(st.heard)}</span></p>` : ""}
       ${result}
-      ${g.ornek && (r || !SR) ? `<div class="pr-example"><small>Örnek cevap</small><span lang="de">${esc(g.ornek)}</span>${sayBtn({ lang: "de-DE", text: g.ornek })}</div>` : ""}
+      ${g.ornek && (r || !SR) ? `<div class="pr-example"><small>Örnek cevap</small><span lang="${LANG.slice(0, 2)}">${esc(g.ornek)}</span>${sayBtn({ lang: LANG, text: g.ornek })}</div>` : ""}
       <div class="q-actions">${r ? `<button class="btn btn-primary" data-pr="next">${st.i + 1 >= list.length ? "Seti bitir" : "Sonraki görev"}</button><button class="btn btn-outline" data-pr="again">Tekrar dene</button>` : ""}<button class="btn btn-outline" data-pr="sets">Setlere dön</button></div>
     </div>`;
   }
@@ -116,7 +135,9 @@ window.PRACTICE = (() => {
   }
   function finish(g, res) {
     st.res = res;
-    hooks.onResult?.("Sprechen", `konus:${g.id}`, res.ok);
+    // Sonucun yazıldığı alan: setin alanı, yoksa içeriğin konuşma alanı (Almanca: Sprechen).
+    const set = P.konusma.find((s) => s.id === st.set);
+    hooks.onResult?.(set?.alan || P.alanlar?.konusma || "Sprechen", `konus:${g.id}`, res.ok);
     draw();
   }
   function listen() {
@@ -129,7 +150,7 @@ window.PRACTICE = (() => {
     }
     window.VOICE?.stop();
     rec = new SR();
-    rec.lang = "de-DE"; rec.interimResults = true; rec.maxAlternatives = 3; rec.continuous = false;
+    rec.lang = LANG; rec.interimResults = true; rec.maxAlternatives = 3; rec.continuous = false;
     let finals = [], interim = "";
     rec.onresult = (e) => {
       interim = "";
@@ -176,10 +197,10 @@ window.PRACTICE = (() => {
     if (w.tur === "form") {
       return `<div class="pr-task"><div class="q-top"><div class="chips"><span class="chip chip-line">Form doldurma</span></div></div>
         <h3>${esc(w.baslik)}</h3><p class="pr-q">${esc(w.gorev)}</p>
-        <blockquote class="pr-text" lang="de">${esc(w.metin)}</blockquote>
+        <blockquote class="pr-text" lang="${LANG.slice(0, 2)}">${esc(w.metin)}</blockquote>
         <form class="pr-form" data-pr-form="${esc(w.id)}">${w.alanlar.map((a, i) => {
           const res = r?.fields?.[i];
-          return `<label><span lang="de">${esc(a.etiket)}</span><input name="f${i}" value="${esc(v["f" + i] || "")}" autocomplete="off" class="${res ? (res.ok ? "hit" : "miss") : ""}">${res && !res.ok ? `<small>Doğrusu: <b lang="de">${esc(a.cevap[0])}</b>${a.ipucu ? ` · ${esc(a.ipucu)}` : ""}</small>` : ""}</label>`;
+          return `<label><span lang="${LANG.slice(0, 2)}">${esc(a.etiket)}</span><input name="f${i}" value="${esc(v["f" + i] || "")}" autocomplete="off" class="${res ? (res.ok ? "hit" : "miss") : ""}">${res && !res.ok ? `<small>Doğrusu: <b lang="${LANG.slice(0, 2)}">${esc(a.cevap[0])}</b>${a.ipucu ? ` · ${esc(a.ipucu)}` : ""}</small>` : ""}</label>`;
         }).join("")}
         <div class="q-actions"><button class="btn btn-primary">Kontrol et</button><button type="button" class="btn btn-outline" data-pr="wlist">Görevlere dön</button></div></form>
         ${r ? `<div class="explain ${r.ok ? "ok" : "no"}"><strong>${r.fields.filter((f) => f.ok).length} / ${r.fields.length} alan doğru</strong></div>` : ""}</div>`;
@@ -189,14 +210,14 @@ window.PRACTICE = (() => {
       <h3>${esc(w.baslik)}</h3><p class="pr-q">${esc(w.gorev)}</p>
       <ol class="pr-points">${w.noktalar.map((p) => `<li>${esc(p.metin)}</li>`).join("")}</ol>
       <form class="pr-form" data-pr-form="${esc(w.id)}">
-        <textarea name="msg" rows="7" maxlength="420" lang="de" spellcheck="false" placeholder="Mesajını Almanca yaz…">${esc(v.msg || "")}</textarea>
+        <textarea name="msg" rows="7" maxlength="420" lang="${LANG.slice(0, 2)}" spellcheck="false" placeholder="Mesajını ${esc(P.dil || "Almanca")} yaz…">${esc(v.msg || "")}</textarea>
         <p class="muted num pr-count">${n} kelime · hedef yaklaşık 30</p>
         <div class="q-actions"><button class="btn btn-primary">Kontrol et</button><button type="button" class="btn btn-outline" data-pr="mac">Mac'e kontrol ettir</button><button type="button" class="btn btn-outline" data-pr="wlist">Görevlere dön</button></div>
       </form>
       ${r ? `<div class="explain ${r.ok ? "ok" : "no"}"><strong>${r.ok ? "Temel kontroller tamam" : "Gözden geçir"}</strong>
         <ul class="pr-checks">${r.checks.map((c) => `<li class="${c.ok ? "hit" : "miss"}">${c.ok ? "✓" : "✗"} ${esc(c.t)}</li>`).join("")}</ul>
         <span>Otomatik kontrol dilbilgisini değerlendirmez. Örnek mesajla karşılaştır.</span></div>
-        <details class="pr-example"><summary>Örnek mesajı göster</summary><p lang="de" class="pr-sample">${esc(w.ornek)}</p></details>` : ""}
+        <details class="pr-example"><summary>Örnek mesajı göster</summary><p lang="${LANG.slice(0, 2)}" class="pr-sample">${esc(w.ornek)}</p></details>` : ""}
     </div>`;
   }
   function checkMessage(w, msg) {
@@ -259,7 +280,7 @@ window.PRACTICE = (() => {
     return `<div class="pr-task pr-flash">
       <div class="q-top"><div class="chips"><span class="chip chip-line">${esc(P.kelime.find((t) => t.id === w.tema).tema)}</span>${w.yeni ? `<span class="chip chip-brand">Yeni</span>` : ""}</div><span class="muted num">${v.i + 1} / ${v.queue.length}</span></div>
       <div class="progress" aria-hidden="true"><i style="width:${(v.i / v.queue.length) * 100}%"></i></div>
-      <div class="pr-word"><span lang="de">${esc(w.de)}</span>${sayBtn({ lang: "de-DE", text: w.de })}</div>
+      <div class="pr-word"><span lang="${LANG.slice(0, 2)}">${esc(w.de)}</span>${sayBtn({ lang: LANG, text: w.de })}</div>
       ${v.show ? `<p class="pr-mean">${esc(w.tr)}${w.pl ? " <small>(çoğul)</small>" : ""}</p>
         <div class="q-actions"><button class="btn btn-primary" data-pr="vknow" data-ok="1">Bildim</button><button class="btn btn-outline" data-pr="vknow" data-ok="0">Bilemedim</button></div>`
         : `<div class="q-actions"><button class="btn btn-primary" data-pr="vshow">Anlamını göster</button><button class="btn btn-outline" data-pr="vhome">Bitir</button></div>`}
@@ -272,7 +293,7 @@ window.PRACTICE = (() => {
     else { c.b = 0; c.d = Date.now(); v.miss++; if (!w.tekrar) v.queue.push({ ...w, yeni: false, tekrar: true }); }
     s.cards[w.id] = c; hooks.save?.();
     v.i++; v.show = false; draw();
-    const nx = v.queue[v.i]; if (nx) window.VOICE?.say("de-DE", nx.de);
+    const nx = v.queue[v.i]; if (nx) window.VOICE?.say(LANG, nx.de);
   }
   function artStart() {
     const ns = allWords().filter(nounOf);
@@ -287,10 +308,10 @@ window.PRACTICE = (() => {
     return `<div class="pr-task">
       <div class="q-top"><div class="chips"><span class="chip chip-line">Artikel</span></div><span class="muted num">${a.i + 1} / ${a.list.length}</span></div>
       <div class="progress" aria-hidden="true"><i style="width:${(a.i / a.list.length) * 100}%"></i></div>
-      <div class="pr-word"><span lang="de">${done ? esc(w.de) : `___ ${esc(n.noun)}`}</span><small>${esc(w.tr)}</small></div>
+      <div class="pr-word"><span lang="${LANG.slice(0, 2)}">${done ? esc(w.de) : `___ ${esc(n.noun)}`}</span><small>${esc(w.tr)}</small></div>
       <div class="pr-arts">${ART.map((x) => `<button type="button" class="opt ${done ? (x === n.art ? "correct" : x === a.pick ? "wrong" : "") : ""}" data-pr="apick" data-a="${x}" ${done ? "disabled" : ""}>${x}</button>`).join("")}</div>
       ${done ? `<div class="explain ${a.pick === n.art ? "ok" : "no"}"><strong>${a.pick === n.art ? "Doğru" : `Doğrusu: ${n.art}`}</strong>${artHint(w) ? `<span>${esc(artHint(w))}</span>` : ""}</div>
-        <div class="q-actions"><button class="btn btn-primary" data-pr="anext">${a.i + 1 >= a.list.length ? "Bitir" : "Sonraki"}</button>${sayBtn({ lang: "de-DE", text: w.de })}</div>` : ""}
+        <div class="q-actions"><button class="btn btn-primary" data-pr="anext">${a.i + 1 >= a.list.length ? "Bitir" : "Sonraki"}</button>${sayBtn({ lang: LANG, text: w.de })}</div>` : ""}
     </div>`;
   }
 
@@ -311,12 +332,12 @@ window.PRACTICE = (() => {
     if (a === "next") { stopRec(); st.i++; st.res = null; st.heard = ""; draw(); return; }
     if (a === "again") { stopRec(); st.res = null; st.heard = ""; draw(); return; }
     if (a === "mic") { listen(); return; }
-    if (a === "vstart") { vocabStart(el.dataset.tema || ""); st.mode = "kart"; draw(); const w = st.v.queue[0]; if (w) window.VOICE?.say("de-DE", w.de); return; }
+    if (a === "vstart") { vocabStart(el.dataset.tema || ""); st.mode = "kart"; draw(); const w = st.v.queue[0]; if (w) window.VOICE?.say(LANG, w.de); return; }
     if (a === "vshow") { st.v.show = true; draw(); return; }
     if (a === "vknow") { vocabAnswer(el.dataset.ok === "1"); return; }
     if (a === "vhome") { st.mode = null; draw(); return; }
     if (a === "art") { artStart(); st.mode = "art"; draw(); return; }
-    if (a === "apick") { const w = st.a.list[st.a.i]; st.a.pick = el.dataset.a; if (st.a.pick === nounOf(w).art) st.a.ok++; draw(); window.VOICE?.say("de-DE", w.de); return; }
+    if (a === "apick") { const w = st.a.list[st.a.i]; st.a.pick = el.dataset.a; if (st.a.pick === nounOf(w).art) st.a.ok++; draw(); window.VOICE?.say(LANG, w.de); return; }
     if (a === "anext") { st.a.i++; st.a.pick = null; draw(); return; }
     if (a === "self") { const g = tasks()[st.i]; finish(g, { mode: "oz", ok: el.dataset.ok === "1" }); return; }
     if (a === "mac") {
@@ -324,7 +345,7 @@ window.PRACTICE = (() => {
       if (!msg) return;
       // Mac'e giden mesaj 600 karakterle sınırlı: öğrencinin metni sona konur, görev metni gerekirse kısaltılır.
       const tail = `\nMesajım:\n${msg}`;
-      const head = `A1 Almanca kısa mesajımı kontrol et; hataları Türkçe açıkla ve düzeltilmiş hâlini yaz. Görev: ${w.gorev} Noktalar: ${w.noktalar.map((p) => p.metin).join(" ")}`;
+      const head = `${P.ad || "A1 Almanca"} kısa mesajımı kontrol et; hataları Türkçe açıkla ve düzeltilmiş hâlini yaz. Görev: ${w.gorev} Noktalar: ${w.noktalar.map((p) => p.metin).join(" ")}`;
       window.MAC?.ask?.(head.slice(0, Math.max(0, 600 - tail.length)) + tail);
     }
   }
@@ -337,7 +358,7 @@ window.PRACTICE = (() => {
       const fields = w.alanlar.map((a, i) => ({ ok: a.cevap.some((c) => norm(c) === norm(data["f" + i] || "")) }));
       st.res = { fields, ok: fields.every((x) => x.ok) };
     } else st.res = checkMessage(w, data.msg || "");
-    hooks.onResult?.("Schreiben", `yaz:${w.id}`, st.res.ok);
+    hooks.onResult?.(P.alanlar?.yazma || "Schreiben", `yaz:${w.id}`, st.res.ok);
     draw();
   }
   function onInput(e) {
@@ -352,9 +373,9 @@ window.PRACTICE = (() => {
 
   const context = () => {
     if (!root || !P || !st.set) return null;
-    if (kind === "konusma") { const g = tasks()[st.i]; return g ? { page: "Konuşma pratiği", context: `Almanca A1 konuşma görevi: ${g.gorev} ${g.soru?.text || g.tekrar || g.kart || ""}` } : null; }
+    if (kind === "konusma") { const g = tasks()[st.i]; return g ? { page: "Konuşma pratiği", context: `${P.ad || "Almanca A1"} konuşma görevi: ${g.gorev} ${g.soru?.text || g.tekrar || g.kart || ""}` } : null; }
     const w = P.yazma.find((x) => x.id === st.set);
-    return w ? { page: "Yazma pratiği", context: `Almanca A1 yazma görevi: ${w.gorev} ${w.noktalar ? w.noktalar.map((p) => p.metin).join("; ") : ""}` } : null;
+    return w ? { page: "Yazma pratiği", context: `${P.ad || "Almanca A1"} yazma görevi: ${w.gorev} ${w.noktalar ? w.noktalar.map((p) => p.metin).join("; ") : ""}` } : null;
   };
   return { mount, stop: stopRec, norm, compare, checkRules, context, supported: !!SR };
 })();

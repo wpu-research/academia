@@ -1,0 +1,104 @@
+{
+ "id": "en-a1-02",
+ "baslik": "Alfabe ve Harf Harf Söyleme",
+ "sinif": "A1 · Başlangıç",
+ "sure": 10,
+ "ozet": "İngilizce harflerin adlarını, adını ve adresini harf harf söylemeyi (spelling) öğreneceğiz.",
+ "kazanim": [
+  "Alphabet",
+  "Spelling"
+ ],
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Neden önemli?",
+   "govde": "Görevli adını ya da soyadını sorup **“Can you spell that, please?”** (Harf harf söyler misin?) diyebilir. İngilizce harf adları Türkçeden farklıdır; en çok A, E, I, G, J, Y ve W karışır."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Karışan harfler",
+   "govde": "- **A** “ey”, **E** “i:”, **I** “ay”\n- **G** “ci:”, **J** “cey”\n- **Y** “uay”, **W** “dabılyu:”\n- **H** “eyç”, **R** “a:”, **Q** “kyu:”\n\nAynı harf iki kez geliyorsa **double** denir: *Mollie* → M – O – **double L** – I – E."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "A, E, I, O, U",
+     "tr": "Ünlüler"
+    },
+    {
+     "metin": "G, J",
+     "tr": "Ci, cey"
+    },
+    {
+     "metin": "Y, W",
+     "tr": "Uay, dabılyu"
+    },
+    {
+     "metin": "Can you spell that, please?",
+     "tr": "Bunu harf harf söyler misiniz lütfen?"
+    },
+    {
+     "metin": "K – A – Y – A. Kaya.",
+     "tr": "K-A-Y-A. Kaya."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Soyadın Yılmaz. Görevli “Can you spell your surname?” diyor. Ne dersin?",
+   "cozum": [
+    "Pasaportta “YILMAZ” yazıyor.",
+    "Y “uay”, I “ay”, L “el”, M “em”, A “ey”, Z “zed”."
+   ],
+   "sonuc": "**Y – I – L – M – A – Z.** Birleşik Krallık'ta Z “zed” diye söylenir."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**I** ve **E** harflerini karıştırmak. Türkçedeki “i” sesi İngilizcede **E** harfidir; **I** harfi “ay” okunur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "İngilizcede “ay” diye okunan harf hangisi?",
+   "options": [
+    "A",
+    "Y",
+    "E",
+    "I"
+   ],
+   "answer": 3,
+   "why": "I harfi “ay” okunur.",
+   "hint": "E harfi “i:” okunur."
+  },
+  {
+   "prompt": "“Anna” adını nasıl harf harf söylersin?",
+   "options": [
+    "A – double N – A",
+    "A – N – A",
+    "E – N – N – E",
+    "A – M – A"
+   ],
+   "answer": 0,
+   "why": "Aynı harf iki kez geldiğinde “double” denir.",
+   "hint": "Ortada iki N var."
+  },
+  {
+   "prompt": "Birleşik Krallık'ta Z harfi nasıl söylenir?",
+   "options": [
+    "zi:",
+    "zed",
+    "zet",
+    "ze"
+   ],
+   "answer": 1,
+   "why": "Britanya İngilizcesinde Z “zed”dir.",
+   "hint": "Amerikan İngilizcesinde “zi:”."
+  }
+ ],
+ "pratik": "lifeskills"
+}

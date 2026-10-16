@@ -1,0 +1,110 @@
+{
+ "id": "en-a1-09",
+ "baslik": "Yer Tarif Etme ve Resim Anlatma",
+ "sinif": "A1 · Günlük Hayat",
+ "sure": 12,
+ "ozet": "Bir yerin nerede olduğunu söylemeyi ve basit bir resmi anlatmayı öğreneceğiz.",
+ "kazanim": [
+  "Prepositions of place",
+  "Directions",
+  "Describing a picture"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Yer edatları",
+   "govde": "**next to** (yanında), **opposite** (karşısında), **between** (arasında), **behind** (arkasında), **in front of** (önünde), **on** (üstünde), **in** (içinde), **under** (altında), **near** (yakınında)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Yol tarifi",
+   "govde": "**Go straight on** (düz git), **turn left / right** (sola / sağa dön), **take the first left** (soldan ilk sokağa gir), **It's on the left** (solda), **It's near the station** (istasyonun yakınında)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "The post office is next to the bank.",
+     "tr": "Postane bankanın yanında."
+    },
+    {
+     "metin": "The school is opposite the park.",
+     "tr": "Okul parkın karşısında."
+    },
+    {
+     "metin": "Go straight on and turn right.",
+     "tr": "Düz git ve sağa dön."
+    },
+    {
+     "metin": "In the picture there's a family in a kitchen.",
+     "tr": "Resimde mutfakta bir aile var."
+    },
+    {
+     "metin": "A woman is cooking and a child is sitting at the table.",
+     "tr": "Bir kadın yemek yapıyor, bir çocuk masada oturuyor."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Resim anlatmak",
+   "govde": "Önce genel olarak söyle: ***In the picture there is / there are …*** Sonra kişilerin ne yaptığını **is / are + -ing** ile anlat: *A man **is reading**. Two children **are playing**.*"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Resimde parkta bir köpek ve top oynayan iki çocuk var. Anlat.",
+   "cozum": [
+    "Genel: In the picture there's a park.",
+    "Kişiler ve eylemler: is / are + -ing."
+   ],
+   "sonuc": "***In the picture there's a park. There's a dog and two children are playing football.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "“The bank is next the post office.” Doğrusu **next to**: *The bank is next **to** the post office.*"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“opposite” ne demek?",
+   "options": [
+    "Karşısında",
+    "Arkasında",
+    "İçinde",
+    "Yanında"
+   ],
+   "answer": 0,
+   "why": "opposite = karşısında.",
+   "hint": "next to yanında demekti."
+  },
+  {
+   "prompt": "Resimde iki çocuk oynuyor:",
+   "options": [
+    "Two children plays.",
+    "Two children are playing.",
+    "Two children is playing.",
+    "Two children playing are."
+   ],
+   "answer": 1,
+   "why": "Çoğul özne + are + -ing.",
+   "hint": "Çoğul özne hangi yardımcı fiili alır?"
+  },
+  {
+   "prompt": "“Sağa dön.”",
+   "options": [
+    "Go back.",
+    "Turn left.",
+    "Turn right.",
+    "Go straight on."
+   ],
+   "answer": 2,
+   "why": "right = sağ, left = sol.",
+   "hint": "left sol demekti."
+  }
+ ],
+ "pratik": "lifeskills"
+}

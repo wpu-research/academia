@@ -1,0 +1,110 @@
+{
+ "id": "en-a1-07",
+ "baslik": "Aile, Ev ve İş",
+ "sinif": "A1 · Günlük Hayat",
+ "sure": 12,
+ "ozet": "Ailen, evin ve işin hakkında konuşmayı; “have got” ve “there is / there are” yapılarını öğreneceğiz.",
+ "kazanim": [
+  "have got",
+  "there is / are",
+  "Family"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "have got / has got",
+   "govde": "Sahiplik: *I**'ve got** two children. She**'s got** a brother.* Soru: ***Have** you **got** any children?* Kısa cevap: *Yes, I have. / No, I haven't.*\n\n“have” da kullanılabilir: *Do you have any children?*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "there is / there are",
+   "govde": "- Tekil: ***There is** a kitchen.* (There's)\n- Çoğul: ***There are** three bedrooms.*\n- Soru: ***Is there** a garden? **Are there** any shops near your house?*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I've got a son and a daughter.",
+     "tr": "Bir oğlum ve bir kızım var."
+    },
+    {
+     "metin": "My husband has got two sisters.",
+     "tr": "Kocamın iki kız kardeşi var."
+    },
+    {
+     "metin": "We live in a flat.",
+     "tr": "Bir dairede oturuyoruz."
+    },
+    {
+     "metin": "There are two bedrooms and a small kitchen.",
+     "tr": "İki yatak odası ve küçük bir mutfak var."
+    },
+    {
+     "metin": "I work in a shop. My husband is a driver.",
+     "tr": "Bir mağazada çalışıyorum. Kocam şoför."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Aile kelimeleri",
+   "govde": "**husband** (koca), **wife** (karı), **son** (oğul), **daughter** (kız evlat), **parents** (anne baba), **brother** (erkek kardeş), **sister** (kız kardeş), **grandparents** (büyükanne ve büyükbaba), **children** (çocuklar; tekili *child*)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “Tell me about your home.” diyor. Bir dairede oturuyorsun; iki yatak odası ve bir balkon var.",
+   "cozum": [
+    "Nerede oturuyor: I live in a flat.",
+    "Neler var: There are two bedrooms and there's a balcony."
+   ],
+   "sonuc": "***I live in a flat. There are two bedrooms and there's a balcony.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "“There is two rooms.” Çoğulda **there are** kullanılır: **There are two rooms.** Bir başka hata “I have got two child”: çoğul **children**'dır."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Boşluğu doldur: “---- three shops near my house.”",
+   "options": [
+    "They are",
+    "There is",
+    "There are",
+    "It has"
+   ],
+   "answer": 2,
+   "why": "Çoğul isimle there are.",
+   "hint": "three shops çoğul."
+  },
+  {
+   "prompt": "“She ---- got two brothers.”",
+   "options": [
+    "is",
+    "does",
+    "have",
+    "has"
+   ],
+   "answer": 3,
+   "why": "she ile has got.",
+   "hint": "he/she/it ile hangisi?"
+  },
+  {
+   "prompt": "“child” kelimesinin çoğulu hangisi?",
+   "options": [
+    "children",
+    "childes",
+    "childrens",
+    "childs"
+   ],
+   "answer": 0,
+   "why": "Düzensiz çoğul: children.",
+   "hint": "-s almaz."
+  }
+ ],
+ "pratik": "lifeskills"
+}

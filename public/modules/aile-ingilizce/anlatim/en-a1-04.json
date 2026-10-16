@@ -1,0 +1,126 @@
+{
+ "id": "en-a1-04",
+ "baslik": "Sayılar, Saat, Tarih ve Fiyat",
+ "sinif": "A1 · Temeller",
+ "sure": 14,
+ "ozet": "13 ile 30'u ayırt etmeyi, saati, tarihi ve sterlin fiyatlarını söylemeyi öğreneceğiz.",
+ "kazanim": [
+  "Numbers",
+  "Time",
+  "Dates",
+  "Prices"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "13–19 ve onluklar",
+   "govde": "**-teen** (13–19) ile **-ty** (20, 30 … 90) kolayca karışır. Vurgu farklıdır: thir**TEEN** (13), **THIR**ty (30); fif**TEEN** (15), **FIF**ty (50)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle ve ayırt et",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "thirteen – thirty",
+     "tr": "13 – 30"
+    },
+    {
+     "metin": "fourteen – forty",
+     "tr": "14 – 40"
+    },
+    {
+     "metin": "fifteen – fifty",
+     "tr": "15 – 50"
+    },
+    {
+     "metin": "eighteen – eighty",
+     "tr": "18 – 80"
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Saat",
+   "govde": "- 9.00 **nine o'clock**\n- 9.15 **quarter past nine**\n- 9.30 **half past nine** (Türkçedeki gibi: dokuz buçuk)\n- 9.45 **quarter to ten**\n- 9.10 **ten past nine**, 9.50 **ten to ten**\n\nSaatle **at**: *at seven o'clock*. Günle **on**: *on Monday*. Ayla **in**: *in May*."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Tarih ve fiyat",
+   "govde": "Tarih sıra sayısıyla söylenir: *the **fifth** of May*, *the **twenty-first** of June*.\n\nFiyat: **£4.50** = four pounds fifty. **75p** = seventy-five pence (“pi:” diye de söylenir)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "It's quarter past eleven.",
+     "tr": "Saat on biri çeyrek geçiyor."
+    },
+    {
+     "metin": "The appointment is on the fifth of May.",
+     "tr": "Randevu 5 Mayıs'ta."
+    },
+    {
+     "metin": "That's four pounds fifty, please.",
+     "tr": "Dört sterlin elli peni, lütfen."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Kayıtta “The bus leaves at quarter to six” duyuyorsun. Otobüs kaçta kalkıyor?",
+   "cozum": [
+    "“quarter to” = çeyrek kala.",
+    "Altıya çeyrek kala = 5.45."
+   ],
+   "sonuc": "**5.45.**"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**half past nine**'ı Almancadaki gibi 8.30 sanmak. İngilizcede “half past nine” **9.30**'dur."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“quarter to eight” saat kaçtır?",
+   "options": [
+    "8.15",
+    "7.45",
+    "8.45",
+    "7.15"
+   ],
+   "answer": 1,
+   "why": "Sekize çeyrek kala = 7.45.",
+   "hint": "“to” = kala."
+  },
+  {
+   "prompt": "Hangisi 50'dir?",
+   "options": [
+    "fifteenth",
+    "fifteen",
+    "fifty",
+    "five"
+   ],
+   "answer": 2,
+   "why": "fifty = 50; fifteen = 15.",
+   "hint": "-ty onluklardır."
+  },
+  {
+   "prompt": "“£2.20” nasıl söylenir?",
+   "options": [
+    "twenty pounds two",
+    "two twenty pence",
+    "two pence twenty",
+    "two pounds twenty"
+   ],
+   "answer": 3,
+   "why": "Önce sterlin, sonra peni.",
+   "hint": "Önce pound."
+  }
+ ],
+ "pratik": "lifeskills"
+}
