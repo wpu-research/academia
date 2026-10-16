@@ -1,11 +1,12 @@
 (() => {
-  const A = window.ACADEMIA, E = window.ENGINE;
+  const A = window.ACADEMIA, E = window.ENGINE, P = window.PROGRESS;
   const $app = document.getElementById("app");
   const KEY = "academia.v1";
   const LETTERS = "ABCDE";
   const DIAG_SIZE = 10, EXAM_SIZE = 12, BUDGET_DEFAULT = 20;
   const WHY = ["Bilgi eksiği", "Kavram karışıklığı", "Soruyu yanlış okudum", "İstisnayı kaçırdım", "Süre baskısı", "Tahmin ettim"];
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const REASON_TXT = { ...E.REASONS, sinav: "Sınav öncesi pekiştirme", hata: "Hata defterinden" };
 
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const pct = (x) => Math.round(x * 100);
@@ -26,14 +27,15 @@
       id, alan: exam.items.find((x) => x.id === id).alan, correct: !!ok, conf, skipped: false,
       mode: i < DIAG_SIZE ? "tani" : "pratik", t: now - (rows.length - i) * 5 * 3600 * 1000,
     }));
-    return { sample: true, attempts, diagDone: true, budget: BUDGET_DEFAULT };
+    return { sample: true, attempts, diagDone: true, budget: BUDGET_DEFAULT, denemeler: [], badges: {} };
   }
-  const emptyData = () => ({ sample: false, attempts: [], diagDone: false, budget: BUDGET_DEFAULT });
+  const emptyData = () => ({ sample: false, attempts: [], diagDone: false, budget: BUDGET_DEFAULT, denemeler: [], badges: {} });
 
   let store = { exam: "tus", tab: "panel", data: {} };
   try { const raw = localStorage.getItem(KEY); if (raw) store = { ...store, ...JSON.parse(raw) }; } catch (_) {}
   if (!examOn(store.exam)) store.exam = "tus";
   for (const id of Object.keys(A.exams)) if (!store.data[id]) store.data[id] = sampleData(id);
+  for (const dt of Object.values(store.data)) { dt.denemeler = dt.denemeler || []; dt.badges = dt.badges || {}; }
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (_) {} };
 
   // ---------- Türetilmiş durum ----------
@@ -315,6 +317,7 @@
         ${p.modules ? `<h2>Modüller</h2><div class="table-wrap"><table><tbody>${p.modules.map((m, i) => `<tr><td class="num">${i + 1}</td><td><a href="#m-${m.slug}">${esc(m.title)}</a><br><small class="muted">${esc(m.desc)}</small></td><td>${esc(m.age)}</td><td class="num">${m.lessons}</td></tr>`).join("")}</tbody></table></div>` : ""}
       </div>
       <aside class="aside">
+        ${programCountdown(p)}
         ${cta}
         ${METHOD_PROGS.includes(p.slug) ? `<div class="box"><h3>Soru Zekâsı</h3><p class="note">Bu programda konular en küçük birimine ayrılır, geçmiş sorular ölçülür ve planın her gün sınav ağırlığı ile senin zayıflığına göre yeniden kurulur.</p><a href="#yontem">Yöntemimizi incele →</a></div>` : ""}
         ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="#p-${o.slug}">${esc(o.title)}</a>`).join("")}</div>` : ""}
@@ -512,7 +515,7 @@
   let session = null; // { kind: 'tani'|'coz'|'deneme', ... }
   let resetArmed = false;
 
-  const TABS = [["panel", "Panel"], ["tani", "Seviye tespiti"], ["coz", "Soru çöz"], ["plan", "Çalışma planı"], ["deneme", "Kişisel deneme"]];
+  const TABS = [["panel", "Panel"], ["tani", "Seviye tespiti"], ["coz", "Soru çöz"], ["plan", "Çalışma planı"], ["deneme", "Kişisel deneme"], ["hata", "Hata defteri"], ["rapor", "Haftalık rapor"]];
 
   function renderApp() {
     const examId = store.exam, data = store.data[examId], d = derive(examId, data);
@@ -521,6 +524,8 @@
     else if (store.tab === "tani") body = viewTani(d, data);
     else if (store.tab === "coz") body = viewCoz(d, data);
     else if (store.tab === "plan") body = viewPlan(d, data);
+    else if (store.tab === "hata") body = viewHata(d, data);
+    else if (store.tab === "rapor") body = viewRapor(d, data);
     else body = viewDeneme(d, data);
     $app.innerHTML = `
     <div class="app-head"><div class="wrap">
@@ -533,14 +538,18 @@
       ${data.sample ? `<div class="sample-bar"><span>Örnek öğrenci verisi gösteriliyor. Rakamlar demo amaçlıdır.</span><button class="btn btn-small" data-act="own">Kendi verimle başla</button></div>` : ""}
       ${body}
     </div>`;
+    afterAppRender(examId, data, d);
   }
 
   function viewPanel(d, data) {
     const act = nextAction(d, data);
     const diagCount = data.attempts.filter((a) => a.mode === "tani").length;
+    const cd = P.countdown(store.exam);
+    const { list: badges } = P.syncBadges(store.exam, data, d);
     return `
     <div class="next-card"><span class="eyebrow">Bugünün planı</span><h2>${esc(act.title)}</h2><p class="muted">${esc(act.text)}</p>
       <div><button class="btn btn-primary" data-act="tab" data-id="${act.tab}">${esc(act.btn)}</button></div></div>
+    ${cd ? countdownCard(cd, d, data) : todayGoalCard(d, data)}
     ${d.exam.game ? gameStrip(gameStats(data)) : ""}
     <div class="tiles">
       <div class="tile"><b>${d.total}</b><span>Çözülen soru</span></div>
@@ -558,7 +567,104 @@
         <li>%60'ın altındaki alanlar zayıf sayılır ve sorular önce oradan gelir.</li>
       </ul></details>
     </div>
+    ${scoreBoard(data)}
+    ${badgeShelf(badges)}
     ${data.sample ? "" : `<div><button class="btn btn-outline btn-small" data-act="reset">${resetArmed ? "Emin misin? Tüm ilerleme silinecek" : "İlerlememi sıfırla"}</button></div>`}`;
+  }
+
+  // ---------- Geri sayım ve günlük hedef ----------
+  const EXAM_WEEK_REVIEW = 0.7; // sınav haftasında boş kapasitenin tekrara ayrılan payı
+  function todayPlan(d, data, cd) {
+    const sched = E.buildSchedule(Object.values(d.due), startOfDay(Date.now()), data.budget);
+    const day = sched.days[0];
+    const extra = cd && !cd.pending && cd.examWeek && cd.days > 0 ? Math.round(day.spare * EXAM_WEEK_REVIEW) : 0;
+    return { total: data.budget, review: day.planned, extra, fresh: day.spare - extra, done: P.todayCount(data.attempts) };
+  }
+  function goalLine(t) {
+    const parts = [`${t.review} tekrar`, ...(t.extra ? [`${t.extra} ek tekrar`] : []), `${t.fresh} yeni`].join(" + ");
+    const w = Math.min(100, (t.done / t.total) * 100);
+    return `<div class="cd-goal"><div class="cd-goal-top"><span>Bugünkü hedef: <b>${t.total} soru</b> <span class="muted">(${parts})</span></span><span class="num">${t.done >= t.total ? "Tamamlandı" : `Bugün ${t.done}/${t.total}`}</span></div>
+      <div class="progress" role="progressbar" aria-label="Bugünkü hedef" aria-valuemin="0" aria-valuemax="${t.total}" aria-valuenow="${Math.min(t.done, t.total)}"><i style="width:${w}%"></i></div></div>`;
+  }
+  function todayGoalCard(d, data) {
+    return `<div class="panel-box cd-card cd-plain">${goalLine(todayPlan(d, data, null))}<p class="note">Günlük hedefi Çalışma planı sekmesinden değiştirebilirsin.</p></div>`;
+  }
+  function cdHead(cd, short) {
+    if (cd.pending) return { num: "?", h: "Tarih bekleniyor", sub: `Bir sonraki ${short} oturumunun tarihi henüz resmî olarak açıklanmadı (ÖSYM takvimi açıklanınca güncellenecek).${cd.last ? ` Son oturum: ${cd.last.name}, ${P.fmtDate(new Date(cd.last.date + "T12:00").getTime())}.` : ""}` };
+    return { num: cd.days, h: cd.days === 0 ? "Sınav bugün" : `Sınava ${cd.days} gün`, sub: `${cd.name} · ${P.fmtDate(cd.date)}${cd.time ? `, saat ${cd.time}` : ""}` };
+  }
+  const srcLine = (cd) => `<small class="cd-src">Kaynak: <a href="${esc(cd.src.url)}" target="_blank" rel="noopener">${esc(cd.src.label)}</a> · kontrol ${esc(cd.src.checked.split("-").reverse().join("."))}</small>`;
+  function countdownCard(cd, d, data) {
+    const h = cdHead(cd, d.exam.short), t = todayPlan(d, data, cd);
+    return `<section class="cd-card ${cd.examWeek ? "is-week" : ""}" aria-label="Sınav geri sayımı">
+      <div class="cd-num ${cd.pending ? "is-pending" : ""}"><b class="num">${h.num}</b><span>${cd.pending ? "tarih yok" : "gün"}</span></div>
+      <div class="cd-body">
+        <span class="eyebrow">Sınav geri sayımı</span>
+        <h2>${esc(h.h)}</h2>
+        <p class="muted">${esc(h.sub)}</p>
+        ${goalLine(t)}
+        ${cd.pending ? "" : cd.examWeek
+          ? `<p class="cd-week"><b>Sınav haftası modu açık.</b> Sınava ${P.EXAM_WEEK_DAYS} gün ya da daha az kaldığı için plan tekrar ağırlıklı çalışıyor: yeni konu payı azaldı, boş kapasitenin %${pct(EXAM_WEEK_REVIEW)}'i zayıf alanlarına ve unutmaya başladığın sorulara ayrıldı.</p>`
+          : `<p class="note">Bu hedefle sınava kadar yaklaşık ${(cd.days * data.budget).toLocaleString("tr-TR")} soru çözersin. Sınava ${P.EXAM_WEEK_DAYS} gün kalınca plan kendiliğinden tekrar ağırlıklı moda geçer.</p>`}
+        ${srcLine(cd)}
+      </div></section>`;
+  }
+
+  // ---------- Skor tablosu (yalnız kendi rekorların) ----------
+  function scoreBoard(data) {
+    const r = P.records(data);
+    const wk = P.weeks(data.attempts, 8);
+    const max = Math.max(1, ...wk.map((w) => w.n));
+    const short = new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "short" });
+    const [cur, prev] = wk;
+    const rate = (w) => (w.n ? pct(w.k / w.n) : null);
+    const delta = (a, b, unit = "") => {
+      if (a === null || b === null) return `<span class="muted">–</span>`;
+      const x = a - b;
+      return x === 0 ? `<span class="muted">aynı</span>` : `<span class="${x > 0 ? "up" : "down"}">${x > 0 ? "+" : "−"}${Math.abs(x)}${unit}</span>`;
+    };
+    const row = (label, a, b, unit = "", fmt = (v) => v) => `<tr><td>${label}</td><td class="num">${b === null ? "–" : fmt(b)}</td><td class="num"><b>${a === null ? "–" : fmt(a)}</b></td><td class="num">${delta(a, b, unit)}</td></tr>`;
+    return `<div class="panel-box">
+      <header><h3>Skor tablon</h3><span class="muted" style="font-size:13px">Yalnız senin rekorların</span></header>
+      <div class="tiles tiles-3">
+        <div class="tile"><b>${r.bestDay ? r.bestDay.k : "–"}</b><span>En yüksek günlük doğru${r.bestDay ? ` · ${esc(short.format(new Date(r.bestDay.t)))}` : ""}</span></div>
+        <div class="tile"><b>${r.longest ? `${r.longest} gün` : "–"}</b><span>En uzun seri${r.current ? ` · şu an ${r.current} gün` : ""}</span></div>
+        <div class="tile"><b>${r.bestDeneme ? `%${pct(r.bestDeneme.k / r.bestDeneme.n)}` : "–"}</b><span>En iyi deneme${r.bestDeneme ? ` · ${r.bestDeneme.k}/${r.bestDeneme.n} doğru` : ""}</span></div>
+      </div>
+      <div class="score-grid">
+        <figure class="wk">
+          <figcaption>Haftalık gelişim <span class="muted">(son 8 hafta, çözülen ve doğru)</span></figcaption>
+          <div class="wk-bars" role="img" aria-label="${wk.slice().reverse().map((w) => `${short.format(new Date(w.from))} haftası: ${w.n} soru, ${w.k} doğru`).join("; ")}">
+            ${wk.slice().reverse().map((w, i, arr) => `<div class="wk-col"><span class="wk-v num">${w.n || ""}</span><span class="wk-bar" style="height:${(w.n / max) * 100}%"><i style="height:${w.n ? (w.k / w.n) * 100 : 0}%"></i></span><span class="wk-l">${i === arr.length - 1 ? "Bu hafta" : esc(short.format(new Date(w.from)))}</span></div>`).join("")}
+          </div>
+          <div class="legend"><span><i style="background:var(--brand-soft);box-shadow:inset 0 0 0 1px var(--brand)"></i>Çözülen</span><span><i style="background:var(--brand)"></i>Doğru</span></div>
+        </figure>
+        <div class="vs">
+          <h4>Geçen haftaki sen</h4>
+          <div class="table-wrap"><table><thead><tr><th></th><th class="num">Geçen hafta</th><th class="num">Bu hafta</th><th class="num">Fark</th></tr></thead><tbody>
+            ${row("Çözülen soru", cur.n, prev.n)}
+            ${row("Doğru oranı", rate(cur), rate(prev), " puan", (v) => `%${v}`)}
+            ${row("Çalışılan gün", cur.days, prev.days)}
+          </tbody></table></div>
+          <p class="note">Haftalar bugünle biten 7 günlük dilimlerdir.</p>
+        </div>
+      </div>
+      <p class="league"><b>Arkadaşlarınla lig:</b> hesaplar açıldığında. Şimdilik yalnız kendinle yarışıyorsun; başka öğrencilerin adı ya da puanı gösterilmez.</p>
+    </div>`;
+  }
+
+  // ---------- Rozet rafı ----------
+  function badgeShelf(list) {
+    const fmt = new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "short" });
+    const on = list.filter((b) => b.ok).length;
+    return `<div class="panel-box">
+      <header><h3>Rozetler</h3><span class="muted num" style="font-size:13px">${on}/${list.length} kazanıldı</span></header>
+      <ul class="badges">${list.map((b) => `<li class="badge ${b.ok ? "is-on" : "is-off"}">
+        <span class="badge-icon" aria-hidden="true">${esc(b.icon)}</span>
+        <span class="badge-text"><b>${esc(b.title)}</b><small>${b.ok ? `Kazanıldı${b.t ? ` · ${esc(fmt.format(new Date(b.t)))}` : ""}` : esc(b.how)}</small>${b.ok ? "" : `<small class="badge-prog num">${esc(b.prog)}</small>`}</span>
+        <span class="sr-only">${b.ok ? "kazanıldı" : "henüz kazanılmadı"}</span></li>`).join("")}</ul>
+      <p class="note">Rozetler yalnız bu tarayıcıdaki çalışmandan hesaplanır.</p>
+    </div>`;
   }
 
   function gameStrip(g) {
@@ -571,7 +677,7 @@
   function questionView(q, { mode, progress, showReason }) {
     const it = q.item;
     const ex = mode === "deneme";
-    const chips = `<span class="chip chip-line">${esc(it.alan)}</span>${showReason ? `<span class="chip chip-brand">${esc(E.REASONS[q.reason])}</span>` : ""}`;
+    const chips = `<span class="chip chip-line">${esc(it.alan)}</span>${showReason ? `<span class="chip chip-brand">${esc(REASON_TXT[q.reason] || "")}</span>` : ""}`;
     const opts = it.o.map((o, i) => {
       let cls = "";
       if (q.done && !ex) { if (i === it.a) cls = "correct"; else if (i === q.chosen) cls = "wrong"; }
@@ -645,7 +751,16 @@
   }
 
   function pickPractice(d) {
-    return E.selectNext({ mode: "pratik", items: d.exam.items, recent: d.recent, answered: d.answered, due: d.due, mastery: d.mastery, attemptsByAlan: d.attemptsByAlan, sh: d.sh, now: Date.now() });
+    const base = E.selectNext({ mode: "pratik", items: d.exam.items, recent: d.recent, answered: d.answered, due: d.due, mastery: d.mastery, attemptsByAlan: d.attemptsByAlan, sh: d.sh, now: Date.now() });
+    // Sınav haftası: tekrar ve zayıf alan seçimi motorda kalır; yeni soru yerine 10 seçimin 7'sinde
+    // tekrar zamanı en yakın (unutulmaya en yakın) çözülmüş soru öne alınır.
+    const cd = P.countdown(store.exam);
+    if (!base || !cd || cd.pending || !cd.examWeek || base.reason === "tekrar" || base.reason === "zayif") return base;
+    if (P.todayCount(store.data[store.exam].attempts) % 10 >= Math.round(EXAM_WEEK_REVIEW * 10)) return base;
+    const recent = new Set(d.recent.slice(0, 10));
+    const bank = new Map(d.exam.items.map((i) => [i.id, i]));
+    const soon = Object.entries(d.due).filter(([id]) => bank.has(id) && !recent.has(id)).sort((a, b) => a[1] - b[1]);
+    return soon.length ? { item: bank.get(soon[0][0]), reason: "sinav" } : base;
   }
   const newQ = (sel) => ({ item: sel.item, reason: sel.reason, conf: null, chosen: null, done: false, why: null });
 
@@ -660,15 +775,27 @@
     const left = { ...dayQuota };
     while (seq.length < 14) for (const r of top) if (left[r.alan] > 0 && seq.length < 14) { seq.push(r.alan); left[r.alan]--; }
     const fmt = new Intl.DateTimeFormat("tr-TR", { weekday: "short", day: "numeric", month: "short" });
-    return `<div class="panel-box">
+    const cd = P.countdown(store.exam);
+    const week = cd && !cd.pending && cd.examWeek;
+    const weakest = ranked.filter((r) => r.mean !== null).sort((x, y) => x.mean - y.mean)[0];
+    const dayCell = (day, i) => {
+      const examDay = cd && !cd.pending && i === cd.days;
+      const after = cd && !cd.pending && i > cd.days;
+      const extra = week && !after ? Math.round(day.spare * EXAM_WEEK_REVIEW) : 0;
+      const fresh = day.spare - extra;
+      return `<div class="day ${i === 0 ? "today" : ""} ${examDay ? "exam-day" : ""}"><b>${i === 0 ? "Bugün" : esc(fmt.format(new Date(startOfDay(Date.now()) + i * E.DAY)))}</b>
+        ${examDay ? `<span class="x">Sınav günü</span>` : after ? `<span class="muted">Sınav sonrası</span>` : `<span class="r num">Tekrar ${day.planned}</span>${extra > 0 ? `<span class="p num">Ek tekrar ${extra}${weakest ? ` · ${esc(weakest.alan)}` : ""}</span>` : ""}${fresh > 0 ? `<span class="n num">Yeni ${fresh} · ${esc(seq[i])}</span>` : ""}`}</div>`;
+    };
+    return `${week ? `<div class="cd-week-box"><b>Sınav haftası modu: sınava ${cd.days} gün kaldı.</b> Plan tekrar ağırlıklı moda geçti. Her gün önce tekrarlar yerleşir; kalan kapasitenin %${pct(EXAM_WEEK_REVIEW)}'i zayıf alanına ve unutmaya başladığın sorulara (ek tekrar), yalnız %${100 - pct(EXAM_WEEK_REVIEW)}'i yeni konuya ayrılır.</div>` : ""}
+    <div class="panel-box">
       <header><h3>Günlük soru bütçen</h3>
         <label class="inline-field" for="budget">Günde <input id="budget" type="number" min="5" max="200" step="1" value="${budget}" inputmode="numeric"> soru</label></header>
       <p class="muted">Tekrarlar önce yerleşir. Bütçeyi aşan tekrar ertesi güne kayar, kalan kapasite öncelikli alanlara ayrılır.</p>
     </div>
     <div class="grid-2">
       <div class="panel-box"><h3>14 günlük plan</h3>
-        <div class="days">${sched.days.map((day, i) => `<div class="day ${i === 0 ? "today" : ""}"><b>${i === 0 ? "Bugün" : esc(fmt.format(new Date(startOfDay(Date.now()) + i * E.DAY)))}</b>
-          <span class="r num">Tekrar ${day.planned}</span>${day.spare > 0 ? `<span class="n num">Yeni ${day.spare} · ${esc(seq[i])}</span>` : ""}</div>`).join("")}</div>
+        <div class="days">${sched.days.map(dayCell).join("")}</div>
+        ${cd && !cd.pending && !week ? `<p class="note">Sınava ${cd.days} gün var. ${P.EXAM_WEEK_DAYS} gün kalınca plan kendiliğinden tekrar ağırlıklı moda geçer.</p>` : ""}
         ${sched.overflow ? `<p class="note">${sched.overflow} tekrar 14 günün dışına taştı. Günlük bütçeni artırmayı düşünebilirsin.</p>` : ""}
       </div>
       <div class="panel-box"><h3>Öncelikli alanlar</h3>
@@ -685,50 +812,287 @@
 
   function startOfDay(t) { const x = new Date(t); x.setHours(0, 0, 0, 0); return x.getTime(); }
 
+  // ---------- Hata defteri ----------
+  // Bir soru, son denemesi yanlış ya da boşsa defterdedir; doğru çözülünce defterden çıkar.
+  const HATA_GROUPS = [["kalip", "Soru kalıbı"], ["neden", "Hata nedeni"], ["alan", "Alan"]];
+  // Öğrenci seçmediyse: hataların en az yarısında kalıp bulunuyorsa kalıba, yoksa alana göre grupla.
+  function hataBy(open) {
+    if (HATA_GROUPS.some(([g]) => g === store.hataBy)) return store.hataBy;
+    const withPattern = open.filter((e) => P.patternOf(e.item).id !== "diger").length;
+    return withPattern * 2 >= open.length ? "kalip" : "alan";
+  }
+  function viewHata(d, data) {
+    if (session && session.kind === "hata") {
+      if (session.finished) {
+        const ok = session.results.filter(Boolean).length;
+        return `<div class="panel-box"><span class="eyebrow">Tekrar tamamlandı</span><h3>${ok}/${session.results.length} soruyu bu kez doğru çözdün</h3>
+          <p class="muted">Doğru çözdüğün sorular hata defterinden çıktı. Yanlış kalanlar aralıklı tekrarla yarın yeniden gelir.</p>
+          <div class="q-actions"><button class="btn btn-primary" data-act="hata-back">Hata defterine dön</button><button class="btn btn-outline" data-act="tab" data-id="panel">Panele dön</button></div></div>`;
+      }
+      return questionView(session.q, { mode: "coz", progress: [session.idx + 1, session.queue.length], showReason: true });
+    }
+    const eb = P.errorBook(d.exam, data.attempts);
+    if (!eb.open.length) {
+      return `<div class="panel-box"><h3>Hata defterin boş</h3>
+        <p class="muted">${eb.everWrong ? `Şimdiye kadar yanlış yaptığın ${eb.everWrong} sorunun hepsini sonradan doğru çözdün.` : "Yanlış yaptığın sorular burada toplanır. Her yanlıştan sonra nedenini işaretlersen defter hata türüne göre de gruplanır."}</p>
+        <div><button class="btn btn-primary" data-act="tab" data-id="coz">Soru çöz</button></div></div>`;
+    }
+    const by = hataBy(eb.open);
+    const groups = P.groupErrors(eb.open, by);
+    return `<div class="panel-box">
+      <header><h3>Hata defteri <span class="muted num" style="font-weight:400;font-size:14px">${eb.open.length} açık · ${eb.cleared} temizlendi</span></h3>
+        <button class="btn btn-primary btn-small" data-act="hata-all">Hepsini tekrar çöz</button></header>
+      <div class="seg seg-light" role="group" aria-label="Grupla">${HATA_GROUPS.map(([g, l]) => `<button type="button" data-act="hata-by" data-id="${g}" aria-pressed="${g === by}">${l}</button>`).join("")}</div>
+      <p class="note">${by === "kalip" ? "Kalıp, soru kökünden bulunur (ör. “…değildir” ile biten olumsuz kök). Sorularda henüz uzman etiketli tuzak türü yok; etiketler geldikçe bu gruplama tuzak türüne göre yapılacak." : by === "neden" ? "Neden, yanlış cevaptan sonra senin işaretlediğin seçimdir." : "Sorunun ait olduğu sınav alanı."}</p>
+      <div class="hata-sum">${groups.map(([k, list]) => `<span class="chip chip-line">${esc(k)}: <b class="num">${list.length}</b> yanlış</span>`).join("")}</div>
+    </div>
+    ${groups.map(([k, list], gi) => `<section class="panel-box hata-group">
+      <header><h3>${esc(k)} <span class="muted num" style="font-weight:400">· ${list.length} yanlış</span></h3><button class="btn btn-outline btn-small" data-act="hata-group" data-i="${gi}">Bu grubu tekrar çöz</button></header>
+      <ul class="hata-list">${list.map((e) => `<li>
+        <div class="hata-q">${esc(e.item.q.length > 220 ? e.item.q.slice(0, 220) + "…" : e.item.q)}</div>
+        <div class="hata-meta"><span class="chip chip-line">${esc(e.item.alan)}</span>${e.wrong > 1 ? `<span class="chip chip-soon">${e.wrong} kez yanlış</span>` : ""}${e.skipped ? `<span class="chip chip-line">Boş bırakıldı</span>` : e.chosen !== null ? `<span class="chip chip-line">Son cevabın: ${LETTERS[e.chosen]}</span>` : ""}${by !== "neden" && e.why ? `<span class="chip chip-brand">${esc(e.why)}</span>` : ""}
+          <button class="btn btn-small btn-outline" data-act="hata-one" data-id="${esc(e.item.id)}">Tekrar çöz</button></div></li>`).join("")}</ul>
+    </section>`).join("")}`;
+  }
+
+  function startHata(items) {
+    if (!items.length) return;
+    session = { kind: "hata", queue: items, idx: 0, results: [], finished: false, q: newQ({ item: items[0], reason: "hata" }) };
+    store.tab = "hata"; save(); renderApp(); window.scrollTo({ top: 0 });
+  }
+
+  // ---------- Haftalık rapor (veli / kurum) ----------
+  function viewRapor(d, data) {
+    const w = P.weekReport(data);
+    const cd = P.countdown(store.exam);
+    const all = P.syncBadges(store.exam, data, d).list;
+    const earnedWeek = all.filter((b) => w.badges.includes(b.id));
+    const earnedAll = all.filter((b) => b.ok);
+    const f = new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long" });
+    const range = `${f.format(new Date(w.cur.from))} – ${f.format(new Date(w.cur.to - 1))}`;
+    const rate = w.cur.n ? `%${pct(w.cur.k / w.cur.n)}` : "–";
+    const eb = P.errorBook(d.exam, data.attempts);
+    const st = P.streaks(data.attempts);
+    let cdText = "";
+    if (cd) { const h = cdHead(cd, d.exam.short); cdText = `<div class="rp-row"><span>Sınav</span><span><b>${esc(h.h)}</b><br><small class="muted">${esc(h.sub)}</small></span></div>`; }
+    return `<article class="panel-box report" aria-label="Haftalık rapor">
+      <header class="rp-head"><div><span class="eyebrow">Haftalık rapor · veli ve kurum için</span><h2>${esc(d.exam.name)}</h2><p class="muted">${esc(range)} (son 7 gün)</p></div></header>
+      <div class="tiles">
+        <div class="tile"><b>${w.cur.days}/7</b><span>Çalışılan gün</span></div>
+        <div class="tile"><b>${w.cur.n}</b><span>Çözülen soru</span></div>
+        <div class="tile"><b>${rate}</b><span>Doğru oranı</span></div>
+        <div class="tile"><b>${w.met}/7</b><span>Günlük hedefin (${data.budget} soru) tuttuğu gün</span></div>
+      </div>
+      <div class="rp-rows">
+        ${cdText}
+        <div class="rp-row"><span>Geçen haftaya göre</span><span>${w.prev.n ? `${w.cur.n - w.prev.n >= 0 ? "+" : "−"}${Math.abs(w.cur.n - w.prev.n)} soru (geçen hafta ${w.prev.n})` : "Geçen hafta çalışma yok"}</span></div>
+        <div class="rp-row"><span>Seri</span><span>${st.current ? `${st.current} gündür aralıksız` : "Şu an seri yok"} · en uzun ${st.longest} gün</span></div>
+        <div class="rp-row"><span>Deneme</span><span>${w.denemeler.length ? w.denemeler.map((x) => `${x.full ? "Tam" : "Kısa"} deneme ${x.k}/${x.n}`).join(", ") : "Bu hafta deneme yok"}</span></div>
+        <div class="rp-row"><span>Hata defteri</span><span>${eb.open.length} açık soru · ${eb.cleared} soru sonradan doğru çözüldü</span></div>
+        <div class="rp-row"><span>Rozetler</span><span>${earnedWeek.length ? `Bu hafta: ${earnedWeek.map((b) => esc(b.title)).join(", ")}` : "Bu hafta yeni rozet yok"} · toplam ${earnedAll.length}/${all.length}</span></div>
+      </div>
+      <h3>${d.exam.levels ? "Seviye ustalıkları" : "Alan ustalıkları"} ${levelChip(d)}</h3>
+      ${masteryRows(d)}
+      <p class="note">Ustalık oranları tahmindir ve belirsizlik aralığıyla gösterilir; sınav puanı tahmini değildir. Bu rapor yalnız bu tarayıcıdaki çalışmadan hesaplanır, hiçbir yere gönderilmez.</p>
+    </article>`;
+  }
+
+  // ---------- Kişisel deneme ----------
+  // Süre, gerçek sınavın soru başına süresinden çıkar (ör. YDS: 180 dk / 80 soru). Format yoksa süre tutulmaz.
+  function denemePlan(d, full) {
+    const fmt = A.examCalendar?.format?.[store.exam];
+    const n = full ? Math.min(d.exam.items.length, fmt ? fmt.questions : d.exam.items.length) : Math.min(EXAM_SIZE, d.exam.items.length);
+    const quota = quotaTable(d, n);
+    const total = Object.values(quota).reduce((a, b) => a + b, 0);
+    const sec = fmt ? Math.ceil((total * fmt.minutes * 60) / fmt.questions / 60) * 60 : 0;
+    return { quota, total, sec, fmt };
+  }
+  const mmss = (s) => { s = Math.max(0, Math.round(s)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = s % 60; return `${h ? h + ":" + String(m).padStart(2, "0") : m}:${String(x).padStart(2, "0")}`; };
+
   function viewDeneme(d, data) {
     if (session && session.kind === "deneme") {
-      if (session.finished) return denemeResult(session);
-      return questionView(session.q, { mode: "deneme", progress: [session.idx + 1, session.items.length] });
+      if (session.finished) return denemeResult(session, d);
+      const left = session.deadline ? (session.deadline - Date.now()) / 1000 : null;
+      const timer = left !== null ? `<div class="dn-timer ${left < 60 ? "is-low" : ""}"><span>${session.full ? "Tam deneme" : "Kısa deneme"} · kalan süre</span><b class="num" id="dn-left">${mmss(left)}</b></div>` : "";
+      return timer + questionView(session.q, { mode: "deneme", progress: [session.idx + 1, session.items.length] });
     }
-    const quota = quotaTable(d, EXAM_SIZE);
+    const short = denemePlan(d, false), full = denemePlan(d, true);
+    const past = (data.denemeler || []).slice(-5).reverse();
+    const dfmt = new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
     return `<div class="grid-2">
       <div class="panel-box"><h3>Kişisel deneme</h3>
-        <p class="muted">${EXAM_SIZE} soru, sınavdaki alan paylarına göre dağıtılır. Cevaplar ve açıklamalar sonda gösterilir.</p>
-        <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Soru</th></tr></thead><tbody>
-          ${Object.keys(d.sh).map((a) => `<tr><td>${esc(a)}</td><td class="num">${quota[a] || 0}</td></tr>`).join("")}</tbody></table></div>
-        <div><button class="btn btn-primary" data-act="start-deneme">Denemeyi başlat</button></div></div>
-      <div class="panel-box"><h3>Deneme soruları nereden geliyor?</h3>
+        <p class="muted">Sorular sınavdaki alan paylarına göre dağıtılır. Cevaplar ve açıklamalar sonda gösterilir; sonunda alan alan rapor ve zayıf alanların çıkar.</p>
+        ${full.fmt ? `<p class="note">Gerçek sınav: ${esc(full.fmt.label)} (<a href="${esc(full.fmt.src)}" target="_blank" rel="noopener">ÖSYM kılavuzu</a>). Deneme aynı soru başına süreyle çalışır; süre bitince deneme kendiliğinden biter.</p>` : `<p class="note">Bu programda resmî sınav süresi olmadığı için deneme süresizdir.</p>`}
+        <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Sınavdaki pay</th><th class="num">Kısa</th><th class="num">Tam</th></tr></thead><tbody>
+          ${Object.keys(d.sh).map((a) => `<tr><td>${esc(a)}</td><td class="num">%${pct(d.sh[a])}</td><td class="num">${short.quota[a] || 0}</td><td class="num">${full.quota[a] || 0}</td></tr>`).join("")}
+          <tr><td><b>Toplam</b></td><td></td><td class="num"><b>${short.total}</b></td><td class="num"><b>${full.total}</b></td></tr></tbody></table></div>
+        <div class="dn-choices">
+          <button class="btn btn-primary" data-act="start-deneme" data-full="1">Tam denemeyi başlat · ${full.total} soru${full.sec ? `, ${full.sec / 60} dk` : ""}</button>
+          <button class="btn btn-outline" data-act="start-deneme" data-full="0">Kısa deneme · ${short.total} soru${short.sec ? `, ${short.sec / 60} dk` : ""}</button>
+        </div>
+        ${full.fmt && full.total < full.fmt.questions ? `<p class="note">Demo soru bankası küçük olduğu için tam deneme bankadaki ${full.total} soruyla yapılır; gerçek sınav ${full.fmt.questions} sorudur. Alan dağılımı ve soru başına süre gerçek sınavla aynıdır.</p>` : ""}
+      </div>
+      <div class="panel-box"><h3>Son denemelerin</h3>
+        ${past.length ? `<div class="table-wrap"><table><thead><tr><th>Tarih</th><th>Tür</th><th class="num">Doğru</th><th class="num">Süre</th></tr></thead><tbody>
+          ${past.map((x) => `<tr><td>${esc(dfmt.format(new Date(x.t)))}</td><td>${x.full ? "Tam" : "Kısa"}</td><td class="num">${x.k}/${x.n}</td><td class="num">${x.sec ? mmss(x.used) + " / " + mmss(x.sec) : mmss(x.used)}</td></tr>`).join("")}</tbody></table></div>` : `<p class="muted">Henüz deneme çözmedin.</p>`}
+        <h3>Deneme soruları nereden geliyor?</h3>
         <p class="muted">Gerçek üründe deneme soruları, sınavın alan dağılımına ve senin zayıf konularına göre yapay zekâ ile taslak olarak hazırlanır. Her taslak, öğrenciye gitmeden önce alanında uzman biri tarafından kontrol edilir.</p>
         <p class="muted">Denemeler hangi soruların çıkacağını tahmin etmez. Amaç, gerçek sınavla aynı dağılımda kendini ölçmendir. Bu demoda sorular örnek soru bankasından seçilir.</p></div>
     </div>`;
   }
 
-  function denemeResult(s) {
+  function denemeResult(s, d) {
     const n = s.items.length;
     const k = s.answers.filter((a, i) => a !== null && a === s.items[i].a).length;
-    const blank = s.answers.filter((a) => a === null).length;
+    const blank = n - s.answers.filter((a) => a !== null).length;
     const [lo, hi] = E.wilson(k, n);
     const byArea = {};
-    s.items.forEach((it, i) => { byArea[it.alan] = byArea[it.alan] || [0, 0]; byArea[it.alan][1]++; if (s.answers[i] === it.a) byArea[it.alan][0]++; });
+    s.items.forEach((it, i) => {
+      const r = byArea[it.alan] = byArea[it.alan] || { k: 0, w: 0, b: 0, n: 0 };
+      r.n++; const a = s.answers[i];
+      if (a === undefined || a === null) r.b++; else if (a === it.a) r.k++; else r.w++;
+    });
+    const rows = Object.keys(d.sh).filter((a) => byArea[a]).map((a) => [a, byArea[a]]);
+    const weak = rows.filter(([, r]) => r.k / r.n < E.WEAK_MEAN).sort((x, y) => x[1].k / x[1].n - y[1].k / y[1].n);
     return `<div class="panel-box">
-      <span class="eyebrow">Deneme sonucu</span>
-      <div class="result-head num"><div><b>${k}</b> doğru</div><div><b>${n - k - blank}</b> yanlış</div><div><b>${blank}</b> boş</div></div>
+      <span class="eyebrow">${s.full ? "Tam deneme" : "Kısa deneme"} sonucu${s.timedOut ? " · süre doldu" : ""}</span>
+      <div class="result-head num"><div><b>${k}</b> doğru</div><div><b>${n - k - blank}</b> yanlış</div><div><b>${blank}</b> boş</div>${s.limitSec ? `<div><b>${mmss(s.used)}</b> / ${mmss(s.limitSec)}</div>` : ""}</div>
       <p class="muted">Doğru oranın %${pct(k / n)}. ${n} soruluk bir denemede bu oranın %95 güven aralığı %${pct(lo)} ile %${pct(hi)} arasıdır. Soru sayısı arttıkça aralık daralır. Bu sonuçtan sınav puanı tahmini yapmıyoruz.</p>
-      <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Doğru</th><th class="num">Soru</th></tr></thead><tbody>
-        ${Object.entries(byArea).map(([a, [x, m]]) => `<tr><td>${esc(a)}</td><td class="num">${x}</td><td class="num">${m}</td></tr>`).join("")}</tbody></table></div>
+      <h3>Alan alan rapor</h3>
+      <div class="table-wrap"><table><thead><tr><th>Alan</th><th class="num">Doğru</th><th class="num">Yanlış</th><th class="num">Boş</th><th class="num">Oran</th></tr></thead><tbody>
+        ${rows.map(([a, r]) => `<tr class="${r.k / r.n < E.WEAK_MEAN ? "row-weak" : ""}"><td>${esc(a)}</td><td class="num">${r.k}</td><td class="num">${r.w}</td><td class="num">${r.b}</td><td class="num">%${pct(r.k / r.n)}</td></tr>`).join("")}</tbody></table></div>
+      ${weak.length ? `<div class="weak-list"><h3>Zayıf alanların</h3><p class="muted">Bu denemede %60'ın altında kaldığın alanlar. Alan başına soru az olduğu için tek denemeye göre değil, alan ustalığıyla birlikte değerlendir.</p>
+        <ul>${weak.map(([a, r]) => `<li><span><b>${esc(a)}</b> <span class="muted num">${r.k}/${r.n} doğru</span></span><button class="btn btn-small btn-outline" data-act="tab" data-id="coz">Soru çöz</button></li>`).join("")}</ul></div>`
+        : `<p class="cd-week">Bu denemede %60'ın altında kaldığın alan yok.</p>`}
       <details class="how"><summary>Cevap anahtarı ve açıklamalar</summary><ul>
-        ${s.items.map((it, i) => `<li><b>${i + 1}. ${esc(it.alan)}</b>: senin cevabın ${s.answers[i] === null ? "boş" : LETTERS[s.answers[i]]}, doğru cevap ${LETTERS[it.a]}. ${esc(it.e)}</li>`).join("")}
+        ${s.items.map((it, i) => `<li><b>${i + 1}. ${esc(it.alan)}</b>: senin cevabın ${s.answers[i] === null || s.answers[i] === undefined ? "boş" : LETTERS[s.answers[i]]}, doğru cevap ${LETTERS[it.a]}. ${esc(it.e)}</li>`).join("")}
       </ul></details>
-      <div class="q-actions"><button class="btn btn-primary" data-act="tab" data-id="panel">Panele dön</button><button class="btn btn-outline" data-act="start-deneme">Yeni deneme</button></div>
+      <div class="q-actions"><button class="btn btn-primary" data-act="tab" data-id="panel">Panele dön</button><button class="btn btn-outline" data-act="tab" data-id="hata">Hata defterine git</button><button class="btn btn-outline" data-act="start-deneme" data-full="${s.full ? 1 : 0}">Yeni deneme</button></div>
     </div>`;
   }
 
-  function record(item, correct, conf, skipped, mode) {
+  function finishDeneme(timedOut) {
+    const s = session, data = store.data[store.exam];
+    s.finished = true; s.timedOut = !!timedOut;
+    s.used = Math.round((Date.now() - s.start) / 1000);
+    if (s.limitSec) s.used = Math.min(s.used, s.limitSec);
+    const n = s.items.length, k = s.answers.filter((a, i) => a !== null && a === s.items[i].a).length;
+    data.denemeler = data.denemeler || [];
+    data.denemeler.push({ t: Date.now(), n, k, blank: n - s.answers.filter((a) => a !== null).length, full: s.full, sec: s.limitSec, used: s.used });
+    save();
+  }
+
+  let denemeTick = null;
+  function tickDeneme() {
+    clearInterval(denemeTick);
+    denemeTick = setInterval(() => {
+      if (!session || session.kind !== "deneme" || session.finished || !session.deadline) { clearInterval(denemeTick); return; }
+      const left = (session.deadline - Date.now()) / 1000;
+      const el = document.getElementById("dn-left");
+      if (el) { el.textContent = mmss(left); el.parentElement.classList.toggle("is-low", left < 60); }
+      if (left <= 0) {
+        clearInterval(denemeTick);
+        finishDeneme(true);
+        if (route().view === "app" && store.tab === "deneme") { renderApp(); window.scrollTo({ top: 0 }); }
+      }
+    }, 1000);
+  }
+
+  function record(item, correct, conf, skipped, mode, ch) {
     const data = store.data[store.exam];
     const t = Date.now() + Math.random();
-    data.attempts.push({ id: item.id, alan: item.alan, correct, conf, skipped, mode, t });
+    data.attempts.push({ id: item.id, alan: item.alan, correct, conf, skipped, mode, t, ...(ch !== null && ch !== undefined ? { ch } : {}) });
     save();
     return t;
+  }
+
+  // ---------- Rozet kutlaması ve Mac ipuçları ----------
+  const solving = () => !!(session && !session.finished && (session.kind !== "coz" || store.tab === "coz"));
+  function afterAppRender(examId, data, d) {
+    if (solving()) MAC.hideTip();
+    // Deneme sırasında kutlama araya girmez; deneme bitince gösterilir.
+    if (!(session && session.kind === "deneme" && !session.finished)) {
+      const { fresh } = P.syncBadges(examId, data, d);
+      if (fresh.length) { for (const b of fresh) data.badges[b.id].shown = true; if (!data.sample) celebrate(fresh); }
+    }
+    save();
+    scheduleTip("app");
+  }
+
+  let toastTimer = null;
+  function celebrate(list) {
+    let el = document.getElementById("badge-toast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "badge-toast"; el.className = "badge-toast"; el.setAttribute("role", "status");
+      el.addEventListener("click", (e) => { if (e.target.closest("[data-toast]")) el.hidden = true; });
+      document.body.appendChild(el);
+    }
+    el.innerHTML = `<span class="badge-icon" aria-hidden="true">${esc(list[0].icon)}</span>
+      <div><b>${list.length > 1 ? "Yeni rozetler" : "Yeni rozet"}</b><span>${list.map((b) => esc(b.title)).join(", ")}</span></div>
+      <button type="button" data-toast="close" aria-label="Kapat">×</button>`;
+    el.hidden = false;
+    el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { el.hidden = true; }, 7000);
+  }
+
+  // Sıklık: Mac en fazla 2 balon/oturum (mac.js sayar); soru çözerken, denemede ve derste çıkmaz.
+  let tipTimer = null, tipIdx = 0;
+  const TIP_TABS = ["panel", "plan", "hata", "rapor"];
+  function scheduleTip(kind, examId) {
+    clearTimeout(tipTimer);
+    if (!MAC.tipsAvailable()) return;
+    tipTimer = setTimeout(() => {
+      const r = route();
+      if (kind === "app" && (r.view !== "app" || !TIP_TABS.includes(store.tab) || solving())) return;
+      if (kind === "program" && (r.view !== "program" || bySlug[r.slug]?.engine !== examId)) return;
+      const t = pickTip(kind === "app" ? store.exam : examId, kind);
+      if (t && MAC.tip(t.text, t)) tipIdx++;
+    }, 3500);
+  }
+
+  function pickTip(examId, kind) {
+    const ex = A.exams[examId];
+    if (!ex) return null;
+    const data = store.data[examId], d = derive(examId, data);
+    const cd = P.countdown(examId);
+    const mine = [], facts = (A.examFacts?.[examId] || []).map((text) => ({ text, mood: "think" }));
+    if (cd && !cd.pending) {
+      if (cd.examWeek) mine.push({ text: `Sınava ${cd.days} gün kaldı. Planın artık tekrar ağırlıklı: yeni konu azaldı, zayıf ve unutmaya başladığın konular arttı.` });
+      else if (cd.days <= 45) mine.push({ text: `Sınava ${cd.days} gün kaldı. ${P.EXAM_WEEK_DAYS} gün kalınca plan kendiliğinden tekrar ağırlıklı moda geçecek.` });
+      else mine.push({ text: `Sınava ${cd.days} gün var. Günde ${data.budget} soruyla sınava kadar yaklaşık ${(cd.days * data.budget).toLocaleString("tr-TR")} soru eder.` });
+    } else if (cd && cd.pending) mine.push({ text: `Bir sonraki ${ex.short} tarihi henüz açıklanmadı. ÖSYM takvimi açıklanınca geri sayım güncellenecek; o zamana kadar düzenli tekrar en iyi hazırlık.` });
+    if (!data.sample && kind === "app") {
+      const weak = Object.keys(d.sh).filter((a) => d.attemptsByAlan[a] && E.stats(d.mastery[a]).mean < E.WEAK_MEAN).sort((a, b) => E.weakness(d.mastery[b]) - E.weakness(d.mastery[a]))[0];
+      if (weak) mine.unshift({ text: `${weak} alanında ustalık tahminin %${pct(E.stats(d.mastery[weak]).mean)}. Soru çözünce sorular önce oradan gelecek.` });
+      const st = P.streaks(data.attempts);
+      if (st.current >= 2) mine.push({ text: `${st.current} gündür aralıksız çalışıyorsun.${st.activeToday ? " Bugünkü payını da aldın." : " Bugün bir soru çözersen seri sürer."}` });
+      const open = P.errorBook(d.exam, data.attempts).open.length;
+      if (open) mine.push({ text: `Hata defterinde ${open} soru var. Doğru çözdüğün soru defterden çıkar.` });
+    }
+    // İlk balon öğrencinin kendi durumundan, ikincisi (varsa) doğrulanmış bir sınav bulgusundan.
+    const pool = tipIdx % 2 === 0 ? (mine.length ? mine : facts) : (facts.length ? facts : mine);
+    const t = pool.length ? pool[Math.floor(Math.random() * Math.min(pool.length, tipIdx % 2 === 0 ? 2 : pool.length))] : null;
+    if (t && kind === "program") t.action = { label: "Öğrenme alanına git", href: `#ogren-${examId}` };
+    return t;
+  }
+
+  // Program sayfasındaki geri sayım kutusu (TUS, HMGS, YDS).
+  function programCountdown(p) {
+    const cd = p.engine && examOn(p.engine) ? P.countdown(p.engine) : null;
+    if (!cd) return "";
+    const data = store.data[p.engine], d = derive(p.engine, data);
+    const h = cdHead(cd, A.exams[p.engine].short), t = todayPlan(d, data, cd);
+    return `<div class="box cd-box">
+      <span class="eyebrow">Sınav geri sayımı</span>
+      <div class="cd-box-top"><b class="num">${h.num}</b><span>${cd.pending ? "" : "gün"}</span></div>
+      <h3>${esc(h.h)}</h3>
+      <p class="note">${esc(h.sub)}</p>
+      <p class="cd-box-goal">Bugünkü hedefin: <b>${t.total} soru</b>${data.sample ? ` <span class="chip chip-soon">örnek veri</span>` : ` · bugün ${t.done} çözdün`}</p>
+      ${cd.examWeek ? `<p class="note">Sınav haftası: planın tekrar ağırlıklı.</p>` : ""}
+      ${srcLine(cd)}
+    </div>`;
   }
 
   // ---------- Etkileşimler ----------
@@ -758,15 +1122,31 @@
     }
     if (act === "start-deneme") {
       const d = derive(examId, data);
-      const quota = quotaTable(d, EXAM_SIZE);
+      const full = el.dataset.full === "1";
+      const plan = denemePlan(d, full);
+      const quota = plan.quota;
       const items = [];
       for (const [alan, n] of Object.entries(quota)) {
         const pool = d.exam.items.filter((i) => i.alan === alan).sort(() => Math.random() - 0.5);
         items.push(...pool.slice(0, n));
       }
       items.sort(() => Math.random() - 0.5);
-      session = { kind: "deneme", items, idx: 0, answers: [], finished: false, q: { item: items[0], chosen: null } };
-      store.tab = "deneme"; save(); renderApp(); return;
+      const start = Date.now();
+      session = { kind: "deneme", items, idx: 0, answers: [], finished: false, q: { item: items[0], chosen: null }, full, start, limitSec: plan.sec, deadline: plan.sec ? start + plan.sec * 1000 : null };
+      store.tab = "deneme"; save(); renderApp(); window.scrollTo({ top: 0 }); if (session.deadline) tickDeneme(); return;
+    }
+
+    if (act === "hata-by") { store.hataBy = el.dataset.id; save(); renderApp(); return; }
+    if (act === "hata-back") { session = null; renderApp(); window.scrollTo({ top: 0 }); return; }
+    if (act === "hata-all" || act === "hata-group" || act === "hata-one") {
+      const d = derive(examId, data);
+      const open = P.errorBook(d.exam, data.attempts).open;
+      let list = open;
+      if (act === "hata-one") list = open.filter((e) => e.item.id === el.dataset.id);
+      if (act === "hata-group") {
+        list = (P.groupErrors(open, hataBy(open))[+el.dataset.i] || [null, []])[1];
+      }
+      startHata(list.map((e) => e.item)); return;
     }
 
     if (!session) return;
@@ -777,9 +1157,9 @@
     if (session.kind === "deneme" && (act === "answer" || act === "skip")) {
       const ans = act === "skip" ? null : q.chosen;
       session.answers.push(ans);
-      record(q.item, ans === q.item.a, 2, ans === null, "deneme");
+      record(q.item, ans === q.item.a, 2, ans === null, "deneme", ans);
       session.idx++;
-      if (session.idx >= session.items.length) session.finished = true;
+      if (session.idx >= session.items.length) finishDeneme(false);
       else session.q = { item: session.items[session.idx], chosen: null };
       renderApp(); window.scrollTo({ top: 0 }); return;
     }
@@ -787,7 +1167,7 @@
     if (act === "answer" || act === "skip") {
       const skipped = act === "skip";
       q.done = true; q.skipped = skipped; q.correct = !skipped && q.chosen === q.item.a;
-      q.t = record(q.item, q.correct, skipped ? null : q.conf, skipped, session.kind === "tani" ? "tani" : "pratik");
+      q.t = record(q.item, q.correct, skipped ? null : q.conf, skipped, session.kind === "tani" ? "tani" : session.kind === "hata" ? "hata" : "pratik", skipped ? null : q.chosen);
       if (A.exams[examId].game && q.correct) { q.points = q.conf === 3 ? 15 : 10; q.streak = gameStats(data).streak; }
       if (session.kind === "tani") session.ids.push(q.t);
       renderApp(); return;
@@ -801,6 +1181,11 @@
       if (session.kind === "tani") {
         if (session.asked >= DIAG_SIZE) { session.finished = true; data.diagDone = true; save(); }
         else nextTani();
+      } else if (session.kind === "hata") {
+        session.results.push(!!q.correct);
+        session.idx++;
+        if (session.idx >= session.queue.length) session.finished = true;
+        else session.q = { ...newQ({ item: session.queue[session.idx], reason: "hata" }) };
       } else {
         const sel = pickPractice(derive(examId, data));
         session = sel ? { kind: "coz", q: newQ(sel) } : null;
@@ -875,13 +1260,14 @@
   }
   function render() {
     const r = route();
+    clearTimeout(tipTimer);
     setMega(false); nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false");
     const key = r.view + (r.slug || "") + (r.id || "");
     if (r.view === "app") {
       if (r.exam && examOn(r.exam) && r.exam !== store.exam) { store.exam = r.exam; session = null; save(); }
       if (r.exam && examOn(r.exam) && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
       renderApp();
-    } else if (r.view === "program") renderProgram(bySlug[r.slug]);
+    } else if (r.view === "program") { renderProgram(bySlug[r.slug]); if (bySlug[r.slug].engine && A.examCalendar?.sessions[bySlug[r.slug].engine]) scheduleTip("program", bySlug[r.slug].engine); }
     else if (r.view === "module") renderModule(r.slug);
     else if (r.view === "basla") MAC.renderOnboarding($app);
     else if (r.view === "studyo") renderStudio();

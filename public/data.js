@@ -400,6 +400,43 @@ ACADEMIA.exams = {
 
 // Pasif program ve sınavlar ("active: false") sitede soluk ve tıklanamaz görünür.
 
+// ÖSYM sınav takvimi: geri sayım yalnız buradaki resmî tarihleri kullanır. Gelecek oturum yoksa
+// "Tarih bekleniyor" gösterilir; tarih uydurulmaz. Yeni takvim açıklanınca buraya eklenir.
+// Kaynak: ÖSYM 2026 Sınav Takvimi (sayfa oluşturma tarihi 16.10.2026). 2027 takvimi bu tarihte henüz yayımlanmamıştı.
+ACADEMIA.examCalendar = {
+  source: { label: "ÖSYM 2026 Sınav Takvimi", url: "https://osym.gov.tr/Sayfa/SinavTakvimi", checked: "2026-10-16" },
+  sessions: {
+    tus: [
+      { name: "2026-TUS 1. Dönem", date: "2026-03-15" },
+      { name: "2026-TUS 2. Dönem", date: "2026-08-23" },
+    ],
+    hmgs: [
+      { name: "2026-HMGS/1", date: "2026-04-26" },
+      { name: "2026-HMGS/2", date: "2026-09-27" },
+    ],
+    yds: [
+      { name: "2026-YDS/1", date: "2026-04-05" },
+      { name: "2026-YDS/2", date: "2026-11-22", time: "10:15", src: "https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf" },
+    ],
+  },
+  // Gerçek sınavın soru sayısı ve cevaplama süresi (tam denemenin soru başına süresi buradan çıkar).
+  format: {
+    tus: { questions: 100, minutes: 135, label: "Temel Tıp Bilimleri Testi: 100 soru, 135 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2024/TUSDONEM-2/kilavuz03072024.pdf" },
+    hmgs: { questions: 120, minutes: 155, label: "120 soru, 155 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2026/HMGS-1/bkilavuz09032026.pdf" },
+    yds: { questions: 80, minutes: 180, label: "80 soru, 180 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf" },
+  },
+};
+
+// Mac ipuçlarında kullanılabilecek doğrulanmış genel bulgular. Uydurma istatistik eklenmez.
+ACADEMIA.examFacts = {
+  hmgs: ["Geçmiş 340 HMGS sorusunda doğru cevap şıklara eşit dağılıyor (A 64, B 61, C 72, D 77, E 66). Şık tahminine değil, konuya güven."],
+  yds: [
+    "YDS'de doğru şık, en uzun şık olma eğiliminde değil (yaklaşık %13). \"En uzununu seç\" taktiği işe yaramaz.",
+    "YDS'nin bölüm yapısı yıllardır aynı. Soru tiplerine göre çalışmak bu yüzden işe yarıyor.",
+  ],
+  tus: ["TUS soru köklerinin yaklaşık yarısında \"en olası\", \"en sık\" ya da \"en uygun\" geçiyor. Kökü sonuna kadar oku."],
+};
+
 // Örnek öğrenci verisi (demo): [soru id, doğru mu, güven 1-3]
 ACADEMIA.sample = {
   tus: [

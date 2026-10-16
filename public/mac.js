@@ -281,7 +281,7 @@ window.MAC = (() => {
   dock.addEventListener("click", (e) => {
     const el = e.target.closest("[data-mac]"); if (!el) return;
     const a = el.dataset.mac;
-    if (a === "open") { chat.open = true; drawDock(); dock.querySelector("#mac-input")?.focus(); }
+    if (a === "open") { dock.querySelector(".mac-tip")?.remove(); chat.open = true; drawDock(); dock.querySelector("#mac-input")?.focus(); }
     if (a === "close") { chat.open = false; drawDock(); }
     if (a === "chip") send(el.dataset.t);
   });
@@ -290,5 +290,31 @@ window.MAC = (() => {
   window.addEventListener("hashchange", drawDock);
   drawDock();
 
-  return { svg, renderOnboarding, needsOnboarding, setContext: (fn) => { pageContext = fn; }, refresh: drawDock };
+  // ---------- İpucu balonu ----------
+  // Oturum başına en fazla 2 balon; "bir daha gösterme" kalıcıdır. Ne zaman çağrılacağına app.js karar verir
+  // (soru çözerken ya da derste çağrılmaz).
+  const TIPS_OFF = "academia:tips-off", TIPS_SEEN = "academia:tips-shown", TIPS_MAX = 2;
+  const tipsShown = () => { try { return +sessionStorage.getItem(TIPS_SEEN) || 0; } catch (_) { return TIPS_MAX; } };
+  const tipsOff = () => !!get(TIPS_OFF);
+  function hideTip() { dock.querySelector(".mac-tip")?.remove(); }
+  function tip(text, { mood = "happy", action = null } = {}) {
+    if (tipsOff() || tipsShown() >= TIPS_MAX || chat.open || dock.hidden || dock.querySelector(".mac-tip")) return false;
+    try { sessionStorage.setItem(TIPS_SEEN, String(tipsShown() + 1)); } catch (_) {}
+    const el = document.createElement("div");
+    el.className = "mac-tip"; el.setAttribute("role", "status");
+    el.innerHTML = `<div class="mac-tip-head">${svg(mood, 30)}<b>Mac</b><button type="button" class="mac-x" data-tip="close" aria-label="İpucunu kapat">×</button></div>
+      <p>${esc(text)}</p>
+      <div class="mac-tip-actions">${action ? `<a class="btn btn-primary btn-small" href="${esc(action.href)}" data-tip="close">${esc(action.label)}</a>` : ""}<button type="button" class="mac-tip-off" data-tip="off">Bir daha gösterme</button></div>`;
+    dock.prepend(el);
+    return true;
+  }
+  dock.addEventListener("click", (e) => {
+    const el = e.target.closest("[data-tip]"); if (!el) return;
+    if (el.dataset.tip === "off") set(TIPS_OFF, true);
+    hideTip();
+  });
+  window.addEventListener("hashchange", hideTip);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") hideTip(); });
+
+  return { svg, renderOnboarding, needsOnboarding, setContext: (fn) => { pageContext = fn; }, refresh: drawDock, tip, hideTip, tipsAvailable: () => !tipsOff() && tipsShown() < TIPS_MAX };
 })();

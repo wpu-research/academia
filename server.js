@@ -1,5 +1,5 @@
 // Macademia sunucusu: public/ statik dosyaları + Mac sohbet uç noktası (/api/mac).
-// Bağımlılık yok. LLM: NVIDIA API kataloğu (OpenAI uyumlu, SSE), ASK Robotik'teki Robi ile aynı altyapı.
+// LLM: ANTHROPIC_API_KEY varsa Claude (resmî SDK), yoksa NVIDIA API kataloğu (OpenAI uyumlu, SSE).
 const http = require("node:http");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -9,6 +9,10 @@ const ROOT = path.join(__dirname, "public");
 const NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions";
 const MODEL = process.env.NVIDIA_MODEL?.trim() || "nvidia/nemotron-3.5-lightning-30b-a3b";
 const KEY = process.env.NVIDIA_API_KEY?.trim();
+const CLAUDE_KEY = process.env.ANTHROPIC_API_KEY?.trim();
+const CLAUDE_MODEL = process.env.MAC_CLAUDE_MODEL?.trim() || "claude-opus-5-5";
+let claude = null;
+if (CLAUDE_KEY) { const Anthropic = require("@anthropic-ai/sdk"); claude = new Anthropic({ apiKey: CLAUDE_KEY, maxRetries: 1, timeout: 45_000 }); }
 const RS = "\u001e"; // istemci: bundan sonrası önceki metnin yerine geçer
 
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8", ".jpg": "image/jpeg", ".png": "image/png", ".svg": "image/svg+xml", ".ico": "image/x-icon" };
@@ -83,12 +87,14 @@ async function macChat(req, res) {
     .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim())
     .slice(-12).map((m) => ({ role: m.role, content: clip(m.content, 600) }));
   if (!messages.length || messages[messages.length - 1].role !== "user") return fail(400, "Bir soru yazar mısın?");
-  if (!KEY) return fail(503, "Mac şu an çevrim dışı. Biraz sonra tekrar dene.");
+  if (!KEY && !claude) return fail(503, "Mac şu an çevrim dışı. Biraz sonra tekrar dene.");
   const lim = limit(ip);
   if (!lim.ok) return fail(429, lim.why, lim.left);
 
   const age = Number.isInteger(body.age) && body.age >= 4 && body.age <= 99 ? body.age : null;
   const context = `<sayfa_baglami>\nSayfa: ${clip(body.page, 120)}\nİçerik: ${clip(body.context, 2500)}\nÖğrencinin yaşı: ${age ?? "bilinmiyor"}${age !== null && age <= 9 ? "\nKISA" : ""}\n</sayfa_baglami>`;
+
+  if (claude) return claudeChat(res, body, context, messages, lim);
 
   let upstream;
   try {
@@ -140,6 +146,36 @@ async function macChat(req, res) {
   res.end();
 }
 
+// Claude ile aynı akış: metin parça parça gelir; cevaplanmamış soruda önce toplanıp sızıntı kontrolünden geçer.
+// Sistem talimatı sabit ve önbelleğe alınır; sayfa bağlamı ayrı blokta (değişken).
+async function claudeChat(res, body, context, messages, lim) {
+  res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "x-mac-remaining": String(lim.left), "x-accel-buffering": "no" });
+  const guard = answerGuard(body.hide);
+  let held = "", wrote = false;
+  const out = (t) => { wrote = true; if (guard) held += t; else res.write(t); };
+  try {
+    const stream = claude.beta.messages.stream({
+      model: CLAUDE_MODEL, max_tokens: 1500,
+      betas: ["server-side-fallback-2026-07-01"], fallbacks: "default",
+      output_config: { effort: "low" },
+      system: [{ type: "text", text: SYSTEM, cache_control: { type: "ephemeral" } }, { type: "text", text: context }],
+      messages,
+    });
+    for await (const ev of stream) {
+      if (ev.type === "content_block_delta" && ev.delta.type === "text_delta") out(ev.delta.text);
+    }
+    const final = await stream.finalMessage();
+    if (final.stop_reason === "refusal") { held = ""; wrote = false; }
+  } catch (e) {
+    console.error("mac claude", e?.status ?? "", e?.message ?? e);
+    if (!wrote) { res.write(RS + "Mac'e şu an ulaşılamıyor. Biraz sonra tekrar dene."); return res.end(); }
+    res.write(RS + "Cevabım yarıda kesildi. Tekrar sorar mısın?"); return res.end();
+  }
+  if (guard && wrote) res.write(guard(held) ? RS + LEAK_REPLY : held);
+  if (!wrote) res.write(RS + "Şu an cevap veremedim. Sorunu biraz farklı sorar mısın?");
+  res.end();
+}
+
 const LEAK_REPLY = "Cevabı ben söylersem öğrenmen zorlaşır. Şıkları tek tek düşün: hangisi bu konuda bildiğin kurala uyuyor? Cevapladıktan sonra nedenini birlikte konuşalım.";
 const norm = (s) => s.toLocaleLowerCase("tr").normalize("NFD").replace(/[̀-ͯ]/g, "");
 // hide: [doğru şıkkın metni, şık harfi]. Metindeki ayırt edici kelimeler (4+ harf ya da sayı) ya da "cevap B" gibi ifadeler sızıntı sayılır.
@@ -178,4 +214,4 @@ http.createServer((req, res) => {
   }
   if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }
   serveStatic(req, res);
-}).listen(PORT, () => console.log(`Macademia :${PORT} · Mac ${KEY ? "açık" : "anahtar yok"}`));
+}).listen(PORT, () => console.log(`Macademia :${PORT} · Mac ${claude ? `Claude (${CLAUDE_MODEL})` : KEY ? "NVIDIA" : "anahtar yok"}`));
