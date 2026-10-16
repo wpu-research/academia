@@ -119,6 +119,53 @@
         },
       ],
     },
+    "lifeskills-b1": {
+      lang: "en-GB", dil: "İngilizce", ad: "Life Skills B1", alanlar: { konusma: "Konuşma" },
+      konusma: [
+        {
+          id: "b1-t1", baslik: "Görevliyle konuş", aciklama: "Fikrini söyle, gerekçelendir, deneyimlerini anlat.",
+          gorevler: [
+            { id: "b1-t1-1", gorev: "Görevli ne zamandır burada yaşadığını soruyor.", soru: sayEn("How long have you lived in the UK?"), kurallar: [kw("(i have lived|we have lived|i have been here|for \\d|since)", "“I've lived here for … / since …” de")], ornek: "I've lived here for four years, since 2022." },
+            { id: "b1-t1-2", gorev: "Görevli dil öğrenmenin önemini soruyor. Fikrini ve nedenini söyle, bir örnek ver.", soru: sayEn("Do you think it's important to learn the language of the country you live in?"), kurallar: [kw("(i think|in my opinion|i believe|for me)", "Fikrini söyle: I think … / In my opinion …"), kw("because", "Nedenini söyle"), kw("(for example|for instance|like)", "Bir örnek ver: For example, …")], ornek: "Yes, I think it's very important because it helps you find work. For example, I found my job after my English course." },
+            { id: "b1-t1-3", gorev: "Görevli boş bir günün olsa ne yapacağını soruyor.", soru: sayEn("What would you do if you had a free day?"), kurallar: [kw("(i would|i will|i might)", "“I would …” ile cevap ver")], ornek: "If I had a free day, I would take my children to the seaside." },
+            { id: "b1-t1-4", gorev: "Görevli hayatının buraya geldiğinden beri nasıl değiştiğini soruyor.", soru: sayEn("How has your life changed since you came here?"), kurallar: [kw("(used to|before)", "Eskiyi anlat: I used to …"), kw("(now|but)", "Şimdiyi anlat: but now …")], ornek: "I used to stay at home, but now I work part-time and I've made lots of friends." },
+            { id: "b1-t1-5", gorev: "Görevli mahallen hakkında ne düşündüğünü soruyor. Olumlu ve olumsuz bir şey söyle.", soru: sayEn("What do you like and dislike about your area?"), kurallar: [kw("(like|love|enjoy|good|great|nice)", "Sevdiğin bir şeyi söyle"), kw("but", "Olumsuz yanı “but” ile ekle")], ornek: "I like the parks because they're green, but I don't like the traffic in the morning." },
+            { id: "b1-t1-6", gorev: "Görevli hiç gönüllü çalışıp çalışmadığını soruyor.", soru: sayEn("Have you ever done any volunteering?"), kurallar: [kw("^(yes|no)", "“Yes, I have.” ya da “No, I haven't.” ile başla"), kw("(i helped|i worked|i volunteered|i have never|i would like|i used to)", "Ayrıntı ver")], ornek: "Yes, I have. I helped at a food bank last winter." },
+          ],
+        },
+        {
+          id: "b1-t2", baslik: "Birlikte plan yap", aciklama: "B1'e özgü bölüm: diğer adayla bir etkinliği planla; öner, fikir sor, gerekirse kibarca karşı çık, karar ver.",
+          gorevler: [
+            { id: "b1-t2-1", kart: "Class picnic", gorev: "İngilizce sınıfınız için bir piknik planlıyorsunuz. Bir yer öner.", kurallar: [kw("(let us|shall we|how about|what about|why do not we|we could|i think we should)", "Öneri kalıbı kullan: Let's …, How about …, Why don't we …"), kw("(park|lake|beach|garden|river|forest|centre)", "Bir yer söyle")], ornek: "Why don't we go to the park near the lake?" },
+            { id: "b1-t2-2", gorev: "Diğer adayın fikrini sor.", soru: sayEn("I think we should go on Saturday."), kurallar: [kw("(what do you think|do you agree|is that ok|what about you|how about you|do you think)", "Fikrini sor: What do you think? / Is that OK for you?")], ornek: "Saturday is good for me. What do you think about the time?" },
+            { id: "b1-t2-3", gorev: "Diğer aday bir öneri yaptı ama sana uymuyor. Kibarca karşı çık ve başka bir şey öner.", soru: sayEn("Let's meet at eight in the morning."), kurallar: [kw("(but|i am not sure|i am afraid|a bit|too)", "Kibarca karşı çık: … is a bit early for me / I'm not sure …"), kw("(how about|what about|could we|why do not we|instead|maybe)", "Alternatif öner: Could we … instead?")], ornek: "Eight is a bit early for me. Could we meet at ten instead?" },
+            { id: "b1-t2-4", kart: "Food", gorev: "Piknik için yiyecek konusunda bir öneri yap.", kurallar: [kw("(let us|shall we|how about|what about|why do not we|we could|everyone|bring)", "Öneri kalıbı kullan"), kw("(food|sandwich|fruit|drink|cake|bring|dish|salad)", "Yiyecekten bahset")], ornek: "How about asking everyone to bring some food? Then it won't cost too much." },
+            { id: "b1-t2-5", gorev: "Diğer adayın önerisine katıl.", soru: sayEn("How about taking the bus? It's cheaper than a taxi."), kurallar: [kw("(good idea|great idea|i agree|sounds good|sounds great|you are right|that is true)", "Katıl: That's a good idea. / I agree.")], ornek: "That's a good idea. The bus is cheaper and it stops near the park." },
+            { id: "b1-t2-6", gorev: "Planlamayı bitir: kararınızı özetle (yer, gün, saat).", kurallar: [kw("(so|we have decided|we will|let us|ok|okay|agreed)", "Kararı özetle: So, we've decided …"), kw("(monday|tuesday|wednesday|thursday|friday|saturday|sunday|\\d)", "Günü ya da saati söyle")], ornek: "So, we've decided to go to the park on Saturday at ten and everyone will bring some food." },
+          ],
+        },
+        {
+          id: "b1-t3", alan: "Dinleme", baslik: "Dinle ve konuş", aciklama: "Kaydı dinle, soruyu tam cümleyle cevapla. Not alabilirsin.",
+          gorevler: [
+            { id: "b1-t3-1", gorev: "Kaydı dinle ve soruyu cevapla: What will they do if it rains?", soru: sayEn("If the weather's good on Sunday, we'll have a barbecue. If not, we'll go bowling."), kurallar: [kw("bowling", "Yağmur olursa ne yapacaklar?")], ornek: "If it rains, they'll go bowling." },
+            { id: "b1-t3-2", gorev: "Kaydı dinle ve soruyu cevapla: Why did he start cycling?", soru: sayEn("I used to drive to work, but now I cycle because it's cheaper and healthier."), kurallar: [kw("cheap", "Maliyetten bahset"), kw("health", "Sağlıktan bahset")], ornek: "Because it's cheaper and healthier." },
+            { id: "b1-t3-3", gorev: "Kaydı dinle ve soruyu cevapla: When is the meeting now?", soru: sayEn("The meeting has been moved from Thursday to Friday, but the time hasn't changed. It's still at six."), kurallar: [kw("friday", "Yeni günü söyle"), kw("\\b6\\b", "Saati söyle")], ornek: "It's on Friday at six." },
+            { id: "b1-t3-4", gorev: "Kaydı dinle ve soruyu cevapla: What haven't they decided yet?", soru: sayEn("We've already booked the hall, but we haven't decided on the food yet."), kurallar: [kw("food", "Neye karar verilmedi?")], ornek: "They haven't decided on the food yet." },
+            { id: "b1-t3-5", gorev: "Kaydı dinle ve soruyu cevapla: What should you do if you can't come to your appointment?", soru: sayEn("If you can't come to your appointment, please call us at least twenty-four hours before."), kurallar: [kw("(call|phone|ring)", "Ne yapmalı?"), kw("24", "Ne kadar önce?")], ornek: "You should call them at least twenty-four hours before." },
+          ],
+        },
+        {
+          id: "b1-tek", baslik: "Dinle ve tekrar et", aciklama: "Cümleyi dinle, aynısını söyle.",
+          gorevler: [
+            ["I've lived in this city for five years.", "Bu şehirde beş yıldır yaşıyorum."], ["In my opinion, public transport should be cheaper.", "Bence toplu taşıma daha ucuz olmalı."],
+            ["I see what you mean, but I'm not sure that's true.", "Ne demek istediğini anlıyorum ama bunun doğru olduğundan emin değilim."], ["Why don't we go to the lake instead?", "Neden onun yerine göle gitmiyoruz?"],
+            ["If it rains on Saturday, we'll go to the cinema instead.", "Cumartesi yağmur yağarsa onun yerine sinemaya gideriz."], ["If I had more free time, I would join a sports club.", "Daha çok boş zamanım olsaydı bir spor kulübüne katılırdım."],
+            ["Would you mind turning it down a little?", "Biraz kısmanızın sakıncası var mı?"], ["In Turkey I used to work as a tailor.", "Türkiye'de terzi olarak çalışırdım."],
+            ["Well, let me think. That's a good question.", "Şey, bir düşüneyim. Bu iyi bir soru."], ["So, we've decided: the lake, on Saturday at eleven.", "Yani karar verdik: göl, cumartesi saat on bir."],
+          ].map(([tekrar, tr], i) => ({ id: `b1-tek-${i + 1}`, gorev: "Cümleyi dinle ve aynısını söyle.", tekrar, tr })),
+        },
+      ],
+    },
     almanca: {
       konusma: [
         {

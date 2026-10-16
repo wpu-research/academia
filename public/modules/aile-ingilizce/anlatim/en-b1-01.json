@@ -1,0 +1,72 @@
+{
+ "id": "en-b1-01",
+ "baslik": "Sınavı Tanıyalım: Life Skills B1",
+ "sinif": "B1 · Başlangıç",
+ "sure": 8,
+ "ozet": "Kalıcı oturum için istenen B1 sınavını, ek planlama bölümünü ve dikkat etmen gereken belirsizlikleri öğreneceğiz.",
+ "kazanim": [
+  "Sınav yapısı",
+  "Kalıcı oturum"
+ ],
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ne zaman B1?",
+   "govde": "Kalıcı oturum (settlement / ILR) başvurusunda genellikle **B1** konuşma ve dinleme istendiği belirtiliyor. Bazı kaynaklar bu seviyenin **2027'den sonra B2'ye** çıkabileceğini yazıyor; resmî olarak kesinleşip kesinleşmediğini başvurmadan önce GOV.UK'den kontrol et. Kalıcı oturum için ayrıca **Life in the UK** sınavı gibi başka şartlar da vardır; bu program yalnız İngilizce kısmına hazırlar."
+  },
+  {
+   "tur": "kural",
+   "baslik": "B1 sınavı",
+   "govde": "- Yaklaşık **22 dakika**, bir görevli ve bir başka adayla.\n- A1 ve A2'deki iki bölüme ek olarak bir **planlama bölümü** var: diğer adayla birlikte bir etkinliği (ör. bir gezi, bir kutlama) **planlar ve karar verirsin**.\n- Sonuç yine Pass ya da Fail."
+  },
+  {
+   "tur": "metin",
+   "baslik": "B1'de ne beklenir?",
+   "govde": "Fikrini söyleyip **gerekçelendirmen**, öneri yapıp diğer adayın önerisine **katılman ya da kibarca karşı çıkman**, deneyimlerini ve koşulları (*If …*) anlatman beklenir. Cevaplar A2'den daha uzun ve bağlantılı olmalı."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Planlama bölümünde yalnız kendi fikrini söyleyip diğer adayı dinlememek. Bu bölüm **birlikte** karar vermeyi ölçer: öner, sor (*What do you think?*), karar ver."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "B1 sınavında A1 ve A2'den farklı olarak ne var?",
+   "options": [
+    "Diğer adayla birlikte planlama bölümü",
+    "Okuma metni",
+    "Gramer testi",
+    "Yazma bölümü"
+   ],
+   "answer": 0,
+   "why": "B1'de diğer adayla bir etkinlik planlanır.",
+   "hint": "Birlikte bir şey yaparsınız."
+  },
+  {
+   "prompt": "B1 sınavı yaklaşık kaç dakikadır?",
+   "options": [
+    "16",
+    "22",
+    "45",
+    "10"
+   ],
+   "answer": 1,
+   "why": "British Council'e göre yaklaşık 22 dakika.",
+   "hint": "A2'den biraz uzun."
+  },
+  {
+   "prompt": "Kalıcı oturumdaki İngilizce seviyesi için ne yapmalısın?",
+   "options": [
+    "Sınava girmeden başvurmak",
+    "Hiçbir şey; hep B1",
+    "Başvurmadan önce GOV.UK'den güncel şartı kontrol etmek",
+    "Arkadaşına sormak"
+   ],
+   "answer": 2,
+   "why": "Seviyenin değişebileceğine dair haberler var; güncel şartı resmî kaynaktan kontrol et.",
+   "hint": "Şartlar değişebilir."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

@@ -1,0 +1,106 @@
+{
+ "id": "en-b1-02",
+ "baslik": "Present Perfect ve Past Simple",
+ "sinif": "B1 · Dilbilgisi",
+ "sure": 14,
+ "ozet": "Deneyimleri ve süregelen durumları present perfect ile, belirli geçmiş zamanı past simple ile anlatmayı öğreneceğiz.",
+ "kazanim": [
+  "Present perfect",
+  "for / since",
+  "already / yet"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Ne zaman hangisi?",
+   "govde": "- **Present perfect** (*have / has + V3*): zamanı belirtilmeyen deneyim, şimdiye kadar süren durum → *I**'ve lived** here **for** five years. I**'ve** never **been** to Wales.*\n- **Past simple**: belirli geçmiş zaman → *I **moved** here **in 2021**. I **went** to Wales **last year**.*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "for, since, already, yet",
+   "govde": "- **for** + süre: *for five years*\n- **since** + başlangıç: *since 2021, since I was 20*\n- **already** (çoktan, olumlu): *I've **already** finished.*\n- **yet** (henüz, olumsuz ve soru): *I haven't finished **yet**. Have you finished **yet**?*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I've lived in this city for five years.",
+     "tr": "Bu şehirde beş yıldır yaşıyorum."
+    },
+    {
+     "metin": "I moved here in 2021.",
+     "tr": "Buraya 2021'de taşındım."
+    },
+    {
+     "metin": "I've worked as a carer since 2022.",
+     "tr": "2022'den beri bakıcı olarak çalışıyorum."
+    },
+    {
+     "metin": "Have you ever done any volunteering?",
+     "tr": "Hiç gönüllü çalıştın mı?"
+    },
+    {
+     "metin": "I haven't passed my driving test yet.",
+     "tr": "Ehliyet sınavını henüz geçmedim."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “How long have you worked in your current job?” diye soruyor. 2023'te başladın.",
+   "cozum": [
+    "Süre sorusu: present perfect.",
+    "Başlangıç noktası: since 2023.",
+    "İstersen past simple ile ayrıntı: I started in 2023."
+   ],
+   "sonuc": "***I've worked there since 2023. I started as a cleaner and now I'm a supervisor.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Belirli zamanla present perfect kullanmak: “I have moved here in 2021.” Belirli geçmiş zamanla **past simple**: *I moved here in 2021.*"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "I live here for five years.",
+    "I lived here since five years.",
+    "I've lived here since five years.",
+    "I've lived here for five years."
+   ],
+   "answer": 3,
+   "why": "Süre: for; şimdiye kadar süren durum: present perfect.",
+   "hint": "for mu since mi?"
+  },
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "I visited Bath last month.",
+    "I have visit Bath last month.",
+    "I visit Bath last month.",
+    "I have visited Bath last month."
+   ],
+   "answer": 0,
+   "why": "Belirli zaman (last month) ile past simple.",
+   "hint": "last month belirli."
+  },
+  {
+   "prompt": "Boşluğu doldur: “I haven't finished my course ----.”",
+   "options": [
+    "already",
+    "yet",
+    "since",
+    "ago"
+   ],
+   "answer": 1,
+   "why": "Olumsuzda “henüz”: yet.",
+   "hint": "Olumsuz cümle."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

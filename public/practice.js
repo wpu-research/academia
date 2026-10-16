@@ -36,7 +36,7 @@ window.PRACTICE = (() => {
     return out;
   }
   // İngilizce kısaltmalar açılır: tanıma "I'm" yazar, kural "i am" bekler.
-  const enExpand = (s) => s.replace(/[’']/g, "'").replace(/\bcan't\b/g, "can not").replace(/\bwon't\b/g, "will not").replace(/n't\b/g, " not")
+  const enExpand = (s) => s.replace(/[’']/g, "'").replace(/\blet's\b/g, "let us").replace(/\bcan't\b/g, "can not").replace(/\bwon't\b/g, "will not").replace(/n't\b/g, " not")
     .replace(/'m\b/g, " am").replace(/'re\b/g, " are").replace(/'ve\b/g, " have").replace(/'ll\b/g, " will").replace(/'d\b/g, " would").replace(/'s\b/g, " is");
   function norm(s, lang = LANG) {
     if (lang.startsWith("en")) s = enExpand(String(s ?? "").toLowerCase());

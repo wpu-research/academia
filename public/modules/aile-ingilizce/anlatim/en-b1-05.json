@@ -1,0 +1,100 @@
+{
+ "id": "en-b1-05",
+ "baslik": "Koşul Cümleleri",
+ "sinif": "B1 · Dilbilgisi",
+ "sure": 12,
+ "ozet": "Gerçek olasılıkları (If it rains, we'll …) ve hayalî durumları (If I had more time, I'd …) anlatmayı öğreneceğiz.",
+ "kazanim": [
+  "First conditional",
+  "Second conditional"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Birinci koşul: gerçek olasılık",
+   "govde": "**If + present simple, will + fiil** → *If it **rains**, we**'ll stay** at home.* / *If I **pass** the test, I**'ll apply** for settlement.*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "İkinci koşul: hayalî durum",
+   "govde": "**If + past simple, would + fiil** → *If I **had** more time, I **would learn** to drive.* / *If I **won** the lottery, I**'d buy** a house.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "If it rains on Saturday, we'll go to the cinema instead.",
+     "tr": "Cumartesi yağmur yağarsa onun yerine sinemaya gideriz."
+    },
+    {
+     "metin": "If I pass this test, I'll be very happy.",
+     "tr": "Bu sınavı geçersem çok mutlu olurum."
+    },
+    {
+     "metin": "If I had more free time, I would join a sports club.",
+     "tr": "Daha çok boş zamanım olsaydı bir spor kulübüne katılırdım."
+    },
+    {
+     "metin": "What would you do if you lived near the sea?",
+     "tr": "Denize yakın yaşasaydın ne yapardın?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “What would you do if you had a free day?” diye soruyor.",
+   "cozum": [
+    "Hayalî durum: would + fiil.",
+    "Bir neden ekle: because …"
+   ],
+   "sonuc": "***If I had a free day, I would go to the seaside with my children because they love the beach.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "if'li kısımda will kullanmak: “If it will rain, we stay.” Doğrusu: **If it rains, we'll stay.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "If it rains, we'll stay at home.",
+    "If it rains, we stay will at home.",
+    "If it rained, we'll stay at home.",
+    "If it will rain, we'll stay at home."
+   ],
+   "answer": 0,
+   "why": "If + present simple, will + fiil.",
+   "hint": "if'li kısımda will yok."
+  },
+  {
+   "prompt": "Boşluğu doldur: “If I ---- more money, I would buy a car.”",
+   "options": [
+    "have",
+    "had",
+    "will have",
+    "would have"
+   ],
+   "answer": 1,
+   "why": "Hayalî durum: If + past simple.",
+   "hint": "İkinci koşul."
+  },
+  {
+   "prompt": "“Zamanım olsaydı kursa giderdim.”",
+   "options": [
+    "If I would have time, I go.",
+    "If I had time, I will go.",
+    "If I had time, I would go to a course.",
+    "If I have time, I would go."
+   ],
+   "answer": 2,
+   "why": "If + past, would + fiil.",
+   "hint": "Hayalî durum."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

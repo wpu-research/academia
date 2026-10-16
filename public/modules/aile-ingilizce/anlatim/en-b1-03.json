@@ -1,0 +1,103 @@
+{
+ "id": "en-b1-03",
+ "baslik": "Fikir Belirtme ve Gerekçelendirme",
+ "sinif": "B1 · Konuşma Becerileri",
+ "sure": 12,
+ "ozet": "Fikrini söylemeyi, örnek vermeyi, katılıp katılmadığını kibarca belirtmeyi öğreneceğiz.",
+ "kazanim": [
+  "Opinions",
+  "Agreeing / disagreeing",
+  "Giving examples"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Fikir söylemek",
+   "govde": "**I think …**, **In my opinion, …**, **I believe …**, **For me, …** Gerekçe: **because …**, **The main reason is …** Örnek: **For example, …**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Katılmak / katılmamak",
+   "govde": "- Katılma: **I agree.** / **That's true.** / **You're right.**\n- Kısmen: **I partly agree, but …**\n- Kibar itiraz: **I see what you mean, but …** / **I'm not sure about that.**\n\nDikkat: “I'm agree” değil, **I agree**."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "In my opinion, public transport should be cheaper.",
+     "tr": "Bence toplu taşıma daha ucuz olmalı."
+    },
+    {
+     "metin": "I think it's important to learn English because it helps you find a job.",
+     "tr": "Bence İngilizce öğrenmek önemli çünkü iş bulmana yardım ediyor."
+    },
+    {
+     "metin": "For example, my neighbour found a job after her English course.",
+     "tr": "Örneğin komşum İngilizce kursundan sonra iş buldu."
+    },
+    {
+     "metin": "I see what you mean, but I'm not sure that's true.",
+     "tr": "Ne demek istediğini anlıyorum ama bunun doğru olduğundan emin değilim."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “Is it better to live in a big city or a small town?” diye soruyor.",
+   "cozum": [
+    "Fikir: In my opinion …",
+    "Gerekçe: because …",
+    "Örnek: For example …",
+    "Karşı tarafı da an: but …"
+   ],
+   "sonuc": "***In my opinion, a small town is better for families because it's safer and quieter. For example, my children can walk to school. But big cities have more jobs.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Fikri gerekçesiz söylemek: “I think city is better.” B1'de **neden**ini ve mümkünse bir **örnek** ver."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "I agree to you with.",
+    "I'm agree with you.",
+    "I agree with you.",
+    "I am agreeing you."
+   ],
+   "answer": 2,
+   "why": "agree fiildir: I agree.",
+   "hint": "be + agree olmaz."
+  },
+  {
+   "prompt": "Kibar itiraz hangisi?",
+   "options": [
+    "No!",
+    "That's stupid.",
+    "You're wrong.",
+    "I see what you mean, but I think …"
+   ],
+   "answer": 3,
+   "why": "Önce karşı tarafı anla, sonra kendi fikrini söyle.",
+   "hint": "Kibar olan."
+  },
+  {
+   "prompt": "Örnek vermek için hangisi kullanılır?",
+   "options": [
+    "For example",
+    "Because",
+    "Although",
+    "Finally"
+   ],
+   "answer": 0,
+   "why": "For example = örneğin.",
+   "hint": "Örnek."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

@@ -1,0 +1,107 @@
+{
+ "id": "en-b1-08",
+ "baslik": "Konuşmayı Yönetmek",
+ "sinif": "B1 · Sınav Stratejileri",
+ "sure": 10,
+ "ozet": "Düşünmek için zaman kazanmayı, söylediğini başka sözlerle açıklamayı ve diğer adaya söz vermeyi öğreneceğiz.",
+ "kazanim": [
+  "Fillers",
+  "Paraphrasing",
+  "Turn-taking"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Düşünmek için zaman kazanmak",
+   "govde": "**Well, …** / **Let me think …** / **That's a good question.** / **It's difficult to say, but …** Sessiz kalmak yerine bunları kullan."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kelimeyi bilmediğinde",
+   "govde": "Kelimeyi tarif et: **It's a kind of …** / **It's something you use for …** / **I don't know the word, but it's like …**"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Well, let me think. That's a good question.",
+     "tr": "Şey, bir düşüneyim. Bu iyi bir soru."
+    },
+    {
+     "metin": "I don't know the word, but it's something you use for cleaning.",
+     "tr": "Kelimeyi bilmiyorum ama temizlik için kullandığın bir şey."
+    },
+    {
+     "metin": "Sorry, do you mean the bus or the train?",
+     "tr": "Pardon, otobüsü mü kastediyorsun, treni mi?"
+    },
+    {
+     "metin": "What do you think? Do you agree?",
+     "tr": "Sen ne düşünüyorsun? Katılıyor musun?"
+    }
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Söz sırası",
+   "govde": "B1'de görevli, iki adayın da konuşmasını ister. Uzun konuştuysan sözü ver: **What about you?** / **What do you think?** Diğer aday konuşurken dinle ve onun söylediğine bağlan: **As you said, …** / **I agree with what you said about …**"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “What's the best way to make friends in a new town?” diye soruyor; hemen cevap aklına gelmiyor.",
+   "cozum": [
+    "Zaman kazan: Well, that's a good question.",
+    "Fikir + gerekçe.",
+    "Sözü ver: What do you think?"
+   ],
+   "sonuc": "***Well, that's a good question. I think joining a class is the best way, because you meet people every week. What do you think?***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Uzun süre sessiz kalmak. Görevli konuşmanı değerlendirir; düşünürken bile **Well, let me think …** demek iletişimi sürdürür."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Düşünmek için zaman kazandıran ifade:",
+   "options": [
+    "Hurry up.",
+    "Well, let me think.",
+    "Goodbye.",
+    "No."
+   ],
+   "answer": 1,
+   "why": "Well, let me think … zaman kazandırır.",
+   "hint": "Doğal bir dolgu ifadesi."
+  },
+  {
+   "prompt": "Kelimeyi bilmediğinde ne dersin?",
+   "options": [
+    "I can't.",
+    "Nothing.",
+    "I don't know the word, but it's something you use for …",
+    "Next question."
+   ],
+   "answer": 2,
+   "why": "Tarif etmek iletişimi sürdürür.",
+   "hint": "Anlatmaya çalış."
+  },
+  {
+   "prompt": "Diğer adaya söz vermek için:",
+   "options": [
+    "Be quiet.",
+    "I'm talking.",
+    "Stop.",
+    "What do you think?"
+   ],
+   "answer": 3,
+   "why": "What do you think? sözü karşı tarafa verir.",
+   "hint": "Ona sor."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

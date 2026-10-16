@@ -1,0 +1,102 @@
+{
+ "id": "en-b1-07",
+ "baslik": "İş, Eğitim ve Eski Alışkanlıklar",
+ "sinif": "B1 · Günlük Hayat",
+ "sure": 12,
+ "ozet": "İş deneyimini, eğitimini ve eskiden yaptıklarını (used to) anlatmayı öğreneceğiz.",
+ "kazanim": [
+  "used to",
+  "Work experience",
+  "Education"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "used to: eskiden",
+   "govde": "Geçmişteki alışkanlık ya da artık sürmeyen durum: *I **used to** live in a village. I **used to** work in a bakery.* Olumsuz: *I **didn't use to** like tea.* Soru: ***Did** you **use to** …?*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "İş ve eğitim kelimeleri",
+   "govde": "**full-time / part-time** (tam / yarı zamanlı), **shift** (vardiya), **experience** (deneyim), **qualification** (yeterlilik belgesi), **training** (eğitim), **apply for a job** (işe başvurmak), **interview** (mülakat)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "In Turkey I used to work as a tailor.",
+     "tr": "Türkiye'de terzi olarak çalışırdım."
+    },
+    {
+     "metin": "Now I work part-time in a supermarket.",
+     "tr": "Şimdi bir süpermarkette yarı zamanlı çalışıyorum."
+    },
+    {
+     "metin": "I'm doing a training course to become a teaching assistant.",
+     "tr": "Öğretmen yardımcısı olmak için bir eğitim kursuna gidiyorum."
+    },
+    {
+     "metin": "I didn't use to speak much English, but now I'm more confident.",
+     "tr": "Eskiden pek İngilizce konuşmazdım ama şimdi daha özgüvenliyim."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “How has your life changed since you came to the UK?” diye soruyor.",
+   "cozum": [
+    "Eskiden: used to …",
+    "Şimdi: present simple / present perfect.",
+    "Bağla: but now …"
+   ],
+   "sonuc": "***I used to stay at home with my children, but now I work part-time and I've made many friends.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "used to'yu şimdiki alışkanlık için kullanmak: “I used to go to the gym every day” (şu an hâlâ gidiyorsan yanlış). Şimdiki alışkanlık: **I usually go to the gym.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Eskiden köyde yaşardım.”",
+   "options": [
+    "I used living in a village.",
+    "I was used to live in a village.",
+    "I used to live in a village.",
+    "I use to live in a village."
+   ],
+   "answer": 2,
+   "why": "used to + yalın fiil.",
+   "hint": "Geçmiş alışkanlık."
+  },
+  {
+   "prompt": "“part-time” ne demek?",
+   "options": [
+    "Tam zamanlı",
+    "Gece vardiyası",
+    "Emekli",
+    "Yarı zamanlı"
+   ],
+   "answer": 3,
+   "why": "part-time = yarı zamanlı.",
+   "hint": "Günün bir kısmı."
+  },
+  {
+   "prompt": "Olumsuz biçim hangisi?",
+   "options": [
+    "I didn't use to drive.",
+    "I didn't used to drove.",
+    "I usedn't drive.",
+    "I not used to drive."
+   ],
+   "answer": 0,
+   "why": "didn't use to + yalın fiil.",
+   "hint": "did ile -d düşer."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

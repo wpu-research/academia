@@ -1,0 +1,102 @@
+{
+ "id": "en-b1-06",
+ "baslik": "Topluluk, Komşular ve Yerel Hizmetler",
+ "sinif": "B1 · Günlük Hayat",
+ "sure": 12,
+ "ozet": "Belediye (council) hizmetleri, komşularla ilişkiler, kibar şikâyet ve gönüllülük hakkında konuşmayı öğreneceğiz.",
+ "kazanim": [
+  "Council services",
+  "Polite complaints",
+  "Volunteering"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Yerel hizmetler",
+   "govde": "**the council** (belediye), **bin collection / recycling** (çöp toplama / geri dönüşüm), **library** (kütüphane), **community centre** (toplum merkezi), **leisure centre** (spor merkezi), **volunteer** (gönüllü), **neighbourhood** (mahalle)."
+  },
+  {
+   "tur": "kural",
+   "baslik": "Kibar şikâyet",
+   "govde": "**I'm sorry to bother you, but …** / **I'm afraid there's a problem with …** / **Could you possibly …?** / **Would you mind + -ing …?** (*Would you mind turning the music down?*)"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I'm sorry to bother you, but your music is quite loud.",
+     "tr": "Rahatsız ettiğim için üzgünüm ama müziğiniz oldukça yüksek."
+    },
+    {
+     "metin": "Would you mind turning it down a little?",
+     "tr": "Biraz kısmanızın sakıncası var mı?"
+    },
+    {
+     "metin": "I'm calling because our bins haven't been collected this week.",
+     "tr": "Bu hafta çöplerimiz toplanmadığı için arıyorum."
+    },
+    {
+     "metin": "I volunteer at a food bank on Saturdays.",
+     "tr": "Cumartesileri bir gıda bankasında gönüllü çalışıyorum."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “What do you think about your neighbourhood?” diye soruyor.",
+   "cozum": [
+    "Genel fikir: I think …",
+    "Olumlu ve olumsuz: … but …",
+    "Örnek: For example, …"
+   ],
+   "sonuc": "***I think it's a friendly neighbourhood. People help each other, for example our neighbour looks after our cat. But there isn't enough parking.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Şikâyeti emirle söylemek: “Turn off the music!” Bu kaba duyulur. **Would you mind turning the music down, please?** daha uygun."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“Would you mind” sonrası fiil:",
+   "options": [
+    "Would you mind to close the door?",
+    "Would you mind closed the door?",
+    "Would you mind close the door?",
+    "Would you mind closing the door?"
+   ],
+   "answer": 3,
+   "why": "Would you mind + -ing.",
+   "hint": "-ing."
+  },
+  {
+   "prompt": "Belediye İngilizcede:",
+   "options": [
+    "the council",
+    "the court",
+    "the embassy",
+    "the bank"
+   ],
+   "answer": 0,
+   "why": "Yerel yönetim: the council.",
+   "hint": "Çöp toplama, kütüphane…"
+  },
+  {
+   "prompt": "Kibar şikâyet başlangıcı:",
+   "options": [
+    "Hey you!",
+    "I'm sorry to bother you, but …",
+    "Listen to me!",
+    "You must stop now."
+   ],
+   "answer": 1,
+   "why": "Önce özür, sonra sorun.",
+   "hint": "Kibar giriş."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}

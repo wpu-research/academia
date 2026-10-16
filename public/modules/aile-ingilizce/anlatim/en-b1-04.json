@@ -1,0 +1,120 @@
+{
+ "id": "en-b1-04",
+ "baslik": "Birlikte Plan Yapmak",
+ "sinif": "B1 · Konuşma Becerileri",
+ "sure": 14,
+ "ozet": "B1'deki planlama bölümü için öneri yapmayı, diğer adayın fikrini sormayı ve birlikte karar vermeyi öğreneceğiz.",
+ "kazanim": [
+  "Suggestions",
+  "Asking for opinions",
+  "Reaching a decision"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Öneri yapmak",
+   "govde": "**Let's …** (Hadi …) · **Shall we …?** (… yapalım mı?) · **How about / What about + -ing?** · **Why don't we …?** · **We could …**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Fikir sormak ve cevap vermek",
+   "govde": "Sor: **What do you think?** / **Do you agree?** / **Is that OK for you?**\nCevap: **Good idea!** / **That sounds great.** / **I'm not sure. Maybe we could … instead.**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Karar vermek",
+   "govde": "**So, we've decided to …** / **OK, let's do that.** / **So we're going to … on Saturday at …**"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Bir planlama konuşması",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Let's organise a picnic for our English class.",
+     "tr": "İngilizce sınıfımız için bir piknik düzenleyelim."
+    },
+    {
+     "metin": "Good idea. Where shall we go?",
+     "tr": "İyi fikir. Nereye gidelim?"
+    },
+    {
+     "metin": "How about the park near the library?",
+     "tr": "Kütüphanenin yanındaki park nasıl?"
+    },
+    {
+     "metin": "I'm not sure. It's quite small. Why don't we go to the lake instead?",
+     "tr": "Emin değilim. Oldukça küçük. Neden onun yerine göle gitmiyoruz?"
+    },
+    {
+     "metin": "OK, that sounds better. What do you think about Saturday?",
+     "tr": "Tamam, bu daha iyi. Cumartesiye ne dersin?"
+    },
+    {
+     "metin": "Saturday is fine. So, we've decided: the lake, on Saturday at eleven.",
+     "tr": "Cumartesi uygun. Yani karar verdik: göl, cumartesi saat on bir."
+    }
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Planlamada neleri konuşursunuz?",
+   "govde": "Genellikle **ne** yapılacağı, **nerede**, **ne zaman**, **kimler** geleceği ve **ne gerekeceği** (yiyecek, ulaşım, para). Her konuda bir öneri yap, diğer adayın fikrini sor ve sonunda kararı özetle."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Diğer aday “Let's have the party at my house.” dedi. Evi küçük; kibarca başka bir yer öner.",
+   "cozum": [
+    "Önce anladığını göster: I see / That's kind of you.",
+    "Endişeni söyle: but your house is quite small.",
+    "Alternatif öner: How about the community centre?"
+   ],
+   "sonuc": "***That's kind of you, but your house is quite small. How about the community centre instead?***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Sadece “OK.” deyip planı karşı tarafa bırakmak. Planlama bölümünde **sen de** öneri yapmalı, soru sormalı ve karar vermeye katılmalısın."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Hangisi öneri cümlesidir?",
+   "options": [
+    "I don't like buses.",
+    "Why don't we take the bus?",
+    "I took the bus.",
+    "The bus is late."
+   ],
+   "answer": 1,
+   "why": "Why don't we …? bir öneridir.",
+   "hint": "Öneri kalıbı."
+  },
+  {
+   "prompt": "“How about” sonrası fiil nasıl olur?",
+   "options": [
+    "How about went to the park?",
+    "How about go to the park?",
+    "How about going to the park?",
+    "How about to go to the park?"
+   ],
+   "answer": 2,
+   "why": "How about / What about + -ing.",
+   "hint": "-ing alır."
+  },
+  {
+   "prompt": "Planlamanın sonunda kararı özetlemek için:",
+   "options": [
+    "Maybe.",
+    "I don't know.",
+    "What do you think?",
+    "So, we've decided to meet at ten."
+   ],
+   "answer": 3,
+   "why": "Kararı özetlemek: So, we've decided …",
+   "hint": "Sonuç cümlesi."
+  }
+ ],
+ "pratik": "lifeskills-b1"
+}
