@@ -1,0 +1,100 @@
+{
+ "id": "en-a2-04",
+ "baslik": "Karşılaştırma",
+ "sinif": "A2 · Dilbilgisi",
+ "sure": 12,
+ "ozet": "İki şeyi karşılaştırmayı (bigger, more expensive) ve en … olanı söylemeyi (the best) öğreneceğiz.",
+ "kazanim": [
+  "Comparatives",
+  "Superlatives"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Karşılaştırma",
+   "govde": "- Kısa sıfat: **-er … than** → *big → big**ger** than, cheap → cheap**er** than*\n- Uzun sıfat: **more … than** → *more expensive than, more beautiful than*\n- Düzensiz: **good → better**, **bad → worse**"
+  },
+  {
+   "tur": "kural",
+   "baslik": "En …",
+   "govde": "- Kısa: **the -est** → *the cheap**est***\n- Uzun: **the most** → *the most expensive*\n- Düzensiz: **the best**, **the worst**"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "London is bigger than my home town.",
+     "tr": "Londra memleketimden daha büyük."
+    },
+    {
+     "metin": "Food is more expensive here than in Turkey.",
+     "tr": "Yiyecek burada Türkiye'den daha pahalı."
+    },
+    {
+     "metin": "The weather in Turkey is better in summer.",
+     "tr": "Türkiye'de hava yazın daha iyi."
+    },
+    {
+     "metin": "This is the cheapest supermarket in our area.",
+     "tr": "Bu, bölgemizdeki en ucuz süpermarket."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “What's the difference between life in Turkey and life in the UK?” diye soruyor.",
+   "cozum": [
+    "Karşılaştır: -er than / more … than.",
+    "Bir neden ya da örnek ekle."
+   ],
+   "sonuc": "***The weather in Turkey is warmer, but life here is quieter. Public transport is more expensive here.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "İki karşılaştırma biçimini birlikte kullanmak: “more bigger”. Doğrusu: **bigger**. Uzun sıfatta da tek biçim: **more expensive** (“expensiver” değil)."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“cheap” sıfatının karşılaştırma hâli:",
+   "options": [
+    "more cheap",
+    "cheaper",
+    "cheapest",
+    "more cheaper"
+   ],
+   "answer": 1,
+   "why": "Kısa sıfat -er alır.",
+   "hint": "Kısa sıfat."
+  },
+  {
+   "prompt": "“good” sıfatının karşılaştırma hâli:",
+   "options": [
+    "best",
+    "gooder",
+    "better",
+    "more good"
+   ],
+   "answer": 2,
+   "why": "good düzensizdir: better.",
+   "hint": "Düzensiz."
+  },
+  {
+   "prompt": "Boşluğu doldur: “It's the ---- shop in town.” (expensive)",
+   "options": [
+    "expensivest",
+    "expensiver",
+    "more expensive",
+    "most expensive"
+   ],
+   "answer": 3,
+   "why": "Uzun sıfatta en …: the most expensive.",
+   "hint": "the most."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

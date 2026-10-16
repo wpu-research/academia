@@ -69,6 +69,56 @@
         },
       ],
     },
+    "lifeskills-a2": {
+      lang: "en-GB", dil: "İngilizce", ad: "Life Skills A2", alanlar: { konusma: "Konuşma" },
+      konusma: [
+        {
+          id: "a2-t1", baslik: "Görevliyle konuş", aciklama: "Geçmişin, planların ve günlük hayatın hakkında daha uzun cevaplar ver.",
+          gorevler: [
+            { id: "a2-t1-1", gorev: "Görevli geçen hafta sonunu soruyor.", soru: sayEn("What did you do last weekend?"), kurallar: [kw("\\bi (went|visited|had|saw|played|watched|cooked|stayed|met|took|did|bought|walked|cleaned)\\b", "Geçmiş zamanla anlat: I went …, I visited …"), kw("\\b(and|then|because|so|but)\\b", "İki şeyi bağla: and, then, because …")], ornek: "On Saturday I went shopping, and on Sunday we visited my sister." },
+            { id: "a2-t1-2", gorev: "Görevli Birleşik Krallık'a ne zaman geldiğini soruyor.", soru: sayEn("When did you come to the UK?"), kurallar: [kw("\\bi came\\b|\\bwe came\\b|\\bi arrived\\b|\\bwe arrived\\b", "“I came …” (come → came)"), kw("(ago|in \\d{4}|last year|last month)", "Zamanı söyle: two years ago, in 2024 …")], ornek: "I came here two years ago, in 2024." },
+            { id: "a2-t1-3", gorev: "Görevli gelecek planlarını soruyor.", soru: sayEn("What are your plans for the future?"), kurallar: [kw("(going to|i would like to|i want to|i will|i am planning|i hope to)", "Plan anlat: I'm going to …, I'd like to …")], ornek: "I'm going to improve my English and then I'd like to work in a school." },
+            { id: "a2-t1-4", gorev: "Görevli memleketini buradaki şehirle karşılaştırmanı istiyor.", soru: sayEn("Is your home town different from the town where you live now?"), kurallar: [kw("(\\w+er than|more \\w+ than|less \\w+ than|\\w+er\\b|more \\w+)", "Karşılaştır: bigger, quieter, more expensive …"), kw("\\b(but|because|and)\\b", "Bir neden ya da fark ekle")], ornek: "Yes, my home town is smaller and warmer, but life here is quieter." },
+            { id: "a2-t1-5", gorev: "Görevli ne zamandır şu anki evinde oturduğunu soruyor.", soru: sayEn("How long have you lived in your home?"), kurallar: [kw("(i have lived|we have lived|for \\d|since)", "“I've lived there for … / since …”")], ornek: "I've lived there for two years." },
+            { id: "a2-t1-6", gorev: "Görevli işini neden sevdiğini ya da sevmediğini soruyor.", soru: sayEn("Do you like your job? Why?"), kurallar: [kw("because", "Nedenini “because” ile söyle")], ornek: "Yes, I do, because my colleagues are friendly and I like helping people." },
+            { id: "a2-t1-7", gorev: "Görevli hiç Birleşik Krallık'ta başka bir şehre gidip gitmediğini soruyor.", soru: sayEn("Have you ever been to another city in the UK?"), kurallar: [kw("^(yes|no)", "“Yes, I have.” ya da “No, I haven't.” ile başla"), kw("(i went|we went|i have been|i have never|never)", "Ayrıntı ver: I went to … last year / I've never …")], ornek: "Yes, I have. I went to Manchester last summer with my family." },
+            { id: "a2-t1-8", gorev: "Görevli en sevdiğin mevsimi ve nedenini soruyor.", soru: sayEn("What's your favourite season and why?"), kurallar: [kw("(spring|summer|autumn|winter)", "Mevsimi söyle"), kw("because", "Nedenini söyle")], ornek: "My favourite season is spring because it's warm and sunny." },
+          ],
+        },
+        {
+          id: "a2-t2", baslik: "Diğer adayla konuş", aciklama: "Soru sor, cevap ver, takip sorusuyla konuşmayı sürdür.",
+          gorevler: [
+            { id: "a2-t2-1", kart: "Last weekend", gorev: "Diğer adaya geçen hafta sonunu sor.", kurallar: [EN_SORU, kw("\\bdid\\b", "Geçmiş soru: What did you do …?")], ornek: "What did you do last weekend?" },
+            { id: "a2-t2-2", kart: "Holidays", gorev: "Diğer adaya tatil planlarını sor.", kurallar: [EN_SORU, kw("(going to|holiday|summer|plan)", "Plan sor: Are you going to …?")], ornek: "Are you going to go on holiday this summer?" },
+            { id: "a2-t2-3", kart: "Living in the UK", gorev: "Diğer adaya burada en çok neyi sevdiğini sor.", kurallar: [EN_SORU, kw("(like|best|enjoy|favourite)", "Sevdiğini sor: What do you like …?")], ornek: "What do you like best about living here?" },
+            { id: "a2-t2-4", gorev: "Diğer aday soruyor. Cevap ver ve bir neden ekle.", soru: sayEn("Do you prefer living in a city or in the countryside?"), kurallar: [kw("(prefer|city|countryside|town|village)", "Tercihini söyle: I prefer …"), kw("because", "Nedenini söyle")], ornek: "I prefer the city because there are more jobs and shops." },
+            { id: "a2-t2-5", gorev: "Diğer aday “I can't sleep well at night.” dedi. Ona tavsiye ver.", soru: sayEn("I can't sleep well at night."), kurallar: [kw("(you should|why do not you|you could|try to)", "Tavsiye ver: You should …")], ornek: "You should stop drinking coffee in the evening." },
+            { id: "a2-t2-6", gorev: "Diğer aday “I went to Wales last summer.” dedi. Kısa bir tepki ver ve takip sorusu sor.", soru: sayEn("I went to Wales last summer."), kurallar: [kw("(really|nice|great|lovely|wow|interesting)", "Kısa bir tepki ver: Really? That's nice."), kw("(what|where|how|did|who|why)", "Bir takip sorusu sor")], ornek: "Really? That's nice. What did you do there?" },
+            { id: "a2-t2-7", gorev: "Diğer adayın önerisine katılıyorsun.", soru: sayEn("Let's meet at the library after the test."), kurallar: [kw("(good idea|great idea|i agree|ok|okay|sounds good|why not|yes)", "Katıl: That's a good idea. / I agree.")], ornek: "That's a good idea. What time shall we meet?" },
+          ],
+        },
+        {
+          id: "a2-t3", alan: "Dinleme", baslik: "Dinle ve konuş", aciklama: "2. bölüm: kaydı dinle, soruyu tam cümleyle cevapla. Not alabilirsin.",
+          gorevler: [
+            { id: "a2-t3-1", gorev: "Kaydı dinle ve soruyu cevapla: Why is the new job better?", soru: sayEn("My new job is better than my old one. The pay is higher and I don't have to work at weekends."), kurallar: [kw("(pay|money|higher)", "Maaştan bahset"), kw("weekend", "Hafta sonunu söyle")], ornek: "Because the pay is higher and she doesn't have to work at weekends." },
+            { id: "a2-t3-2", gorev: "Kaydı dinle ve soruyu cevapla: How long are they staying in Turkey?", soru: sayEn("We're going to Turkey in August to see my parents. We're staying for three weeks."), kurallar: [kw("(3 weeks|three weeks)", "Süreyi söyle")], ornek: "They're staying for three weeks." },
+            { id: "a2-t3-3", gorev: "Kaydı dinle ve soruyu cevapla: What should you bring to register?", soru: sayEn("To register with the GP, please bring a photo ID and a letter with your address on it."), kurallar: [kw("(photo|id|identity)", "Kimliği söyle"), kw("(letter|address)", "Adresli mektubu söyle")], ornek: "You should bring a photo ID and a letter with your address." },
+            { id: "a2-t3-4", gorev: "Kaydı dinle ve soruyu cevapla: When is the next train?", soru: sayEn("The 7.45 train to Cardiff has been cancelled. The next train leaves at 8.15 from platform four."), kurallar: [kw("(8 15|quarter past 8)", "Saati söyle (8.15)")], ornek: "The next train leaves at quarter past eight." },
+            { id: "a2-t3-5", gorev: "Kaydı dinle ve soruyu cevapla: Why didn't she enjoy the film?", soru: sayEn("I didn't enjoy the film. It was too long and the story was boring."), kurallar: [kw("long", "Uzunluğundan bahset"), kw("boring", "Hikâyeyi söyle")], ornek: "Because it was too long and the story was boring." },
+          ],
+        },
+        {
+          id: "a2-tek", baslik: "Dinle ve tekrar et", aciklama: "Cümleyi dinle, aynısını söyle.",
+          gorevler: [
+            ["Last weekend I visited my sister.", "Geçen hafta sonu kız kardeşimi ziyaret ettim."], ["We came to the UK two years ago.", "Birleşik Krallık'a iki yıl önce geldik."],
+            ["Next year I'm going to start an English course.", "Seneye bir İngilizce kursuna başlayacağım."], ["London is bigger than my home town.", "Londra memleketimden daha büyük."],
+            ["You should drink more water.", "Daha çok su içmelisin."], ["I'd like to register with the surgery, please.", "Bu muayenehaneye kayıt olmak istiyorum."],
+            ["I've had a sore throat for three days.", "Üç gündür boğazım ağrıyor."], ["First, we took the train to London.", "Önce Londra'ya trenle gittik."],
+            ["I like living here because people are friendly.", "Burada yaşamayı seviyorum çünkü insanlar arkadaş canlısı."], ["The bus was late, so I walked.", "Otobüs geç kaldı, bu yüzden yürüdüm."],
+          ].map(([tekrar, tr], i) => ({ id: `a2-tek-${i + 1}`, gorev: "Cümleyi dinle ve aynısını söyle.", tekrar, tr })),
+        },
+      ],
+    },
     almanca: {
       konusma: [
         {

@@ -1,0 +1,120 @@
+{
+ "id": "en-a2-06",
+ "baslik": "Sağlık, Okul ve Resmî Hizmetler",
+ "sinif": "A2 · Günlük Hayat",
+ "sure": 14,
+ "ozet": "Aile doktoruna (GP) kayıt, randevu, eczane ve okul görüşmeleri için gereken kalıpları öğreneceğiz.",
+ "kazanim": [
+  "GP",
+  "Pharmacy",
+  "School"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Birleşik Krallık'ta sağlık",
+   "govde": "- **GP (general practitioner)**: aile doktoru; önce bir GP muayenehanesine (**surgery**) kayıt olunur: *I'd like to register with this surgery.*\n- **prescription**: reçete; ilaç **pharmacy / chemist**'ten alınır.\n- İngiltere'de acil olmayan sağlık danışmanlığı için **111**, acil durumlar için **999** aranır."
+  },
+  {
+   "tur": "ses",
+   "baslik": "GP'de",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I'd like to register with the surgery, please.",
+     "tr": "Bu muayenehaneye kayıt olmak istiyorum."
+    },
+    {
+     "metin": "Can I book an appointment with a doctor?",
+     "tr": "Doktordan randevu alabilir miyim?"
+    },
+    {
+     "metin": "I've had a sore throat for three days.",
+     "tr": "Üç gündür boğazım ağrıyor."
+    },
+    {
+     "metin": "Do I need a prescription for this?",
+     "tr": "Bunun için reçete gerekiyor mu?"
+    }
+   ]
+  },
+  {
+   "tur": "ses",
+   "baslik": "Okulda",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I'd like to speak to my son's teacher, please.",
+     "tr": "Oğlumun öğretmeniyle konuşmak istiyorum."
+    },
+    {
+     "metin": "My daughter can't come to school today. She's ill.",
+     "tr": "Kızım bugün okula gelemiyor. Hasta."
+    },
+    {
+     "metin": "What time does school finish?",
+     "tr": "Okul kaçta bitiyor?"
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "for ve since (temel)",
+   "govde": "Bir şeyin ne zamandır sürdüğünü söylerken: *I've had a cough **for** three days.* (üç gündür) / *I've lived here **since** 2023.* (2023'ten beri)"
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "GP resepsiyonunda: oğlunun iki gündür ateşi var ve randevu istiyorsun.",
+   "cozum": [
+    "Randevu: Can I book an appointment …?",
+    "Süre: for two days."
+   ],
+   "sonuc": "***Can I book an appointment for my son, please? He's had a temperature for two days.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Randevuyu “take an appointment” diye söylemek. Doğal kullanım: **make / book an appointment**."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "İngiltere'de acil olmayan sağlık danışmanlığı için hangi numara aranır?",
+   "options": [
+    "112",
+    "155",
+    "999",
+    "111"
+   ],
+   "answer": 3,
+   "why": "NHS 111 acil olmayan durumlar içindir; acil durumda 999.",
+   "hint": "Acil değil."
+  },
+  {
+   "prompt": "“Randevu almak istiyorum.”",
+   "options": [
+    "I'd like to book an appointment.",
+    "I want take appointment.",
+    "I'd like to do a date.",
+    "I book appointment."
+   ],
+   "answer": 0,
+   "why": "book / make an appointment.",
+   "hint": "book fiili."
+  },
+  {
+   "prompt": "“Üç gündür öksürüyorum.”",
+   "options": [
+    "I've a cough from three days.",
+    "I've had a cough for three days.",
+    "I have a cough since three days.",
+    "I had a cough three days."
+   ],
+   "answer": 1,
+   "why": "Süre: for + süre.",
+   "hint": "for mu since mi?"
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

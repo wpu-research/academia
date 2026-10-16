@@ -1,0 +1,106 @@
+{
+ "id": "en-a2-05",
+ "baslik": "Tavsiye, Zorunluluk ve Rica",
+ "sinif": "A2 · Dilbilgisi",
+ "sure": 12,
+ "ozet": "Tavsiye vermeyi (should), zorunluluğu (have to, must) ve kibar ricayı (could) öğreneceğiz.",
+ "kazanim": [
+  "should",
+  "have to / must",
+  "could"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "should: tavsiye",
+   "govde": "*You **should** see a doctor.* (Doktora görünmelisin.) Olumsuz: *You **shouldn't** stay up late.*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "have to / must: zorunluluk",
+   "govde": "- **have to**: kurallar ve dış zorunluluk → *I **have to** work on Saturdays.*\n- **must**: güçlü zorunluluk, işaretler → *You **must** wear a seatbelt.*\n- **don't have to**: gerekmiyor → *You **don't have to** pay. It's free.*"
+  },
+  {
+   "tur": "kural",
+   "baslik": "could: kibar rica",
+   "govde": "***Could** you help me, please?* ***Could** I ask a question?* (Can'den daha kibar.)"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "You should drink more water.",
+     "tr": "Daha çok su içmelisin."
+    },
+    {
+     "metin": "I have to take my son to school every morning.",
+     "tr": "Her sabah oğlumu okula götürmem gerekiyor."
+    },
+    {
+     "metin": "You don't have to bring anything.",
+     "tr": "Bir şey getirmen gerekmiyor."
+    },
+    {
+     "metin": "Could you speak a bit more slowly, please?",
+     "tr": "Biraz daha yavaş konuşabilir misiniz lütfen?"
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Diğer aday “I'm always tired.” diyor. Ona iki tavsiye ver.",
+   "cozum": [
+    "Tavsiye: should.",
+    "İki öneriyi and ile bağla."
+   ],
+   "sonuc": "***You should go to bed earlier and you should drink less coffee.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "**don't have to** ile **mustn't**'ı karıştırmak: *You don't have to pay* = ödemen gerekmiyor (isteğe bağlı); *You mustn't smoke here* = burada sigara içmek yasak."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Arkadaşının başı ağrıyor. Tavsiye:",
+   "options": [
+    "You should take a rest.",
+    "You must to rest.",
+    "You should to rest.",
+    "You have rest."
+   ],
+   "answer": 0,
+   "why": "should + yalın fiil.",
+   "hint": "should'dan sonra to gelmez."
+  },
+  {
+   "prompt": "“Ödemen gerekmiyor, ücretsiz.”",
+   "options": [
+    "You mustn't pay.",
+    "You don't have to pay.",
+    "You shouldn't pay.",
+    "You can't pay."
+   ],
+   "answer": 1,
+   "why": "Gerekmiyor: don't have to.",
+   "hint": "Yasak değil, gerekli değil."
+  },
+  {
+   "prompt": "En kibar rica hangisi?",
+   "options": [
+    "I want help.",
+    "Help me.",
+    "Could you help me, please?",
+    "You help me."
+   ],
+   "answer": 2,
+   "why": "Could you … please? kibar ricadır.",
+   "hint": "could + please."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

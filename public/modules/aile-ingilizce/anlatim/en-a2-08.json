@@ -1,0 +1,101 @@
+{
+ "id": "en-a2-08",
+ "baslik": "Daha Uzun Cevap Vermek",
+ "sinif": "A2 · Sınav Stratejileri",
+ "sure": 10,
+ "ozet": "Cevaplarını “because, so, but” ile uzatmayı ve diğer adaya takip sorusu sormayı öğreneceğiz.",
+ "kazanim": [
+  "Linking words",
+  "Follow-up questions"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Bağlaçlar",
+   "govde": "- **because** (çünkü): *I like my area **because** it's quiet.*\n- **so** (bu yüzden): *It was raining, **so** we stayed at home.*\n- **but** (ama): *The flat is small, **but** it's cheap.*\n- **and** (ve), **also** (ayrıca)"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "I like living here because people are friendly.",
+     "tr": "Burada yaşamayı seviyorum çünkü insanlar arkadaş canlısı."
+    },
+    {
+     "metin": "The bus was late, so I walked.",
+     "tr": "Otobüs geç kaldı, bu yüzden yürüdüm."
+    },
+    {
+     "metin": "My job is hard, but I like it.",
+     "tr": "İşim zor ama seviyorum."
+    },
+    {
+     "metin": "Really? Why did you choose that?",
+     "tr": "Gerçekten mi? Bunu neden seçtin?"
+    }
+   ]
+  },
+  {
+   "tur": "metin",
+   "baslik": "Cevap + neden + ek bilgi",
+   "govde": "A2'de iyi bir cevap üç parçalıdır: **cevap** (*Yes, I do.*), **neden** (*because …*), **ek bilgi** (*I usually …*). Diğer aday konuşunca kısa bir tepki ver (*Really? That's interesting.*) ve bir **takip sorusu** sor (*Why? / How often?*)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “Do you like your neighbourhood?” diye soruyor.",
+   "cozum": [
+    "Cevap: Yes, I do.",
+    "Neden: because it's quiet and near the park.",
+    "Ek bilgi: I often walk there with my children."
+   ],
+   "sonuc": "***Yes, I do, because it's quiet and near a park. I often walk there with my children.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Yalnız “Yes, I do.” deyip susmak. Görevli A2'de daha uzun cevap bekler; **neden** ve **ek bilgi** ekle."
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Boşluğu doldur: “It was cold, ---- I wore a coat.”",
+   "options": [
+    "because",
+    "so",
+    "but",
+    "or"
+   ],
+   "answer": 1,
+   "why": "Sonuç: so.",
+   "hint": "Bu yüzden."
+  },
+  {
+   "prompt": "Boşluğu doldur: “I'm happy here ---- my family is with me.”",
+   "options": [
+    "then",
+    "so",
+    "because",
+    "but"
+   ],
+   "answer": 2,
+   "why": "Neden: because.",
+   "hint": "Çünkü."
+  },
+  {
+   "prompt": "Diğer aday “I play football every week.” dedi. İyi bir takip sorusu:",
+   "options": [
+    "I don't know.",
+    "Football.",
+    "Goodbye.",
+    "Really? Where do you play?"
+   ],
+   "answer": 3,
+   "why": "Kısa tepki + takip sorusu konuşmayı sürdürür.",
+   "hint": "Ona bir soru sor."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

@@ -1,0 +1,109 @@
+{
+ "id": "en-a2-02",
+ "baslik": "Geçmiş Zaman: Past Simple",
+ "sinif": "A2 · Dilbilgisi",
+ "sure": 14,
+ "ozet": "Dün, geçen hafta ya da geçen yıl yaptıklarını anlatmayı; düzenli ve düzensiz fiilleri öğreneceğiz.",
+ "kazanim": [
+  "Past simple",
+  "Irregular verbs"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Düzenli fiiller: -ed",
+   "govde": "*work → work**ed***, *visit → visit**ed***, *live → live**d***, *study → stud**ied***.\n\nOlumsuz: *I **didn't** work.* Soru: ***Did** you work?* (didn't ve did'den sonra fiil yalın kalır.)"
+  },
+  {
+   "tur": "kural",
+   "baslik": "Sık kullanılan düzensiz fiiller",
+   "govde": "**go → went**, **have → had**, **see → saw**, **come → came**, **get → got**, **make → made**, **buy → bought**, **eat → ate**, **take → took**, **meet → met**, **be → was / were**."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Last weekend I visited my sister.",
+     "tr": "Geçen hafta sonu kız kardeşimi ziyaret ettim."
+    },
+    {
+     "metin": "We went to the park and had a picnic.",
+     "tr": "Parka gittik ve piknik yaptık."
+    },
+    {
+     "metin": "I didn't go to work yesterday because I was ill.",
+     "tr": "Dün hasta olduğum için işe gitmedim."
+    },
+    {
+     "metin": "Did you see the doctor?",
+     "tr": "Doktora göründün mü?"
+    },
+    {
+     "metin": "We came to the UK two years ago.",
+     "tr": "Birleşik Krallık'a iki yıl önce geldik."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Zaman ifadeleri",
+   "govde": "**yesterday** (dün), **last week / month / year** (geçen hafta / ay / yıl), **two days ago** (iki gün önce), **in 2024** (2024'te), **when I was a child** (çocukken)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “What did you do last weekend?” diye soruyor. Cumartesi alışverişe gittin, pazar ailenle yemek yedin.",
+   "cozum": [
+    "Geçmiş zaman: go → went, have → had.",
+    "Günleri ekle: On Saturday, on Sunday."
+   ],
+   "sonuc": "***On Saturday I went shopping, and on Sunday I had lunch with my family.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "did'den sonra fiile -ed eklemek: “Did you went?” Doğrusu: **Did you go?** Olumsuzda da: *I didn't **go**.*"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "“go” fiilinin geçmiş hâli hangisi?",
+   "options": [
+    "gone",
+    "going",
+    "goed",
+    "went"
+   ],
+   "answer": 3,
+   "why": "go düzensizdir: went.",
+   "hint": "Düzensiz fiil."
+  },
+  {
+   "prompt": "Hangisi doğru?",
+   "options": [
+    "Did you see him?",
+    "Do you saw him?",
+    "Did you seen him?",
+    "Did you saw him?"
+   ],
+   "answer": 0,
+   "why": "did'den sonra fiil yalın kalır.",
+   "hint": "did + yalın fiil."
+  },
+  {
+   "prompt": "“İki yıl önce” İngilizcede nasıl?",
+   "options": [
+    "since two years",
+    "two years ago",
+    "before two years",
+    "two years before ago"
+   ],
+   "answer": 1,
+   "why": "Geçmişte bir an: … ago.",
+   "hint": "ago sona gelir."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

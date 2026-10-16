@@ -1,0 +1,120 @@
+{
+ "id": "en-a2-07",
+ "baslik": "Bir Olayı Anlatmak",
+ "sinif": "A2 · Günlük Hayat",
+ "sure": 12,
+ "ozet": "Bir deneyimi sırayla anlatmayı (first, then, after that) ve “Have you ever …?” sorularını öğreneceğiz.",
+ "kazanim": [
+  "Sequencing",
+  "Present perfect: ever / never"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Sıra bildiren kelimeler",
+   "govde": "**First** (önce), **then** (sonra), **after that** (ondan sonra), **finally / in the end** (sonunda)."
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "First, we took the train to London.",
+     "tr": "Önce Londra'ya trenle gittik."
+    },
+    {
+     "metin": "Then we visited a museum.",
+     "tr": "Sonra bir müzeyi gezdik."
+    },
+    {
+     "metin": "After that, we had dinner in a Turkish restaurant.",
+     "tr": "Ondan sonra bir Türk restoranında akşam yemeği yedik."
+    },
+    {
+     "metin": "In the end, we got home very late.",
+     "tr": "Sonunda eve çok geç vardık."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Have you ever …?",
+   "govde": "Hayatında hiç … yaptın mı? ***Have you ever** been to Scotland?* Cevap: *Yes, I have. I went there last year.* / *No, I've **never** been there.*\n\nAyrıntı verirken geçmiş zamana geç: *I **went** there last year.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Have you ever been to Scotland?",
+     "tr": "Hiç İskoçya'ya gittin mi?"
+    },
+    {
+     "metin": "Yes, I have. I went there last summer.",
+     "tr": "Evet, gittim. Geçen yaz gittim."
+    },
+    {
+     "metin": "No, I've never been there.",
+     "tr": "Hayır, hiç gitmedim."
+    }
+   ]
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “Tell me about a nice day you had recently.” diyor.",
+   "cozum": [
+    "Ne zaman: last Sunday.",
+    "Sırayla anlat: first, then, after that.",
+    "Bir duygu ekle: It was lovely."
+   ],
+   "sonuc": "***Last Sunday we went to the seaside. First we walked on the beach, then we had fish and chips. It was a lovely day.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "“Have you ever been …?” sorusuna ayrıntı verirken yine present perfect kullanmak: “Yes, I have been there last year.” Belirli zamanla geçmiş zaman gelir: **I went there last year.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Bir hikâyede “ondan sonra” nasıl söylenir?",
+   "options": [
+    "Never",
+    "Ago",
+    "After that",
+    "Before"
+   ],
+   "answer": 2,
+   "why": "After that = ondan sonra.",
+   "hint": "Sıralama kelimesi."
+  },
+  {
+   "prompt": "“Hiç Londra'ya gittin mi?”",
+   "options": [
+    "Did you ever be London?",
+    "Have you ever go to London?",
+    "Were you ever go London?",
+    "Have you ever been to London?"
+   ],
+   "answer": 3,
+   "why": "Have you ever been to …?",
+   "hint": "Present perfect."
+  },
+  {
+   "prompt": "Belirli bir zamanla hangisi doğru?",
+   "options": [
+    "I went there last year.",
+    "I go there last year.",
+    "I've went there last year.",
+    "I have been there last year."
+   ],
+   "answer": 0,
+   "why": "Belirli geçmiş zamanla past simple.",
+   "hint": "last year belirli bir zaman."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

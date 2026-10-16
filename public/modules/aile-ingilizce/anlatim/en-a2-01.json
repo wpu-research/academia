@@ -1,0 +1,72 @@
+{
+ "id": "en-a2-01",
+ "baslik": "Sınavı Tanıyalım: Life Skills A2",
+ "sinif": "A2 · Başlangıç",
+ "sure": 8,
+ "ozet": "Vize uzatmada istenen A2 sınavını ve A1'den farkını öğreneceğiz.",
+ "kazanim": [
+  "Sınav yapısı",
+  "A1 → A2"
+ ],
+ "bolumler": [
+  {
+   "tur": "metin",
+   "baslik": "Ne zaman A2?",
+   "govde": "GOV.UK rehberine göre aile vizesinde **süre uzatma** başvurusunda **A2** İngilizce istenir. British Council'e göre Life Skills A2 sınavı **yalnız Birleşik Krallık'ta** yapılır. Güncel şartı başvurmadan önce GOV.UK'den kontrol et."
+  },
+  {
+   "tur": "kural",
+   "baslik": "A2 sınavı",
+   "govde": "- Yaklaşık **20 dakika**, yine bir görevli ve bir başka adayla.\n- Yine iki bölüm: günlük konularda konuşma; bir kaydı dinleyip üzerine konuşma.\n- A1'den farkı: **geçmişte** yaptıklarını ve **gelecek planlarını** anlatman, nedenini söylemen ve biraz daha uzun konuşman beklenir."
+  },
+  {
+   "tur": "metin",
+   "baslik": "Bu seviyede neye çalışacağız?",
+   "govde": "Geçmiş zaman, gelecek planları, karşılaştırma, tavsiye verme, sağlık ve resmî hizmetler, bir deneyimi sırayla anlatma. Her derste örnek cümleleri dinleyip Konuşma sekmesinde sesli tekrar et."
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "A1'deki gibi tek cümleyle cevap vermek. A2'de **neden** ve **ne zaman** gibi ayrıntılar ekle: *“I went to the park **because** the weather was nice.”*"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Aile vizesinde A2 hangi başvuruda istenir?",
+   "options": [
+    "Süre uzatmada",
+    "Kalıcı oturumda",
+    "Hiçbirinde",
+    "İlk başvuruda"
+   ],
+   "answer": 0,
+   "why": "GOV.UK'ye göre uzatmada A2 istenir.",
+   "hint": "A1 ilk başvuru içindi."
+  },
+  {
+   "prompt": "Life Skills A2 nerede yapılır?",
+   "options": [
+    "Her ülkede",
+    "Yalnız Birleşik Krallık'ta",
+    "Yalnız Türkiye'de",
+    "Çevrim içi"
+   ],
+   "answer": 1,
+   "why": "British Council'e göre A2 yalnız Birleşik Krallık'ta yapılır.",
+   "hint": "Uzatma başvurusu yapanlar zaten orada."
+  },
+  {
+   "prompt": "A2'de A1'den farklı olarak ne beklenir?",
+   "options": [
+    "Tek kelimelik cevaplar",
+    "Yazı yazmak",
+    "Geçmiş ve gelecek hakkında konuşmak",
+    "Okuma metni çözmek"
+   ],
+   "answer": 2,
+   "why": "A2'de geçmişi ve planları anlatman beklenir.",
+   "hint": "Zamanlar."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}

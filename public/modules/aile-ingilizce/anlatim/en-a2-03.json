@@ -1,0 +1,101 @@
+{
+ "id": "en-a2-03",
+ "baslik": "Gelecek Planları",
+ "sinif": "A2 · Dilbilgisi",
+ "sure": 12,
+ "ozet": "Planlarını “going to” ile, kesinleşmiş randevularını şimdiki zamanla, anlık kararları “will” ile anlatmayı öğreneceğiz.",
+ "kazanim": [
+  "going to",
+  "Present continuous for future",
+  "will"
+ ],
+ "bolumler": [
+  {
+   "tur": "kural",
+   "baslik": "Üç yol",
+   "govde": "- **going to**: niyet ve plan → *I**'m going to** look for a job.*\n- **present continuous**: kesin randevu → *I**'m seeing** the doctor on Friday.*\n- **will**: o an verilen karar, teklif → *I**'ll** help you.* / *It's cold. I**'ll** close the window.*"
+  },
+  {
+   "tur": "ses",
+   "baslik": "Dinle",
+   "lang": "en-GB",
+   "satirlar": [
+    {
+     "metin": "Next year I'm going to start an English course.",
+     "tr": "Seneye bir İngilizce kursuna başlayacağım."
+    },
+    {
+     "metin": "We're moving to a bigger flat in June.",
+     "tr": "Haziranda daha büyük bir daireye taşınıyoruz."
+    },
+    {
+     "metin": "I'm meeting my friend after the test.",
+     "tr": "Sınavdan sonra arkadaşımla buluşuyorum."
+    },
+    {
+     "metin": "Don't worry, I'll call you tomorrow.",
+     "tr": "Merak etme, yarın seni ararım."
+    }
+   ]
+  },
+  {
+   "tur": "kural",
+   "baslik": "Zaman ifadeleri",
+   "govde": "**tomorrow** (yarın), **next week / month / year** (gelecek hafta / ay / yıl), **at the weekend** (hafta sonu), **in two weeks** (iki hafta sonra), **soon** (yakında)."
+  },
+  {
+   "tur": "ornek",
+   "baslik": "Çözümlü örnek",
+   "soru": "Görevli “What are your plans for the future?” diye soruyor. İngilizceni geliştirip bir işte çalışmak istiyorsun.",
+   "cozum": [
+    "Plan ve niyet: going to.",
+    "İki plan: and ile bağla."
+   ],
+   "sonuc": "***I'm going to improve my English and I'm going to find a job in a shop.***"
+  },
+  {
+   "tur": "hata",
+   "baslik": "Sık yapılan hata",
+   "govde": "Planı geniş zamanla söylemek: “Next week I visit my mother.” Doğrusu: **Next week I'm going to visit / I'm visiting my mother.**"
+  }
+ ],
+ "kontrol": [
+  {
+   "prompt": "Kesinleşmiş bir randevu için hangisi en uygun?",
+   "options": [
+    "I seeing the dentist tomorrow.",
+    "I see the dentist tomorrow.",
+    "I'm seeing the dentist tomorrow.",
+    "I saw the dentist tomorrow."
+   ],
+   "answer": 2,
+   "why": "Kesin randevu: present continuous.",
+   "hint": "be + -ing."
+  },
+  {
+   "prompt": "Telefon çalıyor, o an karar veriyorsun:",
+   "options": [
+    "I answer it.",
+    "I answered it.",
+    "I'm going to answer it.",
+    "I'll answer it."
+   ],
+   "answer": 3,
+   "why": "Anlık karar: will.",
+   "hint": "O an verilen karar."
+  },
+  {
+   "prompt": "“Seneye” İngilizcede nasıl?",
+   "options": [
+    "next year",
+    "this year ago",
+    "after year",
+    "last year"
+   ],
+   "answer": 0,
+   "why": "next = gelecek; last = geçen.",
+   "hint": "Gelecek yıl."
+  }
+ ],
+ "pratik": "lifeskills-a2"
+}
