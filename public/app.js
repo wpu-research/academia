@@ -321,7 +321,8 @@
   const progHref = (p) => (p.direct ? p.link.href : `#p-${p.slug}`);
   function renderProgram(p) {
     if (p.direct) { location.replace(p.link.href); return; }
-    const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^\d+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
+    const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^%?[\d.,]+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
+    const srcLink = (s) => (s ? `<p class="note src-line">Kaynak: <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></p>` : "");
     const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
     if (p.levels) cta = `<div class="box accent"><h3>Seviyeni seç</h3><p class="note">Her seviyenin kendi seviye tespiti, soru bankası ve konuşma pratiği var.</p>
@@ -348,8 +349,15 @@
         ${p.body.map((b) => `<p>${esc(b)}</p>`).join("")}
         ${p.status ? `<p class="note">${esc(p.status)}</p>` : ""}
         ${p.roadmap ? roadmapView(p) : ""}
+        ${p.examInfo ? `<h2>Sınav bilgisi</h2><dl class="exam-info">${p.examInfo.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>${srcLink(p.examSrc)}` : ""}
         ${p.structure ? `<h2>Sınav yapısı</h2>
-          <div class="table-wrap"><table><tbody>${rows(p.structure)}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}` : ""}
+          <div class="table-wrap"><table>${p.structureHead ? `<thead><tr>${p.structureHead.map((h, i) => `<th${i ? ' class="num"' : ""}>${esc(h)}</th>`).join("")}</tr></thead>` : ""}<tbody>${rows(p.structure)}${p.structureTotal ? `<tr class="total">${p.structureTotal.map((x, i) => `<td${i ? ' class="num"' : ""}><b>${esc(x)}</b></td>`).join("")}</tr>` : ""}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}${srcLink(p.examSrc)}` : ""}
+        ${p.steps ? `<h2>Program nasıl çalışır</h2><ol class="prog-steps">${p.steps.map(([h, t]) => `<li><b>${esc(h)}</b><span>${esc(t)}</span></li>`).join("")}</ol>` : ""}
+        ${p.sampleQuiz ? sampleQuizView(p) : ""}
+        ${p.audience ? `<h2>Kimler için</h2><ul>${p.audience.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
+        ${p.faq ? `<h2>Sık sorulan sorular</h2><div class="faq">${p.faq.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</div>` : ""}
+        ${p.sampleQuiz && p.engine ? `<div class="box accent prog-cta"><h3>Ücretsiz Seviye Tespit</h3><p class="note">${DIAG_SIZE} soruda alan alan durumunu gör; ardından kişisel planın, hata defterin ve denemen hazır. Kayıt gerekmez, ilerlemen bu tarayıcıda saklanır.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#ogren-${p.engine}" data-tab="tani">Seviye tespitine başla</a><a class="btn btn-outline" href="#ogren-${p.engine}" data-tab="deneme">Kişisel denemeyi gör</a></div></div>` : ""}
         ${p.levelsTable ? `<h2>Seviyeler</h2><div class="table-wrap"><table><thead><tr><th>Seviye</th><th>Kimler için</th><th>Konular</th></tr></thead><tbody>${rows(p.levelsTable)}</tbody></table></div>` : ""}
         ${p.game ? `<h2>Nasıl oynanır</h2><ul>${p.game.map((g) => `<li>${esc(g)}</li>`).join("")}</ul>` : ""}
         ${MODULES.includes(p.slug) ? `<h2>Dersler</h2><div class="lesson-list" id="lesson-list"><p class="muted">Dersler yükleniyor…</p></div>
@@ -362,10 +370,47 @@
         ${cta}
         ${p.facts ? `<div class="box"><h3>Başvuru bilgisi</h3><ul class="facts">${p.facts.map((f) => `<li>${esc(f.text)} <a href="${esc(f.src)}" target="_blank" rel="noopener">${esc(f.label)}</a></li>`).join("")}</ul><p class="note">Şartlar değişebilir; başvurmadan önce konsolosluktan kontrol et.</p></div>` : ""}
         ${p.voiceCredit ? `<p class="note">${esc(p.voiceCredit)}</p>` : ""}
+        ${p.advisorField ? advisorBox(p.advisorField) : ""}
         ${METHOD_PROGS.includes(p.slug) ? `<div class="box"><h3>Soru Zekâsı</h3><p class="note">Bu programda konular en küçük birimine ayrılır, geçmiş sorular ölçülür ve planın her gün sınav ağırlığı ile senin zayıflığına göre yeniden kurulur.</p><a href="#yontem">Yöntemimizi incele →</a></div>` : ""}
         ${others.length ? `<div class="box"><h3>${esc(groupLabel[p.group])}</h3>${others.map((o) => `<a href="${esc(progHref(o))}">${esc(o.title)}</a>`).join("")}</div>` : ""}
       </aside>
     </div></div>`;
+  }
+
+  // Program sayfasındaki örnek sorular: motora kaydedilmez, yalnız soruyu ve dayandığı maddeyi gösterir.
+  const articleRef = (e) => (e.match(/^(.+? m\.\s?\d+(?:\/\d+)?(?:-[a-zç])?)/) || [])[1];
+  const cap = (t) => t.charAt(0).toLocaleUpperCase("tr") + t.slice(1);
+  function sampleQuizView(p) {
+    const items = p.sampleQuiz.map((id) => A.exams[p.engine].items.find((x) => x.id === id)).filter(Boolean);
+    return `<h2>Örnek sorular</h2>
+      <p>Programdaki sorulardan beşi. Cevabını seç; doğru cevap ve dayandığı kanun maddesi hemen görünür. <span class="muted" id="sq-score" aria-live="polite"></span></p>
+      <div class="sq" data-n="${items.length}">${items.map((it, n) => {
+        const ref = articleRef(it.e);
+        return `<div class="question sq-item" data-a="${it.a}">
+          <div class="q-top"><div class="chips"><span class="chip chip-line">${esc(it.alan)}</span></div><span class="muted num">${n + 1} / ${items.length}</span></div>
+          <p class="q-text">${esc(it.q)}</p>
+          <div class="opts">${it.o.map((o, i) => `<button type="button" class="opt" data-act="sq" data-i="${i}"><span class="letter">${LETTERS[i]}</span><span>${esc(o)}</span></button>`).join("")}</div>
+          <div class="explain" hidden><strong></strong>${ref ? `<span class="chip chip-brand sq-ref">${esc(ref)}</span>` : ""}<span>${esc(ref && it.e.startsWith(ref + ":") ? cap(it.e.slice(ref.length + 1).trim()) : it.e)}</span></div>
+        </div>`;
+      }).join("")}</div>
+      <p class="note">Sorular özgün yazılmıştır, gerçek ÖSYM sorusu değildir. Öğrenme alanında bu sorular güven işaretiyle çözülür ve planına işlenir.</p>`;
+  }
+  function advisorBox(field) {
+    const list = A.advisors.filter((a) => a.field === field);
+    if (!list.length) return "";
+    return `<div class="box"><h3>${esc(field)} danışmanlarımız</h3>
+      <div class="adv-mini">${list.map((a) => `<figure><img src="img/team/${a.photo}.jpg" alt="${esc(a.name)}" width="320" height="320" loading="lazy"><figcaption>${esc(advisorName(a))}</figcaption></figure>`).join("")}</div>
+      <p class="note">Programın içeriğini alanında uzman danışmanlarımız yönlendirir.</p></div>`;
+  }
+
+  // Sayfa başlığı ve açıklaması (rotaya göre). Bağlantı önizlemesi JS çalıştırmadığı için og: etiketleri yalnız tarayıcı içinde güncellenir.
+  const META0 = { title: document.title, desc: document.querySelector('meta[name="description"]')?.content || "" };
+  function setMeta(title, desc) {
+    document.title = title || META0.title;
+    const d = desc || META0.desc;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", d);
+    document.querySelector('meta[property="og:title"]')?.setAttribute("content", title || META0.title);
+    document.querySelector('meta[property="og:description"]')?.setAttribute("content", d);
   }
 
   function renderModule(slug) {
@@ -1170,6 +1215,8 @@
   $app.addEventListener("click", (ev) => {
     const jump = ev.target.closest("a[data-to]");
     if (jump) { ev.preventDefault(); document.getElementById(jump.dataset.to)?.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }); return; }
+    const tabLink = ev.target.closest("a[data-tab]");
+    if (tabLink) { pendingTab = tabLink.dataset.tab; return; }
     const el = ev.target.closest("[data-act]");
     if (!el || el.disabled) return;
     const act = el.dataset.act;
@@ -1177,6 +1224,18 @@
     const data = store.data[examId];
 
     if (act === "slide") { slideIdx = +el.dataset.i; updateSlide(); startSlides(); return; }
+    if (act === "sq") {
+      const box = el.closest(".sq-item"), a = +box.dataset.a, i = +el.dataset.i, ok = i === a;
+      box.querySelectorAll(".opt").forEach((b, j) => { b.disabled = true; if (j === a) b.classList.add("correct"); else if (j === i) b.classList.add("wrong"); });
+      const ex = box.querySelector(".explain");
+      ex.hidden = false; ex.classList.add(ok ? "ok" : "no");
+      ex.querySelector("strong").textContent = `${ok ? "Doğru" : "Yanlış"}. Doğru cevap ${LETTERS[a]}.`;
+      box.dataset.ok = ok ? "1" : "0";
+      const all = [...document.querySelectorAll(".sq-item")], done = all.filter((b) => b.dataset.ok);
+      const sc = document.getElementById("sq-score");
+      if (sc && done.length === all.length) sc.textContent = `Sonuç: ${done.filter((b) => b.dataset.ok === "1").length} / ${all.length} doğru.`;
+      return;
+    }
     if (act === "exam") { store.exam = el.dataset.id; session = null; resetArmed = false; save(); location.hash = "ogren-" + store.exam; return; }
     if (act === "tab") { store.tab = el.dataset.id; if (session && (session.kind !== store.tab || session.finished)) session = null; resetArmed = false; save(); renderApp(); window.scrollTo({ top: 0 }); return; }
     if (act === "own") { store.data[examId] = emptyData(); session = null; store.tab = "tani"; save(); renderApp(); return; }
@@ -1325,7 +1384,7 @@
 
   // ---------- Yönlendirme ----------
   const SECTIONS = ["egitimler", "kurumsal", "hakkimizda", "iletisim"];
-  let current = null;
+  let current = null, pendingTab = null;
   function route() {
     const h = location.hash.replace(/^#/, "");
     if (h.startsWith("p-") && bySlug[h.slice(2)]) return { view: "program", slug: h.slice(2) };
@@ -1343,9 +1402,12 @@
     clearTimeout(tipTimer);
     setMega(false); nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false");
     const key = r.view + (r.slug || "") + (r.id || "");
+    const prog = r.view === "program" ? bySlug[r.slug] : null;
+    setMeta(prog ? prog.seo?.title || `${prog.title} | Macademia` : null, prog ? prog.seo?.description || prog.summary : null);
     if (r.view === "app") {
       if (r.exam && examOn(r.exam) && r.exam !== store.exam) { store.exam = r.exam; session = null; save(); }
       if (r.exam && examOn(r.exam) && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
+      if (pendingTab) { store.tab = pendingTab; session = null; pendingTab = null; save(); } // program sayfasındaki sekme bağlantısı
       renderApp();
     } else if (r.view === "program") { renderProgram(bySlug[r.slug]); if (bySlug[r.slug].engine && A.examCalendar?.sessions[bySlug[r.slug].engine]) scheduleTip("program", bySlug[r.slug].engine); }
     else if (r.view === "module") renderModule(r.slug);

@@ -128,12 +128,61 @@ ACADEMIA.programs = [
   },
   {
     slug: "hmgs", group: "sinav", title: "HMGS Hazırlık", engine: "hmgs",
-    fact: "Hukuk Mesleklerine Giriş Sınavı",
+    fact: "120 soru · 155 dakika · 20 hukuk alanı",
     summary: "Öğrenme motorumuzun ilk uygulandığı program: kaynak maddeye dayanan sorular, hata defteri ve kaynak gösteren çalışma koçu.",
     body: [
+      "Hukuk Mesleklerine Giriş Sınavı'nda 120 soru, yönetmelikte sabitlenmiş oranlarla 20 hukuk alanına dağılır. Program önce hangi alanda ne kadar hazır olduğunu ölçer, sonra çalışma süreni bu orana ve senin eksiklerine göre böler.",
       "Macademia'nın kişisel çalışma motoru ilk olarak HMGS için geliştirildi. Her soru dayandığı kanun maddesiyle birlikte gelir; yanlış cevaptan sonra nedenini işaretlersin ve bu bilgi programına geri döner.",
       "Yapay zekâ ile hazırlanan soru taslakları, yayına girmeden önce bir hukukçu tarafından incelenir.",
     ],
+    // Resmî rakamlar yalnız ÖSYM kılavuzundan; doğrulanamayan bilgi eklenmez. Kontrol: 2026-10-18.
+    examInfo: [
+      ["Soru ve süre", "Çoktan seçmeli 120 soru, cevaplama süresi 155 dakika"],
+      ["Puanlama", "Yalnız doğru cevaplar sayılır, yanlışlar doğruyu götürmez. 100 puan üzerinden en az 70 alan başarılı sayılır"],
+      ["Kimler girebilir", "Hukuk fakültesi mezunları ve yabancı hukuk fakültesi mezunu olup denklik belgesi alanlar"],
+      ["2026 oturumları", "2026-HMGS/1: 26 Nisan 2026 · 2026-HMGS/2: 27 Eylül 2026"],
+    ],
+    examSrc: { label: "ÖSYM 2026 HMGS ve İYÖS Başvuru Kılavuzu", url: "https://dokuman.osym.gov.tr/pdfdokuman/2026/HMGS-1/bkilavuz09032026.pdf" },
+    structureHead: ["Alan", "Oran", "Soru"],
+    structure: [
+      ["Anayasa Hukuku", "%5", "6"], ["Anayasa Yargısı", "%2,5", "3"],
+      ["İdare Hukuku", "%5", "6"], ["İdari Yargılama Usulü", "%2,5", "3"],
+      ["Medeni Hukuk", "%12,5", "15"], ["Borçlar Hukuku", "%10", "12"], ["Ticaret Hukuku", "%10", "12"],
+      ["Hukuk Yargılama Usulü", "%10", "12"], ["İcra ve İflas Hukuku", "%5", "6"],
+      ["Ceza Hukuku", "%7,5", "9"], ["Ceza Yargılama Usulü", "%5", "6"],
+      ["İş ve Sosyal Güvenlik Hukuku", "%5", "6"], ["Vergi Hukuku", "%2,5", "3"], ["Vergi Usul Hukuku", "%2,5", "3"],
+      ["Avukatlık Hukuku", "%2,5", "3"], ["Hukuk Felsefesi ve Sosyolojisi", "%2,5", "3"], ["Türk Hukuk Tarihi", "%2,5", "3"],
+      ["Milletlerarası Hukuk", "%2,5", "3"], ["Milletlerarası Özel Hukuk", "%2,5", "3"], ["Genel Kamu Hukuku", "%2,5", "3"],
+    ],
+    structureTotal: ["Toplam", "%100", "120"],
+    structureNote: "Oranlar kılavuzdaki alan dağılımıdır; soru sayısı oranın 120 soruya karşılığıdır. Demo motoru bu 20 alanı 8 çalışma grubunda toplar ve ağırlıkları etiketlediğimiz 340 geçmiş sorudan alır.",
+    steps: [
+      ["Seviye tespiti", "10 soruluk ilk ölçüm, soruları sınavdaki alan oranlarına göre dağıtır. Her soruda önce ne kadar emin olduğunu işaretlersin."],
+      ["Alan ustalığı, belirsizliğiyle", "Her alan için ustalık bir aralıkla gösterilir. Az soru çözdüğün alanda aralık geniştir; tek bir yüzdeye ya da puan tahminine indirgenmez."],
+      ["Kişisel plan", "Günlük soru hedefin, alanın sınavdaki ağırlığı ile senin zayıflığına göre her gün yeniden sıralanır."],
+      ["Hata defteri", "Yanlış cevaptan sonra nedenini seçersin: bilgi eksiği, kavram karışıklığı, istisnayı kaçırma, süre baskısı… Defter nedene ve alana göre ayrılır."],
+      ["Tekrar takvimi", "Yanlış yaptığın sorular kısa aralıkla, doğru bildiklerin giderek uzayan aralıklarla geri gelir."],
+      ["Gerçek dağılımla deneme", "Kişisel deneme, soruları sınavın alan dağılımına ve soru başına süresine göre kurar. Hangi soruların çıkacağını tahmin etmez."],
+    ],
+    // Program sayfasındaki örnek sorular (exams.hmgs.items içinden, farklı alanlardan).
+    sampleQuiz: ["h-an1", "h-me1", "h-bo1", "h-us3", "h-ce2"],
+    audience: [
+      "HMGS'ye ilk kez girecek hukuk fakültesi mezunları",
+      "Daha önce girip 70 puan barajını geçemeyen ve eksiklerini alan alan görmek isteyenler",
+      "Çalışma saatini kısıtlı zamanda en çok soru getiren alanlara ayırmak isteyenler",
+    ],
+    faq: [
+      ["Yanlış cevaplar doğruları götürür mü?", "Hayır. ÖSYM kılavuzuna göre değerlendirmede yalnız doğru cevaplar dikkate alınır; her sorunun değeri eşittir ve 100 puan üzerinden en az 70 alan başarılı sayılır. Boş bırakılan soru puan getirmez."],
+      ["Sorular gerçek sınavdan mı?", "Hayır. Sınav sorularının telif hakkı ÖSYM'ye aittir. Programdaki sorular özgün yazılır, her biri dayandığı kanun maddesini gösterir; yapay zekâ ile hazırlanan taslaklar yayından önce bir hukukçu tarafından incelenir."],
+      ["Çıkacak soruları tahmin ediyor musunuz?", "Hayır. Denemeler sınavın resmî alan dağılımına göre kurulur. Amaç, gerçek sınavla aynı dağılımda kendini ölçmen ve eksik alanını erken görmendir."],
+      ["Bana puan ya da baraj tahmini veriyor musunuz?", "Hayır. Ustalık her zaman belirsizlik aralığıyla ve çözdüğün soru sayısıyla gösterilir. Az veriden kesin görünen bir puan üretmek seni yanıltır."],
+      ["Bir sonraki HMGS ne zaman?", "2026'da iki oturum yapıldı: 26 Nisan ve 27 Eylül. 2027 tarihleri ÖSYM sınav takviminde açıklanır; sayfadaki geri sayım takvim açıklanınca güncellenir."],
+    ],
+    advisorField: "Hukuk",
+    seo: {
+      title: "HMGS Hazırlık · Hukuk Mesleklerine Giriş Sınavı | Macademia",
+      description: "HMGS'ye seviye tespitiyle başla: 20 hukuk alanının resmî dağılımına göre kişisel plan, kanun maddesi gösteren sorular, nedenli hata defteri ve gerçek dağılımla deneme.",
+    },
   },
   {
     slug: "yds", group: "sinav", title: "YDS Hazırlık",
