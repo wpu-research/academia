@@ -16,6 +16,7 @@ ACADEMIA.advisors = [
   { photo: "murat", name: "Murat Arslan", title: "PhD", field: "Robotik ve Kodlama" },
   { photo: "aida", name: "Aida Ariannejad", title: "PhD", field: "İngilizce" },
   { photo: "asli", name: "Aslı Bildir", title: "Av.", field: "Hukuk" },
+  { photo: "erman", name: "Erman Keskin", title: "Av.", field: "Hukuk" },
   { photo: "ebru", name: "Ebru Çakır", title: "MSc", field: "Matematik" },
   { photo: "ali", name: "Ali Şahin", title: "Dr.", field: "Tıp (TUS)" },
 ];

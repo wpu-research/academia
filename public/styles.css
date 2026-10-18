@@ -596,7 +596,7 @@ details.how ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 4px; 
 }
 
 /* ---------- Danışmanlar ---------- */
-.advisors { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
+.advisors { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 20px; }
 .advisor { margin: 0; display: grid; gap: 12px; justify-items: center; text-align: center; padding: 20px 14px 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
 .advisor img { width: 132px; height: 132px; max-width: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px var(--brand-soft), 0 0 0 5px var(--line); }
 .advisor figcaption { display: grid; gap: 8px; justify-items: center; }
