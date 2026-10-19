@@ -215,6 +215,7 @@ label.field { display: grid; gap: 6px; font-size: 13px; font-weight: 500; }
 .prog-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding-block: 24px 56px; }
 .prog-hero h1 { font-size: clamp(30px, 4vw, 44px); margin: 10px 0 14px; }
 .prog-hero .lead { font-size: 17px; color: var(--muted); }
+.prog-hero .hero-actions { align-items: center; }
 .prog-hero .card-img { border-radius: var(--radius); }
 .prog-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 48px; padding-block: 56px 88px; }
 .prose { display: grid; gap: 16px; max-width: 66ch; align-content: start; }

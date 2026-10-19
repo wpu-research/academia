@@ -20,6 +20,104 @@ const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; cha
 // index.html artifact iskeletine göre yazıldı (doctype/viewport yok); sunucu sürümünde eklenir.
 const INDEX = `<!doctype html>\n<html lang="tr">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n${fs.readFileSync(path.join(ROOT, "index.html"), "utf8")}\n</html>\n`;
 
+// ---------- Paylaşılabilir adresler ve bağlantı önizlemesi ----------
+// WhatsApp, Telegram, LinkedIn ve arama motoru botları JS çalıştırmaz ve #… kısmını görmez. Bu yüzden
+// /program/<slug> ve bölüm adresleri (/hakkimizda …) sunucuda, <head> o sayfaya göre yazılmış index.html ile döner.
+// İstemci (app.js) açılışta adresi ilgili #… görünümüne çevirir.
+const vm = require("node:vm");
+const SITE = (process.env.SITE_URL?.trim() || "https://www.macademia.com.tr").replace(/\/+$/, "");
+const escAttr = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// data.js tarayıcıda window.ACADEMIA'ya yazar; açılışta bir kez, boş bir vm bağlamında çalıştırılır (kullanıcı girdisi yok).
+function loadAcademia() {
+  const ctx = vm.createContext({});
+  ctx.window = ctx;
+  vm.runInContext(fs.readFileSync(path.join(ROOT, "data.js"), "utf8"), ctx, { filename: "data.js", timeout: 2000 });
+  return ctx.ACADEMIA;
+}
+const ACADEMIA = loadAcademia();
+// İstemcideki bySlug ile aynı küme: etkin ve "yakında" olmayan programlar.
+const PROGRAMS = ACADEMIA.programs.filter((p) => p.active !== false && !p.soon);
+const PROGRAM_BY_SLUG = new Map(PROGRAMS.map((p) => [p.slug, p]));
+
+// index.html'deki varsayılan etiketler tek kaynak; ana sayfa ve bilinmeyen değerler buradan gelir.
+const pick = (re) => (INDEX.match(re)?.[1] ?? "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+const DEFAULT_META = {
+  title: pick(/<title>([^<]*)<\/title>/),
+  description: pick(/<meta name="description" content="([^"]*)">/),
+  ogTitle: pick(/<meta property="og:title" content="([^"]*)">/),
+  ogDescription: pick(/<meta property="og:description" content="([^"]*)">/),
+  image: "/img/og.jpg",
+  imageAlt: pick(/<meta property="og:image:alt" content="([^"]*)">/),
+  path: "/",
+};
+// Bu satırlar her sayfa için yeniden üretilir; INDEX'teki karşılıkları çıkarılır ve yerlerine tek blok konur.
+const META_LINE = /^(<title>.*<\/title>|<meta name="description"[^>]*>|<link rel="canonical"[^>]*>|<meta (property="og:|name="twitter:)[^>]*>|<!-- Bağlantı önizlemesi[^>]*-->)\n/gm;
+const SHELL = (() => {
+  let first = true;
+  return INDEX.replace(META_LINE, () => (first ? ((first = false), "<!--META-->\n") : ""))
+    // /program/… gibi alt adreslerde göreli dosya yolları (styles.css, data.js) kökten çözülsün.
+    .replace('<meta charset="utf-8">\n', '<meta charset="utf-8">\n<base href="/">\n');
+})();
+
+const SECTION_META = {
+  egitimler: { title: "Eğitimler | Macademia", description: "TUS, HMGS, YDS, Aile Birleşimi (Almanca, İngilizce), Robotik, Kodlama ve Matematik: her programda seviye tespiti, kişisel plan ve ilerleme takibi." },
+  hakkimizda: { title: "Hakkımızda | Macademia", description: "Macademia'nın çalışma motoru ilk olarak HMGS için geliştirildi; bugün TUS ve YDS'de de seviye tespitinden günlük plana kadar her adımı yönetiyor." },
+  yontem: { title: "Yöntemimiz | Macademia", description: "Konuları en küçük birimine ayırır, geçmiş soruları ölçer, her cevabı birime ve tuzağa bağlar, neye önce çalışılacağını sınarız." },
+  kurumsal: { title: "Kurumsal Eğitimler | Macademia", description: "Okullar ve kurumlar için öğretmen paneli: sınıfları, ödevleri ve öğrenci ilerlemesini tek yerden yönetin." },
+  iletisim: { title: "İletişim | Macademia", description: "Program seçimi, kurum teklifi ya da birebir ders için bilgilerinizi bırakın, size ulaşalım." },
+};
+
+function programMeta(p) {
+  const title = p.seo?.title || `${p.title} | Macademia`;
+  const description = p.seo?.description || p.summary;
+  const og = fs.existsSync(path.join(ROOT, "img", "og", `${p.slug}.png`)) ? `/img/og/${p.slug}.png` : null;
+  return {
+    title, description, ogTitle: title, ogDescription: [p.fact, description].filter(Boolean).join(" · "),
+    image: og || DEFAULT_META.image, imageAlt: og ? `Macademia · ${p.title}` : DEFAULT_META.imageAlt,
+    path: `/program/${p.slug}`,
+    // Kendi sitesi olan program (Robotik) için asıl adres o site.
+    canonical: p.direct ? p.link.href : null,
+  };
+}
+
+function headFor(m, { noindex = false } = {}) {
+  const url = m.canonical || SITE + m.path;
+  const img = SITE + m.image;
+  return [
+    `<title>${escAttr(m.title)}</title>`,
+    `<meta name="description" content="${escAttr(m.description)}">`,
+    noindex ? `<meta name="robots" content="noindex">` : `<link rel="canonical" href="${escAttr(url)}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:site_name" content="Macademia">`,
+    `<meta property="og:locale" content="tr_TR">`,
+    `<meta property="og:url" content="${escAttr(url)}">`,
+    `<meta property="og:title" content="${escAttr(m.ogTitle || m.title)}">`,
+    `<meta property="og:description" content="${escAttr(m.ogDescription || m.description)}">`,
+    `<meta property="og:image" content="${escAttr(img)}">`,
+    `<meta property="og:image:width" content="1200">`,
+    `<meta property="og:image:height" content="630">`,
+    `<meta property="og:image:alt" content="${escAttr(m.imageAlt)}">`,
+    `<meta name="twitter:card" content="summary_large_image">`,
+    `<meta name="twitter:title" content="${escAttr(m.ogTitle || m.title)}">`,
+    `<meta name="twitter:description" content="${escAttr(m.ogDescription || m.description)}">`,
+    `<meta name="twitter:image" content="${escAttr(img)}">`,
+  ].join("\n");
+}
+// app.js gezinmede başlığı varsayılana döndürürken bunları kullanır (açılış sayfasının başlığını değil).
+const HTML_ATTRS = `<html lang="tr" data-meta-title="${escAttr(DEFAULT_META.title)}" data-meta-desc="${escAttr(DEFAULT_META.description)}">`;
+const renderPage = (m, opts) => SHELL.replace("<!--META-->", () => headFor(m, opts)).replace('<html lang="tr">', HTML_ATTRS);
+
+// Sayfalar açılışta bir kez hazırlanır; istek sırasında yalnız eşleme yapılır.
+const PAGES = new Map([["/", renderPage(DEFAULT_META)]]);
+for (const p of PROGRAMS) PAGES.set(`/program/${p.slug}`, renderPage(programMeta(p)));
+for (const [id, s] of Object.entries(SECTION_META)) PAGES.set(`/${id}`, renderPage({ ...DEFAULT_META, ...s, ogTitle: s.title, ogDescription: s.description, path: `/${id}` }));
+const NOT_FOUND = renderPage({ ...DEFAULT_META, title: "Sayfa bulunamadı | Macademia", description: "Aradığınız sayfa bulunamadı. Macademia programlarına ana sayfadan ulaşabilirsiniz.", ogTitle: null, ogDescription: null }, { noindex: true });
+
+const SITEMAP_PATHS = ["/", ...PROGRAMS.filter((p) => !p.direct).map((p) => `/program/${p.slug}`), ...Object.keys(SECTION_META).map((id) => `/${id}`)];
+const SITEMAP = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${SITEMAP_PATHS.map((p) => `  <url><loc>${escAttr(SITE + p)}</loc></url>`).join("\n")}\n</urlset>\n`;
+const ROBOTS = `User-agent: *\nAllow: /\nDisallow: /api/\n\nSitemap: ${SITE}/sitemap.xml\n`;
+
 const SYSTEM = `Sen Mac'sin: Macademia eğitim platformunun yardımcısısın. Neşeli, meraklı, makademya cevizi görünümünde bir karaktersin; adın sorulursa "Ben Mac" dersin. Kendini robot olarak tanıtma. Macademia'da 5 yaşından yetişkinlere kadar öğrenciler var: Robotik, Kodlama ve Matematik programlarında oyunlu görevlerle öğrenen çocuklar ve gençler; TUS, HMGS ve YDS'ye hazırlanan gençler ve yetişkinler; aile birleşimi için Almanca A1 sınavına hazırlanan yetişkinler. Öğrencinin o an açık olan sayfasının köşesindeki küçük bir sohbet panelinde konuşuyorsun.
 
 # Nasıl yardım edersin
@@ -192,15 +290,22 @@ function answerGuard(hide) {
 }
 
 function serveStatic(req, res) {
-  const url = decodeURIComponent(new URL(req.url, "http://x").pathname);
-  if (url === "/" || url === "/index.html") {
-    res.writeHead(200, { "content-type": MIME[".html"], "cache-control": "no-cache" });
-    return res.end(INDEX);
-  }
+  let url;
+  try { url = decodeURIComponent(new URL(req.url, "http://x").pathname); } catch { res.writeHead(400); return res.end(); }
+  const html = (status, body) => { res.writeHead(status, { "content-type": MIME[".html"], "cache-control": "no-cache" }); res.end(req.method === "HEAD" ? undefined : body); };
+  if (url === "/index.html") return html(200, PAGES.get("/"));
+  if (url.length > 1 && url.endsWith("/") && PAGES.has(url.replace(/\/+$/, ""))) { res.writeHead(301, { location: url.replace(/\/+$/, "") }); return res.end(); }
+  if (PAGES.has(url)) return html(200, PAGES.get(url));
+  if (url.startsWith("/program/")) return html(404, NOT_FOUND);
+  if (url === "/sitemap.xml") { res.writeHead(200, { "content-type": "application/xml; charset=utf-8", "cache-control": "public, max-age=3600" }); return res.end(SITEMAP); }
+  if (url === "/robots.txt") { res.writeHead(200, { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=3600" }); return res.end(ROBOTS); }
   const file = path.normalize(path.join(ROOT, url));
   if (!file.startsWith(ROOT + path.sep)) { res.writeHead(403); return res.end(); }
   fs.stat(file, (err, st) => {
-    if (err || !st.isFile()) { res.writeHead(404, { "content-type": "text/plain; charset=utf-8" }); return res.end("Bulunamadı"); }
+    if (err || !st.isFile()) {
+      if (!path.extname(url)) return html(404, NOT_FOUND); // uzantısız adres: sayfa gibi davran (noindex)
+      res.writeHead(404, { "content-type": "text/plain; charset=utf-8" }); return res.end("Bulunamadı");
+    }
     const ext = path.extname(file).toLowerCase();
     res.writeHead(200, { "content-type": MIME[ext] || "application/octet-stream", "content-length": st.size, "cache-control": url.startsWith("/img/") || (url.startsWith("/audio/") && ext === ".mp3") ? "public, max-age=604800" : "no-cache" });
     fs.createReadStream(file).pipe(res);

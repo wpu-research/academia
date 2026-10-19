@@ -1,6 +1,17 @@
 (() => {
   const A = window.ACADEMIA, E = window.ENGINE, P = window.PROGRESS;
   const $app = document.getElementById("app");
+  // Paylaşılabilir adres (/program/hmgs, /hakkimizda): sunucu bağlantı önizlemesi için bu adreslerde index.html döner.
+  // Uygulama #… ile yönlendirdiği için adres açılışta karşılığı olan görünüme çevrilir; bilinmeyen adres ana sayfaya düşer.
+  const SITE = "https://www.macademia.com.tr";
+  const PATH_SECTIONS = ["egitimler", "kurumsal", "hakkimizda", "iletisim", "yontem"];
+  // Yalnız kendi sunucumuzda (data-meta-title işareti) çalışır; artifact önizlemesinde adres değiştirilmez.
+  if ("metaTitle" in document.documentElement.dataset && location.pathname !== "/" && location.pathname !== "/index.html") {
+    const seg = location.pathname.replace(/\/+$/, "").split("/").slice(1).map((s) => { try { return decodeURIComponent(s); } catch { return ""; } });
+    const target = seg[0] === "program" && seg.length === 2 && A.programs.some((p) => p.slug === seg[1]) ? "p-" + seg[1]
+      : seg.length === 1 && PATH_SECTIONS.includes(seg[0]) ? seg[0] : "";
+    history.replaceState(null, "", "/" + location.search + (target ? "#" + target : location.hash));
+  }
   const KEY = "academia.v1";
   const LETTERS = "ABCDE";
   const DIAG_SIZE = 10, EXAM_SIZE = 12, BUDGET_DEFAULT = 20;
@@ -343,7 +354,7 @@
           <span class="eyebrow">${esc(groupLabel[p.group])}</span>
           <h1>${esc(p.title)}</h1>
           <p class="lead">${esc(p.summary)}</p>
-          <div class="hero-actions"><span class="chip chip-brand">${esc(p.fact)}</span>${p.status ? `<span class="chip chip-soon">${esc(p.status.split(".")[0])}</span>` : ""}</div>
+          <div class="hero-actions"><span class="chip chip-brand">${esc(p.fact)}</span>${p.status ? `<span class="chip chip-soon">${esc(p.status.split(".")[0])}</span>` : ""}<button type="button" class="btn btn-outline btn-small" id="share-prog">Bağlantıyı paylaş</button></div>
         </div>
         <div class="card-img"><img src="${p.image || `img/${p.slug}.jpg`}" alt="" width="800" height="500"></div>
       </div>
@@ -409,14 +420,28 @@
       <p class="note">Programın içeriğini alanında uzman danışmanlarımız yönlendirir.</p></div>`;
   }
 
-  // Sayfa başlığı ve açıklaması (rotaya göre). Bağlantı önizlemesi JS çalıştırmadığı için og: etiketleri yalnız tarayıcı içinde güncellenir.
-  const META0 = { title: document.title, desc: document.querySelector('meta[name="description"]')?.content || "" };
-  function setMeta(title, desc) {
+  // Sayfa başlığı ve açıklaması (rotaya göre). Önizleme botları JS çalıştırmaz; onlar için etiketleri sunucu /program/<slug> adresinde yazar.
+  // Sunucu açılış sayfasına göre <head> yazar; varsayılanlar <html data-meta-*> içinde gelir.
+  const html0 = document.documentElement.dataset;
+  const META0 = { title: html0.metaTitle || document.title, desc: html0.metaDesc || document.querySelector('meta[name="description"]')?.content || "" };
+  function setMeta(title, desc, pagePath) {
     document.title = title || META0.title;
     const d = desc || META0.desc;
     document.querySelector('meta[name="description"]')?.setAttribute("content", d);
     document.querySelector('meta[property="og:title"]')?.setAttribute("content", title || META0.title);
     document.querySelector('meta[property="og:description"]')?.setAttribute("content", d);
+    const url = SITE + (pagePath || "/");
+    document.querySelector('link[rel="canonical"]')?.setAttribute("href", url);
+    document.querySelector('meta[property="og:url"]')?.setAttribute("content", url);
+  }
+  // Paylaşım: #… yerine önizlemesi olan yol adresi.
+  async function shareLink(btn, title, pagePath) {
+    const url = SITE + pagePath;
+    if (navigator.share) { try { await navigator.share({ title, url }); return; } catch (e) { if (e.name === "AbortError") return; } }
+    const label = btn.textContent;
+    try { await navigator.clipboard.writeText(url); btn.textContent = "Bağlantı kopyalandı"; }
+    catch { window.prompt("Bağlantıyı kopyalayın:", url); return; }
+    setTimeout(() => { btn.textContent = label; }, 2000);
   }
 
   function renderModule(slug) {
@@ -1409,7 +1434,8 @@
     setMega(false); nav.classList.remove("open"); toggle.setAttribute("aria-expanded", "false");
     const key = r.view + (r.slug || "") + (r.id || "");
     const prog = r.view === "program" ? bySlug[r.slug] : null;
-    setMeta(prog ? prog.seo?.title || `${prog.title} | Macademia` : null, prog ? prog.seo?.description || prog.summary : null);
+    setMeta(prog ? prog.seo?.title || `${prog.title} | Macademia` : null, prog ? prog.seo?.description || prog.summary : null,
+      prog ? `/program/${prog.slug}` : r.view === "yontem" ? "/yontem" : r.section ? `/${r.section}` : "/");
     if (r.view === "app") {
       if (r.exam && examOn(r.exam) && r.exam !== store.exam) { store.exam = r.exam; session = null; save(); }
       if (r.exam && examOn(r.exam) && current !== key) { const dt = store.data[r.exam]; store.tab = dt.diagDone ? "panel" : "tani"; }
@@ -1431,6 +1457,10 @@
     document.querySelectorAll(".main-nav > a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + (r.section || (r.view === "home" ? "ana" : r.view === "yontem" ? "yontem" : ""))));
   }
   window.addEventListener("hashchange", render);
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("#share-prog"), r = b && route();
+    if (r?.view === "program") shareLink(b, bySlug[r.slug].seo?.title || `${bySlug[r.slug].title} | Macademia`, `/program/${r.slug}`);
+  });
   // Adres zaten #ana iken hashchange tetiklenmez; linki yine de çalıştır.
   document.addEventListener("click", (e) => {
     const a = e.target.closest('a[href="#ana"]');
