@@ -31,6 +31,7 @@ Ortam değişkenleri: `NVIDIA_API_KEY` (Mac), isteğe bağlı `NVIDIA_MODEL`, `P
 - Edubook Kids ve YetenekFest belgeleri yalnız fikir kaynağıdır; onların marka adları ve kitap adları kullanılmaz.
 - Denemeler "çıkacak soruları tahmin etmez". Sınavın alan dağılımına göre hazırlanır (HMGS'deki kararla aynı).
 - Ustalık her zaman belirsizlik aralığıyla gösterilir; sahte puan ve değerlendirme sayısı yok.
+- Program sayfalarındaki resmî rakamlar yalnız ÖSYM kılavuzundan alınır ve kaynak satırıyla gösterilir. TUS motor ağırlıkları kılavuzun Tablo 1B'sidir; YDS kılavuzu soru türüne göre soru sayısı vermediği için YDS sayfasında tür başına sayı gösterilmez.
 
 ## Müfredat kaynakları
 

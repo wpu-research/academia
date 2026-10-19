@@ -321,8 +321,12 @@
   const progHref = (p) => (p.direct ? p.link.href : `#p-${p.slug}`);
   function renderProgram(p) {
     if (p.direct) { location.replace(p.link.href); return; }
-    const rows = (r) => r.map((c) => `<tr>${c.map((x, i) => `<td${i && /^%?[\d.,]+$/.test(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`).join("");
-    const srcLink = (s) => (s ? `<p class="note src-line">Kaynak: <a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a></p>` : "");
+    const isNum = (x) => /^%?[\d.,]+$/.test(x);
+    // Tek hücreli satır bir ara başlıktır (ör. TUS'ta test adı); tablonun tüm genişliğini kaplar.
+    const rows = (r, cols = 2) => r.map((c) => (c.length === 1 ? `<tr class="group"><th colspan="${cols}" scope="rowgroup">${esc(c[0])}</th></tr>`
+      : `<tr>${c.map((x, i) => `<td${i && isNum(x) ? ' class="num"' : ""}>${esc(x)}</td>`).join("")}</tr>`)).join("");
+    const srcLink = (s) => (s ? `<p class="note src-line">Kaynak: ${[].concat(s).map((x) => `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`).join(" · ")}</p>` : "");
+    const numCol = (i) => i && p.structure?.some((c) => c.length > 1 && isNum(c[i] || ""));
     const others = ACTIVE.filter((o) => o.group === p.group && o.slug !== p.slug).slice(0, 4);
     let cta;
     if (p.levels) cta = `<div class="box accent"><h3>Seviyeni seç</h3><p class="note">Her seviyenin kendi seviye tespiti, soru bankası ve konuşma pratiği var.</p>
@@ -351,7 +355,7 @@
         ${p.roadmap ? roadmapView(p) : ""}
         ${p.examInfo ? `<h2>Sınav bilgisi</h2><dl class="exam-info">${p.examInfo.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>${srcLink(p.examSrc)}` : ""}
         ${p.structure ? `<h2>Sınav yapısı</h2>
-          <div class="table-wrap"><table>${p.structureHead ? `<thead><tr>${p.structureHead.map((h, i) => `<th${i ? ' class="num"' : ""}>${esc(h)}</th>`).join("")}</tr></thead>` : ""}<tbody>${rows(p.structure)}${p.structureTotal ? `<tr class="total">${p.structureTotal.map((x, i) => `<td${i ? ' class="num"' : ""}><b>${esc(x)}</b></td>`).join("")}</tr>` : ""}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}${srcLink(p.examSrc)}` : ""}
+          <div class="table-wrap"><table>${p.structureHead ? `<thead><tr>${p.structureHead.map((h, i) => `<th${numCol(i) ? ' class="num"' : ""}>${esc(h)}</th>`).join("")}</tr></thead>` : ""}<tbody>${rows(p.structure, p.structureHead?.length)}${p.structureTotal ? `<tr class="total">${p.structureTotal.map((x, i) => `<td${i ? ' class="num"' : ""}><b>${esc(x)}</b></td>`).join("")}</tr>` : ""}</tbody></table></div>${p.structureNote ? `<p class="note">${esc(p.structureNote)}</p>` : ""}${srcLink(p.examSrc)}` : ""}
         ${p.steps ? `<h2>Program nasıl çalışır</h2><ol class="prog-steps">${p.steps.map(([h, t]) => `<li><b>${esc(h)}</b><span>${esc(t)}</span></li>`).join("")}</ol>` : ""}
         ${p.sampleQuiz ? sampleQuizView(p) : ""}
         ${p.audience ? `<h2>Kimler için</h2><ul>${p.audience.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
@@ -377,19 +381,21 @@
     </div></div>`;
   }
 
-  // Program sayfasındaki örnek sorular: motora kaydedilmez, yalnız soruyu ve dayandığı maddeyi gösterir.
+  // Program sayfasındaki örnek sorular: motora kaydedilmez, yalnız soruyu ve dayanağını gösterir.
+  // Dayanak HMGS'de açıklamanın başındaki kanun maddesi, TUS ve YDS'de programdaki konu etiketi (sampleRefs).
+  const COUNT_WORD = { 4: "dördü", 5: "beşi", 6: "altısı", 7: "yedisi", 8: "sekizi" };
   const articleRef = (e) => (e.match(/^(.+? m\.\s?\d+(?:\/\d+)?(?:-[a-zç])?)/) || [])[1];
   const cap = (t) => t.charAt(0).toLocaleUpperCase("tr") + t.slice(1);
   function sampleQuizView(p) {
     const items = p.sampleQuiz.map((id) => A.exams[p.engine].items.find((x) => x.id === id)).filter(Boolean);
     return `<h2>Örnek sorular</h2>
-      <p>Programdaki sorulardan beşi. Cevabını seç; doğru cevap ve dayandığı kanun maddesi hemen görünür. <span class="muted" id="sq-score" aria-live="polite"></span></p>
+      <p>Programdaki sorulardan ${COUNT_WORD[items.length] || items.length}. Cevabını seç; doğru cevap, açıklaması ve ${esc(p.sampleRefWord || "dayandığı kanun maddesi")} hemen görünür. <span class="muted" id="sq-score" aria-live="polite"></span></p>
       <div class="sq" data-n="${items.length}">${items.map((it, n) => {
-        const ref = articleRef(it.e);
+        const ref = p.sampleRefs?.[it.id] || articleRef(it.e);
         return `<div class="question sq-item" data-a="${it.a}">
           <div class="q-top"><div class="chips"><span class="chip chip-line">${esc(it.alan)}</span></div><span class="muted num">${n + 1} / ${items.length}</span></div>
           <p class="q-text">${esc(it.q)}</p>
-          <div class="opts">${it.o.map((o, i) => `<button type="button" class="opt" data-act="sq" data-i="${i}"><span class="letter">${LETTERS[i]}</span><span>${esc(o)}</span></button>`).join("")}</div>
+          <div class="opts${it.o.some((o) => o.length > 40) ? " long" : ""}">${it.o.map((o, i) => `<button type="button" class="opt" data-act="sq" data-i="${i}"><span class="letter">${LETTERS[i]}</span><span>${esc(o)}</span></button>`).join("")}</div>
           <div class="explain" hidden><strong></strong>${ref ? `<span class="chip chip-brand sq-ref">${esc(ref)}</span>` : ""}<span>${esc(ref && it.e.startsWith(ref + ":") ? cap(it.e.slice(ref.length + 1).trim()) : it.e)}</span></div>
         </div>`;
       }).join("")}</div>

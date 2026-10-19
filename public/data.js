@@ -117,14 +117,66 @@ ACADEMIA.programs = [
     summary: "Seviye tespitiyle başlayan, zayıf olduğun alanlara göre her gün yeniden kurulan bir tıpta uzmanlık hazırlığı.",
     engine: "tus",
     body: [
-      "Tıpta Uzmanlık Sınavı iki testten oluşur: Temel Tıp Bilimleri ve Klinik Tıp Bilimleri. Sorular alanlara sabit oranlarla dağılır, bu yüzden çalışma sırası tahmine değil bu orana ve senin alan ustalığına göre belirlenir.",
+      "Tıpta Uzmanlık Eğitimi Giriş Sınavı iki testten oluşur: Temel Tıp Bilimleri ve Klinik Tıp Bilimleri. ÖSYM her testin sorularının alanlara yaklaşık dağılımını kılavuzda yayımlar; çalışma sırası tahmine değil bu dağılıma ve senin alan ustalığına göre belirlenir.",
       "Her soruyu çözmeden önce ne kadar emin olduğunu işaretlersin. Emin olduğun halde yanlış yaptığın konular daha hızlı geri gelir; şansla doğru bildiklerin daha az kanıt sayılır.",
     ],
-    structure: [
-      ["Anatomi", "14"], ["Fizyoloji, Histoloji, Embriyoloji", "16"], ["Biyokimya", "18"],
-      ["Mikrobiyoloji", "20"], ["Patoloji", "20"], ["Farmakoloji", "12"],
+    // Resmî rakamlar yalnız ÖSYM kılavuzundan; doğrulanamayan bilgi eklenmez. Kontrol: 2026-10-19.
+    examInfo: [
+      ["Soru ve süre", "İki test, her biri çoktan seçmeli 100 soru ve 135 dakika: Temel Tıp Bilimleri Testi sabah 10.15'te, Klinik Tıp Bilimleri Testi öğleden sonra 14.45'te"],
+      ["Puanlama", "Her testte doğru sayısından yanlış sayısının dörtte biri çıkarılır (dört yanlış bir doğruyu götürür). Ham puanlar ortalaması 50, standart sapması 10 olan standart puana çevrilir"],
+      ["K ve T puanı", "Tıp fakültesi mezunları için K puanı Temel %40 + Klinik %60, T puanı Temel %60 + Klinik %40 ağırlıkla hesaplanır; en yüksek puan 85'tir. Tercih yapabilmek için ilgili puanın en az 45 olması gerekir"],
+      ["Kimler girebilir", "Tabipler ile tıp dışı meslek mensubu olarak eczacı, kimyager ve veterinerler. Sınav tarihi itibarıyla diploma tescili tamamlanmış olmalı; tıp dışı meslek mensupları için yalnız Temel Tıp Bilimleri Testi puanı (T) kullanılır"],
+      ["Yabancı dil", "Yerleştirme için İngilizce, Fransızca ya da Almanca'dan YDS'de en az 50 puan veya ÖSYM'nin denk saydığı bir belge gerekir; sonuç beş yıl geçerlidir"],
+      ["2026 oturumları", "2026-TUS 1. Dönem: 15 Mart 2026 · 2026-TUS 2. Dönem: 23 Ağustos 2026"],
     ],
-    structureNote: "Temel Tıp Bilimleri testi, alan başına yaklaşık soru sayısı. Demo bu testi kullanır.",
+    examSrc: { label: "ÖSYM 2026-TUS 2. Dönem Başvuru Kılavuzu", url: "https://dokuman.osym.gov.tr/pdfdokuman/2026/TUSDONEM-2/basvuru_kilavuz03072026.pdf" },
+    structureHead: ["Alan", "Soru"],
+    structure: [
+      ["Temel Tıp Bilimleri Testi (TTBT)"],
+      ["Anatomi", "13"], ["Histoloji ve Embriyoloji", "7"], ["Fizyoloji", "8"], ["Tıbbi Biyokimya", "18"],
+      ["Tıbbi Mikrobiyoloji", "18"], ["Tıbbi Patoloji", "18"], ["Tıbbi Farmakoloji", "18"],
+      ["Klinik Tıp Bilimleri Testi (KTBT)"],
+      ["Dâhiliye Grubu", "35"], ["Pediatri", "25"], ["Cerrahi Grubu", "30"], ["Kadın Hastalıkları ve Doğum", "10"],
+    ],
+    structureTotal: ["Toplam", "200"],
+    structureNote: "Kılavuzdaki Tablo 1B, testlerin yaklaşık kapsamıdır. Her test 100 soru olduğu için soru sayısı testteki yüzdeye eşittir. Klinik testte soruların yaklaşık %5'i güncel sağlık konularındandır. Demo şimdilik Temel Tıp Bilimleri Testi'ni kullanır ve Histoloji-Embriyoloji'yi Fizyoloji ile birlikte çalıştırır.",
+    steps: [
+      ["Seviye tespiti", "10 soruluk ilk ölçüm, soruları Temel Tıp Bilimleri Testi'nin alan oranlarına göre dağıtır. Her soruda önce ne kadar emin olduğunu işaretlersin."],
+      ["Alan ustalığı, belirsizliğiyle", "Her alan için ustalık bir aralıkla gösterilir. Az soru çözdüğün alanda aralık geniştir; tek bir yüzdeye ya da K/T puanı tahminine indirgenmez."],
+      ["Kişisel plan", "Günlük soru hedefin, alanın testteki ağırlığı ile senin zayıflığına göre her gün yeniden sıralanır."],
+      ["Hata defteri", "Yanlış cevaptan sonra nedenini seçersin: bilgi eksiği, kavram karışıklığı, istisnayı kaçırma, süre baskısı… Defter nedene ve alana göre ayrılır."],
+      ["Tekrar takvimi", "Yanlış yaptığın sorular kısa aralıkla, doğru bildiklerin giderek uzayan aralıklarla geri gelir."],
+      ["Kılavuz dağılımıyla deneme", "Kişisel deneme, soruları Tablo 1B'deki alan dağılımına ve gerçek testin soru başına süresine (135 dakika / 100 soru) göre kurar. Hangi soruların çıkacağını tahmin etmez."],
+    ],
+    // Program sayfasındaki örnek sorular (exams.tus.items içinden, Temel Tıp'ın altı alanından birer soru).
+    sampleQuiz: ["t-an1", "t-fz3", "t-bk2", "t-mb4", "t-pt1", "t-fk3"],
+    sampleRefWord: "konu etiketi",
+    // Konu etiketi: sorunun dayandığı konu. Belirli bir kitap ya da sayfa gösterilmez.
+    sampleRefs: {
+      "t-an1": "Üst ekstremite · Plexus brachialis",
+      "t-fz3": "Solunum fizyolojisi · O₂-hemoglobin ayrışma eğrisi",
+      "t-bk2": "Lipid metabolizması · Kolesterol sentezi",
+      "t-mb4": "Bakteriyel toksinler · Clostridium tetani",
+      "t-pt1": "Hücre zedelenmesi · Nekroz tipleri",
+      "t-fk3": "Hematoloji farmakolojisi · Antitrombositer ilaçlar",
+    },
+    audience: [
+      "TUS'a ilk kez girecek yeni mezun hekimler",
+      "Temel Tıp Bilimleri'nde hangi alanda puan kaybettiğini alan alan görmek isteyenler",
+      "Nöbet ve klinik yoğunluğu arasında kısıtlı zamanı en çok soru getiren alanlara ayırmak isteyenler",
+    ],
+    faq: [
+      ["Yanlış cevaplar doğruları götürür mü?", "Evet. ÖSYM kılavuzuna göre her testte doğru sayısından yanlış sayısının dörtte biri çıkarılarak ham puan bulunur; yani dört yanlış bir doğruyu götürür. Boş bırakılan soru puanı düşürmez. Bu yüzden program, emin olmadığın sorularda güven işaretini de kaydeder."],
+      ["K ve T puanı arasındaki fark ne?", "İkisi de iki testin standart puanından hesaplanır, ağırlıkları farklıdır: K puanında Klinik Tıp Bilimleri %60, T puanında Temel Tıp Bilimleri %60 ağırlıktadır. Hangi uzmanlık dalının hangi puanla öğrenci aldığı tercih kılavuzundaki tablolarda yazar."],
+      ["Yerleştirme için yabancı dil şart mı?", "Evet. İngilizce, Fransızca ya da Almanca'dan YDS'de en az 50 puan veya ÖSYM'nin bu puana denk saydığı bir belge gerekir. Sonuç beş yıl geçerlidir. YDS'ye de Macademia'da hazırlanabilirsin."],
+      ["Klinik Tıp Bilimleri soruları da var mı?", "Şu an demo soru bankası Temel Tıp Bilimleri Testi'nin altı alanını kapsar. Klinik Tıp Bilimleri bankası hazırlanıyor; eklendiğinde K ve T puanının iki testi birlikte çalışılabilecek."],
+      ["Bir sonraki TUS ne zaman?", "2026'da iki dönem yapıldı: 15 Mart ve 23 Ağustos. 2027 tarihleri ÖSYM sınav takviminde açıklanır; sayfadaki geri sayım takvim açıklanınca güncellenir."],
+    ],
+    advisorField: "Tıp (TUS)",
+    seo: {
+      title: "TUS Hazırlık · Tıpta Uzmanlık Eğitimi Giriş Sınavı | Macademia",
+      description: "TUS'a seviye tespitiyle başla: ÖSYM kılavuzundaki alan dağılımına göre kişisel plan, konu etiketli sorular, nedenli hata defteri ve gerçek süreyle deneme.",
+    },
   },
   {
     slug: "hmgs", group: "sinav", title: "HMGS Hazırlık", engine: "hmgs",
@@ -187,17 +239,71 @@ ACADEMIA.programs = [
   {
     slug: "yds", group: "sinav", title: "YDS Hazırlık",
     fact: "80 soru · 180 dakika",
-    summary: "ÖSYM'nin soru mantığına göre yedi soru tipine ayrılmış, seviyene göre sıralanan bir YDS programı.",
+    summary: "Kılavuzdaki dört soru türünü yedi çalışma tipine ayıran, seviyene göre sıralanan bir YDS programı.",
     engine: "yds",
     body: [
-      "Yabancı Dil Bilgisi Seviye Tespit Sınavı'nda 80 sorunun yarıdan fazlası okuma ve anlam bütünlüğü üzerinedir. Program önce hangi soru tipinde puan kaybettiğini bulur, sonra çalışma süreni o tiplere kaydırır.",
+      "Yabancı Dil Bilgisi Seviye Tespit Sınavı'nın 80 sorusunda sözcük bilgisi, dil bilgisi, çeviri ve okuduğunu anlama soruları bulunur. Program önce hangi soru tipinde puan kaybettiğini bulur, sonra çalışma süreni o tiplere kaydırır.",
       "Kelime ve dilbilgisi soruları kısa tekrar aralıklarıyla geri gelir; okuma soruları ise süre tutularak çözülür.",
     ],
-    structure: [
-      ["Kelime", "6"], ["Dilbilgisi", "10"], ["Cloze test", "10"], ["Cümle tamamlama", "10"],
-      ["Çeviri (İng–Tr, Tr–İng)", "6"], ["Okuma", "20"], ["Diyalog, yakın anlam, paragraf, anlamı bozan cümle", "18"],
+    // Resmî rakamlar yalnız ÖSYM kılavuzlarından; doğrulanamayan bilgi eklenmez. Kontrol: 2026-10-19.
+    examInfo: [
+      ["Soru ve süre", "Çoktan seçmeli 80 soru, 180 dakika (3 saat); sınav 10.15'te başlar. Sözlük ve sözlük görevi yapan araç kullanılamaz"],
+      ["Puanlama", "Yalnız doğru cevaplar sayılır, yanlışlar puanı düşürmez. Doğru sayısı 100 üzerinden YDS puanına çevrilir"],
+      ["Seviyeler", "90–100 A · 80–89 B · 70–79 C · 60–69 D · 50–59 E"],
+      ["Kimler girebilir", "Kamu personeli, yabancı dil seviyesini belgelemek isteyen herkes ve üniversitelerin YDS puanı istediği öğrenciler"],
+      ["Nerede kullanılır", "Kamu personelinin yabancı dil tazminatı, A grubu kadrolar, doktora ve sanatta yeterlik başvurusu ile doçentlik (en az 55), TUS, DUS ve EUS yerleştirmesi (en az 50), öğretim elemanı atamaları, yurt dışı diploma denkliği. Yüksek lisansta kullanılıp kullanılmadığını ilgili üniversite belirler"],
+      ["Geçerlilik", "Kurumların kendi mevzuatına göre. Yabancı dil tazminatı ile TUS, DUS ve EUS yerleştirmesi için sınav tarihinden itibaren beş yıl"],
+      ["2026 oturumları", "2026-YDS/1: 5 Nisan 2026 · 2026-YDS/2: 22 Kasım 2026, 10.15 (Almanca, Arapça, Fransızca, İngilizce, Rusça). Bilgisayarda yapılan e-YDS İngilizce'nin 2026'daki son oturumu: 19 Aralık 2026"],
     ],
-    structureNote: "Soru tipine göre soru sayısı.",
+    examSrc: [
+      { label: "ÖSYM 2026 YDS/2 Kılavuzu", url: "https://dokuman.osym.gov.tr/web/2026/9/basvuru-kilavuzu-8g5h1l-29160339.pdf" },
+      { label: "ÖSYM 2026 e-YDS Kılavuzu", url: "https://dokuman.osym.gov.tr/web/2026/8/2026-elektronik-yabanci-dil-sinavi-2026-e-yds-kilavuzu-1zhshr-05113115.pdf" },
+    ],
+    // Kılavuz soru türlerini sayar ama türlere göre soru sayısı vermez; bu yüzden tabloda sayı yok.
+    structureHead: ["Kılavuzdaki soru türü", "Programdaki çalışma tipi"],
+    structure: [
+      ["Sözcük bilgisi", "Kelime"],
+      ["Dil bilgisi", "Dilbilgisi, cloze test, cümle tamamlama"],
+      ["Çeviri", "İngilizceden Türkçeye ve Türkçeden İngilizceye çeviri"],
+      ["Okuduğunu anlama", "Okuma parçaları, diyalog tamamlama, yakın anlam, paragraf tamamlama, anlamı bozan cümle"],
+    ],
+    structureNote: "Kılavuz bu dört soru türünün sınavda bulunduğunu söyler ama türlere göre soru sayısı vermez; bu yüzden burada sayı göstermiyoruz. Eşleştirme programın kendi ayrımıdır: cloze test ve cümle tamamlama dil bilgisinin yanında anlam bilgisi de ister.",
+    steps: [
+      ["Seviye tespiti", "10 soruluk ilk ölçüm yedi çalışma tipinden soru sorar. Her soruda önce ne kadar emin olduğunu işaretlersin."],
+      ["Soru tipi ustalığı, belirsizliğiyle", "Her soru tipi için ustalık bir aralıkla gösterilir. Az soru çözdüğün tipte aralık geniştir; tek bir yüzdeye ya da YDS puanı tahminine indirgenmez."],
+      ["Kişisel plan", "Günlük soru hedefin, soru tipinin programdaki ağırlığı ile senin zayıflığına göre her gün yeniden sıralanır."],
+      ["Hata defteri", "Yanlış cevaptan sonra nedenini seçersin: bilgi eksiği, kavram karışıklığı, soruyu yanlış okuma, süre baskısı… Defter nedene ve soru tipine göre ayrılır."],
+      ["Tekrar takvimi", "Kelime ve dilbilgisinde yanlış yaptığın sorular kısa aralıkla, doğru bildiklerin giderek uzayan aralıklarla geri gelir."],
+      ["Süreli deneme", "Kişisel deneme gerçek sınavın soru başına süresiyle (180 dakika / 80 soru) çalışır. Hangi soruların çıkacağını tahmin etmez."],
+    ],
+    // Program sayfasındaki örnek sorular (exams.yds.items içinden, farklı soru tiplerinden).
+    sampleQuiz: ["y-k1", "y-g2", "y-c1", "y-t2", "y-r2", "y-a3"],
+    sampleRefWord: "dilbilgisi ya da kelime konusu",
+    sampleRefs: {
+      "y-k1": "Kelime · mitigate (hafifletmek)",
+      "y-g2": "Dilbilgisi · If clause type 3",
+      "y-c1": "Bağlaç · however (zıtlık)",
+      "y-t2": "Çeviri · few / a few",
+      "y-r2": "Okuma · metinde geçmeyeni bulma",
+      "y-a3": "Yakın anlam · It was not until … that",
+    },
+    audience: [
+      "Yabancı dil tazminatı almak ya da seviyesini yükseltmek isteyen kamu personeli",
+      "Doktora, doçentlik ya da öğretim elemanı başvurusu için puana ihtiyacı olanlar",
+      "TUS veya DUS yerleştirmesi için en az 50 puan arayan hekimler ve diş hekimleri",
+    ],
+    faq: [
+      ["Yanlış cevaplar doğruları götürür mü?", "Hayır. ÖSYM kılavuzuna göre değerlendirmede yalnız doğru cevaplar dikkate alınır; doğru sayısı 100 üzerinden YDS puanına çevrilir. Yanlış cevap puanı düşürmediği için süre biterken soru boş bırakmamak mantıklıdır."],
+      ["Puanım hangi seviyeye karşılık gelir?", "Kılavuza göre 90–100 A, 80–89 B, 70–79 C, 60–69 D, 50–59 E seviyesidir. Hangi seviyeye ne kadar yabancı dil tazminatı ödeneceği ilgili mevzuatla belirlenir."],
+      ["Sonucum ne kadar geçerli?", "Geçerlilik süresini sonucu kullanan kurum kendi mevzuatına göre belirler. Yabancı dil tazminatı ile TUS, DUS ve EUS yerleştirmesi için sonuç, sınav tarihinden itibaren beş yıl geçerlidir."],
+      ["e-YDS ile YDS arasında fark var mı?", "e-YDS, ÖSYM e-sınav merkezlerinde bilgisayarda yapılır; 80 soru ve 180 dakikadır. Kılavuza göre YDS ile eşdeğerdir ve sağladığı haklar aynıdır. İngilizce e-YDS yıl içinde birçok kez yapılır."],
+      ["Bir sonraki YDS ne zaman?", "2026-YDS/2, 22 Kasım 2026'da saat 10.15'te yapılacak; başvuru dönemi (30 Eylül–8 Ekim, geç başvuru 14 Ekim) kapandı. İngilizce e-YDS'nin 2026'daki son oturumu 19 Aralık 2026, başvurular 2–10 Aralık arasında."],
+    ],
+    advisorField: "İngilizce",
+    seo: {
+      title: "YDS Hazırlık · Yabancı Dil Bilgisi Seviye Tespit Sınavı | Macademia",
+      description: "YDS'ye seviye tespitiyle başla: soru tipine göre kişisel plan, dilbilgisi ve kelime konusunu gösteren açıklamalı sorular, nedenli hata defteri ve gerçek süreyle deneme.",
+    },
   },
   {
     slug: "ielts", group: "sinav", title: "IELTS Hazırlık", engine: "ielts", active: false,
@@ -307,7 +413,8 @@ ACADEMIA.exams = {
   tus: {
     name: "TUS · Temel Tıp Bilimleri",
     short: "TUS",
-    blueprint: { "Anatomi": 14, "Fizyoloji": 16, "Biyokimya": 18, "Mikrobiyoloji": 20, "Patoloji": 20, "Farmakoloji": 12 },
+    blueprint: { "Anatomi": 13, "Fizyoloji": 15, "Biyokimya": 18, "Mikrobiyoloji": 18, "Patoloji": 18, "Farmakoloji": 18 },
+    blueprintNote: "Ağırlıklar ÖSYM 2026-TUS 2. Dönem Başvuru Kılavuzu Tablo 1B'den (Temel Tıp Bilimleri Testi). Fizyoloji alanı Histoloji ve Embriyoloji'yi de kapsar (8 + 7 soru).",
     areaNote: { "Fizyoloji": "Fizyoloji, Histoloji ve Embriyoloji" },
     items: [
       { id: "t-an1", alan: "Anatomi", q: "Deltoid kasını innerve eden sinir hangisidir?", o: ["N. radialis", "N. axillaris", "N. musculocutaneus", "N. suprascapularis", "N. thoracodorsalis"], a: 1, e: "Deltoid ve teres minor kaslarını n. axillaris (C5–C6) innerve eder. Humerusun collum chirurgicum kırıklarında bu sinir zarar görebilir." },
@@ -943,7 +1050,7 @@ ACADEMIA.examCalendar = {
   },
   // Gerçek sınavın soru sayısı ve cevaplama süresi (tam denemenin soru başına süresi buradan çıkar).
   format: {
-    tus: { questions: 100, minutes: 135, label: "Temel Tıp Bilimleri Testi: 100 soru, 135 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2024/TUSDONEM-2/kilavuz03072024.pdf" },
+    tus: { questions: 100, minutes: 135, label: "Temel Tıp Bilimleri Testi: 100 soru, 135 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2026/TUSDONEM-2/basvuru_kilavuz03072026.pdf" },
     hmgs: { questions: 120, minutes: 155, label: "120 soru, 155 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2026/HMGS-1/bkilavuz09032026.pdf" },
     yds: { questions: 80, minutes: 180, label: "80 soru, 180 dakika", src: "https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf" },
     // Life Skills A1 yaklaşık 16–18 dakikalık yüz yüze bir sınav; deneme 20 soruyu 18 dakikada sorar.
