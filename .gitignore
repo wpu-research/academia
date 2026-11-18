@@ -49,3 +49,19 @@ coverage/
 # Keep demo files
 !public/
 !src/
+.env.*
+!.env.example
+*.pem
+*.key
+*.jks
+*.keystore
+credentials*.json
+.next/
+.venv/
+venv/
+.turbo/
+__pycache__/
+*.pt
+*.mp4
+android/app/build/
+.claude/
